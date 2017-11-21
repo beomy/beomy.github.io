@@ -54,6 +54,6 @@ input[type=text] {-webkit-user-drag: none;-webkit-user-select: none !important;u
 .vote-nav li.on {background-color: #0099da;}
 .candidate-name {width: 20%;display: inline-block;font-size: 44px;}
 .vote-count {width: 130px;}
-.candidate-list {margin: 10px;border-bottom: 2px solid #8c8c8c; padding-bottom:10px;}
+.candidate-list {margin: 5px;border-bottom: 2px solid #8c8c8c; padding-bottom:5px;}
 .total-vote-area {text-align: right;margin-right: 20px;margin-top: 20px;}
 .vote-btn {width: 60px;height: 50px;}
