@@ -6,7 +6,6 @@ navigation: True
 title: The Businessman & The Fisherman
 date: 2014-08-12 10:18:00
 tags: fables
-category: [javascript, tech]
 class: post-template
 subclass: 'post tag-fables'
 logo: assets/images/ghost.png
