@@ -3,7 +3,7 @@ beomy:
   name: Beomy
   url_full: http://beomy.github.io/
   url: beomy.github.io
-  picture: assets/images/favicon_beomy.png
+  picture: assets/images/favicon.png
   cover: False
 ghost:
   username: ghost
