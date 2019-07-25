@@ -27,9 +27,9 @@ function toggleMobileNav() {
         //     right: 0,
         //     width: "toggle"
         // });
-        $("#categories__slide").toggleClass("is-visible");
-        $("#categories__slide").toggleClass("hide-visible");
-    
+        $( "#categories__slide" ).toggleClass( "is-visible" );
+        $( "#categories__slide" ).toggleClass( "hide-visible" );
+
         if ( $( ".header__links" ).hasClass( "js--open" ) ) {
             $( ".header__toggle" ).removeClass( "--open" );
             $( ".header__links" ).removeClass( "js--open" );
