@@ -14,21 +14,29 @@ $( document ).keyup( function( e ) {
     e.keyCode === 27 ? removeModal() : null;
 } );
 
-$( window ).resize( function() {
-    $( ".header" ).removeClass( "hide-nav" ); // Ensure nav will be shown on resize
-    $( ".header__links" ).removeAttr( "style" ); // If mobile nav was collapsed, make sure it's show on DESK
-    $( ".header__overlay" ).remove();
-} );
+// $( window ).resize( function() {
+//     $( ".header" ).removeClass( "hide-nav" ); // Ensure nav will be shown on resize
+//     $( ".header__links" ).removeAttr( "style" ); // If mobile nav was collapsed, make sure it's show on DESK
+//     $( ".header__overlay" ).remove();
+// } );
 
 // Toggle Mobile Navigation
 function toggleMobileNav() {
     $( ".header__toggle" ).click( function() {
-
+        // $( "#categories__slide" ).animate({
+        //     right: 0,
+        //     width: "toggle"
+        // });
+        $("#categories__slide").toggleClass("is-visible");
+        $("#categories__slide").toggleClass("hide-visible");
+    
         if ( $( ".header__links" ).hasClass( "js--open" ) ) {
-            hideMobileNav();
+            $( ".header__toggle" ).removeClass( "--open" );
+            $( ".header__links" ).removeClass( "js--open" );
         }
         else {
-            openMobileNav();
+            $( ".header__toggle" ).addClass( "--open" );
+            $( ".header__links" ).addClass( "js--open" );
         }
     } );
 
