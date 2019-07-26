@@ -2,7 +2,7 @@
 layout: post
 title: Getting Started with Sleek
 featured-img: sleek
-category: blog
+category: [tech, blog]
 ---
 
 ## Getting started

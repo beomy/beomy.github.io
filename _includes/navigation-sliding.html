@@ -1,0 +1,17 @@
+<div class="header__toggle">
+  <div>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<div id="categories__slide" class="hide-visible">
+  {% for category in site.categories %}
+    {% unless category contains "tech" %}
+    <a href="{{ site.url }}/{{ category | first }}">
+      {{ category | first }} ({{ category[1].size }})
+    </a>
+    {% endunless %}
+{% endfor %}
+</div>
