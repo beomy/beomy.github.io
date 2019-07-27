@@ -19,6 +19,8 @@ social:
 disqus:
   shortname: beomy # to enable comments replace with your_disqus_shortname
 
+google_analytics: UA-144478158-1 # replace with your GA tracking identifier
+
 # Build settings
 markdown: kramdown
 highlighter: rouge # or pygments or null

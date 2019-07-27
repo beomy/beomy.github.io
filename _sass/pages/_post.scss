@@ -6,22 +6,6 @@
   @include breakpoint($md) {
     padding-top: 5em;
   }
-
-  h1 {
-    margin-top: 4rem
-  }
-  
-  h2 {
-    margin-top: 3rem
-  }
-  
-  h3 {
-    margin-top: 2rem
-  }
-  
-  h4 {
-    margin-top: 1rem
-  }
 }
 
 .comments {
