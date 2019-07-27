@@ -37,4 +37,7 @@
   </div>
 </footer>
 <script async src="{{ "/assets/js/bundle.js" | relative_url }}"></script>
-{% include analytics.html %}
+
+{% if site.google_analytics %}
+  {% include analytics.html %}
+{% endif %}
