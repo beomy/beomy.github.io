@@ -119,7 +119,7 @@ gulp.task('critical', function (cb) {
 
 gulp.task('watch', function() {
   gulp.watch('_sass/**/*.scss', ['sass']);
-  gulp.watch(['*.html', '_layouts/*.html', '_includes/*.html', '_posts/*.md',  'pages_/*.md', '_include/*html'], ['rebuild']);
+  gulp.watch(['*.html', '*.md' ,'_layouts/*.html', '_includes/*.html', '_posts/*.md', '_posts/*/*.md', '_pages/*.md', '_include/*html'], ['rebuild']);
   gulp.watch('_js/**/*.js', ['js']);
 });
 

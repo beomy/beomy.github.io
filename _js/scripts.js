@@ -14,72 +14,20 @@ $( document ).keyup( function( e ) {
     e.keyCode === 27 ? removeModal() : null;
 } );
 
-// $( window ).resize( function() {
-//     $( ".header" ).removeClass( "hide-nav" ); // Ensure nav will be shown on resize
-//     $( ".header__links" ).removeAttr( "style" ); // If mobile nav was collapsed, make sure it's show on DESK
-//     $( ".header__overlay" ).remove();
-// } );
-
 // Toggle Mobile Navigation
 function toggleMobileNav() {
     $( ".header__toggle" ).click( function() {
-        // $( "#categories__slide" ).animate({
-        //     right: 0,
-        //     width: "toggle"
-        // });
-        $( "#categories__slide" ).toggleClass( "is-visible" );
-        $( "#categories__slide" ).toggleClass( "hide-visible" );
-
         if ( $( ".header__links" ).hasClass( "js--open" ) ) {
             $( ".header__toggle" ).removeClass( "--open" );
             $( ".header__links" ).removeClass( "js--open" );
+            $( "#categories__slide" ).removeClass( "is-visible" );
+            $( "#categories__slide" ).addClass( "hide-visible" );
         }
         else {
             $( ".header__toggle" ).addClass( "--open" );
             $( ".header__links" ).addClass( "js--open" );
-        }
-    } );
-
-    $( ".header__overlay" ).click( function() {
-        hideMobileNav();
-    } );
-}
-
-function openMobileNav() {
-    $( ".header__links" ).velocity( "slideDown", {
-        duration: 300,
-        easing: "ease-out",
-        display: "block",
-        visibility: "visible",
-        begin: function() {
-            $( ".header__toggle" ).addClass( "--open" );
-            $( "body" ).append( "<div class='header__overlay'></div>" );
-        },
-        progress: function () {
-            $( ".header__overlay" ).addClass( "--open" );
-        },
-        complete: function() {
-            $( this ).addClass( "js--open" );
-        }
-    } );
-}
-
-function hideMobileNav() {
-    $( ".header__overlay" ).remove();
-    $( ".header__links" ).velocity( "slideUp", {
-        duration: 300,
-        easing: "ease-out",
-        display: "none",
-        visibility: "hidden",
-        begin: function() {
-            $( ".header__toggle" ).removeClass( "--open" );
-        },
-        progress: function () {
-            $( ".header__overlay" ).removeClass( "--open" );
-        },
-        complete: function() {
-            $( this ).removeClass( "js--open" );
-            $( ".header__toggle, .header__overlay" ).removeClass( "--open" );
+            $( "#categories__slide" ).addClass( "is-visible" );
+            $( "#categories__slide" ).removeClass( "hide-visible" );
         }
     } );
 }

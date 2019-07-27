@@ -6,12 +6,26 @@
   </div>
 </div>
 
-<div id="categories__slide" class="hide-visible">
-  {% for category in site.categories %}
-    {% unless category contains "tech" %}
-    <a href="{{ site.url }}/{{ category | first }}">
-      {{ category | first }} ({{ category[1].size }})
-    </a>
-    {% endunless %}
-{% endfor %}
+<div id="categories__slide">
+  <h5>{{ site.title }}</h5>
+  <ul>
+    {% for link in site.data.navigation %}
+      <li>
+        <h3><a href="{{ site.url }}/{{ link.url }}">{{ link.title }}</a></h3>
+          <ul>
+            {% if link.title == "Tech" %}
+              {% for category in site.categories %}
+                {% unless category contains "tech" %}
+                <li>
+                  <span><a href="{{ site.url }}/{{ category | first }}">{{ category | first }} ({{ category[1].size }})</a></span>
+                </li>
+                {% endunless %}
+              {% endfor %}
+            {% else %}
+              <li><span>{{ link.description }}</span></li>
+            {% endif %}
+          </ul>
+      </li>
+    {% endfor %}
+  </ul>
 </div>

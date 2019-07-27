@@ -8,6 +8,8 @@ baseurl: "/" # the subpath of your site, e.g. /blog
 # twitter_username: jan_czizikow # replace with your_twitter_username or comment to remove link from footer
 github_username:  beomy # replace with your_github_username or comment to remove link from footer
 # instagram_username: shanlongjj # replace with your_instagram_username or comment to remove link from footer
+linkedin_username: 효범-이-930453134
+tistory_username: beomy
 social:
   name: Hyo Bum Lee
   links:
