@@ -88,3 +88,16 @@
     padding-top: 5em;
   }
 }
+
+img {
+  &.alignleft {
+    float:left
+  }
+  &.alignright{
+    float:right
+  }
+  &.aligncenter{
+    display:block;
+    margin:0 auto
+  }
+}
