@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Getting Started with Sleek
-featured-img: vuejs.png
-category: [tech, blog]
+featured-img: sleek.jpg
+category: [tech]
 ---
 
 ## Getting started

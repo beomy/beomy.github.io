@@ -39,6 +39,8 @@ exclude:
 
 include: ['_pages']
 permalink: /:categories/:title/
+kramdown:
+  toc_levels: 1..2
 
 compress_html:
   clippings: all

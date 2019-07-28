@@ -17,7 +17,7 @@
               {% for category in site.categories %}
                 {% unless category contains "tech" %}
                 <li>
-                  <span><a href="{{ site.url }}/{{ category | first }}">{{ category | first }} ({{ category[1].size }})</a></span>
+                  <span><a href="{{ site.url }}/{{ link.url }}{{ category | first }}">{{ category | first }} ({{ category[1].size }})</a></span>
                 </li>
                 {% endunless %}
               {% endfor %}

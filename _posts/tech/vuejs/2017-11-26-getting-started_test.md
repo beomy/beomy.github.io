@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Testing
-featured-img: vuejs.png
-category: [tech, blog]
+featured-img: vuejs/vuejs.png
+category: [tech]
 ---
 
 
