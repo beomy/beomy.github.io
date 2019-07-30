@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Inside Vue] 코어 살펴보기'
+title: '[Inside Vue] 2. 코어 함수 찾기'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
@@ -197,7 +197,7 @@ Vue는 큰 프로젝트입니다. 그래서 Vue는 많은 Layer와 part들로 �
 3. 재사용 할 수 있습니다. Core에 가까울수록 일반적(generic)을 코드가 됩니다. 이로 인해 다른 플랫폼에 쉽게 호환이 되고, 다른 환경에서 쉽게 구축할 수 있습니다.
 
 # 다음으로 볼 것
-다음 포스트에는 Core 함수에서 호출한 `this._init()` 함수를 살펴 볼 것입니다.
+다음 포스트에는 Core 함수에서 호출한 `this._init` 함수와 5개의 mixin을 좀 더 자세히 살펴 볼 것입니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md)

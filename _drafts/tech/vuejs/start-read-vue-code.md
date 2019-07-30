@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Inside Vue] Vue Code Read 시작하기'
+title: '[Inside Vue] 1. Vue Code Read 시작하기'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
