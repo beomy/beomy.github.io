@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Inside Vue] 2. 코어 함수 찾기'
+title: '[Inside Vue] 2. Vue의 코어 함수'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
@@ -9,9 +9,9 @@ category: [tech, vuejs]
 이번 포스트를 읽기 전 [이전 포스트]({{ site.url }}/tech/vuejs/start-read-vue-code/)를 읽어 보시지 않았다면, 이전 포스트를 읽고 현재 포스트를 읽는 것을 추천드립니다.
 
 # Vue 코어 살펴보기
-[이전 포스트]({{ site.url }}/tech/vuejs/start-read-vue-code/)에서 `src/platforms/web/entry-runtime-with-compiler.js` 파일이 `import Vue from './runtime/index'`로 Vue를 import 하는 것을 확인 했습니다. 이번 포스트에서는 이 것을 힌트로 `src/platforms/web/runtime/index.js` 파일을 시작으로 Vue 코어를 살펴보도록 하겠습니다.
+[이전 포스트]({{ site.url }}/tech/vuejs/vue-code-read/)에서 `src/platforms/web/entry-runtime-with-compiler.js` 파일이 `import Vue from './runtime/index'`로 Vue를 import 하는 것을 확인 했습니다. 이번 포스트에서는 이 것을 힌트로 `src/platforms/web/runtime/index.js` 파일을 시작으로 Vue 코어를 살펴보도록 하겠습니다.
 
-## `src/platforms/web/runtime/index.js`
+## `src/platforms/web/runtime/index.js` 파일
 ```js
 /* @flow */
 
@@ -113,7 +113,7 @@ export default Vue
 
 `import Vue from 'core/index'`에서 Vue 파일라고 정의 되어 있는 `src/core/index.js` 파일을 따라가 보도록 하겠습니다.
 
-## `src/core/index.js`
+## `src/core/index.js` 파일
 ```js
 import Vue from './instance/index'
 import { initGlobalAPI } from './global-api/index'
@@ -145,7 +145,7 @@ export default Vue
 
 이 파일에서는 전역 api들을 설정합니다. `import Vue from './instance/index'`를 보고 `src/core/instance/index.js` 파일을 따라가 보도록 하겠습니다.
 
-## `src/core/instance/index.js`
+## `src/core/instance/index.js` 파일
 ```js
 import { initMixin } from './init'
 import { stateMixin } from './state'
@@ -185,10 +185,10 @@ Vue는 큰 프로젝트입니다. 그래서 Vue는 많은 Layer와 part들로 �
 
 ![Vue layer](/assets/img/posts/vuejs/vue_layer.png){:.aligncenter}
 
-- Core: Vue 함수입니다. `this._init()`을 호출합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
-- Mixins: init, state, events, lifecycle, render, 5개의 mixin 함수를 Core에 추가 합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
-- Platform: 몇가지 동작들을 Core에 추가합니다. patch와 public mount 메소드를 추가합니다. `src/platforms/web/runtime/index.js`에서 살펴 볼 수 있습니다.
-- Entry: config와 캡슐화 된 $mount의 가장 바깥쪽 $mount를 Core에 추가합니다. `src/platforms/web/entry-runtime-with-compiler.js`에서 살펴 볼 수 있습니다.
+- **Core Layer**: Vue 함수입니다. `this._init()`을 호출합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
+- **Mixins Layer**: init, state, events, lifecycle, render, 5개의 mixin 함수를 Core에 추가 합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
+- **Platform Layer**: 몇가지 동작들을 Core에 추가합니다. patch와 public mount 메소드를 추가합니다. `src/platforms/web/runtime/index.js`에서 살펴 볼 수 있습니다.
+- **Entry Layer**: config와 캡슐화 된 $mount의 가장 바깥쪽 $mount를 Core에 추가합니다. `src/platforms/web/entry-runtime-with-compiler.js`에서 살펴 볼 수 있습니다.
 
 이렇게 여러개의 layer로 구성한다면 몇가지 장점이 있습니다.
 
@@ -196,8 +196,11 @@ Vue는 큰 프로젝트입니다. 그래서 Vue는 많은 Layer와 part들로 �
 2. 캡슐화 할 수 있습니다. 각각의 layer는 각자의 일에만 집중하면 됩니다.
 3. 재사용 할 수 있습니다. Core에 가까울수록 일반적(generic)을 코드가 됩니다. 이로 인해 다른 플랫폼에 쉽게 호환이 되고, 다른 환경에서 쉽게 구축할 수 있습니다.
 
+# 요약
+`src/platforms/web/runtime/index.js`를 시작으로 `src/core/instance/index.js`에 도달하여 Vue 코어 함수를 찾았습니다. `src/core/instance/index.js` 파일은 Vue 함수를 `export` 하게 되는데, `export`되는 Vue 함수는 5개의 mixin가 추가된 Vue 함수입니다. Vue 함수는 `this_init` 함수를 호출하여 초기화 합니다.
+
 # 다음으로 볼 것
-다음 포스트에는 Core 함수에서 호출한 `this._init` 함수와 5개의 mixin을 좀 더 자세히 살펴 볼 것입니다.
+다음 포스트에서는 Core 함수에서 호출한 하는 5개의 mixin, [Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/)을 좀 더 자세히 살펴 볼 것입니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md)
