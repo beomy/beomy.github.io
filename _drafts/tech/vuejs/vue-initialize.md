@@ -637,7 +637,7 @@ export function initProvide (vm: Component) {
 ![Vue 초기화](/assets/img/posts/vuejs/vue_initialize.png)
 
 # 다음으로 볼 것
-다음 포스트에서는 data가 변경 되면 화면이 동기적으로 업데이트 되는 방법, [Observer, Dep and Watcher](({{ site.url }}/tech/vuejs/observer-dep-watcher/))에 대해 이야기 할 것입니다.
+다음 포스트에서는 data가 변경 되면 화면이 동기적으로 업데이트 되는 방법, [Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/)에 대해 이야기 할 것입니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md)
