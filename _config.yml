@@ -27,7 +27,7 @@ google_analytics: UA-144478158-1 # replace with your GA tracking identifier
 # Build settings
 markdown: kramdown
 highlighter: rouge # or pygments or null
-theme: jekyll-sleek
+# theme: jekyll-sleek
 exclude:
   - README.md
   - node_modules
