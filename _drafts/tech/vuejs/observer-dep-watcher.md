@@ -11,7 +11,10 @@ category: [tech, vuejs]
 이전 포스트([Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/))에서는 Vue 인스턴스 생성시 초기화 하는 것에 대해 이야기 했습니다. 이번 포스트에서 이전 포스트에 관련된 이야기가 많이 등장하기 때문에, Vue 초기화 포스팅을 본 후 이번 포스팅을 보시는 것을 추천합니다.
 
 # Observer
-이전 포스트에서 `defineReactive` 함수를 많이 보셨을 것입니다. `defineReactive` 함수는 프로퍼티를 `dep`과 `childOb`(`observe(val)`의 리턴 값)를 가지는 반응 프로퍼티로 만들어 줍니다.
+`src/core/observer/index.js` 파일을 살펴보도록 하겠습니다. 이 파일에서 하는 주된 역할은 프로퍼티를 반응형 포로퍼티로 만드는 역할을 합니다.
+
+## `defineReactive` 함수
+이전 포스트에서 `defineReactive` 함수를 많이 보셨을 것입니다. `defineReactive` 함수는 프로퍼티를 `dep`과 `childOb`(`observe(val)`의 리턴 값)를 가지는 반응형 프로퍼티로 만들어 줍니다.
 
 
 ```js
@@ -179,8 +182,41 @@ export class Observer {
 
 배열이 아닌 경우 `this.walk` 함수를 실행합니다. 이 함수는 객체에 각 요소마다 `defineReactive`를 호출하여 각 요소를 반응형 프로퍼티로 만들어줍니다.
 
+`defineReactive` 함수에서 시작해서 `Observer` 클래스까지 코드 호출 순서를 보면,
+
+1. `defineReactive()` 호출
+2. `observe()` 호출
+3. `new Observe(value)` 호출
+4. `this.walk()` 호출
+5. `defineReactive()` 호출
+
+`defineReactive` 함수 호출로 시작하여 `defineReactive` 함수 호출하는, 재귀적으로 함수가 호출 되는 것을 볼 수 있습니다. 이렇게 재귀적으로 `defineReactive` 함수를 호출하여 모든 하위 요소들을 반응형 프로퍼티로 변환하게 됩니다.
+
+이렇게 객체의 모든 하위 요소를 반응형 프로퍼티로 변환하는 이유는,
+
+```js
+data: {
+  name: 'foo',
+  parents: {
+    mom: 'foomom',
+    dad: 'foodad'
+  }
+}
+```
+
+위의 코드와 같이 `data`라는 객체가 있을 때, `data.name`의 값이나 `data.parents.mom`의 값이 변경 되었을 때, `data`의 setter 함수는 호출 되지 습니다. setter 함수가 호출되지 않으면 `notify`가 호출되지 않아 view가 업데이트 되지 않습니다.
+
+재귀적으로 `defineReactive` 함수를 호출하면, 모든 하위 요소를 반응형 프로퍼티로 변환되어 `data.name`이나 `data.parents.mom`의 값이 변경 되어도 자동으로 view를 업데이트 할 수 있게 됩니다.
+
 # Dep
+`src/core/observer/dep.js` 파일을 살펴보도록 하겠습니다. 이 파일에서 하는 주된 역할은 `Watcher`를 관리하는 역할을 합니다.
+
+## `Dep` 클래스
 `Dep` 클래스의 상단 주석을 보면
+
+> A dep is an observable that can have multiple directives subscribing to it.
+
+라고 기록되어 있습니다. `Dep`는 여러개의 지시문(directives)을 구독(subscribe) 할 수 있는 관찰 가능한 객체입니다. [옵저버 패턴 wiki](https://ko.wikipedia.org/wiki/옵서버_패턴)를 보고 비교하자면, `Dep`은 옵저버들의 목록을 객체에 등록하여 관리하는 역할을 하는 것으로 보입니다.
 
 ```js
 /**
@@ -188,11 +224,91 @@ export class Observer {
  * directives subscribing to it.
  */
 export default class Dep {
+  static target: ?Watcher;
+  id: number;
+  subs: Array<Watcher>;
+
+  constructor () {
+    this.id = uid++
+    this.subs = []
+  }
+
+  addSub (sub: Watcher) {
+    this.subs.push(sub)
+  }
+
+  removeSub (sub: Watcher) {
+    remove(this.subs, sub)
+  }
+
+  depend () {
+    if (Dep.target) {
+      Dep.target.addDep(this)
+    }
+  }
+
+  notify () {
+    // stabilize the subscriber list first
+    const subs = this.subs.slice()
+    if (process.env.NODE_ENV !== 'production' && !config.async) {
+      // subs aren't sorted in scheduler if not running async
+      // we need to sort them now to make sure they fire in correct
+      // order
+      subs.sort((a, b) => a.id - b.id)
+    }
+    for (let i = 0, l = subs.length; i < l; i++) {
+      subs[i].update()
+    }
+  }
+}
 ```
 
-라고 기록되어 있습니다. `Dep`는 여러개의 지시문(directives)을 구독(subscribe) 할 수 있는 관찰 가능한 객체입니다. [옵저버 패턴 wiki](https://ko.wikipedia.org/wiki/옵서버_패턴)를 보고 비교하자면, `Dep`은 옵저버들의 목록을 객체에 등록하여 관리하는 역할을 하는 것으로 보입니다.
+`Dep` 클래스는 `addSub`, `removeSub`, `depend`, `notify` 4개의 메소드로 구성된 클래스입니다.
+
+`addSub`, `removeSub`, `notify`는 `this.subs`(`Watcher` 배열)을 다루는 메소드입니다. 각각의 `Dep` 인스턴스는 `Watcher`들을 저장하고 있는 배열을 가지고 있습니다.
+
+### `addSub`, `removeSub` 함수
+`this.subs` 배열에 `Watcher`를 추가/제거하는 함수입니다.
+
+### `notify` 함수
+`notify`가 호출되면 배열에 있는 모든 `Watcher`의 `update` 함수가 실행됩니다. `notify` 함수는 `defineReactive` 함수에서 정의한 setter 함수에서 호출됩니다. 즉 반응형 프로퍼티가 변경이 되면 그 프로퍼티를 감시하고 있는 모든 `Watcher`들의 `update` 함수가 호출됩니다.
+
+### `depend` 함수
+`depend` 함수는 `Dep.target`을 확인하고 없다면 `Dep.target.addDep(this)`를 실행합니다.
+
+`addDep` 함수는 `Watcher` 클래스에 정의되어 있습니다. `addDep`라는 함수 이름에서 `Watcher` 클래스가 `Dep` 배열을 가지고 있다는 것을 추측해 볼 수 있겠죠?
+
+## `Dep.target` 객체
+```js
+// The current target watcher being evaluated.
+// This is globally unique because only one watcher
+// can be evaluated at a time.
+Dep.target = null
+```
+
+주석을 보면 `Dep.target` 객체는 현재 평가(?)되고 있는 Watcher라고 기록되어 있습니다. `Dep.target`은 Watcher는 동시에 하나만 평가할 수 있기 때문에 전역으로 유니크하다고 합니다. (무슨 말인지...)
+
+## `pushTarget`, `popTarget` 함수
+```js
+const targetStack = []
+
+export function pushTarget (target: ?Watcher) {
+  targetStack.push(target)
+  Dep.target = target
+}
+
+export function popTarget () {
+  targetStack.pop()
+  Dep.target = targetStack[targetStack.length - 1]
+}
+```
+
+`pushTarget`, `popTarget` 함수는 `Watcher` 클래스에서 호출되는 함수입니다.
+
+두 함수를 쉽게 이해하자면, 한 Watcher가 평가 도중에 다른 Watcher의 값을 가져와야 할 때 사용되거나, 다시 원래의 Watcher로 돌아갈 때 사용됩니다.
 
 # Watcher
+`src/core/observer/watcher.js` 파일을 살펴보도록 하겠습니다.
 
 # 요약
 
