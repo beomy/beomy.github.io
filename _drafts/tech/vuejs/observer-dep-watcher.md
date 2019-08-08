@@ -310,6 +310,103 @@ export function popTarget () {
 # Watcher
 `src/core/observer/watcher.js` 파일을 살펴보도록 하겠습니다.
 
+## `Watcher` 클래스
+`Watcher` 클래스의 코드는 좀 양이 많습니다. 클래스 상단의 주석을 통해 `Watcher` 클래스의 역할을 살펴볼 수 있습니다.
+
+> A watcher parses an expression, collects dependencies, and fires callback when the expression value changes. This is used for both the $watch() api and directives.
+
+`Watcher` 클래스는 expression(생성자를 통해 `expOrFn` 이름으로 전달 받습니다.)을 파싱하고, 종속성을 모으고, expression 값이 변경 될 때, 콜백함수를 실행합니다.
+
+`$watch()`(`$watch()`는 [Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/#statemixin-함수)에서 살펴본 `stateMixin` 함수에서 정의합니다.)와 `initComputed`(`initComputed`는 [Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/#initcomputed-함수)에서 살펴보았습니다.)에서 `Watcher` 인스턴스를 생성합니다.
+
+### `constructor` 함수
+```js
+constructor (
+  vm: Component,
+  expOrFn: string | Function,
+  cb: Function,
+  options?: ?Object,
+  isRenderWatcher?: boolean
+) {
+  this.vm = vm
+  if (isRenderWatcher) {
+    vm._watcher = this
+  }
+  vm._watchers.push(this)
+  // options
+  if (options) {
+    this.deep = !!options.deep
+    this.user = !!options.user
+    this.lazy = !!options.lazy
+    this.sync = !!options.sync
+    this.before = options.before
+  } else {
+    this.deep = this.user = this.lazy = this.sync = false
+  }
+  this.cb = cb
+  this.id = ++uid // uid for batching
+  this.active = true
+  this.dirty = this.lazy // for lazy watchers
+  this.deps = []
+  this.newDeps = []
+  this.depIds = new Set()
+  this.newDepIds = new Set()
+  this.expression = process.env.NODE_ENV !== 'production'
+    ? expOrFn.toString()
+    : ''
+  // parse expression for getter
+  if (typeof expOrFn === 'function') {
+    this.getter = expOrFn
+  } else {
+    this.getter = parsePath(expOrFn)
+    if (!this.getter) {
+      this.getter = noop
+      process.env.NODE_ENV !== 'production' && warn(
+        `Failed watching path: "${expOrFn}" ` +
+        'Watcher only accepts simple dot-delimited paths. ' +
+        'For full control, use a function instead.',
+        vm
+      )
+    }
+  }
+  this.value = this.lazy
+    ? undefined
+    : this.get()
+}
+```
+
+위의 코드는 `Watcher` 클래스의 `constructor`(생성자) 함수입니다. 생성자 함수에서는 몇가지 변수들의 초기화와 `computed` 함수 또는 `watach` 표현식을 (`expOrFn`에 전달된 값들) `this.getter`에 저장합니다. 그리고 마지막으로 `this.lazy`가 아닐 경우 `this.get()`을 호출합니다.
+
+### `get` 함수
+```js
+/**
+  * Evaluate the getter, and re-collect dependencies.
+  */
+get () {
+  pushTarget(this)
+  let value
+  const vm = this.vm
+  try {
+    value = this.getter.call(vm, vm)
+  } catch (e) {
+    if (this.user) {
+      handleError(e, vm, `getter for watcher "${this.expression}"`)
+    } else {
+      throw e
+    }
+  } finally {
+    // "touch" every property so they are all tracked as
+    // dependencies for deep watching
+    if (this.deep) {
+      traverse(value)
+    }
+    popTarget()
+    this.cleanupDeps()
+  }
+  return value
+}
+```
+
 # 요약
 
 # 다음으로 볼 것
