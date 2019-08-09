@@ -407,6 +407,36 @@ get () {
 }
 ```
 
+`get` 함수에서 `pushTarget`와 `popTarget` 함수를 볼 수 있는데 이 두 함수는 `src/core/observer/dep.js`에 정의되어 있는 함수 입니다. 현재 평가 중인 Watcher를 설정하는 함수 입니다.
+
+### `Watcher` 동작 순서
+```js
+{
+  data: {
+    name: 'foo'
+  },
+  computed: {
+    newName () {
+      return this.name + 'new!'
+    }
+  }
+}
+```
+
+위의 코드와 같이 Vue 옵션을 정의했다고 가정합시다.
+
+1. `Vue` 함수
+2. `this._init()` 실행 (`initMixin` 함수에 `Vue.prototype._init` 함수임)
+3. `initState(vm)` 실행
+4. `initState` 함수에서 `initData(vm)` 실행
+5. `proxy(vm, '_data', key)` 실행
+6. `observe(data, true /* asRootData */)` 실행
+위의 순서로 `data` 는 반응형 프로퍼티로 변환됩니다. `proxy` 함수로 인해 `this.name`은 `this._data['name']`으로 프록시 됩니다.
+
+이제 본격적으로 `Watcher` 클래스의 동작 순서를 이야기 해 보겠습니다.
+
+1. `Vue` 함수 -> `this._init` -> `initState` -> `initComputed` -> `new Watcher(...)` 순서로 `Watcher` 인스턴스가 생성됩니다.
+
 # 요약
 
 # 다음으로 볼 것
