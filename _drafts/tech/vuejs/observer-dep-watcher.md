@@ -436,6 +436,29 @@ get () {
 이제 본격적으로 `Watcher` 클래스의 동작 순서를 이야기 해 보겠습니다.
 
 1. `Vue` 함수 -> `this._init` -> `initState` -> `initComputed` -> `new Watcher(...)` 순서로 `Watcher` 인스턴스가 생성됩니다.
+2. 생성자 함수에서 `this.get()`를 호출합니다.
+3. `get` 함수에서 `pushTarget(this)`를 호출하여 `Dep.target`를 현재 watcher로 변경합니다.
+4. `get` 함수에서 `this.getter.call(vm, vm)`를 호출합니다. `this.getter`는 `initComputed` 함수에서 `Watcher` 인스턴스를 생성 할 때 전달 받은 `getter` 입니다. 즉, `this.getter`는 `computed` 속성에 정의된 함수입니다.
+```js
+const userDef = computed[key]
+const getter = typeof userDef === 'function' ? userDef : userDef.get
+...
+if (!isSSR) {
+  // create internal watcher for the computed property.
+  watchers[key] = new Watcher(
+    vm,
+    getter || noop,
+    noop,
+    computedWatcherOptions
+  )
+}
+```
+위의 코드는 `initComputed` 함수에서 `Watcher` 인스턴스를 생성하는 코드입니다.
+5. `this.getter.call(vm, vm)`는 결국 `return this.name + 'new!'`를 호출한 것과 같습니다.
+6. `this.name`은 `this._data['name']`이 프록시 된 값입니다. 반응형 프로퍼티인 `this._data['name']`의 getter(`defineReactive` 함수의 get 함수)가 실행됩니다.
+7. `defineReactive` 함수에서 정의한 get 함수에서 `dep.depend()`를 호출합니다.
+8. `depend` 함수에서 `Dep.target.addDep(this)`를 호출합니다. 여기서 `this`는 `defineReactive` 함수에서 정의 한 `dep`(`const dep = new Dep()`)입니다. `defineReactive`를 호출한 주체는 `_data`이기 때문에, `dep`은 `_data`의 `dep`입니다.
+9. 
 
 # 요약
 
