@@ -457,8 +457,20 @@ if (!isSSR) {
 5. `this.getter.call(vm, vm)`는 결국 `return this.name + 'new!'`를 호출한 것과 같습니다.
 6. `this.name`은 `this._data['name']`이 프록시 된 값입니다. 반응형 프로퍼티인 `this._data['name']`의 getter(`defineReactive` 함수의 get 함수)가 실행됩니다.
 7. `defineReactive` 함수에서 정의한 get 함수에서 `dep.depend()`를 호출합니다.
-8. `depend` 함수에서 `Dep.target.addDep(this)`를 호출합니다. 여기서 `this`는 `defineReactive` 함수에서 정의 한 `dep`(`const dep = new Dep()`)입니다. `defineReactive`를 호출한 주체는 `_data`이기 때문에, `dep`은 `_data`의 `dep`입니다.
-9. 
+8. `Dep` 클래스의 `depend` 함수에서 `Dep.target.addDep(this)`를 호출합니다. 여기서 `this`는 `defineReactive` 함수에서 정의 한 `dep`(`const dep = new Dep()`)입니다. `defineReactive`를 호출한 주체는 `_data`이기 때문에, `dep`은 `_data`의 `dep`입니다.
+9. `defineReactive` 함수에서 정의한 get 함수에서 `childOb.dep.depend()`를 호출합니다.
+10. `Dep.target.addDep(this)`를 호출하는데, `this`는 `childOb.__ob__.dep`입니다.
+11. `Watcher` 클래스의 `addDep` 함수에서 `this.newDepIds`와 `this.newDeps`에 각각 `dep.id`와 `dep`을 저장합니다.
+12. `Watcher` 클래스의 `addDep` 함수에서 `this.depIds`의 기본 값은 빈 배열(`[]`)이기 때문에 `dep.addSub(this)`를 호출하게 됩니다.
+13. `Dep` 클래스의 `addSub`는 `this.subs`에 현재 Watcher를 등록하는 역할을 합니다.
+14. 6 ~ 13번을 거쳐 `Watcher` 클래스의 `get` 함수의 `value`에 값이 세팅됩니다.
+15. `Watcher` 클래스의 `get` 함수에서 `traverse(value)`를 호출합니다.
+16. `Watcher` 클래스의 `get` 함수에서 `popTarget()`를 호출합니다.
+17. `Watcher` 클래스의 `get` 함수에서 `this.cleanupDeps()`를 호출합니다. `cleanupDeps` 함수는 종속성을 업데이트 하는 역할을 합니다.
+
+위의 과정을 거치면서 Watcher는 종속성(`Dep`)을 알게 되고, `Dep`는 구독자(subscriber)들을 알게 됩니다. 쉽게 말에 위의 과정을 통해 `Watcher`와 `Dep` 관계가 형성됩니다. 이 관계를 통해 Vue는 반응형으로 동작하게 됩니다.
+
+반응형 프로퍼티들이 새로운 값으로 변경되면, `Dep`의 `notify` 함수가 호출되어 구독자들의 `get` 함수가 호출되고, 값과 관계(`Dep`의 `subs`들과 `Watcher`의 `newDeps`, `newDepIds`, `depIds`)들이 업데이트 됩니다.
 
 # 요약
 
