@@ -473,8 +473,12 @@ if (!isSSR) {
 반응형 프로퍼티들이 새로운 값으로 변경되면, `Dep`의 `notify` 함수가 호출되어 구독자들의 `get` 함수가 호출되고, 값과 관계(`Dep`의 `subs`들과 `Watcher`의 `newDeps`, `newDepIds`, `depIds`)들이 업데이트 됩니다.
 
 # 요약
+![Vue 반응형 동작 순서](/assets/img/posts/vuejs/vue_reactive.png)
+
+위의 그림은 이번 포스트에서 이야기한 `Dep`와 `Watcher`, 반응형 프로퍼티 간의 관계도를 이해하는데 도움이 될 수 있는 순서도 입니다. 반응형 프로퍼티가 수정이 되면, 위의 그림의 순서를 따라 동작하고, `computed` 속성과 관계도를 업데이트 합니다.
 
 # 다음으로 볼 것
+다음 포스트에서는 Lazy, Sync, Queue 3가지 watcher 방법에 대해 이야기 하도록 하겠습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/04-dynamic-data-observer-dep-and-watcher.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/04-dynamic-data-observer-dep-and-watcher.md)
