@@ -468,14 +468,14 @@ if (!isSSR) {
 16. `Watcher` 클래스의 `get` 함수에서 `popTarget()`를 호출합니다.
 17. `Watcher` 클래스의 `get` 함수에서 `this.cleanupDeps()`를 호출합니다. `cleanupDeps` 함수는 종속성을 업데이트 하는 역할을 합니다.
 
-위의 과정을 거치면서 Watcher는 종속성(`Dep`)을 알게 되고, `Dep`는 구독자(subscriber)들을 알게 됩니다. 쉽게 말에 위의 과정을 통해 `Watcher`와 `Dep` 관계가 형성됩니다. 이 관계를 통해 Vue는 반응형으로 동작하게 됩니다.
+위의 과정을 거치면서 Watcher는 종속성(`Dep`)을 알게 되고, `Dep`는 구독자(subscriber)들을 알게 됩니다. 쉽게 말에 위의 과정을 통해 `Watcher`와 `Dep`과 `Observer`가 관계를 형성합니다. 이 관계를 통해 Vue는 반응형으로 동작하게 됩니다.
 
-반응형 프로퍼티들이 새로운 값으로 변경되면, `Dep`의 `notify` 함수가 호출되어 구독자들의 `get` 함수가 호출되고, 값과 관계(`Dep`의 `subs`들과 `Watcher`의 `newDeps`, `newDepIds`, `depIds`)들이 업데이트 됩니다.
+반응형 프로퍼티들이 새로운 값으로 변경되면, `Dep`의 `notify` 함수가 호출되어 구독자들의 `get` 함수가 호출되고, 값과 관계(`Watcher`와 `Dep`과 `Observer`의 관계)들이 업데이트 됩니다.
 
 # 요약
 ![Vue 반응형 동작 순서](/assets/img/posts/vuejs/vue_reactive.png)
 
-위의 그림은 이번 포스트에서 이야기한 `Dep`와 `Watcher`, 반응형 프로퍼티 간의 관계도를 이해하는데 도움이 될 수 있는 순서도 입니다. 반응형 프로퍼티가 수정이 되면, 위의 그림의 순서를 따라 동작하고, `computed` 속성과 관계도를 업데이트 합니다.
+위의 그림은 이번 포스트에서 이야기한 `Dep`와 `Watcher`, `Observer` 간의 관계를 이해하는데 도움이 될 수 있는 순서도 입니다. 반응형 프로퍼티가 수정이 되면, 위의 그림의 순서를 따라 동작하고, `computed` 속성과 관계를 업데이트 합니다.
 
 # 다음으로 볼 것
 다음 포스트에서는 Lazy, Sync, Queue 3가지 watcher 방법에 대해 이야기 하도록 하겠습니다.
