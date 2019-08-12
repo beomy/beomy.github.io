@@ -478,7 +478,7 @@ if (!isSSR) {
 위의 그림은 이번 포스트에서 이야기한 `Dep`와 `Watcher`, `Observer` 간의 관계를 이해하는데 도움이 될 수 있는 순서도 입니다. 반응형 프로퍼티가 수정이 되면, 위의 그림의 순서를 따라 동작하고, `computed` 속성과 관계를 업데이트 합니다.
 
 # 다음으로 볼 것
-다음 포스트에서는 Lazy, Sync, Queue 3가지 watcher 방법에 대해 이야기 하도록 하겠습니다.
+다음 포스트에서는 [Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)]({{ site.url }}/tech/vuejs/lazy-sync-queue/)에 대해 이야기 하도록 하겠습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/04-dynamic-data-observer-dep-and-watcher.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/04-dynamic-data-observer-dep-and-watcher.md)
