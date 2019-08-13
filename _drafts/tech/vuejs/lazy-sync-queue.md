@@ -190,7 +190,68 @@ export function queueWatcher (watcher: Watcher) {
 }
 ```
 
+`flushing`이 `false`일 경우, 간단한 `push` 메소드를 호출합니다. `flushing`이 `true`일 경우 `watcher.id`의 바로 오른쪽에 `splice`를 이용하여 삽입 됩니다. 이렇게 하여, 바로 다음에 호출되도록 합니다. (queue가 flush 되고 있다는 것인 queue안에 있는 모든 watcher들이 동작하고 있는 상태라고 이해 할 수 있을 것 같습니다.)
+
+마지막으로 `waiting`이 `false`일 때, `nextTick`에 `flushSchedulerQueue`를 호출합니다.
+
+Vue를 사용하면서 `nextTick`이라는 함수를 보셨을 것입니다. Vue는 매 Tick 마다 view의 변경 사항을 DOM에 그립니다. `nextTick` 함수는 다음 tick에 인자로 넘겨준 콜백함수를 호출됩니다.
+
+`queueWatcher` 함수를 보면 2개의 flag(`flushing`, `waiting`)를 사용하는 것을 볼 수 있습니다. 2개의 flag를 사용하는 이유는, `nextTick` 함수로 인해 `flushSchedulerQueue` 함수가 즉시 실행 되지 않고 다음 tick에 실행되게 됩니다. 한 tick에 `queueWatcher` 함수가 여러번 호출되면, 다음 tick에 동시에 `flushSchedulerQueue`가 여러번 호출됩니다. 한번의 tick에 한번의 `flushSchedulerQueue`를 호출하기 위해 `waiting` flag를 사용합니다.
+
+즉, `flushing` flag는 queue에 있는 watcher가 동작하고 있는 것을 나타내는 flag이고, `waiting` flag를 한번의 tick에 한번의 `flushSchedulerQueue`를 호출하기 위해 사용됩니다.
+
 # View 업데이트를 트리거하는 방법
+watcher가 value를 업데이트 하는 것을 살펴 보았습니다. 이제까지 살펴본 watcher는 `computed` 프로퍼티와 watch의 콜백함수를 호출하는데 사용되었습니다.
+
+view를 업데이트 하는데 watcher가 사용될 것 같은데, 지금까지 살펴본 코드 어디에서도 view를 업데이트 하는 부분이 등장하지 않았습니다. view를 업데이트 하는 코드를 찾을 수 있는 단서는 [Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/#lifecyclemixin-함수)에서 살펴본 `_update` 함수입니다. `_update` 함수는 DOM을 업데이트하는 역할을 합니다. `_update`를 프로젝트 전체 검색으로 어디서 사용되는지 찾아보도록 하겠습니다.
+
+![_update 함수 사용](/assets/img/posts/vuejs/used_update_function.png)
+
+`src/core/instance/lifecycle.js` 파일에서 `vm._update`으로 `_update` 함수를 호출하는 것을 볼 수 있습니다. `mountComponent` 함수에서 `vm._update(vnode, hydrating)`와 `vm._update(vm._render(), hydrating)`를 호출합니다. `mountComponent` 함수(`mountComponent` 함수는 `$mount`의 코어 함수 입니다)를 살펴보도록 하겠습니다.
+
+```js
+export function mountComponent (
+  vm: Component,
+  el: ?Element,
+  hydrating?: boolean
+): Component {
+  ...
+
+  let updateComponent
+  /* istanbul ignore if */
+  if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
+    updateComponent = () => {
+      ...
+      vm._update(vnode, hydrating)
+      ...
+    }
+  } else {
+    updateComponent = () => {
+      vm._update(vm._render(), hydrating)
+    }
+  }
+
+  // we set this to vm._watcher inside the watcher's constructor
+  // since the watcher's initial patch may call $forceUpdate (e.g. inside child
+  // component's mounted hook), which relies on vm._watcher being already defined
+  new Watcher(vm, updateComponent, noop, {
+    before () {
+      if (vm._isMounted && !vm._isDestroyed) {
+        callHook(vm, 'beforeUpdate')
+      }
+    }
+  }, true /* isRenderWatcher */)
+  hydrating = false
+
+  ...
+}
+```
+
+`new Watcher(...)`를 찾아냈습니다. `lazy`의 기본 값은 `false`이기 때문에 생성자 함수에서 `get` 함수가 호출되고, `Dep`와 `Watcher`, `Observer` 간의 관계가 만들어 집니다.
+
+`updateComponent` 함수가 watcher의 getter 함수로 전달됩니다. watcher는 getter 함수로 전달된 `updateComponent` 함수를 실행하여 view가 업데이트됩니다.
+
+(반응형으로 view를 업데이트 하는 방법은 `initRender` 함수에서 호출하는 `defineReactive`에 열쇠가 있을 것 같은데.. 더 알아봐야 할 것 같습니다.)
 
 # 업데이트 순서를 정하는 방법
 
