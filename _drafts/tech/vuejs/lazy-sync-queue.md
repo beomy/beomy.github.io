@@ -337,7 +337,7 @@ Vue.prototype._init = function (options?: Object) {
 view를 업데이트 할 때도, watcher를 재사용합니다. 모든 값이 업데이트 되고 가장 마지막에 view가 업데이트 되는데 그 이유는 `_init` 함수에서 `$mount` 함수가 가장 마지막에 호출되었기 때문입니다.
 
 # 다음으로 볼 것
-  Vue는 어떻게 DOM에 업데이트 내용을 업데이트 하는지, `.vue` 파일이 어떻게 브라우저에서 실행되는 코드로 변경되는지 살펴 보도록 하겠습니다.
+  Vue는 어떻게 DOM에 업데이트 하는지, `.vue` 파일이 어떻게 브라우저에서 실행되는 코드로 변경되는지 살펴 보도록 하겠습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/05-dynamic-data-lazy-sync-and-queue.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/05-dynamic-data-lazy-sync-and-queue.md)
