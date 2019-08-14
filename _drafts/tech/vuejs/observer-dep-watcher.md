@@ -8,10 +8,10 @@ category: [tech, vuejs]
 
 이번 포스트에서는 Observer와 Dep, Watcher에 대해 이야기 하도록 하겠습니다. Vue는 data가 변경되면, 자동으로 웹페이지를 업데이트 합니다. 이 때 [감시자(옵저버) 패턴](https://ko.wikipedia.org/wiki/옵서버_패턴)을 사용하는데, 옵저버 패턴에 관한 사전 지식이 있다면, 이해 하는데 도움이 될 것 같습니다.
 
-이전 포스트([Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/)에서는 Vue 인스턴스 생성시 초기화 하는 것에 대해 이야기 했습니다. 이번 포스트에서 이전 포스트에 관련된 이야기가 많이 등장하기 때문에, Vue 초기화 포스팅을 본 후 이번 포스팅을 보시는 것을 추천합니다.
+이전 포스트([Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/))에서는 Vue 인스턴스 생성시 초기화 하는 것에 대해 이야기 했습니다. 이번 포스트에서 이전 포스트에 관련된 이야기가 많이 등장하기 때문에, Vue 초기화 포스팅을 본 후 이번 포스팅을 보시는 것을 추천합니다.
 
 # Observer
-`src/core/observer/index.js` 파일을 살펴보도록 하겠습니다. 이 파일에서 하는 주된 역할은 프로퍼티를 반응형 포로퍼티로 만드는 역할을 합니다.
+`src/core/observer/index.js` 파일을 살펴보도록 하겠습니다. 이 파일에서 하는 주된 역할은 프로퍼티를 반응형 프로퍼티로 만드는 역할을 합니다.
 
 ## `defineReactive` 함수
 이전 포스트에서 `defineReactive` 함수를 많이 보셨을 것입니다. `defineReactive` 함수는 프로퍼티를 `dep`과 `childOb`(`observe(val)`의 리턴 값)를 가지는 반응형 프로퍼티로 만들어 줍니다.
@@ -92,7 +92,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 }
 ```
 
-`observe` 함수는 이전 포스트([Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/#initData-함수))에서도 살펴보았습니다.
+`observe` 함수는 이전 포스트([Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/#initData-함수))의 `initData` 함수 안에서도 살펴보았습니다. `observer` 함수가 `data` 프로퍼티를 반응형으로 만드는 시작점입니다.
 
 `observe` 함수는 존재하는 observer를 리턴하거나, observer를 생성(`new Observer(value)`)하여 리턴합니다. 객체일 때만 observer 타입을 리턴 합니다. 원시 값(Number, String 등..)은 void 값을 리턴합니다.
 
