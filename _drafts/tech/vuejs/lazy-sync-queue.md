@@ -254,10 +254,90 @@ export function mountComponent (
 (반응형으로 view를 업데이트 하는 방법은 `initRender` 함수에서 호출하는 `defineReactive`에 열쇠가 있을 것 같은데.. 더 알아봐야 할 것 같습니다.)
 
 # 업데이트 순서를 정하는 방법
+```js
+<div id="app">
+  {{ newName }}
+</div>
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    name: 'foo'
+  },
+  computed: {
+    newName () {
+      return this.name + 'new!'
+    }
+  }
+})
+```
+
+위의 코드를 살펴보면, 하나의 `data` 프로퍼티(`name`), 하나의 `computed` 프로퍼티(`newName`)이 있고, `computed` 프로퍼티를 view에 나타내는 예제입니다.
+
+위의 코드가 초기화 되면, 하나의 반응형 프로퍼티(`data`)와 그것을 구독(subscribe)하는 2개의 watcher(`computed`, view)가 생성됩니다. (`computed` 프로퍼티는 반응형 프로퍼티가 아닌 watcher이기 때문에 view는 `data` 프로퍼티를 구독합니다.)
+
+`name`이 변경되면, `computed` 프로퍼티와 view가 모두 업데이트 되어야 합니다. 여기서 업데이트 순서가 중요한데, view를 업데이트 하고 `computed` 프로퍼티를 업데이트 하는 순서라면 view는 이전의 `computed` 프로퍼티의 값을 그리게 됩니다.
+
+`name`이 변경되면, `dep.notify()`가 호출되고, `notify` 함수는 watcher의 `update()`를 호출하여 값을 업데이트 합니다. `lazy`와 `sync`의 기본 값은 모두 `false`이기 때문에 `queueWatcher(this)`가 호출 되고, 마지막으로 `nextTick(flushSchedulerQueue)`가 호출됩니다. 업데이트 순서를 살펴보기 위해 `flushSchedulerQueue`를 살펴보도록 하겠습니다.
+
+```js
+/**
+ * Flush both queues and run the watchers.
+ */
+function flushSchedulerQueue () {
+  ...
+
+  // Sort queue before flush.
+  // This ensures that:
+  // 1. Components are updated from parent to child. (because parent is always
+  //    created before the child)
+  // 2. A component's user watchers are run before its render watcher (because
+  //    user watchers are created before the render watcher)
+  // 3. If a component is destroyed during a parent component's watcher run,
+  //    its watchers can be skipped.
+  queue.sort((a, b) => a.id - b.id)
+
+  ...
+}
+```
+
+queue를 id 순서로 정렬됩니다. 즉, id 값이 작을 수록 먼저 업데이트 됩니다. [Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/#_init-함수-살펴보기)에서 살펴보았던 `_init` 함수를 다시 살펴보면,
+
+```js
+Vue.prototype._init = function (options?: Object) {
+  ...
+  // expose real self
+  vm._self = vm
+  initLifecycle(vm)
+  initEvents(vm)
+  initRender(vm)
+  callHook(vm, 'beforeCreate')
+  initInjections(vm) // resolve injections before data/props
+  initState(vm)
+  initProvide(vm) // resolve provide after data/props
+  callHook(vm, 'created')
+
+  ...
+
+  if (vm.$options.el) {
+    vm.$mount(vm.$options.el)
+  }
+}
+```
+
+`vm.$mount(vm.$options.el)`가 가장 마지막에 호출되는 것을 볼 수 있습니다. `$mount` 함수는 `mountComponent`([Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/#lifecyclemixin-함수)에서 이야기 했습니다.)를 호출하는데 `mountComponent` 함수는 `Watcher` 인스턴스를 생성합니다. 가장 마지막에 호출되기 때문에 가장 큰 id를 할당 받아 가장 마지막에 view가 업데이트 되게 됩니다.
 
 # 요약
+이번 포스트에서는 Watcher가 업데이트하는 lazy, sync, queue 3가지 방법에 대해 이야기 했습니다. 기본값은 queue 모드입니다.
+
+- lazy 모드는 값이 실제로 필요할 때까지 Watcher의 평가를 미루는 모드입니다.
+- sync 모드는 바로 Watcher가 평가하게 되는 모드입니다.
+- queue 모드는 한 tick 동안 Watcher가 평가해야 하는 목록을 queue에 저장하였다가 다음 tick에서 평가를 하는 모드입니다.
+
+view를 업데이트 할 때도, watcher를 재사용합니다. 모든 값이 업데이트 되고 가장 마지막에 view가 업데이트 되는데 그 이유는 `_init` 함수에서 `$mount` 함수가 가장 마지막에 호출되었기 때문입니다.
 
 # 다음으로 볼 것
+  Vue는 어떻게 DOM에 업데이트 내용을 업데이트 하는지, `.vue` 파일이 어떻게 브라우저에서 실행되는 코드로 변경되는지 살펴 보도록 하겠습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/05-dynamic-data-lazy-sync-and-queue.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/05-dynamic-data-lazy-sync-and-queue.md)
