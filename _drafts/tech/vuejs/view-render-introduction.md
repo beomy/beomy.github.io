@@ -9,6 +9,27 @@ category: [tech, vuejs]
 이번 포스트에서는 view를 DOM에 그릴 수 있도록 브라우저에서 실행되는 코드로 변환하는 컴파일러 함수를 만드는 과정을 이야기 할 것입니다.
 
 # 랜더 함수 찾기
+이전 포스트([Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)]({{ site.url }}/tech/vuejs/lazy-sync-queue/#view-업데이트를-트리거하는-방법) - View 업데이트를 트리거하는 방법)에서 이야기 했던 `mountComponent` 함수를 시작으로 랜더링 과정을 살펴보도록 하겠습니다.
+
+```js
+export function mountComponent (
+  vm: Component,
+  el: ?Element,
+  hydrating?: boolean
+): Component {
+  ...
+  if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
+    ...
+  } else {
+    updateComponent = () => {
+      vm._update(vm._render(), hydrating)
+    }
+  }
+  ...
+}
+```
+
+`mountComponent` 함수는 `_update`와 `_render` 함수를 사용하여 view를 업데이트 합니다. 먼저 `_update` 함수를 살펴보도록 하겠습니다.
 
 ## `_update` 함수
 
