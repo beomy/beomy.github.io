@@ -6,7 +6,7 @@ category: [tech, vuejs]
 ---
 {% include toc.html %}
 
-이전 포스트([Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/)에서는 `Observer`와 `Dep`, `Watcher`의 관계에 대해 이야기하였습니다. 이번 포스트에서는 `Watcher`가 어떻게 값을 업데이트 하는지, View와 data의 업데이트 순서가 어떻게 결정되는지에 대해 야야기 하도록 하겠습니다.
+이전 포스트([Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/))에서는 `Observer`와 `Dep`, `Watcher`의 관계에 대해 이야기하였습니다. 이번 포스트에서는 `Watcher`가 어떻게 값을 업데이트 하는지, View와 data의 업데이트 순서가 어떻게 결정되는지에 대해 야야기 하도록 하겠습니다.
 
 # Watcher가 업데이트 하는 3가지 방법
 ```js
