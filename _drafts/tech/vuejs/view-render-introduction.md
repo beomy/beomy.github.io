@@ -99,15 +99,111 @@ Vue.prototype._render = function (): VNode {
 }
 ```
 
-`_render` 함수는 `render` 함수를 호출합니다. `render` 함수는 `vm.$options`에서 추출된 함수입니다.
+`_render` 함수는 `render` 함수를 호출합니다. `render` 함수는 `vm.$options`에서 추출된 함수입니다. `vm.$options` 객체를 살펴보도록 하겠습니다.
 
 ### `vm.$options` 객체
+`vm.$options` 객체는 `src/core/instance/init.js` 파일의 `initMixin` 함수에 정의 되어 있습니다.
 
-### `option.render` 함수
+```js
+vm.$options = mergeOptions(
+  resolveConstructorOptions(vm.constructor),
+  options || {},
+  vm
+)
+```
+
+위의 코드의 `options`는 `new Vew({...})`를 통해 전달되는 값(`{...}`)입니다. `options.render`를 키워드로 전역 검색을 하여 정의하는 부분을 찾아 보도록 하겠습니다.
+
+![options render](/assets/img/posts/vuejs/options_render.png)
+
+### `options.render` 함수
+`src/platforms/web/entry-runtime-with-compiler.js` 파일의 `$mount` 함수 안에서 `options.render` 함수를 정의 합니다.
+
+```js
+Vue.prototype.$mount = function (
+  el?: string | Element,
+  hydrating?: boolean
+): Component {
+  ...
+  const options = this.$options
+  // resolve template/el and convert to render function
+  if (!options.render) {
+    let templ ate = options.template
+    if (template) {
+      if (typeof template === 'string') {
+        if (template.charAt(0) === '#') {
+          template = idToTemplate(template)
+          ...
+        }
+      } else if (template.nodeType) {
+        template = template.innerHTML
+      } else {
+        ...
+      }
+    } else if (el) {
+      template = getOuterHTML(el)
+    }
+    if (template) {
+      ...
+
+      const { render, staticRenderFns } = compileToFunctions(template, {
+        outputSourceRange: process.env.NODE_ENV !== 'production',
+        shouldDecodeNewlines,
+        shouldDecodeNewlinesForHref,
+        delimiters: options.delimiters,
+        comments: options.comments
+      }, this)
+      options.render = render
+      ...
+    }
+  }
+  return mount.call(this, el, hydrating)
+}
+```
+
+`$mount` 함수에서 `compileToFunctions` 함수를 `template`(Vue 인스턴스의 옵션의 `template` 혹은 `.vue` 파일의 가장 바깥쪽 `template`)를 전달하여 실행하면 `render`와 `staticRenderFns`를 리턴으로 받습니다. 
+
+`compileToFunctions` 함수를 먼저 살펴보도록 하겠습니다.
 
 ### `compileToFunctions` 함수
+`compileToFunctions` 함수는 `src/platforms/web/compiler/index.js`에서 가져옵니다.
+
+```js
+/* @flow */
+
+import { baseOptions } from './options'
+import { createCompiler } from 'compiler/index'
+
+const { compile, compileToFunctions } = createCompiler(baseOptions)
+
+export { compile, compileToFunctions }
+```
+
+위의 코드는 `src/platforms/web/compiler/index.js` 파일의 내용입니다. `compileToFunctions` 함수는 `createCompiler` 함수를 통해 생성됩니다. `createCompiler`를 살펴보도록 하겠습니다.
 
 ### `createCompiler` 함수
+`src/compiler/index.js` 파일에서 `createCompiler` 함수가 정의됩니다.
+
+```js
+// `createCompilerCreator` allows creating compilers that use alternative
+// parser/optimizer/codegen, e.g the SSR optimizing compiler.
+// Here we just export a default compiler using the default parts.
+export const createCompiler = createCompilerCreator(function baseCompile (
+  template: string,
+  options: CompilerOptions
+): CompiledResult {
+  const ast = parse(template.trim(), options)
+  if (options.optimize !== false) {
+    optimize(ast, options)
+  }
+  const code = generate(ast, options)
+  return {
+    ast,
+    render: code.render,
+    staticRenderFns: code.staticRenderFns
+  }
+})
+```
 
 ### `createCompilerCreator` 함수
 
