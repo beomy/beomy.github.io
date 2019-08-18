@@ -32,8 +32,74 @@ export function mountComponent (
 `mountComponent` 함수는 `_update`와 `_render` 함수를 사용하여 view를 업데이트 합니다. 먼저 `_update` 함수를 살펴보도록 하겠습니다.
 
 ## `_update` 함수
+`_update` 함수는 `src/core/instance/lifecycle.js` 파일의 `lifecycleMixin` 함수에 정의되어 있습니다.
+
+```js
+Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
+  const vm: Component = this
+  const prevEl = vm.$el
+  const prevVnode = vm._vnode
+  const restoreActiveInstance = setActiveInstance(vm)
+  vm._vnode = vnode
+  // Vue.prototype.__patch__ is injected in entry points
+  // based on the rendering backend used.
+  if (!prevVnode) {
+    // initial render
+    vm.$el = vm.__patch__(vm.$el, vnode, hydrating, false /* removeOnly */)
+  } else {
+    // updates
+    vm.$el = vm.__patch__(prevVnode, vnode)
+  }
+  restoreActiveInstance()
+  // update __vue__ reference
+  if (prevEl) {
+    prevEl.__vue__ = null
+  }
+  if (vm.$el) {
+    vm.$el.__vue__ = vm
+  }
+  // if parent is an HOC, update its $el as well
+  if (vm.$vnode && vm.$parent && vm.$vnode === vm.$parent._vnode) {
+    vm.$parent.$el = vm.$el
+  }
+  // updated hook is called by the scheduler to ensure that children are
+  // updated in a parent's updated hook.
+}
+```
+
+`_update` 함수는 `__patch__` 함수를 호출합니다. `__patch__` 함수는 업데이트가 필요한 부분을 계산하고 해당 DOM을 업데이트 하는 역할을 합니다.
 
 ## `_render` 함수
+`_render` 함수는 `src/core/instance/render.js` 파일의 `renderMixin` 함수에 정의되어 있습니다.
+
+```js
+Vue.prototype._render = function (): VNode {
+  const vm: Component = this
+  const { render, _parentVnode } = vm.$options
+
+  ...
+
+  // set parent vnode. this allows render functions to have access
+  // to the data on the placeholder node.
+  vm.$vnode = _parentVnode
+  // render self
+  let vnode
+  try {
+    // There's no need to maintain a stack because all render fns are called
+    // separately from one another. Nested component's render fns are called
+    // when parent component is patched.
+    currentRenderingInstance = vm
+    vnode = render.call(vm._renderProxy, vm.$createElement)
+  } catch (e) {
+    ...
+  } finally {
+    currentRenderingInstance = null
+  }
+  ...
+}
+```
+
+`_render` 함수는 `render` 함수를 호출합니다. `render` 함수는 `vm.$options`에서 추출된 함수입니다.
 
 ### `vm.$options` 객체
 
