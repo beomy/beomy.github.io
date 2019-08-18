@@ -206,8 +206,13 @@ export const createCompiler = createCompilerCreator(function baseCompile (
 ```
 
 ### `createCompilerCreator` 함수
+`createCompilerCreator` 함수는 나중에 좀 더 자세히 알아보도록 하겠습니다. 지금은 단순히 core 함수인 `baseCompiler`를 감싸는 함수로 이해 하시면 됩니다. `baseCompiler` 함수 안에서 호출하는 `parse()`, `optimize()`, `generate()`가 실제 작업을 수행하는 함수 입니다.
 
-# 랜더 구조
+### 컴파일 함수 호출 과정 정리
+1. parser, optimizer, generate를 선택하여 코어 컴파일러 함수를 만듭니다.
+2. 만들어진 코어 컴파일러 함수를 `createCompilerCreator` 함수의 인자로 전달 됩니다. `createCompilerCreator` 함수는 함수를 리턴하는데, 리턴 된 함수는 `createCompiler`에 저장됩니다.
+3. `createCompiler` 함수에 옵션들을 전달하여 호출합니다. 실제 컴파일러 함수를 리턴합니다.
+4. 컴파일러 함수를 사용하여 `template`가 컴파일 됩니다.
 
 # 요약
 
