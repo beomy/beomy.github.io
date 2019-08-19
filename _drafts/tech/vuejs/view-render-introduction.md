@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Inside Vue] 7. View Render - Introduction'
+title: '[Inside Vue] 7. View Render - 컴파일러 찾기'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
@@ -208,15 +208,17 @@ export const createCompiler = createCompilerCreator(function baseCompile (
 ### `createCompilerCreator` 함수
 `createCompilerCreator` 함수는 나중에 좀 더 자세히 알아보도록 하겠습니다. 지금은 단순히 core 함수인 `baseCompiler`를 감싸는 함수로 이해 하시면 됩니다. `baseCompiler` 함수 안에서 호출하는 `parse()`, `optimize()`, `generate()`가 실제 작업을 수행하는 함수 입니다.
 
-### 컴파일 함수 호출 과정 정리
-1. parser, optimizer, generate를 선택하여 코어 컴파일러 함수를 만듭니다.
-2. 만들어진 코어 컴파일러 함수를 `createCompilerCreator` 함수의 인자로 전달 됩니다. `createCompilerCreator` 함수는 함수를 리턴하는데, 리턴 된 함수는 `createCompiler`에 저장됩니다.
-3. `createCompiler` 함수에 옵션들을 전달하여 호출합니다. 실제 컴파일러 함수를 리턴합니다.
-4. 컴파일러 함수를 사용하여 `template`가 컴파일 됩니다.
-
 # 요약
+![vue 랜더링 과정](/assets/img/posts/vuejs/vue_render.png)
+
+1. `parser`, `optimizer`, `generate`를 선택하여 코어 컴파일러 함수를 만듭니다.
+2. 만들어진 코어 컴파일러 함수를 `createCompilerCreator` 함수의 인자로 전달 됩니다. `createCompilerCreator` 함수에서 리턴 된 함수는 `createCompiler`에 저장됩니다.
+3. `createCompiler` 함수에 옵션들을 전달하여 호출합니다. 리턴 된 값은 실제 컴파일러 함수입니다.
+4. 컴파일러 함수를 통해 `template`을 컴파일 하여 `render` 함수를 만듭니다.
+5. `_render` 함수에서 생성된 `render` 함수를 호출하여 view를 랜더링합니다.
 
 # 다음으로 볼 것
+다음 포스트에서는 compiler와 patch, VDom 설계 방법과 실제 Dom과의 차이를 빠르게 계산하는 방법에 대해 이야기 하도록 하겠습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/06-view-render-introduction.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/06-view-render-introduction.md)
