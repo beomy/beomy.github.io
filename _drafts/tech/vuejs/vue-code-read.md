@@ -6,7 +6,7 @@ category: [tech, vuejs]
 ---
 {% include toc.html %}
 
-Vue를 사용하면서, Vue의 코드를 한번 분석해 보고 싶었습니다. Vue를 GitHub에서 받고 코드를 열어 봤지만 어디서부터 봐야 하는지 모르겠어서, 분석하고 싶은 생각을 저리저리~ 뒤로 미루던 차에 [코드 분석에 도움이 되는 포스트](https://github.com/numbbbbb/read-vue-source-code)를 만나게 되었습니다. 이 포스트를 토대로 Vue 코드를 분석해 나가려고 합니다.
+Vue를 사용하면서, Vue의 코드를 한번 분석해 보고 싶었습니다. Vue를 GitHub에서 받고 코드를 열어 봤지만 어디서부터 봐야 하는지 모르겠어서, 분석하고 싶은 생각을 저리저리~ 뒤로 미루던 차에 [코드 분석에 도움이 되는 포스트](https://github.com/numbbbbb/read-vue-source-code)를 발견하였습니다. 이 포스트를 토대로 Vue 코드를 분석해 나가려고 합니다.
 
 # 준비물
 Vue 소스 코드를 파해쳐 보기 전에, 2가지 준비물이 있습니다. 모두 당연한 것들이기 때문에 준비하는 것이 전혀 어렵지 않습니다.
@@ -20,7 +20,7 @@ Vue 소스 코드를 파해쳐 보기 전에, 2가지 준비물이 있습니다.
 
 ![install vue](/assets/img/posts/vuejs/install_vue.gif)
 
-Git을 사용하여 [Vue의 GitHub](https://github.com/vuejs/vue)에서 소스 코드를 내려 받도록 하겠습니다. 2.6.10 버전의 vue로 코드 분석을 진행하도록 하겠습니다.
+Git을 사용하여 [Vue의 GitHub](https://github.com/vuejs/vue)에서 소스 코드를 내려 받도록 하겠습니다. 2.6.10 버전의 vue로 코드 분석을 진행하도록 하겠습니다. 제가 포스팅 하면서 본 Vue 코드는 Fork하여 [Vue Repository](https://github.com/beomy/vue)에 등록하였습니다.
 
 # Entry 찾기
 어디서 부터 시작하지? 커다란 오픈 소스를 분석 할 때 당연히 떠오르는 질문입니다. Vue는 npm 패키지입니다. Vue는 node.js 환경에서 빌드 되기 때문에 package.json 파일을 열어서 어디서부터 코드 분석을 시작해야 할 지 확인해 보도록 하겠습니다.
@@ -201,9 +201,9 @@ export default Vue
 2. `$mount`를 따로 저장하고, 새로운 `$mount`를 정의하여 몇가지 검증을 한 후 저장한 `$mount`를 호출합니다.(캡슐화 됩니다.) 즉 실제 `$mount`를 호출하기 전에 몇가지 검증을 거칩니다.
 
 # 요약
-`package.json`의 `scripts`의 `dev`의 값인 `rollup -w -c scripts/config.js --environment TARGET:web-full-dev`를 시작으로 코드 리드를 시작합니다.
+`package.json`의 `scripts`의 `dev`의 값인 `rollup -w -c scripts/config.js --environment TARGET:web-full-dev`를 시작으로 코드 리딩을 시작합니다.
 
-`scripts/config.js`파일을 거쳐 `src/platforms/web/entry-runtime-with-compiler.js` 파일에 도달하여 `import Vue from './runtime/index'`를 보고 Vue 코드를 찾았습니다.
+`scripts/config.js`파일을 거쳐 `src/platforms/web/entry-runtime-with-compiler.js` 파일에 도달하여 `import Vue from './runtime/index'` 를 보고 Vue 코드를 찾았습니다.
 
 # 다음으로 볼 것
 다음 포스트에서는 [Vue의 코어 함수]({{ site.url }}/tech/vuejs/vue-core-function/)를 찾을 것입니다. `src/platforms/web/entry-runtime-with-compiler.js` 파일에 정의 된 `import Vue from './runtime/index'`을 실마리로 `src/platforms/web/runtime/index.js` 파일을 시작으로 코드를 따라 가도록 하겠습니다.
