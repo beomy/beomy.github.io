@@ -11892,13 +11892,13 @@ const createCompiler = createCompilerCreator(function baseCompile (
   options
 ) {
   const ast = parse(template.trim(), options);
-  console.log('[AFTER PARSE]', JSON.parse(JSON.stringify(ast)));
+  console.log('[AFTER PARSE]', ast);
   if (options.optimize !== false) {
     optimize(ast, options);
-    console.log('[AFTER OPTIMIZE]', JSON.parse(JSON.stringify(ast)));
+    console.log('[AFTER OPTIMIZE]', ast);
   }
   const code = generate(ast, options);
-  console.log('[AFTER GENERATE]', JSON.parse(JSON.stringify(ast)));
+  console.log('[AFTER GENERATE]', ast);
   return {
     ast,
     render: code.render,
