@@ -38,13 +38,13 @@ export const createCompiler = createCompilerCreator(function baseCompile (
   options: CompilerOptions
 ): CompiledResult {
   const ast = parse(template.trim(), options)
-  console.log('[AFTER Parse]', ast)
+  console.log('[AFTER PARSE]', ast)
   if (options.optimize !== false) {
     optimize(ast, options)
-    console.log('[AFTER Optimize]', ast)
+    console.log('[AFTER OPTIMIZE]', ast)
   }
   const code = generate(ast, options)
-  console.log('[AFTER Generate]', ast)
+  console.log('[AFTER GENERATE]', ast)
   return {
     ast,
     render: code.render,
@@ -53,12 +53,12 @@ export const createCompiler = createCompilerCreator(function baseCompile (
 })
 ```
 
-이후 내용에서는 `ast`를 `console.log`로 살펴볼 것입니다. [CodePen](https://codepen.io/beomy/pen/OJLbqZW?editors=1012)에서 `ast`를 살펴 볼 수 있습니다. CodePen에서 사용하는 Vue는 `console.log`를 추가한 위의 코드를 빌드한 버전입니다.
+이후 내용에서는 `ast`를 `console.log`로 살펴볼 것입니다. [CodePen](https://codepen.io/beomy/pen/OJLbqZW?editors=1012)에서 위의 코드와 같이 Vue를 빌드하였습니다. 위의 CodePen에서 `ast`를 살펴 볼 수 있습니다.
 
 ## `parse` 함수
-`parse` 함수는 `template`를 `ast`로 빌드하는 함수입니다. 단순 문자열인 `template`를 이해하기 쉬운 트리 형태로 변경해 줍니다. `ast`는 `optimize` 함수와 `generate` 함수에서도 사용됩니다.
+`parse` 함수는 `compiler/parser/index.js` 파일에 정의되어 있습니다. 코드량이 많기 때문에 이번 포스트에서 코드 언급 하지는 않겠습니다. `parse` 함수는 헬퍼 함수들을 정의하고 `parseHTML` 함수를 호출합니다.
 
-`parse` 함수는 `compiler/parser/index.js` 파일에 정의되어 있습니다. 코드량이 많기 때문에 이번 포스트에서 코드 언급 하지는 않겠습니다. `parse` 함수는 헬퍼 함수들을 정의하고 `parseHTML` 함수를 호출합니다. 
+`parse` 함수는 `template`를 `ast`로 빌드하는 함수입니다. 단순 문자열인 `template`를 이해하기 쉬운 트리 형태로 변경해 줍니다. `ast`는 `optimize` 함수와 `generate` 함수에서도 사용됩니다.
 
 하나의 코드를 예로들어, AST를 살펴보도록 하겠습니다.
 
@@ -142,6 +142,63 @@ export default {
 [CodePen](https://codepen.io/beomy/pen/OJLbqZW?editors=1012)에서 `ast`를 살펴볼 수 있습니다.
 
 ## `optimize` 함수
+`optimize` 함수는 `compiler/optimizer.js` 파일에 정의되어 있습니다. `optimize` 함수는 AST에서 정적인 부분을 찾는 함수입니다. `optimize` 함수 실행 후의 AST를 살펴보도록 하겠습니다.
+
+```js
+{  
+  type:1,
+  tag:'div',
+  attrsList:[  
+    {  
+      name:'id',
+      value:'app'
+    }
+  ],
+  attrsMap:{  
+    id:'app'
+  },
+  parent:undefined,
+  children:[  
+    {  
+      type:2,
+      expression:'"\\n  "+_s(newName ? newName + \'true\' : newName + \'false\')+"\\n  "',
+      text:'\n  {{ newName ? newName + \'true\' : newName + \'false\' }}\n  ',
+      static:false
+    },
+    {  
+      type:1,
+      tag:'span',
+      attrsList:[  
+
+      ],
+      attrsMap:{  
+
+      },
+      parent:[  
+        Circular
+      ],
+      children:[  
+        Array
+      ],
+      plain:true,
+      static:true,
+      staticInFor:false,
+      staticRoot:false
+    }
+  ],
+  plain:false,
+  attrs:[  
+    {  
+      name:'id',
+      value:'"app"'
+    }
+  ],
+  static:false,
+  staticRoot:false
+}
+```
+
+`parse` 함수 이후의 AST와 `optimize` 함수 이후의 AST의 차이점은 static 플래그 들이 추가된 점입니다.
 
 ## `generate` 함수
 
