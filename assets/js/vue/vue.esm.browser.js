@@ -2085,7 +2085,7 @@ let initProxy;
     warn(
       `Property "${key}" must be accessed with "$data.${key}" because ` +
       'properties starting with "$" or "_" are not proxied in the Vue instance to ' +
-      'prevent conflicts with Vue internals. ' +
+      'prevent conflicts with Vue internals' +
       'See: https://vuejs.org/v2/api/#data',
       target
     );
@@ -11581,9 +11581,9 @@ function checkNode (node, warn) {
 }
 
 function checkEvent (exp, text, warn, range) {
-  const stripped = exp.replace(stripStringRE, '');
-  const keywordMatch = stripped.match(unaryOperatorsRE);
-  if (keywordMatch && stripped.charAt(keywordMatch.index - 1) !== '$') {
+  const stipped = exp.replace(stripStringRE, '');
+  const keywordMatch = stipped.match(unaryOperatorsRE);
+  if (keywordMatch && stipped.charAt(keywordMatch.index - 1) !== '$') {
     warn(
       `avoid using JavaScript unary operator as property name: ` +
       `"${keywordMatch[0]}" in expression ${text.trim()}`,
@@ -11892,13 +11892,13 @@ const createCompiler = createCompilerCreator(function baseCompile (
   options
 ) {
   const ast = parse(template.trim(), options);
-  console.log('[AFTER Parse]', ast);
+  console.log('[AFTER PARSE]', JSON.parse(JSON.stringify(ast)));
   if (options.optimize !== false) {
     optimize(ast, options);
-    console.log('[AFTER Optimize]', ast);
+    console.log('[AFTER OPTIMIZE]', JSON.parse(JSON.stringify(ast)));
   }
   const code = generate(ast, options);
-  console.log('[AFTER Generate]', ast);
+  console.log('[AFTER GENERATE]', JSON.parse(JSON.stringify(ast)));
   return {
     ast,
     render: code.render,
