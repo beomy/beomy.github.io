@@ -11898,7 +11898,7 @@ const createCompiler = createCompilerCreator(function baseCompile (
     console.log('[AFTER OPTIMIZE]', ast);
   }
   const code = generate(ast, options);
-  console.log('[AFTER GENERATE]', ast);
+  console.log('[AFTER GENERATE]', code);
   return {
     ast,
     render: code.render,

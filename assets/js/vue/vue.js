@@ -11841,7 +11841,7 @@
       console.log('[AFTER OPTIMIZE]', ast);
     }
     var code = generate(ast, options);
-    console.log('[AFTER GENERATE]', ast);
+    console.log('[AFTER GENERATE]', code);
     return {
       ast: ast,
       render: code.render,
