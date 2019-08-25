@@ -81,6 +81,7 @@ export default {
 
 위의 코드에서 `parse` 함수를 통해 생성되는 `ast`는 아래와 같습니다.
 
+{% raw %}
 ```js
 {  
   type:1,
@@ -128,12 +129,14 @@ export default {
   ]
 }
 ```
+{% endraw %}
 
 [CodePen](https://codepen.io/beomy/pen/OJLbqZW?editors=1012)에서 `ast`를 살펴볼 수 있습니다.
 
 ## `optimize` 함수
 `optimize` 함수는 `compiler/optimizer.js` 파일에 정의되어 있습니다. `optimize` 함수는 AST에서 정적인 부분을 찾는 함수입니다. `optimize` 함수 실행 후의 AST를 살펴보도록 하겠습니다.
 
+{% raw %}
 ```js
 {  
   type:1,
@@ -187,12 +190,14 @@ export default {
   staticRoot:false
 }
 ```
+{% endraw %}
 
 `parse` 함수 이후의 AST와 `optimize` 함수 이후의 AST의 차이점은 static 플래그들이 추가된 점입니다. 정적인 요소들은 `static` 플래그가 `true`로 설정됩니다. [CodePen](https://codepen.io/beomy/pen/OJLbqZW?editors=1012)에서 `ast`를 살펴볼 수 있습니다.
 
 ## `generate` 함수
 `generate` 함수는 `compiler/codegen/index.js` 파일에 정의되어 있습니다.
 
+{% raw %}
 ```js
 {  
   render:'with(this){return _c(\'div\',{attrs:{"id":"app"}},[_v("\\n  "+_s(newName ? newName + \'true\' : newName + \'false\')+"\\n  "),_c(\'span\',[_v("This is static node")])])}',
@@ -201,8 +206,9 @@ export default {
   ]
 }
 ```
+{% endraw %}
 
-`generate` 함수를 통해 생경되는 `code`는 위의 코드와 같습니다. `code` 객체는 문자열인 `render`와 배열인 `staticRenderFns`로 구성됩니다.
+`generate` 함수를 통해 생경되는 `code`는 위의 코드와 같습니다. `code` 객체는 문자열인 `render`와 배열인 `staticRenderFns`로 구성됩니다. [CodePen](https://codepen.io/beomy/pen/OJLbqZW?editors=1012)에서 `code` 객체를 살펴볼 수 있습니다.
 
 `code` 객체에 포함된 `render` 함수는 `vnode = render.call(vm._renderProxy, vm.$createElement)` 이런 방법으로 호출합니다. `call` 메소드를 사용하여 `render` 함수 내의 `this`는 `vm._renderProxy`가 됩니다. 또 `render` 함수는 `with(this)` 메소드를 사용합니다. 이런 과정 때문에 Vue에서 `template`를 사용 할 때, `this`를 사용하지 않아도 됩니다.
 
