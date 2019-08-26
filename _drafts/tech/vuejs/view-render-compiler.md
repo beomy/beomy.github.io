@@ -54,15 +54,14 @@ console.log('[AFTER GENERATE]', code)
 
 {% raw %}
 ```html
-<template>
-  <div id="app">
-    {{ newName ? newName + 'true' : newName + 'false' }}
-    <span>This is static node</span>
-  </div>
-</template>
+<div id="app">
+  {{ newName ? newName + 'true' : newName + 'false' }}
+  <span>This is static node</span>
+</div>
 
 <script>
-export default {
+new Vue({
+  el: '#app',
   name: 'app',
   data () {
     return {
@@ -73,8 +72,8 @@ export default {
     newName () {
       return this.name + 'new!'
     }
-  }
-}
+  }  
+});
 </script>
 ```
 {% endraw %}
