@@ -244,7 +244,9 @@ export function createPatchFunction (backend) {
 
 `createPatchFunction` 함수의 코드량이 어마어마 합니다. `src/vdom/patch.js` 파일 최상단에 있는 주석을 보면, [Snabbdom](https://github.com/snabbdom/snabbdom)을 사용하여 가상 DOM을 patch 한다고 이야기합니다.
 
-DOM을 업데이트 하는 코어 함수인 `patchVNode` 함수에 집중해서 이야기 하도록 하겠습니다.
+## `patchVnode` 함수
+
+DOM을 업데이트 하는 코어 함수인 `patchVNode` 함수에 대해 이야기 하도록 하겠습니다.
 
 ```js
 function patchVnode (
@@ -255,70 +257,110 @@ function patchVnode (
   index,
   removeOnly
 ) {
-  if (oldVnode === vnode) {
-    return
-  }
-
-  if (isDef(vnode.elm) && isDef(ownerArray)) {
-    // clone reused vnode
-    vnode = ownerArray[index] = cloneVNode(vnode)
-  }
-
-  const elm = vnode.elm = oldVnode.elm
-
-  if (isTrue(oldVnode.isAsyncPlaceholder)) {
-    if (isDef(vnode.asyncFactory.resolved)) {
-      hydrate(oldVnode.elm, vnode, insertedVnodeQueue)
-    } else {
-      vnode.isAsyncPlaceholder = true
-    }
-    return
-  }
-
-  // reuse element for static trees.
-  // note we only do this if the vnode is cloned -
-  // if the new node is not cloned it means the render functions have been
-  // reset by the hot-reload-api and we need to do a proper re-render.
-  if (isTrue(vnode.isStatic) &&
-    isTrue(oldVnode.isStatic) &&
-    vnode.key === oldVnode.key &&
-    (isTrue(vnode.isCloned) || isTrue(vnode.isOnce))
-  ) {
-    vnode.componentInstance = oldVnode.componentInstance
-    return
-  }
-
-  let i
-  const data = vnode.data
-  if (isDef(data) && isDef(i = data.hook) && isDef(i = i.prepatch)) {
-    i(oldVnode, vnode)
-  }
-
-  const oldCh = oldVnode.children
-  const ch = vnode.children
-  if (isDef(data) && isPatchable(vnode)) {
-    for (i = 0; i < cbs.update.length; ++i) cbs.update[i](oldVnode, vnode)
-    if (isDef(i = data.hook) && isDef(i = i.update)) i(oldVnode, vnode)
-  }
-  if (isUndef(vnode.text)) {
-    if (isDef(oldCh) && isDef(ch)) {
+  ...
+  if (isUndef(vnode.text)) {                  // 1
+    if (isDef(oldCh) && isDef(ch)) {          // 3
       if (oldCh !== ch) updateChildren(elm, oldCh, ch, insertedVnodeQueue, removeOnly)
-    } else if (isDef(ch)) {
+    } else if (isDef(ch)) {                   // 4
       if (process.env.NODE_ENV !== 'production') {
         checkDuplicateKeys(ch)
       }
       if (isDef(oldVnode.text)) nodeOps.setTextContent(elm, '')
       addVnodes(elm, null, ch, 0, ch.length - 1, insertedVnodeQueue)
-    } else if (isDef(oldCh)) {
+    } else if (isDef(oldCh)) {               // 5
       removeVnodes(oldCh, 0, oldCh.length - 1)
-    } else if (isDef(oldVnode.text)) {
+    } else if (isDef(oldVnode.text)) {       // 6
       nodeOps.setTextContent(elm, '')
     }
-  } else if (oldVnode.text !== vnode.text) {
+  } else if (oldVnode.text !== vnode.text) { // 2
     nodeOps.setTextContent(elm, vnode.text)
   }
-  if (isDef(data)) {
-    if (isDef(i = data.hook) && isDef(i = i.postpatch)) i(oldVnode, vnode)
+  ...
+}
+```
+
+위의 코드의 주석번호(`// 1` 등..)와 밑의 설명의 번호를 매칭하면서 보시길 바랍니다.
+
+1. 가장 바깥쪽 `if` 절을 살펴보면 `isUndef(vnode.text)`로 `vnode.text`가 정의되어 있지 않을 때 `if` 절이 동작합니다.
+2. 가장 바깥쪽의 `else if` 절을 살펴보면 `oldVnode.text !== vnode.text` 일 때, `nodeOps.setTextContent(elm, vnode.text)`를 실행합니다. 즉 leaf 노드이면서 `text`가 다를 때 `text`를 업데이트 합니다.
+3. 이전 노드와 새로운 노드 둘다 자식노드들을 가지고 있으면서, 두 노드가 다를 때, `updateChildren` 함수를 호출합니다.
+4. 새로운 노드가 자식을 가지고, 이전 노드가 `text`를 가질 때, `addVnodes` 함수를 호출하여 새로운 노드의 자식 노드를 추가합니다.
+5. 이전 노드가 자식을 가지고 새로운 노드가 leaf 노드일 때, `removeVnodes` 함술르 호출하여 이전 노드의 자식 노드를 제거합니다.
+6. 이전 노드와 새로운 노드 모두 자식 노드가 없고 이전 노드의 `text`가 정의 되어 있지 않을 때 `nodeOps.setTextContent(elm, '')`를 호출하여 `text`를 제거합니다.
+
+## `updateChildren` 함수
+다음으로 `patchVnode` 함수에서 호출했던 `updateChildren` 함수를 살펴보도록 하겠습니다.
+
+```js
+function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly) {
+  let oldStartIdx = 0
+  let newStartIdx = 0
+  let oldEndIdx = oldCh.length - 1
+  let oldStartVnode = oldCh[0]
+  let oldEndVnode = oldCh[oldEndIdx]
+  let newEndIdx = newCh.length - 1
+  let newStartVnode = newCh[0]
+  let newEndVnode = newCh[newEndIdx]
+  let oldKeyToIdx, idxInOld, vnodeToMove, refElm
+
+  // removeOnly is a special flag used only by <transition-group>
+  // to ensure removed elements stay in correct relative positions
+  // during leaving transitions
+  const canMove = !removeOnly
+
+  if (process.env.NODE_ENV !== 'production') {
+    checkDuplicateKeys(newCh)
+  }
+
+  while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
+    if (isUndef(oldStartVnode)) {
+      oldStartVnode = oldCh[++oldStartIdx] // Vnode has been moved left
+    } else if (isUndef(oldEndVnode)) {
+      oldEndVnode = oldCh[--oldEndIdx]
+    } else if (sameVnode(oldStartVnode, newStartVnode)) {
+      patchVnode(oldStartVnode, newStartVnode, insertedVnodeQueue, newCh, newStartIdx)
+      oldStartVnode = oldCh[++oldStartIdx]
+      newStartVnode = newCh[++newStartIdx]
+    } else if (sameVnode(oldEndVnode, newEndVnode)) {
+      patchVnode(oldEndVnode, newEndVnode, insertedVnodeQueue, newCh, newEndIdx)
+      oldEndVnode = oldCh[--oldEndIdx]
+      newEndVnode = newCh[--newEndIdx]
+    } else if (sameVnode(oldStartVnode, newEndVnode)) { // Vnode moved right
+      patchVnode(oldStartVnode, newEndVnode, insertedVnodeQueue, newCh, newEndIdx)
+      canMove && nodeOps.insertBefore(parentElm, oldStartVnode.elm, nodeOps.nextSibling(oldEndVnode.elm))
+      oldStartVnode = oldCh[++oldStartIdx]
+      newEndVnode = newCh[--newEndIdx]
+    } else if (sameVnode(oldEndVnode, newStartVnode)) { // Vnode moved left
+      patchVnode(oldEndVnode, newStartVnode, insertedVnodeQueue, newCh, newStartIdx)
+      canMove && nodeOps.insertBefore(parentElm, oldEndVnode.elm, oldStartVnode.elm)
+      oldEndVnode = oldCh[--oldEndIdx]
+      newStartVnode = newCh[++newStartIdx]
+    } else {
+      if (isUndef(oldKeyToIdx)) oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)
+      idxInOld = isDef(newStartVnode.key)
+        ? oldKeyToIdx[newStartVnode.key]
+        : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx)
+      if (isUndef(idxInOld)) { // New element
+        createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, false, newCh, newStartIdx)
+      } else {
+        vnodeToMove = oldCh[idxInOld]
+        if (sameVnode(vnodeToMove, newStartVnode)) {
+          patchVnode(vnodeToMove, newStartVnode, insertedVnodeQueue, newCh, newStartIdx)
+          oldCh[idxInOld] = undefined
+          canMove && nodeOps.insertBefore(parentElm, vnodeToMove.elm, oldStartVnode.elm)
+        } else {
+          // same key but different element. treat as new element
+          createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, false, newCh, newStartIdx)
+        }
+      }
+      newStartVnode = newCh[++newStartIdx]
+    }
+  }
+  if (oldStartIdx > oldEndIdx) {
+    refElm = isUndef(newCh[newEndIdx + 1]) ? null : newCh[newEndIdx + 1].elm
+    addVnodes(parentElm, refElm, newCh, newStartIdx, newEndIdx, insertedVnodeQueue)
+  } else if (newStartIdx > newEndIdx) {
+    removeVnodes(oldCh, oldStartIdx, oldEndIdx)
   }
 }
 ```
