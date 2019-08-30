@@ -365,6 +365,8 @@ function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly
 }
 ```
 
+![vue patch](/assets/img/posts/vuejs/vue_patch.png)
+
 # 요약
 
 #### 참고
