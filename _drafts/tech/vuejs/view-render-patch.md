@@ -303,14 +303,7 @@ function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly
   let newEndVnode = newCh[newEndIdx]
   let oldKeyToIdx, idxInOld, vnodeToMove, refElm
 
-  // removeOnly is a special flag used only by <transition-group>
-  // to ensure removed elements stay in correct relative positions
-  // during leaving transitions
-  const canMove = !removeOnly
-
-  if (process.env.NODE_ENV !== 'production') {
-    checkDuplicateKeys(newCh)
-  }
+  ...
 
   while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
     if (isUndef(oldStartVnode)) {
@@ -356,18 +349,27 @@ function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly
       newStartVnode = newCh[++newStartIdx]
     }
   }
-  if (oldStartIdx > oldEndIdx) {
-    refElm = isUndef(newCh[newEndIdx + 1]) ? null : newCh[newEndIdx + 1].elm
-    addVnodes(parentElm, refElm, newCh, newStartIdx, newEndIdx, insertedVnodeQueue)
-  } else if (newStartIdx > newEndIdx) {
-    removeVnodes(oldCh, oldStartIdx, oldEndIdx)
-  }
+  ...
 }
 ```
 
-![vue patch](/assets/img/posts/vuejs/vue_patch.png)
+위의 코드를 그림으로 설명해보도록 하겠습니다.
 
-# 요약
+![vue updateChildren](/assets/img/posts/vuejs/update_children_1.png)
+
+위의 그림에서 `oldCh`, `newCh`는 `updateChildren` 함수의 전달인자입니다. 각각 이전의 자식 VNode, 새로운 자식 VNode 배열을 나타냅니다. `oldStartIdx`, `oldEndIdx`, `oldStartVNode`, `oldEndVNode`, `newStartIdx`, `newEndIdx`, `newStartVNode`, `newEndVNode` 변수를 적용한 그림입니다.
+
+위의 그림의 따라 동작하는 코드를 살펴보겠습니다.
+
+- `while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {`의 값이 `true`로 배열을 반복하여 탐색하게 됩니다.
+- `if (isUndef(oldStartVnode))`와 `else if (isUndef(oldEndVnode))`로 `oldStartVnode`와 `oldEndVnode`가 항상 정의 됩니다.
+- `else if (sameVnode(oldStartVnode, newStartVnode))`, `oldStartVnode`와 `newStartVnode`가 서로 같은 노드라면 이전에 살펴봤던 `patchVnode` 함수를 실행하여 DOM을 업데이트 합니다.
+
+`oldStartVnode`와 `newStartVnode`가 서로 같은 노드라고 가정한다면,
+
+![vue updateChildren](/assets/img/posts/vuejs/update_children_2.png)
+
+위의 그림과 같이 변수들이 업데이트 됩니다. 위의 방법을 `while`문 조건이 `true`일 때 반복하여 동작합니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/08-view-render-patch.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/08-view-render-patch.md)
