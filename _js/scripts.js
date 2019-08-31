@@ -6,6 +6,7 @@ $( document ).ready( function() {
     toggleMobileNav();
     ShowHideNav();
     formCheck();
+    tocPos();
 
 } );
 
@@ -13,6 +14,38 @@ $( document ).ready( function() {
 $( document ).keyup( function( e ) {
     e.keyCode === 27 ? removeModal() : null;
 } );
+
+function tocPos () {
+    var chapter = {};
+    var threshold = 100;
+
+    $( ".toc a" ).each( function( index, item ) {
+        var id = $( item ).attr( "href" ).substring( 1 );
+        var href = $( ".toc a" ).eq( index + 1 ).attr( "href" );
+        chapter[ id ] = href ? $( href ).offset().top : null;
+    } );
+
+    $( document ).scroll( function() {
+        var scrollTop = $( this ).scrollTop();
+        if ( scrollTop >= 50 ) {
+            $( ".toc" ).addClass( "fixed" );
+        } else {
+            $( ".toc" ).removeClass( "fixed" );
+        }
+
+        for ( var key in chapter ) {
+            if ( chapter[ key ] >= ( scrollTop + threshold ) || chapter[ key ] === null ) {
+                break;
+            }
+        }
+
+        var el = $( "#markdown-toc a[href='#" + key + "']" )
+        if ( !el.hasClass( "active" ) ) {
+            $( "#markdown-toc a" ).removeClass( "active" );
+            el.addClass( "active" );
+        }
+    } );
+}
 
 // Toggle Mobile Navigation
 function toggleMobileNav() {

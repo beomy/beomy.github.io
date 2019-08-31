@@ -76,3 +76,57 @@
     margin-top: 1rem
   }
 }
+
+.toc {
+  display: inline-block;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  padding: 20px;
+  width: 290px;
+  &.fixed {
+    position: fixed;
+    top: 20px;
+    right: 0;
+  }
+  #markdown-toc {
+    padding: 0;
+    li {
+      list-style-type: none;
+      a {
+        &.active {
+          color: #000;
+          code {
+            color: #000;
+          }
+        }
+      }
+    }
+    > li {
+      counter-increment: chapter;
+      a {
+        color: #ccc;
+        border: none;
+        font-size: 0.8rem;
+      }
+      > a:before {
+        content: counter(chapter) ". ";
+      }
+      > ul {
+        padding-left: 15px;
+        > li {
+          counter-increment: sub_chapter;
+          > a:before {
+            content: counter(chapter)'-'counter(sub_chapter) ". ";
+          }
+        }
+      }
+    }
+  }  
+}
+
+@media (max-width: 1400px) {
+  .toc {
+    display: none;
+  }
+}
