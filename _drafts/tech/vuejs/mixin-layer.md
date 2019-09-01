@@ -1,12 +1,12 @@
 ---
 layout: post
-title: '[Inside Vue] 3. Mixin Layer'
+title: '[Inside Vue] 3. Initialize - Mixin Layer'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
 {% include toc.html %}
 
-이번 포스트에서는 [2. 코어 함수 찾기]({{ site.url }}/tech/vuejs/vue-core-function/)에서 이야기 했던 `src/core/instance/index.js` 파일의  5개의 mixin에 대해 알아보도록 하겠습니다.
+이번 포스트에서는 [2. Initialize - Vue 코어 함수]({{ site.url }}/tech/vuejs/vue-core-function/)에서 이야기 했던 `src/core/instance/index.js` 파일의  5개의 mixin에 대해 알아보도록 하겠습니다.
 
 ```js
 import { initMixin } from './init'
@@ -107,12 +107,12 @@ function resolveModifiedOptions (Ctor: Class<Component>): ?Object {
 }
 ```
 
-`src/core/instance/init.js` 파일 내용입니다. 코드가 조금 길어서, 지금 이야기 할 내용을 제외하고 많이 생략하였습니다.
+`src/core/instance/init.js` 파일 내용입니다. 코드가 조금 길어서, 이야기 할 내용을 제외하고 많이 생략하였습니다.
 
-- `initMixin` 함수를 정의 합니다. 이 함수 안에서 `Vue.prototype._init` 함수를 정의합니다. 이 함수가 `src/core/instance/index.js` 파일에 Core 함수에서 이야기 한 `this._init` 함수 입니다. 밑에서 더 자세히 이야기 될 테니 기억해 주세요.
-- `initInternalComponent` 함수를 정의 합니다. (`initMixin` 함수에 적힌 주석에 따르면..) 동적으로 option을 머지 하는 것은 매우 느리기 때문에 internal component 인스턴스화를 최적화 하기 위해 사용되었다고 합니다.
+- `initMixin` 함수를 정의 합니다. 이 함수 안에서 `Vue.prototype._init` 함수를 정의합니다. 이 함수가 `src/core/instance/index.js` 파일에 코어 함수에서 이야기 한 `this._init` 함수 입니다. 밑에서 더 자세히 이야기 될 테니 기억해 주세요.
+- `initInternalComponent` 함수를 정의 합니다. `initMixin` 함수에 적힌 주석에 따르면, 동적으로 option을 merge 하는 것은 매우 느리기 때문에 internal component 인스턴스화를 최적화 하기 위해 사용되었다고 합니다.
 - `resolveConstructorOptions` 함수를 정의 합니다. option들을 모으는 함수 입니다.
-- `resolveModifiedOptions` 함수를 정의 합니다. 이 함수는 `resolveConstructorOptions` 함수에서 사용되고, (`resolveConstructorOptions` 함수에 적힌 주석에 따르면..) [#4976 hot-reload](https://github.com/vuejs/vue/issues/4976) 버그와 연관 되어 있다고 합니다.
+- `resolveModifiedOptions` 함수를 정의 합니다. 이 함수는 `resolveConstructorOptions` 함수에서 사용되고, `resolveConstructorOptions` 함수에 적힌 주석에 따르면, [#4976 hot-reload](https://github.com/vuejs/vue/issues/4976) 버그와 연관 되어 있다고 합니다.
 
 # `stateMixin` 함수
 `stateMixin` 함수는 `src/core/instance/state.js`에 정의되어 있습니다.
@@ -252,11 +252,11 @@ export function mountComponent (
 
 `lifecycleMixin` 함수는
 
-- `Vue.prototype._update`를 정의합니다. DOM 업데이트가 이곳에서 일어 납니다.
+- `Vue.prototype._update`를 정의합니다. DOM 업데이트가 이곳에서 일어 납니다. [9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/)에서 자세히 이야기 하도록 하겠습니다.
 - `Vue.prototype.$forceUpdate`를 정의합니다.
 - `Vue.prototype.$destroy`를 정의합니다.
 
-`lifecycleMixin` 함수 바로 아래 `mountComponent` 함수가 있습니다. 이 함수는 [이전 포스트]({{ site.url }}/tech/vuejs/dig-into-the-core/##srcplatformswebruntimeindexjs)에서 잠깐 언급 된 적이 있습니다. `Vue.prototype.$mount`는 `mountComponent` 함수 호출 값을 리턴합니다. 이전 포스트에서 2번 캡슐화 된다고 이야기 했습니다. 결국 `$mount`는 `mountComponent`를 2번 캡슐화 한 함수입니다.
+`lifecycleMixin` 함수 바로 아래 `mountComponent` 함수가 있습니다. 이 함수는 [2. Initialize - Vue 코어 함수]({{ site.url }}/tech/vuejs/vue-core-function/#srcplatformswebruntimeindexjs-파일)에서 잠깐 언급 된 적이 있습니다. `Vue.prototype.$mount`는 `mountComponent` 함수 호출 값을 리턴합니다. 이전 포스트에서 2번 캡슐화 된다고 이야기 했습니다. 결국 `$mount`는 `mountComponent`를 2번 캡슐화 한 함수입니다. `mountComponent` 함수는 [9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/)에서 자세히 이야기 할 것입니다.
 
 `src/core/instance/lifecycle.js` 파일에는 이외의 몇개의 함수가 존재합니다. 이 함수들은 DOM을 업데이트 하는데 사용됩니다.
 
@@ -289,14 +289,14 @@ Mixin 레이어에서는 `Vue.prototype`안에 몇가지 함수와 객체들을 
 
 ![Vue Mixin](/assets/img/posts/vuejs/vue_mixin.png)
 
-- **initMixin**: _init()를 정의합니다.
-- **stateMixin**: $data, $props, $set(), $delete(), $watch()를 정의합니다.
-- **eventsMixin**: $on(), $once(), $off(), $emit()를 정의합니다.
-- **lifecycleMixin**: _update(), $forceUpdate(), $destroy()를 정의합니다.
-- **renderMixin**: _render()를 정의합니다.
+- **initMixin**: `_init()`를 정의합니다.
+- **stateMixin**: `$data`, `$props`, `$set()`, `$delete()`, `$watch()`를 정의합니다.
+- **eventsMixin**: `$on()`, `$once()`, `$off()`, `$emit()`를 정의합니다.
+- **lifecycleMixin**: `_update()`, `$forceUpdate()`, `$destroy()`를 정의합니다.
+- **renderMixin**: `_render()`를 정의합니다.
 
 # 다음으로 볼 것
-다음 포스트에서는 `src/core/instance/index.js`의 Core 함수에서 호출하는 `this._init(options)`, [Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/)을 살펴보도록 하겠습니다.
+`src/core/instance/index.js`의 코어 함수에서 호출하는 `this._init(options)`를 살펴보도록 하겠습니다. [Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/)에서 확인 할 수 있습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md)
