@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Inside Vue] 1. Vue Code Read 시작하기'
+title: '[Inside Vue] 1. Introduction - Vue Code 분석'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
@@ -26,7 +26,7 @@ Git을 사용하여 [Vue의 GitHub](https://github.com/vuejs/vue)에서 소스 �
 어디서 부터 시작하지? 커다란 오픈 소스를 분석 할 때 당연히 떠오르는 질문입니다. Vue는 npm 패키지입니다. Vue는 node.js 환경에서 빌드 되기 때문에 package.json 파일을 열어서 어디서부터 코드 분석을 시작해야 할 지 확인해 보도록 하겠습니다.
 
 ## `package.json` 파일
-package.json을 열어보면,
+`package.json`을 열어보면,
 
 ```json
 {
@@ -57,7 +57,9 @@ package.json을 열어보면,
 `main`, `module`, `unpkg`, `jsdelivr` 옵션에 `dist/` 값들이 있는 것을 확인 할 수 있습니다. `dist` 디렉토리와 하위에 있는 파일들은 빌드을 하면 자동으로 생성되는 파일들입니다. 즉 이 옵션들이 가르키는 값들은 빌드되어 생성된 결과물입니다.
 
 ### - `typings`
-`typings`는 TypeScript를 정의한 파일을 나타내는 옵션입니다. `types/index.d.ts` 파일에 정의된 type들을 볼 수 있습니다.
+`typings`는 TypeScript를 정의한 파일을 나타내는 옵션입니다. Vue 코드는 TypeScript로 작성되어 있기 때문에, TypeScript를 알고 계신다면 더 쉽게 코드를 분석해 나갈 수 있습니다.
+
+`types/index.d.ts` 파일에 정의된 type들을 볼 수 있습니다.
 
 ### - `files`
 `files` 옵션은 npm 옵션 중 하나로, 패키지가 의존성으로 설치될 때 같이 포함될 파일들의 배열입니다. `files` 옵션에는 3개의 경로들이 지정되어 있습니다. 포함된 경로 중에 `src`가 있는데, 이 디렉토리에 Vue 코드들이 모여 있습니다.
@@ -158,9 +160,27 @@ Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
-
   ...
-
+  const options = this.$options
+  // resolve template/el and convert to render function
+  if (!options.render) {
+    let template = options.template
+    if (template) {
+      if (typeof template === 'string') {
+        if (template.charAt(0) === '#') {
+          template = idToTemplate(template)
+          ...
+        }
+      } else if (template.nodeType) {
+        template = template.innerHTML
+      } else {
+        ...
+      }
+    } else if (el) {
+      template = getOuterHTML(el)
+    }
+    ...
+  }
   return mount.call(this, el, hydrating)
 }
 
@@ -183,7 +203,7 @@ Vue.compile = compileToFunctions
 export default Vue
 ```
 
-`entry-runtime-with-compiler.js`의 첫번 째 줄에 정의 된 `/* @flow */`는 type checker 입니다. [flow](https://flow.org/en/)는 package.json에서 살펴 본 `typings`의 타입들을 체크 하는 역할을 합니다.
+`entry-runtime-with-compiler.js`의 첫번 째 줄에 정의 된 `/* @flow */`는 type checker 입니다. [flow](https://flow.org/en/)는 `package.json`에서 살펴 본 `typings`의 타입들을 체크 하는 역할을 합니다.
 
 `entry-runtime-with-compiler.js`가 수행하는 일들은 아래와 같습니다,
 
@@ -197,16 +217,17 @@ export default Vue
 
 2가지 내용을 집중해야 합니다.
 
-1. 이 코드는 실제 Vue 코드가 **아닙니다.** `entry-runtime-with-compiler.js` 이라는 파일 이름에서 알 수 있듯이 단순 entry 역할을 할 뿐입니다.
-2. `$mount`를 따로 저장하고, 새로운 `$mount`를 정의하여 몇가지 검증을 한 후 저장한 `$mount`를 호출합니다.(캡슐화 됩니다.) 즉 실제 `$mount`를 호출하기 전에 몇가지 검증을 거칩니다.
+1. 이 코드는 Vue 코어 코드가 아닙니다. `entry-runtime-with-compiler.js` 이라는 파일 이름에서 알 수 있듯이 단순 entry 역할(코어 코드를 감싸는 역할)을 할 뿐입니다. 코어 코드는 다음 포스트에서 자세히 이야기 하도록 하겠습니다.
+2. `$mount`를 따로 저장하고, 새로운 `$mount`를 정의하여 몇가지 검증을 한 후 저장한 `$mount`를 호출합니다.(캡슐화하는 부분입니다.) 즉, 실제 `$mount`를 호출하기 전에 몇가지 검증을 추가하는 코드입니다.
 
 # 요약
-`package.json`의 `scripts`의 `dev`의 값인 `rollup -w -c scripts/config.js --environment TARGET:web-full-dev`를 시작으로 코드 리딩을 시작합니다.
+1. `package.json`의 `scripts`의 `dev`의 값인 `rollup -w -c scripts/config.js --environment TARGET:web-full-dev`를 시작으로 코드 리딩을 시작합니다.
+2. `scripts/config.js`파일을 거쳐 `src/platforms/web/entry-runtime-with-compiler.js` 파일에 도착하였습니다.
 
-`scripts/config.js`파일을 거쳐 `src/platforms/web/entry-runtime-with-compiler.js` 파일에 도달하여 `import Vue from './runtime/index'` 를 보고 Vue 코드를 찾았습니다.
+`src/platforms/web/entry-runtime-with-compiler.js`는 Vue 코어 코드가 아닌 entry 역할만 하는 코드입니다.
 
 # 다음으로 볼 것
-다음 포스트에서는 [Vue의 코어 함수]({{ site.url }}/tech/vuejs/vue-core-function/)를 찾을 것입니다. `src/platforms/web/entry-runtime-with-compiler.js` 파일에 정의 된 `import Vue from './runtime/index'`을 실마리로 `src/platforms/web/runtime/index.js` 파일을 시작으로 코드를 따라 가도록 하겠습니다.
+다음 포스트에서는 [Vue의 코어 함수]({{ site.url }}/tech/vuejs/vue-core-function/)를 찾을 것입니다. `src/platforms/web/entry-runtime-with-compiler.js` 파일에 정의 된 `import Vue from './runtime/index'`을 실마리로 `src/platforms/web/runtime/index.js` 파일을 시작으로 코드를 따라 갈 것입니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/01-find-the-entry.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/01-find-the-entry.md)
