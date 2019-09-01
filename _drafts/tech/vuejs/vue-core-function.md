@@ -1,17 +1,19 @@
 ---
 layout: post
-title: '[Inside Vue] 2. Vue의 코어 함수'
+title: '[Inside Vue] 2. Initialize - Vue 코어 함수'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
 {% include toc.html %}
 
-이번 포스트를 읽기 전 [이전 포스트]({{ site.url }}/tech/vuejs/start-read-vue-code/)를 읽어 보시지 않았다면, 이전 포스트를 읽고 현재 포스트를 읽는 것을 추천드립니다.
+이번 포스트에서는 Vue의 코어 함수를 찾고, Vue의 큰 구조에 대해 이야기 할 것입니다. Vue의 큰 구조를 이해하면, 코드를 분석 할 때, 자세히 봐야할 파일과 그렇지 않아도 되는 파일들을 구분 하는데 도움이 될 수 있습니다.
 
 # Vue 코어 살펴보기
-[이전 포스트]({{ site.url }}/tech/vuejs/vue-code-read/)에서 `src/platforms/web/entry-runtime-with-compiler.js` 파일이 `import Vue from './runtime/index'`로 Vue를 import 하는 것을 확인 했습니다. 이번 포스트에서는 이 것을 힌트로 `src/platforms/web/runtime/index.js` 파일을 시작으로 Vue 코어를 살펴보도록 하겠습니다.
+[1. Vue Code 분석 시작하기]({{ site.url }}/tech/vuejs/vue-code-read/)에서 `src/platforms/web/entry-runtime-with-compiler.js` 파일이 `import Vue from './runtime/index'`로 Vue를 import 하는 것을 확인 했습니다. 이 것을 힌트로 `src/platforms/web/runtime/index.js` 파일을 시작으로 Vue 코어 코드를 살펴보도록 하겠습니다.
 
 ## `src/platforms/web/runtime/index.js` 파일
+`src/platforms/web/runtime/index.js` 파일에서 하는 일들을 살펴보도록 하겠습니다.
+
 ```js
 /* @flow */
 
@@ -91,25 +93,23 @@ if (inBrowser) {
 export default Vue
 ```
 
-`src/platforms/web/runtime/index.js`에서 하는 일들을 살펴보도록 하겠습니다.
-
 - `Vue`를 import 합니다. `Vue`를 또 다시 import 하는 것에 주목합시다.
 - `config`를 import 합니다.
 - 유틸 함수들을 import 합니다.
-- `patch`, `mountComponent`를 import 합니다.
-- `platformDirectives`(directive들..), `platformComponents`(component 들..)을 import 합니다.
+- `patch`, `mountComponent`를 import 합니다. `patch`와 `mountComponent` 함수는 view를 업데이트 하는 핵심부분입니다. 이번 포스트에서 언급했다는 것만 기억하고, 자세한 내용은 [9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/)에서 이야기 하도록 하겠습니다.
+- `platformDirectives`(directive 들..), `platformComponents`(component 들..)을 import 합니다.
 - 특정한 플랫폼 유틸들을 install 합니다.(`// install platform specific utils` 주석으로 기록된 부분)
 - 플랫폼 directive와 component를 install 합니다.(`// install platform runtime directives & components` 주석으로 기록된 부분)
-- `patch` 함수를 install 합니다.(`// install platform patch function` 주석으로 기록된 부분)
+- `patch` 함수를 install 합니다.(`// install platform patch function` 주석으로 기록된 부분) `patch` 함수가 `Vue.prototype.__patch__`로 매칭되었다는 것만 기억합시다. 자세한 내용은 [9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/)에서 이야기 하도록 하겠습니다.
 - `mount` 메소드를 정의 합니다.(`// public mount method` 주석으로 기록된 부분)
 - Vue Devtools와 개발 모드에서의 경고 메시지를 `console.log`로 출력 합니다.
 
-코드를 통해 볼 수 있 듯이 이 파일은 Vue에 몇가지 플랫동 동작들을 추가하는 일들을 합니다.
+코드를 통해 볼 수 있 듯이 이 파일은 Vue에 몇가지 플랫폼 동작들을 추가하는 일들을 합니다.
 
 2가지 내용을 집중해야 합니다.
 
-1. `Vue.prototype.__patch__ = inBrowser ? patch : noop`은 웹페이지를 업데이트 하는 역할을 합니다. DOM을 조작하는 역할을 합니다. 이후에 자세히 다루어 보도록 하겠습니다.
-2. `Vue.prototype.$mount`는 `mountComponent`를 호출하는 역할을 합니다. `$mount`는 이전 포스트에서 몇가지 검증을 추가하여 캡슐화 된다고 이야기 했습니다. 이 파일에서 한번더 캡슐화 되어 2번 캡슐화 됩니다.
+1. `Vue.prototype.__patch__ = inBrowser ? patch : noop`은 웹페이지를 업데이트 하는 역할을 합니다. 즉, DOM을 조작하는 역할을 합니다. [9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/)에서 자세히 다루어 보도록 하겠습니다.
+2. `Vue.prototype.$mount`는 `mountComponent`를 호출하는 역할을 합니다. `$mount`는 이전 포스트에서 몇가지 검증을 추가하여 캡슐화 된다고 이야기 했습니다. 이 파일에서 한번더 캡슐화 되어 2번 캡슐화 됩니다. `mountComponent` 함수도 view를 업데이트 하는 핵심 함수입니다. [9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/)에서 자세히 다루어 보도록 하겠습니다.
 
 `import Vue from 'core/index'`에서 Vue 파일라고 정의 되어 있는 `src/core/index.js` 파일을 따라가 보도록 하겠습니다.
 
@@ -172,9 +172,7 @@ renderMixin(Vue)
 export default Vue
 ```
 
-`function Vue (option)` 드디어 찾던 Vue의 코어입니다. Vue 코어 부분은 `this._init`만 호출할 뿐 굉장히 짧은 코드입니다.
-
-`src/core/instance/index.js`에서 하는 일들을 살펴보도록 하겠습니다.
+`function Vue (option)` 드디어 찾던 Vue의 코어 함수입니다. Vue 코어 부분은 `this._init`만 호출하는 굉장히 짧은 코드입니다. `src/core/instance/index.js`에서 하는 일들을 살펴보도록 하겠습니다.
 
 - 5개의 mixin을 import 합니다.
 - Vue 인스턴스를 생성하는 함수를 정의 합니다.
@@ -185,22 +183,22 @@ Vue는 큰 프로젝트입니다. 그래서 Vue는 많은 Layer와 part들로 �
 
 ![Vue layer](/assets/img/posts/vuejs/vue_layer.png){:.aligncenter}
 
-- **Core Layer**: Vue 함수입니다. `this._init()`을 호출합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
-- **Mixins Layer**: init, state, events, lifecycle, render, 5개의 mixin 함수를 Core에 추가 합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
-- **Platform Layer**: 몇가지 동작들을 Core에 추가합니다. patch와 public mount 메소드를 추가합니다. `src/platforms/web/runtime/index.js`에서 살펴 볼 수 있습니다.
-- **Entry Layer**: config와 캡슐화 된 $mount의 가장 바깥쪽 $mount를 Core에 추가합니다. `src/platforms/web/entry-runtime-with-compiler.js`에서 살펴 볼 수 있습니다.
+- **Core Layer**: Vue 코어 함수입니다. `this._init()`을 호출합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
+- **Mixins Layer**: init, state, events, lifecycle, render, 5개의 mixin 함수를 Vue 코어에 추가 합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
+- **Platform Layer**: 몇가지 동작들을 Vue 코어에 추가합니다. `Vue.prototype.__patch__`와 `Vue.prototype.$mount`를 추가합니다. `src/platforms/web/runtime/index.js`에서 살펴 볼 수 있습니다.
+- **Entry Layer**: config와 캡슐화 된 $mount의 가장 바깥쪽 `$mount`를 Vue 코어에 추가합니다. `src/platforms/web/entry-runtime-with-compiler.js`에서 살펴 볼 수 있습니다.
 
 이렇게 여러개의 layer로 구성한다면 몇가지 장점이 있습니다.
 
 1. 관심사를 분리 할 수 있습니다. 각각의 layer는 서로 다른 일들을 하게 됩니다.
 2. 캡슐화 할 수 있습니다. 각각의 layer는 각자의 일에만 집중하면 됩니다.
-3. 재사용 할 수 있습니다. Core에 가까울수록 일반적(generic)을 코드가 됩니다. 이로 인해 다른 플랫폼에 쉽게 호환이 되고, 다른 환경에서 쉽게 구축할 수 있습니다.
+3. 재사용 할 수 있습니다. 코어에 가까울수록 일반적(generic)을 코드가 됩니다. 이로 인해 다른 플랫폼에 쉽게 호환이 되고, 다른 환경에서 쉽게 구축할 수 있습니다.
 
 # 요약
 `src/platforms/web/runtime/index.js`를 시작으로 `src/core/instance/index.js`에 도달하여 Vue 코어 함수를 찾았습니다. `src/core/instance/index.js` 파일은 Vue 함수를 `export` 하게 되는데, `export`되는 Vue 함수는 5개의 mixin가 추가된 Vue 함수입니다. Vue 함수는 `this_init` 함수를 호출하여 초기화 합니다.
 
 # 다음으로 볼 것
-다음 포스트에서는 Core 함수에서 호출한 하는 5개의 mixin, [Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/)을 좀 더 자세히 살펴 볼 것입니다.
+다음 포스트에서는 Core 함수에서 호출한 하는 5개의 mixin를 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/)에서 좀 더 자세히 살펴 볼 것입니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md)
