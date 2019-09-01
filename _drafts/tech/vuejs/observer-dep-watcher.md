@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Inside Vue] 5. Observer, Dep and Watcher'
+title: '[Inside Vue] 5. Reactive - Observer, Dep and Watcher'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
