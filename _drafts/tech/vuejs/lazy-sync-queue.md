@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Inside Vue] 6. Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)'
+title: '[Inside Vue] 6. Reactive - Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
