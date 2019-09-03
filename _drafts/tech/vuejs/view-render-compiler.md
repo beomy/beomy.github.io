@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Inside Vue] 8. View Render - 컴파일러'
+title: '[Inside Vue] 8. View Render - baseCompile 함수'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 ---
@@ -221,7 +221,7 @@ new Vue({
 3. `generate` 함수를 통해 `render` 함수와 `staticRenderFns`가 생성됩니다. 
 
 # 다음으로 볼 것
-다음 포스트에서는 생성된 `render` 함수와 `__patch__()` 함수로 웹페이지를 업데이트 하는 과정을 이야기 하도록 하겠습니다.
+다음 포스트([9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/))에서는 생성된 `render` 함수와 `__patch__()` 함수로 웹페이지를 업데이트 하는 과정을 이야기 하도록 하겠습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/07-view-render-compiler.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/07-view-render-compiler.md)
