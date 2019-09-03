@@ -227,7 +227,7 @@ export default Vue
 `src/platforms/web/entry-runtime-with-compiler.js`는 Vue 코어 코드가 아닌 entry 역할만 하는 코드입니다.
 
 # 다음으로 볼 것
-다음 포스트에서는 [Vue의 코어 함수]({{ site.url }}/tech/vuejs/vue-core-function/)를 찾을 것입니다. `src/platforms/web/entry-runtime-with-compiler.js` 파일에 정의 된 `import Vue from './runtime/index'`을 실마리로 `src/platforms/web/runtime/index.js` 파일을 시작으로 코드를 따라 갈 것입니다.
+다음 포스트([2. Initialize - Vue 코어 함수]({{ site.url }}/tech/vuejs/initialize-vue-core-function/))에서는 Vue 코어 함수를 찾을 것입니다. `src/platforms/web/entry-runtime-with-compiler.js` 파일에 정의 된 `import Vue from './runtime/index'`을 실마리로 `src/platforms/web/runtime/index.js` 파일을 시작으로 코드를 따라 갈 것입니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/01-find-the-entry.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/01-find-the-entry.md)

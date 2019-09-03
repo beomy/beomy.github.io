@@ -9,7 +9,7 @@ category: [tech, vuejs]
 이번 포스트에서는 view를 DOM에 그릴 수 있도록 브라우저에서 실행되는 코드로 변환하는 컴파일러 함수를 만드는 과정을 이야기 할 것입니다.
 
 # 랜더링 함수
-이전 포스트([6. Reactive - Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)]({{ site.url }}/tech/vuejs/lazy-sync-queue/#view-업데이트를-트리거하는-방법))에서 이야기 했던 `mountComponent` 함수를 시작으로 랜더링하는 함수들을 살펴보도록 하겠습니다.
+이전 포스트([6. Reactive - Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)]({{ site.url }}/tech/vuejs/reactive-lazy-sync-queue/#view-업데이트를-트리거하는-방법))에서 이야기 했던 `mountComponent` 함수를 시작으로 랜더링하는 함수들을 살펴보도록 하겠습니다.
 
 ```js
 export function mountComponent (
@@ -218,7 +218,7 @@ export const createCompiler = createCompilerCreator(function baseCompile (
 5. `_render` 함수에서 생성된 `render` 함수를 호출하여 view를 랜더링합니다.
 
 # 다음으로 볼 것
-다음 포스트에서([8. View Render - baseCompile 함수]({{ site.url }}/tech/vuejs/view-render-compiler/))는 compiler와 patch, VDom 설계 방법과 실제 Dom과의 차이를 빠르게 계산하는 방법에 대해 이야기 하도록 하겠습니다.
+다음 포스트에서([8. View Render - baseCompile 함수]({{ site.url }}/tech/vuejs/view-render-baseCompile-function/))는 compiler와 patch, VDom 설계 방법과 실제 Dom과의 차이를 빠르게 계산하는 방법에 대해 이야기 하도록 하겠습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/06-view-render-introduction.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/06-view-render-introduction.md)

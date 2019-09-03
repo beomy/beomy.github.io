@@ -6,7 +6,7 @@ category: [tech, vuejs]
 ---
 {% include toc.html %}
 
-이번 포스트에서는 [2. Initialize - Vue 코어 함수]({{ site.url }}/tech/vuejs/vue-core-function/)에서 이야기 했던 `src/core/instance/index.js` 파일의  5개의 mixin에 대해 알아보도록 하겠습니다.
+이번 포스트에서는 [2. Initialize - Vue 코어 함수]({{ site.url }}/tech/vuejs/initialize-vue-core-function/)에서 이야기 했던 `src/core/instance/index.js` 파일의  5개의 mixin에 대해 알아보도록 하겠습니다.
 
 ```js
 import { initMixin } from './init'
@@ -256,7 +256,7 @@ export function mountComponent (
 - `Vue.prototype.$forceUpdate`를 정의합니다.
 - `Vue.prototype.$destroy`를 정의합니다.
 
-`lifecycleMixin` 함수 바로 아래 `mountComponent` 함수가 있습니다. 이 함수는 [2. Initialize - Vue 코어 함수]({{ site.url }}/tech/vuejs/vue-core-function/#srcplatformswebruntimeindexjs-파일)에서 잠깐 언급 된 적이 있습니다. `Vue.prototype.$mount`는 `mountComponent` 함수 호출 값을 리턴합니다. 이전 포스트에서 2번 캡슐화 된다고 이야기 했습니다. 결국 `$mount`는 `mountComponent`를 2번 캡슐화 한 함수입니다. `mountComponent` 함수는 [9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/)에서 자세히 이야기 할 것입니다.
+`lifecycleMixin` 함수 바로 아래 `mountComponent` 함수가 있습니다. 이 함수는 [2. Initialize - Vue 코어 함수]({{ site.url }}/tech/vuejs/initialize-vue-core-function/#srcplatformswebruntimeindexjs-파일)에서 잠깐 언급 된 적이 있습니다. `Vue.prototype.$mount`는 `mountComponent` 함수 호출 값을 리턴합니다. 이전 포스트에서 2번 캡슐화 된다고 이야기 했습니다. 결국 `$mount`는 `mountComponent`를 2번 캡슐화 한 함수입니다. `mountComponent` 함수는 [9. View Render - Patch]({{ site.url }}/tech/vuejs/view-render-patch/)에서 자세히 이야기 할 것입니다.
 
 `src/core/instance/lifecycle.js` 파일에는 이외의 몇개의 함수가 존재합니다. 이 함수들은 DOM을 업데이트 하는데 사용됩니다.
 
@@ -296,7 +296,7 @@ Mixin 레이어에서는 `Vue.prototype`안에 몇가지 함수와 객체들을 
 - **renderMixin**: `_render()`를 정의합니다.
 
 # 다음으로 볼 것
-`src/core/instance/index.js`의 코어 함수에서 호출하는 `this._init(options)`를 살펴보도록 하겠습니다. [Vue 초기화]({{ site.url }}/tech/vuejs/vue-initialize/)에서 확인 할 수 있습니다.
+`src/core/instance/index.js`의 코어 함수에서 호출하는 `this._init(options)`를 살펴보도록 하겠습니다. [4. Initialize - _init 함수]({{ site.url }}/tech/vuejs/initialize-_init-function/)에서 확인 할 수 있습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md)

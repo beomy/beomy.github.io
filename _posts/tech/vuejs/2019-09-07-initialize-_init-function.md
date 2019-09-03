@@ -44,7 +44,7 @@ options = {
 
 위의 코드와 같은 값을 가진 `options`로 `this._init(options)`를 호출 한다는 것과 동일합니다.
 
-`_init` 함수는 이전 포스트. [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/)에서 살펴본 `src/core/instance/init.js` 파일에 `initMixin` 함수 안에 있습니다.
+`_init` 함수는 이전 포스트. [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/initialize-mixin-layer/)에서 살펴본 `src/core/instance/init.js` 파일에 `initMixin` 함수 안에 있습니다.
 
 ```js
 export function initMixin (Vue: Class<Component>) {
@@ -329,7 +329,7 @@ export function defineReactive (
 
 첫줄에는 `const dep = new Dep()`가 정의되어 있고, 유효성 체크과, getter와 setter의 추출하는 코드를 확인 할 수 있습니다. 그 다음에는 `let childOb = !shallow && observe(val)`가 정의 되어 있고, get과 set으로 감싸는 코드가 나옵니다.
 
-data가 변경되어 view를 업데이트 해야 할 때, getter와 setter 안에서 이 data와 의존성(dependency)이 있는 것들에게 `notify` 합니다. `defineReactive`는 [5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/#definereactive-함수)에서 더 자세히 이야기 하도록 하겠습니다.
+data가 변경되어 view를 업데이트 해야 할 때, getter와 setter 안에서 이 data와 의존성(dependency)이 있는 것들에게 `notify` 합니다. `defineReactive`는 [5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/reactive-observer-dep-watcher/#definereactive-함수)에서 더 자세히 이야기 하도록 하겠습니다.
 
 ## `initState` 함수
 `initState` 함수는 `src/core/instance/state.js`에 정의되어 있습니다.
@@ -500,7 +500,7 @@ export function proxy (target: Object, sourceKey: string, key: string) {
 
 위의 코드는 `proxy` 함수입니다. 간단히 살펴 보면 `this.name`을 `this_data['name']`으로 매핑하는 작업을 하는 함수 입니다.
 
-`initData` 함수는 마지막으로 `observe(data, true /* asRootData */)`를 호출합니다. `Observe`는 [5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/#observer-클래스)에서 더 자세히 이야기 할 것이지만, 간단히 살펴 보면,
+`initData` 함수는 마지막으로 `observe(data, true /* asRootData */)`를 호출합니다. `Observe`는 [5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/reactive-observer-dep-watcher/#observer-클래스)에서 더 자세히 이야기 할 것이지만, 간단히 살펴 보면,
 
 ```js
 /**
@@ -617,7 +617,7 @@ function createWatcher (
 }
 ```
 
-위의 코드는 `createWatcher` 함수입니다. `createWatcher` 함수는 `vm.$watch`를 호출합니다. `$watch`는 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/#statemixin-함수)에서 살펴본 `stateMixin` 함수 안에서 정의 됩니다.
+위의 코드는 `createWatcher` 함수입니다. `createWatcher` 함수는 `vm.$watch`를 호출합니다. `$watch`는 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/initialize-mixin-layer/#statemixin-함수)에서 살펴본 `stateMixin` 함수 안에서 정의 됩니다.
 
 ## `initProvide` 함수
 `initProvide` 함수는 `src/core/instance/inject.js`에 정의되어 있습니다.
@@ -639,7 +639,7 @@ export function initProvide (vm: Component) {
 ![Vue 초기화](/assets/img/posts/vuejs/vue_initialize.png)
 
 # 다음으로 볼 것
-다음 포스트에서는 data가 변경 되면 화면이 동기적으로 업데이트 되는 방법, [5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/)에 대해 이야기 할 것입니다.
+다음 포스트에서는 data가 변경 되면 화면이 동기적으로 업데이트 되는 방법, [5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/reactive-observer-dep-watcher/)에 대해 이야기 할 것입니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md)

@@ -6,7 +6,7 @@ category: [tech, vuejs]
 ---
 {% include toc.html %}
 
-[7. View Render - 컴파일러]({{ site.url }}/tech/vuejs/view-render-introduction/#랜더링-함수)에서 이야기 한 `mountComponent` 함수에서 view를 랜더링 하는데 사용된 2가지 함수인 `_render()`와 `_update()`에서 호출하는 `render` 함수와 `__patch__` 함수에 대해 이야기 하도록 하겠습니다.
+[7. View Render - 컴파일러]({{ site.url }}/tech/vuejs/view-render-compiler/#랜더링-함수)에서 이야기 한 `mountComponent` 함수에서 view를 랜더링 하는데 사용된 2가지 함수인 `_render()`와 `_update()`에서 호출하는 `render` 함수와 `__patch__` 함수에 대해 이야기 하도록 하겠습니다.
 
 # view를 랜더링 하는 2가지 함수
 `mountComponent` 함수에서 view를 랜더링하는데 `_render`, `_update` 두가지 함수가 사용됩니다.
@@ -75,7 +75,7 @@ export function mountComponent (
 }
 ```
 
-[6. Reactive - Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)]({{ site.url }}/tech/vuejs/lazy-sync-queue/#view-업데이트를-트리거하는-방법)에서 이야기 했던 것 처럼 `new Watcher(vm, updateComponent, noop, ...)`로 `updateComponent`가 실행되어 화면이 업데이트 됩니다. `_render` 함수를 살펴보도록 하겠습니다.
+[6. Reactive - Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)]({{ site.url }}/tech/vuejs/reactive-lazy-sync-queue/#view-업데이트를-트리거하는-방법)에서 이야기 했던 것 처럼 `new Watcher(vm, updateComponent, noop, ...)`로 `updateComponent`가 실행되어 화면이 업데이트 됩니다. `_render` 함수를 살펴보도록 하겠습니다.
 
 ```js
 Vue.prototype._render = function (): VNode {

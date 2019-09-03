@@ -9,7 +9,8 @@ category: [tech, vuejs]
 이번 포스트에서는 Vue의 코어 함수를 찾고, Vue의 큰 구조에 대해 이야기 할 것입니다. Vue의 큰 구조를 이해하면, 코드를 분석 할 때, 자세히 봐야할 파일과 그렇지 않아도 되는 파일들을 구분 하는데 도움이 될 수 있습니다.
 
 # Vue 코어 살펴보기
-[1. Vue Code 분석 시작하기]({{ site.url }}/tech/vuejs/vue-code-read/)에서 `src/platforms/web/entry-runtime-with-compiler.js` 파일이 `import Vue from './runtime/index'`로 Vue를 import 하는 것을 확인 했습니다. 이 것을 힌트로 `src/platforms/web/runtime/index.js` 파일을 시작으로 Vue 코어 코드를 살펴보도록 하겠습니다.
+[1. Introduction - Vue Code 분석]({{ site.url }}/tech/vuejs/introduction-vue-code-analysis/)에
+서 `src/platforms/web/entry-runtime-with-compiler.js` 파일이 `import Vue from './runtime/index'`로 Vue를 import 하는 것을 확인 했습니다. 이 것을 힌트로 `src/platforms/web/runtime/index.js` 파일을 시작으로 Vue 코어 코드를 살펴보도록 하겠습니다.
 
 ## `src/platforms/web/runtime/index.js` 파일
 `src/platforms/web/runtime/index.js` 파일에서 하는 일들을 살펴보도록 하겠습니다.
@@ -198,7 +199,7 @@ Vue는 큰 프로젝트입니다. 그래서 Vue는 많은 Layer와 part들로 �
 `src/platforms/web/runtime/index.js`를 시작으로 `src/core/instance/index.js`에 도달하여 Vue 코어 함수를 찾았습니다. `src/core/instance/index.js` 파일은 Vue 함수를 `export` 하게 되는데, `export`되는 Vue 함수는 5개의 mixin가 추가된 Vue 함수입니다. Vue 함수는 `this_init` 함수를 호출하여 초기화 합니다.
 
 # 다음으로 볼 것
-다음 포스트에서는 Core 함수에서 호출한 하는 5개의 mixin를 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/)에서 좀 더 자세히 살펴 볼 것입니다.
+다음 포스트에서는 Core 함수에서 호출한 하는 5개의 mixin를 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/initialize-mixin-layer/)에서 좀 더 자세히 살펴 볼 것입니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md)

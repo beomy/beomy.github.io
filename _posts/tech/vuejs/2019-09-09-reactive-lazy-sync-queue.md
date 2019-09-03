@@ -6,7 +6,7 @@ category: [tech, vuejs]
 ---
 {% include toc.html %}
 
-이전 포스트([5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/))에서는 `Observer`와 `Dep`, `Watcher`의 관계에 대해 이야기하였습니다. 이번 포스트에서는 `Watcher`가 어떻게 값을 업데이트 하는지, View와 data의 업데이트 순서가 어떻게 결정되는지에 대해 야야기 하도록 하겠습니다.
+이전 포스트([5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/reactive-observer-dep-watcher/))에서는 `Observer`와 `Dep`, `Watcher`의 관계에 대해 이야기하였습니다. 이번 포스트에서는 `Watcher`가 어떻게 값을 업데이트 하는지, View와 data의 업데이트 순서가 어떻게 결정되는지에 대해 야야기 하도록 하겠습니다.
 
 # Watcher가 업데이트 하는 3가지 방법
 ```js
@@ -91,7 +91,7 @@ evaluate () {
 ![evaluate 함수 사용](/assets/img/posts/vuejs/used_evaluate_function.png)
 
 core 디렉토리 밑에서 `src/core/instance/state.js` 파일에서 `evaluate` 함수를 사용하는 것을 볼 수 있습니다.
-`src/core/instance/state.js` 파일은 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/)와 [4. Initialize - _init 함수]({{ site.url }}/tech/vuejs/vue-initialize/)에서 살펴보았던 파일입니다.
+`src/core/instance/state.js` 파일은 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/initialize-mixin-layer/)와 [4. Initialize - _init 함수]({{ site.url }}/tech/vuejs/initialize-_init-function/)에서 살펴보았던 파일입니다.
 
 `evaluate` 함수는 `src/core/instance/state.js` 파일의 `createComputedGetter` 함수에서 사용 됩니다.
 
@@ -150,7 +150,7 @@ run () {
 }
 ```
 
-`run` 함수는 `this.get()`(`get` 함수는 [5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/)에서 살펴보았습니다.)을 호출합니다. `value`의 값이 변경 되었거나, `value`가 object이거나, `this.deep`이 `true`일 경우 `value`와 `oldValue`를 세팅한 후 콜백함수(`this.cb.call(this.vm, value, oldValue)`)를 실행합니다.
+`run` 함수는 `this.get()`(`get` 함수는 [5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/reactive-observer-dep-watcher/)에서 살펴보았습니다.)을 호출합니다. `value`의 값이 변경 되었거나, `value`가 object이거나, `this.deep`이 `true`일 경우 `value`와 `oldValue`를 세팅한 후 콜백함수(`this.cb.call(this.vm, value, oldValue)`)를 실행합니다.
 
 ## Queue
 lazy, sync 모드가 아닐 경우, queue 모드로 동작합니다. queue 모드에서 `update` 함수에서 `queueWatcher(this)`를 실행합니다.
@@ -203,7 +203,7 @@ Vue를 사용하면서 `nextTick`이라는 함수를 보셨을 것입니다. Vue
 # View 업데이트를 트리거하는 방법
 watcher가 value를 업데이트 하는 것을 살펴 보았습니다. 이제까지 살펴본 watcher는 `computed` 프로퍼티와 `watch`의 콜백함수를 호출하는데 사용되었습니다.
 
-view를 업데이트 하는데 watcher가 사용될 것 같은데, 지금까지 살펴본 코드 어디에서도 view를 업데이트 하는 부분이 등장하지 않았습니다. view를 업데이트 하는 코드를 찾을 수 있는 단서는 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/#lifecyclemixin-함수)에서 살펴본 `_update` 함수입니다. `_update` 함수는 DOM을 업데이트하는 역할을 합니다. `_update`를 프로젝트 전체 검색으로 어디서 사용되는지 찾아보도록 하겠습니다.
+view를 업데이트 하는데 watcher가 사용될 것 같은데, 지금까지 살펴본 코드 어디에서도 view를 업데이트 하는 부분이 등장하지 않았습니다. view를 업데이트 하는 코드를 찾을 수 있는 단서는 [3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/initialize-mixin-layer/#lifecyclemixin-함수)에서 살펴본 `_update` 함수입니다. `_update` 함수는 DOM을 업데이트하는 역할을 합니다. `_update`를 프로젝트 전체 검색으로 어디서 사용되는지 찾아보도록 하겠습니다.
 
 ![_update 함수 사용](/assets/img/posts/vuejs/used_update_function.png)
 
@@ -247,7 +247,7 @@ export function mountComponent (
 }
 ```
 
-`new Watcher(...)`를 찾아냈습니다. `lazy`의 기본 값은 `false`이기 때문에 생성자 함수에서 `get` 함수가 호출되고, `Dep`와 `Watcher`, `Observer` 간의 관계가 만들어 집니다. ([5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/observer-dep-watcher/) 참고)
+`new Watcher(...)`를 찾아냈습니다. `lazy`의 기본 값은 `false`이기 때문에 생성자 함수에서 `get` 함수가 호출되고, `Dep`와 `Watcher`, `Observer` 간의 관계가 만들어 집니다. ([5. Reactive - Observer, Dep and Watcher]({{ site.url }}/tech/vuejs/reactive-observer-dep-watcher/) 참고)
 
 `updateComponent` 함수가 watcher의 getter 함수로 전달됩니다. watcher는 getter 함수로 전달된 `updateComponent` 함수를 실행하여 view가 업데이트됩니다.
 
@@ -326,7 +326,7 @@ function flushSchedulerQueue () {
 }
 ```
 
-queue를 id 순서로 정렬됩니다. 즉, id 값이 작을 수록 먼저 업데이트 됩니다. [4. Initialize - _init 함수]({{ site.url }}/tech/vuejs/vue-initialize/#_init-함수-살펴보기)에서 살펴보았던 `_init` 함수를 다시 살펴보면,
+queue를 id 순서로 정렬됩니다. 즉, id 값이 작을 수록 먼저 업데이트 됩니다. [4. Initialize - _init 함수]({{ site.url }}/tech/vuejs/initialize-_init-function/#_init-함수-살펴보기)에서 살펴보았던 `_init` 함수를 다시 살펴보면,
 
 ```js
 Vue.prototype._init = function (options?: Object) {
@@ -350,7 +350,7 @@ Vue.prototype._init = function (options?: Object) {
 }
 ```
 
-`vm.$mount(vm.$options.el)`가 가장 마지막에 호출되는 것을 볼 수 있습니다. `$mount` 함수는 `mountComponent`([3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/mixin-layer/#lifecyclemixin-함수)에서 이야기 했습니다.)를 호출하는데 `mountComponent` 함수는 `Watcher` 인스턴스를 생성합니다. 가장 마지막에 호출되기 때문에 가장 큰 id를 할당 받아 가장 마지막에 view가 업데이트 되게 됩니다.
+`vm.$mount(vm.$options.el)`가 가장 마지막에 호출되는 것을 볼 수 있습니다. `$mount` 함수는 `mountComponent`([3. Initialize - Mixin Layer]({{ site.url }}/tech/vuejs/initialize-mixin-layer/#lifecyclemixin-함수)에서 이야기 했습니다.)를 호출하는데 `mountComponent` 함수는 `Watcher` 인스턴스를 생성합니다. 가장 마지막에 호출되기 때문에 가장 큰 id를 할당 받아 가장 마지막에 view가 업데이트 되게 됩니다.
 
 # 요약
 이번 포스트에서는 Watcher가 업데이트하는 lazy, sync, queue 3가지 방법에 대해 이야기 했습니다. 기본값은 queue 모드입니다.
@@ -362,7 +362,7 @@ Vue.prototype._init = function (options?: Object) {
 view를 업데이트 할 때도, watcher를 재사용합니다. 모든 값이 업데이트 되고 가장 마지막에 view가 업데이트 되는데 그 이유는 `_init` 함수에서 `$mount` 함수가 가장 마지막에 호출되었기 때문입니다.
 
 # 다음으로 볼 것
-다음 포스트에서는 브라우저에서 실행 되는 코드로 변환해 주는 컴파일러 함수를 찾아 보고([7. View Render - 컴파일러 찾기]({{ site.url }}/tech/vuejs/view-render-introduction/)) 어떤 과정으로 만들어지는지 살펴 보도록 하겠습니다.
+다음 포스트에서는 브라우저에서 실행 되는 코드로 변환해 주는 컴파일러 함수를 찾아 보고([7. View Render - 컴파일러]({{ site.url }}/tech/vuejs/view-render-compiler/)) 어떤 과정으로 만들어지는지 살펴 보도록 하겠습니다.
 
 #### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/05-dynamic-data-lazy-sync-and-queue.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/05-dynamic-data-lazy-sync-and-queue.md)
