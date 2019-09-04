@@ -24,7 +24,7 @@ layout: compress
         <h1 class="hero__title">{{ page.title }}</h1>
         <p class="hero__meta">
             <span>
-              <time>{{ page.date | date_to_string }}</time>&nbsp;
+              <time>{{ page.date | date: "%Y. %m. %d" }}</time>&nbsp;
             </span>
           <span>
             {% assign words = content | number_of_words %}
@@ -37,6 +37,10 @@ layout: compress
         </span>
       </p>
     </div>
+  </div>
+
+  <div>
+    {% include adSense.html %}
   </div>
 
   <div class="lazyload" style="height: 300px;background-repeat: no-repeat;background-position: center;background-size: contain;" data-bg="{{site.url}}/assets/img/posts/{{page.featured-img}}"></div>
@@ -93,6 +97,10 @@ layout: compress
     </div>
 
     {% endif %}
+
+    <div>
+      {% include adSense.html %}
+    </div>
 
   </main>
 
