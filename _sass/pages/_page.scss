@@ -87,11 +87,8 @@
 }
 
 img {
-  &.alignleft {
-    float:left
-  }
-  &.alignright{
-    float:right
+  &.width25 {
+    width: 25%;
   }
   &.aligncenter{
     display:block;
