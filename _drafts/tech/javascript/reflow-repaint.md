@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[JavaScript] Redraw와 Repaint'
+title: '[JavaScript] Reflow와 Repaint'
 featured-img: javascript/js.png
 category: [tech, javaScript]
 ---
