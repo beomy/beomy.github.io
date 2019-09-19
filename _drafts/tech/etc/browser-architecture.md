@@ -1,8 +1,8 @@
 ---
 layout: post
-title: '[JavaScript] 브라우저 구조'
+title: '[Browser] 브라우저 구조'
 featured-img: javascript/js.png
-category: [tech, javaScript]
+category: [tech, etc]
 ---
 {% include toc.html %}
 
