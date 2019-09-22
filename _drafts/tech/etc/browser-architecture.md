@@ -53,3 +53,4 @@ DOM 트리가 구축되는 동안 브라우저는 렌더 트리를 구축한다.
 - [https://sangbui.com/sb-files/BrowserArchitecture_ClientSide.pdf](https://sangbui.com/sb-files/BrowserArchitecture_ClientSide.pdf)
 - [https://medium.com/@monica1109/how-does-web-browsers-work-c95ad628a509](https://medium.com/@monica1109/how-does-web-browsers-work-c95ad628a509)
 - [https://developers.google.com/web/fundamentals/performance/critical-rendering-path?hl=ko](https://developers.google.com/web/fundamentals/performance/critical-rendering-path?hl=ko)
+- [https://blog.lgcns.com/1911](https://blog.lgcns.com/1911)
