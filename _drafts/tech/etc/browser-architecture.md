@@ -6,6 +6,10 @@ category: [tech, etc]
 ---
 {% include toc.html %}
 
+# DOM
+
+# CSSOM
+
 # 파서
 토큰을 사용함, 알고리즘은 State Machine을 사용함
 
