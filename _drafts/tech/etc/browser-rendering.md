@@ -7,6 +7,7 @@ category: [tech, etc]
 {% include toc.html %}
 
 # 브라우저의 기본 구조
+![브라우저 구조](/assets/img/posts/etc/browser_architecture.png)
 
 # 렌더링 엔진
 
