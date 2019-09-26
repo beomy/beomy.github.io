@@ -9,18 +9,55 @@ category: [tech, etc]
 # 브라우저의 기본 구조
 ![브라우저 구조](/assets/img/posts/etc/browser_architecture.png)
 
+- User Interface
+- Browser Engine
+- Rendering Engine
+- Networking
+- Javascript Interpreter(Engine): V8
+- Display Backend
+- Data Persistence
+
 # 렌더링 엔진
+
+## 렌더링 엔진들
+- Blink: 크롬, 엣지, 웨일
+- Webkit: 사파리
+- Gecko: 파이어폭스
+
+## 동작 과정
+~~ 요약 그림 ~~
+
+## 동작 과정 예
+~~ 웹킷 그림 ~~
+
+~~ Gecko 그림 ~~
 
 # Parser
 토큰을 사용함, 알고리즘은 State Machine을 사용함
 
 ## DOM
+~~ DOM 파싱 부분 그림 ~~
+
+~~ 구글의 DOM 생성 그림 ~~
+
+1. 변환(Conversion)
+2. 토큰화(Tokenizing)
+3. 렉싱(Lexing)
+4. DOM 생성(Dom construction)
+
+~~ 구글의 DOM 트리 그림 ~~
 
 ## CSSOM
 
-## 스크립트와 스타일시트의 진행 순서
+~~ 구글의 CSSOM 생성 그림 ~~
 
-### 스크립트
+~~ CSSOM 트리 그림 ~~
+
+## 참고: JavaScript와 CSS
+
+### JavaScript
+JavaScript는 파서 차단 리소스(parser blocking resource)
+
 `<script>` 태그를 만나면 즉시 파싱하고 실행한다. 스크립트가 실행되는 동안 문서의 파싱은 중단된다.
 스크립트를 `defer`로 표시하면, 문서 파싱은 중단되지 않고 문서 파싱이 오나료된 이후에 스크립트가 실행된다.
 HTML5는 스크립트를 비동기로 처리하는 속성을 추가했기 때문에 별도의 맥락에 의해 파싱되고 실행된다.
@@ -28,7 +65,9 @@ HTML5는 스크립트를 비동기로 처리하는 속성을 추가했기 때문
 `defer`와 `async` 차이?
 - [https://blog.asamaru.net/2017/05/04/script-async-defer/](https://blog.asamaru.net/2017/05/04/script-async-defer/)
 
-### 스타일시트
+### CSS
+CSS는 렌더링 차단 리소스(render blocking resource)
+
 스타일시트는 DOM 트리를 변경하지 않기 때문에 문서 파싱을 기다리거나 중단 할 이유가 없다.
 그러나 스크립트가 스타일 정보를 요청하는 경우, 스타일이 파싱되지 않는 상태라면 스크립트 에러가 발생할 수 있다. 이런 문제를 해결하기 위해 파이어폭스는 로드 중이거나 파싱 중인 스타일 시트가 있는 경우 모든 스크립트의 실행을 중지한디. 한편 웹킷은 로드되지 않은 스타일 시트 가운데 문제가 될 만한 속성이 있을 때에만 스크립트를 중단한다.
 
