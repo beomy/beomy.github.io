@@ -6,16 +6,28 @@ category: [tech, etc]
 ---
 {% include toc.html %}
 
-# 브라우저의 기본 구조
+이번 포스트에서는 브라우저에서 화면을 렌더링 하는 과정에 대해 이야기 할 것입니다. 브라우저의 렌더링 과정을 이해하면 웹페이지의 렌더링 최적화에 도움이 될 수 있겠죠? 렌더링 최적화 방법은 Critical Rendering Path에서 다룰 예정입니다.
+
+[developers.google.com](https://developers.google.com/web?hl=ko)를 많은 부분 참고하여 작성 되었습니다. (크롬 브라우저의 렌더링과 그 외 브라우저의 렌더링 개념이 혼제되었을 수 있습니다...)
+
+# 브라우저 구조
+브라우저의 렌더링 과정을 이야기 하기 전에 브라우저의 구조를 잠시 살펴보겠습니다.
+
 ![브라우저 구조](/assets/img/posts/etc/browser_architecture.png)
 
-- User Interface
-- Browser Engine
-- Rendering Engine
-- Networking
-- Javascript Interpreter(Engine): V8
-- Display Backend
-- Data Persistence
+- User Interface: 주소 표시줄, 이전/다음 버튼, 북마크 메뉴 등. 요청한 페이지를 보여주는 창을 제외하 나머지 모든 부분
+- Browser Engine: 사용자 인터페이스와 렌더링 엔진 사이의 동젝을 제어
+- Rendering Engine: 요청한 콘텐츠를 표시, HTML을 요쳥하면 HTML과 CSS를 파신하여 화면에 표시함
+- Networking: HTTP 요청과 같은 네트워크 호출에 사용됨
+- Javascript Interpreter(Engine): 자바스크립트 코드를 해석하고 실행함. 크롬에서는 [V8 엔진]({{ site.url }}/tech/javascript/javascript-runtime/#자바스크립트-엔진-v8)을 사용함 
+- Display Backend: 기본적인 위젯(콤보 박스 등..)을 그림
+- Data Persistence: Local Storage, 쿠키 등 클라이언트 사이드에서 데이터를 저장하는 영역
+
+위의 그림의 브라우저 구조는 브라우저마다 조금씩 다를 수 있습니다.
+
+|파이어폭스 브라우저|크롬 브라우저|
+|:--:|:--:|
+|![브라우저 구조](/assets/img/posts/etc/browser_architecture.png)|![브라우저 구조](/assets/img/posts/etc/browser_architecture.png)|
 
 # 렌더링 엔진
 
@@ -88,8 +100,19 @@ DOM 트리가 구축되는 동안 브라우저는 렌더 트리를 구축한다.
 웹킷에서는 스타일을 결정하고 렌더러를 만드는 과정을 attachment라고 부른다. 모든 DOM 노드에서 `attach` 메소드가 았다. attatchment는 동기적으로 DOM 트리에 노드를 추가하면서 새 노드의 `attach` 메소드를 호출한다.
 
 # Layout
+렌더 트리가 생성되고, 기기의 뷰포트 내에서 렌더 트리의 노드가 정확한 위치와 크기를 계산하는 과정을 Layout(혹은 Reflow)라고 한다.
+
+모든 상대적인 측정값은 화면에서 절대적인 픽셀로 변환된다.
 
 # Painting
+렌더 트리의 각 노드를 화면의 실제 픽셀로 나타내는 과정을 Paint(혹은 rasterizing)라고 한다.
+
+# 요약
+1. HTML 마크업을 처리하고 DOM 트리를 빌드합니다.
+2. CSS 마크업을 처리하고 CSSOM 트리를 빌드합니다.
+3. DOM 및 CSSOM을 결합하여 렌더링 트리를 형성합니다.
+4. 렌더링 트리에서 레이아웃을 실행하여 각 노드의 기하학적 형태를 계산합니다.
+5. 개별 노드를 화면에 페인트합니다.
 
 #### 참고
 - [https://janghanboram.github.io/2018/06/06/browser-rendering/](https://janghanboram.github.io/2018/06/06/browser-rendering/)
