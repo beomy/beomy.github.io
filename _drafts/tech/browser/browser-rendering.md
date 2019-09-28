@@ -1,8 +1,8 @@
 ---
 layout: post
 title: '[Browser] 브라우저 렌더링'
-featured-img: etc/browser.png
-category: [tech, etc]
+featured-img: browser/browser.png
+category: [tech, browser]
 ---
 {% include toc.html %}
 
@@ -13,7 +13,7 @@ category: [tech, etc]
 # 브라우저 구조
 브라우저의 렌더링 과정을 이야기 하기 전에 브라우저의 구조를 잠시 살펴보겠습니다.
 
-![브라우저 구조](/assets/img/posts/etc/browser_architecture.png)
+![브라우저 구조](/assets/img/posts/browser/browser_architecture.png)
 
 - User Interface: 주소 표시줄, 이전/다음 버튼, 북마크 메뉴 등. 요청한 페이지를 보여주는 창을 제외하 나머지 모든 부분
 - Browser Engine: 사용자 인터페이스와 렌더링 엔진 사이의 동젝을 제어
@@ -27,7 +27,7 @@ category: [tech, etc]
 
 |파이어폭스 브라우저|크롬 브라우저|
 |:--:|:--:|
-|![브라우저 구조](/assets/img/posts/etc/browser_architecture.png)|![브라우저 구조](/assets/img/posts/etc/browser_architecture.png)|
+|![브라우저 구조](/assets/img/posts/browser/browser_architecture.png)|![브라우저 구조](/assets/img/posts/browser/browser_architecture.png)|
 
 # 렌더링 엔진
 

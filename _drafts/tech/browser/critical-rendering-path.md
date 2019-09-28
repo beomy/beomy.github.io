@@ -1,8 +1,8 @@
 ---
 layout: post
 title: '[Browser] Critical Rendering Path'
-featured-img: etc/browser.png
-category: [tech, etc]
+featured-img: browser/browser.png
+category: [tech, browser]
 ---
 {% include toc.html %}
 
