@@ -1,8 +1,8 @@
 ---
 layout: post
-title: '[JavaScript] Reflow와 Repaint'
-featured-img: javascript/js.png
-category: [tech, javaScript]
+title: '[Browser] Reflow와 Repaint'
+featured-img: browser/browser.png
+category: [tech, browser]
 ---
 {% include toc.html %}
 
