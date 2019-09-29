@@ -6,9 +6,7 @@ category: [tech, browser]
 ---
 {% include toc.html %}
 
-이번 포스트에서는 브라우저에서 화면을 렌더링 하는 과정에 대해 이야기 할 것입니다. 브라우저의 렌더링 과정을 이해하면 웹페이지의 렌더링 최적화에 도움이 될 수 있겠죠? 렌더링 최적화 방법은 Critical Rendering Path에서 다룰 예정입니다.
-
-[developers.google.com](https://developers.google.com/web?hl=ko)를 많은 부분 참고하여 작성 되었습니다. (크롬 브라우저의 렌더링과 그 외 브라우저의 렌더링 개념이 혼제되었을 수 있습니다...)
+이번 포스트에서는 브라우저에서 화면을 렌더링 하는 과정에 대해 이야기 할 것입니다. 브라우저의 렌더링 과정을 이해하면 웹페이지의 렌더링 최적화에 도움이 될 수 있겠죠? 렌더링 최적화 방법은 Critical Rendering Path에서 다룰 예정입니다. [developers.google.com](https://developers.google.com/web?hl=ko)를 많은 부분 참고하여 작성 되었습니다. (크롬 브라우저의 렌더링과 그 외 브라우저의 렌더링 개념이 혼제되었을 수 있습니다...)
 
 # 브라우저 구조
 브라우저의 렌더링 과정을 이야기 하기 전에 브라우저의 구조를 잠시 살펴보겠습니다.
@@ -23,18 +21,35 @@ category: [tech, browser]
 - Display Backend: 기본적인 위젯(콤보 박스 등..)을 그림
 - Data Persistence: Local Storage, 쿠키 등 클라이언트 사이드에서 데이터를 저장하는 영역
 
-위의 그림의 브라우저 구조는 브라우저마다 조금씩 다를 수 있습니다.
+브라우저 구조는 브라우저마다 조금씩 다를 수 있습니다.
 
 |파이어폭스 브라우저|크롬 브라우저|
 |:--:|:--:|
 |![브라우저 구조](/assets/img/posts/browser/browser_architecture.png)|![브라우저 구조](/assets/img/posts/browser/browser_architecture.png)|
 
+파이어폭스 브라우저와 크롬 브라우저의 구조는 위의 그림과 같이 차이가 있습니다.
+
+이번 포스트에서는 브라우저의 렌더링 엔진에 대해 이야기 하도록 할 것입니다.
+
 # 렌더링 엔진
+렌더링 엔진의 역할은 요청 받은 내용을 브라우저 화면에 나타내는 일입니다. HTML, CSS, JavaScript 등의 파일을 브라우저가 화면에 표시 할 수 있도록 변환하여 픽셀 단위로 나타냅니다.
 
 ## 렌더링 엔진들
-- Blink: 크롬, 엣지, 웨일
-- Webkit: 사파리
-- Gecko: 파이어폭스
+브라우저 마다 사용하는 렌더링 엔진들이 다릅니다.
+
+|브라우저|렌더링 엔진|
+|:--:|:--:|
+|IE|Trident|
+|Edge|EdgeHTML, Blink|
+|Chrome|Webkit, Blink(버전 28 이후)|
+|Safari|Webkit|
+|FireFox|Gecko|
+
+크로미움이란?
+
+Edge가 EdgeHTML에서 크로미움 기반의 Blink로
+
+[https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/)
 
 ## 동작 과정
 ~~ 요약 그림 ~~
