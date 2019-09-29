@@ -94,7 +94,7 @@
     li {
       list-style-type: none;
       a {
-        &.active {
+        &.active, &:hover {
           color: #000;
           code {
             color: #000;
