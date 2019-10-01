@@ -35,7 +35,7 @@ category: [tech, browser]
 렌더링 엔진의 역할은 요청 받은 내용을 브라우저 화면에 나타내는 일입니다. HTML, CSS, JavaScript 등의 파일을 브라우저가 화면에 표시 할 수 있도록 변환하여 픽셀 단위로 나타냅니다.
 
 ## 렌더링 엔진들
-브라우저 마다 사용하는 렌더링 엔진들이 다릅니다.
+브라우저 마다 사용하는 렌더링 엔진들이 다릅니다. 렌더링 엔진이 브라우저 마다 다르기 때문에, 같은 소스가 브라우저 마다 다르게 그려지는 크로스 브라우징 이슈가 발생하게 됩니다.
 
 |브라우저|렌더링 엔진|
 |:--:|:--:|
@@ -45,19 +45,48 @@ category: [tech, browser]
 |Safari|Webkit|
 |FireFox|Gecko|
 
-크로미움이란?
+크롬 브라우저(정확히는 크로미움은)는 사파리 브라우저에서 사용하는 Webkit을 사용하다가 버전 28 이후 Webkit 소스를 Fork하여 Blink 엔진을 만들어 사용하고 있습니다.
 
-Edge가 EdgeHTML에서 크로미움 기반의 Blink로
+### 참고: 크로미움이란?
+크롬은 크로미움 기반으로 만들어진 브라우저라는 이야기를 많이 들어보셨을 것입니다.
 
-[https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/)
+[크로미움](https://ko.wikipedia.org/wiki/크로미엄_(웹_브라우저))은 딱 들었을 때, 이해하기 어려운 엔진일 것 같다라는 느낌이 들지만(~~내부를 이해하는 것은 어렵겠지만..~~) 단순한 오픈 소스 웹 브라우저입니다. [https://chromium.woolyss.com/download/ko/](https://chromium.woolyss.com/download/ko/)에서 다운 받아 브라우저로 사용할 수도 있습니다.
 
-## 동작 과정
+크로미움은 V8이라는 자바스크립트 엔진과 Blink라는 렌더링 엔진을 사용하는 브라우저입니다. 크롬이 크로미움 기반으로 만들어졌다는 것은 오픈 소스인 크로미움 브라우저 코드 위에 살을 덧붙여 개발되었다는 의미입니다.
+
+현재 브라우저 점유율에서 크롬이 절반 이상을 차지하고 있습니다([브라우저 점유율](https://www.koreahtml5.kr/front/stats/browser/browserUseStats.do) 참고) 크롬 브라우저는 크로미움을 사용하고 있는데, Edge 브라우저가 사용하던 EdgeHTML 렌더링 엔진을 포기하고 크로미움 기반의 브라우저를 만들겠다고 발표를 했습니다.([Edge 브라우저의 크로미움 도입 발표](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) 참고)
+
+## 동작 과정 요약
+렌더링 엔진은 요청한 문서의 내용을 얻는 것에서 시작합니다. 문서는 보통 8KB 단위로 전송됩니다.
+
 ~~ 요약 그림 ~~
 
-## 동작 과정 예
+위의 그림은 렌더링 엔진의 기본 동작 과정을 나타낸 그림입니다.
+
+렌더링 엔진은 HTML 문서를 파싱하여 DOM 트리를 만들고, CSS 문서를 파싱하여 CSSOM 트리를 만듭니다. DOM과 CSSOM을 이용하여 렌더 트리를 만듭니다.
+
+렌더 트리 생성이 끝나면 Layout(Reflow라고도 합니다)이 시작됩니다. 이 과정은 각 노드가 화면의 정확한 위치에 표시하기 위해 위치와 크기를 계산하는 과정을 말합니다.  마지막으로 계산된 위치과 크기 등의 스타일들이 실제 픽셀로 표현하는 과정을 Paint(Rasterizing라고도 합니다.)이라고 합니다.
+
+## 동작 과정 상세
 ~~ 웹킷 그림 ~~
 
+위의 그림은 Webkit의 렌더링 동작 과정입니다.
+
 ~~ Gecko 그림 ~~
+
+위의 그림은 Gecko의 렌더링 동작 과정입니다.
+
+Webkit과 Gecko는 용어가 약간 다르지만 렌더링 과정은 유사합니다.
+
+|Webkit|Gecko|설명|
+|:----:|:---:|:-:|
+|Render Tree|Frame Tree|렌더링 되는 노드 트리|
+|Render Object|Frame|렌더링 되는 노드|
+|Layout|Reflow|렌더링 되는 노드를 배치하는 과정|
+|Attechment|Frame Constructor|렌더링 되는 노드 트리를 만드는 과정|
+|-|Content Sink|DOM 노드를 만드는 과정|
+
+Webkit과 Gecko는 위의 표 정도의 차이를 가지고 있습니다.
 
 # Parser
 토큰을 사용함, 알고리즘은 State Machine을 사용함
