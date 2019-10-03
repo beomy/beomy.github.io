@@ -6,7 +6,7 @@ category: [tech, browser]
 ---
 {% include toc.html %}
 
-이번 포스트에서는 브라우저에서 화면을 렌더링 하는 과정에 대해 이야기 할 것입니다. 브라우저의 렌더링 과정을 이해하면 웹페이지의 렌더링 최적화에 도움이 될 수 있겠죠? 렌더링 최적화 방법은 Critical Rendering Path에서 다룰 예정입니다. [developers.google.com](https://developers.google.com/web?hl=ko)를 많은 부분 참고하여 작성 되었습니다. (크롬 브라우저의 렌더링과 그 외 브라우저의 렌더링 개념이 혼제되었을 수 있습니다...)
+이번 포스트에서는 브라우저가 화면을 렌더링 하는 과정에 대해 이야기 할 것입니다. 브라우저의 렌더링 과정을 이해하면 웹페이지의 렌더링 최적화에 도움이 될 수 있겠죠? 렌더링 최적화 방법은 Critical Rendering Path에서 다룰 예정입니다. [developers.google.com](https://developers.google.com/web?hl=ko)를 많은 부분 참고하여 작성 되었습니다. (크롬 브라우저의 렌더링과 그 외 브라우저의 렌더링 개념이 혼제되었을 수 있습니다...)
 
 # 브라우저 구조
 브라우저의 렌더링 과정을 이야기 하기 전에 브라우저의 구조를 잠시 살펴보겠습니다.
