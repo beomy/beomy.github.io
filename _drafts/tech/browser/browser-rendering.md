@@ -112,29 +112,34 @@ Webkit과 Gecko는 위의 표 정도의 차이를 가지고 있습니다.
 ## CSSOM(CSS Object Model)
 ~~ CSS 파싱 부분 그림 ~~
 
-이번에는 위의 그림과 같이 CSS를 파싱하는 부분을 이야기 하도록 하겠습니다.
+이번에는 위의 그림과 같이 CSS를 파싱하는 부분을 이야기 하도록 하겠습니다. 
 
-~~ 구글의 CSSOM 생성 그림 ~~
+~~ 구글의 CSS 파싱 4가지 과정 그림 ~~
+
+DOM을 생성하는 과정 그대로 CSSOM을 생성합니다.
+
+브라우저는 DOM을 생성하는 동안 외부 CSS를 참조하는 `<link>` 태그를 만나게 되면 브라우저에 리소스를 요청합니다. CSS의 원시 바이트(raw bytes)가 문자열로 변환된 후 차례로 토큰과 노드로 변환되고 마지막으로 CSSOM(CSS Object Model)이라는 트리 구조를 만듭니다.
 
 ~~ CSSOM 트리 그림 ~~
 
-## 참고: JavaScript와 CSS
+// 트리 구조 이유
 
-### JavaScript
-JavaScript는 파서 차단 리소스(parser blocking resource)
+### 참고: JavaScript와 CSS
+HTML과 CSS, 자바스크립트를 파싱하여 렌더 트리를 형성하고 화면에 그리는 과정을 최적화 하면 브라우저의 렌더링 속도를 높여 사용성을 개선할 수 있습니다. 자세한 내용은 이 후의 Critical Rendering Path에서 다룰 예정입니다. 지금은 참고사항으로 간단히 자바스크립트와 CSS가 렌더링 과정에 어떤 영향을 미치는지 살펴보도록 하겠습니다.
 
-`<script>` 태그를 만나면 즉시 파싱하고 실행한다. 스크립트가 실행되는 동안 문서의 파싱은 중단된다.
-스크립트를 `defer`로 표시하면, 문서 파싱은 중단되지 않고 문서 파싱이 오나료된 이후에 스크립트가 실행된다.
-HTML5는 스크립트를 비동기로 처리하는 속성을 추가했기 때문에 별도의 맥락에 의해 파싱되고 실행된다.
+#### JavaScript
+자바스크립트는 파서 차단 리소스(parser blocking resource)입니다. 브라우저는 문서를 파싱하다가 자바스크립트를 만나면 진행하던 파싱을 중지하고 자바스크립트 엔진에게 권한을 넘겨 자바스크립트를 파싱하고 실행합니다. 자바스크립트가 실행되는 동안 문서의 파싱은 중단됩니다.
 
-`defer`와 `async` 차이?
-- [https://blog.asamaru.net/2017/05/04/script-async-defer/](https://blog.asamaru.net/2017/05/04/script-async-defer/)
+`<script>` 태그에 `defer` 속성을 주면, 문서 파싱은 중단되지 않고 문서 파싱이 완료된 이후에 자바스크립트가 실행됩니다.
+HTML5에서 스크립트를 비동기(`async`)로 처리하는 속성이 추가되었습니다. 자바스크립트가 별도의 맥락에 의해 파싱되고 실행된다.
 
-### CSS
-CSS는 렌더링 차단 리소스(render blocking resource)
+[defer와 async 차이](https://blog.asamaru.net/2017/05/04/script-async-defer/)에서 `defer` 속성과 `async` 속성의 차이를 확인 하실 수 있습니다.
+
+#### CSS
+CSS는 렌더링 차단 리소스(render blocking resource)입니다.
 
 스타일시트는 DOM 트리를 변경하지 않기 때문에 문서 파싱을 기다리거나 중단 할 이유가 없다.
-그러나 스크립트가 스타일 정보를 요청하는 경우, 스타일이 파싱되지 않는 상태라면 스크립트 에러가 발생할 수 있다. 이런 문제를 해결하기 위해 파이어폭스는 로드 중이거나 파싱 중인 스타일 시트가 있는 경우 모든 스크립트의 실행을 중지한디. 한편 웹킷은 로드되지 않은 스타일 시트 가운데 문제가 될 만한 속성이 있을 때에만 스크립트를 중단한다.
+그러나 스크립트가 스타일 정보를 요청하는 경우, 스타일이 파싱되지 않는 상태라면 스크립트 에러가 발생할 수 있다. 이런 문제를 해결하기 위해 파이어폭스는 로드 중이거나 파싱 중인 스타일 시트가 있는 경우 모든 스크립트의 실행을 중지한다. 반면 웹킷은 로드되지 않은 스타일 시트 가운데 문제가 될 만한 속성이 있을 때에만 스크립트를 중단한다.
 
 # Attechment
 
@@ -178,3 +183,4 @@ DOM 트리가 구축되는 동안 브라우저는 렌더 트리를 구축한다.
 - [https://developers.google.com/web/fundamentals/performance/critical-rendering-path?hl=ko](https://developers.google.com/web/fundamentals/performance/critical-rendering-path?hl=ko)
 - [https://blog.lgcns.com/1911](https://blog.lgcns.com/1911)
 - [https://cisctbd.github.io/Report.pdf](https://cisctbd.github.io/Report.pdf)
+- [https://blog.asamaru.net/2017/05/04/understanding-the-critical-rendering-path/](https://blog.asamaru.net/2017/05/04/understanding-the-critical-rendering-path/)
