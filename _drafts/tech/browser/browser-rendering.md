@@ -157,7 +157,7 @@ DOM 트리가 구축되는 동안 브라우저는 렌더 트리를 구축한다.
 `head` 요소와 같은 비시각적 DOM 요소는 렌더 트리에 추가되지 않는다.
 
 ## 트리를 구축하는 과정
-파이어폭스는 형상 만들기를 `FrameConstructor`에 위임하고 `FrameConstructor`는 스타일을 결정하여 형상을 만든자
+파이어폭스는 형상 만들기를 `FrameConstructor`에 위임하고 `FrameConstructor`는 스타일을 결정하여 형상을 만든다
 
 웹킷에서는 스타일을 결정하고 렌더러를 만드는 과정을 attachment라고 부른다. 모든 DOM 노드에서 `attach` 메소드가 았다. attatchment는 동기적으로 DOM 트리에 노드를 추가하면서 새 노드의 `attach` 메소드를 호출한다.
 
