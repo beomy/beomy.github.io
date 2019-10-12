@@ -27,7 +27,7 @@ category: [tech, browser]
 
 |파이어폭스 브라우저|크롬 브라우저|
 |:--:|:--:|
-|![브라우저 구조](/assets/img/posts/browser/browser_architecture.png)|![브라우저 구조](/assets/img/posts/browser/browser_architecture.png)|
+|![파이어폭스 구조](/assets/img/posts/browser/firefox_architecture.png)|![파이어폭스 구조](/assets/img/posts/browser/firefox_architecture.png)|
 
 파이어폭스 브라우저와 크롬 브라우저의 구조는 위의 그림과 같이 차이가 있습니다.
 
