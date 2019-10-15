@@ -72,15 +72,15 @@ category: [tech, browser]
 
 위의 그림은 Webkit의 렌더링 동작 과정입니다. 위의 렌더링 동작 과정을 간략히 이야기하면,
 
-1. HTML을 파싱하여, DOM 노드를 만듭니다.
-2. DOM 노드들을 합쳐 DOM 트리를 만듭니다.
-3. CSS를 파싱하여, 스타일 규칙을 만듭니다.
-4. DOM 트리와 스타일 규칙을 사용하여, Attachment 라는 과정을 통해 Render 트리를 생성합니다.
-5. Render 트리를 배치합니다.
-6. Render 트리를 화면에 그립니다.
-7. 위의 과정들을 걸처 화면에 표시됩니다.
+1. HTML을 파싱하여 DOM 노드를 만드는데, DOM 노드들을 합쳐 DOM 트리를 만듭니다.
+2. CSS를 파싱하여, 스타일 규칙을 만듭니다.
+3. DOM 트리와 스타일 규칙을 사용하여, Attachment 라는 과정을 통해 Render 트리를 생성합니다.
+4. Render 트리를 배치합니다.
+5. Render 트리를 화면에 그립니다.
 
-~~Gecko 그림~~
+위의 5가지 과정을 통해 브라우저는 렌더링을 합니다. 밑의 내용에서 위의 5가지 과정을 조금 더 자세히 살펴볼 것입니다.
+
+![게코 렌더링 엔진 동작 과정](/assets/img/posts/browser/gecko_rendering_engine_process.png)
 
 위의 그림은 Gecko의 렌더링 동작 과정입니다.
 
@@ -91,7 +91,7 @@ Webkit과 Gecko는 용어가 약간 다르지만 렌더링 과정은 유사합�
 |Render Tree|Frame Tree|렌더링 되는 노드 트리|
 |Render Object|Frame|렌더링 되는 노드|
 |Layout|Reflow|렌더링 되는 노드를 배치하는 과정|
-|Attechment|Frame Constructor|렌더링 되는 노드 트리를 만드는 과정|
+|Attachment|Frame Constructor|렌더링 되는 노드 트리를 만드는 과정|
 |-|Content Sink|DOM 노드를 만드는 과정|
 
 Webkit과 Gecko는 위의 표 정도의 차이를 가지고 있습니다.
@@ -100,9 +100,9 @@ Webkit과 Gecko는 위의 표 정도의 차이를 가지고 있습니다.
 파싱은 서버로 부터 전송 받은 문서의 문자열을 브라우저가 이해할 수 있는 구조로 변환하는 과정을 파싱이라고 합니다. 파싱 결과는 문서 구조를 나타내는 노드 트리인데, 파싱 트리(parse tree) 또는 문법 트리(syntax tree) 라고 합니다.
 
 ## DOM(Documnet Object Model)
-~~DOM 파싱 부분 그림~~
+![DOM 파싱 요약](/assets/img/posts/browser/dom_parsing_summary.png){:.width50.aligncenter}
 
-위의 그림과 같이 DOM을 파싱하는 부분을 좀 더 자세히 이야기 하도록하겠습니다.
+위의 그림은 [동작 과정 상세]({{ site.url }}/tech/browser/browser-rendering/#동작-과정-상세)에서 이야기한 DOM을 파싱하는 과정입니다. 이 과정에 대해 좀 더 자세히 이야기 하도록하겠습니다.
 
 ![DOM Parsing](/assets/img/posts/browser/dom_parsing.png)
 
@@ -116,13 +116,13 @@ Webkit과 Gecko는 위의 표 정도의 차이를 가지고 있습니다.
 위에서 이야기한 4가지 과정을 모두 거치면 위의 그림과 같은 트리 형태의 DOM이 만들어집니다. 브라우저는 이후 모든 페이지 처리를 이 DOM을 사용합니다.
 
 ## CSSOM(CSS Object Model)
-~~CSS 파싱 부분 그림~~
+![CSS 파싱 요약](/assets/img/posts/browser/css_parsing_summary.png){:.width50.aligncenter}
 
 이번에는 위의 그림과 같이 CSS를 파싱하는 부분을 이야기 하도록 하겠습니다. 
 
-~~구글의 CSS 파싱 4가지 과정 그림~~
+![CSSOM 생성](/assets/img/posts/browser/cssom_construction.png)
 
-DOM을 생성하는 과정 그대로 CSSOM을 생성합니다.
+위의 그림과 같이 DOM을 생성하는 과정 그대로 CSSOM을 생성합니다.
 
 브라우저는 DOM을 생성하는 동안 외부 CSS를 참조하는 `<link>` 태그를 만나게 되면 브라우저에 리소스를 요청합니다. CSS의 원시 바이트(raw bytes)가 문자열로 변환된 후 차례로 토큰과 노드로 변환되고 마지막으로 CSSOM(CSS Object Model)이라는 트리 구조를 만듭니다.
 
@@ -150,13 +150,13 @@ CSS는 DOM 트리를 변경하지 않기 때문에 문서 파싱을 기다리거
 
 이런 문제를 해결하기 위해 파이어폭스는 로드 중이거나 파싱 중인 CSS가 있는 경우 모든 자바스크립트 실행을 중지합니다. 반면 웹킷은 로드되지 않은 CSS 가운데 문제가 될 만한 속성이 있을 때에만 자바스크립트를 중단합니다.
 
-# Attechment
-CSSOM 트리와 DOM 트리를 결합하여, 표시해야 할 순서로 내용을 그려낼 수 있도록 하기 위해 렌더 트리를 형성합니다. 이 과정을 웹킷에서는 Attechment라고 합니다. 렌더 트리는 화면에 표시되는 각 요소의 위치를 계산하는 레이아웃에 사용되고 픽셀을 화면에 그리는 페인트 과정에도 사용됩니다.
+# Attachment
+CSSOM 트리와 DOM 트리를 결합하여, 표시해야 할 순서로 내용을 그려낼 수 있도록 하기 위해 렌더 트리를 형성합니다. 이 과정을 웹킷에서는 Attachment라고 합니다. 렌더 트리는 화면에 표시되는 각 요소의 위치를 계산하는 레이아웃에 사용되고 픽셀을 화면에 그리는 페인트 과정에도 사용됩니다.
 
 ## 렌더 트리 구축
-~~Attechment 그림~~
+![Attachment 요약](/assets/img/posts/browser/attachment_summary.png){:.width50.aligncenter}
 
-브라우저가 DOM 및 CSSOM을 렌더 트리에 결합합니다. 렌더 트리는 페이지에 표시되는 모든 DOM 콘텐츠와 각 노드에 대한 모든 CSSOM 스타일 정보를 가집니다.
+위의 그림의 attachment 과정을 이야기 하도록 하겠습니다. 브라우저가 DOM 및 CSSOM을 렌더 트리에 결합합니다. 렌더 트리는 페이지에 표시되는 모든 DOM 콘텐츠와 각 노드에 대한 모든 CSSOM 스타일 정보를 가집니다.
 
 ![Render Tree 형성](/assets/img/posts/browser/render_tree_construction.png)
 
@@ -174,23 +174,23 @@ CSSOM 트리와 DOM 트리를 결합하여, 표시해야 할 순서로 내용을
 하지만, `visibility:hidden`은 렌더 트리에 포함됩니다. `visibility` 속성에 `hidden` 값이 할당 된 노드는 화면에 공간을 차지하기 때문에 렌더 트리에 포함되는 것입니다.
 
 # Layout
-~~Layout 그림~~
+![Layout 요약](/assets/img/posts/browser/layout_summary.png){:.width25.aligncenter}
 
 렌더 트리가 생성되고, 기기의 뷰포트 내에서 렌더 트리의 노드가 정확한 위치와 크기를 계산하는 과정을 Layout(혹은 Reflow)라고 합니다.
 
 모든 상대적인 측정값은 화면에서 절대적인 픽셀로 변환됩니다. 즉 CSS에 상대적인 값인 %로 할당 된 값들은 절대적인 값은 px단위로 변환 됩니다.
 
 # Painting
-~~Painting 그림~~
+![Painting 요약](/assets/img/posts/browser/painting_summary.png){:.width50.aligncenter}
 
-렌더 트리의 각 노드를 화면의 실제 픽셀로 나타내는 과정을 Painting(혹은 rasterizing)라고 합니다.
+렌더 트리의 각 노드를 화면의 실제 픽셀로 나타내는 과정을 Painting(혹은 rasterizing)라고 합니다. Painting 과정 후 브라우저 화면에 UI가 나타나게 됩니다.
 
 # 요약
 지금까지 이야기 했던 내용들을 핵심만 요약하여 5가지로 정리해 보면,
 
 1. HTML 마크업을 처리하고 DOM 트리를 빌드합니다. (DOM 파싱)
 2. CSS 마크업을 처리하고 CSSOM 트리를 빌드합니다. (CSS 파싱)
-3. DOM 및 CSSOM을 결합하여 렌더 트리를 형성합니다. (Attechment)
+3. DOM 및 CSSOM을 결합하여 렌더 트리를 형성합니다. (Attachment)
 4. 렌더 트리에서 레이아웃을 실행하여 각 노드의 기하학적 형태를 계산합니다. (Layout)
 5. 개별 노드를 화면에 페인트합니다. (Painting)
 
