@@ -38,6 +38,7 @@ a {
   text-decoration: none;
   transition: all .2s linear;
   border-bottom: 1px dashed $link-color;
+  word-break: break-all;
 
   &:active,
   &:focus {

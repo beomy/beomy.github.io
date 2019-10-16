@@ -67,7 +67,7 @@ ajax는 실제로는 비동기로 동작하지만, 이해를 위해 동기적으
 ## 자바스크립트 엔진: V8
 자바스크립트 런타임을 자바스크립트 엔진을 포함하고 있습니다. 크롬은 자바스크립트 엔진으로 [V8](https://v8.dev/)을 사용하고 있습니다.
 
-![V8 엔진 로고](/assets/img/posts/javascript/v8.png){:.width25.aligncenter}
+![V8 엔진 로고](/assets/img/posts/javascript/v8.png){:.width25}
 
 V8은 구글에서 개발한 오픈소스 자바스크립트 엔진입니다. C++로 만들어져 있으며, Node.js, 크롬 브라우저 등에서 사용됩니다.
 

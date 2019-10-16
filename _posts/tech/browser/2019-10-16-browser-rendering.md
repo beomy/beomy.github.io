@@ -98,7 +98,7 @@ Webkit과 Gecko는 위의 표 정도의 차이를 가지고 있습니다.
 파싱은 서버로 부터 전송 받은 문서의 문자열을 브라우저가 이해할 수 있는 구조로 변환하는 과정을 파싱이라고 합니다. 파싱 결과는 문서 구조를 나타내는 노드 트리인데, 파싱 트리(parse tree) 또는 문법 트리(syntax tree) 라고 합니다.
 
 ## DOM(Documnet Object Model)
-![DOM 파싱 요약](/assets/img/posts/browser/dom_parsing_summary.png){:.width50.aligncenter}
+![DOM 파싱 요약](/assets/img/posts/browser/dom_parsing_summary.png)
 
 위의 그림은 [동작 과정 상세]({{ site.url }}/tech/browser/browser-rendering/#동작-과정-상세)에서 이야기한 DOM을 파싱하는 과정입니다. 이 과정에 대해 좀 더 자세히 이야기 하도록하겠습니다.
 
@@ -114,7 +114,7 @@ Webkit과 Gecko는 위의 표 정도의 차이를 가지고 있습니다.
 위에서 이야기한 4가지 과정을 모두 거치면 위의 그림과 같은 트리 형태의 DOM이 만들어집니다. 브라우저는 이후 모든 페이지 처리를 이 DOM을 사용합니다.
 
 ## CSSOM(CSS Object Model)
-![CSS 파싱 요약](/assets/img/posts/browser/css_parsing_summary.png){:.width50.aligncenter}
+![CSS 파싱 요약](/assets/img/posts/browser/css_parsing_summary.png)
 
 이번에는 위의 그림과 같이 CSS를 파싱하는 부분을 이야기 하도록 하겠습니다. 
 
@@ -154,7 +154,7 @@ CSS는 DOM 트리를 변경하지 않기 때문에 문서 파싱을 기다리거
 CSSOM 트리와 DOM 트리를 결합하여, 표시해야 할 순서로 내용을 그려낼 수 있도록 하기 위해 렌더 트리를 형성합니다. 이 과정을 웹킷에서는 Attachment라고 합니다. 렌더 트리는 화면에 표시되는 각 요소의 위치를 계산하는 레이아웃에 사용되고 픽셀을 화면에 그리는 페인트 과정에도 사용됩니다.
 
 ## 렌더 트리 구축
-![Attachment 요약](/assets/img/posts/browser/attachment_summary.png){:.width50.aligncenter}
+![Attachment 요약](/assets/img/posts/browser/attachment_summary.png)
 
 위의 그림의 attachment 과정을 이야기 하도록 하겠습니다. 브라우저가 DOM 및 CSSOM을 렌더 트리에 결합합니다. 렌더 트리는 페이지에 표시되는 모든 DOM 콘텐츠와 각 노드에 대한 모든 CSSOM 스타일 정보를 가집니다.
 
@@ -174,12 +174,12 @@ CSSOM 트리와 DOM 트리를 결합하여, 표시해야 할 순서로 내용을
 뿐만 아니라 CSS로 인해 `display` 속성에 `none` 값이 할당 된 노드들을 렌더 트리에 추가되지 않습니다. 하지만, `visibility:hidden`은 렌더 트리에 포함됩니다. `visibility` 속성에 `hidden` 값이 할당 된 노드는 화면에 공간을 차지하기 때문에 렌더 트리에 포함됩니다.
 
 # Layout
-![Layout 요약](/assets/img/posts/browser/layout_summary.png){:.width25.aligncenter}
+![Layout 요약](/assets/img/posts/browser/layout_summary.png)
 
 렌더 트리가 생성되고, 기기의 뷰포트 내에서 렌더 트리의 노드가 정확한 위치와 크기를 계산하는 과정을 Layout(혹은 Reflow)라고 합니다. 모든 상대적인 측정값은 화면에서 절대적인 픽셀로 변환됩니다. 즉 CSS에 상대적인 값인 %로 할당 된 값들은 절대적인 값은 px단위로 변환 됩니다.
 
 # Painting
-![Painting 요약](/assets/img/posts/browser/painting_summary.png){:.width50.aligncenter}
+![Painting 요약](/assets/img/posts/browser/painting_summary.png)
 
 렌더 트리의 각 노드를 화면의 실제 픽셀로 나타내는 과정을 Painting(혹은 rasterizing)라고 합니다. Painting 과정 후 브라우저 화면에 UI가 나타나게 됩니다.
 

@@ -182,7 +182,7 @@ export default Vue
 # Vue의 Layer
 Vue는 큰 프로젝트입니다. 그래서 Vue는 많은 Layer와 part들로 나누어져 있습니다. Vue는 크게 4가지로 Layer로 구성됩니다.
 
-![Vue layer](/assets/img/posts/vuejs/vue_layer.png){:.aligncenter}
+![Vue layer](/assets/img/posts/vuejs/vue_layer.png)
 
 - **Core Layer**: Vue 코어 함수입니다. `this._init()`을 호출합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
 - **Mixins Layer**: init, state, events, lifecycle, render, 5개의 mixin 함수를 Vue 코어에 추가 합니다. `src/core/instance/index.js`에서 살펴 볼 수 있습니다.
