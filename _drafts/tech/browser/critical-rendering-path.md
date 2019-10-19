@@ -177,6 +177,13 @@ document.body.appendChild(loadTime);
 # Critical Rendering Path 측정하기
 
 # 참고: async 와 defer
+~~이 부분은 다른 포스트로 빼야 하는지 고민~~
+
+## 일반적인 실행
+
+## async 속성이 추가된 경우의 실행
+
+## defer 속성이 추가된 경우의 실행
 
 # 요약
 
