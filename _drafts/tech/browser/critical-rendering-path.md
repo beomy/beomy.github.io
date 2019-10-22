@@ -170,9 +170,17 @@ document.body.appendChild(loadTime);
 
 위의 코드와 같이 단순히 `script` 태그에 `async` 속성을 추가해 주면 됩니다. `async` 속성을 `script` 태그에 추가하여 자바스크립트가 사용 가능해질 때까지 브라우저에게 DOM 생성을 중지하지 말라고 지시하는 것입니다.
 
-## 그 외
+## 리소스 우선순위 지정
+브라우저에 전송되는 모든 바이트는 똑같이 중요한 것은 아닙니다. 브라우저는 가장 중요한 리소스(스크립트나 이미지보다 CSS 우선)를 우선 로드하기 위해 가장 중요하다 생각되는 리소스를 추측하여 로드합니다. 하지만 이런 방법은 항상 맞는 방법이 아닙니다. 브라우저에게 리소스의 우선순위를 전달해 주는 방법에 대해 이야기 하도록 하겠습니다. 
 
-### prefetch 와 preload
+### preload 속성
+현재 페이지에서 빠르게 가져와야 하는 부분
+
+### preconnect 속성
+다른 도메인의 리소스를 가져와야 하는 부분
+
+### prefetch 속성
+미래의 페이지에서 사용되는 리소스를 가져와야 하는 부분
 
 # Critical Rendering Path 측정하기
 
@@ -181,9 +189,9 @@ document.body.appendChild(loadTime);
 
 ## 일반적인 실행
 
-## async 속성이 추가된 경우의 실행
+## async 속성
 
-## defer 속성이 추가된 경우의 실행
+## defer 속성
 
 # 요약
 
@@ -192,3 +200,5 @@ document.body.appendChild(loadTime);
 - [https://blog.asamaru.net/2017/05/04/understanding-the-critical-rendering-path/](https://blog.asamaru.net/2017/05/04/understanding-the-critical-rendering-path/)
 - [https://d2.naver.com/helloworld/59361](https://d2.naver.com/helloworld/59361)
 - [https://blog.asamaru.net/2017/05/04/script-async-defer/](https://blog.asamaru.net/2017/05/04/script-async-defer/)
+- [https://developers.google.com/web/fundamentals/performance/resource-prioritization?hl=ko](https://developers.google.com/web/fundamentals/performance/resource-prioritization?hl=ko)
+- [https://medium.com/@koh.yesl/preload-prefetch-and-priorities-in-chrome-15d77326f646](https://medium.com/@koh.yesl/preload-prefetch-and-priorities-in-chrome-15d77326f646)
