@@ -234,7 +234,7 @@ document.body.appendChild(loadTime);
 - `body` 태그 닫기 직전 `<script>` 태그를 선언합니다.
 - `<script ... async>`와 같이 `async` 속성을 사용합니다.
 
-#### 브라우저 도움 받기
+#### 리소스 우선순위 지정
 - 현재 페이지에서 빠르게 가져와야 하는 리소스에 `<link rel="preload">`와 같이 `preload` 속성을 사용합니다.
 - 미래에 사용할 수 있는 리소스는 `<link rel="prefetch">`와 같이 `prefetch` 속성을 사용합니다.
 
