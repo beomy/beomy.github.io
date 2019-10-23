@@ -227,6 +227,16 @@ document.body.appendChild(loadTime);
 ### preload와 prefetch 차이
 
 # 요약
+#### CSS 최적화
+- 미디어 유형, 미디어 쿼리를 사용합니다.
+
+#### JavaScript 최적화
+- `body` 태그 닫기 직전 `<script>` 태그를 선언합니다.
+- `<script ... async>`와 같이 `async` 속성을 사용합니다.
+
+#### 브라우저 도움 받기
+- 현재 페이지에서 빠르게 가져와야 하는 리소스에 `<link rel="preload">`와 같이 `preload` 속성을 사용합니다.
+- 미래에 사용할 수 있는 리소스는 `<link rel="prefetch">`와 같이 `prefetch` 속성을 사용합니다.
 
 #### 참고
 - [https://developers.google.com/web/fundamentals/performance/critical-rendering-path?hl=ko](https://developers.google.com/web/fundamentals/performance/critical-rendering-path?hl=ko)
