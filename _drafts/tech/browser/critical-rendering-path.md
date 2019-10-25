@@ -200,18 +200,21 @@ document.body.appendChild(loadTime);
 위의 코드와 같이 사용하여 2페이지를 먼저 가져와 준비합니다. 주의 할 점은 위의 코드와 같이 사용하였더라도 `page-2.html`의 HTML만 가져왔지 `page-2.html`에 필요한 리소스는 가져오지 않는다는 것입니다.
 
 # Critical Rendering Path 측정하기
-Critical Rendering Path 과정을 크롬의 DevTools로 확인 할수 있습니다. DevTools의 Network 탭과 Performance 탭에서 렌더링 성능을 측정할 수 있습니다.
+Critical Rendering Path 과정을 크롬의 DevTools로 확인 할수 있습니다. DevTools의 Performance 탭에서 렌더링 성능을 측정할 수 있습니다.
 
-## 중요 이벤트
-렌더링 성능을 측정하기 전에 몇가지 중요한 DOM 이벤트를 살펴보도록 하겠습니다.
+## 타임스탬프
+렌더링 성능을 측정하기 전에 몇가지 중요한 타임스탬프(특정한 시점)를 살펴보도록 하겠습니다.
 
 ![이벤트](/assets/img/posts/browser/dom_navtiming.png)
 
-- `domLoading`: 
-- `domInteractive`: 
-- `domContentLoaded`: 
-- `domComplete`: 
-- `loadEvent`: 
+- `domLoading`: 전체 프로세스의 시작 타임스탬프입니다. 브라우저가 처음 수신한 HTML 문서 바이트의 파싱을 시작하려고 합니다.
+- `domInteractive`: 브라우저가 파싱을 완료한 시점입니다. 모든 HTML 및 DOM 생성이 완료되었습니다.
+- `domContentLoaded`: DOM이 준비되고 자바스크립트 실행을 차단하는 스타일시트가 없는 시점을 표시합니다. DOM과 CSSOM이 모두 준비 된 상태로 렌더 트리를 생성할 수 있는 시점입니다.
+  - 많은 자바스크립트 프레임워크는 자체 로직을 실행하기 전에 이 이벤트(타임스탬프)를 기다립니다. 이런 이유로 브라우저는 `EventStart`와 `EventEnd` 타임스탬프를 캡처합니다. 이 타임스탬프를 통해 실행이 얼마나 오래 걸렸는지 추적할 수 있습니다.
+- `domComplete`: 페이지의 모든 리소스(이미지 등) 다운로드가 완료된 시점을 표시합니다.
+- `loadEvent`: 페이지 로드의 마지막 단계로, 브라우저가 추가 애플리케이션 로직을 트리거 할 수 있는 onload 이벤트를 발생시킵니다.
+
+위의 타임스탬프 중 `domContentLoaded`와 `loadEvent`는 이후의 렌더링 성능 측정을 이야기 할 때 언급되기 때문에 기억해 둡시다.
 
 ## 렌더링 과정 살펴보기
 
