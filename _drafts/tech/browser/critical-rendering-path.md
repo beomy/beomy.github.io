@@ -188,17 +188,6 @@ document.body.appendChild(loadTime);
 
 `<link rel="preload">`를 이용하여 리소스를 가져왔지만 현재 페이지에서 3초 내로 사용되지 않는 리소스는 위의 그림과 같은 경로가 출력 됩니다.
 
-### preconnect 속성
-~~필요 없어 보임?~~
-
-다른 도메인의 리소스를 빠르게 가져와야 할 때 사용되는 속성입니다. `<link rel="preconnect">`는 브라우저에게 다른 도메인의 리소스를 사용한다는 것과 가능한 빨리 가져오기를 시도해야 한다고 알립니다.
-
-```html
-<link rel="preconnect" href="https://example.com">
-```
-
-위의 코드와 같이 사용하면 됩니다. 위의 코드는 브라우저에게 `example.com`에 연결하고 여기에 있는 콘텐츠를 가져오려 한다는 것을 알립니다.
-
 ### prefetch 속성
 미래에 필요할 수 있는 리소스를 가져와야 할 때 사용되는 속성입니다. `<link rel="prefetch">`는 현재 페이지 로딩이 마치고 사용 가능한 대역폭(bandwidth)이 있을 때(다운 받을 여유가 생겼을 때?) 가장 낮은 우선순위로 리소스를 가져옵니다.
 
@@ -211,12 +200,18 @@ document.body.appendChild(loadTime);
 위의 코드와 같이 사용하여 2페이지를 먼저 가져와 준비합니다. 주의 할 점은 위의 코드와 같이 사용하였더라도 `page-2.html`의 HTML만 가져왔지 `page-2.html`에 필요한 리소스는 가져오지 않는다는 것입니다.
 
 # Critical Rendering Path 측정하기
+Critical Rendering Path 과정을 크롬의 DevTools로 확인 할수 있습니다. DevTools의 Network 탭과 Performance 탭에서 렌더링 성능을 측정할 수 있습니다.
 
 ## 중요 이벤트
+렌더링 성능을 측정하기 전에 몇가지 중요한 DOM 이벤트를 살펴보도록 하겠습니다.
 
-### domContentLoaded Event
+![이벤트](/assets/img/posts/browser/dom_navtiming.png)
 
-### OnLoad Event
+- `domLoading`: 
+- `domInteractive`: 
+- `domContentLoaded`: 
+- `domComplete`: 
+- `loadEvent`: 
 
 ## 렌더링 과정 살펴보기
 
