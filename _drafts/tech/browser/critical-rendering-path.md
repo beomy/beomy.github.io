@@ -203,7 +203,7 @@ document.body.appendChild(loadTime);
 Critical Rendering Path 과정을 크롬의 DevTools로 확인 할수 있습니다. DevTools의 Performance 탭에서 렌더링 성능을 측정할 수 있습니다.
 
 ## 타임스탬프
-렌더링 성능을 측정하기 전에 몇가지 중요한 타임스탬프(특정한 시점)를 살펴보도록 하겠습니다.
+렌더링 성능을 측정하기 전에 몇가지 중요한 타임스탬프(특정 시점)를 살펴보도록 하겠습니다.
 
 ![이벤트](/assets/img/posts/browser/dom_navtiming.png)
 
