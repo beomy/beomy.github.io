@@ -267,15 +267,109 @@ document.body.appendChild(loadTime);
 7. JavaScript 실행 후, DOM이 변경되었기 때문에 다시 Paint 합니다.
 
 ## 최적화 차이 살펴보기
+이번에는 앞에서 이야기한 최적화 방법을 적용하기 전과 후를 비교해서 살펴보도록 하겠습니다.
 
 ### async 유무의 차이
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    <title>Critical Path: Script</title>
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <script src="app.js"></script>
+  </body>
+</html>
+```
+
+위의 코드를 DevTools의 Network 탭에서 확인 하면, 아래의 그림과 같습니다.
+
+![async 속성이 없을 경우](/assets/img/posts/browser/except_async.png)
+
+위의 그림에서 보이는 파란선은 `DOMContentLoaded` 타임스탬프를, 빨간선은 `Load` 타임스탬프를 가르킵니다. 위에서 이야기 했던 타임스탬프를 다시 상기해 봅시다.
+
+`DOMContentLoaded`는 DOM과 CSSOM이 모두 준비 된 상태로 렌더 트리를 생성할 수 있는 시점입니다.<br />
+`Load`는 페이지 로드의 마지막 단계로, 브라우저가 추가 애플리케이션 로직을 트리거 할 수 있는 onload 이벤트를 발생시킵니다.
+
+위의 그림에서 볼 수 있듯이 `Load` 타임스탬프가 먼저 보입니다. 자바스크립트가 HTML을 파싱하면서 동기적으로 실행되기 때문에, 모든 리소스 다운이 완료 되고 애플리케이션 로직을 실행 할 수 있게 되는 후에야 렌더 트리를 만들 수 있게 됩니다. 85ms 후에야 렌더 트리를 만들 수 있게 됩니다.
+
+렌더 트리를 브라우저가 빨리 만들 수 있다면 사용성을 개선할 수 있겠죠?
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    <title>Critical Path: Script</title>
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <script src="app.js" async></script>
+  </body>
+</html>
+```
+
+`async` 속성을 추가한 위의 코드를 DevTools의 Network 탭에서 확인 하면, 아래의 그림과 같습니다.
+
+![async 속성이 있는 경우](/assets/img/posts/browser/exist_async.png)
+
+`async` 속성을 사용하여 HTML 파싱이 끝난 후 자바스크립트를 실행 하도록 한다면, 23ms 후에 브라우저는 렌더 트리를 만들 수 있게 됩니다.
 
 ### preload와 prefetch 차이
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="preload" as="style">
+    <title>Critical Path: Script</title>
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <script src="app.js" async></script>
+  </body>
+</html>
+```
+
+위의 코드를 DevTools의 Network 탭에서 확인 하면, 아래의 그림과 같습니다.
+
+![preload 속성 사용](/assets/img/posts/browser/preload.png)
+
+Priority를 보면 Highest로 가장 높은 우선순위로 동작하는 것을 확인 할 수 있습니다.
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="prefetch">
+    <title>Critical Path: Script</title>
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <script src="app.js" async></script>
+  </body>
+</html>
+```
+
+위의 코드를 DevTools의 Network 탭에서 확인 하면, 아래의 그림과 같습니다.
+
+![prefetch 속성 사용](/assets/img/posts/browser/prefetch.png)
+
+Priority를 보면 Lowest로 가장 낮은 우선순위로 동작하는 것을 확인 할 수 있습니다.
 
 # 요약
 #### CSS 최적화
 - 미디어 유형, 미디어 쿼리를 사용합니다.
-
+ 
 #### JavaScript 최적화
 - `body` 태그 닫기 직전 `<script>` 태그를 선언합니다.
 - `<script ... async>`와 같이 `async` 속성을 사용합니다.
