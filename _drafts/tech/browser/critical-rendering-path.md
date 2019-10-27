@@ -217,6 +217,54 @@ Critical Rendering Path 과정을 크롬의 DevTools로 확인 할수 있습니�
 위의 타임스탬프 중 `domContentLoaded`와 `loadEvent`는 이후의 렌더링 성능 측정을 이야기 할 때 언급되기 때문에 기억해 둡시다.
 
 ## 렌더링 과정 살펴보기
+```css
+/* style.css */
+body { font-size: 16px }
+p { font-weight: bold }
+span { color: red }
+p span { display: none }
+img { float: right }
+```
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    <title>Critical Path: Script</title>
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <script src="app.js"></script>
+  </body>
+</html>
+```
+
+```js
+// app.js
+var span = document.getElementsByTagName('span')[0];
+span.textContent = 'interactive'; // change DOM text content
+span.style.display = 'inline';  // change CSSOM property
+// create a new element, style it, and append it to the DOM
+var loadTime = document.createElement('div');
+loadTime.textContent = 'You loaded this page on: ' + new Date();
+loadTime.style.color = 'blue';
+document.body.appendChild(loadTime);
+```
+
+위의 코드를 DevTools의 Performance 탭에서 렌더링 성능을 측정해 보면, 아래 그림과 같이 확인 할 수 있습니다.
+
+![이벤트](/assets/img/posts/browser/rendering_process.png)
+
+1. HTML 다운을 요청합니다.
+2. 전달받은 HTML을 파싱합니다. 2개의 `Send Request`를 요청하는데, `style.css`와 `app.js` 2개를 요청합니다.
+3. CSS를 파싱합니다.
+4. Layout를 배치합니다.
+5. 화면에 Paint 합니다.
+6. 전달받은 JavaScript를 실행합니다.
+7. JavaScript 실행 후, DOM이 변경되었기 때문에 다시 Paint 합니다.
 
 ## 최적화 차이 살펴보기
 
