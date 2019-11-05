@@ -8,9 +8,21 @@ category: [tech, browser]
 
 # preload
 
+## 사례
+
+## 브라우저 지원 현황
+
 # preconnect
 
+## 사례
+
+## 브라우저 지원 현황
+
 # prefetch
+
+## 사례
+
+## 브라우저 지원 현황
 
 # Vue와 prefetch
 
