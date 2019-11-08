@@ -9,7 +9,7 @@ category: [tech, browser]
 이번 포스트에서는 [[Browser] Critical Rendering Path 최적화](/tech/browser/critical-rendering-path/#리소스-우선순위-지정)에서 이야기한 리소스 우선순위를 지정 할 수 있는 `link` 태그의 `preload`와 `preconnect`, `prefetch`에 대해 이야기 하도록 하겠습니다. 
 
 # preload
-현재 페이지에서 사용될 것이 확인할 리소스들을 `preload`해야 합니다. 즉, `preload`는 브라우저에게 현재 페이지에서 필요한 리소스를 빠르게 가져오게 합니다.
+현재 페이지에서 사용될 것이 확실한 리소스들을 `preload`해야 합니다. 즉, `preload`는 브라우저에게 현재 페이지에서 필요한 리소스를 빠르게 가져오게 합니다.
 
 ```html
 <link rel="preload" as="script" href="super-important.js">
@@ -24,7 +24,7 @@ category: [tech, browser]
 ### `as` 속성 사용
 `as` 속성을 사용하여 리소스의 유형을 브라우저에 알려줘야 합니다. 올바른 유형이 설정되어 있지 않다면 브라우저는 해당 리소스를 사용하지 않습니다.
 
-### 리소스 참조
+### 중복 리소스 참조
 `preload`는 브라우저가 반드시 리소스를 가져오게 만듭니다. 리소스를 두 번 가져오게 하거나, 필요하지 않는 것을 가져오지 하지 않도록 주의해야 합니다.
 
 ### 반드시 사용되는 리소스에만 사용
@@ -64,6 +64,7 @@ category: [tech, browser]
 [Can I Use](https://caniuse.com/#search=preload)는 위의 코드와 같이 브라우저 별로 `preload`를 지원한다고 정의하였습니다.
 
 # preconnect
+현재 페이지에서 외부 도메인의 리소스를 참고하는 것을 브라우저에게 알려 브라우저가 미리 외부 도메인과 연결을 구축할 수 있게 합니다.
 
 ## 사례
 
