@@ -16,16 +16,52 @@ category: [tech, browser]
 <link rel="preload" as="style" href="critical.css">
 ```
 
-`preload`는 위의 코드와 같이 `<link rel="preload" as="...">`와 같이 사용합니다. `as` 속성을 사용하여 리소스의 유형을 브라우저에 알려줘야 합니다. 올바른 유형이 설정되어 있지 않다면 브라우저는 해당 리소스를 사용하지 않습니다.
+`preload`는 위의 코드와 같이 `<link rel="preload" as="...">`와 같이 사용합니다.
+
+## 주의 사항
+`preload`를 사용할 때 주의해야 할 몇가지 사항을 살펴보도록 하겠습니다.
+
+### `as` 속성 사용
+`as` 속성을 사용하여 리소스의 유형을 브라우저에 알려줘야 합니다. 올바른 유형이 설정되어 있지 않다면 브라우저는 해당 리소스를 사용하지 않습니다.
+
+### 리소스 참조
+`preload`는 브라우저가 반드시 리소스를 가져오게 만듭니다. 리소스를 두 번 가져오게 하거나, 필요하지 않는 것을 가져오지 하지 않도록 주의해야 합니다.
+
+### 반드시 사용되는 리소스에만 사용
+`preload`는 현재 페이지에서 반드시 사용되는 리소스에만 사용되어야 합니다.
+
+![preload 경고](/assets/img/posts/browser/res_prio_timeout.png)
+
+`<link rel="preload" as="...">`를 이용하여 리소스를 가져왔지만 현재 페이지에서 3초 내로 사용되지 않는 리소스는 위의 그림과 같은 경로가 출력 됩니다.
 
 ## 사용 사례
 이번에는 `preload`를 사용하기 좋은 리소스를 살펴보도록 하겠습니다.
 
-### 글꼴
+### 폰트
+사용자가 사이트의 폰트를 기다리는 시간을 감소시키고, 시스템 폰트와 선언된 포트의 충돌을 해결 할 수 있습니다.
 
-### 주요 경로의 CSS와 JavaScript
+```html
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="myfont.woff2">
+```
+
+위의 코드와 같이 폰트를 `preload` 할 수 있습니다. 위의 코드와 같이 사용하면 브라우저에게 폰트가 즉시 필요하다는 것을 알려줄 수 있습니다.
+
+### Critical Rendering Path의 CSS와 JavaScript
+페이지 성능을 측정할 때 중요한 개념 중, Critical Rendering Path가 있습니다([[Browser] Critical Rendering Path 최적화](/tech/browser/critical-rendering-path) 참고). Critical Rendering Path란 초기 렌더링 전에 반드시 로드되어야 할 리소스를 말합니다.
+
+```html
+<link rel="preload" as="script" href="super-important.js">
+<link rel="preload" as="style" href="critical.css">
+```
+
+위의 코드와 같이 초기 렌더링에 반드시 필요한 리소스를 `preload`하는 것이 초기 렌더링 속도를 높일 수 있습니다.
 
 ## 브라우저 지원 현황
+브라우저 별 `preload` 지원 현황을 살펴보도록 하겠습니다.
+
+~~Can I Use 그림~~
+
+[Can I Use](https://caniuse.com/#search=preload)는 위의 코드와 같이 브라우저 별로 `preload`를 지원한다고 정의하였습니다.
 
 # preconnect
 
