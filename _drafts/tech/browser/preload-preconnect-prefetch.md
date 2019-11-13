@@ -66,8 +66,12 @@ category: [tech, browser]
 # preconnect
 현재 페이지에서 외부 도메인의 리소스를 참고하는 것을 브라우저에게 알려 미리 외부 도메인과 연결을 구축할 수 있게 합니다.
 
+```html
+<link rel="preconnect" href="https://example.com">
+```
+
 ## 주의사항
-`preconnect`는  외부 도메인과 연결을 구축하기 때문에 상당한 CPU 시간을 차지할 수 있습니다. 보안 연결의 경우 더 많은 시간을 차지 할 수 있습니다. 10초 이내로 브라우저가 닫힌다면, 이전의 모든 연결 작업은 낭비되는 것이기 때문에 브라우저가 빨리 닫힐 수 있는 작업에서는 `preconnect`를 사용하지 않는 것이 좋을 수 있습니다.
+`preconnect`는  외부 도메인과 연결을 구축하기 때문에 많은 CPU 시간을 차지할 수 있습니다. 보안 연결의 경우 더 많은 시간을 차지 할 수 있습니다. 10초 이내로 브라우저가 닫힌다면, 이전의 모든 연결 작업은 낭비되는 것이기 때문에 브라우저가 빨리 닫힐 수 있는 작업에서는 `preconnect`를 사용하지 않는 것이 좋습니다.
 
 ## 사례
 
@@ -94,6 +98,8 @@ category: [tech, browser]
 - [https://medium.com/@jeongwooahn/vue-js-lazy-load-적용하기2-3f1a2f4a4ee8](https://medium.com/@jeongwooahn/vue-js-lazy-load-적용하기2-3f1a2f4a4ee8)
 - [https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content)
 - [https://css-tricks.com/prefetching-preloading-prebrowsing/](https://css-tricks.com/prefetching-preloading-prebrowsing/)
+- [https://www.keycdn.com/blog/resource-hints](https://www.keycdn.com/blog/resource-hints)
+- [https://medium.com/@pakss328/resource-hint-8fb4e56ee042](https://medium.com/@pakss328/resource-hint-8fb4e56ee042)
 - [https://caniuse.com/#search=preload](https://caniuse.com/#search=preload)
 - [https://caniuse.com/#search=prefetch](https://caniuse.com/#search=prefetch)
 - [https://caniuse.com/#search=preconnect](https://caniuse.com/#search=preconnect)
