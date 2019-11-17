@@ -96,13 +96,55 @@ category: [tech, browser]
 [Can I Use](https://caniuse.com/#search=preconnect)는 위의 코드와 같이 브라우저 별로 `preconnect`를 지원한다고 정의하였습니다.
 
 # prefetch
-미래에 사용될 것이라고 예상되는 리소스들을 `prefetch`해야 합니다. 브라우저는 미래에 사용 될 리소스들을 가져와 캐시합니다.
+미래에 사용될 것이라고 예상되는 리소스들을 `prefetch`해야 합니다. 브라우저는 미래에 사용 될 리소스들을 가져와 캐시에 저장합니다.
+
+`prefetch`는 사용자가 다음에 할 행동을 미리 준비하는데 적합한 기능입니다. 예를 들어, 결과 목록에서 첫번째 제품 상세 페이지를 가져오거나 콘텐츠의 다음 페이지를 가져오는 것을 이야기 할 수 있습니다.
+
+```html
+<link rel="prefetch" href="page-2.html">
+```
+
+위의 코드와 같이 `prefetch`를 사용할 수 있습니다.
 
 ## 주의사항
+`prefetch`를 사용할 때 기억해야 할 몇가지 내용들을 살펴보도록 하겠습니다.
 
-## 사례
+### 재귀적으로 동작하지 않는다
+`prefetch`는 재귀적으로 동작하지 않습니다.
+
+```html
+<link rel="prefetch" href="page-2.html">
+```
+
+위의 코드와 같이 `prefetch`를 사용한다면, `page-2.html`이라는 HTML 리소스를 가져올 수 있지만 `page-2.html`에서 사용되는 CSS 등의 리소스들은 가져오지 않습니다.
+
+### Override 목적으로 사용하지 않는다
+`prefetch`는 Override, 즉 재정의 할 목적으로 사용되면 안됩니다.
+
+```html
+<html>
+  <head>
+    <link rel="prefetch" href="optional.css">
+    <link rel="stylesheet" href="optional.css">
+  </head>
+  <body>
+    Hello!
+  </body>
+</html>
+```
+
+위의 코드와 같이 `prefetch`를 사용할 경우, `<link rel="prefetch" href="optional.css">`의 바로 뒤 따라 오는 `<link rel="stylesheet" href="optional.css">`의 우선순위를 낮출 것이라고 생각 할 수 있지만 그렇지 않습니다.
+
+![preload 경고](/assets/img/posts/browser/res_prio_prefetch.png)
+
+실제로는 한번은 가장 높은 우선쉰위로, 나머지 한번은 가장 낮은 우선순위로 스타일을 2번 가져오게 됩니다. 렌더 차단하는 CSS를 기다려야 할 뿐만 아니라, 파일을 두 번 다운로드해야 하는 낭비가 발생하기 때문에 동일한 리소스를 여러번 가져와야 하는 경우는 피하는 것이 좋습니다.
 
 ## 브라우저 지원 현황
+브라우저 별 `prefetch` 지원 현황을 살펴보도록 하겠습니다.
+
+~~Can I Use 그림~~
+
+[Can I Use](https://caniuse.com/#search=prefetch)는 위의 코드와 같이 브라우저 별로 `prefetch`를 지원한다고 정의하였습니다.
 
 # Vue와 prefetch
 
