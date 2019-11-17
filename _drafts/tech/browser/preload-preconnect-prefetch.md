@@ -96,7 +96,7 @@ category: [tech, browser]
 [Can I Use](https://caniuse.com/#search=preconnect)는 위의 코드와 같이 브라우저 별로 `preconnect`를 지원한다고 정의하였습니다.
 
 # prefetch
-미래에 사용될 것이라고 예상되는 리소스들을 `prefetch`해야 합니다. 브라우저는 미래에 사용 될 리소스들을 가져와 캐시에 저장합니다.
+미래에 사용될 것이라고 예상되는 리소스들을 `prefetch`해야 합니다. 브라우저는 미래에 사용 될 리소스들을 가져와 캐시합니다.
 
 ## 주의사항
 
