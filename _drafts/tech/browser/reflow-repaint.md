@@ -67,6 +67,15 @@ DOM 노드의 크기 혹은 위치가 변경되면, 하위 노드나 상위 노�
 위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint와 layout이 반복적으로 발생하는 것을 볼 수 있습니다.
 
 ## Reflow가 발생하는 경우
+- DOM 노드의 추가, 제거
+- DOM 노드의 위치 변경
+- DOM 노드의 크기 변경(margin, padding, border, width, height 등..) 
+- CSS3 애니메이션과 트린지션
+- 폰트 변경, 텍스트 내용 변경
+- 이미지 크기 변경
+- offset, scrollTop, scrollLeft과 같은 계산된 스타일 정보 요청
+- 페이지 초기 렌더링
+- 윈도우 리사이징
 
 ## 최적화 방법
 
