@@ -78,6 +78,33 @@ DOM 노드의 크기 혹은 위치가 변경되면, 하위 노드나 상위 노�
 - 윈도우 리사이징
 
 ## 최적화 방법
+reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠습니다.
+
+### 1. 클래스 변경을 이용하여 스타일을 변경할 경우 가장 하위 노드의 클래스를 변경한다.
+가장 하위 노드의 스타일을 변경할 경우, 전체 노드가 아닌 일부 노드로 reflow를 영향을 최소화 할 수 있습니다. 즉, 가장 하위 노드의 스타일을 변경함으로 reflow 비용을 줄일 수 있습니다.
+
+### 2. 인라인 스타일을 사용하지 않는다.
+
+### 3. 애니메이션 효과가 있는 노드는 `position:fixed` 또는 `position:absolute`로 지정한다.
+
+### 4. 퀄리티와 퍼포먼스 간의 최적점을 찾는다.
+
+### 5. `<table>` 레이아웃을 피한다.
+
+### 6. IE의 경우, CSS에서 JS 표현식을 사용하지 않는다.
+
+### 7. CSS 하위 선택자를 최소화 한다.
+이유 설명
+
+### 8. 숨겨진 노드의 스타일을 변경한다.
+
+### 9. `cssText` 혹은 클래스를 사용하여 스타일을 변경한다.
+
+### 10. JavaScript로 DOM을 추가할 경우 DOM Fragment를 사용한다.
+
+### 11. 캐시를 활용한다.
+
+# 요약
 
 #### 참고
 - [https://github.com/wonism/TIL/blob/master/front-end/browser/reflow-repaint.md](https://github.com/wonism/TIL/blob/master/front-end/browser/reflow-repaint.md)
