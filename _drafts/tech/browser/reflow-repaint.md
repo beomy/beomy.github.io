@@ -34,7 +34,7 @@ Repaint는 화면에 변화가 있을 때 화면을 그리는 과정입니다. �
 
 ~~Repaint 예시 그림~~
 
-위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint이 주기적으로 발생하는 것을 볼 수 있습니다.
+위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint이 주기적으로 발생하는 것을 볼 수 있습니다. [/example/browser/reflow-repaint/repaint.html](/example/browser/reflow-repaint/repaint.html){: target="_blank" }에서 위의 코드의 실행 결과를 확인 할 수 있습니다.
 
 # Reflow(Layout)
 Reflow는 DOM 노드의 위치와 길이 등을 다시 계산하여 화면 구조(Layout)이 변경되었을 때, 렌더 트리를 재생성하는 과정입니다. (렌더 트리에 관한 내용은 [[Browser] 브라우저 렌더링](/tech/browser/browser-rendering/#렌더-트리-구축) 참고 바랍니다.)
@@ -64,7 +64,7 @@ DOM 노드의 크기 혹은 위치가 변경되면, 하위 노드나 상위 노�
 
 ~~Reflow 예시 그림~~
 
-위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint와 layout이 반복적으로 발생하는 것을 볼 수 있습니다.
+위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint와 layout이 반복적으로 발생하는 것을 볼 수 있습니다. [/example/browser/reflow-repaint/reflow.html](/example/browser/reflow-repaint/reflow.html){: target="_blank" }에서 위의 코드의 실행 결과를 확인 할 수 있습니다.
 
 ## Reflow가 발생하는 경우
 - DOM 노드의 추가, 제거
@@ -103,14 +103,18 @@ reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠
     <div class="reflow">
       <div>
         ...
-        <div></div>
+        <div>
+        </div>
         ...
       </div>
     </div>
   </body>
 </html>
 ```
+
 ~~최상위 노드에서 reflow 발생시~~
+
+[/example/browser/reflow-repaint/reflow_1-1.html](/example/browser/reflow-repaint/reflow_1-1.html){: target="_blank" }
 
 ```html
 <html>
@@ -132,19 +136,73 @@ reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠
     <div>
       <div>
         ...
-        <div class="reflow"></div>
+        <div class="reflow">
+        </div>
         ...
       </div>
     </div>
   </body>
 </html>
 ```
+
 ~~최하위 노드에서 reflow 발생시~~
 
+[/example/browser/reflow-repaint/reflow_1-2.html](/example/browser/reflow-repaint/reflow_1-2.html){: target="_blank" }
 
 ### 2. 인라인 스타일을 사용하지 않는다.
+```html
+<html>
+  <body>
+    <div class="reflow" style="width: 100px; height: 100px; background-color: orange; transition-duration: 2s;">
+      <div style="width: 100%; height: 100%;">
+        ...
+        <div style="width: 100%; height: 100%;">
+        </div>
+        ...
+      </div>
+    </div>
+  </body>
+</html>
+```
+
+~~Load 타임스탬프 차이~~
+
+[/example/browser/reflow-repaint/reflow_2.html](/example/browser/reflow-repaint/reflow_2.html){: target="_blank" }
 
 ### 3. 애니메이션 효과가 있는 노드는 `position:fixed` 또는 `position:absolute`로 지정한다.
+```html
+<html>
+  <head>
+    <style>
+      .reflow {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        transition-duration: 2s;
+      }
+      .reflow div {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        ...
+        <div class="reflow">
+        </div>
+        ...
+      </div>
+    </div>
+  </body>
+</html>
+```
+
+[/example/browser/reflow-repaint/reflow_3.html](/example/browser/reflow-repaint/reflow_3.html){: target="_blank" }
+
+~~reflow_1-2와 비교~~
 
 ### 4. 퀄리티와 퍼포먼스 간의 타협점을 찾는다.
 
