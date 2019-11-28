@@ -108,6 +108,11 @@ reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠
         ...
       </div>
     </div>
+    <script>
+      document.querySelector('.reflow').addEventListener('click', function (event) {
+        document.querySelector('.reflow').style.width = '200px'
+      })
+    </script>
   </body>
 </html>
 ```
@@ -141,6 +146,11 @@ reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠
         ...
       </div>
     </div>
+    <script>
+      document.querySelector('.reflow').addEventListener('click', function (event) {
+        document.querySelector('.reflow').style.width = '200px'
+      })
+    </script>
   </body>
 </html>
 ```
@@ -161,6 +171,11 @@ reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠
         ...
       </div>
     </div>
+    <script>
+      document.querySelector('.reflow').addEventListener('click', function (event) {
+        document.querySelector('.reflow').style.width = '200px'
+      })
+    </script>
   </body>
 </html>
 ```
@@ -196,6 +211,11 @@ reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠
         ...
       </div>
     </div>
+    <script>
+      document.querySelector('.reflow').addEventListener('click', function (event) {
+        document.querySelector('.reflow').style.width = '200px'
+      })
+    </script>
   </body>
 </html>
 ```
@@ -207,6 +227,7 @@ reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠
 ### 4. 퀄리티와 퍼포먼스 간의 타협점을 찾는다.
 
 ### 5. `<table>` 레이아웃을 피한다.
+~~테스트 방법 못찾음~~
 
 ### 6. IE의 경우, CSS에서 JS 표현식을 사용하지 않는다.
 
