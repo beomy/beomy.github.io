@@ -8,8 +8,15 @@ category: [tech, browser]
 
 이번 포스트에서는 화면이 수정 될 때, 렌더링 과정을 최적화 하는 방법에 대해 이야기 할 것입니다. 화면을 다시 그리는 과정은 크게 Reflow(Layout 이라고도 함)와 Repaint(Redraw 라고도 함) 두 개로 나눌 수 있습니다.
 
-# Repaint(Redraw)
-Repaint는 화면에 변화가 있을 때 화면을 그리는 과정입니다. 당연히 화면의 구조가 변경 될 때 뿐만 아니라 DOM 노드의 배경색 변경 등 구조가 변경 되지않는 화면의 업데이트 될 때에도 발생합니다. 예를 들면 `opacity`, `background-color`, `visibility`, `outline` 등의 스타일 변경시 Repaint가 동작합니다.
+- Reflow는 화면의 구조(Layout)이 변경 되었을 때 동작하는 과정입니다.
+- Repaint는 화면의 변화가 있을 때 화면을 다시 그리는 동작을 하는 과정입니다.
+
+# Repaint (Redraw)
+Repaint는 화면에 변화가 있을 때 화면을 그리는 과정입니다.
+
+화면의 구조가 변경되었을 때에는 Reflow 과정을 거쳐 화면 구조를 다시 계산 한후 Repaint 과정을 통해 화면을 다시 그립니다. 즉 화면의 구조가 변경 되었을 때에는 Reflow와 Repaint 모두 발생합니다.
+
+화면의 구조가 변경되지 않은 화면의 변화만 있을 경우 Repaint 과정을 통해 화면을 다시 그립니다. 즉 화면의 구조가 변경되지 않은 화면의 변화만 있는 경우 Repaint만 발생합니다. 예를 들면 `opacity`, `background-color`, `visibility`, `outline` 등의 스타일 변경시에는 Repaint만 동작합니다.
 
 ```html
 <html>
@@ -34,12 +41,12 @@ Repaint는 화면에 변화가 있을 때 화면을 그리는 과정입니다. �
 
 ~~Repaint 예시 그림~~
 
-위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint이 주기적으로 발생하는 것을 볼 수 있습니다. [/example/browser/reflow-repaint/repaint.html](/example/browser/reflow-repaint/repaint.html){: target="_blank" }에서 위의 코드의 실행 결과를 확인 할 수 있습니다.
+위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint이 주기적으로 발생하는 것을 볼 수 있습니다. [/example/browser/reflow-repaint/repaint.html](/example/browser/reflow-repaint/repaint.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
 
-# Reflow(Layout)
-Reflow는 DOM 노드의 위치와 길이 등을 다시 계산하여 화면 구조(Layout)이 변경되었을 때, 렌더 트리를 재생성하는 과정입니다. (렌더 트리에 관한 내용은 [[Browser] 브라우저 렌더링](/tech/browser/browser-rendering/#렌더-트리-구축) 참고 바랍니다.)
+# Reflow (Layout)
+Reflow는 화면 구조(Layout)이 변경되었을 때, 뷰포트 내에서 렌더 트리의 노드의 정확한 위치와 크기를 계산하는 과정을 Reflow(혹은 Layout)이라고 합니다. ([렌더 트리](/tech/browser/browser-rendering/#렌더-트리-구축)와 [Layout](/tech/browser/browser-rendering/#layout)을 참고 바랍니다.)
 
-DOM 노드의 크기 혹은 위치가 변경되면, 하위 노드나 상위 노드까지 영향을 미칠 수 있습니다.
+DOM 노드의 크기 또는 위치가 변경되면, 하위 노드와 상위 노드까지 영향을 미칠 수 있습니다.
 
 ```html
 <html>
@@ -64,7 +71,7 @@ DOM 노드의 크기 혹은 위치가 변경되면, 하위 노드나 상위 노�
 
 ~~Reflow 예시 그림~~
 
-위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint와 layout이 반복적으로 발생하는 것을 볼 수 있습니다. [/example/browser/reflow-repaint/reflow.html](/example/browser/reflow-repaint/reflow.html){: target="_blank" }에서 위의 코드의 실행 결과를 확인 할 수 있습니다.
+위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint와 layout이 반복적으로 발생하는 것을 볼 수 있습니다. [/example/browser/reflow-repaint/reflow.html](/example/browser/reflow-repaint/reflow.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
 
 ## Reflow가 발생하는 경우
 - DOM 노드의 추가, 제거
@@ -77,7 +84,10 @@ DOM 노드의 크기 혹은 위치가 변경되면, 하위 노드나 상위 노�
 - 페이지 초기 렌더링
 - 윈도우 리사이징
 
+간단하게 화면의 구조(Layout)가 변경되었다면 Reflow가 발생한다고 이해하면 됩니다.
+
 ## 최적화 방법
+Repaint는 변경 된 화면을 실제 화면에 반영하는 과정으로 최적화 할 수 있는 방법은 화면 변화를 최소화 할 수 있는 방법 밖에 없는 것으로 
 reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠습니다.
 
 ### 1. 스타일을 변경할 경우 가장 하위 노드의 클래스를 변경한다.
@@ -241,6 +251,8 @@ reflow를 최적화 할 수 있는 11가지 방법을 이야기 하도록 하겠
 ### 10. JavaScript로 DOM을 추가할 경우 DOM Fragment를 사용한다.
 
 ### 11. 캐시를 활용한다.
+
+# 고찰
 
 # 요약
 
