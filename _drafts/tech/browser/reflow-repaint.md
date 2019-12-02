@@ -39,9 +39,9 @@ Repaint는 화면에 변화가 있을 때 화면을 그리는 과정입니다.
 </html>
 ```
 
-~~Repaint 예시 그림~~
+![Repaint 예시 그림](/assets/img/posts/browser/repaint.png)
 
-위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint이 주기적으로 발생하는 것을 볼 수 있습니다. [/example/browser/reflow-repaint/repaint.html](/example/browser/reflow-repaint/repaint.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
+위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 paint가 주기적으로 발생하는 것을 볼 수 있습니다. [repaint.html](/example/browser/reflow-repaint/repaint.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
 
 # Reflow (Layout)
 Reflow는 화면 구조(Layout)이 변경되었을 때, 뷰포트 내에서 렌더 트리의 노드의 정확한 위치와 크기를 계산하는 과정을 Reflow(혹은 Layout)이라고 합니다. ([렌더 트리](/tech/browser/browser-rendering/#렌더-트리-구축)와 [Layout](/tech/browser/browser-rendering/#layout)을 참고 바랍니다.)
@@ -69,9 +69,9 @@ DOM 노드의 크기 또는 위치가 변경되면, 하위 노드와 상위 노�
 </html>
 ```
 
-~~Reflow 예시 그림~~
+![Reflow 예시 그림](/assets/img/posts/browser/reflow.png)
 
-위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint와 layout이 반복적으로 발생하는 것을 볼 수 있습니다. [/example/browser/reflow-repaint/reflow.html](/example/browser/reflow-repaint/reflow.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
+위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 repaint와 layout이 반복적으로 발생하는 것을 볼 수 있습니다. [reflow.html](/example/browser/reflow-repaint/reflow.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
 
 ## Reflow가 발생하는 경우
 - DOM 노드의 추가, 제거
@@ -126,9 +126,9 @@ Repaint는 변경 된 화면을 실제 화면에 반영하는 과정으로 최�
 </html>
 ```
 
-~~최상위 노드에서 reflow 발생시~~
+![최상위 노드에서 reflow 발생시](/assets/img/posts/browser/reflow_1-1.png)
 
-[/example/browser/reflow-repaint/reflow_1-1.html](/example/browser/reflow-repaint/reflow_1-1.html){: target="_blank" }
+위의 그림은 위의 코드(최상위 노드에서 reflow가 발생 할 경우)를 Performance 체크한 그림입니다. Layout에 148.3ms 시간이 소요된 것을 확인 할 수 있습니다. [reflow_1-1.html](/example/browser/reflow-repaint/reflow_1-1.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
 
 ```html
 <html>
@@ -164,9 +164,11 @@ Repaint는 변경 된 화면을 실제 화면에 반영하는 과정으로 최�
 </html>
 ```
 
-~~최하위 노드에서 reflow 발생시~~
+![최하위 노드에서 reflow 발생시](/assets/img/posts/browser/reflow_1-2.png)
 
-[/example/browser/reflow-repaint/reflow_1-2.html](/example/browser/reflow-repaint/reflow_1-2.html){: target="_blank" }
+위의 그림은 위의 코드(최하위 노드에서 reflow가 발생 할 경우)를 Performance 체크한 그림입니다. Layout에 87.8ms 시간이 소요된 것을 확인 할 수 있습니다. [reflow_1-2.html](/example/browser/reflow-repaint/reflow_1-2.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
+
+최상위 노드에서 reflow가 발생할 경우는 148.3ms, 최하위 노드에서 reflow가 발생할 경우는 87.8ms로 최하위 노드에서 reflow가 발생할 경우 더 적은 reflow 시간이 소모되는 것을 확인 할 수 있습니다.
 
 ### 2. 인라인 스타일을 사용하지 않는다.
 인라인 스타일은 HTML이 다운로드 될 때, 레이아웃에 영향을 미쳐 추가 리플로우를 발생시킵니다. 또한 관심사 분리가 재대로 이루어지지 않으면 앞으로 유지보수가 힘들어 질 수 있기 때문에 앞으로의 유지보수를 위해서라도 인라인 스타일은 사용하지 않는 것이 좋습니다.
@@ -191,9 +193,15 @@ Repaint는 변경 된 화면을 실제 화면에 반영하는 과정으로 최�
 </html>
 ```
 
-~~Load 타임스탬프 차이~~
+![Fast 3G 인라인 스타일](/assets/img/posts/browser/reflow_2.png)
 
-[/example/browser/reflow-repaint/reflow_2.html](/example/browser/reflow-repaint/reflow_2.html){: target="_blank" }
+위의 그림은 위의 코드(인라인 스타일을 사용한)를 Fast 3G로 Newwork를 확인한 그림입니다. [reflow_2.html](/example/browser/reflow-repaint/reflow_2.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
+
+![Fast 3G 인라인 스타일 사용 안함](/assets/img/posts/browser/reflow_1-1_network.png)
+
+위의 그림은 1번에서 살펴 본 [reflow_1-1.html](/example/browser/reflow-repaint/reflow_1-1.html){: target="_blank" }을 Fast 3G로 Network를 확인한 그림입니다.
+
+위의 두 사진에서 빨간 글씨로 씌여진 Load 타임 스탬프를 비교해보면, 인라인 스타일을 사용한 경우는 1.02s, 인라인 스타일을 사용하지 않는 경우는 853ms로 인라인 스타일을 사용하지 않는 경우 더 빠르게 DOM이 그려지는 것을 확인 할 수 있습니다.
 
 ### 3. 애니메이션 효과가 있는 노드는 `position:fixed` 또는 `position:absolute`로 지정한다.
 ```html
@@ -231,7 +239,9 @@ Repaint는 변경 된 화면을 실제 화면에 반영하는 과정으로 최�
 </html>
 ```
 
-[/example/browser/reflow-repaint/reflow_3.html](/example/browser/reflow-repaint/reflow_3.html){: target="_blank" }
+![position 지정](/assets/img/posts/browser/reflow_3.png)
+
+[reflow_3.html](/example/browser/reflow-repaint/reflow_3.html){: target="_blank" }
 
 ~~reflow_1-2와 비교~~
 
@@ -254,6 +264,7 @@ Repaint는 변경 된 화면을 실제 화면에 반영하는 과정으로 최�
 ### 11. 캐시를 활용한다.
 
 # 고찰
+2. 인라인 스타일을 사용할 경우 DOM의 크기가 커진다. 둘의 속도 차이는 DOM을 다운 받는 차이가 아닐까라는 생각이 듬. 과연 두 속도 차이의 의미를 가질 만큼 큰가. 이 둘의 속도 차이의 원인이 DOM의 크기 차이도 있는 것으로 예상된다.
 
 # 요약
 
