@@ -204,6 +204,10 @@ Repaint는 변경 된 화면을 실제 화면에 반영하는 과정으로 최�
 위의 두 사진에서 빨간 글씨로 씌여진 Load 타임 스탬프를 비교해보면, 인라인 스타일을 사용한 경우는 1.02s, 인라인 스타일을 사용하지 않는 경우는 853ms로 인라인 스타일을 사용하지 않는 경우 더 빠르게 DOM이 그려지는 것을 확인 할 수 있습니다.
 
 ### 3. 애니메이션 효과가 있는 노드는 `position:fixed` 또는 `position:absolute`로 지정한다.
+애니메이션 효과는 많은 Reflow 비용이 발생하게 됩니다. `position` 속성을 `fixed` 또는 `absolute`의 값을 줘서, 지정된 노드를 전체 노드에서 분리시켜 해당 노드만 Reflow가 발생하도록 제한할 수 있습니다.
+
+애니메이션 효과를 줘야 하는 노드에 `position` 속성이 적용되지 않았다면 애니메이션 시작 시 `position` 속성 값을 `fixed` 또는 `absolute`로 변경하였다가 애니메이션 종료 후 다시 원복 시키는 방법을 사용할 수 있습니다.
+
 ```html
 <html>
   <head>
@@ -241,9 +245,11 @@ Repaint는 변경 된 화면을 실제 화면에 반영하는 과정으로 최�
 
 ![position 지정](/assets/img/posts/browser/reflow_3.png)
 
-[reflow_3.html](/example/browser/reflow-repaint/reflow_3.html){: target="_blank" }
+위의 그림은 애니메이션 효과가 들어간 노드에 `position: absolute`이 주어진 경우 Performance를 측정한 결과입니다. [reflow_3.html](/example/browser/reflow-repaint/reflow_3.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다. 위의 그림을 보면 Layout에 13.4ms가 사용 된 것을 볼수 있습니다.
 
-~~reflow_1-2와 비교~~
+![최하위 노드에서 reflow 발생시](/assets/img/posts/browser/reflow_1-2.png)
+
+반면, 위의 그림을 보면 [reflow_1-2.html](/example/browser/reflow-repaint/reflow_1-2.html){: target="_blank" } 예제와 같이 `position`이 지정되어 있지 않을 경우에는 Layout에 87.8ms이 사용된 것을 볼 수 있습니다.
 
 ### 4. 퀄리티와 퍼포먼스 간의 타협점을 찾는다.
 
