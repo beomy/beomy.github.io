@@ -446,7 +446,7 @@ for (var i = 0; i < div.length; i++) {
 </html>
 ```
 
-위의 코드는 스타일을 각각 변경할 경우, class를 사용할 경우, `cssText`를 사용할 경우의 Performance 차이를 살펴보기 위한 예제입니다. [reflow_11.html](/example/browser/reflow-repaint/reflow_11.html){: target="_blank" }에서 확인 할 수 있습니다.
+위의 코드는 스타일을 각각 변경할 경우, class를 사용할 경우, `cssText`를 사용할 경우의 Performance 차이를 살펴보기 위한 예제입니다. [reflow_9.html](/example/browser/reflow-repaint/reflow_9.html){: target="_blank" }에서 확인 할 수 있습니다.
 
 ![각각 변경할 경우](/assets/img/posts/browser/reflow_11-1.png)
 
@@ -462,17 +462,129 @@ for (var i = 0; i < div.length; i++) {
 
 3가지를 비교하면 class를 사용할 경우 Layout에 가장 적은 시간이 사용된 것을 볼 수 있습니다. 스타일을 변경해야 할 경우 class를 사용하는 것이 성능에 가장 좋은 것으로 판단됩니다.
 
-## 10. JavaScript로 DOM을 추가할 경우 DOM Fragment를 사용한다.
+## 10. DOM 사용을 최소화한다.
+Reflow 비용을 줄이기 위해서 DOM 노드를 사용을 최소화 해야 합니다. 그 방법 중 하나가 DOM Fragment를 사용하여 DOM을 추가할 때 DOM 접근을 최소화 하는 방법입니다.
+
+```js
+const frag = document.createDocumentFragment();
+const ul = frag.appendChild(document.createElement('ul'));
+
+for (let i = 1; i <= 3; i++) {
+  li = ul.appendChild(document.createElement('li'));
+  li.textContent = `item ${ i }`;
+}
+
+document.body.appendChild(frag);
+```
+
+위의 코드와 같이 `createDocumentFragment`를 사용하여 한번에 DOM을 추가하여 DOM 접근을 최소화 할 수 있습니다. `createDocumentFragment`를 사용한 예제는 [reflow_10.html](/example/browser/reflow-repaint/reflow_10.html){: target="_blank" }에서 확인 할 수 있습니다.
 
 ## 11. 캐시를 활용한다.
+브라우저는 레이아웃 변경을 큐에 저장했다가 한번에 실행하여 Reflow를 최소화 합니다. 하지만 `offset`, `scrollTop`과 같은 계산된 스타일 정보를 요청할 때마다 정확한 정보를 제공하기 위해 큐를 비우고 모든 변경사항을 적용합니다.
 
-# 고찰
-크롬 버전 78.0.3904.108에서 테스트 하였다.
+```js
+for (let i = 0; i < len; i++) {
+  el.style.top = `${ el.offsetTop + 10 }px`;
+  el.style.left = `${ el.offsetLeft + 10 }px`;
+}
+// Bad practice
 
-2. 인라인 스타일을 사용할 경우 DOM의 크기가 커진다. 둘의 속도 차이는 DOM을 다운 받는 차이가 아닐까라는 생각이 듬. 과연 두 속도 차이의 의미를 가질 만큼 큰가. 이 둘의 속도 차이의 원인이 DOM의 크기 차이도 있는 것으로 예상된다.
-11. cssText를 사용한 것과, css를 각각 입력하는 결과가 동일하다. 단순 인라인으로 스타일을 사용한 것과 같다고 볼 수 있을 것 같다.
+let top = el.offsetTop, left = el.offsetLeft, elStyle = el.style;
+
+for (let i = 0; i < len; i++) {
+  top += 10;
+  left += 10;
+  elStyle.top = `${ top }px`;
+  elStyle.left = `${ left }px`;
+}
+// Good practice
+```
+
+이런 낭비를 해결하기 위해서 위의 코드와 같이 스타일 정보를 변수에 저장하여 `offset`, `scrollTop`등의 값 요청을 최소화해야 합니다.
+
+## 고찰
+Reflow 최적화 테스트는 크롬 버전 78.0.3904.108에서 이루어졌습니다.
+
+### 브라우저 성능 향상
+현재 브라우저 성능이 많이 좋아졌는지 예상과 다른 테스트 결과를 나타낸 경우가 있었습니다.
+
+#### 2. 인라인스타일을 사용하지 않는다.
+인라인 스타일를 사용하는 경우와 사용하지 않는 경우 이 둘의 차이는 어느 정도 존재했습니다. 하지만 고민한 점은 인라인 스타일을 사용하면 DOM의 크기가 거진다는 부분입니다. 이 둘의 속도 차이는 DOM을 다운 받는 차이가 아닐까라는 생각이 들었습니다. 두 속도 차이가 Reflow에 의한 차이보다는 DOM의 크기 차이에 영향이 클 것 같다는 생각이 들었습니다.
+
+#### 5. `<table>` 레이아웃을 피한다.
+테스트를 해본 결과 렌더링 성능이 좋아졌는지 `table-layout`의 값을 `fixed`로 지정할 때와 지정하지 않을 때의 렌더링 속도 차이를 발견하지 못했습니다.
+
+#### 11. 캐시를 활용한다.
+캐시를 사용할 때와 사용하지 않을 때 모두 매우 빠른 속도로 동작하여 정확한 테스트를 하지 못했습니다. 테스트 예제는 [reflow_11.html](/example/browser/reflow-repaint/reflow_11.html){: target="_blank" }에서 확인 할 수 있습니다.
+
+### 렌터 큐의 존재
+브라우저는 레이아웃 변경을 큐에 저장했다가 1초에 60번의 속도로 큐에 있는 내용을 화면에 반영합니다. 즉 1초에 60프레임(60fps)의 속도로 화면을 다시 그립니다([렌더 큐](/tech/javascript/javascript-runtime/#부록-렌더-큐) 참고). 브라우저에 렌터 큐가 있기 때문에 정확히 테스트 되지 못한 부분이 있었습니다.
+
+#### 9. 클래스를 혹은 `cssText` 사용하여 한번에 스타일을 변경한다.
+`cssText`를 사용할 때와 css를 각각 입력할 경우의 Layout에 사용된 시간이 의미 있을 만큼 크지 않았습니다. 오히려 `cssText`를 사용할 경우 더 느리게 측정되는 경우도 있었습니다. 원인을 고민해 보았는데, css를 각각 변경하였다 하더래도 렌더 큐가 있기 때문에 한꺼번에 화면에 반영되어 두 경우가 동일한 것으로 추측했습니다.
+
+`cssText`를 사용할 경우와 class와의 차이는 어느 정도 존재했는데, 이 이유는 `cssText`를 사용하면 인라인 스타일로 적용되기 때문에 인라인 스타일을 파싱하고 화면에 적용하는데에 차이가 있는 것으로 추측됩니다.
+
+#### 10. DOM 사용을 최소화한다.
+DOM Fragment를 사용한다고 Layout 속도가 개선되지 않았습니다.
+
+```html
+<html>
+  <body>
+    <button id="btn-fragment">Fragment 사용</button><button id="btn-none-fragment">Fragment 미사용</button>
+    <div class="reflow"></div>
+    <script>
+      document.querySelector('#btn-fragment').addEventListener('click', function () {
+        const frag = document.createDocumentFragment();
+        const ul = frag.appendChild(document.createElement('ul'));
+
+        for (let i = 1; i <= 10000; i++) {
+          li = ul.appendChild(document.createElement('li'));
+          li.textContent = `item ${ i }`;
+        }
+
+        document.querySelector('.reflow').appendChild(frag);
+      })
+      document.querySelector('#btn-none-fragment').addEventListener('click', function () {
+        document.querySelector('.reflow').appendChild(document.createElement('ul'));
+
+        for (let i = 1; i <= 10000; i++) {
+          li = document.querySelector('.reflow ul').appendChild(document.createElement('li'));
+          li.textContent = `item ${ i }`;
+        }
+      })
+    </script>
+  </body>
+</html>
+```
+
+![DOM Fragment 사용](/assets/img/posts/browser/reflow_10-1.png)
+
+위의 그림은 위의 코드에서 `<button id="btn-fragment">`를 클릭하여 Performance를 확인한 그림입니다.
+
+![DOM Fragment 미사용](/assets/img/posts/browser/reflow_10-2.png)
+
+위의 그림은 위의 코드에서 `<button id="btn-none-fragment">`를 클릭하여 Performance를 확인한 그림입니다. [reflow_10.html](/example/browser/reflow-repaint/reflow_10.html){: target="_blank" }에서 확인 할 수 있습니다.
+
+두 경우 각각 203.5ms와 199.7ms로 Layout에 사용된 시간은 의미가 없을 정도로 미세합니다. 이 두 차이도 렌더 큐의 역할 때문인 것 같습니다. DOM에 각각 추가 하더라고 동시에 화면에 반영되기 때문으로 추측됩니다.
 
 # 요약
+- Repaint(Redraw)는 화면에 변화가 있을 때 화면을 그리는 과정입니다.
+- Reflow(Layout)는 뷰포트 내에서 렌더 트리의 노드의 정확한 위치와 크기를 계산하는 과정입니다.
+- Reflow가 발생하는 경우는 화면의 구조가 바뀌었을 경우입니다.
+- Repaint가 발생하는 경우는 화면이 변경 되는 모든 경우입니다.
+- Reflow를 최적화 하는 방법은 11가지 정도 이야기할 수 있습니다.
+  1. 스타일을 변경할 경우 가장 하위 노드의 클래스를 변경한다.
+  2. 인라인 스타일을 사용하지 않는다.
+  3. 애니메이션이 있는 노드는 `position`을 `fixed` 또는 `absolute`로 지정한다.
+  4. 퀄리티, 퍼포먼스의 타협점을 찾는다.
+  5. `<table>` 레이아웃을 피한다.
+  6. IE의 CSS 표현식을 사용하지 않는다.
+  7. CSS 하위 선택자를 최소화 한다.
+  8. 숨겨진 노드의 스타일을 변경한다.
+  9. 클래스를 혹은 `cssText` 사용하여 한번에 스타일을 변경한다.
+  10. DOM 사용을 최소화한다.
+  11. 캐시를 활용한다.
 
 #### 참고
 - [https://github.com/wonism/TIL/blob/master/front-end/browser/reflow-repaint.md](https://github.com/wonism/TIL/blob/master/front-end/browser/reflow-repaint.md)
