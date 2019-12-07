@@ -18,13 +18,30 @@ category: [tech, browser]
 ## 렌더링 순서
 ![script 렌더링 순서](/assets/img/posts/browser/script_parsing.png)
 
-위의 그림과 같이 스크립트를 가져와서 실행이 끝날 때까지 HTML 파싱이 중단되어 화면이 출력되는 시간이 길어집니다.
+위의 그림과 같이 기본적으로는 스크립트를 가져와서 실행이 끝날 때까지 HTML 파싱이 중단되어 화면이 출력되는 시간이 길어집니다.
 
 # `<script ... async>` 사용
+`async` 속성을 추가하면 브라우저에게 스크립트 리소스가 비동기적으로 실행되어야 한다는 것을 알려줍니다.
 
 ## 렌더링 순서
+![script async 렌더링 순서](/assets/img/posts/browser/script_async_parsing.png)
+
+위의 그림과 같이 `async` 속성을 추가할 경우, 스크립트 리소스를 다운 받는 동안에는 파싱이 중단되지 않습니다. 다운로드가 완료 되면 스크립트가 실행됩니다.
 
 ## 특징
+스크립트의 실행 순서는 다운로드가 완료된 시점에 결정됩니다. 예를 들어,
+
+```html
+<script src="a.js" async>
+<script src="b.js" async>
+<script src="c.js" async>
+```
+
+위의 코드와 같이 `a.js`, `b.js`, `c.js` 순서로 정의 했다 하더라고, 다운로드가 완료 된 시점에 스크립트가 실행되기 때문에 `a.js`, `b.js`, `c.js` 순서로 스크립트가 실행된다는 것을 보장할 수 없습니다.
+
+`a.js`를 다운 받는데 3초, `b.js`를 다운 받는데 2초, `c.js`를 다운 받는데 1초가 걸린다면, `c.js`, `b.js`, `a.js` 순서로 스크립트가 실행됩니다.
+
+정의한 순서로 스크립트를 실행하는 것을 보장하기 위해 HTML5에서 `async=false`가 추가 되었습니다. `async=false`로 지정하면 정의 순서대로 스크립트가 실행됩니다. `async`속성의 기본값은 `true`입니다.
 
 ## 지원 브라우저
 
