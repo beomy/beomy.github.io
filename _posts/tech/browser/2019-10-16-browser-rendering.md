@@ -141,7 +141,7 @@ HTML과 CSS, 자바스크립트를 파싱하여 렌더 트리를 형성하고 �
 `<script>` 태그에 `defer` 속성을 주면, 문서 파싱은 중단되지 않고 문서 파싱이 완료된 이후에 자바스크립트가 실행됩니다.
 HTML5에서 스크립트를 비동기(`async`)로 처리하는 속성이 추가되었습니다. 자바스크립트가 별도의 맥락에 의해 파싱되고 실행된다.
 
-[defer와 async 차이](https://blog.asamaru.net/2017/05/04/script-async-defer/)에서 `defer` 속성과 `async` 속성의 차이를 확인 하실 수 있습니다.
+[async와 defer](/tech/browser/async-defer/)에서 `defer` 속성과 `async` 속성의 차이를 확인 하실 수 있습니다.
 
 ### CSS
 CSS는 렌더링 차단 리소스(render blocking resource)입니다. CSS는 렌더링을 할 때 반드시 필요한 리소스이기 때문에 브라우저는 빠르게 CSS를 다운 받는 것이 좋습니다. `<head>` 태그 안에서 정의하여 빠르게 리소스를 받을 수 있도록 해야 합니다.
