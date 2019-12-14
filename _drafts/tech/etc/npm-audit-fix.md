@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[ETC] *.map 파일이란?'
+title: '[ETC] npm audit이란?'
 featured-img: javascript/js.png
 category: [tech, etc]
 ---
