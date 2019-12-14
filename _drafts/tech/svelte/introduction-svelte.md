@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Svelte] Svelte 란?'
+title: '[Svelte] Svelte 소개'
 featured-img: javascript/js.png
 category: [tech, svelte]
 ---
