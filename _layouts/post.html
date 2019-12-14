@@ -39,7 +39,11 @@ layout: compress
     </div>
   </div>
 
+  {% if page.height-img %}
+  <div class="lazyload" style="height: {{page.height-img}};background-repeat: no-repeat;background-position: center;background-size: contain;" data-bg="{{site.url}}/assets/img/posts/{{page.featured-img}}"></div>
+  {% else %}
   <div class="lazyload" style="height: 300px;background-repeat: no-repeat;background-position: center;background-size: contain;" data-bg="{{site.url}}/assets/img/posts/{{page.featured-img}}"></div>
+  {% endif %}
 
   <main class="site__content">
     <div class="container">        
