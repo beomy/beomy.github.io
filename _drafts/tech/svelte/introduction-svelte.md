@@ -1,7 +1,8 @@
 ---
 layout: post
 title: '[Svelte] Svelte 소개'
-featured-img: javascript/js.png
+featured-img: svelte/svelte-log.svg
+height-img: 200px
 category: [tech, svelte]
 ---
 {% include toc.html %}
