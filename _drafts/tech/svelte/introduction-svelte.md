@@ -13,6 +13,8 @@ category: [tech, svelte]
 
 # Truly reactive
 
+# Svelte 선택시 주의사항
+
 - [https://velog.io/@ashnamuh/hello-svelte](https://velog.io/@ashnamuh/hello-svelte)
 - [https://heropy.blog/2019/09/29/svelte/](https://heropy.blog/2019/09/29/svelte/)
 - [https://ui.toast.com/weekly-pick/ko_20191002/](https://ui.toast.com/weekly-pick/ko_20191002/)
