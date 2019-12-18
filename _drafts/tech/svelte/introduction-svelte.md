@@ -15,6 +15,12 @@ category: [tech, svelte]
 
 # Svelte 선택시 주의사항
 
+## `<script>`로 Svelte 사용
+
+## 구버전 브라우저 지원
+
+## Svelte 상태계
+
 - [https://velog.io/@ashnamuh/hello-svelte](https://velog.io/@ashnamuh/hello-svelte)
 - [https://heropy.blog/2019/09/29/svelte/](https://heropy.blog/2019/09/29/svelte/)
 - [https://ui.toast.com/weekly-pick/ko_20191002/](https://ui.toast.com/weekly-pick/ko_20191002/)
