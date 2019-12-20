@@ -28,3 +28,4 @@ category: [tech, svelte]
 - [https://svelte.dev/blog/write-less-code](https://svelte.dev/blog/write-less-code)
 - [https://svelte.dev/blog/virtual-dom-is-pure-overhead](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
 - [https://svelte.dev/blog/svelte-3-rethinking-reactivity](https://svelte.dev/blog/svelte-3-rethinking-reactivity)
+- [https://github.com/sveltejs/svelte/issues/558](https://github.com/sveltejs/svelte/issues/558)
