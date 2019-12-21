@@ -13,7 +13,7 @@ category: [tech, svelte]
 
 # Truly reactive
 
-# Svelte 선택시 주의사항
+# Svelte 선택시 유의사항
 
 ## `<script>`로 Svelte 사용
 
