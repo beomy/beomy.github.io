@@ -15,9 +15,9 @@ category: [tech, svelte]
 
 # Svelte 선택시 유의사항
 
-## `<script>`로 Svelte 사용
+## `<script>`로 Svelte 사용 불가능
 
-## 구버전 브라우저 지원
+## 브라우저 지원 체크
 
 ## Svelte 상태계
 
