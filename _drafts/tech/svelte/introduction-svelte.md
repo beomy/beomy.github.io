@@ -21,6 +21,8 @@ category: [tech, svelte]
 
 ## Svelte 상태계
 
+### router 라이브러리
+
 #### 참고
 - [https://velog.io/@ashnamuh/hello-svelte](https://velog.io/@ashnamuh/hello-svelte)
 - [https://heropy.blog/2019/09/29/svelte/](https://heropy.blog/2019/09/29/svelte/)
