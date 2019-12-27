@@ -48,16 +48,11 @@ input[type="range"] {
 }
 
 button {
-	color: #333;
 	background-color: #f4f4f4;
 	outline: none;
 }
 
-button:disabled {
-	color: #999;
-}
-
-button:not(:disabled):active {
+button:active {
 	background-color: #ddd;
 }
 
