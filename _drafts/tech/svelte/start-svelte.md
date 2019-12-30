@@ -9,5 +9,7 @@ category: [tech, svelte]
 
 svelte + webpack + sass + typescript
 
+VS Code에서 typescript, sass 에러를 없애려면 svelte.config.js를 빼야 함
+
 #### 참고
 - [https://www.npmjs.com/package/svelte-preprocess](https://www.npmjs.com/package/svelte-preprocess)
