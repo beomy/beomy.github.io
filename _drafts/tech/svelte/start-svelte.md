@@ -9,5 +9,11 @@ category: [tech, svelte]
 
 svelte + webpack + sass + typescript
 
+# webpack template
+
+# sass 설정
+
+# typescript 설정
+
 #### 참고
 - [https://www.npmjs.com/package/svelte-preprocess](https://www.npmjs.com/package/svelte-preprocess)
