@@ -9,6 +9,13 @@ category: [tech, svelte]
 
 svelte + webpack + sass + typescript
 
+# webpack template
+
+# sass 설정
+
+# typescript 설정
+
+# VS Code 설정
 VS Code에서 typescript, sass 에러를 없애려면 svelte.config.js를 빼야 함
 
 #### 참고
