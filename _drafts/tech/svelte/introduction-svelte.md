@@ -15,7 +15,7 @@ category: [tech, svelte]
 
 # Svelte 선택시 유의사항
 
-## `<script>`로 Svelte 사용 불가능
+## CDN으로 Svelte 사용 불가능
 
 ## 브라우저 지원 체크
 
