@@ -7,11 +7,15 @@ category: [tech, svelte]
 ---
 {% include toc.html %}
 
-# Write less code
+# Svelte 란?
 
-# No Virtual DOM
+# Svelte 특징
 
-# Truly reactive
+## Write less code
+
+## No Virtual DOM
+
+## Truly reactive
 
 # Svelte 선택시 유의사항
 
