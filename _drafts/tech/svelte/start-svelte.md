@@ -56,15 +56,34 @@ npx degit your-name/template my-new-project
 위의 코드와 같이 커스터마이징한 프로젝트 구성으로 손 쉽게 프로젝트를 만들 수 있습니다.
 
 # webpack template
+Svelte는 webpack을 사용하는 템플릿을 제공합니다. webpack 템플릿을 다운로드 하는 방법은,
+
+```bash
+npx degit your-name/template-webpack my-new-project
+```
+
+위의 코드와 같이 webpack 템플릿을 다운로드 할 수 있습니다.
 
 # svelte-preprocess
+Svelte의 `svelte.preprocess`를 사용하면 sass, typescript 등의 전처리기를 사용할 수 있습니다. `svelte-preprocess`는 sass, typescript를 사용할 수 있게 `svelte.preprocess` 설정을 해 놓은 오픈 소스입니다. `svelte-preprocess`를 사용하여 sass와 typescript 설정을 해보도록 하겠습니다.
 
-## sass 설정
+## rollup
 
-## typescript 설정
+### sass 설정
+
+### typescript 설정
+
+## webpack
+
+### sass 설정
+
+### typescript 설정
 
 ## VS Code 설정
 VS Code에서 typescript, sass 에러를 없애려면 svelte.config.js를 빼야 함
+
+# beomy/template
+이거 할까?
 
 # 개선사항
 - `d.ts` 사용방법
@@ -72,3 +91,4 @@ VS Code에서 typescript, sass 에러를 없애려면 svelte.config.js를 빼야
 
 #### 참고
 - [https://www.npmjs.com/package/svelte-preprocess](https://www.npmjs.com/package/svelte-preprocess)
+- [https://svelte.dev/blog/the-easiest-way-to-get-started](https://svelte.dev/blog/the-easiest-way-to-get-started)
