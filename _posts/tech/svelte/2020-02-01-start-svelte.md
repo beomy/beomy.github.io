@@ -278,7 +278,7 @@ npx degit beomy/template-webpack my-svelte-project
 
 ~~방법을 아직 찾지 못했지만~~ 먼저 `d.ts`를 사용하여 커스텀 타입을 만드는 방법을 추가하면 좋겠다는 생각이 들었습니다. 이 이슈는 Svelte가 공식적으로 typescript를 지원하지 않아서 `<script>` 태그 내부 외에는 typescript를 사용하지 못한다는 한계로 발생하는 문제인 듯 보입니다. ([https://www.npmjs.com/package/svelte-preprocess#typescript](https://www.npmjs.com/package/svelte-preprocess#typescript) 참고)
 
-lint와 같은 정적 코드 분석 툴을 사용(혹은 개선) 하면 좋겠다는 생각이 들었습니다. typescript를 사용하면 자동으로 문법 에러를 잡아내는데, `$:` 문법과 같은 Svelte만의 독특한 문법들도 에러로 잡아냅니다.
+Svelte의 템플릿 프로젝트 구조에는 eslint와 같은 정적 코드 분석 툴이 빠져 있습니다. 템플릿 프로젝트에 eslint가 추가되었으면 좋겠다는 생각이 들었습니다.
 
 ![lint 에러](/assets/img/posts/svelte/lint_error.png)
 
