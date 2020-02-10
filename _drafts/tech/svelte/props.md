@@ -8,7 +8,7 @@ category: [tech, svelte]
 {% include toc.html %}
 
 # Props 정의
-상위 컴포넌트의 데이터를 하위 컴포넌트로 전달하는 데이터들을 Properties라고 합니다. 보통 Props를 전달한다고 이야기합니다. Vue.js에서 Props를 전달하는 방법은 아래 코드와 같습니다.
+상위 컴포넌트에서 하위 컴포넌트로 전달되는 데이터들을 Properties라고 합니다. 보통 Props를 전달한다고 이야기합니다. Vue.js에서 Props를 전달하는 방법은 아래 코드와 같습니다.
 
 {% raw %}
 ```html
@@ -63,9 +63,7 @@ Svelte에서는 props 전달을 아래 코드와 같이 할 수 있습니다.
 <Nested answer={42}/>
 ```
 
-간결함을 장점으로 이야기하는 Svelte 코드는 역시 Vue.js로 작성된 코드보다 적은 양의 코드로 동일한 동작을 하는 코드를 작성할 수 있습니다.
-
-위의 Svelte 코드 중 `Nested.svelte` 코드에서 낯선 방법으로 `export` 문법을 사용한 것을 볼 수 있습니다. `export` 문법은 보통 자바스크립트 모듈(module)을 다른 파일에서 사용하기 위해 내보내는 역할을 하는 문법이지만 Svelte에서는 props로 전달받았다는 것을 표시하기 위한 문법으로 사용됩니다. `$` 문법과 동일하게 Svelte에서 사용되는 낯선 문법이지만 적응하는데 어렵지는 않습니다.
+위의 Svelte 코드 중 `Nested.svelte` 코드에서 낯선 방법으로 `export` 문법을 사용한 것을 볼 수 있습니다. `export` 문법은 보통 자바스크립트 모듈(module)을 다른 파일에서 사용하기 위해 내보내는 역할을 하는 문법이지만 Svelte에서는 props로 전달받았다는 것을 표시하기 위한 문법으로 사용됩니다. `$` 문법과 동일하게 Svelte에서 사용되는 낯선 문법이지만 적응하는 것은 어렵지는 않습니다.
 
 # Props 기본값
 하위 컴포넌트에 Props 값이 전달되지 않았을 경우를 대비하여 기본값을 설정할 수도 있습니다. Vue.js에서는 Props 기본 값을 설정하는 방법은 아래 코드와 같습니다.
@@ -102,7 +100,7 @@ Svelte에서는 위의 코드를 아래 코드와 같이 나타낼 수 있습니
 간결하고 직관적입니다. Vue.js와 같이 기본값은 `default`에 정의해야 한다.라고 암기할 필요 없이 평범한 변수에 값을 선언하듯이 사용하면 Props의 기본값을 정의할 수 있습니다.
 
 # Spread Props
-Spread Props는 굳이 한국어로 표현하자면, Props 펼치기(?)로 표현할 수 있을 것 같습니다. Spread Props를 사용하는 이유는 많은 양의 Props를 하위 컴포넌트에 전달해야 할 때, 코드 양을 줄이기 위해 사용합니다. Vue.js에서는 Spread Props를 아래 코드와 같이 사용할 수 있습니다.
+Spread Props는 굳이 한국어로 표현하자면, Props 펼치기(?)로 표현할 수 있을 것 같습니다. Spread Props는 많은 양의 Props를 하위 컴포넌트에 전달해야 할 때, 코드 양을 줄이기 위해 사용합니다. Vue.js에서는 Spread Props를 아래 코드와 같이 사용할 수 있습니다.
 
 {% raw %}
 ```html
@@ -198,7 +196,7 @@ Svelte에서는 위의 코드를 아래 코드와 같이 나타낼 수 있습니
 </p>
 ```
 
-일반적으로 이 방법은 Svelte 최적화하기 어렵기 때문에 권장되지 않습니다.
+이 방법은 Svelte 최적화하기 어렵기 때문에 권장하지 않습니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/declaring-props](https://svelte.dev/tutorial/declaring-props)
