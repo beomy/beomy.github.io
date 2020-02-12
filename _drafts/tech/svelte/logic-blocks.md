@@ -118,6 +118,40 @@ Svelte는 반복문 블록에 내부적으로 [`Map`](https://developer.mozilla.
 API를 다시 호출해서 위의 4가지 과정을 다시 거치게 되더라도 서버에게 응답 받은 결과 값은 동일하기 때문에 화면의 변화는 없을 것입니다. 하지만 key를 객체로 정의 하였다면 객체가 동일한 값을 가지는 객체라도 서로 다른 객체이기 때문에 화면 전체를 다시 그리게 됩니다. 이런 이유로 key는 객체보다는 API 응답 값 중의 유니크한 id가 되는 것이 더 좋습니다.
 
 # await 블록
+많은 웹 어플리케이션에서 비동기 데이터 처리를 합니다. Svelte는 HTML 안에서 직접 비동기 데이터 처리를 할 수 있습니다.
+
+```html
+<script>
+  let promise = getRandomNumber();
+
+  async function getRandomNumber() {
+    const res = await fetch(`tutorial/random-number`);
+    const text = await res.text();
+
+    if (res.ok) {
+      return text;
+    } else {
+      throw new Error(text);
+    }
+  }
+
+  function handleClick() {
+    promise = getRandomNumber();
+  }
+</script>
+
+<button on:click={handleClick}>
+  generate random number
+</button>
+
+{#await promise}
+  <p>...waiting</p>
+{:then number}
+  <p>The number is {number}</p>
+{:catch error}
+  <p style="color: red">{error.message}</p>
+{/await}
+```
 
 #### 참고
 - [https://svelte.dev/tutorial/if-blocks](https://svelte.dev/tutorial/if-blocks)
