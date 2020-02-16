@@ -90,6 +90,8 @@ Svelte는 아래 코드와 같이 이벤트 수식어를 사용할 수 있습니
 </button>
 ```
 
+## 수식어 목록
+
 이벤트 수식어 목록은 아래와 같습니다.
 
 - `preventDefault`: 이벤트 핸들러가 실행 되기 전 `event.preventDefault()`를 호출합니다. 태그의 기본 동작을 막는 이벤트 수식어입니다.
@@ -102,10 +104,90 @@ Svelte는 아래 코드와 같이 이벤트 수식어를 사용할 수 있습니
 위의 이벤트 수식어를 `on:click|once|capture={...}`와 같이 체인(chain)으로 여러개 정의 할 수 도 있습니다.
 
 # 컴포넌트 이벤트
+하위 컴포넌트에서 이벤트를 발생시켜 상위 컴포넌트로 데이터를 전달하는 방법을 알보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 구현할 수 있습니다.
 
-# 이벤트 포워딩
+{% raw %}
+```html
+<!-- Inner.vue -->
+<template>
+  <button @click="sayHello">
+    Click to say hello
+  </button>
+</template>
+<script>
+  export default {
+    methods: {
+      sayHello () {
+        this.$emit('message', {
+          text: 'Hello!'
+        })
+      },
+    }
+  }
+</script>
+```
+{% endraw %}
 
-# 참고
+{% raw %}
+```html
+<!-- App.vue -->
+<template>
+  <inner @message="handleMessage" />
+</template>
+<script>
+  import Innver from './Inner'
+
+  export default {
+    methods: {
+      handleMessage (event) {
+        alert(event.text)
+      }
+    }
+  }
+</script>
+```
+{% endraw %}
+
+Svelte에서는 위의 코드를 아래와 같이 구현할 수 있습니다.
+
+```html
+<!-- Inner.svelte -->
+<script>
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+  function sayHello() {
+    dispatch('message', {
+      text: 'Hello!'
+    });
+  }
+</script>
+
+<button on:click={sayHello}>
+  Click to say hello
+</button>
+```
+
+```html
+<!-- Vue.svelte -->
+<script>
+  import Inner from './Inner.svelte';
+
+  function handleMessage(event) {
+    alert(event.detail.text);
+  }
+</script>
+
+<Inner on:message={handleMessage}/>
+```
+
+## `createEventDispatcher` 호출시 주의 사항
+`createEventDispatcher`는 컴포넌트가 처음 인스턴스화 될 때 선언 되어야 합니다. 예를 들어 `setTimeout`의 콜백 함수에서 `createEventDispatcher`를 호출 하는 것 처럼 나중에 호출할 수 없습니다.
+
+## 이벤트 포워딩
+
+#### 참고
 - [https://svelte.dev/tutorial/dom-events](https://svelte.dev/tutorial/dom-events)
 - [https://svelte.dev/tutorial/inline-handlers](https://svelte.dev/tutorial/inline-handlers)
 - [https://svelte.dev/tutorial/event-modifiers](https://svelte.dev/tutorial/event-modifiers)
