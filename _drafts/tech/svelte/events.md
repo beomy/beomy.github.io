@@ -186,6 +186,77 @@ Svelte에서는 위의 코드를 아래와 같이 구현할 수 있습니다.
 `createEventDispatcher`는 컴포넌트가 처음 인스턴스화 될 때 선언 되어야 합니다. 예를 들어 `setTimeout`의 콜백 함수에서 `createEventDispatcher`를 호출 하는 것 처럼 나중에 호출할 수 없습니다.
 
 ## 이벤트 포워딩
+DOM 이벤트와는 달리 컴포넌트 이벤트는 버블(bubble)되지 않습니다. 버블되지 않는다는 의미는 하위 컴포넌트의 이벤트가 상위의 상위 컴포넌트로 전달되지 않는다는 의미입니다. 의도적으로 상위의 상위 컴포넌트로 이벤드를 전달해야 합니다.
+
+App 컴포넌트와 Outer 컴포넌트, Inner 컴포넌트를 정의하여 Inner 컴포넌트의 이벤트를 App 컴포넌트로 전달하는 방법을 알아보도록 하겠습니다. Vue.js에서는 아래와 같이 구현할 수 있습니다.
+
+{% raw %}
+```html
+<!-- Inner.vue -->
+<template>
+  <button @click="sayHello">
+    Click to say hello
+  </button>
+</template>
+<script>
+  export default {
+    methods: {
+      sayHello () {
+        this.$emit('message', {
+          text: 'Hello!'
+        })
+      }
+    }
+  }
+</script>
+```
+{% endraw %}
+
+{% raw %}
+```html
+<!-- Outer.vue -->
+<template>
+  <inner @message="forward">
+</template>
+<script>
+  import Inner from './Inner'
+
+  export default {
+    components: {
+      Inner
+    },
+    methods: {
+      forward (event) {
+        this.$emit('message', event)
+      }
+    }
+  }
+</script>
+```
+{% endraw %}
+
+{% raw %}
+```html
+<!-- App.vue -->
+<template>
+  <outer @message="handleMessage">
+</template>
+<script>
+  import Outer from './Outer'
+
+  export default {
+    components: {
+      Outer
+    },
+    methods: {
+      handleMessage (event) {
+        alert(event.text)
+      }
+    }
+  }
+</script>
+```
+{% endraw %}
 
 #### 참고
 - [https://svelte.dev/tutorial/dom-events](https://svelte.dev/tutorial/dom-events)
