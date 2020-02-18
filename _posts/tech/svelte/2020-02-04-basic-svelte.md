@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Svelte] Svelte 기초'
+title: '[Svelte] Svelte 기초 문법'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
