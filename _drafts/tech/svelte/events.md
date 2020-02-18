@@ -1,16 +1,16 @@
 ---
 layout: post
-title: '[Svelte] 이벤트'
+title: '[Svelte] 이벤트 다루기'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
 ---
 {% include toc.html %}
 
-이번 포스트에서는 Svelte에서 이벤트를 다루는 방법을 이야기 합니다.
+이번 포스트에서는 Svelte에서 이벤트를 다루는 방법을 이야기합니다.
 
 # DOM 이벤트
-[[Svelte] 반응형을 위한 문법](/tech/svelte/reactivity-syntax/#이벤트-리스너)에서 이벤트 리스너에 대해 이야기를 했습니다. 아래 코드와 같이 이벤트를 감지 할 수 있습니다.
+[[Svelte] 반응형을 위한 문법](/tech/svelte/reactivity-syntax/#이벤트-리스너)에서 이벤트 리스너를 잠깐 이야기 했었습니다. 아래 코드와 같이 이벤트를 감지할 수 있습니다.
 
 ```html
 <script>
@@ -31,7 +31,7 @@ category: [tech, svelte]
 </div>
 ```
 
-`click` 이벤트 뿐만 아니라 위의 코드의 `mousemove` 이벤트와 같이 `on:이벤트 이름`으로 속성을 정의해 주면 DOM 이벤트를 감지 할 수 있게 됩니다.
+`click` 이벤트뿐만 아니라 위의 코드의 `mousemove` 이벤트와 같이 `on:이벤트 이름`으로 속성을 정의해 주면 DOM 이벤트를 감지할 수 있게 됩니다.
 
 # 인라인 핸들러
 핸들러 함수를 아래 코드와 같이 인라인으로 작성할 수 있습니다.
@@ -50,9 +50,9 @@ category: [tech, svelte]
 </div>
 ```
 
-속성을 정의할 때 따옴표(`""`) 사용은 선택사항지만 사용하는 것을 권장합니다.
+속성을 정의할 때 따옴표(`""`) 사용은 선택사항이지만 사용하는 것을 권장합니다.
 
-일부 프레임워크에서는 성능상의 이유로 인라인 이벤트 핸들러 사용을 피하라고 추천합니다. 하지만 Svelte는 컴파일 되면서 최적화 되기 때문에 인라인 핸들러를 사용해야 할 때에는 성능의 고민 없이 사용하면 됩니다.
+일부 프레임워크에서는 성능상의 이유로 인라인 이벤트 핸들러 사용을 피하라고 추천합니다. 하지만 Svelte는 컴파일되면서 최적화되기 때문에 인라인 핸들러를 사용해야 할 때는 성능의 고민 없이 사용하면 됩니다.
 
 # 이벤트 수식어
 Svelte에서도 DOM 이벤트의 이벤트 수식어를 사용할 수 있습니다. Vue.js의 경우 이벤트 수식어를 아래와 같이 사용할 수 있습니다.
@@ -94,17 +94,17 @@ Svelte는 아래 코드와 같이 이벤트 수식어를 사용할 수 있습니
 
 이벤트 수식어 목록은 아래와 같습니다.
 
-- `preventDefault`: 이벤트 핸들러가 실행 되기 전 `event.preventDefault()`를 호출합니다. 태그의 기본 동작을 막는 이벤트 수식어입니다.
-- `stopPropagation`: `event.stopPropagation()`이 호출됩니다. 이벤트가 다음 요소로 흐르는 것일 막는 이벤트 수식어입니다.
-- `passive`: 터치 혹은 휠 이벤트로 발생하는 스크롤 성능을 향상시키는 이벤트 수식어 입니다. Svelte는 안전한 곳(?)에 자동으로 추가됩니다.
-- `capture`: 버블링 단계아 아닌 캡쳐 단계에서 이벤트 핸들러을 실행합니다.
-- `once`: 이벤트 핸들러를 단 한번만 실행하도록 하는 이벤트 수식어입니다.
+- `preventDefault`: 이벤트 핸들러가 실행되기 전 `event.preventDefault()`를 호출합니다. 태그의 기본 동작을 막는 이벤트 수식어입니다.
+- `stopPropagation`: `event.stopPropagation()`이 호출됩니다. 이벤트가 다음 요소로 흐르는 것을 막는 이벤트 수식어입니다.
+- `passive`: 터치 혹은 휠 이벤트로 발생하는 스크롤 성능을 향상시키는 이벤트 수식어입니다. Svelte는 안전한 곳(?)에 자동으로 추가합니다.
+- `capture`: 버블링 단계가 아닌 캡처 단계에서 이벤트 핸들러를 실행합니다.
+- `once`: 이벤트 핸들러를 단 한 번만 실행하도록 하는 이벤트 수식어입니다.
 - `self`: `event.target`과 이벤트 핸들러를 정의한 요소가 같을 때 이벤트 핸들러를 실행하도록 하는 이벤트 수식어입니다.
 
-위의 이벤트 수식어를 `on:click|once|capture={...}`와 같이 체인(chain)으로 여러개 정의 할 수 도 있습니다.
+위의 이벤트 수식어를 `on:click|once|capture={...}`와 같이 체인(chain)으로 연결해 여러 개를 정의할 수도 있습니다.
 
 # 컴포넌트 이벤트
-하위 컴포넌트에서 이벤트를 발생시켜 상위 컴포넌트로 데이터를 전달하는 방법을 알보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 구현할 수 있습니다.
+하위 컴포넌트에서 이벤트를 발생시켜 상위 컴포넌트로 데이터를 전달하는 방법을 알아보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 구현할 수 있습니다.
 
 {% raw %}
 ```html
@@ -170,7 +170,7 @@ Svelte에서는 위의 코드를 아래와 같이 구현할 수 있습니다.
 ```
 
 ```html
-<!-- Vue.svelte -->
+<!-- App.svelte -->
 <script>
   import Inner from './Inner.svelte';
 
@@ -182,11 +182,11 @@ Svelte에서는 위의 코드를 아래와 같이 구현할 수 있습니다.
 <Inner on:message={handleMessage}/>
 ```
 
-## `createEventDispatcher` 호출시 주의 사항
-`createEventDispatcher`는 컴포넌트가 처음 인스턴스화 될 때 선언 되어야 합니다. 예를 들어 `setTimeout`의 콜백 함수에서 `createEventDispatcher`를 호출 하는 것 처럼 나중에 호출할 수 없습니다.
+## `createEventDispatcher` 호출 시 주의 사항
+`createEventDispatcher`는 컴포넌트가 처음 인스턴스화될 때 선언되어야 합니다. 예를 들어 `setTimeout`의 콜백 함수에서 `createEventDispatcher`를 호출하는 것처럼 나중에 호출할 수 없습니다.
 
 ## 이벤트 포워딩
-DOM 이벤트와는 달리 컴포넌트 이벤트는 버블(bubble)되지 않습니다. 버블되지 않는다는 의미는 하위 컴포넌트의 이벤트가 상위의 상위 컴포넌트로 전달되지 않는다는 의미입니다. 의도적으로 상위의 상위 컴포넌트로 이벤드를 전달해야 합니다.
+DOM 이벤트와는 달리 컴포넌트 이벤트는 버블(bubble) 되지 않습니다. 버블 되지 않는다는 의미는 하위 컴포넌트의 이벤트가 자동으로 상위 컴포넌트로 전달되지 않는다는 의미입니다. 의도적으로 상위 컴포넌트로 이벤트를 전달해야 합니다. (Vue.js를 사용해 왔다면, 당연한 이야기 일 수 있습니다.)
 
 App 컴포넌트와 Outer 컴포넌트, Inner 컴포넌트를 정의하여 Inner 컴포넌트의 이벤트를 App 컴포넌트로 전달하는 방법을 알아보도록 하겠습니다. Vue.js에서는 아래와 같이 구현할 수 있습니다.
 
@@ -257,6 +257,103 @@ App 컴포넌트와 Outer 컴포넌트, Inner 컴포넌트를 정의하여 Inner
 </script>
 ```
 {% endraw %}
+
+위의 코드를 Svelte에서는 아래와 같이 구현할 수 있습니다.
+
+```html
+<!-- Inner.svelte -->
+<script>
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+  function sayHello() {
+    dispatch('message', {
+      text: 'Hello!'
+    });
+  }
+</script>
+
+<button on:click={sayHello}>
+  Click to say hello
+</button>
+```
+
+```html
+<!-- Outer.svelte -->
+<script>
+  import Inner from './Inner.svelte';
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+  function forward(event) {
+    dispatch('message', event.detail);
+  }
+</script>
+
+<Inner on:message={forward}/>
+```
+
+```html
+<!-- App.svelte -->
+<script>
+  import Outer from './Outer.svelte';
+
+  function handleMessage(event) {
+    alert(event.detail.text);
+  }
+</script>
+
+<Outer on:message={handleMessage}/>
+```
+
+위의 코드와 같이 이벤트 포워딩을 할 수 있습니다. Svelte는 이벤트 포워딩 코드 양을 줄일 수 있는 약어를 제공합니다. `Outer.svelte`를 아래 코드와 같이 축약하여 작성할 수 있습니다.
+
+```html
+<!-- Outer.svelte -->
+<script>
+  import Inner from './Inner.svelte';
+</script>
+
+<Inner on:message/>
+```
+
+커스텀 이벤트뿐만 아니라 DOM 이벤트 또한 포워딩 방법은 동일합니다.
+
+```html
+<!-- FancyButton.svelte -->
+<style>
+  button {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 2em;
+    padding: 0.5em 1em;
+    color: royalblue;
+    background: gold;
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+</style>
+
+<button on:click>
+  Click me
+</button>
+```
+
+```html
+<!-- App.svelte -->
+<script>
+  import FancyButton from './FancyButton.svelte';
+
+  function handleClick() {
+    alert('clicked');
+  }
+</script>
+
+<FancyButton on:click={handleClick}/>
+```
+
+DOM 이벤트 또한 위의 코드와 같이 이벤트 포워딩을 약어로 표현할 수도 있습니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/dom-events](https://svelte.dev/tutorial/dom-events)
