@@ -7,13 +7,15 @@ category: [tech, svelte]
 ---
 {% include toc.html %}
 
-# Text `input`
+# `input`
 
-# Numberic `input`
+## Text
 
-# Checkbox `input`
+## Numberic
 
-# Group `input`
+## Checkbox
+
+## Group
 
 # `textarea`
 
