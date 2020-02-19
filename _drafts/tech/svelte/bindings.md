@@ -31,7 +31,7 @@ category: [tech, svelte]
 
 # Dimension
 
-# This
+# `this` 바인딩
 
 # 컴포넌트 바인딩
 
