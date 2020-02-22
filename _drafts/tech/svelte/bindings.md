@@ -105,7 +105,7 @@ Vue.js는 `v-model.number`을 사용하여 바인딩 된 데이터 타입을 `Nu
 Svelte에서는 Vue.js와는 달리 별도의 코드를 추가할 필요없이 `<input>` 태그의 `type` 속성이 `number` 또는 `range`일 경우 자동으로 `Number` 타입으로 지정됩니다.
 
 ## `type="checkbox"`
-`<input type="checkbox">`일 경우를 살펴보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 `<input type="checkbox">`을 사용할 수 있습니다.
+`<input type="checkbox">`를 살펴보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 `<input type="checkbox">`을 사용할 수 있습니다.
 
 {% raw %}
 ```html
@@ -160,8 +160,149 @@ Svelte에서는 Vue.js와는 달리 별도의 코드를 추가할 필요없이 `
 ```
 
 ## `type="radio"`
+`<input type="radio">`의 경우 여러개의 `<input>` 태그들에 동일한 데이터를 바인딩해야 합니다. Vue.js에서는 아래와 같이 구현할 수 있습니다.
+
+{% raw %}
+```html
+<template>
+  <div>
+    <label>
+      <input type="radio" value="One" v-model="picked">
+      One
+    </label>
+    <br>
+    <label>
+      <input type="radio" value="Two" v-model="picked">
+      Two
+    </label>
+    <br>
+    <span>선택: {{picked}}</span>
+  </div>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        picked: null
+      }
+    }
+  }
+</script>
+```
+{% endraw %}
+
+Vue.js에서는 `v-model`에 동일한 데이터를 바인딩하고 `value`에 각각의 `<input>` 태그들을 선택했을 경우에 저장되는 데이터를 지정합니다. Svelte에서는 아래와 같이 구현할 수 있습니다.
+
+```html
+<script>
+  let picked = null;
+</script>
+<label>
+  <input type="radio" value="One" bind:group="{picked}">
+  One
+</label>
+<br>
+<label>
+  <input type="radio" value="Two" bind:group="{picked}">
+  Two
+</label>
+<br>
+<span>선택: {picked}</span>
+```
+
+Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value`에 각각의 `<input>` 태그들을 선택했을 경우에 저장되는 데이터를 지정합니다.
+
+### `bind:group`
+`bind:group`는 `<input type="radio">`에서 뿐만 아니라 여러개의 `<input>` 태그에 하나의 데이터를 바인딩해야 할 때 사용할 수 있습니다. Vue.js에서는 아래와 같이 구현할 수 있습니다.
+
+{% raw %}
+```html
+<template>
+  <div>
+    <label v-for="name of names">
+      <input type="checkbox" :value="name" v-model="checkedNames">
+      {{name}}
+    </label>
+    <br>
+    <span>체크한 이름: {{checkedNames}}</span>
+  </div>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        names: ['jack', 'John', 'Mike'],
+        checkedNames: []
+      }
+    }
+  }
+</script>
+```
+{% endraw %}
+
+위의 코드를 Svelte에서는 아래 코드와 같이 구현할 수 있습니다.
+
+```html
+<script>
+  const names = ['jack', 'John', 'Mike'];
+  let checkedNames = [];
+</script>
+{#each names as name}
+  <label>
+    <input type="checkbox" value="{name}" bind:group="{checkedNames}">
+    {name}
+  </label>
+{/each}
+<br>
+<span>체크한 이름: {checkedNames}</span>
+```
+
+위의 코드와 같이 Svelte에서 `bind:group`는 `<input type="radio">`에서 뿐만 아니라 동일한 데이터를 바인딩을 해야 할 경우 사용할 수 있습니다.
 
 # `textarea`
+`<textarea>` 태그의 데이터 바인딩 방법을 살펴보도록 하겠습니다. Vue.js에서는 아래와 같이 사용할 수 있습니다.
+
+{% raw %}
+```html
+<template>
+  <textarea v-model={value}></textarea>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        value: 'Some Text'
+      }
+    }
+  }
+</script>
+<style>
+	textarea { width: 100%; height: 200px; }
+</style>
+```
+{% endraw %}
+
+위의 코드를 Svelte에서는 아래와 같이 구현할 수 있습니다.
+
+```html
+<script>
+  let value = 'Some Text';
+</script>
+
+<style>
+  textarea { width: 100%; height: 200px; }
+</style>
+
+<textarea bind:value="{value}"></textarea>
+```
+
+바인딩해야 하는 속성 이름과 변수의 이름이 동일할 때(위의 코드에서는 `bind:value`의 `value`와 `let value`의 `value`), 아래와 같이 약어 기능을 제공합니다.
+
+```html
+<textarea bind:value></textarea>
+```
+
+`<textarea>` 태그의 데이터 바인딩 방법은 `<input type="text">` 태그와 유사합니다.
 
 # `select`
 
