@@ -305,12 +305,148 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 `<textarea>` 태그의 데이터 바인딩 방법은 `<input type="text">` 태그와 유사합니다.
 
 # `select`
+`<select>` 태그의 데이터 바인딩 방법을 살펴보도록 하겠습니다. Vue.js에서는 아래와 같이 사용할 수 있습니다.
+
+{% raw %}
+```html
+<template>
+  <div>
+    <select v-model="selected">
+      <option
+        v-for="item of list"
+        :key="item.id"
+        :value="item"
+      >
+        {{item.text}}
+      </option>
+    </select>
+    <span>선택함: {{selected ? selected.id : 'waiting...'}}</span>
+  </div>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        list: [
+          { id: 1, text: 'A' },
+          { id: 2, text: 'B' },
+          { id: 3, text: 'C' }
+        ],
+        selected: null
+      }
+    }
+  }
+</script>
+```
+{% endraw %}
+
+위의 코드를 Svelte는 아래 코드와 같이 구현할 수 있습니다.
+
+```html
+<script>
+  const list = [
+    { id: 1, text: 'A' },
+    { id: 2, text: 'B' },
+    { id: 3, text: 'C' }
+  ]
+  let selected
+</script>
+<select bind:value="{selected}">
+  {#each list as item}
+    <option value="{item}">{item.text}</option>
+  {/each}
+</select>
+<span>선택함: {selected ? selected.id : 'waiting...'}</span>
+```
+
+`bind:value`로 데이터 바인딩 되는 값은 Object 이든 String 이든 어떤 것이든 올수 있습니다. 바인딩 데이터의 초기값이 정의되어 있지 않다면 리스트의 첫번째 값이 디폴트 값으로 저장됩니다.
 
 ## `multiple`
+`<select>` 태그는 `multiple` 속성을 지원합니다. `multiple` 속성을 설정하면 바인딩 된 데이터는 배열 타입이 됩니다. Vue.js에서는 아래 코드와 같이 사용할 수 있습니다.
+
+{% raw %}
+```html
+<template>
+  <div>
+    <select v-model="selected" multiple>
+      <option
+        v-for="item of list"
+        :key="item.id"
+        :value="item"
+      >
+        {{item.text}}
+      </option>
+    </select>
+    <span>선택함: {{selected ? selected.map(x => x.id).join(',') : 'waiting...'}}</span>
+  </div>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        list: [
+          { id: 1, text: 'A' },
+          { id: 2, text: 'B' },
+          { id: 3, text: 'C' }
+        ],
+        selected: []
+      }
+    }
+  }
+</script>
+```
+{% endraw %}
+
+위의 코드를 Svelte에서는 아래와 같이 작성할 수 있습니다.
+
+```html
+<script>
+  const list = [
+    { id: 1, text: 'A' },
+    { id: 2, text: 'B' },
+    { id: 3, text: 'C' }
+  ]
+  let selected = []
+</script>
+<select multiple bind:value="{selected}">
+  {#each list as item}
+    <option value="{item}">{item.text}</option>
+  {/each}
+</select>
+<span>선택함: {selected ? selected.map(x => x.id).join(',') : 'waiting...'}</span>
+```
 
 # `contenteditable`
+`contenteditable="true"`를 사용하면 `textContent`와 `innerHTML` 바인딩을 지원합니다. Vue.js에서는 지원하지 않습니다. Svelte에서는 아래와 같이 사용할 수 있습니다.
+
+```html
+<script>
+  let html = '<p>Write some text!</p>';
+</script>
+
+<div
+  contenteditable="true"
+  bind:innerHTML={html}
+></div>
+
+<pre>{html}</pre>
+
+<style>
+  [contenteditable] {
+    padding: 0.5em;
+    border: 1px solid #eee;
+    border-radius: 4px;
+  }
+</style>
+```
 
 # Each 블록 바인딩
+이번에는 반복문 블록 안에서 데이터 바인딩하는 방법을 알어보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 사용할 수 있습니다.
+
+{% raw %}
+```html
+```
+{% endraw %}
 
 # Media 요소
 
