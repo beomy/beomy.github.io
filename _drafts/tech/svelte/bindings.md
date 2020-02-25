@@ -552,6 +552,13 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 <button on:click={clear}>Clear completed</button>
 ```
 
+위의 Svelte 코드는 많은 기능을 사용한 코드입니다.
+
+- `add`와 `clear` 함수에서 반응형 동작을 위해 `todos`가 재할당 됩니다.
+- `$:`를 사용하여 `todos`가 변경 되었을 때 실행됩니다. `!done`인 `todos`의 개수를 `remaining`에 저장합니다.
+- `class:done`은 `todo.done`이 ture일 경우 `done` 클래스가 추가됩니다.
+- `{# each todos as todo}` 블록 내에 `bind:checked`와 `bind:value`를 사용하여 `todos`의 변경 내용이 반영합니다. Vue.js에서 `v-for` 블록문 안에 `v-model`을 사용하는 것과 유사합니다. Svelte는 `{# each}` 블록문 안에 `bind:속성이름`으로 블록문 안에서 데이터 바인딩 할 수 있습니다.
+
 # Media 요소
 
 # Dimension
