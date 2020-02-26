@@ -560,6 +560,37 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 - `{# each todos as todo}` 블록 내에 `bind:checked`와 `bind:value`를 사용하여 `todos`의 변경 내용이 반영합니다. Vue.js에서 `v-for` 블록문 안에 `v-model`을 사용하는 것과 유사합니다. Svelte는 `{# each}` 블록문 안에 `bind:속성이름`으로 블록문 안에서 데이터 바인딩 할 수 있습니다.
 
 # Media 요소
+Svelte에서 `<audio>`와 `<video>` 미디어 요소는 바인딩할 수 있는 몇가지 속성을 제공합니다. 바인딩할 수 있는 속성은 아래 코드와 같이 사용할 수 있습니다.
+
+```html
+<video
+  poster="https://sveltejs.github.io/assets/caminandes-llamigos.jpg"
+  src="https://sveltejs.github.io/assets/caminandes-llamigos.mp4"
+  on:mousemove={handleMousemove}
+  on:mousedown={handleMousedown}
+  bind:currentTime={time}
+  bind:duration
+  bind:paused
+></video>
+```
+
+아래 목록은 readonly인 6가지 속성입니다.
+
+- `duration` (readonly) - 
+- `buffered` (readonly) - 
+- `seekable` (readonly) - 
+- `played` (readonly) - 
+- `seeking` (readonly) - 
+- `ended` (readonly) - 
+
+아래 목록은 write와 read 둘다 가능한 4가지 속성입니다.
+
+- `currentTime` - 
+- `playbackRate` - 
+- `paused` - 
+- `volume` - 
+
+`<video>` 태그는 readonly인 `videoWidth`와 `videoHegiht` 속성을 추가로 제공합니다.
 
 # Dimension
 
