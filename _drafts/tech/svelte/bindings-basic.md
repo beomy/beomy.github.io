@@ -1,16 +1,16 @@
 ---
 layout: post
-title: '[Svelte] 데이터 바인딩'
+title: '[Svelte] 데이터 바인딩 기초'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
 ---
 {% include toc.html %}
 
-이번 포스트에서는 데이터 바인딩을 이야기 합니다. Vue.js에서 `v-model`로 데이터 바인딩 하는 방법을 Svelte에서는 어떻게 바인딩하는지 알아보도록 하겠습니다.
+이번 포스트에서는 데이터 바인딩을 이야기합니다. Vue.js에서 `v-model`로 데이터 바인딩 하는 방법을 Svelte에서는 어떻게 바인딩 하는지 알아보도록 하겠습니다.
 
 # `input`
-`<input>` 태그의 데이터 바인딩을 살펴보도록 하겠습니다. 데이터 바인딩을 하지 않는 다면, `value` 속성에 값을 할당 하고 `input` 이벤트가 발생 할 때 마다 `value` 속성을 업데이트 해줘야 합니다. 데이터 바인딩으로 이 과정을 생략할 수 있습니다.
+`<input>` 태그의 데이터 바인딩을 살펴보도록 하겠습니다. 데이터 바인딩을 하지 않는다면, `value` 속성에 값을 할당하고 `input` 이벤트가 발생할 때마다 `value` 속성을 업데이트해 줘야 합니다. 데이터 바인딩으로 이 과정을 생략할 수 있습니다.
 
 ## `type="text"`
 `<input>` 태그의 `type` 속성이 `text` 혹은 정의되어 있지 않을 경우, Vue.js는 아래와 같이 `v-model`을 사용하여 아래와 같이 데이터 바인딩을 구현할 수 있습니다.
@@ -35,7 +35,7 @@ category: [tech, svelte]
 ```
 {% endraw %}
 
-위의 코드를 Svelte에서는 아래 코드와 같이 구현 할 수 있습니다.
+위의 코드를 Svelte에서는 아래 코드와 같이 구현할 수 있습니다.
 
 ```html
 <script>
@@ -102,7 +102,7 @@ Vue.js는 `v-model.number`을 사용하여 바인딩 된 데이터 타입을 `Nu
 <p>{a} + {b} = {a + b}</p>
 ```
 
-Svelte에서는 Vue.js와는 달리 별도의 코드를 추가할 필요없이 `<input>` 태그의 `type` 속성이 `number` 또는 `range`일 경우 자동으로 `Number` 타입으로 지정됩니다.
+Svelte에서는 Vue.js와는 달리 별도의 코드를 추가할 필요 없이 `<input>` 태그의 `type` 속성이 `number` 또는 `range`일 경우 자동으로 `Number` 타입으로 지정됩니다.
 
 ## `type="checkbox"`
 `<input type="checkbox">`를 살펴보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 `<input type="checkbox">`을 사용할 수 있습니다.
@@ -160,7 +160,7 @@ Svelte에서는 Vue.js와는 달리 별도의 코드를 추가할 필요없이 `
 ```
 
 ## `type="radio"`
-`<input type="radio">`의 경우 여러개의 `<input>` 태그들에 동일한 데이터를 바인딩해야 합니다. Vue.js에서는 아래와 같이 구현할 수 있습니다.
+`<input type="radio">`의 경우 여러 개의 `<input>` 태그들에 동일한 데이터를 바인딩 해야 합니다. Vue.js에서는 아래와 같이 구현할 수 있습니다.
 
 {% raw %}
 ```html
@@ -213,7 +213,7 @@ Vue.js에서는 `v-model`에 동일한 데이터를 바인딩하고 `value`에 �
 Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value`에 각각의 `<input>` 태그들을 선택했을 경우에 저장되는 데이터를 지정합니다.
 
 ### `bind:group`
-`bind:group`는 `<input type="radio">`에서 뿐만 아니라 여러개의 `<input>` 태그에 하나의 데이터를 바인딩해야 할 때 사용할 수 있습니다. Vue.js에서는 아래와 같이 구현할 수 있습니다.
+`bind:group`는 `<input type="radio">`에서뿐만 아니라 여러 개의 `<input>` 태그에 하나의 데이터를 바인딩 해야 할 때 사용할 수 있습니다. Vue.js에서는 아래와 같이 구현할 수 있습니다.
 
 {% raw %}
 ```html
@@ -257,7 +257,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 <span>체크한 이름: {checkedNames}</span>
 ```
 
-위의 코드와 같이 Svelte에서 `bind:group`는 `<input type="radio">`에서 뿐만 아니라 동일한 데이터를 바인딩을 해야 할 경우 사용할 수 있습니다.
+위의 코드와 같이 Svelte에서 `bind:group`는 `<input type="radio">`에서뿐만 아니라 동일한 데이터를 바인딩을 해야 할 경우 사용할 수 있습니다.
 
 # `textarea`
 `<textarea>` 태그의 데이터 바인딩 방법을 살펴보도록 하겠습니다. Vue.js에서는 아래와 같이 사용할 수 있습니다.
@@ -296,7 +296,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 <textarea bind:value="{value}"></textarea>
 ```
 
-바인딩해야 하는 속성 이름과 변수의 이름이 동일할 때(위의 코드에서는 `bind:value`의 `value`와 `let value`의 `value`), 아래와 같이 약어 기능을 제공합니다.
+바인딩 해야 하는 속성 이름과 변수의 이름이 동일할 때(위의 코드에서는 `bind:value`의 `value`와 `let value`의 `value`), 아래와 같이 약어 기능을 제공합니다.
 
 ```html
 <textarea bind:value></textarea>
@@ -359,7 +359,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 <span>선택함: {selected ? selected.id : 'waiting...'}</span>
 ```
 
-`bind:value`로 데이터 바인딩 되는 값은 Object 이든 String 이든 어떤 것이든 올수 있습니다. 바인딩 데이터의 초기값이 정의되어 있지 않다면 리스트의 첫번째 값이 디폴트 값으로 저장됩니다.
+`bind:value`로 데이터 바인딩 되는 값은 Object 이든 String 이든 어떤 것이든 올수 있습니다. 바인딩 데이터의 초깃값이 정의되어 있지 않다면 리스트의 첫 번째 값이 디폴트 값으로 저장됩니다.
 
 ## `multiple`
 `<select>` 태그는 `multiple` 속성을 지원합니다. `multiple` 속성을 설정하면 바인딩 된 데이터는 배열 타입이 됩니다. Vue.js에서는 아래 코드와 같이 사용할 수 있습니다.
@@ -441,7 +441,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 ```
 
 # Each 블록 바인딩
-이번에는 반복문 블록 안에서 데이터 바인딩하는 방법을 알아보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 사용할 수 있습니다.
+이번에는 반복문 블록 안에서 데이터 바인딩 하는 방법을 알아보도록 하겠습니다. Vue.js에서는 아래 코드와 같이 사용할 수 있습니다.
 
 {% raw %}
 ```html
@@ -555,48 +555,9 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 위의 Svelte 코드는 많은 기능을 사용한 코드입니다.
 
 - `add`와 `clear` 함수에서 반응형 동작을 위해 `todos`가 재할당 됩니다.
-- `$:`를 사용하여 `todos`가 변경 되었을 때 실행됩니다. `!done`인 `todos`의 개수를 `remaining`에 저장합니다.
+- `$:`를 사용하여 `todos`가 변경되었을 때 실행됩니다. `!done`인 `todos`의 개수를 `remaining`에 저장합니다.
 - `class:done`은 `todo.done`이 ture일 경우 `done` 클래스가 추가됩니다.
-- `{# each todos as todo}` 블록 내에 `bind:checked`와 `bind:value`를 사용하여 `todos`의 변경 내용이 반영합니다. Vue.js에서 `v-for` 블록문 안에 `v-model`을 사용하는 것과 유사합니다. Svelte는 `{# each}` 블록문 안에 `bind:속성이름`으로 블록문 안에서 데이터 바인딩 할 수 있습니다.
-
-# Media 요소
-Svelte에서 `<audio>`와 `<video>` 미디어 요소는 바인딩할 수 있는 몇가지 속성을 제공합니다. 바인딩할 수 있는 속성은 아래 코드와 같이 사용할 수 있습니다.
-
-```html
-<video
-  poster="https://sveltejs.github.io/assets/caminandes-llamigos.jpg"
-  src="https://sveltejs.github.io/assets/caminandes-llamigos.mp4"
-  on:mousemove={handleMousemove}
-  on:mousedown={handleMousedown}
-  bind:currentTime={time}
-  bind:duration
-  bind:paused
-></video>
-```
-
-아래 목록은 readonly인 6가지 속성입니다.
-
-- `duration` (readonly) - 
-- `buffered` (readonly) - 
-- `seekable` (readonly) - 
-- `played` (readonly) - 
-- `seeking` (readonly) - 
-- `ended` (readonly) - 
-
-아래 목록은 write와 read 둘다 가능한 4가지 속성입니다.
-
-- `currentTime` - 
-- `playbackRate` - 
-- `paused` - 
-- `volume` - 
-
-`<video>` 태그는 readonly인 `videoWidth`와 `videoHegiht` 속성을 추가로 제공합니다.
-
-# Dimension
-
-# `this` 바인딩
-
-# 컴포넌트 바인딩
+- `{# each todos as todo}` 블록 내에 `bind:checked`와 `bind:value`를 사용하여 `todos`의 변경 내용이 반영합니다. Vue.js에서 `v-for` 블록문 안에 `v-model`을 사용하는 것과 유사합니다. Svelte는 `{# each}` 블록문 안에 `bind:속성 이름`으로 블록문 안에서 데이터 바인딩 할 수 있습니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/text-inputs](https://svelte.dev/tutorial/text-inputs)
@@ -608,7 +569,3 @@ Svelte에서 `<audio>`와 `<video>` 미디어 요소는 바인딩할 수 있는 
 - [https://svelte.dev/tutorial/multiple-select-bindings](https://svelte.dev/tutorial/multiple-select-bindings)
 - [https://svelte.dev/tutorial/contenteditable-bindings](https://svelte.dev/tutorial/contenteditable-bindings)
 - [https://svelte.dev/tutorial/each-block-bindings](https://svelte.dev/tutorial/each-block-bindings)
-- [https://svelte.dev/tutorial/media-elements](https://svelte.dev/tutorial/media-elements)
-- [https://svelte.dev/tutorial/dimensions](https://svelte.dev/tutorial/dimensions)
-- [https://svelte.dev/tutorial/bind-this](https://svelte.dev/tutorial/bind-this)
-- [https://svelte.dev/tutorial/component-bindings](https://svelte.dev/tutorial/component-bindings)
