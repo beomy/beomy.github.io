@@ -10,7 +10,7 @@ category: [tech, svelte]
 이번 포스트에서는 데이터 바인딩을 이야기합니다. Vue.js에서 `v-model`로 데이터 바인딩 하는 방법을 Svelte에서는 어떻게 바인딩 하는지 알아보도록 하겠습니다.
 
 # `input`
-`<input>` 태그의 데이터 바인딩을 살펴보도록 하겠습니다. 데이터 바인딩을 하지 않는다면, `value` 속성에 값을 할당하고 `input` 이벤트가 발생할 때마다 `value` 속성을 업데이트해 줘야 합니다. 데이터 바인딩으로 이 과정을 생략할 수 있습니다.
+`<input>` 태그의 데이터 바인딩을 살펴보도록 하겠습니다. 데이터 바인딩을 하지 않으면, `value` 속성에 값을 할당하고 `input` 이벤트가 발생할 때마다 `value` 속성을 업데이트해 줘야 합니다. 데이터 바인딩으로 이 과정을 생략할 수 있습니다.
 
 ## `type="text"`
 `<input>` 태그의 `type` 속성이 `text` 혹은 정의되어 있지 않을 경우, Vue.js는 아래와 같이 `v-model`을 사용하여 아래와 같이 데이터 바인딩을 구현할 수 있습니다.
@@ -20,7 +20,7 @@ category: [tech, svelte]
 <template>
   <div>
     <input v-model="name">
-    <h1>Hello {{name}}!</h1>
+    <h1>Hello {{ name }}!</h1>
   </div>
 </template>
 <script>
@@ -65,7 +65,7 @@ Svelte의 `bind:value`는 Vue.js의 `v-model`과 동일한 역할을 합니다.
       <input v-model.number="b" type=range min="0" max="10">
     </label>
 
-    <p>{{a}} + {{b}} = {{a + b}}</p>
+    <p>{{ a }} + {{ b }} = {{ a + b }}</p>
   </div>
 </template>
 <script>
@@ -219,12 +219,12 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 ```html
 <template>
   <div>
-    <label v-for="name of names">
+    <label v-for="(name, index) of names" :key="index">
       <input type="checkbox" :value="name" v-model="checkedNames">
-      {{name}}
+      {{ name }}
     </label>
     <br>
-    <span>체크한 이름: {{checkedNames}}</span>
+    <span>체크한 이름: {{ checkedNames }}</span>
   </div>
 </template>
 <script>
@@ -247,7 +247,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
   const names = ['jack', 'John', 'Mike'];
   let checkedNames = [];
 </script>
-{#each names as name}
+{#each names as name, index (index)}
   <label>
     <input type="checkbox" value="{name}" bind:group="{checkedNames}">
     {name}
@@ -302,7 +302,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 <textarea bind:value></textarea>
 ```
 
-`<textarea>` 태그의 데이터 바인딩 방법은 `<input type="text">` 태그와 유사합니다.
+`<textarea>` 태그의 데이터 바인딩 방법은 `<input type="text">` 태그와 동일합니다.
 
 # `select`
 `<select>` 태그의 데이터 바인딩 방법을 살펴보도록 하겠습니다. Vue.js에서는 아래와 같이 사용할 수 있습니다.
@@ -317,10 +317,10 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
         :key="item.id"
         :value="item"
       >
-        {{item.text}}
+        {{ item.text }}
       </option>
     </select>
-    <span>선택함: {{selected ? selected.id : 'waiting...'}}</span>
+    <span>선택함: {{ selected ? selected.id : 'waiting...' }}</span>
   </div>
 </template>
 <script>
@@ -352,14 +352,14 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
   let selected
 </script>
 <select bind:value="{selected}">
-  {#each list as item}
+  {#each list as item (item.id)}
     <option value="{item}">{item.text}</option>
   {/each}
 </select>
 <span>선택함: {selected ? selected.id : 'waiting...'}</span>
 ```
 
-`bind:value`로 데이터 바인딩 되는 값은 Object 이든 String 이든 어떤 것이든 올수 있습니다. 바인딩 데이터의 초깃값이 정의되어 있지 않다면 리스트의 첫 번째 값이 디폴트 값으로 저장됩니다.
+`bind:value`로 데이터 바인딩 되는 값의 타입은 Object, String은 물론 모든 타입이 가능합니다. 바인딩 데이터의 초깃값이 정의되어 있지 않다면 리스트의 첫 번째 값이 디폴트 값으로 저장됩니다.
 
 ## `multiple`
 `<select>` 태그는 `multiple` 속성을 지원합니다. `multiple` 속성을 설정하면 바인딩 된 데이터는 배열 타입이 됩니다. Vue.js에서는 아래 코드와 같이 사용할 수 있습니다.
@@ -374,10 +374,10 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
         :key="item.id"
         :value="item"
       >
-        {{item.text}}
+        {{ item.text }}
       </option>
     </select>
-    <span>선택함: {{selected ? selected.map(x => x.id).join(',') : 'waiting...'}}</span>
+    <span>선택함: {{ selected ? selected.map(x => x.id).join(',') : 'waiting...' }}</span>
   </div>
 </template>
 <script>
@@ -409,7 +409,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
   let selected = []
 </script>
 <select multiple bind:value="{selected}">
-  {#each list as item}
+  {#each list as item (item.id)}
     <option value="{item}">{item.text}</option>
   {/each}
 </select>
@@ -417,7 +417,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 ```
 
 # `contenteditable`
-`contenteditable="true"`를 사용하면 `textContent`와 `innerHTML` 바인딩을 지원합니다. Vue.js에서는 지원하지 않습니다. Svelte에서는 아래와 같이 사용할 수 있습니다.
+`contenteditable="true"`를 사용하면 `textContent`와 `innerHTML` 바인딩을 지원합니다. Vue.js에서는 지원하지 않는 기능입니다. Svelte는 아래와 같이 사용할 수 있습니다.
 
 ```html
 <script>
@@ -532,7 +532,7 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 
 <h1>Todos</h1>
 
-{#each todos as todo}
+{#each todos as todo, index (index)}
   <div class:done={todo.done}>
     <input
       type=checkbox
@@ -554,10 +554,10 @@ Svelte에서는 `bind:group`을 사용하여 데이터를 바인딩하고 `value
 
 위의 Svelte 코드는 많은 기능을 사용한 코드입니다.
 
-- `add`와 `clear` 함수에서 반응형 동작을 위해 `todos`가 재할당 됩니다.
-- `$:`를 사용하여 `todos`가 변경되었을 때 실행됩니다. `!done`인 `todos`의 개수를 `remaining`에 저장합니다.
+- `add`와 `clear` 함수는 반응형 동작을 위해 `todos`를 재할당 합니다.
+- `$:`는 `todos`가 변경되었을 때 실행됩니다. `!done`인 `todos`의 개수를 `remaining`에 저장합니다.
 - `class:done`은 `todo.done`이 ture일 경우 `done` 클래스가 추가됩니다.
-- `{# each todos as todo}` 블록 내에 `bind:checked`와 `bind:value`를 사용하여 `todos`의 변경 내용이 반영합니다. Vue.js에서 `v-for` 블록문 안에 `v-model`을 사용하는 것과 유사합니다. Svelte는 `{# each}` 블록문 안에 `bind:속성 이름`으로 블록문 안에서 데이터 바인딩 할 수 있습니다.
+- `{#each todos as todo, index (index)}` 블록 내에 `bind:checked`와 `bind:value`를 사용하여 `todos`의 변경 내용이 반영합니다. Vue.js에서 `v-for` 블록문 안에 `v-model`을 사용하는 것과 유사합니다. Svelte는 `{# each}` 블록문 안에 `bind:속성 이름`으로 블록문 안에서 데이터 바인딩 할 수 있습니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/text-inputs](https://svelte.dev/tutorial/text-inputs)
