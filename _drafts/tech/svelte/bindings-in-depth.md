@@ -7,10 +7,10 @@ category: [tech, svelte]
 ---
 {% include toc.html %}
 
-이번 포스트에서는 데이터 바인딩을 이야기 합니다. Vue.js에서 `v-model`로 데이터 바인딩 하는 방법을 Svelte에서는 어떻게 바인딩하는지 알아보도록 하겠습니다.
+이번 포스트에서는 [[Svelte] 데이터 바인딩 기초](/tech/svelte/bindings-basic)에 이어 두 번째 데이터 바인딩을 이야기합니다. 많이 사용되지는 않지만 필요할 때 사용하면 편리한 기능들입니다.
 
 # Media 태그
-Svelte에서 `<audio>`와 `<video>` 미디어 태그는 바인딩할 수 있는 몇가지 속성을 제공합니다. 바인딩할 수 있는 속성은 아래 코드와 같이 사용할 수 있습니다.
+Svelte에서 `<audio>`와 `<video>` 미디어 태그는 바인딩 할 수 있는 몇 가지 속성을 제공합니다. 바인딩 할 수 있는 속성은 아래 코드와 같이 사용할 수 있습니다.
 
 ```html
 <video
@@ -25,23 +25,23 @@ Svelte에서 `<audio>`와 `<video>` 미디어 태그는 바인딩할 수 있는 
 ```
 
 ## 8가지 Readonly 속성
-아래 목록은 readonly로 바인딩할 수 있는 8가지 속성입니다.
+아래 목록은 readonly로 바인딩 할 수 있는 8가지 속성입니다.
 
 - `duration` *Number* (readonly): 총 재생 길이(초 단위)
-- `buffered` *Array* (readonly): `{start, end}` 객체들의 배열로, 버퍼된 위치를 표시함
+- `buffered` *Array* (readonly): `{start, end}` 객체들의 배열로, 버퍼 된 위치를 표시함
 - `seekable` *Array* (readonly): `{start, end}` 객체들의 배열로, 위치를 찾을 수 있는 범위를 표시함
-- `played` *Array* (readonly): `{start, end}` 객체들의 배열로, 재생 했던 위치들을 표시함
+- `played` *Array* (readonly): `{start, end}` 객체들의 배열로, 재생했던 위치들을 표시함
 - `seeking` *Boolean* (readonly): 찾는 중인지를 표시하는 플래그
 - `ended` *Boolean* (readonly): 재생이 끝났는지를 표시하는 플래그
 - `videoWidth` *Number* (readonly): `<video>` 태그에서 사용할 수 있는 속성으로 `<video>` 태그의 너비를 나타냄.
 - `videoHegiht` *Number* (readonly): `<video>` 태그에서 사용할 수 있는 속성으로 `<video>` 태그의 높이를 나타냄.
 
 ## 4가지 Read, Write 가능한 속성
-아래 목록은 write와 read 둘다 가능한 4가지 속성입니다.
+아래 목록은 write와 read 둘 다 가능한 4가지 속성입니다.
 
 - `currentTime` *Number*: 현재 재생 위치를 나타냄(초 단위)
 - `playbackRate` *Number*: 재생 속도를 나타냄(normal: 1)
-- `paused` *Boolean*: 일시정지 됬는지 표시하는 플래그
+- `paused` *Boolean*: 일시정지됐는지 표시하는 플래그
 - `volume` *Number*: 음량의 크기를 나타냄(0과 1 사이의 값)
 
 # Dimension
@@ -72,20 +72,20 @@ Svelte에서 `<audio>`와 `<video>` 미디어 태그는 바인딩할 수 있는 
 ```
 
 ## 주의사항
-`clientWidth`, `clientHeight`, `offsetWidth`, `offsetHeight` 속성을 바인딩하여 사용할 때 주의해야 할 몇가지 내용들이 있습니다.
+`clientWidth`, `clientHeight`, `offsetWidth`, `offsetHeight` 속성을 바인딩 하여 사용할 때 주의해야 할 몇 가지 내용들이 있습니다.
 
 ### 성능 이슈
 위의 4가지 속성을 바인딩하고 사용하는 것은 성능상 오버헤드가 발생하기 때문에 많은 요소에 사용하는 것을 추천하지 않습니다.
 
-### 바인딩할 수 없는 태그들
-`display:inline` 스타일 사용하는 태그나, `<span>` 등의 인라인 요소들에는 바인딩할 수 없습니다. `<canvas>`와 같이 다른 태그들을 포함할 수 없는 태그에도 사용할 수 없습니다.
+### 바인딩 할 수 없는 태그들
+`display:inline` 스타일 사용하는 태그나, `<span>` 등의 인라인 요소들에는 바인딩 할 수 없습니다. `<canvas>`와 같이 다른 태그들을 포함할 수 없는 태그에도 사용할 수 없습니다.
 
-바인딩할 수 없는 태그들에 위의 4가지 속성을 바인딩해야 한다면 블록 레벨 요소로 감싸고 그 블록 레벨 요소에 바인딩하여 사용해야 합니다.
+바인딩 할 수 없는 태그들에 위의 4가지 속성을 바인딩 해야 한다면 블록 레벨 요소로 감싸고 그 블록 레벨 요소에 바인딩 하여 사용해야 합니다.
 
 # `this` 바인딩
-이번에는 `this`를 바인딩 하는 방법을 살펴보도록 하겠습니다. Svelte에서 `this`를 바인딩 한다는 것은 Vue.js에서 `ref`를 사용한다는 것과 유사합니다.
+이번에는 `this`를 바인딩 하는 방법을 살펴보도록 하겠습니다. Svelte에서 `this`를 바인딩 하는 것은 Vue.js에서 `ref`를 사용하는 것과 유사합니다.
 
-Vue.js에서 `ref`를 HTML 태그와 컴포넌트 모두 사용가능한 것 처럼 Svelte에서도 HTML 태그와 컴포넌트 모두 `this`를 바인딩할 수 있습니다. HTML 태그에 `this`를 바인딩 할 경우 HTML 요소가 바인딩되고, 컴포넌트에 `this`를 바인딩한 경우 컴포넌트가 바인딩됩니다.
+Vue.js에서 `ref`를 HTML 태그와 컴포넌트 모두 사용 가능한 것처럼 Svelte에서도 HTML 태그와 컴포넌트 모두 `this`를 바인딩 할 수 있습니다. HTML 태그에 `this`를 바인딩 할 경우 HTML 요소가 바인딩 되고, 컴포넌트에 `this`를 바인딩 한 경우 컴포넌트가 바인딩 됩니다.
 
 Vue.js에서는 아래와 같이 `ref`를 사용할 수 있습니다.
 
@@ -210,14 +210,14 @@ Vue.js에서는 아래와 같이 `ref`를 사용할 수 있습니다.
 ></canvas>
 ```
 
-컴포넌트가 마운트 되는 시점에 `canvas` 변수에 값이 할당되기 때문에, `onMount`라는 라이프사이클을 사용했습니다. 라이프사이클은 이후 포스팅에서 좀 더 자세히 알아보도록 하겠습니다. 지금은 컴포넌트가 화면에 마운트 될 때 호출되는 콜백으로 이해하시면 됩니다. `onMount` 콜백함수에서 리턴되는 함수는 컴포넌트가 제거되었을 때 호출됩니다.
+컴포넌트가 마운트 된 후에 `canvas` 변수에 값이 할당되기 때문에, `onMount`라는 라이프 사이클을 사용했습니다. 라이프 사이클은 이후 포스팅에서 좀 더 자세히 알아보도록 하겠습니다. 지금은 컴포넌트가 화면에 마운트 될 때 호출되는 콜백으로 이해하시면 됩니다. `onMount` 콜백 함수에서 리턴되는 함수는 컴포넌트가 제거되었을 때 호출됩니다.
 
 Vue.js에서는 `<canvas ref="canvas">`로 태그를 선언하고, `<canvas>` 태그에 접근할 때는 `this.$refs.canvas`로 접근할 수 있습니다.
 
-Svelte에서는 `<script>` 태그 안에 `let canvas`로 `canvas` 변수를 정의 한 후, `<canvas bind:this="{canvas}">`로 태그를 선언하고, `<canvas>` 태그에 접근할 때는 `canvas` 변수를 통해 접근 할 수 있습니다.
+Svelte에서는 `<script>` 태그 안에 `let canvas`로 `canvas` 변수를 정의한 후, `<canvas bind:this="{canvas}">`로 태그를 선언하고, `<canvas>` 태그에 접근할 때는 `canvas` 변수를 통해 접근할 수 있습니다.
 
 # 컴포넌트 바인딩
-DOM 속성을 바인딩 할 수 있는 것처럼 컴포넌트의 props에도 바인딩할 수 있습니다. Vue.js에 props에 `.sync` 수식어를 선언하는 것과 유사한 개념입니다. Vue.js에서는 아래와 같이 컴포넌트의 props를 바인딩할 수 있습니다.
+DOM 속성을 바인딩 할 수 있는 것처럼 컴포넌트의 props를 바인딩 할 수 있습니다. Vue.js에서 props에 `.sync` 수식어를 선언하는 것과 유사한 개념입니다. Vue.js에서는 아래와 같이 컴포넌트의 props를 바인딩 할 수 있습니다.
 
 {% raw %}
 ```html
@@ -372,9 +372,10 @@ DOM 속성을 바인딩 할 수 있는 것처럼 컴포넌트의 props에도 바
 <Keypad bind:value={pin} on:submit={handleSubmit}/>
 ```
 
-Svelte에서는 컴포넌트의 props를 바인딩하는데 Vue.js의 `.sync`와 특별한 문법을 사용할 필요 없습니다. DOM 속성을 바인딩할 때처럼 `bind:바인딩 속성`을 사용하여 컴포넌트의 props를 바인딩할 수 있습니다.
+Svelte에서는 컴포넌트의 props를 바인딩 하는데 Vue.js의 `.sync`와 같은 특별한 문법이 사용할 필요 없습니다. DOM 속성을 바인딩 할 때처럼 `bind:바인딩 속성`을 사용하여 컴포넌트의 props를 바인딩 할 수 있습니다.
 
-컴포넌트 바인딩을 많이 사용하는 것을 피하는 것이 좋습니다. 컴포넌트 바인딩은 양방향 데이터 흐름을 가지기 때문에, 값이 수정되었을 때 어디에서 수정되었는지 찾기 어려울 수 있습니다.
+## 주의사항
+컴포넌트 바인딩을 많이 사용하는 것은 피하는 것이 좋습니다. 컴포넌트 바인딩은 양방향 데이터 통신을 하기 때문에, 값이 수정되었을 때 어디에서 수정된 것인지 찾기 어려울 수 있습니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/media-elements](https://svelte.dev/tutorial/media-elements)
