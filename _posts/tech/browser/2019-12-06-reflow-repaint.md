@@ -38,7 +38,7 @@ Repaint는 화면에 변화가 있을 때 화면을 그리는 과정입니다.
 
 ![Repaint 예시 그림](/assets/img/posts/browser/repaint.png)
 
-위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 Paint가 주기적으로 발생하는 것을 볼 수 있습니다. [repaint.html](/example/browser/reflow-repaint/repaint.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
+위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 Paint가 주기적으로 발생하는 것을 볼 수 있습니다. [repaint.html](/assets/example/browser/reflow-repaint/repaint.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
 
 # Reflow(Layout) 란?
 Reflow는 화면 구조(Layout)이 변경되었을 때, 뷰포트 내에서 렌더 트리의 노드의 정확한 위치와 크기를 계산하는 과정을 Reflow(혹은 Layout)이라고 합니다. ([렌더 트리](/tech/browser/browser-rendering/#렌더-트리-구축)와 [Layout](/tech/browser/browser-rendering/#layout)을 참고 바랍니다.)
@@ -66,7 +66,7 @@ Reflow는 화면 구조(Layout)이 변경되었을 때, 뷰포트 내에서 렌�
 
 ![Reflow 예시 그림](/assets/img/posts/browser/reflow.png)
 
-위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 Repaint와 Layout이 반복적으로 발생하는 것을 볼 수 있습니다. [reflow.html](/example/browser/reflow-repaint/reflow.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
+위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 Repaint와 Layout이 반복적으로 발생하는 것을 볼 수 있습니다. [reflow.html](/assets/example/browser/reflow-repaint/reflow.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다.
 
 ## Reflow가 발생하는 경우
 - DOM 노드의 추가, 제거
@@ -125,7 +125,7 @@ DOM 노드의 크기 또는 위치가 변경되면 하위 노드와 상위 노�
 
 ![최상위 노드에서 reflow 발생시](/assets/img/posts/browser/reflow_1-1.png)
 
-위의 그림은 위의 코드(최상위 노드에서 reflow가 발생 할 경우)를 Performance 체크한 그림입니다. Layout에 148.3ms 시간이 소요된 것을 볼 수 있습니다. [reflow_1-1.html](/example/browser/reflow-repaint/reflow_1-1.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
+위의 그림은 위의 코드(최상위 노드에서 reflow가 발생 할 경우)를 Performance 체크한 그림입니다. Layout에 148.3ms 시간이 소요된 것을 볼 수 있습니다. [reflow_1-1.html](/assets/example/browser/reflow-repaint/reflow_1-1.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
 
 ```html
 <html>
@@ -163,7 +163,7 @@ DOM 노드의 크기 또는 위치가 변경되면 하위 노드와 상위 노�
 
 ![최하위 노드에서 reflow 발생시](/assets/img/posts/browser/reflow_1-2.png)
 
-위의 그림은 위의 코드(최하위 노드에서 reflow가 발생 할 경우)를 Performance 체크한 그림입니다. Layout에 87.8ms 시간이 소요된 것을 볼 수 있습니다. [reflow_1-2.html](/example/browser/reflow-repaint/reflow_1-2.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
+위의 그림은 위의 코드(최하위 노드에서 reflow가 발생 할 경우)를 Performance 체크한 그림입니다. Layout에 87.8ms 시간이 소요된 것을 볼 수 있습니다. [reflow_1-2.html](/assets/example/browser/reflow-repaint/reflow_1-2.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
 
 최상위 노드에서 reflow가 발생할 경우는 148.3ms, 최하위 노드에서 reflow가 발생할 경우는 87.8ms로 최하위 노드에서 reflow가 발생할 경우 더 적은 reflow 시간이 소모되는 것을 확인 할 수 있습니다.
 
@@ -192,11 +192,11 @@ DOM 노드의 크기 또는 위치가 변경되면 하위 노드와 상위 노�
 
 ![Fast 3G 인라인 스타일](/assets/img/posts/browser/reflow_2.png)
 
-위의 그림은 위의 코드(인라인 스타일을 사용한)를 Fast 3G로 Newwork를 확인한 그림입니다. [reflow_2.html](/example/browser/reflow-repaint/reflow_2.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
+위의 그림은 위의 코드(인라인 스타일을 사용한)를 Fast 3G로 Newwork를 확인한 그림입니다. [reflow_2.html](/assets/example/browser/reflow-repaint/reflow_2.html){: target="_blank" }에서 예제를 확인 할 수 있습니다.
 
 ![Fast 3G 인라인 스타일 사용 안함](/assets/img/posts/browser/reflow_1-1_network.png)
 
-위의 그림은 1번에서 살펴 본 [reflow_1-1.html](/example/browser/reflow-repaint/reflow_1-1.html){: target="_blank" }을 Fast 3G로 Network를 확인한 그림입니다.
+위의 그림은 1번에서 살펴 본 [reflow_1-1.html](/assets/example/browser/reflow-repaint/reflow_1-1.html){: target="_blank" }을 Fast 3G로 Network를 확인한 그림입니다.
 
 위의 두 사진에서 빨간 글씨로 씌여진 Load 타임 스탬프를 비교해보면, 인라인 스타일을 사용한 경우는 1.02s, 인라인 스타일을 사용하지 않는 경우는 853ms로 인라인 스타일을 사용하지 않는 경우 더 빠르게 DOM이 그려지는 것을 확인 할 수 있습니다.
 
@@ -242,11 +242,11 @@ DOM 노드의 크기 또는 위치가 변경되면 하위 노드와 상위 노�
 
 ![position 지정](/assets/img/posts/browser/reflow_3.png)
 
-위의 그림은 애니메이션 효과가 들어간 노드에 `position: absolute`이 주어진 경우 Performance를 측정한 결과입니다. [reflow_3.html](/example/browser/reflow-repaint/reflow_3.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다. 위의 그림을 보면 Layout에 13.4ms가 사용 된 것을 볼수 있습니다.
+위의 그림은 애니메이션 효과가 들어간 노드에 `position: absolute`이 주어진 경우 Performance를 측정한 결과입니다. [reflow_3.html](/assets/example/browser/reflow-repaint/reflow_3.html){: target="_blank" }에서 위의 코드 예제를 확인 할 수 있습니다. 위의 그림을 보면 Layout에 13.4ms가 사용 된 것을 볼수 있습니다.
 
 ![최하위 노드에서 reflow 발생시](/assets/img/posts/browser/reflow_1-2.png)
 
-반면, 위의 그림을 보면 [reflow_1-2.html](/example/browser/reflow-repaint/reflow_1-2.html){: target="_blank" } 예제와 같이 `position`이 지정되어 있지 않을 경우에는 Layout에 87.8ms이 사용된 것을 볼 수 있습니다.
+반면, 위의 그림을 보면 [reflow_1-2.html](/assets/example/browser/reflow-repaint/reflow_1-2.html){: target="_blank" } 예제와 같이 `position`이 지정되어 있지 않을 경우에는 Layout에 87.8ms이 사용된 것을 볼 수 있습니다.
 
 ## 4. 퀄리티, 퍼포먼스의 타협점을 찾는다.
 3번에서 말씀 드렸듯이 애니메이션 효과는 많은 Reflow가 발생합니다. 퀄리티가 좋은 애니메이션은 좋은 퀄리티 만큼 많은 Reflow가 발생하고, 퀄리티가 낮은 애니메이션은 적은 Reflow가 발생합니다.
@@ -318,7 +318,7 @@ DOM 노드의 크기 또는 위치가 변경되면 하위 노드와 상위 노�
 </html>
 ```
 
-위의 예제는 `table-layout:auto`와 `table-layout:fixed`의 차이를 비교하는 예제입니다. [table-layout.html](/example/browser/reflow-repaint/table-layout.html){: target="_blank" }에서 테이블 너비 차이를 비교할 수 있습니다.
+위의 예제는 `table-layout:auto`와 `table-layout:fixed`의 차이를 비교하는 예제입니다. [table-layout.html](/assets/example/browser/reflow-repaint/table-layout.html){: target="_blank" }에서 테이블 너비 차이를 비교할 수 있습니다.
 
 ## 6. IE의 CSS 표현식을 사용하지 않는다.
 CSS 표현식(expression)은 비용이 매우 높기 때문에 사용을 피해야 합니다.
@@ -443,7 +443,7 @@ for (var i = 0; i < div.length; i++) {
 </html>
 ```
 
-위의 코드는 스타일을 각각 변경할 경우, class를 사용할 경우, `cssText`를 사용할 경우의 Performance 차이를 살펴보기 위한 예제입니다. [reflow_9.html](/example/browser/reflow-repaint/reflow_9.html){: target="_blank" }에서 확인 할 수 있습니다.
+위의 코드는 스타일을 각각 변경할 경우, class를 사용할 경우, `cssText`를 사용할 경우의 Performance 차이를 살펴보기 위한 예제입니다. [reflow_9.html](/assets/example/browser/reflow-repaint/reflow_9.html){: target="_blank" }에서 확인 할 수 있습니다.
 
 ![각각 변경할 경우](/assets/img/posts/browser/reflow_11-1.png)
 
@@ -474,7 +474,7 @@ for (let i = 1; i <= 3; i++) {
 document.body.appendChild(frag);
 ```
 
-위의 코드와 같이 `createDocumentFragment`를 사용하여 한번에 DOM을 추가하여 DOM 접근을 최소화 할 수 있습니다. `createDocumentFragment`를 사용한 예제는 [reflow_10.html](/example/browser/reflow-repaint/reflow_10.html){: target="_blank" }에서 확인 할 수 있습니다.
+위의 코드와 같이 `createDocumentFragment`를 사용하여 한번에 DOM을 추가하여 DOM 접근을 최소화 할 수 있습니다. `createDocumentFragment`를 사용한 예제는 [reflow_10.html](/assets/example/browser/reflow-repaint/reflow_10.html){: target="_blank" }에서 확인 할 수 있습니다.
 
 ## 11. 캐시를 활용한다.
 브라우저는 레이아웃 변경을 큐에 저장했다가 한번에 실행하여 Reflow를 최소화 합니다. 하지만 `offset`, `scrollTop`과 같은 계산된 스타일 정보를 요청할 때마다 정확한 정보를 제공하기 위해 큐를 비우고 모든 변경사항을 적용합니다.
@@ -512,7 +512,7 @@ Reflow 최적화 테스트는 크롬 버전 78.0.3904.108에서 이루어졌습�
 `table-layout`의 값을 `fixed`로 지정할 때와 지정하지 않을 때의 렌더링 속도 차이를 발견하지 못했습니다.
 
 #### 11. 캐시를 활용한다.
-캐시를 사용할 때와 사용하지 않을 때 모두 매우 빠른 속도로 동작하여 정확한 테스트를 하지 못했습니다. 테스트 예제는 [reflow_11.html](/example/browser/reflow-repaint/reflow_11.html){: target="_blank" }에서 확인 할 수 있습니다.
+캐시를 사용할 때와 사용하지 않을 때 모두 매우 빠른 속도로 동작하여 정확한 테스트를 하지 못했습니다. 테스트 예제는 [reflow_11.html](/assets/example/browser/reflow-repaint/reflow_11.html){: target="_blank" }에서 확인 할 수 있습니다.
 
 ### 렌터 큐의 존재로 인해
 브라우저는 레이아웃 변경을 큐에 저장했다가 1초에 60번의 속도로 큐에 있는 내용을 화면에 반영합니다. 즉 1초에 60프레임(60fps)의 속도로 화면을 다시 그립니다([렌더 큐](/tech/javascript/javascript-runtime/#부록-렌더-큐) 참고). 브라우저에 렌터 큐가 있기 때문에 정확히 테스트 되지 못한 부분이 있었습니다.
@@ -561,7 +561,7 @@ DOM Fragment를 사용한다고 Layout 속도가 개선되지 않았습니다.
 
 ![DOM Fragment 미사용](/assets/img/posts/browser/reflow_10-2.png)
 
-위의 그림은 위의 코드에서 `<button id="btn-none-fragment">`를 클릭하여 Performance를 확인한 그림입니다. [reflow_10.html](/example/browser/reflow-repaint/reflow_10.html){: target="_blank" }에서 확인 할 수 있습니다.
+위의 그림은 위의 코드에서 `<button id="btn-none-fragment">`를 클릭하여 Performance를 확인한 그림입니다. [reflow_10.html](/assets/example/browser/reflow-repaint/reflow_10.html){: target="_blank" }에서 확인 할 수 있습니다.
 
 두 경우 각각 203.5ms와 199.7ms로 Layout에 사용된 시간은 의미가 없을 정도로 미세합니다. 이 두 차이도 렌더 큐의 역할 때문인 것 같습니다. DOM에 각각 추가 하더라고 동시에 화면에 반영되기 때문으로 추측됩니다.
 

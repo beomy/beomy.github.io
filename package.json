@@ -37,7 +37,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp",
-    "jekyll": "sudo bundle exec jekyll serve --watch --draft"
+    "jekyll": "sudo bundle exec jekyll serve --watch --draft",
+    "style": "sudo gulp sass"
   },
   "repository": {
     "type": "git",
