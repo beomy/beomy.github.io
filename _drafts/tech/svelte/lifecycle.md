@@ -12,6 +12,115 @@ category: [tech, svelte]
 라이프 사이클 함수란 컴포넌트가 화면에 마운트(화면에 출력) 되거나, 화면이 업데이트 혹은 화면에서 언마운트(화면에서 제거)됬을 때 실행되는 콜백 함수들을 말합니다.
 
 # onMount
+가장 많이 사용되는 라이프 사이클 함수는 `onMount` 함수입니다. 이 함수는 컴포넌트가 처음으로 DOM에 랜더링 되었을 때 실행되는 함수입니다. 
+
+`onMount` 함수는 네트워크를 통해 데이터를 가져와야 할 경우 사용됩니다. Vue.js에서는 `mounted` 라이프 사이클 함수와 유사합니다. Vue.js에서는 `mounted` 라이프 사이클 함수를 아래와 같이 사용합니다.
+
+{% raw %}
+```html
+<template>
+  <div>
+    <h1>Photo album</h1>
+
+    <div class="photos">
+      <template v-if="photos.length !== 0">
+        <figure v-for="(photo, index) of photos" :key="index">
+          <img :src="photo.thumbnailUrl" :alt="photo.title">
+          <figcaption>{{ photo.title }}</figcaption>
+        </figure>
+      </template>
+      <p v-else>loading...</p>
+    </div>
+  </div>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        photos: []
+      }
+    },
+    async mounted () {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=20`);
+      this.photos = await res.json();
+    },
+  }
+</script>
+<style>
+  .photos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 8px;
+  }
+
+  figure, img {
+    width: 100%;
+    margin: 0;
+  }
+</style>
+```
+{% endraw %}
+
+위의 코드를 Svelte에서는 아래와 같이 작성할 수 있습니다.
+
+```html
+<script>
+  import { onMount } from 'svelte';
+
+  let photos = [];
+
+  onMount(async () => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=20`);
+    photos = await res.json();
+  });
+</script>
+
+<style>
+  .photos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 8px;
+  }
+
+  figure, img {
+    width: 100%;
+    margin: 0;
+  }
+</style>
+
+<h1>Photo album</h1>
+
+<div class="photos">
+  {#each photos as photo}
+    <figure>
+      <img src={photo.thumbnailUrl} alt={photo.title}>
+      <figcaption>{photo.title}</figcaption>
+    </figure>
+  {:else}
+    <!-- this block renders when photos.length === 0 -->
+    <p>loading...</p>
+  {/each}
+</div>
+```
+
+몇가지 주목해야 할 부분이 있습니다.
+
+- `onMount` 함수를 사용하기 위해서는 `import { onMount } from 'svelte'`로 함수를 가져와야 합니다.
+- `onMount` 함수의 파라미터로 전달된 콜백함수가 마운트 된 후 실행됩니다.
+- `{#each}` 블록의 리스트가 비어 있을 경우 `{:else}` 블록이 화면에 노출됩니다.
+
+## 주의사항
+`onMount` 라이프 사이클 함수를 사용할 때 몇가지 주의사항을 살펴보도록 하겠습니다.
+
+### 오래 걸리는 네트워크 작업은 `onMount`에서
+네트워크를 통해 데이터를 가져와 느리게 데이터가 세팅이 된다면, `<script>` 태그의 상단이 아닌 `onMount` 라이프 사이클 함수에서 가져오는 것이 좋습니다.
+
+서버 사이드 랜더랑(Server Side Rendering)을 할 때, `onDestroy` 라이프 사이클 함수를 제외한 다른 라이프 사이클 함수들을 실행되지 않습니다. 마운트 된 후에 실행되는 `onMount`에서 데이터를 가져온다면, 데이터를 가져오느라 DOM이 느리게 마운트 되는 문제를 피할 수 있습니다.
+
+### `onMount`에 전달된 파라미터의 리턴 값
+`onMount`에 전달된 파라미터의 리턴 값으로 함수가 전달되면, 이 함수는 컴포넌트가 DOM에서 언마운트 될 때 실행됩니다. 이 예제는 [[Svelte] 데이터 바인딩 고급-this 바인딩](http://localhost:3000/tech/svelte/bindings-in-depth/#this-바인딩)에서 한번 살펴보았습니다.
 
 # onDestroy
 
