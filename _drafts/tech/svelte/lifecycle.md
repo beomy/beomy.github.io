@@ -11,7 +11,7 @@ category: [tech, svelte]
 
 라이프 사이클 함수란 컴포넌트가 화면에 마운트(화면에 출력) 되거나, 화면이 업데이트 혹은 화면에서 언마운트(화면에서 제거)됬을 때 실행되는 콜백 함수들을 말합니다.
 
-# onMount
+# `onMount`
 가장 많이 사용되는 라이프 사이클 함수는 `onMount` 함수입니다. 이 함수는 컴포넌트가 처음으로 DOM에 랜더링 되었을 때 실행되는 함수입니다. 
 
 `onMount` 함수는 네트워크를 통해 데이터를 가져와야 할 경우 사용됩니다. Vue.js에서는 `mounted` 라이프 사이클 함수와 유사합니다. Vue.js에서는 `mounted` 라이프 사이클 함수를 아래와 같이 사용합니다.
@@ -122,9 +122,10 @@ category: [tech, svelte]
 ### `onMount`에 전달된 파라미터의 리턴 값
 `onMount`에 전달된 파라미터의 리턴 값으로 함수가 전달되면, 이 함수는 컴포넌트가 DOM에서 언마운트 될 때 실행됩니다. 이 예제는 [[Svelte] 데이터 바인딩 고급-this 바인딩](http://localhost:3000/tech/svelte/bindings-in-depth/#this-바인딩)에서 한번 살펴보았습니다.
 
-# onDestroy
+# `onDestroy`
+`onDestroy`는 컴포넌트가 제거되었을 때 호출되는 함수입니다.
 
-# beforeUpdate, afterUpdate
+# `beforeUpdate`, `afterUpdate`
 
 # tick
 
