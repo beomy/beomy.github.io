@@ -221,7 +221,7 @@ export function onInterval(callback, milliseconds) {
     },
     beforeUpdate () {
       const div = this.$refs.div
-      this.autoscroll = div && (div.offsetHeight + div.scrollTop) > (div.scrollHeight - 20)
+      this.autoscroll = (div.offsetHeight + div.scrollTop) > (div.scrollHeight - 20)
     },
   }
 </script>
@@ -251,13 +251,57 @@ export function onInterval(callback, milliseconds) {
 
 {% raw %}
 ```html
+<template>
+  <div ref="div">DIV</div>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        autoscroll: null
+      }
+    },
+    beforeUpdate () {
+      const div = this.$refs.div
+      this.autoscroll = (div.offsetHeight + div.scrollTop) > (div.scrollHeight - 20)
+    },
+    updated () {
+      if (this.autoscroll) {
+        const div = this.$refs.div
+        div.scrollTo(0, div.scrollHeight)
+      }
+    },
+  }
+</script>
 ```
 {% endraw %}
+
+위의 코드는 Vue.js로 `beforeUpdate` 라이프 사이클 함수를 구현한 코드에 `updated` 라이프 사이클 함수를 추가한 예제입니다. 위의 코드를 Svelte에서는 아래와 같이 구현할 수 있습니다.
+
+```html
+<script>
+  import { beforeUpdate, afterUpdate } from 'svelte';
+
+  let div;
+  let autoscroll;
+
+  beforeUpdate(() => {
+    autoscroll = div && (div.offsetHeight + div.scrollTop) > (div.scrollHeight - 20);
+  });
+  
+  afterUpdate(() => {
+    if (autoscroll) div.scrollTo(0, div.scrollHeight);
+  });
+</script>
+<div bind:this="{div}">DIV</div>
+```
 
 # `tick`
 `tick`은 다른 라이프 사이클 함수들과 다르게 언제든 사용할 수 있습니다. 언제든 사용할 수 있다는 뜻은 마운트 된 후에만 호출되는 `onMount`, 제거된 후에만 호출되는 `onDestroy` 와는 달리 언제든 호출 된다는 뜻입니다.
 
-변경된 내용이 있다면 변경 된 내용이 DOM에 반영된 직후에, 변경 된 내용이 없다면 바로 `tick`이 호출 됩니다.
+`tick` 함수는 변경된 내용이 있다면 변경 된 내용이 DOM에 반영된 직후에, 변경 된 내용이 없다면 바로 호출 됩니다.
+
+Svelte는 상태가 변경 되면 즉시 업데이트 되지 않습니다. 정해진 시간 동안에 변경된 내용들을 한꺼번에 업데이트 합니다. 이런 동작은 불피요한 작업을 피할 수 있으며, 브라우저가 효율적으로 작업을 일괄 처리 할 수 있게 됩니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/onmount](https://svelte.dev/tutorial/onmount)
