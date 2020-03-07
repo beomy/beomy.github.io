@@ -303,6 +303,98 @@ export function onInterval(callback, milliseconds) {
 
 Svelte는 상태가 변경 되면 즉시 업데이트 되지 않습니다. 정해진 시간 동안에 변경된 내용들을 한꺼번에 업데이트 합니다. 이런 동작은 불피요한 작업을 피할 수 있으며, 브라우저가 효율적으로 작업을 일괄 처리 할 수 있게 됩니다.
 
+`<textarea>`에서 텍스트를 선택한 후 탭 키를 누를 경우, 소문자를 대문자로, 대문자를 소문자로 변경하는 예제로 `tick`을 살펴보도록 하겠습니다. 아래 코드는 Vue.js로 구현한 예제입니다.
+
+{% raw %}
+```html
+<template>
+  <textarea ref="textarea" :value="text" @keydown.prevent="handleKeydown"></textarea>
+</template>
+<script>
+  export default {
+    data () {
+      return {
+        text: ''
+      }
+    },
+    methods: {
+      handleKeydown(event) {
+        if (event.which !== 9) return;
+
+        const { selectionStart, selectionEnd, value } = this.$refs.textarea;
+        const selection = value.slice(selectionStart, selectionEnd);
+
+        const replacement = /[a-z]/.test(selection)
+          ? selection.toUpperCase()
+          : selection.toLowerCase();
+
+        this.text = (
+          value.slice(0, selectionStart) +
+          replacement +
+          value.slice(selectionEnd)
+        );
+
+        this.$nextTick(() => {
+          this.$refs.selectionStart = selectionStart;
+          this.$refs.selectionEnd = selectionEnd;
+        })
+      }
+    }
+  }
+</script>
+<style>
+	textarea {
+		width: 100%;
+		height: 200px;
+	}
+</style>
+```
+{% endraw %}
+
+아래 코드는 Svelte로 구현한 코드입니다.
+
+```html
+<script>
+  import { tick } from 'svelte';
+
+  let text = `Select some text and hit the tab key to toggle uppercase`;
+
+  async function handleKeydown(event) {
+    if (event.which !== 9) return;
+
+    const { selectionStart, selectionEnd, value } = this;
+    const selection = value.slice(selectionStart, selectionEnd);
+
+    const replacement = /[a-z]/.test(selection)
+      ? selection.toUpperCase()
+      : selection.toLowerCase();
+
+    text = (
+      value.slice(0, selectionStart) +
+      replacement +
+      value.slice(selectionEnd)
+    );
+
+    await tick();
+    this.selectionStart = selectionStart;
+    this.selectionEnd = selectionEnd;
+  }
+</script>
+
+<style>
+  textarea {
+    width: 100%;
+    height: 200px;
+  }
+</style>
+
+<textarea value={text} on:keydown|preventDefault={handleKeydown}></textarea>
+```
+
+- `preventDefault`
+- `this`
+- `await tick`
+
 #### 참고
 - [https://svelte.dev/tutorial/onmount](https://svelte.dev/tutorial/onmount)
 - [https://svelte.dev/tutorial/ondestroy](https://svelte.dev/tutorial/ondestroy)
