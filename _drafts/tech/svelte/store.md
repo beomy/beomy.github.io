@@ -153,8 +153,56 @@ const unsubscribe = count.subscribe(value => {
 `count`가 관찰하고 있는 값이 변경 될 때마다 `subscribe` 함수의 콜백함수가 실행됩니다.
 
 ## 자원 해제
+위의 예제에는 관찰하기 위해 사용된 자원을 해제하는 코드가 빠져있습니다. `count.subscribe` 함수의 리턴 값은 관찰을 해제해 주는 함수입니다. `App.svelte`를 아래 코드와 같이 수정합니다.
+
+```html
+<script>
+  import { onDestroy } from 'svelte';
+  import { count } from './stores.js';
+  import Incrementer from './Incrementer.svelte';
+  import Decrementer from './Decrementer.svelte';
+  import Resetter from './Resetter.svelte';
+
+  let count_value;
+
+  const unsubscribe = count.subscribe(value => {
+    count_value = value;
+  });
+
+  onDestroy(unsubscribe);
+</script>
+
+<h1>The count is {count_value}</h1>
+```
+
+`onDestory` 라이프 사이클 함수를 사용하여 컴포넌트가 제거 되었을때 관찰을 위해 사용한 자원을 해제하였습니다.
 
 ## 자동 구독 (Auto-subscriptions)
+`subscribe`를 사용하여 관찰하는 값이 변경 되었을 경우 화면에 표시 될 변수를 업데이트 하고, 컴포넌트가 제가 되었을 때 `subscribe`의 리턴 값을 `onDestroy` 라이프 사이플 함수에서 호출 하는 이 일련의 과정을 자동화 해주는 `$` 기능을 제공합니다. `App.svelte` 코드가 아래와 같이 변경됩니다.
+
+```html
+<script>
+  import { count } from './stores.js';
+  import Incrementer from './Incrementer.svelte';
+  import Decrementer from './Decrementer.svelte';
+  import Resetter from './Resetter.svelte';
+</script>
+
+<h1>The count is {$count}</h1>
+```
+
+위의 코드와 같이 store 이름 앞에 `$`를 붙여 사용하면 자동 구독을 할 수 있습니다. 자동 구독을 사용하더라고 `subscribe` 함수는 `<script>` 태그 어느 곳에든지 사용할 수 있습니다.
+
+### 주의사항
+자동 구독 기능을 사용하려면 몇가지 주의해야 할 내용들이 있습니다.
+
+#### store 변수 정의는 최상위 스코프에 있어야 합니다.
+최상위 스코프에 있다라는 것은, 블록안에서 변수가 정의되지 않고 `<scirpt>` 태그 하위에 바로 정의되어야 하는 것을 의미합니다.
+
+`import` 된 store 변수 혹은 최상위 스코프에서 정의된 store 변수는 자동 구독을 할 수 있습니다.
+
+#### `$`를 접두사로 사용하는 변수를 선언할 수 없습니다.
+자동 구독을 위해 `$` 접두사를 사용하기 때문에, Svelte는 `$` 접두사를 사용하는 변수 선언을 막았습니다.
 
 # Readable stores
 
