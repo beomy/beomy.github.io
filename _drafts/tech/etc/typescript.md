@@ -1,3 +1,10 @@
+---
+layout: post
+title: '[ETC] Vue에 Typescript 적용하기?'
+featured-img: javascript/js.png
+category: [tech, etc]
+---
+
 # `package.json`
 타입스크립트 적용을 위한 패키지 변경 내용입니다.
 
