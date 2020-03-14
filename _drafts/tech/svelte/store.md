@@ -206,7 +206,7 @@ const unsubscribe = count.subscribe(value => {
 자동 구독을 위해 `$` 접두사를 사용하기 때문에, Svelte는 `$` 접두사를 사용하는 변수 선언을 막았습니다.
 
 # Readable stores
-마우스의 위치나, 현재 사용자 위치, 현재 시간 등... 수정이 필아하지 않은 store를 선언해야 할 때가 있습니다. Svelte 읽기만 가능한 store(_readable store_)를 지원합니다. 아래의 코드로 살펴보도록 하겠습니다.
+마우스의 위치나, 현재 사용자 위치, 현재 시간 등... 수정이 필요하지 않은 store를 선언해야 할 때가 있습니다. Svelte 읽기만 가능한 store(_readable store_)를 지원합니다. 아래의 예제와 같이 _readable store_ 를 만들 수 있습니다.
 
 ```js
 // stores.js
@@ -224,6 +224,7 @@ export const time = readable(new Date(), function start(set) {
 ```
 
 ```html
+<!-- App.svelte -->
 <script>
   import { time } from './stores.js';
 
@@ -238,7 +239,21 @@ export const time = readable(new Date(), function start(set) {
 <h1>The time is {formatter.format($time)}</h1>
 ```
 
-`stores.js`의 `readable` 함수의 첫번째 인자는 초기값입니다. 초기값을 설정할 필요가 없을 경우, `null`이나 `undefined`를 사용할 수 있습니다.
+_readable store_ 를 만드는 `readable` 함수를 좀 더 자세히 살펴보겠습니다.
+
+```js
+readable(initial, function start (set) {
+  ...
+  return function stop () {
+    ...
+  };
+})
+```
+
+- `initial`: 첫번째 인자는 초기값입니다. 초기값을 설정할 필요가 없을 경우, `null`이나 `undefined`를 사용할 수 있습니다.
+- `start`: 두번째 인자는 첫 구독자가 발생했을때 호출되는 함수입니다. `set` 콜백 함수와 `stop` 함수를 리턴하는 함수입니다.
+- `set`: 관찰하고 있는 값을 변경하는 콜백함수 입니다.
+- `stop`: 모든 구독자가 구독을 중단하면 호출되는 함수입니다.
 
 # Derived stores
 
