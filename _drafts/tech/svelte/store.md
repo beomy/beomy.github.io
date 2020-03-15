@@ -178,7 +178,7 @@ const unsubscribe = count.subscribe(value => {
 
 `onDestory` 라이프 사이클 함수를 사용하여 컴포넌트가 제거 되었을때 관찰을 위해 사용한 자원을 해제하였습니다.
 
-## 자동 구독 (Auto-subscriptions)
+## 자동 구독
 `subscribe`를 사용하여 관찰하는 값이 변경 되었을 경우 화면에 표시 될 변수를 업데이트 하고, 컴포넌트가 제가 되었을 때 `subscribe`의 리턴 값을 `onDestroy` 라이프 사이플 함수에서 호출 하는 이 일련의 과정을 자동화 해주는 `$` 기능을 제공합니다. `App.svelte` 코드가 아래와 같이 변경됩니다.
 
 ```html
@@ -251,11 +251,55 @@ readable(initial, function start (set) {
 ```
 
 - `initial`: 첫번째 인자는 초기값입니다. 초기값을 설정할 필요가 없을 경우, `null`이나 `undefined`를 사용할 수 있습니다.
-- `start`: 두번째 인자는 첫 구독자가 발생했을때 호출되는 함수입니다. `set` 콜백 함수와 `stop` 함수를 리턴하는 함수입니다.
+- `start`: 두번째 인자는 첫 구독자가 발생했을때 호출되는 함수입니다. `set` 콜백 함수를 인자로 가지고 `stop` 함수를 리턴하는 함수입니다.
 - `set`: 관찰하고 있는 값을 변경하는 콜백함수 입니다.
-- `stop`: 모든 구독자가 구독을 중단하면 호출되는 함수입니다.
+- `stop`: 모든 구독자가 구독을 중단하면 호출되는 함수입니다. `start` 함수에서 사용된 자원들이 있다면, 이 함수내에서 자원을 해제해야 합니다.
 
 # Derived stores
+`drived`를 사용하면, 기존의 store를 이용하여 새로운 store을 만들어 낼 수 있습니다. Vuex의 getter와 유사한 기능입니다. 기존의 존재하는 값들을 가공한 값을 사용할 수 있게 하는 기능입니다. 사용 방법은 아래 코드와 같습니다.
+
+```js
+// stores.js
+import { readable, derived } from 'svelte/store';
+
+export const time = readable(new Date(), function start(set) {
+  const interval = setInterval(() => {
+    set(new Date());
+  }, 1000);
+
+  return function stop() {
+    clearInterval(interval);
+  };
+});
+
+const start = new Date();
+
+export const elapsed = derived(
+  time,
+  $time => Math.round(($time - start) / 1000)
+);
+```
+
+```html
+<!-- App.svelte -->
+<script>
+  import { time, elapsed } from './stores.js';
+
+  const formatter = new Intl.DateTimeFormat('en', {
+    hour12: true,
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+</script>
+
+<h1>The time is {formatter.format($time)}</h1>
+
+<p>
+  This page has been open for
+  {$elapsed} {$elapsed === 1 ? 'second' : 'seconds'}
+</p>
+```
 
 # Custom stores
 
