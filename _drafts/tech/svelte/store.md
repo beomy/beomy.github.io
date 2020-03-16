@@ -241,6 +241,7 @@ export const time = readable(new Date(), function start(set) {
 
 _readable store_ 를 만드는 `readable` 함수를 좀 더 자세히 살펴보겠습니다.
 
+## `readable` 함수
 ```js
 readable(initial, function start (set) {
   ...
@@ -256,7 +257,7 @@ readable(initial, function start (set) {
 - `stop`: 모든 구독자가 구독을 중단하면 호출되는 함수입니다. `start` 함수에서 사용된 자원들이 있다면, 이 함수내에서 자원을 해제해야 합니다.
 
 # Derived stores
-`drived`를 사용하면, 기존의 store를 이용하여 새로운 store을 만들어 낼 수 있습니다. Vuex의 getter와 유사한 기능입니다. 기존의 존재하는 값들을 가공한 값을 사용할 수 있게 하는 기능입니다. 사용 방법은 아래 코드와 같습니다.
+`drived`를 사용하면, 존재하는 store를 이용하여 새로운 store을 만들어 낼 수 있습니다. Vuex의 getter와 유사한 기능입니다. 기존의 존재하는 값들을 가공한 값을 사용할 수 있게 하는 기능입니다. 사용 방법은 아래 코드와 같습니다.
 
 ```js
 // stores.js
@@ -301,11 +302,104 @@ export const elapsed = derived(
 </p>
 ```
 
+위의 코드에서 `derived`를 사용하여 새로운 store을 생성하는 것을 볼 수 있습니다. `derived` 함수를 좀 더 자세히 살펴 보도록 하겠습니다.
+
+## `derived` 함수
+```ts
+store = derived(a, callback: (a: any) => any)
+```
+
+```ts
+store = derived(a, callback: (a: any, set: (value: any) => void) => void | () => void, initial_value: any)
+```
+
+```ts
+store = derived([a, ...b], callback: ([a: any, ...b: any[]]) => any)
+```
+
+```ts
+store = derived([a, ...b], callback: ([a: any, ...b: any[]], set: (value: any) => void) => void | () => void, initial_value: any)
+```
+
+`derived` 함수의 위의 4가지 형태를 지원합니다. `derived` 함수는 최대 3개의 인자를 가질 수 있습니다.
+
+- 첫번째 인자는 참고하는 store입니다. 참고하는 store가 하나라면 `derived(a, ...)`으로 객체가 됩니다. 참고하는 store가 여러개라면 `derived([a, ...b], ...)`로 배열이 됩니다.
+- 두번째 인자는 새로운 store의 값을 리턴하는 콜백함수입니다. 콜백 함수의 인자는 참고하는 store입니다. 콜백 함수의 마지막 인자는 `set` 함수입니다. `derived([a, b], ($a, $b, set) => ...)`와 같은 형태입니다.
+- 세번째 인자는 새로운 store의 초기 값입니다.
+
+자세한 API 레퍼런스는 [https://svelte.dev/docs#derived](https://svelte.dev/docs#derived)를 참고 바랍니다.
+
 # Custom stores
+이번에는 store를 커스텀하게 만드는 방법을 이야기 하도록 하겠습니다.
+
+`subscribe` 함수가 바르게 구현되어 있는 것들은 모두 store입니다. 커스텀하게 만들어진 store 예제를 살펴보겠습니다.
+
+```js
+// stores.js
+import { writable } from 'svelte/store';
+
+function createCount() {
+  const { subscribe, set, update } = writable(0);
+
+  return {
+    subscribe,
+    increment: () => update(n => n + 1),
+    decrement: () => update(n => n - 1),
+    reset: () => set(0)
+  };
+}
+
+export const count = createCount();
+```
+
+```html
+<!-- App.svelte -->
+<script>
+  import { count } from './stores.js';
+</script>
+
+<h1>The count is {$count}</h1>
+
+<button on:click={count.increment}>+</button>
+<button on:click={count.decrement}>-</button>
+<button on:click={count.reset}>reset</button>
+```
+
+커스텀한 store을 만드는 것은 어렵지 않습니다. `subscribe`가 구현되어 있으면 모두 store이기 때문에 `subscribe` 함수를 가지를 객체를 만들면 됩니다. `stores.js`를 살펴보겠습니다. `count`는 `subscribe`, `increment`, `decrement`, `reset` 함수를 가지는 store입니다.
+
+- `increment`: `() => update(n => n + 1)` 관찰하는 값을 1 증가시킵니다.
+- `decrement`: `() => update(n => n - 1)` 관찰하는 값을 1 감소시킵니다.
+- `reset`: `set(0)` 관찰하는 값을 0으로 초기화 시킵니다.
 
 # Store bindings
+store도 바인딩이 가능합니다. 바인딩이 가능하려면 _writable store_ 이여야 합니다(`set` 함수가 존재해야 합니다). 바인딩하는 방법은 동일합니다. 바인딩 예제로 살펴보도록 하겠습니다.
 
-### 참고
+```js
+// stores.js
+import { writable, derived } from 'svelte/store';
+
+export const name = writable('world');
+
+export const greeting = derived(
+  name,
+  $name => `Hello ${$name}!`
+);
+```
+
+```html
+<script>
+  import { name, greeting } from './stores.js';
+</script>
+
+<h1>{$greeting}</h1>
+<input bind:value={$name}>
+
+<button on:click="{() => $name += '!'}">
+  Add exclamation mark!
+</button>
+```
+
+#### 참고
 - [https://svelte.dev/tutorial/writable-stores](https://svelte.dev/tutorial/writable-stores)
 - [https://svelte.dev/tutorial/auto-subscriptions](https://svelte.dev/tutorial/auto-subscriptions)
 - [https://svelte.dev/tutorial/readable-stores](https://svelte.dev/tutorial/readable-stores)
