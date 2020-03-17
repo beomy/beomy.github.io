@@ -372,7 +372,7 @@ export const count = createCount();
 - `reset`: `set(0)` 관찰하는 값을 0으로 초기화 시킵니다.
 
 # Store bindings
-store도 바인딩이 가능합니다. 바인딩이 가능하려면 _writable store_ 이여야 합니다(`set` 함수가 존재해야 합니다). 바인딩하는 방법은 동일합니다. 바인딩 예제로 살펴보도록 하겠습니다.
+store도 바인딩이 가능합니다. 바인딩이 가능하려면 _writable store_ 이여야 합니다(`set` 함수가 존재해야 합니다). 바인딩하는 방법은 동일합니다. 예제를 하나 살펴보도록 하겠습니다.
 
 ```js
 // stores.js
@@ -387,6 +387,7 @@ export const greeting = derived(
 ```
 
 ```html
+<!-- App.svelte -->
 <script>
   import { name, greeting } from './stores.js';
 </script>
@@ -398,6 +399,11 @@ export const greeting = derived(
   Add exclamation mark!
 </button>
 ```
+
+- `stores.js`: `stores.js `를 살펴보면 _writable store_ 인 `name`과 _derived store_ 인 `greeting` 2개의 store가 있습니다. `greeting`는 `name`이 관찰하는 값에 약간의 문구를 추가한 store입니다.
+- `App.svelte`: `App.svelte`는 2가지 방법을 사용하여 `name` store의 값을 변경시킵니다. `name` store의 자동 구동 방법을 사용하면 일반 변수처럼 사용할 수 있습니다.
+  - `<input>`: `<input bind:value={$name}>`로 `<input>` 태그의 `value` 속성에 `$name`을 바인딩하였습니다. `<input>` 태그의 `value` 속성 값이 바뀌게 되면 `$name`에 반영됩니다.
+  - `<button>`: `<button>` 태그에 `click`이벤트가 발생하면 `$name`에 `!` 문자를 추가합니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/writable-stores](https://svelte.dev/tutorial/writable-stores)
