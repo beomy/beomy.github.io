@@ -7,19 +7,18 @@ category: [tech, svelte]
 ---
 {% include toc.html %}
 
-Vue.js의 상태관리 라이브러리로 vuex를 공식 지원합니다. Svelte는 상태관리 라이브러리를 따로 지원하지 않고, Svelte 내부(`svelte/store`)에 포함되어 있습니다.
+Vue.js의 상태 관리 라이브러리로 vuex를 공식 지원합니다. Svelte는 상태 관리 라이브러리를 따로 지원하지 않고, Svelte 내부(`svelte/store`)에 포함되어 있습니다.
 
-store는 서로 관계 없는 컴포넌트끼리 데이터를 접근해야 할 경우 사용됩니다. 예를 들어 밑의 그림과 같이,
+store는 서로 관계없는 컴포넌트끼리 같은 데이터를 접근해야 할 경우 사용됩니다. 예를 들어 밑의 그림과 같이,
 
 |store 사용이 필요할 때|store를 사용하면|
 |:---:|:---:|
 |![store 사용이 필요할 때](/assets/img/posts/svelte/need_use_store.png)|![store를 사용하면](/assets/img/posts/svelte/use_store.png)|
 
-`A` 컴포넌트의 데이터를 `B`와 `C` 컴포넌트에서 사용해야 할 때, store를 사용하면 간편하게 데이터 전달할 수 있습니다. Svelte의 store은 `subscribe` 함수를 포함하는 단순한 객체입니다. `subscribe` 함수는 관찰하고 있는 값이 변경 될 때 마다 컴포넌트에게 알려주는 역할을 합니다.
-
+`A` 컴포넌트의 데이터를 `B`와 `C` 컴포넌트에서 사용해야 할 때, store를 사용하면 간편하게 데이터 전달할 수 있습니다. Svelte의 store은 `subscribe` 함수를 포함하는 단순한 객체입니다. `subscribe` 함수는 관찰하고 있는 값이 변경될 때마다 컴포넌트에게 알려주는 콜백 함수입니다.
 
 # Writable stores
-보통의 store은 읽기는 물론 쓰기(수정)이 가능해야 합니다. 읽기, 쓰기 모두 가능한 store(_writable store_)를 생성하는 방법을 이야기 하도록 하겠습니다.
+보통의 store은 읽기는 물론 쓰기(수정)이 가능해야 합니다. 읽기, 쓰기 모두 가능한 store(_writable store_)를 생성하는 방법을 이야기하도록 하겠습니다.
 
 ## 사용 방법
 아래 예제로 사용방법을 살펴보도록 하겠습니다.
@@ -105,7 +104,7 @@ export const count = writable(0);
 export const count = writable(0);
 ```
 
-`count` 변수가 `writable(0)`로 생성 되었습니다. 이렇게 생성된 변수는 `set`과 `update`, `subscribe` 함수를 포함하는 객체가 됩니다.
+`count` 변수가 `writable(0)`로 생성되었습니다. 이렇게 생성된 변수는 `set`과 `update`, `subscribe` 함수를 포함하는 객체가 됩니다.
 
 ### `Incrementer.svelte`
 `+` 버튼을 클릭하게 되면, `increment` 함수가 호출됩니다.
@@ -116,9 +115,9 @@ function increment() {
 }
 ```
 
-위의 `count.update`의 `n`은 현재의 `count`가 관찰하고 있는 값을 저장하고 있습니다. `n => n + 1`은 `n + 1`을 리턴한다는 의미입니다. 리턴된 값으로 `count`가 관찰하는 값을 업데이트 합니다. 즉, 이전에 관찰하는 값보다 1이 더 큰 값으로 업데이트 됩니다.
+위의 `count.update`의 `n`은 현재의 `count`가 관찰하고 있는 값을 저장하고 있습니다. `n => n + 1`은 `n + 1`을 리턴한다는 의미입니다. 리턴된 값으로 `count`가 관찰하는 값을 업데이트합니다. 즉, 이전에 관찰하는 값보다 1이 더 큰 값으로 업데이트됩니다.
 
-`writable(0)`로 `count` 변수를 생성하였기 때문에, `count`가 관찰하고 있는 값의 초기값은 0이 됩니다.
+`writable(0)`로 `count` 변수를 생성하였기 때문에, `count`가 관찰하고 있는 값의 초깃값은 0이 됩니다.
 
 ### `Decrementer.svelte`
 `-` 버튼을 클릭하게 되면, `decrement` 함수가 호출됩니다.
@@ -129,7 +128,7 @@ function decrement() {
 }
 ```
 
-`increment` 함수와 동일하게 `count.update`를 사용합니다. `n => n - 1`로 `n - 1`을 리턴하기 때문에, 이전에 관찰하는 값보다 1 작은 값으로 업데이트 됩니다.
+`increment` 함수와 동일하게 `count.update`를 사용합니다. `n => n - 1`로 `n - 1`을 리턴하기 때문에, 이전에 관찰하는 값보다 1 작은 값으로 업데이트됩니다.
 
 ### `Resetter.svelte`
 `reset` 버튼을 클릭하게 되면, `reset` 함수가 호출됩니다.
@@ -151,7 +150,7 @@ const unsubscribe = count.subscribe(value => {
 });
 ```
 
-`count`가 관찰하고 있는 값이 변경 될 때마다 `subscribe` 함수의 콜백함수가 실행됩니다.
+`count`가 관찰하고 있는 값이 변경될 때마다 `subscribe` 함수의 콜백 함수가 실행됩니다.
 
 ## 자원 해제
 위의 예제에는 관찰하기 위해 사용된 자원을 해제하는 코드가 빠져있습니다. `count.subscribe` 함수의 리턴 값은 관찰을 해제해 주는 함수입니다. `App.svelte`를 아래 코드와 같이 수정합니다.
@@ -176,10 +175,10 @@ const unsubscribe = count.subscribe(value => {
 <h1>The count is {count_value}</h1>
 ```
 
-`onDestory` 라이프 사이클 함수를 사용하여 컴포넌트가 제거 되었을때 관찰을 위해 사용한 자원을 해제하였습니다.
+`onDestory` 라이프 사이클 함수를 사용하여 컴포넌트가 제거되었을 때 관찰을 위해 사용한 자원을 해제하였습니다.
 
 ## 자동 구독
-`subscribe`를 사용하여 관찰하는 값이 변경 되었을 경우 화면에 표시 될 변수를 업데이트 하고, 컴포넌트가 제가 되었을 때 `subscribe`의 리턴 값을 `onDestroy` 라이프 사이플 함수에서 호출 하는 이 일련의 과정을 자동화 해주는 `$` 기능을 제공합니다. `App.svelte` 코드가 아래와 같이 변경됩니다.
+`subscribe`를 사용하여 관찰하는 값이 변경되었을 경우 화면에 표시될 변수를 업데이트하고, 컴포넌트가 제거 되었을 때 `subscribe`의 리턴 값을 `onDestroy` 라이프 사이클 함수에서 호출하는 이 일련의 과정을 자동화해주는 `$` 기능을 제공합니다. `App.svelte` 코드가 아래와 같이 변경됩니다.
 
 ```html
 <script>
@@ -195,12 +194,10 @@ const unsubscribe = count.subscribe(value => {
 위의 코드와 같이 store 이름 앞에 `$`를 붙여 사용하면 자동 구독을 할 수 있습니다. 자동 구독을 사용하더라고 `subscribe` 함수는 `<script>` 태그 어느 곳에든지 사용할 수 있습니다.
 
 ### 주의사항
-자동 구독 기능을 사용하려면 몇가지 주의해야 할 내용들이 있습니다.
+자동 구독 기능을 사용하려면 몇 가지 주의해야 할 내용들이 있습니다.
 
 #### store 변수 정의는 최상위 스코프에 있어야 합니다.
-최상위 스코프에 있다라는 것은, 블록안에서 변수가 정의되지 않고 `<scirpt>` 태그 하위에 바로 정의되어야 하는 것을 의미합니다.
-
-`import` 된 store 변수 혹은 최상위 스코프에서 정의된 store 변수는 자동 구독을 할 수 있습니다.
+최상위 스코프에 있다는 것은, 블록 안에서 변수가 정의되지 않고 `<scirpt>` 태그 하위에 바로 정의되어야 하는 것을 의미합니다. `import` 된 store 변수 혹은 최상위 스코프에서 정의된 store 변수는 자동 구독을 할 수 있습니다.
 
 #### `$`를 접두사로 사용하는 변수를 선언할 수 없습니다.
 자동 구독을 위해 `$` 접두사를 사용하기 때문에, Svelte는 `$` 접두사를 사용하는 변수 선언을 막았습니다.
@@ -251,10 +248,10 @@ readable(initial, function start (set) {
 })
 ```
 
-- `initial`: 첫번째 인자는 초기값입니다. 초기값을 설정할 필요가 없을 경우, `null`이나 `undefined`를 사용할 수 있습니다.
-- `start`: 두번째 인자는 첫 구독자가 발생했을때 호출되는 함수입니다. `set` 콜백 함수를 인자로 가지고 `stop` 함수를 리턴하는 함수입니다.
-- `set`: 관찰하고 있는 값을 변경하는 콜백함수 입니다.
-- `stop`: 모든 구독자가 구독을 중단하면 호출되는 함수입니다. `start` 함수에서 사용된 자원들이 있다면, 이 함수내에서 자원을 해제해야 합니다.
+- `initial`: 첫 번째 인자는 초깃값입니다. 초깃값을 설정할 필요가 없을 경우, `null`이나 `undefined`를 사용할 수 있습니다.
+- `start`: 두 번째 인자는 첫 구독자가 발생했을 때 호출되는 함수입니다. `set` 콜백 함수를 인자로 가지고 `stop` 함수를 리턴하는 함수입니다.
+- `set`: 관찰하고 있는 값을 변경하는 콜백 함수입니다.
+- `stop`: 모든 구독자가 구독을 중단하면 호출되는 함수입니다. `start` 함수에서 사용된 자원들이 있다면, 이 함수 내에서 자원을 해제해야 합니다.
 
 # Derived stores
 `drived`를 사용하면, 존재하는 store를 이용하여 새로운 store을 만들어 낼 수 있습니다. Vuex의 getter와 유사한 기능입니다. 기존의 존재하는 값들을 가공한 값을 사용할 수 있게 하는 기능입니다. 사용 방법은 아래 코드와 같습니다.
@@ -302,7 +299,7 @@ export const elapsed = derived(
 </p>
 ```
 
-위의 코드에서 `derived`를 사용하여 새로운 store을 생성하는 것을 볼 수 있습니다. `derived` 함수를 좀 더 자세히 살펴 보도록 하겠습니다.
+위의 코드에서 `derived`를 사용하여 새로운 store을 생성하는 것을 볼 수 있습니다. `derived` 함수를 좀 더 자세히 살펴보도록 하겠습니다.
 
 ## `derived` 함수
 ```ts
@@ -323,16 +320,16 @@ store = derived([a, ...b], callback: ([a: any, ...b: any[]], set: (value: any) =
 
 `derived` 함수의 위의 4가지 형태를 지원합니다. `derived` 함수는 최대 3개의 인자를 가질 수 있습니다.
 
-- 첫번째 인자는 참고하는 store입니다. 참고하는 store가 하나라면 `derived(a, ...)`으로 객체가 됩니다. 참고하는 store가 여러개라면 `derived([a, ...b], ...)`로 배열이 됩니다.
-- 두번째 인자는 새로운 store의 값을 리턴하는 콜백함수입니다. 콜백 함수의 인자는 참고하는 store입니다. 콜백 함수의 마지막 인자는 `set` 함수입니다. `derived([a, b], ($a, $b, set) => ...)`와 같은 형태입니다.
-- 세번째 인자는 새로운 store의 초기 값입니다.
+- 첫 번째 인자는 참고하는 store입니다. 참고하는 store가 하나라면 `derived(a, ...)`으로 객체가 됩니다. 참고하는 store가 여러 개라면 `derived([a, ...b], ...)`로 배열이 됩니다.
+- 두 번째 인자는 새로운 store의 값을 리턴하는 콜백 함수입니다. 콜백 함수의 인자는 참고하는 store입니다. 콜백 함수의 마지막 인자는 `set` 함수입니다. `derived([a, b], ($a, $b, set) => ...)`와 같은 형태입니다.
+- 세 번째 인자는 새로운 store의 초깃값입니다.
 
 자세한 API 레퍼런스는 [https://svelte.dev/docs#derived](https://svelte.dev/docs#derived)를 참고 바랍니다.
 
 # Custom stores
-이번에는 store를 커스텀하게 만드는 방법을 이야기 하도록 하겠습니다.
+이번에는 store를 커스텀 하게 만드는 방법을 이야기하도록 하겠습니다.
 
-`subscribe` 함수가 바르게 구현되어 있는 것들은 모두 store입니다. 커스텀하게 만들어진 store 예제를 살펴보겠습니다.
+`subscribe` 함수가 바르게 구현되어 있는 것들은 모두 store입니다. 커스텀 하게 만들어진 store 예제를 살펴보겠습니다.
 
 ```js
 // stores.js
@@ -365,14 +362,14 @@ export const count = createCount();
 <button on:click={count.reset}>reset</button>
 ```
 
-커스텀한 store을 만드는 것은 어렵지 않습니다. `subscribe`가 구현되어 있으면 모두 store이기 때문에 `subscribe` 함수를 가지를 객체를 만들면 됩니다. `stores.js`를 살펴보겠습니다. `count`는 `subscribe`, `increment`, `decrement`, `reset` 함수를 가지는 store입니다.
+커스텀 한 store을 만드는 것은 어렵지 않습니다. `subscribe`가 구현되어 있으면 모두 store이기 때문에 `subscribe` 함수를 가지는 객체를 만들면 됩니다. `stores.js`를 살펴보겠습니다. `count`는 `subscribe`, `increment`, `decrement`, `reset` 함수를 가지는 store입니다.
 
 - `increment`: `() => update(n => n + 1)` 관찰하는 값을 1 증가시킵니다.
 - `decrement`: `() => update(n => n - 1)` 관찰하는 값을 1 감소시킵니다.
 - `reset`: `set(0)` 관찰하는 값을 0으로 초기화 시킵니다.
 
 # Store bindings
-store도 바인딩이 가능합니다. 바인딩이 가능하려면 _writable store_ 이여야 합니다(`set` 함수가 존재해야 합니다). 바인딩하는 방법은 동일합니다. 예제를 하나 살펴보도록 하겠습니다.
+store도 바인딩이 가능합니다. 바인딩이 가능하려면 _writable store_ 이어야 합니다(`set` 함수가 존재해야 합니다). 바인딩 하는 방법은 동일합니다. 예제를 하나 살펴보도록 하겠습니다.
 
 ```js
 // stores.js
@@ -400,9 +397,9 @@ export const greeting = derived(
 </button>
 ```
 
-- `stores.js`: `stores.js `를 살펴보면 _writable store_ 인 `name`과 _derived store_ 인 `greeting` 2개의 store가 있습니다. `greeting`는 `name`이 관찰하는 값에 약간의 문구를 추가한 store입니다.
-- `App.svelte`: `App.svelte`는 2가지 방법을 사용하여 `name` store의 값을 변경시킵니다. `name` store의 자동 구동 방법을 사용하면 일반 변수처럼 사용할 수 있습니다.
-  - `<input>`: `<input bind:value={$name}>`로 `<input>` 태그의 `value` 속성에 `$name`을 바인딩하였습니다. `<input>` 태그의 `value` 속성 값이 바뀌게 되면 `$name`에 반영됩니다.
+- `stores.js`를 살펴보면 _writable store_ 인 `name`과 _derived store_ 인 `greeting` 2개의 store가 있습니다. `greeting`는 `name`이 관찰하는 값에 약간의 문구를 추가한 store입니다.
+- `App.svelte`는 2가지 방법을 사용하여 `name` store의 값을 변경시킵니다. `name` store의 자동 구독 방법을 사용하면 일반 변수처럼 사용할 수 있습니다.
+  - `<input>`: `<input bind:value={$name}>`로 `<input>` 태그의 `value` 속성에 `$name`을 바인딩 하였습니다. `<input>` 태그의 입력 값이 들어오면 `$name`에 반영됩니다.
   - `<button>`: `<button>` 태그에 `click`이벤트가 발생하면 `$name`에 `!` 문자를 추가합니다.
 
 #### 참고
