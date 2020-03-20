@@ -55,7 +55,7 @@ Svelte에서는 변수를 DOM에 바인딩하고 DOM이 업데이트 되면 자�
 
 ![프로그레스바](/assets/img/posts/svelte/progressbar.gif)
 
-위의 코드와 그림은 `tweened` Motion을 사용한 코드와 그 결과입니다. `tweened` 함수를 살펴보겠습니다.
+위의 코드와 그림은 `tweened` Motion을 사용하여 프로그레스바를 구현한 코드와 그 결과입니다. `tweened` 함수를 살펴보겠습니다.
 
 ## `tweened` 함수
 ```js
@@ -72,8 +72,75 @@ store = tweened(value: any, options)
 `store.set`과 `store.update`의 두번째 인자에 `options`(위에서 설명한 옵션)를 전달 할 수 있습니다. 전달된 옵션은 기본값(인스턴스를 생성할 때 사용한 `tweened(value, options)`의 `options`가 기본값입니다.)에 오버라이드(override)됩니다. `set`과 `update` 함수의 리턴값은 Promise입니다. tween 작업이 완료 되면 Promise가 resolve됩니다.
 
 # Spring
+`spring`는 자주 변경되는 값에 사용됩니다. `spring`을 사용하는 예제를 살펴보도록 하겠습니다. 2개의 store를 사용하였습니다. 하나는 원의 좌표, 나머지 하는 원의 크기를 나타냅니다.
+
+```html
+<script>
+  import { spring } from 'svelte/motion';
+
+  let coords = spring({ x: 50, y: 50 }, {
+    stiffness: 0.1,
+    damping: 0.25
+  });
+
+  let size = spring(10);
+</script>
+
+<style>
+  svg { width: 100%; height: 100% }
+  circle { fill: #ff3e00 }
+</style>
+
+<div style="position: absolute; right: 1em;">
+  <label>
+    <h3>stiffness ({coords.stiffness})</h3>
+    <input bind:value={coords.stiffness} type="range" min="0" max="1" step="0.01">
+  </label>
+
+  <label>
+    <h3>damping ({coords.damping})</h3>
+    <input bind:value={coords.damping} type="range" min="0" max="1" step="0.01">
+  </label>
+</div>
+
+<svg
+  on:mousemove="{e => coords.set({ x: e.clientX, y: e.clientY })}"
+  on:mousedown="{() => size.set(30)}"
+  on:mouseup="{() => size.set(10)}"
+>
+  <circle cx={$coords.x} cy={$coords.y} r={$size}/>
+</svg>
+```
+
+![커서 이동](/assets/img/posts/svelte/cursor.gif)
+
+위의 코드와 그림은 `spring` Motion을 사용하여 커서의 위치를 나타내는 원과 클릭 이벤트에 따라 원의 크기가 바뀌는 예제 코드와 결과입니다. `spring` 함수를 살펴보도록 하겠습니다.
+
+## `spring` 함수
+```js
+store = spring(value: any, options)
+```
+
+`spring` 함수도 2개의 인자를 가집니다. 첫번째 인자는 변경되는 값이고 두번째 인자는 옵션입니다. `spring` 함수는 store를 리턴합니다. `options`에 설정할 수 있는 값을 살펴보겠습니다.
+
+- `stiffness` (number, default 0.15): 0과 1 사이의 값입니다. 값이 높을 수록 즉시 Motion이 반영됩니다.
+![커서 이동](/assets/img/posts/svelte/cursor_stiffness.gif)
+- `damping` (number, default 0.8): 0과 1 사이의 값입니다. 값이 낮을 수록 스프링처럼 튕기는 Motion이 민감하게 발생합니다.
+![커서 이동](/assets/img/posts/svelte/cursor_damping.gif)
+- `precision` (number, default 0.001): 스프링처럼 튕기는 동작이 정착된(settled) 것으로 간주하는 임계값(threshold)입니다. 쉽게 말해서 값이 클수록 스프링처럼 튕기는 횟수가 줄어 들고, 값이 낮을 수록 스프링처럼 튕기는 횟수가 증가합니다.
+![커서 이동](/assets/img/posts/svelte/cursor_precision.gif)
+
+`store.stiffness`, `store.damping`, `store.precision` 속성을 변경할 수 있습니다. 변경되면 즉시 반영됩니다.
+
+`tweened` store와 동일하게, `set`과 `update` 함수를 제공합니다. `set`과 `update` 함수의 리턴값은 Promise로 `spring` 동작이 완료되면 resolve 됩니다.
+
+`set`과 `update` 함수는 두번째 인자를 가질 수 있습니다. 두번째 인자는 `hard`나 `soft` 속성을 가지는 객체입니다. `{ hard: true }`을 전달하면 즉시 반영됩니다. `{ soft: n }`은 `n`초 후에 반영됩니다. `{ soft: ture }`는 `{ soft: 0.5 }`와 동일합니다.
+
+# `spring`과 `tweened` 차이
+`spring` store의 값은 `stiffness`와 `damping`의 값에 따라 점차 변경됩니다.`tweened` store의 값은 고정된 `duration` 동안 변경되는 반면, `spring` store은 기본 속도에 의해 결정된 시간동안 값이 변경되어 많은 상황에서 좀 더 자연스럽게 보이게 됩니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/tweened](https://svelte.dev/tutorial/tweened)
 - [https://svelte.dev/tutorial/spring](https://svelte.dev/tutorial/spring)
 - [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing)
+- [https://svelte.dev/docs#spring](https://svelte.dev/docs#spring)
