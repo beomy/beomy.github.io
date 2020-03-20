@@ -7,7 +7,9 @@ category: [tech, svelte]
 ---
 {% include toc.html %}
 
-Svelte에서는 변수를 DOM에 바인딩하고 DOM이 업데이트 되면 자동으로 변수의 값을 업데이트 할 수 있습니다. Svelte에서는 변수의 값이 업데이트 되었을 때 애니메이션을 사용할 수 있는 Motion 기능을 제공합니다. 이번 포스트에서는 Svelte에서 제공하는 Motion을 알아보도록 하겠습니다.
+Svelte는 변수를 DOM에 바인딩하고 DOM이 업데이트되면 자동으로 변수의 값이 업데이트됩니다. Svelte에서는 변수의 값이 업데이트되었을 때 애니메이션을 사용할 수 있는 Motion 기능을 제공합니다. 이번 포스트에서는 Svelte에서 제공하는 Motion을 알아보도록 하겠습니다.
+
+이번 포스트에서 말씀드리는 Motion은 모두 store이기 때문에 [[Svelte] Store](/tech/svelte/store)를 먼저 읽어 주세요.
 
 # Tweened
 프로그레스바 예제로 `tweened` Motion을 살펴보도록 하겠습니다.
@@ -62,17 +64,17 @@ Svelte에서는 변수를 DOM에 바인딩하고 DOM이 업데이트 되면 자�
 store = tweened(value: any, options)
 ```
 
-`tweened` 함수는 2개의 인자를 가집니다. 첫번째 인자는 변경되는 값이고 두번째 인자는 옵션입니다. `tweened` 함수는 store를 리턴합니다. `options`에 설정할 수 있는 값을 살펴보겠습니다.
+`tweened` 함수는 2개의 인자를 가집니다. 첫 번째 인자는 변경되는 값이고 두 번째 인자는 옵션입니다. `tweened` 함수는 store를 리턴합니다. `options`에 설정할 수 있는 값을 살펴보겠습니다.
 
 - `delay` (number, default 0): 단위는 ms로, 설정한 시간 후에 시작됩니다.
 - `duration` (number, default 400): 단위는 ms로, 설정한 시간 동안 실행됩니다.
-- `easing` (function, default t => t): `easing` 함수입니다. Svelte에는 기본으로 30가지 템플릿([https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고)을 제공합니다. 커스텀하게 만들 수도 있습니다.
-- `interpolate` (function): 두 값 사이를 보간하여 좀 더 부드럽게 보여주기 위해서 사용되는 옵션입니다. `(a, b) => t => value` 형태가 와야 합니다. `a`는 시작값, `b`는 목표값, `t`는 0과 1사이의 숫자이고, `value`는 결과값입니다.
+- `easing` (function, default t => t): `easing` 함수입니다. Svelte는 기본으로 30가지 템플릿([https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고)을 제공합니다. 커스텀 하게 만들 수도 있습니다.
+- `interpolate` (function): 두 값 사이를 보간하여 좀 더 부드럽게 보여주기 위해서 사용되는 옵션입니다. `(a, b) => t => value` 형태가 와야 합니다. `a`는 시작 값, `b`는 목푯값, `t`는 0과 1사이의 숫자이고, `value`는 결과 값입니다.
 
-`store.set`과 `store.update`의 두번째 인자에 `options`(위에서 설명한 옵션)를 전달 할 수 있습니다. 전달된 옵션은 기본값(인스턴스를 생성할 때 사용한 `tweened(value, options)`의 `options`가 기본값입니다.)에 오버라이드(override)됩니다. `set`과 `update` 함수의 리턴값은 Promise입니다. tween 작업이 완료 되면 Promise가 resolve됩니다.
+`store.set`과 `store.update`의 두 번째 인자에 `options`(위에서 설명한 옵션)를 전달할 수 있습니다. 전달된 옵션은 기본값(인스턴스를 생성할 때 사용한 `tweened(value, options)`의 `options`가 기본값입니다.)에 오버라이드(override) 됩니다. `set`과 `update` 함수의 리턴 값은 Promise입니다. tween 작업이 완료되면 Promise가 resolve 됩니다.
 
 # Spring
-`spring`는 자주 변경되는 값에 사용됩니다. `spring`을 사용하는 예제를 살펴보도록 하겠습니다. 2개의 store를 사용하였습니다. 하나는 원의 좌표, 나머지 하는 원의 크기를 나타냅니다.
+`spring`는 자주 변경되는 값에 사용하는 것이 좋습니다. `spring`을 사용하는 예제를 살펴보도록 하겠습니다. 2개의 store를 사용하였습니다. 하나는 원의 좌표, 나머지 하는 원의 크기를 나타냅니다.
 
 ```html
 <script>
@@ -121,23 +123,23 @@ store = tweened(value: any, options)
 store = spring(value: any, options)
 ```
 
-`spring` 함수도 2개의 인자를 가집니다. 첫번째 인자는 변경되는 값이고 두번째 인자는 옵션입니다. `spring` 함수는 store를 리턴합니다. `options`에 설정할 수 있는 값을 살펴보겠습니다.
+`spring` 함수는 2개의 인자를 가집니다. 첫 번째 인자는 변경되는 값이고 두 번째 인자는 옵션입니다. `spring` 함수는 store를 리턴합니다. `options`에 설정할 수 있는 값을 살펴보겠습니다.
 
-- `stiffness` (number, default 0.15): 0과 1 사이의 값입니다. 값이 높을 수록 즉시 Motion이 반영됩니다.
-![커서 이동](/assets/img/posts/svelte/cursor_stiffness.gif)
-- `damping` (number, default 0.8): 0과 1 사이의 값입니다. 값이 낮을 수록 스프링처럼 튕기는 Motion이 민감하게 발생합니다.
-![커서 이동](/assets/img/posts/svelte/cursor_damping.gif)
-- `precision` (number, default 0.001): 스프링처럼 튕기는 동작이 정착된(settled) 것으로 간주하는 임계값(threshold)입니다. 쉽게 말해서 값이 클수록 스프링처럼 튕기는 횟수가 줄어 들고, 값이 낮을 수록 스프링처럼 튕기는 횟수가 증가합니다.
-![커서 이동](/assets/img/posts/svelte/cursor_precision.gif)
+- `stiffness` (number, default 0.15): 0과 1 사이의 값입니다. 값이 높을수록 즉시 Motion이 반영됩니다.
+![커서 이동](/assets/img/posts/svelte/cursor_stiffness_1.gif)
+- `damping` (number, default 0.8): 0과 1 사이의 값입니다. 값이 낮을수록 스프링처럼 튕기는 Motion 범위가 넓어집니다.
+![커서 이동](/assets/img/posts/svelte/cursor_damping_1.gif)
+- `precision` (number, default 0.001): 스프링처럼 튕기는 동작이 정착된(settled) 것으로 간주하는 임곗값(threshold)입니다. 쉽게 말해서 값이 클수록 스프링처럼 튕기는 횟수가 줄어들고, 값이 낮을수록 스프링처럼 튕기는 횟수가 증가합니다.
+![커서 이동](/assets/img/posts/svelte/cursor_precision_1.gif)
 
 `store.stiffness`, `store.damping`, `store.precision` 속성을 변경할 수 있습니다. 변경되면 즉시 반영됩니다.
 
-`tweened` store와 동일하게, `set`과 `update` 함수를 제공합니다. `set`과 `update` 함수의 리턴값은 Promise로 `spring` 동작이 완료되면 resolve 됩니다.
+`tweened` store와 동일하게, `set`과 `update` 함수를 제공합니다. `set`과 `update` 함수의 리턴 값은 Promise로 `spring` 동작이 완료되면 resolve 됩니다.
 
-`set`과 `update` 함수는 두번째 인자를 가질 수 있습니다. 두번째 인자는 `hard`나 `soft` 속성을 가지는 객체입니다. `{ hard: true }`을 전달하면 즉시 반영됩니다. `{ soft: n }`은 `n`초 후에 반영됩니다. `{ soft: ture }`는 `{ soft: 0.5 }`와 동일합니다.
+`set`과 `update` 함수는 두 번째 인자를 가질 수 있습니다. 두 번째 인자는 `hard`나 `soft` 속성을 가지는 객체입니다. `{ hard: true }`을 전달하면 즉시 반영됩니다. `{ soft: n }`은 `n`초 후에 반영됩니다. `{ soft: ture }`는 `{ soft: 0.5 }`와 동일합니다.
 
 # `spring`과 `tweened` 차이
-`spring` store의 값은 `stiffness`와 `damping`의 값에 따라 점차 변경됩니다.`tweened` store의 값은 고정된 `duration` 동안 변경되는 반면, `spring` store은 기본 속도에 의해 결정된 시간동안 값이 변경되어 많은 상황에서 좀 더 자연스럽게 보이게 됩니다.
+`spring` store의 값은 `stiffness`와 `damping`의 값에 따라 점차 변경됩니다.`tweened` store의 값은 고정된 `duration` 동안 변경되는 반면, `spring` store은 기본 속도에 의해 결정된 시간 동안 값이 변경되어 좀 더 자연스럽게 보이게 됩니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/tweened](https://svelte.dev/tutorial/tweened)
