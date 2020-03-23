@@ -36,6 +36,7 @@ DOM에 요소들이 추가, 제거 되었을 때 트렌지션을 효과적으로
 ## 파라미터 추가하기
 `svelte/transition`에서 가져온 `fade`를 트렌지션 함수라고 부르도록 하겠습니다. 트렌지션 함수에 파마미터를 전달하는 것이 가능합니다. 트렌지션 함수 중 하나인 `fly`를 살펴보겠습니다.
 
+{% raw %}
 ```html
 <script>
   import { fly } from 'svelte/transition';
@@ -53,6 +54,7 @@ DOM에 요소들이 추가, 제거 되었을 때 트렌지션을 효과적으로
   </p>
 {/if}
 ```
+{% endraw %}
 
 - `svelte/transition`에서 `fly`를 가져옵니다.
 - `visible`의 값이 변경되어 화면에 나타나거나, 제거 될 때 `fly` 트렌지션이 적용됩니다.
@@ -83,6 +85,8 @@ Svelte는 6개의 트렌지션을 제공합니다. 자세한 내용은 [https://
 ![scale 트렌지션](/assets/img/posts/svelte/scale_transition.gif)
 
 ### `draw`
+`draw` 트렌지션은 SVG 요소의 선을 그리듯이 화면에 나타내는 트렌지션입니다.
+![draw 트렌지션](/assets/img/posts/svelte/draw_transition.gif)
 
 # In과 Out
 
