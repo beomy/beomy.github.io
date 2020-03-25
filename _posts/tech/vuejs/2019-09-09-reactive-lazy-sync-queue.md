@@ -71,7 +71,7 @@ update () {
 `update` 함수를 살펴보면, lazy, sync, queue, 3가지 방식으로 업데이트하는 것을 볼 수 있습니다.
 
 ## Lazy
-lazy 옵션은 Watcher 인스턴스를 생성할 때 인자로 전달됩니다. `this.lazy`가 `true`일 경우, `this.dirty`가 `true`가 됩니다.(변수명을 해석하면.. 게으르면 더럽습니다. 가 되네요) `dirty`가 사용되는 코드를 보면,
+lazy 옵션은 Watcher 인스턴스를 생성할 때 파라미터로 전달됩니다. `this.lazy`가 `true`일 경우, `this.dirty`가 `true`가 됩니다.(변수명을 해석하면.. 게으르면 더럽습니다. 가 되네요) `dirty`가 사용되는 코드를 보면,
 
 ```js
 /**
@@ -194,7 +194,7 @@ export function queueWatcher (watcher: Watcher) {
 
 마지막으로 `waiting`이 `false`일 때, `nextTick`에 `flushSchedulerQueue`를 호출합니다.
 
-Vue를 사용하면서 `nextTick`이라는 함수를 보셨을 것입니다. Vue는 매 Tick 마다 view의 변경 사항을 DOM에 그립니다. `nextTick` 함수는 다음 tick에 인자로 넘겨준 콜백함수를 호출됩니다.
+Vue를 사용하면서 `nextTick`이라는 함수를 보셨을 것입니다. Vue는 매 Tick 마다 view의 변경 사항을 DOM에 그립니다. `nextTick` 함수는 다음 tick에 파라미터로 넘겨준 콜백함수를 호출됩니다.
 
 `queueWatcher` 함수를 보면 2개의 flag(`flushing`, `waiting`)를 사용하는 것을 볼 수 있습니다. 2개의 flag를 사용하는 이유는, `nextTick` 함수로 인해 `flushSchedulerQueue` 함수가 즉시 실행 되지 않고 다음 tick에 실행되게 됩니다. 한 tick에 `queueWatcher` 함수가 여러번 호출되면, 다음 tick에 동시에 `flushSchedulerQueue`가 여러번 호출됩니다. 한번의 tick에 한번의 `flushSchedulerQueue`를 호출하기 위해 `waiting` flag를 사용합니다.
 
