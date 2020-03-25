@@ -357,7 +357,7 @@ function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly
 
 ![vue updateChildren](/assets/img/posts/vuejs/update_children_1.png)
 
-위의 그림에서 `oldCh`, `newCh`는 `updateChildren` 함수의 전달인자입니다. 각각 이전의 자식 VNode, 새로운 자식 VNode 배열을 나타냅니다. `oldStartIdx`, `oldEndIdx`, `oldStartVNode`, `oldEndVNode`, `newStartIdx`, `newEndIdx`, `newStartVNode`, `newEndVNode` 변수를 적용한 그림입니다.
+위의 그림에서 `oldCh`, `newCh`는 `updateChildren` 함수의 파라미터입니다. 각각 이전의 자식 VNode, 새로운 자식 VNode 배열을 나타냅니다. `oldStartIdx`, `oldEndIdx`, `oldStartVNode`, `oldEndVNode`, `newStartIdx`, `newEndIdx`, `newStartVNode`, `newEndVNode` 변수를 적용한 그림입니다.
 
 위의 그림의 따라 동작하는 코드를 살펴보겠습니다.
 

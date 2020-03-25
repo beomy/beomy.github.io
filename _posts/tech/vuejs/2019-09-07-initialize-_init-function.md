@@ -531,7 +531,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 }
 ```
 
-`observe` 함수는 value에 대한 observe 인스턴스를 리턴하는 함수 입니다. 두 번째 인자에 `true`를 전달하면 root data로 사용한다는 의미이고, `ob.vmCount`는 얼마나 많은 컴포넌트가 해당 value를 root data로 사용하는지 카운팅 하는 역할을 합니다.
+`observe` 함수는 value에 대한 observe 인스턴스를 리턴하는 함수 입니다. 두 번째 파라미터에 `true`를 전달하면 root data로 사용한다는 의미이고, `ob.vmCount`는 얼마나 많은 컴포넌트가 해당 value를 root data로 사용하는지 카운팅 하는 역할을 합니다.
 
 ### `initComputed` 함수
 ```js
@@ -577,7 +577,7 @@ function initComputed (vm: Component, computed: Object) {
 }
 ```
 
-전달 받은 두번째 인자인 `computed`의 getter 속성을 추출합니다. 추출된 getter는 Watcher 인스턴스를 만드는데 사용하고, 생성된 Watcher 인스턴스는 `watchers` 배열에 저장됩니다.
+전달 받은 두번째 파라미터인 `computed`의 getter 속성을 추출합니다. 추출된 getter는 Watcher 인스턴스를 만드는데 사용하고, 생성된 Watcher 인스턴스는 `watchers` 배열에 저장됩니다.
 
 `defineComputed` 함수를 사용하여 컴포넌트에 computed 속성을 세팅합니다.
 
@@ -597,7 +597,7 @@ function initWatch (vm: Component, watch: Object) {
 }
 ```
 
-전달 받은 두번째 인자인 `watch`의 내부 각각의 값에 `createWatcher`를 사용하여 watcher를 생성합니다.
+전달 받은 두번째 파라미터인 `watch`의 내부 각각의 값에 `createWatcher`를 사용하여 watcher를 생성합니다.
 
 ```js
 function createWatcher (

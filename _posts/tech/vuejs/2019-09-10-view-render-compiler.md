@@ -212,7 +212,7 @@ export const createCompiler = createCompilerCreator(function baseCompile (
 ![vue 랜더링 과정](/assets/img/posts/vuejs/vue_render.png)
 
 1. `parser`, `optimizer`, `generate`를 선택하여 코어 컴파일러 함수를 만듭니다.
-2. 만들어진 코어 컴파일러 함수를 `createCompilerCreator` 함수의 인자로 전달 됩니다. `createCompilerCreator` 함수에서 리턴 된 함수는 `createCompiler`에 저장됩니다.
+2. 만들어진 코어 컴파일러 함수를 `createCompilerCreator` 함수의 파라미터로 전달 됩니다. `createCompilerCreator` 함수에서 리턴 된 함수는 `createCompiler`에 저장됩니다.
 3. `createCompiler` 함수에 옵션들을 전달하여 호출합니다. 리턴 된 값은 실제 컴파일러 함수입니다.
 4. 컴파일러 함수를 통해 `template`을 컴파일 하여 `render` 함수를 만듭니다.
 5. `_render` 함수에서 생성된 `render` 함수를 호출하여 view를 랜더링합니다.
