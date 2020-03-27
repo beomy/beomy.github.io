@@ -500,6 +500,7 @@ function fade(node, {
 # 트랜지션 이벤트
 Svelte는 트랜지션이 언제 시작되고 끝이 나는지 알려주는 트랜지션 이벤트를 제공합니다. 사용하는 방법은 다른 DOM 이벤트와 동일합니다. 예제 코드를 살펴보도록 하겠습니다.
 
+{% raw %}
 ```html
 <script>
   import { fly } from 'svelte/transition';
@@ -527,6 +528,7 @@ Svelte는 트랜지션이 언제 시작되고 끝이 나는지 알려주는 트�
   </p>
 {/if}
 ```
+{% endraw %}
 
 - `introstart`: 요소가 추가되는 트랜지션의 시작 이벤트입니다.
 - `outrostart`: 요소가 제거되는 트랜지션의 시작 이벤트입니다.
