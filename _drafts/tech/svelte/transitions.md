@@ -72,7 +72,7 @@ Svelte는 6개의 트렌지션을 제공합니다. 자세한 내용은 [https://
 
 ### 파라미터
 - `delay` (number, default 0): 단위는 ms로 설정한 시간이 지난 후에 트렌지션을 시작합니다.
-- `duration` (number, default 400): 단위는 ms로 설정한 시간 만큼 트렌지션됩니다.
+- `duration` (number, default 400): 단위는 ms로 설정한 시간동안 트렌지션됩니다.
 
 ## `blur` 트렌지션
 `blur` 트렌지션은 요소를 흐릿하게 보였다가 뚜렷하게 보이도록 변경하거나, 점차 요소를 흐릿하게 하여 요소를 제거합니다.
@@ -82,7 +82,7 @@ Svelte는 6개의 트렌지션을 제공합니다. 자세한 내용은 [https://
 
 ### 파라미터
 - `delay` (number, default 0): 단위는 ms로 설정한 시간이 지난 후에 트렌지션을 시작합니다.
-- `duration` (number, default 400): 단위는 ms로 설정한 시간 만큼 트렌지션됩니다.
+- `duration` (number, default 400): 단위는 ms로 설정한 시간동안 트렌지션됩니다.
 - `easing` (function, default cubicInOut): easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
 - `opacity` (number, default 0): 애니메이션의 불투명도 값입니다. 설정한 불투명도 값 만큼 불투명해졌다 사라집니다.
 - `amount` (number, default 5): 흐릿해지는 애니매니션의 크기입니다.
@@ -95,7 +95,7 @@ Svelte는 6개의 트렌지션을 제공합니다. 자세한 내용은 [https://
 
 ### 파라미터
 - `delay` (number, default 0): 단위는 ms로 설정한 시간이 지난 후에 트렌지션을 시작합니다.
-- `duration` (number, default 400): 단위는 ms로 설정한 시간 만큼 트렌지션됩니다.
+- `duration` (number, default 400): 단위는 ms로 설정한 시간동안 트렌지션됩니다.
 - `easing` (function, default cubicOut): easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
 - `x` (number, default 0): 애니메이션에 적용하는 x 위치(offset)입니다. 설정한 만큼 x 위치를 변경합니다.
 - `y` (number, default 0) - 애니메이션에 적용하는 y 위치(offset)입니다. 설정한 만큼 y 위치를 변경합니다.
@@ -109,7 +109,7 @@ Svelte는 6개의 트렌지션을 제공합니다. 자세한 내용은 [https://
 
 ### 파라미터
 - `delay` (number, default 0): 단위는 ms로 설정한 시간이 지난 후에 트렌지션을 시작합니다.
-- `duration` (number, default 400): 단위는 ms로 설정한 시간 만큼 트렌지션됩니다.
+- `duration` (number, default 400): 단위는 ms로 설정한 시간동안 트렌지션됩니다.
 - `easing` (function, default cubicOut): easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
 
 ## `scale` 트렌지션
@@ -120,7 +120,7 @@ Svelte는 6개의 트렌지션을 제공합니다. 자세한 내용은 [https://
 
 ### 파라미터
 - `delay` (number, default 0): 단위는 ms로 설정한 시간이 지난 후에 트렌지션을 시작합니다.
-- `duration` (number, default 400): 단위는 ms로 설정한 시간 만큼 트렌지션됩니다.
+- `duration` (number, default 400): 단위는 ms로 설정한 시간동안 트렌지션됩니다.
 - `easing` (function, default cubicOut): easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
 - `start` (number, default 0) - 애니매이션의 크기(`scale`)입니다. 설정한 크기만큼 커지거나 작아지면서 사라집니다.
 - `opacity` (number, default 0): 애니메이션의 불투명도 값입니다. 설정한 불투명도 값 만큼 불투명해졌다. 사라집니다.
@@ -134,7 +134,7 @@ Svelte는 6개의 트렌지션을 제공합니다. 자세한 내용은 [https://
 ### 파라미터
 - `delay` (number, default 0): 단위는 ms로 설정한 시간이 지난 후에 트렌지션을 시작합니다.
 - `speed` (number, default undefined): 애니메이션의 속도입니다.
-- `duration` (number \| function, default 800): 단위는 ms로 설정한 시간 만큼 트렌지션됩니다.
+- `duration` (number \| function, default 800): 단위는 ms로 설정한 시간동안 트렌지션됩니다.
 - `easing` (function, default cubicInOut): easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
 
 # 트렌지션 In/Out
@@ -194,13 +194,72 @@ function fade(node, {
 ### 리턴값
 트렌지션 함수는 객체를 리턴해야 합니다. 리턴하는 객체는 아래의 속성을 가져야 합니다.
 
-- `delay`: milliseconds before the transition begins
-- `duration`: length of the transition in milliseconds
-- `easing`: a p => t easing function (see the chapter on )
-- `css`: a (t, u) => css function, where u === 1 - t
-- `tick`: a (t, u) => {...} function that has some effect on the node
+- `delay`: 단위는 ms로 설정한 시간이 지난 후에 트렌지션을 시작합니다.
+- `duration`: 단위는 ms로 설정한 시간동안 트렌지션됩니다.
+- `easing`: `p => t` 형태의 easing 함수 입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
+- `css`: `(t, u) => css` 함수입니다. `t`는 0 ~ 1 사이의 값이고, `u`는 `u === 1 - t`입니다. 요소가 삽입 될 때 `t`는 0에서 1로 증가하고, 요소가 제거 될 때 `t`는 1에서 0으로 감소합니다.
+- `tick`: `(t, u) => {...}` 함수입니다. 매 tick 마다 호출되는 콜백함수입니다.
+
+`css`와 `tick` 속성은 이 후 내용에서 더 자세히 살펴보도록 하겠습니다.
 
 ## CSS로 트렌지션 만들기
+CSS를 사용하여 트렌지션 함수를 만드는 방법은 트렌지션 함수의 리턴값 중 `css` 속성을 사용하는 것입니다.
+
+`css` 속성은 `(t, u) => css` 형태의 함수가 와야 합니다. 간단히 이야기 하면, 파라미터인 `t`(혹은 `u`)의 변화에 따라 CSS 문자열을 리턴하는 함수를 만들면 됩니다. 아래 예제를 보면,
+
+```html
+<script>
+  import { fade } from 'svelte/transition';
+  import { elasticOut } from 'svelte/easing';
+
+  let visible = true;
+
+  function spin(node, { duration }) {
+    return {
+      duration,
+      css: t => {
+        const eased = elasticOut(t);
+
+        return `
+          transform: scale(${eased}) rotate(${eased * 1080}deg);
+          color: hsl(
+            ${~~(t * 360)},
+            ${Math.min(100, 1000 - 1000 * t)}%,
+            ${Math.min(50, 500 - 500 * t)}%
+          );`
+      }
+    };
+  }
+</script>
+
+<style>
+  .centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  span {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    font-size: 4em;
+  }
+</style>
+
+<label>
+  <input type="checkbox" bind:checked={visible}>
+  visible
+</label>
+
+{#if visible}
+  <div class="centered" in:spin="{{duration: 8000}}" out:fade>
+    <span>transitions!</span>
+  </div>
+{/if}
+```
+
+![CSS를 사용한 트렌지션](/assets/img/posts/svelte/use_css_transition.gif)
 
 ## JavaScript로 트렌지션 만들기
 
