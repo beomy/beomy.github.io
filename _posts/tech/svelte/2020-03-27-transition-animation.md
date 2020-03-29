@@ -1,16 +1,18 @@
 ---
 layout: post
-title: '[Svelte] Transitions'
+title: '[Svelte] 트랜지션과 애니메이션'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
 ---
 {% include toc.html %}
 
-Svelte는 DOM에 요소들이 추가, 제거되었을 때 트랜지션을 효과적으로 지원하는 트랜지션 디렉티브를 제공합니다. 이번 포스트에서는 Svelte에서 트랜지션을 사용하는 방법을 이야기하도록 하겠습니다.
+Svelte는 DOM에 요소들이 추가, 제거되었을 때 트랜지션을 효과적으로 지원하는 트랜지션 디렉티브와 애니메이션을 간단하게 사용 할 수 있는 애니메이션 디렉티브도 제공합니다.
 
-# 트랜지션 사용하기
-트랜지션을 간단하게 사용하는 방법을 살펴보겠습니다.
+이번 포스트에서는 Svelte에서 트랜지션과 애니메이션을 사용하는 방법을 이야기하도록 하겠습니다.
+
+# 트랜지션
+트랜지션을 간단하게 사용할 수 있는 트랜지션 디렉티브 사용 방법을 살펴보겠습니다.
 
 ```html
 <script>
@@ -349,7 +351,7 @@ label:hover button {
 # 커스텀 트랜지션 만들기
 Svelte에서 제공하는 7가지 트랜지션 외의 트랜지션이 필요할 때, 원하는 트랜지션을 만들 수 있습니다. CSS와 자바스크립트를 사용하여 트랜지션을 만드는 방법을 이야기하도록 하겠습니다.
 
-`crossfade` 트렌지션 함수의 `fallback`도 커스텀 트랜지션과 동일한 방법으로 정의하면 됩니다.
+`crossfade` 트랜지션 함수의 `fallback`도 커스텀 트랜지션과 동일한 방법으로 정의하면 됩니다.
 
 ## 트랜지션 함수
 Svelte에서 제공하는 트랜지션 템플릿은 단순한 함수입니다. `fade` 트랜지션은 실제로 아래 코드와 같이 구현되어 있습니다.
@@ -535,8 +537,11 @@ Svelte는 트랜지션이 언제 시작되고 끝이 나는지 알려주는 트�
 - `introend`: 요소가 추가되는 트랜지션의 종료 이벤트입니다.
 - `outroend`: 요소가 제거되는 트랜지션의 종료 이벤트입니다.
 
-# `local` 수식어
-Svelte의 트랜지션은 `local` 수식어를 제공합니다. `local` 수식어를 사용하면 상위 블록에 요소가 추가될 경우에만 트랜지션이 동작합니다. 말로는 이해하기 어려우니 예제를 하나 살펴보도록 하겠습니다.
+# 트랜지션의 수식어
+트랜지션을 사용한 블록에서만 요소가 추가, 제거 될 때 트랜지션이 적용될 수 있게 하는 수식어를 제공합니다.
+
+## `local`
+`local` 수식어를 사용하면 상위 블록에 요소가 추가될 경우에만 트랜지션이 동작합니다. 말로는 이해하기 어려우니 예제를 하나 살펴보도록 하겠습니다.
 
 ```html
 <script>
@@ -583,6 +588,190 @@ Svelte의 트랜지션은 `local` 수식어를 제공합니다. `local` 수식�
 - `local` 수식어 미사용: 전체 리스트가 나타날 때와 목록이 추가될 때 트랜지션이 동작하는 것을 볼 수 있습니다.
 - `local` 수식어 사용: 전체 리스트가 나타날 때는 트랜지션이 동작하지 않지만 목록이 추가될 때는 트랜지션이 동작하는 것을 볼 수 있습니다.
 
+# 애니메이션
+애니메이션을 간단하게 사용할 수 있는 애니메이션 디렉티브 사용 방법을 살펴보겠습니다.
+
+## `flip` 함수
+[`crossfade` 트랜지션](/tech/svelte/transitions#crossfade-트랜지션) 예제에 Todo 아이템이 추가, 삭제 됬을 때에 애니메이션을 추가하는 예제를 살펴 보겠습니다.
+
+{% raw %}
+```html
+<script>
+  import { quintOut } from 'svelte/easing';
+  import { crossfade } from 'svelte/transition';
+  import { flip } from 'svelte/animate';
+
+  const [send, receive] = crossfade({
+    duration: d => Math.sqrt(d * 200),
+
+    fallback(node, params) {
+      const style = getComputedStyle(node);
+      const transform = style.transform === 'none' ? '' : style.transform;
+
+      return {
+        duration: 600,
+        easing: quintOut,
+        css: t => `
+          transform: ${transform} scale(${t});
+          opacity: ${t}
+        `
+      };
+    }
+  });
+
+  let uid = 1;
+
+  let todos = [
+    { id: uid++, done: false, description: 'write some docs' },
+    { id: uid++, done: false, description: 'start writing blog post' },
+    { id: uid++, done: true,  description: 'buy some milk' },
+    { id: uid++, done: false, description: 'mow the lawn' },
+    { id: uid++, done: false, description: 'feed the turtle' },
+    { id: uid++, done: false, description: 'fix some bugs' },
+  ];
+
+  function add(input) {
+    const todo = {
+      id: uid++,
+      done: false,
+      description: input.value
+    };
+
+    todos = [todo, ...todos];
+    input.value = '';
+  }
+
+  function remove(todo) {
+    todos = todos.filter(t => t !== todo);
+  }
+
+  function mark(todo, done) {
+    todo.done = done;
+    remove(todo);
+    todos = todos.concat(todo);
+  }
+</script>
+
+<div class='board'>
+  <input
+    placeholder="what needs to be done?"
+    on:keydown={e => e.which === 13 && add(e.target)}
+  >
+
+  <div class='left'>
+    <h2>todo</h2>
+    {#each todos.filter(t => !t.done) as todo (todo.id)}
+      <label
+        in:receive="{{key: todo.id}}"
+        out:send="{{key: todo.id}}"
+        animate:flip
+      >
+        <input type=checkbox on:change={() => mark(todo, true)}>
+        {todo.description}
+        <button on:click="{() => remove(todo)}">remove</button>
+      </label>
+    {/each}
+  </div>
+
+  <div class='right'>
+    <h2>done</h2>
+    {#each todos.filter(t => t.done) as todo (todo.id)}
+      <label
+        class="done"
+        in:receive="{{key: todo.id}}"
+        out:send="{{key: todo.id}}"
+        animate:flip
+      >
+        <input type=checkbox checked on:change={() => mark(todo, false)}>
+        {todo.description}
+        <button on:click="{() => remove(todo)}">remove</button>
+      </label>
+    {/each}
+  </div>
+</div>
+
+<style>
+  .board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    max-width: 36em;
+    margin: 0 auto;
+  }
+
+  .board > input {
+    font-size: 1.4em;
+    grid-column: 1/3;
+  }
+
+  h2 {
+    font-size: 2em;
+    font-weight: 200;
+    user-select: none;
+    margin: 0 0 0.5em 0;
+  }
+
+  label {
+    position: relative;
+    line-height: 1.2;
+    padding: 0.5em 2.5em 0.5em 2em;
+    margin: 0 0 0.5em 0;
+    border-radius: 2px;
+    user-select: none;
+    border: 1px solid hsl(240, 8%, 70%);
+    background-color:hsl(240, 8%, 93%);
+    color: #333;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    left: 0.5em;
+    top: 0.6em;
+    margin: 0;
+  }
+
+  .done {
+    border: 1px solid hsl(240, 8%, 90%);
+    background-color:hsl(240, 8%, 98%);
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0.2em;
+    width: 2em;
+    height: 100%;
+    background: no-repeat 50% 50% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23676778' d='M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M17,7H14.5L13.5,6H10.5L9.5,7H7V9H17V7M9,18H15A1,1 0 0,0 16,17V10H8V17A1,1 0 0,0 9,18Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 1.4em 1.4em;
+    border: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    text-indent: -9999px;
+    cursor: pointer;
+  }
+
+  label:hover button {
+    opacity: 1;
+  }
+</style>
+```
+{% endraw %}
+
+![애니메이션](/assets/img/posts/svelte/animation.gif)
+
+위의 예제와 `crossfade` 디렉티브 예제는 애니메이션 디렉티브인 `animate:flip`가 추가되었다는 부분만 차이가 있습니다.
+
+`flip`은 [First, Last, Invert, Play](https://aerotwist.com/blog/flip-your-animations/)의 약어로 애니메이션 기법 중 하나입니다. 단순히 말하면, `filp`은 시작 위치와 마지막 위치를 계산하고 애니메이션을 적용하여 `x` 및 `y`를 변환합니다.
+
+### 파라미터
+`flip` 함수는 아래와 같은 파라미터를 가집니다.
+
+- `delay` (number, default 0): 단위는 ms로 설정한 시간이 지난 후에 애니메이션을 시작합니다.
+- `duration` (number \| function, default d => Math.sqrt(d) * 120): 숫자 혹은 함수가 올 수 있습니다.
+  - `number`: 단위는 ms입니다.
+  - `function`: `distance: number => duration: number` 형태의 함수가 와야 합니다. `distance`는 애니메이션으로 움직여야 할 픽셀입니다. 함수의 리턴 값은 ms 단위의 지속시간입니다.
+- `easing` (function, default cubicOut): easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
+
 #### 참고
 - [https://svelte.dev/tutorial/transition](https://svelte.dev/tutorial/transition)
 - [https://svelte.dev/tutorial/adding-parameters-to-transitions](https://svelte.dev/tutorial/adding-parameters-to-transitions)
@@ -592,3 +781,6 @@ Svelte의 트랜지션은 `local` 수식어를 제공합니다. `local` 수식�
 - [https://svelte.dev/tutorial/transition-events](https://svelte.dev/tutorial/transition-events)
 - [https://svelte.dev/tutorial/local-transitions](https://svelte.dev/tutorial/local-transitions)
 - [https://svelte.dev/tutorial/deferred-transitions](https://svelte.dev/tutorial/deferred-transitions)
+- [https://svelte.dev/tutorial/animate](https://svelte.dev/tutorial/animate)
+- [https://svelte.dev/docs#flip](https://svelte.dev/docs#flip)
+- [https://aerotwist.com/blog/flip-your-animations/](https://aerotwist.com/blog/flip-your-animations/)
