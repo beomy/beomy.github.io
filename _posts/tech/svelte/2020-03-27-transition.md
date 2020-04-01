@@ -385,7 +385,7 @@ transition = (node: HTMLElement, params: any) => {
 트랜지션 함수는 2개의 파라미터를 가집니다.
 
 - `node`: 첫 번째 파라미터는 트랜지션이 적용되는 HTML 요소입니다.
-- `params`: 두 번째 파라미터는 `transition:fade="params"`에 `params`로 전달될 값입니다. 두 번째 파라미터에는 모든 형태의 값을 전달할 수 있습니다.
+- `params`: 두 번째 파라미터는 `transition:fade={params}`에 `params`로 전달될 값입니다. 두 번째 파라미터에는 모든 형태의 값을 전달할 수 있습니다.
 
 ### 리턴 값
 트랜지션 함수는 객체를 리턴해야 합니다. 리턴하는 객체는 아래의 속성을 가져야 합니다.
