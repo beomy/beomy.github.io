@@ -94,6 +94,43 @@ Svelte는 간략한 코드를 더욱 간략하게 할 수 있도록 속성 약�
 
 속성 이름과 반응형 데이터 변수명이 동일하다면 위의 코드와 같이 약어를 사용할 수 있습니다.
 
+## `class` 속성 약어
+HTML 요소의 속성 중 `class` 속성은 자주 사용되는 속성 중 하나입니다. Svelte는 `class` 속성 약어 기능을 제공합니다.
+
+Svelte에서 HTML 요소에 `class` 속성을 주고 싶을 때, 보통 아래와 같이 사용합니다.
+
+```html
+<button
+  class="{current === 'foo' ? 'active' : ''}"
+  on:click="{() => current = 'foo'}"
+>foo</button>
+```
+
+위의 코드를 아래 코드와 같이 작성 가능합니다.
+
+```html
+<button
+  class:active="{current === 'foo'}"
+  on:click="{() => current = 'foo'}"
+>foo</button>
+```
+
+위의 코드와 같이 코드를 작성하면, 코드 가독성도 좋아지며 코드 양도 줄어들게 됩니다. 여기서 그치지 않고 Svelte는 조금 더 코드 양을 줄이기 위해 약어 기능을 제공합니다.
+
+```html
+<div class:big={big}>
+  <!-- ... -->
+</div>
+```
+
+위의 코드와 같이 HTML 요소에 정의할 class 이름과 변수 이름이 동일할 경우 아래 코드와 같이 약어로 작성할 수 있습니다.
+
+```html
+<div class:big>
+  <!-- ... -->
+</div>
+```
+
 # 스타일 정의
 스타일을 정의하는 방법은 Vue.js와 유사합니다. 스타일은 아래 코드와 같이 정의할 수 있습니다.
 
@@ -180,3 +217,5 @@ Svelte에서는 `@html`을 사용하여 `v-html` 기능을 사용할 수 있습�
 - [https://svelte.dev/tutorial/styling](https://svelte.dev/tutorial/styling)
 - [https://svelte.dev/tutorial/nested-components](https://svelte.dev/tutorial/nested-components)
 - [https://svelte.dev/tutorial/html-tags](https://svelte.dev/tutorial/html-tags)
+- [https://svelte.dev/tutorial/classes](https://svelte.dev/tutorial/classes)
+- [https://svelte.dev/tutorial/class-shorthand](https://svelte.dev/tutorial/class-shorthand)
