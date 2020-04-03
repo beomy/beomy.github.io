@@ -4,6 +4,7 @@ title: '[Svelte] Svelte 소개'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: 새롭게 등장한 Svelte라는 프레임워크를 소개합니다.
 ---
 {% include toc.html %}
 

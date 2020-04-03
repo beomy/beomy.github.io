@@ -3,6 +3,7 @@ layout: post
 title: '[Inside Vue] 3. Initialize - Mixin Layer'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
+summary: Vue 코어 함수의 mixin 레이어를 이야기할 것입니다.
 ---
 {% include toc.html %}
 

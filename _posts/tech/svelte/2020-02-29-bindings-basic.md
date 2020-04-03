@@ -4,6 +4,7 @@ title: '[Svelte] 데이터 바인딩 기초'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: Svelte의 기본적인 데이터 바인딩을 이야기합니다.
 ---
 {% include toc.html %}
 

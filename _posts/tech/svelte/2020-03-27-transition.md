@@ -4,6 +4,7 @@ title: '[Svelte] 트랜지션'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: Svelte는 DOM에 요소들이 추가, 제거되었을 때 트랜지션을 효과적으로 지원하는 트랜지션 디렉티브를 제공합니다.
 ---
 {% include toc.html %}
 

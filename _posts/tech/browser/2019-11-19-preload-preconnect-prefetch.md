@@ -3,6 +3,7 @@ layout: post
 title: '[Browser] 리소스 우선순위 - preload, preconnect, prefetch'
 featured-img: browser/browser.png
 category: [tech, browser]
+summary: 브라우저에서 리소스에 우선순위를 지정하여 다운로드할 수 있게 하는 방법에 대해 이야기하도록 하겠습니다.
 ---
 {% include toc.html %}
 

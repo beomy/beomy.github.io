@@ -3,6 +3,7 @@ layout: post
 title: '[Inside Vue] 5. Reactive - Observer, Dep and Watcher'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
+summary: Vue에서 데이터 변화를 감지하는 방법을 이야기할 것입니다.
 ---
 {% include toc.html %}
 

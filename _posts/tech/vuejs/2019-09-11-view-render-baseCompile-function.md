@@ -3,6 +3,7 @@ layout: post
 title: '[Inside Vue] 8. View Render - baseCompile 함수'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
+summary: baseCompile 함수에서 사용하는 parse, optimize, generate 함수에 대해 이야기합니다.
 ---
 {% include toc.html %}
 

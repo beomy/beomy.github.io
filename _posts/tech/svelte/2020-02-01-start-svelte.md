@@ -4,6 +4,7 @@ title: '[Svelte] Svelte 시작하기'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: rollup + sass + typescript와 webpack + sass + typescript를 사용할 수 있도록 Svelte 프로젝트를 구성하는 방법을 이야기합니다.
 ---
 {% include toc.html %}
 

@@ -4,6 +4,7 @@ title: '[Svelte] 반응형을 위한 문법'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: 사용자 행동에 따라 반응형으로 동작하는 웹을 만들기 위한 Svelte 문법을 이야기합니다.
 ---
 {% include toc.html %}
 

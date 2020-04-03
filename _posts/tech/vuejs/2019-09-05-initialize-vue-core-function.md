@@ -3,6 +3,7 @@ layout: post
 title: '[Inside Vue] 2. Initialize - Vue 코어 함수'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
+summary: Vue의 큰 구조와 Vue의 코어 함수를 살펴볼 것입니다.
 ---
 {% include toc.html %}
 

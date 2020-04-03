@@ -3,6 +3,7 @@ layout: post
 title: '[Browser] Reflow와 Repaint'
 featured-img: browser/browser.png
 category: [tech, browser]
+summary: 브라우저의 화면이 수정될 때, 렌더링 과정을 최적화 하는 방법에 대해 이야기 할 것입니다.
 ---
 {% include toc.html %}
 

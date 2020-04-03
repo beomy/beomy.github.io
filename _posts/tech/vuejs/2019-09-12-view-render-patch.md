@@ -3,6 +3,7 @@ layout: post
 title: '[Inside Vue] 9. View Render - Patch'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
+summary: _render()와 _update()에서 호출하는 render 함수와 __patch__ 함수에 대해 이야기 하도록 하겠습니다.
 ---
 {% include toc.html %}
 

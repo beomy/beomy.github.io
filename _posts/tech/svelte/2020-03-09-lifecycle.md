@@ -4,6 +4,7 @@ title: '[Svelte] 라이프 사이클'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: 컴포넌트의 생명주기(Lifecycle)를 이야기할 것입니다.
 ---
 {% include toc.html %}
 

@@ -3,6 +3,7 @@ layout: post
 title: '[Inside Vue] 6. Reactive - Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
+summary: Vue에서 데이터를 업데이트 하는 3가지 방법을 이야기할 것입니다.
 ---
 {% include toc.html %}
 

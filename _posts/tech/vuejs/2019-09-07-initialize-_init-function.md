@@ -3,6 +3,7 @@ layout: post
 title: '[Inside Vue] 4. Initialize - _init 함수'
 featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
+summary: Vue 코어 함수에서 호출하는 초기화 동작을 이야기할 것입니다.
 ---
 {% include toc.html %}
 

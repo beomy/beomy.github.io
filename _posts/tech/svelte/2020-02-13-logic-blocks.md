@@ -4,6 +4,7 @@ title: '[Svelte] 논리 블록'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: Svelte 내의 HTML에서 조건문, 반복문을 표현하는 방법을 이야기합니다.
 ---
 {% include toc.html %}
 

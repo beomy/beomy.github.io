@@ -3,6 +3,7 @@ layout: post
 title: '[Browser] 브라우저 렌더링'
 featured-img: browser/browser.png
 category: [tech, browser]
+summary: 브라우저가 화면을 렌더링 하는 과정에 대해 이야기할 것입다.
 ---
 {% include toc.html %}
 

@@ -3,6 +3,7 @@ layout: post
 title: '[Browser] async와 defer'
 featured-img: browser/browser.png
 category: [tech, browser]
+summary: script 태그를 비동기 처리하여 브라우저의 파싱을 차단하지 않는 방법에 대해 이야기 할 것입니다.
 ---
 {% include toc.html %}
 

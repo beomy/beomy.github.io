@@ -3,6 +3,7 @@ layout: post
 title: '[Browser] Critical Rendering Path 최적화'
 featured-img: browser/browser.png
 category: [tech, browser]
+summary: 브라우저 렌더링 최적화 방법에 대해 이야기할 것입니다.
 ---
 {% include toc.html %}
 

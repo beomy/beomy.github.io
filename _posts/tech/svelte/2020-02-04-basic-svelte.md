@@ -4,6 +4,7 @@ title: '[Svelte] Svelte 기초 문법'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: Svelte의 기본 문법을 Vue.js와 비교하여 이야기합니다.
 ---
 {% include toc.html %}
 
