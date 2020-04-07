@@ -43,6 +43,31 @@ HTML 요소는 아래와 같이 자식 요소를 가질 수 있습니다.
 `App.svelte` 컴포넌트의 `<Box>`의 자식 요소들이 `Box.svelte` 컴포넌트 안에 `<slot>` 요소의 위치에 나타나게 됩니다.
 
 # Default slot
+컴포넌트의 자식 요소가 정의되어 있지 않은 경우 기본 요소를 정의할 수 있습니다. 사용 방법은 아래와 같습니다.
+
+```html
+<!-- Box.svelte -->
+<div class="box">
+  <slot>
+    <em>no content was provided</em>
+  </slot>
+</div>
+```
+
+```html
+<script>
+  import Box from './Box.svelte';
+</script>
+
+<Box>
+  <h2>Hello!</h2>
+  <p>This is a box. It can contain anything.</p>
+</Box>
+
+<Box/>
+```
+
+`App.svelte`의 `<Box>`의 자식 요소가 정의 되어 있지 않을 경우, `Box.svelte` 컴포넌트의 `<slot>` 태그 안에 요소가 화면에 출력됩니다.
 
 # Named slot
 
