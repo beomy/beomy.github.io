@@ -8,7 +8,7 @@ summary: 컴포넌트가 자식 요소를 가질 수 있게 하는 Slot을 살�
 ---
 {% include toc.html %}
 
-이번 포스트에서는 컴포넌트가 자식 요소를 가질 수 있도록 기능을 제공하는 `slot`을 살펴도록하겠습니다.
+이번 포스트에서는 컴포넌트가 자식 요소를 가질 수 있도록 기능을 제공하는 `slot`을 살펴보도록 하겠습니다.
 
 # Slot
 HTML 요소는 아래와 같이 자식 요소를 가질 수 있습니다.
@@ -137,10 +137,10 @@ Svelte에서 `slot`의 기본값 사용 방법은 아래와 같습니다.
 <Box/>
 ```
 
-`App.svelte`에 `<Box>`의 자식 요소가 정의 되어 있지 않을 경우, `Box.svelte`에 `<slot>` 태그 안에 요소가 화면에 출력됩니다.
+`App.svelte`에 `<Box>`의 자식 요소가 정의되어 있지 않을 경우, `Box.svelte`에 `<slot>` 태그 안에 요소가 화면에 출력됩니다.
 
 # Named slot
-이름이 있는 `slot`을 만들 수 있습니다.
+이름이 있는 `slot`을 만들 수 있습니다. 이름이 있는 `slot` 역시 Vue.js와 Svelte의 사용법이 비슷합니다.
 
 ## Vue.js 예제 코드
 Vue.js에서 아래 코드와 같이 이름이 있는 `slot`을 사용할 수 있습니다.
@@ -187,7 +187,6 @@ Vue.js에서 아래 코드와 같이 이름이 있는 `slot`을 사용할 수 �
 
 <script>
   import ContactCard from './ContactCard.svelte';
-  
   export default {
     components: {
       Box
@@ -240,15 +239,17 @@ Svelte에서 아래 코드와 같이 이름이 있는 `slot`을 사용할 수 �
 </ContactCard>
 ```
 
-이름이 있는 Slot을 사용하면 원하는 위치에 요소를 배치할 수 있습니다.
+이름이 있는 Slot을 사용하면 원하는 위치에 요소를 배치할 수 있습니다. 위의 코드를 살펴보면,
 
-`ContactCard.svelte`에는 `<slot name="name">`, `<slot name="address">`, `<slot name="email">` 3개의 Slot이 정의 되어 있습니다. `App.svelte`에는 `slot="name"`과 `slot="address"`를 사용하여 `ContactCard.svelte`의 `<slot name="name">`, `<slot name="address">`가 정의된 위치에 나타납니다. `App.svelte`에 `slot="email"`을 사용하지 않았기 때문에 `ContactCard.svelte`의 `<slot name="email">`은 기본 요소가 나타내게 됩니다.
+- `ContactCard.svelte`에는 `<slot name="name">`, `<slot name="address">`, `<slot name="email">` 3개의 Slot이 정의되어 있습니다.
+- `App.svelte`에는 `slot="name"`과 `slot="address"`를 사용하여 `ContactCard.svelte`의 `<slot name="name">`, `<slot name="address">`가 정의된 위치에 나타납니다.
+- `App.svelte`에 `slot="email"`을 사용하지 않았기 때문에 `ContactCard.svelte`의 `<slot name="email">`은 기본 요소가 나타내게 됩니다.
 
 # Slot props
 slot의 데이터를 상위 컴포넌트로 전달하는 방법을 살펴보겠습니다.
 
 ## Vue.js 예제 코드
-Vue.js에서는 아래와 같이 데이터를 전달 할 수 있습니다.
+Vue.js에서는 아래와 같이 데이터를 전달할 수 있습니다.
 
 ```html
 <!-- Hoverable.vue -->
@@ -323,7 +324,7 @@ Vue.js에서는 아래와 같이 데이터를 전달 할 수 있습니다.
 ```
 
 ## Svelte 예제 코드
-Svelte에서는 아래와 같이 데이터를 전달 할 수 있습니다.
+Svelte에서는 아래와 같이 데이터를 전달할 수 있습니다.
 
 ```html
 <!-- Hoverable.svelte -->
@@ -385,12 +386,12 @@ Svelte에서는 아래와 같이 데이터를 전달 할 수 있습니다.
 ```
 
 ### `Hoverable.svelte`
-`Hoverable.svelte`에 정의된 `slot`에 `<slot hovering={hovering}></slot>`와 같이 상위 컴포넌트로 전달할 값을 선언해줍니다. `hovering`은 상위로 전달 할 변수 명이고, `{hovering}`은 상위로 전달 할 변수 입니다. 두개의 이름이 `hovering`으로 동일하기 때문에 `<slot {hovering}></slot>`와 같은 약어로 작성할 수 있습니다.
+`Hoverable.svelte`에 정의된 `slot`에 `<slot hovering={hovering}></slot>`와 같이 상위 컴포넌트로 전달할 값을 선언해 줍니다. `hovering`은 상위로 전달할 변수 명이고, `{hovering}`은 상위로 전달할 변수입니다. 두 개의 이름이 `hovering`으로 동일하기 때문에 `<slot {hovering}></slot>`와 같은 약어로 작성할 수 있습니다.
 
 ### `App.svelte`
-`App.svelte`에 `<Hoverable let:hovering={active}>`와 같이 `let` 디렉티브를 사용해서 값을 전달 받을 수 있습니다. `let:hovering`의 `hovering`은 `Hoverable.svelte`의 `<slot hovering={...}>`에 `<slot>` 태그의 속성명(`hovering`)과 동일해야 합니다.
+`App.svelte`에 `<Hoverable let:hovering={active}>`와 같이 `let` 디렉티브를 사용해서 값을 전달받을 수 있습니다. `let:hovering`의 `hovering`은 `Hoverable.svelte`의 `<slot hovering={...}>`에 `<slot>` 태그의 속성 이름, `hovering`과 동일해야 합니다.
 
-이렇게 전달된 값은 로컬 방식으로 동작하기 때문에 별도의 변수를 정의하지 않아도 됩니다. 위의 예제의 `active`는 변수를 정의하지 않았습니다. 또한 `active`는 컴포넌트의 하위 요소에만 사용할 수 있습니다. 위의 예제에 두개의 `Hoverable` 컴포넌트를 사용했는데, `active`는 각각의 컴포넌트 안에서 독립적으로 동작합니다.
+이렇게 전달된 값은 로컬 방식으로 동작하기 때문에 별도의 변수를 정의하지 않아도 됩니다. 위의 예제의 `active`는 변수를 정의하지 않았습니다. 또한 `active`는 컴포넌트의 하위 요소에만 사용할 수 있습니다. 위의 예제에 두 개의 `Hoverable` 컴포넌트를 사용했는데, `active`는 각각의 컴포넌트 안에서 독립적으로 동작합니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/slots](https://svelte.dev/tutorial/slots)
