@@ -91,7 +91,9 @@ Context API는 컴포넌트의 데이터와 함수를 props 외의 방법으로 
 ```
 
 - `MapMarker` 컴포넌트를 자식 요소로 가지기 위해 `slot`을 사용합니다.
-- 
+- `lat`, `lon`, `zoom`을 props로 가집니다.
+- 마운트 되면 mapbox를 가져옵니다.
+- `setContext`를 사용하여 공유하려 하는 데이터를 저장합니다. [`setContext` 함수](/tech/svelte/context-api/#setcontext-함수)에서 좀 더 자세히 살펴보도록 하겠습니다.
 
 ## `MapMarker.svelte`
 ```html
@@ -129,6 +131,10 @@ const key = {};
 
 export { mapbox, key };
 ```
+
+# `getContext` 함수
+
+# `setContext` 함수
 
 # Contexts VS Store
 
