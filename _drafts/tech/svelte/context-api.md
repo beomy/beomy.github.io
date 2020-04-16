@@ -119,6 +119,12 @@ Context API는 컴포넌트의 데이터와 함수를 props 외의 방법으로 
 </script>
 ```
 
+- `lat`, `lon`, `zoom`을 props로 가집니다.
+- `getContext`를 사용하여 공유하는 데이터를 가져옵니다. [`getContext` 함수](/tech/svelte/context-api/#getcontext-함수)에서 좀 더 자세히 살펴보도록 하겠습니다.
+- `getMap` 함수로 `map` 객체를 만듭니다. `map` 객체는 `Map` 컴포넌트에서 `setContext`를 사용하여 공유한 객체입니다.
+- `mapbox.Popup`와 `mapbox.Marker`를 사용하여 지도에 마크를 표시합니다.
+
+
 ## `mapbox.js`
 ```js
 // mapbox.js
@@ -131,6 +137,10 @@ const key = {};
 
 export { mapbox, key };
 ```
+
+- `mapbox`와 `key` 를 내보내는 파일입니다.
+- `mapbox`를 통해 `map`를 생성하고, 지도를 관리합니다.
+- `key`를 통해 생성한 `map` 객체를 공유합니다.
 
 # `getContext` 함수
 
