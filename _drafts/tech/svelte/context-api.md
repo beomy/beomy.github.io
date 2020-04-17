@@ -93,7 +93,11 @@ Context API는 컴포넌트의 데이터와 함수를 props 외의 방법으로 
 - `MapMarker` 컴포넌트를 자식 요소로 가지기 위해 `slot`을 사용합니다.
 - `lat`, `lon`, `zoom`을 props로 가집니다.
 - 마운트 되면 mapbox를 가져옵니다.
-- `setContext`를 사용하여 공유하려 하는 데이터를 저장합니다. [`setContext` 함수](/tech/svelte/context-api/#setcontext-함수)에서 좀 더 자세히 살펴보도록 하겠습니다.
+- `import { setContext } from 'svelte'`로 `setContext`를 가져오고 `import { key } from './mapbox.js'`로 `key`를 가져옵니다. 여기서 가져온 `setContext`와 `key`는 공유하는 데이터를 생성하는데 사용됩니다.
+
+`setContext`로 공유하는 데이터를 Context라고 합니다. Context는 라이프 사이클 메소드는 물론 어떤 값이든 가능합니다.
+
+`setContext`와 `getContext`는 컴포넌트가 초기화 될 때 호출되어야 합니다. 컴포넌트가 초기화 될 때의 `map` 변수는 아직 정의되어 있지 않은 상태입니다. `map` 변수는 컴포넌트가 마운트 된 후 정의되기 때문에, `setContext`로 만들어진 Context는 `map` 변수가 아닌 `map` 변수를 리턴하는 함수여야 `map` 변수를 가져올 수 있게 됩니다.
 
 ## `MapMarker.svelte`
 ```html
@@ -124,6 +128,7 @@ Context API는 컴포넌트의 데이터와 함수를 props 외의 방법으로 
 - `getMap` 함수로 `map` 객체를 만듭니다. `map` 객체는 `Map` 컴포넌트에서 `setContext`를 사용하여 공유한 객체입니다.
 - `mapbox.Popup`와 `mapbox.Marker`를 사용하여 지도에 마크를 표시합니다.
 
+`setContext`로 Context를 만들 때 사용한 `key`을 사용하여 Context를 가져올 수 있습니다. `mapbox.js`의 `key`를 사용하여 `setContext`로 만든 Context를 `getContext`를 사용하여 가져옵니다.
 
 ## `mapbox.js`
 ```js
@@ -142,11 +147,16 @@ export { mapbox, key };
 - `mapbox`를 통해 `map`를 생성하고, 지도를 관리합니다.
 - `key`를 통해 생성한 `map` 객체를 공유합니다.
 
-# `getContext` 함수
+`setContext`, `getContext`에 사용되는 `key`는 어떤 값이든 사용할 수 있습니다. `'x' === 'x'`이지만 `{} !== {}` 이기 때문에 유니크한 `key`를 만들기 위해 이번 예제에서 `key`로 빈객체를 사용하였습니다.
 
-# `setContext` 함수
+이렇게 객체를 `key`로 사용하면 문자열을 사용하는 것과 달리 다른 Context와 충돌을 피할 수 있습니다.
 
-# Contexts VS Store
+# Context VS Store
+Context와 Store은 비슷합니다. Store는 어플리케이션의 어느 위치에서나 사용할 수 있지만 Context는 해당 컴포넌트와 하위 컴포넌트에서만 사용할 수 있다는 차이가 있습니다.
+
+이러한 특징은 하나의 컴포넌트로 여러 인스턴스를 생성하게 될 때 각각의 인스턴스가 하나의 상태를 공유하지 않고 각각의 상태를 가질 수 있는 장점이 있습니다.
+
+Context는 반응형으로 동작하지 않기 때문에 변경되어 반응형으로 동작해야 할 경우 Store을 사용해야 합니다.
 
 #### 참고
 - [https://svelte.dev/tutorial/context-api](https://svelte.dev/tutorial/context-api)
