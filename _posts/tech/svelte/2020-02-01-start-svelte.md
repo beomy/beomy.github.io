@@ -74,7 +74,9 @@ Svelte의 `svelte.preprocess`를 사용하면 sass, typescript 등의 전처리�
 ## rollup
 rollup 번들러를 사용하는 [sveltejs/template](https://github.com/sveltejs/template) 템플릿에 sass와 typescript를 사용하기 위한 설정 방법을 이야기하도록 하겠습니다.
 
-### template 다운로드
+### 모듈 다운로드
+
+#### 1. template 다운로드
 템플릿 프로젝트를 다운로드합니다.
 
 ```bash
@@ -82,14 +84,14 @@ npx degit sveltejs/template my-svelte-project
 cd my-svelte-project
 ```
 
-### `svelte-preprocess` 다운로드
+#### 2. `svelte-preprocess` 다운로드
 그 후에 사용할 `svelte-preprocess`를 다운로드합니다.
 
 ```bash
 npm install -D svelte-preprocess
 ```
 
-### sass 다운로드
+#### 3. sass 다운로드
 sass 전처리기를 아래 코드와 같이 다운로드합니다.
 
 ```bash
@@ -97,14 +99,16 @@ npm install -D node-sass
 # or npm install -D sass
 ```
 
-### typescript 다운로드
+#### 4. typescript 다운로드
 typescript 전처리기를 아래 코드와 같이 다운로드합니다.
 
 ```bash
 npm install -D typescript
 ```
 
-### svelte-preprocess 설정
+### 설정
+
+#### 1. svelte-preprocess 설정
 rollup 번들러에서 `svelte-preprocess`를 설정하는 방법은 아래와 같습니다.
 
 ```js
@@ -112,7 +116,7 @@ rollup 번들러에서 `svelte-preprocess`를 설정하는 방법은 아래와 �
 import svelte from 'rollup-plugin-svelte';
 import autoPreprocess from 'svelte-preprocess'
 import { scss, coffeescript, pug } from 'svelte-preprocess'
- 
+
 export default {
   ...,
   plugins: [
@@ -136,7 +140,7 @@ export default {
 }
 ```
 
-### VS Code 설정
+#### 2. VS Code 설정
 지금까지 이야기한 방법으로 sass와 typescript를 설정하고 VS Code로 프로젝트를 열어보면,
 
 ![sass 에러](/assets/img/posts/svelte/sass_typescript_error.png)
@@ -146,7 +150,7 @@ export default {
 ```js
 // svelte.config.js
 const sveltePreprocess = require('svelte-preprocess');
- 
+
 module.exports = {
   preprocess: sveltePreprocess({
     // ...svelte-preprocess options
@@ -157,7 +161,7 @@ module.exports = {
 
 프로젝트의 루트에 위의 코드와 같은 `svelte.config.js` 파일을 추가해 줍니다.
 
-### sass, typescript 사용
+### sass, typescript 사용 방법
 지금까지 내용으로 sass와 typescript 설정이 끝났습니다. 이번에는 sass와 typescript를 사용하는 방법을 이야기하도록 하겠습니다.
 
 ```html
@@ -188,19 +192,12 @@ module.exports = {
 
 위의 코드와 같이 `<script>`, `<style>` 태그에 `lang`을 정의하여 typescript와 sass를 사용할 수 있습니다.
 
-### beomy/template
-[sveltejs/template](https://github.com/sveltejs/template)에 sass와 typescript를 추가하여 커스터마이징한 프로젝트 구성을 [beomy/template](https://github.com/beomy/template)에 업로드하였습니다. 쉽게 프로젝트를 구성하는 방법은,
-
-```bash
-npx degit beomy/template my-svelte-project
-```
-
-위의 코드를 사용하여 rollup + sass + typescript의 프로젝트를 쉽게 구성할 수 있습니다.
-
 ## webpack
 webpack 번들러를 사용하는 [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack) 템플릿에 sass와 typescript를 사용하기 위한 설정 방법을 이야기하도록 하겠습니다.
 
-### template-webpack 다운로드
+### 모듈 다운로드
+
+#### 1. template-webpack 다운로드
 템플릿 프로젝트를 다운로드합니다.
 
 ```bash
@@ -208,14 +205,14 @@ npx degit sveltejs/template-webpack my-svelte-project
 cd my-svelte-project
 ```
 
-### `svelte-preprocess` 다운로드
+#### 2. `svelte-preprocess` 다운로드
 그 후에 사용 할 `svelte-preprocess`를 다운로드합니다.
 
 ```bash
 npm install -D svelte-preprocess
 ```
 
-### sass 다운로드
+#### 3. sass 다운로드
 sass 다운로드는 template와 동일합니다.
 
 ```bash
@@ -223,14 +220,16 @@ npm install -D node-sass
 # or npm install -D sass
 ```
 
-### typescript 다운로드
+#### 4. typescript 다운로드
 typescript 다운로드는 template와 동일합니다.
 
 ```bash
 npm install -D typescript
 ```
 
-### svelte-preprocess 설정
+### 설정
+
+#### 1. svelte-preprocess 설정
 webpack 번들러에서 `svelte-preprocess`를 설정하는 방법은 아래와 같습니다.
 
 ```js
@@ -255,13 +254,355 @@ webpack 번들러에서 `svelte-preprocess`를 설정하는 방법은 아래와 
   ...
 ```
 
-### VS Code 설정
+#### 2. VS Code 설정
 VS Code에서 사용하기 위한 설정 방법은 rollup 번들러와 동일합니다. 프로젝트의 루트에 `svelte.config.js`를 만들고 해당 파일에 설정들을 선언해야 합니다.
 
-### sass, typescript 사용
+### sass, typescript 사용 방법
 sass와 typescript를 사용하는 방법도 rollup 번들러와 동일합니다.
 
-### beomy/template-webpack
+# SASS
+`svelte-preprecess`를 사용하면 `.svelte` 파일 내에 `<style lang="scss">`와 같이 사용할 수 있습니다. 이번에는 `.svelte` 파일 외의 파일에서 `.scss` 파일을 `import` 하는 방법을 살펴보도록 하겠습니다.
+
+## rollup
+rollup에서 sass를 `import` 하는 방법을 살펴보도록 하겠습니다.
+
+### 모듈 다운로드
+
+#### 1. rollup-plugin-scss 다운로드
+scss 파일을 `import` 할 수 있게 하는 플러그인을 다운로드합니다.
+
+```bash
+npm install -D rollup-plugin-scss
+```
+
+### 설정
+
+#### 1. rollup.config.js 설정
+아래와 같이 rollup.config.js를 수정합니다.
+
+```js
+// rollup.config.js
+//....
+import scss from 'rollup-plugin-scss';
+// ...
+
+export default {
+  // ...
+  plugins: [
+    // ...
+    scss(),
+    // ...
+  ],
+  // ...
+};
+// ...
+```
+
+### sass `import` 하기
+위의 설정이 끝났다면, 아래와 같이 scss 파일을 `import` 할 수 있습니다.
+
+```js
+// main.js
+import './assets/scss/common.scss';
+import App from './App.svelte';
+
+const app = new App({
+  target: document.body,
+  props: {
+    name: 'world'
+  }
+});
+
+export default app;
+```
+
+## webpack
+webpack에서 sass를 `import` 하는 방법을 살펴보도록 하겠습니다.
+
+### 모듈 다운로드
+
+#### 1. sass-loader 다운로드
+scss 파일을 `import` 할 수 있게 하는 로더를 다운로드합니다.
+
+```bash
+npm install -D sass-loader
+```
+
+### 설정
+
+#### 1. webpack.config.js 설정
+아래와 같이 webpack.config.js을 수정합니다.
+
+```js
+// ...
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      // ...
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          /**
+           * MiniCssExtractPlugin doesn't support HMR.
+           * For developing, use 'style-loader' instead.
+           * */
+          prod ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      // ...
+    ]
+  },
+  // ...
+};
+```
+
+### sass `import` 하기
+scss 파일을 `import` 하는 방법은 rollup과 같습니다.
+
+# TypeScript
+`svelte-preprecess`를 사용하면 `.svelte` 파일 내에 `<script lang="ts">`와 같이 사용할 수 있습니다. 이번에는 타입스크립트 파일을 만들어 타입스크립트를 사용하는 방법을 살펴보도록 하겠습니다.
+
+## rollup
+rollup에서 타입스크립트 파일을 사용하는 방법을 살펴보도록 하겠습니다.
+
+### 모듈 다운로드
+
+#### 1. rollup-plugin-typescript 다운로드
+타입스크립트를 사용할 수 있게 하는 플러그인을 다운로드합니다.
+
+```bash
+npm install -D rollup-plugin-typescript
+```
+
+혹시 타입스크립트를 다운로드 하지 않았다면 아래와 같이 타입스크립트를 다운로드합니다.
+
+```bash
+npm install -D typescript
+```
+
+### 설정
+
+#### 1. rollup.config.js 설정
+아래와 같이 rollup.config.js를 수정합니다.
+
+```js
+// rollup.config.js
+//....
+import typescript from 'rollup-plugin-typescript';
+// ...
+
+export default {
+  // ...
+  plugins: [
+    // ...
+    typescript(),
+    // ...
+  ],
+  // ...
+};
+// ...
+```
+
+#### 2. svelte.config.js 설정
+아래와 같이 svelte.config.js를 수정합니다.
+
+```js
+// ...
+export default {
+  preprocess: sveltePreprocess({
+    // ...svelte-preprocess options
+    typescript: {
+      tsconfigFile: './tsconfig.json'
+    }
+  }),
+  // ...
+};
+```
+
+위와 같이 설정하지 않아도 정상 동작을 합니다. 혹시 `.svelte` 파일 내에 사용하는 타입스크립트와 `.ts` 파일 간의 설정에 차이가 존재할 수 있어 같은 설정 파일을 참고하도록 설정하였습니다.
+
+#### 3. tsconfig.json 설정
+타입스크립트 설정을 담고 있는 `tsconfig.json`를 프로젝트 루트에 생성합니다.
+
+```json
+{
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/*"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "target": "ESNEXT",
+    "module": "ESNEXT",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  }
+}
+```
+
+#### 4. main.js -> main.ts로 변경
+`main.js` 파일을 `main.ts`로 이름을 변경합니다. 코드 에러가 발생한다면 `main.js` 내의 자바스크립트 코드를 타입스크립트로 변경해야 합니다.
+
+#### 5. svelte.d.ts 생성
+`.svelte` 파일을 `import` 할 때, 타입스크립트 에러가 발생하기 때문에 아래와 같이 `src/@types` 위치에 `svelte.d.ts`를 만들어줍니다.
+
+```ts
+// src/@types/svelte.d.ts
+declare module "*.svelte" {
+  interface ComponentOptions {
+    target: HTMLElement;
+    anchor?: HTMLElement | null;
+    props?: {};
+    hydrate?: boolean;
+    intro?: boolean;
+  }
+
+  interface Component {
+    new (options: ComponentOptions): any;
+    // client-side methods
+    $set(props: {}): void;
+    $on(event: string, callback: (event: CustomEvent) => void): void;
+    $destroy(): void;
+
+    // server-side methods
+    render(props?: {}): {
+      html: string;
+      css: { code: string; map: string | null };
+      head?: string;
+    };
+  }
+
+  const component: Component;
+  export default component;
+}
+```
+
+## webpack
+webpack에서 타입스크립트 파일을 사용하는 방법을 살펴보도록 하겠습니다.
+
+### 모듈 다운로드
+
+#### 1. ts-loader 다운로드
+타입스크립트를 사용할 수 있게 하는 로더를 다운로드합니다.
+
+```bash
+npm install -D ts-loader
+```
+
+혹시 타입스크립트를 다운로드 하지 않았다면 아래와 같이 타입스크립트를 다운로드합니다.
+
+```bash
+npm install -D typescript
+```
+
+### 설정
+
+#### 1. webpack.config.js 설정
+아래와 같이 webpack.config.js를 수정합니다.
+
+```js
+// ...
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      // ...
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      // ...
+    ]
+  },
+  // ...
+};
+```
+
+#### 2. svelte.config.js 설정
+rollup과 설정이 동일합니다.
+
+```js
+// ...
+export default {
+  preprocess: sveltePreprocess({
+    // ...svelte-preprocess options
+    typescript: {
+      tsconfigFile: './tsconfig.json'
+    }
+  }),
+  // ...
+};
+```
+
+#### 3. tsconfig.json 설정
+rollup과 설정이 같습니다.
+```json
+{
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/*"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "target": "ESNEXT",
+    "module": "ESNEXT",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  }
+}
+```
+
+#### 4. main.js -> main.ts로 변경
+rollup과 설정이 같습니다.
+
+#### 5. svelte.d.ts 생성
+rollup과 설정이 같습니다.
+
+```ts
+// src/@types/svelte.d.ts
+declare module "*.svelte" {
+  interface ComponentOptions {
+    target: HTMLElement;
+    anchor?: HTMLElement | null;
+    props?: {};
+    hydrate?: boolean;
+    intro?: boolean;
+  }
+
+  interface Component {
+    new (options: ComponentOptions): any;
+    // client-side methods
+    $set(props: {}): void;
+    $on(event: string, callback: (event: CustomEvent) => void): void;
+    $destroy(): void;
+
+    // server-side methods
+    render(props?: {}): {
+      html: string;
+      css: { code: string; map: string | null };
+      head?: string;
+    };
+  }
+
+  const component: Component;
+  export default component;
+}
+```
+
+# beomy/template
+[sveltejs/template](https://github.com/sveltejs/template)에 sass와 typescript를 추가하여 커스터마이징한 프로젝트 구성을 [beomy/template](https://github.com/beomy/template)에 업로드하였습니다. 쉽게 프로젝트를 구성하는 방법은,
+
+```bash
+npx degit beomy/template my-svelte-project
+```
+
+위의 코드를 사용하여 rollup + sass + typescript의 프로젝트를 쉽게 구성할 수 있습니다.
+
+# beomy/template-webpack
 [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack)에 sass와 typescript를 추가하여 커스터마이징한 프로젝트 구성을 [beomy/template-webpack](https://github.com/beomy/template-webpack)에 업로드하였습니다. 쉽게 프로젝트를 구성하는 방법은,
 
 ```bash
@@ -271,15 +612,11 @@ npx degit beomy/template-webpack my-svelte-project
 위의 코드를 사용하여 webpack + sass + typescript의 프로젝트를 쉽게 구성할 수 있습니다.
 
 # 개선사항
-지금까지 sass와 typescript를 사용할 수 있도록 프로젝트를 구성하면서 몇 가지 추가되었으면 좋겠다 생각이 드는 부분이 있었습니다.
+지금까지 sass와 typescript를 사용할 수 있도록 프로젝트를 구성하면서 몇 가지 추가되었으면 좋겠다 생각이 드는 부분이 있습니다.
 
-- `d.ts` 사용
-- `<scirpt>` 태그 외에 typescirpt 사용
-- 정적 코드분석(lint와 같은..) 툴 사용
-
-~~방법을 아직 찾지 못했지만~~ 먼저 `d.ts`를 사용하여 커스텀 타입을 만드는 방법을 추가하면 좋겠다는 생각이 들었습니다. 이 이슈는 Svelte가 공식적으로 typescript를 지원하지 않아서 `<script>` 태그 내부 외에는 typescript를 사용하지 못한다는 한계로 발생하는 문제인 듯 보입니다. ([https://www.npmjs.com/package/svelte-preprocess#typescript](https://www.npmjs.com/package/svelte-preprocess#typescript) 참고)
-
-Svelte의 템플릿 프로젝트 구조에는 eslint와 같은 정적 코드 분석 툴이 빠져 있습니다. 템플릿 프로젝트에 eslint가 추가되었으면 좋겠다는 생각이 들었습니다.
+- `d.ts`로 타입을 만든 후 `.svelte` 내에서 생성한 타입을 사용하면 타입스크립트 에러가 발생합니다. 생성한 타입을 `.ts` 파일에서 사용하면 에러가 발생하지 않습니다. Svelte에서 타입스크립트를 지원하지 않아 발생한 문제인지, 다른 원인으로 발생하는지 파악하지 못했습니다.
+- `$: 변수 = ...`나 `svelte/store`의 `$스토어명`과 같은 Svelte만의 독특한 문법이 있습니다. 타입스크립트에서 이런 문법은 에러로 잡아내는 문제가 있습니다.
+- Svelte의 템플릿 프로젝트 구조에는 eslint와 같은 정적 코드 분석 툴이 빠져 있습니다. 템플릿 프로젝트에 eslint가 추가되면 좋을 것 같습니다.
 
 ![lint 에러](/assets/img/posts/svelte/lint_error.png)
 
