@@ -7,6 +7,20 @@ category: [tech, svelte]
 ---
 {% include toc.html %}
 
+# `<svelte:selft>`
+
+# `<svelte:component>`
+
+# `<svelte:window>`
+
+## binding
+
+# `<svelte:body>`
+
+# `<svelte:head>`
+
+# `<svelte:options>`
+
 #### 참고
 - [https://svelte.dev/tutorial/svelte-self](https://svelte.dev/tutorial/svelte-self)
 - [https://svelte.dev/tutorial/svelte-component](https://svelte.dev/tutorial/svelte-component)
