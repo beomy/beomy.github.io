@@ -153,8 +153,115 @@ Svelte는 유용한 몇가지 내장 요소(element)를 제공합니다.
 ```
 
 # `<svelte:component>`
+`<svelte:component>`를 사용하면 아래와 같은 if 블록 대신,
+
+```html
+<script>
+  import RedThing from './RedThing.svelte';
+  import GreenThing from './GreenThing.svelte';
+  import BlueThing from './BlueThing.svelte';
+
+  const options = [
+    { color: 'red',   component: RedThing   },
+    { color: 'green', component: GreenThing },
+    { color: 'blue',  component: BlueThing  },
+  ];
+
+  let selected = options[0];
+</script>
+
+<select bind:value={selected}>
+  {#each options as option}
+    <option value={option}>{option.color}</option>
+  {/each}
+</select>
+
+{#if selected.color === 'red'}
+  <RedThing/>
+{:else if selected.color === 'green'}
+  <GreenThing/>
+{:else if selected.color === 'blue'}
+  <BlueThing/>
+{/if}
+```
+
+아래와 같이 표현 할 수 있습니다.
+
+```html
+<script>
+  import RedThing from './RedThing.svelte';
+  import GreenThing from './GreenThing.svelte';
+  import BlueThing from './BlueThing.svelte';
+
+  const options = [
+    { color: 'red',   component: RedThing   },
+    { color: 'green', component: GreenThing },
+    { color: 'blue',  component: BlueThing  },
+  ];
+
+  let selected = options[0];
+</script>
+
+<select bind:value={selected}>
+  {#each options as option}
+    <option value={option}>{option.color}</option>
+  {/each}
+</select>
+
+<svelte:component this={selected.component}/>
+```
+
+위의 코드에서 사용된 `this`는 컴포넌트나 falsy 값이 올 수 있습니다. falsy가 올 경우 컴포넌트가 렌더링 되지 않습니다.
 
 # `<svelte:window>`
+DOM 요소에 이벤트를 등록하는 것처럼 `<svelte:window>`를 사용하여 `window` 객체에 이벤트를 등록할 수 있습니다.
+
+```html
+<script>
+  let key;
+  let keyCode;
+
+  function handleKeydown(event) {
+    key = event.key;
+    keyCode = event.keyCode;
+  }
+</script>
+
+<style>
+  div {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  kbd {
+    background-color: #eee;
+    border-radius: 4px;
+    font-size: 6em;
+    padding: 0.2em 0.5em;
+    border-top: 5px solid rgba(255,255,255,0.5);
+    border-left: 5px solid rgba(255,255,255,0.5);
+    border-right: 5px solid rgba(0,0,0,0.2);
+    border-bottom: 5px solid rgba(0,0,0,0.2);
+    color: #555;
+  }
+</style>
+
+<svelte:window on:keydown={handleKeydown}/>
+
+<div style="text-align: center">
+  {#if key}
+    <kbd>{key === ' ' ? 'Space' : key}</kbd>
+    <p>{keyCode}</p>
+  {:else}
+    <p>Focus this window and press any key</p>
+  {/if}
+</div>
+```
+
+DOM 요소와 동일하게 `preventDefault`와 같은 이벤트 수식어를 사용할 수 있습니다.
 
 ## binding
 
