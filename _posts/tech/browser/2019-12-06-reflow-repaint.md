@@ -14,7 +14,7 @@ Repaint는 화면에 변화가 있을 때 화면을 그리는 과정입니다.
 
 화면의 구조가 변경되었을 때에는 Reflow 과정을 거쳐 화면 구조를 다시 계산한 후 Repaint 과정을 통해 화면을 다시 그립니다. 즉 화면의 구조가 변경되었을 때에는 Reflow와 Repaint 모두 발생합니다.
 
-화면의 구조가 변경되지 않은 화면의 변화만 있을 경우 Repaint 과정을 통해 화면을 다시 그립니다. 즉 화면의 구조가 변경되지 않은 화면의 변화만 있는 경우 Repaint만 발생합니다. 예를 들면 `opacity`, `background-color`, `visibility`, `outline` 등의 스타일 변경 시에는 Repaint만 동작합니다.
+화면의 구조가 변경되지 않는 화면 변화의 경우 Repaint만 발생합니다. 예를 들면 `opacity`, `background-color`, `visibility`, `outline` 등의 스타일 변경 시에는 Repaint만 동작합니다. Repaint가 발생하는 예제를 살펴보겠습니다.
 
 ```html
 <html>
@@ -42,7 +42,7 @@ Repaint는 화면에 변화가 있을 때 화면을 그리는 과정입니다.
 위의 코드를 크롬 개발자 도구의 Performance에서 체크한 그림입니다. 위의 그림을 보면 Paint가 주기적으로 발생하는 것을 볼 수 있습니다. [repaint.html](/assets/example/browser/reflow-repaint/repaint.html){: target="_blank" }에서 위의 코드 예제를 확인할 수 있습니다.
 
 # Reflow(Layout) 란?
-Reflow는 화면 구조(Layout)이 변경되었을 때, 뷰포트 내에서 렌더 트리의 노드의 정확한 위치와 크기를 계산하는 과정을 Reflow(혹은 Layout)이라고 합니다. ([렌더 트리](/tech/browser/browser-rendering/#렌더-트리-구축)와 [Layout](/tech/browser/browser-rendering/#layout)을 참고 바랍니다.)
+Reflow는 화면 구조(Layout)이 변경되었을 때, 뷰포트 내에서 렌더 트리의 노드의 정확한 위치와 크기를 계산하는 과정을 Reflow(혹은 Layout)이라고 합니다. ([렌더 트리](/tech/browser/browser-rendering/#렌더-트리-구축)와 [Layout](/tech/browser/browser-rendering/#layout)을 참고 바랍니다.) Reflow가 발생하는 예제를 살펴보겠습니다.
 
 ```html
 <html>
@@ -252,9 +252,7 @@ DOM 노드의 크기 또는 위치가 변경되면 하위 노드와 상위 노�
 ## 4. 퀄리티, 퍼포먼스의 타협점을 찾는다.
 3번에서 말씀드렸듯이 애니메이션 효과는 많은 Reflow가 발생합니다. 퀄리티가 좋은 애니메이션은 좋은 퀄리티만큼 많은 Reflow가 발생하고, 퀄리티가 낮은 애니메이션은 적은 Reflow가 발생합니다.
 
-예를 들어 10px을 이동해야 하는 애니메이션 효과가 있다고 하면, 한 번에 1px씩 움직이는 애니메이션일 경우 10번의 Reflow가 발생하지만 한 번에 2px씩 움직이는 애니메이션일 경우에는 5번의 Reflow가 발생합니다.
-
-따라서 퀄리티와 퍼포먼스 간의 타협점을 찾아 최적의 방법을 찾아야 합니다.
+예를 들어 10px을 이동해야 하는 애니메이션 효과가 있다고 하면, 한 번에 1px씩 움직이는 애니메이션일 경우 10번의 Reflow가 발생하지만 한 번에 2px씩 움직이는 애니메이션일 경우에는 5번의 Reflow가 발생합니다. 따라서 퀄리티와 퍼포먼스 간의 타협점을 찾아 최적의 방법을 찾아야 합니다.
 
 ## 5. `<table>` 레이아웃을 피한다.
 `<table>`은 점진적으로 렌더링 되지 않고, 모두 로드되고 테이블 너비가 계산된 후 화면에 그려집니다. 테이블 안의 콘텐츠의 값에 따라 테이블 너비가 계산됩니다.
