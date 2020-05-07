@@ -4,6 +4,7 @@ title: '[Svelte] Vue와 Svelte 비교'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
+summary: Svelte와 Vue를 사용하면서 느낀 차이점을 이야기해 보려고 합니다.
 ---
 {% include toc.html %}
 
