@@ -252,7 +252,7 @@ key가 정의된 `each` 블록 안에서 애니메이션이 동작합니다. `{#
 ```html
 <!-- When `list` is reordered the animation will run-->
 {#each list as item, index (item)}
-	<li animate:flip>{item}</li>
+  <li animate:flip>{item}</li>
 {/each}
 ```
 
