@@ -7,6 +7,12 @@ summary: 자바스크립트 런타임의 동작 원리를 이야기 하도록 �
 ---
 {% include toc.html %}
 
+# AMD (Asynchronous Module Definition)
+
+# CommonJS
+
+# UMD (Universal Module Definition)
+
 #### 참고
 - [https://d2.naver.com/helloworld/12864](https://d2.naver.com/helloworld/12864)
 - [https://iam-song.tistory.com/28](https://iam-song.tistory.com/28)
