@@ -12,11 +12,28 @@ summary: 자바스크립트를 모듈화할 수 있게 한 AMD, CJS, UMD, ESM에
 # CJS (CommonJS)
 CommonJS([http://www.commonjs.org/](http://www.commonjs.org/))는 이름의 'Common'에서 알 수 있듯이 JavaScript를 브라우저에서뿐만 아니라 범용 언어로 사용할 수 있도록 하겠다는 의지를 가진 워킹 그룹입니다.
 
+## 코드 예제
+
+## 특징: 동기
+
 # AMD (Asynchronous Module Definition)
+
+## 코드 예제
+
+## 특징: 비동기
 
 # UMD (Universal Module Definition)
 
+## 코드 예제
+
+## 특징: FE, BE 모두 사용가능
+디자인 패턴에 가까움
+
 # ESM (ECMAScript Module)
+
+## 코드 예제
+
+## 특징: 자바스크립트 자체 모듈 시스템
 
 #### 참고
 - [https://d2.naver.com/helloworld/12864](https://d2.naver.com/helloworld/12864)
@@ -24,3 +41,6 @@ CommonJS([http://www.commonjs.org/](http://www.commonjs.org/))는 이름의 'Com
 - [https://www.zerocho.com/category/JavaScript/post/5b67e7847bbbd3001b43fd73](https://www.zerocho.com/category/JavaScript/post/5b67e7847bbbd3001b43fd73)
 - [https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm](https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm)
 - [https://kishu.github.io/2017/05/23/setting-up-multi-platform-npm-packages/](https://kishu.github.io/2017/05/23/setting-up-multi-platform-npm-packages/)
+- [https://minjung-jeon.github.io/AMD-CommonJS-RequireJS/](https://minjung-jeon.github.io/AMD-CommonJS-RequireJS/)
+- [https://velog.io/@doondoony/JavaScript-Module-System](https://velog.io/@doondoony/JavaScript-Module-System)
+- [https://velog.io/@zeros0623/JavaScript-ModuleCommonJS-Nodejs-RequireJS-AMD-ESM-UMD](https://velog.io/@zeros0623/JavaScript-ModuleCommonJS-Nodejs-RequireJS-AMD-ESM-UMD)
