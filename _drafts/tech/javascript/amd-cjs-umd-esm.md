@@ -15,12 +15,14 @@ CommonJS([http://www.commonjs.org/](http://www.commonjs.org/))는 이름의 'Com
 ## 코드 예제
 
 ## 특징: 동기
+CommonJS는 동기적인 특성으로 브라우저 뿐만 아니라 서버사이드에서도 사용하기 용이합니다. Node.js도 CommonJS를 채택하여 사용하고 있습니다.
 
 # AMD (Asynchronous Module Definition)
 
 ## 코드 예제
 
 ## 특징: 비동기
+AMD는 비동기적인 특성으로 클라이언트 사이드 개발에 적합합니다.
 
 # UMD (Universal Module Definition)
 
@@ -30,6 +32,7 @@ CommonJS([http://www.commonjs.org/](http://www.commonjs.org/))는 이름의 'Com
 디자인 패턴에 가까움
 
 # ESM (ECMAScript Module)
+ES6에 추가됨
 
 ## 코드 예제
 
