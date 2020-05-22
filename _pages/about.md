@@ -23,6 +23,7 @@ beomyhlee@gmail.com
 # Libraries
 - [vue-fast-scroll](https://www.npmjs.com/package/vue-fast-scroll): 네이티브의 Fast Scroll과 같은 동작을 할 수 있도록 기능을 제공하는 Vue Plugin
 - [svelte-hammer](https://www.npmjs.com/package/svelte-hammer): Hammer 기능을 Svelte의 디렉티브로 제공
+- [svelte-swiper](https://www.npmjs.com/package/svelte-swiper): swiper.js를 매핑한 Svelte 컴포넌트
 
 # Activities
 #### 개인 블로그
