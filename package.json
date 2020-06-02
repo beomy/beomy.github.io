@@ -6,6 +6,7 @@
   "dependencies": {
     "breakpoint-sass": "^2.7.1",
     "fg-loadcss": "^1.3.1",
+    "hooks": "^0.3.2",
     "jquery": "^3.5.0",
     "lazysizes": "^4.0.1",
     "natives": "^1.1.6",
@@ -35,10 +36,10 @@
     "sw-precache": "^5.2.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp",
     "jekyll": "sudo bundle exec jekyll serve --watch --draft",
-    "style": "sudo gulp sass"
+    "style": "sudo gulp sass",
+    "lint": "eslint --fix _js"
   },
   "repository": {
     "type": "git",
@@ -50,5 +51,10 @@
   "bugs": {
     "url": "https://github.com/beomy/beomy.github.io/issues"
   },
-  "homepage": "https://github.com/beomy/beomy.github.io#readme"
+  "homepage": "https://github.com/beomy/beomy.github.io#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
 }

@@ -39,7 +39,7 @@ function tocPos () {
             }
         }
 
-        var el = $( "#markdown-toc a[href='#" + key + "']" )
+        var el = $( "#markdown-toc a[href='#" + key + "']" );
         if ( !el.hasClass( "active" ) ) {
             $( "#markdown-toc a" ).removeClass( "active" );
             el.addClass( "active" );
@@ -240,7 +240,7 @@ $( "#contactForm" ).submit( function( e ) {
             $btn.prop( "disabled", true );
             $btn.text( "Sending..." );
         },
-        success: function( data ) {
+        success: function() {
             $inputs.val( "" );
             $textarea.val( "" );
             $btn.prop( "disabled", false );
