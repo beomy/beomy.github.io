@@ -27,7 +27,6 @@
 
 .comments {
   padding: 50px 0;
-  background-color: #fafafa;
 }
 
 .controls__inner {
@@ -81,17 +80,17 @@
 .toc {
   display: inline-block;
   position: absolute;
-  top: 80px;
+  top: 150px;
   right: 0;
   padding: 20px;
   width: 290px;
   &.fixed {
     position: fixed;
-    top: 20px;
-    right: 0;
+    top: 80px;
   }
   #markdown-toc {
-    padding: 0;
+    padding: 0 0 0 10px;
+    border-left: 2px solid rgb(233, 236, 239);;
     li {
       list-style-type: none;
       a {
@@ -104,23 +103,23 @@
       }
     }
     > li {
-      counter-increment: chapter;
+      // counter-increment: chapter;
       a {
         color: #ccc;
         border: none;
         font-size: 0.8rem;
       }
-      > a:before {
-        content: counter(chapter) ". ";
-      }
+      // > a:before {
+      //   content: counter(chapter) ". ";
+      // }
       > ul {
         padding-left: 15px;
-        > li {
-          counter-increment: sub_chapter;
-          > a:before {
-            content: counter(chapter)'-'counter(sub_chapter) ". ";
-          }
-        }
+        // > li {
+        //   counter-increment: sub_chapter;
+        //   > a:before {
+        //     content: counter(chapter)'-'counter(sub_chapter) ". ";
+        //   }
+        // }
       }
     }
   }  

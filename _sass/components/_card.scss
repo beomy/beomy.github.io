@@ -8,7 +8,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   margin-bottom: 3%;
   border-bottom: 0;
-  transition: box-shadow .25s ease;
+  transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
 
   h2 {
     font-size: 1.3em;
@@ -20,7 +20,8 @@
   &:hover,
   &:focus {
     border-bottom: 0;
-    box-shadow: 0 2px 40px 0 hsla(232, 8%, 63%, .3);
+    transform: translateY(-4px);
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 20px 0px;
   }
 
   @include breakpoint($md) {
