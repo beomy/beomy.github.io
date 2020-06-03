@@ -5,7 +5,7 @@ email: beomyhlee@gmail.com # email for form submission, you also have to change 
 description: > # this means to ignore newlines until "baseurl:"
   Beomy Develop Page
 baseurl: "/" # the subpath of your site, e.g. /blog
-# url: "https://janczizikow.github.io/sleek" # the base hostname & protocol for your site, e.g. http://example.com
+# url: "https://beomy.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jan_czizikow # replace with your_twitter_username or comment to remove link from footer
 github_username:  beomy # replace with your_github_username or comment to remove link from footer
 # instagram_username: shanlongjj # replace with your_instagram_username or comment to remove link from footer
@@ -27,7 +27,7 @@ google_analytics: UA-144478158-1 # replace with your GA tracking identifier
 # Build settings
 markdown: kramdown
 highlighter: rouge # or pygments or null
-# theme: jekyll-sleek
+# theme: jekyll-beomy
 exclude:
   - README.md
   - node_modules
@@ -38,7 +38,6 @@ exclude:
   - vendor
   - npm-debug.log
   - gulpfile.js
-  - sleek.png
 
 include: ['_pages']
 permalink: /:categories/:title/
