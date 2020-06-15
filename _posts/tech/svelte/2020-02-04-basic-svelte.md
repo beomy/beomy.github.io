@@ -146,7 +146,40 @@ Svelte에서 HTML 요소에 `class` 속성을 주고 싶을 때, 보통 아래�
 <p>This is a paragraph.</p>
 ```
 
-Vue.js와 Svelte의 차이는 Vue.js에서는 `<style scoped>`이라고 명시를 해 줘야 로컬(local) 스타일이 되지만, Svelte에서는 기본 값이이 로컬 스타일입니다. Svelte에서 글로벌(global) 스타일을 지정하기 위해서는 `<style global>`로 명시해 주어야 합니다.
+~~Vue.js와 Svelte의 차이는 Vue.js에서는 `<style scoped>`이라고 명시를 해 줘야 로컬(local) 스타일이 되지만, Svelte에서는 기본 값이이 로컬 스타일입니다. Svelte에서 글로벌(global) 스타일을 지정하기 위해서는 `<style global>`로 명시해 주어야 합니다.~~ (Outdated 되었습니다.)
+
+## `:global`
+전역 스타일을 지정하기 위해서는 `:global`을 사용해야 합니다. 사용 방법은 Vue.js의 `v-deep`과 유사합니다. Vue.js의 `v-deep`은 아래 코드와 같이 사용할 수 있습니다.
+
+```html
+<template>
+  <div>
+    <h1>HELLOW WORLD<h1>
+  </div>
+</template>
+
+<style scoped>
+  div ::v-deep h1 {
+    color: red;
+  }
+</style>
+```
+
+Svelte에서는 아래와 같이 사용할 수 있습니다.
+
+```html
+<div>
+  <h1>HELLOW WORLD<h1>
+</div>
+
+<style>
+  div :global(h1) {
+    color: red;
+  }
+</style>
+```
+
+위의 코드처럼 작성하면 해당 컴포넌트의 `div` 안에 있는 모든 `h1`(하위 컴포넌트에 사용했더라도)은 `color:red` 스타일이 적용됩니다.
 
 # 컴포넌트 정의
 컴포넌트를 정의하고 사용하는 방법도 Vue.js와 유사합니다. `Nested` 컴포넌트가 아래 코드와 같이 정의되었을 때,
