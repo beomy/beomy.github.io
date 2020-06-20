@@ -280,7 +280,7 @@ DOM 요소와 동일하게 `preventDefault`와 같은 이벤트 수식어를 사
 
 ```html
 <svelte:head>
-	<link rel="stylesheet" href="tutorial/dark-theme.css">
+  <link rel="stylesheet" href="tutorial/dark-theme.css">
 </svelte:head>
 ```
 
@@ -366,17 +366,17 @@ DOM 요소와 동일하게 `preventDefault`와 같은 이벤트 수식어를 사
 ```js
 // flash.js
 export default function flash(element) {
-	requestAnimationFrame(() => {
-		element.style.transition = 'none';
-		element.style.color = 'rgba(255,62,0,1)';
-		element.style.backgroundColor = 'rgba(255,62,0,0.2)';
+  requestAnimationFrame(() => {
+    element.style.transition = 'none';
+    element.style.color = 'rgba(255,62,0,1)';
+    element.style.backgroundColor = 'rgba(255,62,0,0.2)';
 
-		setTimeout(() => {
-			element.style.transition = 'color 1s, background 1s';
-			element.style.color = '';
-			element.style.backgroundColor = '';
-		});
-	});
+    setTimeout(() => {
+      element.style.transition = 'color 1s, background 1s';
+      element.style.color = '';
+      element.style.backgroundColor = '';
+    });
+  });
 }
 ```
 
