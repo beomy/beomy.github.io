@@ -9,12 +9,10 @@ layout: compress
 <body class="site">
 
 {% if site.google_tag_manager %}
-
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_tag_manager }}"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
 {% endif %}
 
 {% include header.html %}
@@ -49,7 +47,7 @@ layout: compress
   <main class="site__content">
     <div class="container">        
       <article class="post-content" itemprop="articleBody">
-        <div>
+        <div style="margin: 30px 0">
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <!-- header.beomy.github.io -->
           <ins class="adsbygoogle"
@@ -65,7 +63,7 @@ layout: compress
       
         {{ content }}
 
-        <div>
+        <div style="margin: 30px 0">
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <!-- footer.beomy.github.io -->
           <ins class="adsbygoogle"
