@@ -3,7 +3,7 @@ layout: post
 title: '[JavaScript] ECMAScript란'
 featured-img: javascript/js.png
 category: [tech, javaScript]
-summary: ECMAScript가 무엇을 말하는지 이야기 해보도록 하겠습니다.
+summary: ECMAScript가 무엇인지 이야기하도록 하겠습니다.
 ---
 {% include toc.html %}
 
