@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[JavaScript] ECMAScript란'
+title: '[JavaScript] ECMAScript 란'
 featured-img: javascript/js.png
 category: [tech, javaScript]
 summary: ECMAScript와 TC39 제안 프로세스가 무엇인지 살펴보도록 하겠습니다.
