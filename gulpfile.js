@@ -40,24 +40,15 @@ gulp.task('jekyll-build', function (done) {
         .on('close', done);
 });
 
-gulp.task('deploy', ['jekyll-build'], function () {
+gulp.task('deploy', gulp.series('jekyll-build', function () {
     return gulp.src('./_site/**/*')
         .pipe(deploy());
-});
+}));
 
 // Rebuild Jekyll & do page reload
-gulp.task('rebuild', ['jekyll-build'], function () {
+gulp.task('rebuild', gulp.series('jekyll-build', function () {
     browserSync.reload();
-});
-
-// Rebuild Jekyll & do page reload
-gulp.task('browser-sync', ['sass', 'js', 'jekyll-build'], function() {
-    browserSync({
-        server: {
-            baseDir: '_site'
-        }
-    });
-});
+}));
 
 // Complie SCSS to CSS & Prefix
 gulp.task('sass', function() {
@@ -95,6 +86,15 @@ gulp.task('js', function() {
     });
 });
 
+// Rebuild Jekyll & do page reload
+gulp.task('browser-sync', gulp.series('sass', 'js', 'jekyll-build', function() {
+  browserSync({
+      server: {
+          baseDir: '_site'
+      }
+  });
+}));
+
 gulp.task('critical', function (cb) {
   critical.generate({
     base: '_site/',
@@ -123,7 +123,7 @@ gulp.task('watch', function() {
   gulp.watch('_js/**/*.js', ['js']);
 });
 
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', gulp.series('browser-sync', 'watch'));
 
 // Minify HTML
 gulp.task('html', function() {
