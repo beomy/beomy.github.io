@@ -46,8 +46,9 @@ gulp.task('deploy', gulp.series('jekyll-build', function () {
 }));
 
 // Rebuild Jekyll & do page reload
-gulp.task('rebuild', gulp.series('jekyll-build', function () {
+gulp.task('rebuild', gulp.series('jekyll-build', function (done) {
     browserSync.reload();
+    done();
 }));
 
 // Complie SCSS to CSS & Prefix
@@ -118,12 +119,12 @@ gulp.task('critical', function (cb) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('_sass/**/*.scss', ['sass']);
-  gulp.watch(['*.html', '*.md', '_layouts/*.html', '_includes/*.html', '_posts/*.md', '_posts/*/*.md', '_posts/*/*/*.md', '_drafts/*.md', '_drafts/*/*.md', '_drafts/*/*/*.md', '_pages/*.md', '_include/*html'], ['rebuild']);
-  gulp.watch('_js/**/*.js', ['js']);
+  gulp.watch('_sass/**/*.scss', gulp.series('sass'));
+  gulp.watch(['*.html', '*.md', '_layouts/*.html', '_includes/*.html', '_posts/*.md', '_posts/*/*.md', '_posts/*/*/*.md', '_drafts/*.md', '_drafts/*/*.md', '_drafts/*/*/*.md', '_pages/*.md', '_include/*html'], gulp.series('rebuild'));
+  gulp.watch('_js/**/*.js', gulp.series('js'));
 });
 
-gulp.task('default', gulp.series('browser-sync', 'watch'));
+gulp.task('default', gulp.parallel('browser-sync', 'watch'));
 
 // Minify HTML
 gulp.task('html', function() {
