@@ -32,3 +32,13 @@ beomyhlee@gmail.com
 
 #### 출판
 - [비제이퍼블릭][ReactJS 이 정도는 알아야지](https://book.naver.com/bookdb/book_detail.nhn?bid=13193284) (2018.01)
+
+#### 강의
+<ul class="about-seminar">
+  <li>
+    <a href="https://www.inflearn.com/course/스벨트-입문" target="_blank">
+      <img src="/assets/img/about/inflearn-svelte.png">
+      <div class="detail"><span>Svelte 입문 강의 - A부터 Z까지</span></div>
+    </a>
+  </li>
+</ul>
