@@ -3,7 +3,7 @@ layout: post
 title: '[Svelte] 스벨트 입문 A부터 Z까지'
 featured-img: inflearn/svelte_banner.jpeg
 height-img: 500px
-category: [tech, etc]
+category: [tech, svelte]
 summary: 스벨트 입문 강의가 인프런에 런칭되었습니다!
 ---
 {% include toc.html %}
