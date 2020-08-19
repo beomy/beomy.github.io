@@ -20,8 +20,12 @@ node scripts/setupTypeScript.js
 npm install
 ```
 
-## TypeScript
-`node scripts/setupTypeScript.js`를 실행하면 TypeScript가 적용된 템플릿으로 변경됩니다. `rollup.config.js` 파일의 `sveltePreprocess` 함수에 `sourceMap` 설정을 추가해서 디버깅에 용이하게 조금만 변경하도록 하겠습니다.
+## `svelte.config.js` 생성
+`node scripts/setupTypeScript.js`를 실행하면 TypeScript가 적용된 템플릿으로 변경됩니다.
+~~~`rollup.config.js`의 svelte 옵션을 `svelte.config.js`로 이동~~~
+
+## TypeScript 설정
+`rollup.config.js` 파일의 `sveltePreprocess` 함수에 `sourceMap` 설정을 추가해서 디버깅에 용이하게 조금만 변경하도록 하겠습니다.
 
 ```js
 //...
@@ -35,7 +39,7 @@ npm install
 };
 ```
 
-## SCSS
+## SCSS 설정
 scss를 사용할 수 있도록 아래 코드와 같이 패키지를 다운로드합니다.
 
 ```bash
@@ -98,30 +102,38 @@ export default app;
 </html>
 ```
 
-### `prependData`
+### `prependData` 설정
 SCSS 변수들을 `@import` 해서 사용해야 할 때, `prependData`를 사용하면 컴포넌트에서 `@import`를 사용하지 않아도 SCSS 변수를 가져와 사용할 수 있습니다. 아래와 같이 `prependData`를 사용할 수 있습니다.
 
-## postcss
+## PostCSS 설정
 
-## alias
+### `autoprefixer` 설정
 
-## 사용법
+## Alias 설정
+
+## TS, SCSS 사용하기
 
 # Webpack
 
-## TypeScript
+## `svelte.config.js` 생성
 
-## SCSS
+## TypeScript 설정
 
-### `prependData`
+## SCSS 설정
 
-## postcss
+### `prependData` 설정
 
-## alias
+## PostCSS 설정
 
-## 사용법
+### `autoprefixer` 설정
 
-# 부록: `beomy/template`, `beomy/template-webpack`
+## Alias 설정
+
+## TS, SCSS 사용하기
+
+# 부록: 템플릿
+
+`beomy/template`, `beomy/template-webpack`
 
 #### 참고
 - [https://svelte.dev/blog/svelte-and-typescript](https://svelte.dev/blog/svelte-and-typescript)
