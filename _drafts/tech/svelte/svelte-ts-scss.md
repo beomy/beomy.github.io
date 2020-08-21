@@ -11,7 +11,7 @@ summary: svelte-preprocess가 Svelte 공식 지원으로 편입되었습니다.
 전처리를 해주는 `svelte-preprocess`가 Svelte 공식 지원 라이브러리로 편입되면서, Svelte가 TypeScript를 공식 지원하게 되었습니다. 이번 포스트에서는 Rollup, Webpack 번들러에서 `svelte-preprocess`를 사용해서 Svelte에 TypeScript와 SCSS 등 몇가지 유용한 가능을 적용하는 방법을 살펴보도록 하겠습니다.
 
 # Rollup
-Rollup 번들러를 사용해서 Svelte에 TypeScript와 SCSS를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template](https://github.com/sveltejs/template) 템플릿을 다운로하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
+Rollup 번들러를 사용해서 Svelte에 TypeScript와 SCSS를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template](https://github.com/sveltejs/template) 템플릿을 다운로드하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
 
 ```bash
 npx degit sveltejs/template svelte-typescript-app
@@ -21,7 +21,7 @@ npm install
 ```
 
 ## `svelte.config.js` 생성
-VS Code를 사용할 경우 디렉토리의 루트에 `svelte.config.js` 파일을 생성해 주어야 몇가지 문법을 에러로 잡아내지 않습니다. `rollup.config.js`의 svelte 옵션을 `svelte.config.js` 파일을 만들고 해당 파일에 아래와 같이 옮겨 적어 줍니다.
+VS Code를 사용할 경우 프로젝트 루트에 `svelte.config.js` 파일을 생성해 주어야 몇가지 문법을 에러로 잡아내지 않습니다. `rollup.config.js`의 svelte 옵션을 `svelte.config.js` 파일을 만들고 해당 파일에 아래와 같이 옮겨 적어 줍니다.
 
 ```js
 // svelte.config.js
@@ -56,7 +56,10 @@ export default {
 ```
 
 ## TypeScript 설정
-`node scripts/setupTypeScript.js`를 실행하면 TypeScript가 적용된 템플릿으로 변경됩니다. 디버깅에 용이하게 `svelte.config.js` 파일의 `sveltePreprocess` 함수에 `sourceMap` 설정을 추가하도록 하겠습니다.
+`node scripts/setupTypeScript.js`를 실행하면 TypeScript가 적용된 템플릿으로 변경됩니다.
+
+### `sveltePreprocess`에 `sourceMap` 추가
+디버깅에 용이하게 `svelte.config.js` 파일의 `sveltePreprocess` 함수에 `sourceMap` 설정을 추가하도록 하겠습니다.
 
 ```js
 // svelte.config.js
@@ -71,6 +74,7 @@ module.exports = {
 
 위의 코드와 같이 설정이 끝나면 아래와 같이 TypeScript 사용이 가능해집니다.
 
+### TypeScript 사용
 ```html
 <!-- App.svelte -->
 <script lang="ts"> // lang="ts"를 선언한 <script>에서 TypeScript를 사용할 수 있습니다.
@@ -108,7 +112,7 @@ export default {
 };
 ```
 
-이렇게 `import`된 SCSS 파일은 `public/build/assets.css` 파일로 번들되는데, `public/index.html` 파일에서 아래와 같이 번들된 CSS 파일을 가져와야 합니다.
+`import`된 SCSS 파일은 `public/build/assets.css` 파일로 번들되는데, `public/index.html` 파일에서 아래와 같이 번들된 CSS 파일을 가져와야 합니다.
 
 ```html
 <!-- public/index.html -->
@@ -151,7 +155,7 @@ export default app;
 ```
 
 ### `prependData` 설정
-SCSS 변수들을 `@import` 해서 사용해야 할 때, `prependData`를 사용하면 컴포넌트의 `<style>`에서 `@import`를 사용하지 않아도 SCSS 변수를 가져와 사용할 수 있습니다. 아래와 같이 `svelte.config.js` 파일에서 `prependData`를 정의할 수 있습니다.
+SCSS 파일에 정의 된 스타일이나 변수들을 컴포넌트의 `<style>`에서 `@import` 해서 사용해야 할 때, `prependData`를 사용하면 컴포넌트의 `<style>`에서 `@import`를 사용하지 않아도 SCSS 변수를 가져와 사용할 수 있습니다. 아래와 같이 `svelte.config.js` 파일에서 `prependData`를 정의할 수 있습니다.
 
 ```js
 // svelte.config.js
@@ -252,7 +256,7 @@ module.exports = {
 ![autoprefixer](/assets/img/posts/svelte/autoprefixer.png)
 
 ## Alias 설정
-마지막으로 Alias를 설정하도록 하겠습니다. 컴포넌트를 만들고 사용하다 보면 `import comp from '../../components/Item.svelte'` 와 같이 상대경로로 `import`하게 됩니다. `import`를 사용하는 컴포넌트의 경로가 변경되면 `import` 경로를 모두 바꿔줘야 하는데, 이런 귀찮은 작업을 Alias를 사용하면 최소화 할 수 있습니다.
+컴포넌트를 만들고 사용하다 보면 `import comp from '../../components/Item.svelte'` 와 같이 상대경로로 `import`하게 됩니다. `import`를 사용하는 컴포넌트 파일의 경로가 변경되면 `import`한 경로를 모두 바꿔줘야 하는데, 이런 귀찮은 작업을 Alias를 사용하면 최소화 할 수 있습니다.
 
 아래 코드와 같이 패키지를 다운로드합니다.
 
@@ -300,10 +304,141 @@ export default app;
 ```
 
 # Webpack
+Webpack 번들러를 사용해서 Svelte에 TypeScript와 SCSS를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack) 템플릿을 다운로드하고 패키지를 다운로드합니다.
+
+```bash
+npx degit sveltejs/template svelte-typescript-app
+cd svelte-typescript-app
+npm install
+```
+
+Webpack 번들러를 사용한 템플릿은 Rollup 번들러를 사용한 템플릿과 다르게 전처리기가 적용된 템플릿으로 변경해 주는 스크립트가 없습니다. TypeScript나 SCSS를 사용하기 위해 `svelte-preprocess` 패키지를 다운로드합니다.
+
+```bash
+npm i -D svelte-preprocess
+```
 
 ## `svelte.config.js` 생성
+Rollup 번들러와 동일한 이유로 파일을 프로젝트 루트에 `svelte.config.js` 파일을 만들고, `webpack.config.js`의 `svelte-loader` 옵션을 옮겨 적고, `preprocess` 옵션도 추가해 줍니다.
+
+```js
+// svelte.config.js
+const sveltePreprocess = require('svelte-preprocess');
+
+module.exports = {
+  preprocess: sveltePreprocess(),
+  emitCss: true,
+  hotReload: true
+}
+```
+
+`webpack.config.js`는 svelte 옵션을 아래와 같이 가져와 사용합니다.
+
+```js
+// webpack.config.js
+//...
+module.exports = {
+	//...
+	module: {
+		rules: [
+			{
+				test: /\.svelte$/,
+				use: {
+					loader: 'svelte-loader',
+					options: require('./svelte.config'),
+				}
+			},
+			//...
+		]
+	},
+	//...
+};
+```
 
 ## TypeScript 설정
+Webpack 번들러를 사용한 템플릿은 Rollup 번들러를 사용한 템플릿과 다르게 TypeScript가 적용된 템플릿으로 변경헤 주는 스크립트가 없습니다. TypeScript를 사용할 수 있게 설정하기 위해 아래 코드와 같이 패키지를 다운로드합니다.
+
+```bash
+npm i -D typescript @tsconfig/svelte ts-loader
+```
+
+### `sveltePreprocess`에 `sourceMap` 추가
+디버깅을 좀더 용이하게 하기 위해 `svelte.config.js` 파일의 `sveltePreprocess` 함수에 `sourceMap` 설정을 추가해 줍니다.
+
+```js
+// svelte.config.js
+//...
+const mode = process.env.NODE_ENV || 'development';
+const prod = mode === 'production';
+
+module.exports = {
+  preprocess: sveltePreprocess({
+    sourceMap: !prod
+  }),
+  //...
+}
+```
+
+### `webpack.config.js`에 TypeScript 설정
+`webpack.config.js`를 아래 코드와 같이 수정해 줍니다.
+
+```js
+// webpack.config.js
+//...
+module.exports = {
+  entry: {
+    bundle: ['./src/main.ts']
+  },
+  resolve: {
+    //...
+    extensions: ['.mjs', '.js', '.svelte', '.tsx', '.ts'],
+    //...
+  },
+  module: {
+    rules: [
+      //...
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ]
+  },
+  //...
+};
+```
+
+- `entry.bundle` 경로를 `main.js`에서 `main.ts`로 변경합니다.
+- `main.js` 파일을 `main.ts` 파일로 파일명을 변경합니다.
+- `resolve.extenstions`의 배열에 TypeScript를 사용하기 위해 `.tsx`와 `.ts`를 추가해줍니다.
+- `module.rolus`에 `ts-loader` 설정을 추가해 줍니다.
+
+### `tsconfig.json` 파일 생성
+프로젝트 루트 위치에 `tsconfig.json` 파일을 생성하고 아래 코드와 같이 설정합니다.
+
+```json
+{
+  "extends": "@tsconfig/svelte/tsconfig.json",
+
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
+}
+```
+
+위의 코드와 같이 설정이 끝나면 아래와 같이 TypeScript 사용이 가능해집니다.
+
+### TypeScript 사용
+```html
+<!-- App.svelte -->
+<script lang="ts"> // lang="ts"를 선언한 <script>에서 TypeScript를 사용할 수 있습니다.
+  export let name: string;
+</script>
+
+<main>
+  <h1>Hello {name}!</h1>
+  <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+</main>
+```
 
 ## SCSS 설정
 
@@ -314,6 +449,8 @@ export default app;
 ### `autoprefixer` 설정
 
 ## Alias 설정
+
+## `svelte-check` 설정
 
 # 부록: 템플릿
 
