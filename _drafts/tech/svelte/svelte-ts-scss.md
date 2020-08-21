@@ -8,7 +8,7 @@ summary: svelte-preprocess가 Svelte 공식 지원으로 편입되었습니다.
 ---
 {% include toc.html %}
 
-전처리를 해주는 `svelte-preprocess`가 Svelte 공식 지원 라이브러리로 편입되면서, Svelte가 TypeScript를 공식 지원하게 되었습니다. 이번 포스트에서는 Rollup, Webpack 번들러에서 `svelte-preprocess`를 사용해서 Svelte에 TypeScript와 SCSS, 몇가지 유용한 가능을 적용하는 방법을 살펴보도록 하겠습니다.
+전처리를 해주는 `svelte-preprocess`가 Svelte 공식 지원 라이브러리로 편입되면서, Svelte가 TypeScript를 공식 지원하게 되었습니다. 이번 포스트에서는 Rollup, Webpack 번들러에서 `svelte-preprocess`를 사용해서 Svelte에 TypeScript와 SCSS 등 몇가지 유용한 가능을 적용하는 방법을 살펴보도록 하겠습니다.
 
 # Rollup
 Rollup 번들러를 사용해서 Svelte에 TypeScript와 SCSS를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template](https://github.com/sveltejs/template) 템플릿을 다운로하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
@@ -45,12 +45,10 @@ module.exports = {
 ```js
 // rollup.config.js
 //...
-const config = require('./svelte.config');
-//...
 export default {
   //...
   plugins: [
-    svelte(config),
+    svelte(require('./svelte.config')),
     //...
   ],
   //...
@@ -256,6 +254,51 @@ module.exports = {
 ## Alias 설정
 마지막으로 Alias를 설정하도록 하겠습니다. 컴포넌트를 만들고 사용하다 보면 `import comp from '../../components/Item.svelte'` 와 같이 상대경로로 `import`하게 됩니다. `import`를 사용하는 컴포넌트의 경로가 변경되면 `import` 경로를 모두 바꿔줘야 하는데, 이런 귀찮은 작업을 Alias를 사용하면 최소화 할 수 있습니다.
 
+아래 코드와 같이 패키지를 다운로드합니다.
+
+```bash
+npm i -D @rollup/plugin-alias
+```
+
+패키지 다운로드가 끝나면,`rollup.config.js` 파일을 아래 코드와 같이 수정합니다.
+
+```js
+// rollup.config.js
+//...
+import alias from '@rollup/plugin-alias';
+import path from 'path';
+//...
+
+export default {
+  //...
+  plugins: [
+    //...
+    alias({
+      entries: [
+        { find: '@', replacement: path.resolve(__dirname, 'src') }
+      ]
+    }),
+    //...
+};
+```
+
+위의 설정이 끝나면, 아래 코드와 같이 alias를 사용할 수 있습니다. `src` 디렉토리 위치를 `@`로 대체한 예제입니다.
+
+```ts
+// main.ts
+import '@/assets/scss/common.scss';
+import App from '@/App.svelte';
+
+const app = new App({
+  target: document.body,
+  props: {
+    name: 'world'
+  }
+});
+
+export default app;
+```
+
 # Webpack
 
 ## `svelte.config.js` 생성
@@ -273,7 +316,10 @@ module.exports = {
 ## Alias 설정
 
 # 부록: 템플릿
-`beomy/template`, `beomy/template-webpack`
+
+## `beomy/template`
+
+## `beomy/template-webpack`
 
 #### 참고
 - [https://svelte.dev/blog/svelte-and-typescript](https://svelte.dev/blog/svelte-and-typescript)
