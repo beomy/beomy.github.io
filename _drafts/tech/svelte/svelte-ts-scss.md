@@ -1,10 +1,10 @@
 ---
 layout: post
-title: '[Svelte] Svelte 전처리기 사용하기'
+title: '[Svelte] Svelte + TS + SCSS + α'
 featured-img: svelte/svelte-log.svg
 height-img: 200px
 category: [tech, svelte]
-summary: svelte-preprocess가 Svelte 공식 지원으로 편입되었습니다.
+summary: Svelte + TS + SCSS 구조의 프로젝트를 만들어보도록 하겠습니다.
 ---
 {% include toc.html %}
 
@@ -94,7 +94,8 @@ scss를 사용할 수 있도록 아래 코드와 같이 패키지를 다운로�
 npm i -D sass rollup-plugin-scss
 ```
 
-패키지 다운로드가 끝나면, `rollup.config.js`를 아래와 같이 변경합니다.
+### 소스코드에서 SCSS 파일 `import`하기
+`svelte-preprocess`를 사용하면 Svelte 컴포넌트에서 `<style lang="scss">`를 사용해서 SCSS를 사용할 수 있지만, `.scss` 파일을 생성해서 스타일을 적용할 수는 없습니다. 소스코드에서 SCSS 파일을 `import`할 수 있도록 설정해 보도록 하겠습니다. `rollup.config.js`를 아래와 같이 수정합니다.
 
 ```js
 // rollup.config.js
@@ -191,25 +192,28 @@ $primary-color: red;
 
 <style lang="scss">
   /* ... */
-  h1 {
-    color: $primary-color; /* SCSS 변수 사용이 가능해집니다. */
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  main {
+    /* ... */
+    h1 {
+      color: $primary-color; /* SCSS 변수 사용이 가능해집니다. */
+      text-transform: uppercase;
+      font-size: 4em;
+      font-weight: 100;
+    }
   }
   /* ... */
 </style>
 ```
 
 ## PostCSS 설정
-자동 접두사를 사용하기 위해서 PostCSS를 사용해야 합니다. 아래 코드와 같이 `postcss`와 `autoprefixer` 패키지를 다운로드 합니다.
+자동 접두사를 사용하기 위해서 PostCSS를 사용해야 합니다. 아래 코드와 같이 `postcss`와 `autoprefixer`, `rollup-plugin-postcss` 패키지를 다운로드 합니다.
 
 ```bash
-npm i -D postcss autoprefixer
+npm i -D postcss autoprefixer rollup-plugin-postcss
 ```
 
-### `autoprefixer` 설정
-`svelte.config.js` 파일에서 아래와 같이 `autoprefixer`를 정의할 수 있습니다.
+### 컴포넌트의 스타일에 `autoprefixer` 설정
+`svelte.config.js` 파일에서 아래와 같이 `autoprefixer`를 설정해줍니다.
 
 ```js
 // svelte.config.js
@@ -241,11 +245,12 @@ module.exports = {
 
 <style lang="scss">
   /* ... */
-  h1 {
-    display: grid;
-    transition: all .5s;
-    user-select: none;
-    background: linear-gradient(to bottom, white, black);
+  main {
+    /* ... */
+    h1 {
+      user-select: none;
+      /* ... */
+    }
   }
   /* ... */
 </style>
@@ -254,6 +259,40 @@ module.exports = {
 아래 그림처럼 `-webkit`, `-moz`, `-ms` 등, 브라우저 밴더 접두사가 추가됩니다.
 
 ![autoprefixer](/assets/img/posts/svelte/autoprefixer.png)
+
+### SCSS 파일에 `autoprefixer` 설정
+`rollup.config.js`에 아래 코드와 같이 `postcss`를 사용해줍니다.
+
+```js
+// rollup.config.js
+//...
+import scss from 'rollup-plugin-scss';
+
+export default {
+  plugins: [
+    //...
+    postcss({
+      plugins: [require('autoprefixer'),]
+    }),
+    //...
+  ]
+};
+```
+
+위의 설정이 끝나면 아래 코드와 같이 정의된 스타일이,
+
+```scss
+main {
+  h1 {
+    margin: 0;
+    user-select: none;
+  }
+}
+```
+
+아래 그림처럼 `-webkit`, `-moz`, `-ms` 등, 브라우저 밴더 접두사가 추가됩니다.
+
+![autoprefixer](/assets/img/posts/svelte/autoprefixer_scss.png)
 
 ## Alias 설정
 컴포넌트를 만들고 사용하다 보면 `import comp from '../../components/Item.svelte'` 와 같이 상대경로로 `import`하게 됩니다. `import`를 사용하는 컴포넌트 파일의 경로가 변경되면 `import`한 경로를 모두 바꿔줘야 하는데, 이런 귀찮은 작업을 Alias를 사용하면 최소화 할 수 있습니다.
@@ -441,12 +480,225 @@ module.exports = {
 ```
 
 ## SCSS 설정
+scss를 사용할 수 있도록 아래 코드와 같이 패키지를 다운로드합니다.
+
+```bash
+npm i -D sass sass-loader
+```
+
+### 소스코드에서 SCSS 파일 `import`하기
+Webpack 번들러에서도 소스코드에서 SCSS 파일을 `import`할 수 있도록 설정해 보도록 하겠습니다. `webpack.config.js`에서 `style-loader`와 `css-loader`를 사용하는 부분을 아래와 같이 수정합니다.
+
+```js
+// webpack.config.js
+//...
+
+module.exports = {
+  //...
+  module: {
+    rules: [
+      //...
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          /**
+           * MiniCssExtractPlugin doesn't support HMR.
+           * For developing, use 'style-loader' instead.
+           * */
+          prod ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      //...
+
+    ]
+  },
+  //...
+};
+```
+
+위의 코드와 같이 설정이 끝나면 아래와 같이 `main.ts`에서 SCSS 파일 `import`가 가능해집니다.
+
+```ts
+// src/main.ts
+import './assets/scss/common.scss';
+import App from './App.svelte';
+
+const app = new App({
+  target: document.body,
+  props: {
+    name: 'world'
+  }
+});
+
+export default app;
+```
 
 ### `prependData` 설정
+`prependData`를 설정하는 방법은 Rollup과 동일합니다. `svelte.config.js` 파일을 아래와 같이 수정합니다.
+
+```js
+// svelte.config.js
+//...
+module.exports = {
+  //...
+  preprocess: sveltePreprocess({
+    //...
+    scss: {
+      prependData: `@import "src/assets/scss/variables.scss";`
+    }
+  }),
+  //...
+}
+```
+
+위의 설정이 끝나면, 아래와 같이 SCSS 변수 사용이 가능합니다.
+
+```scss
+/* src/assets/scss/variables.scss */
+$primary-color: red;
+```
+
+```html
+<!-- App.svelte -->
+<script lang="ts">
+  export let name: string;
+</script>
+
+<main>
+  <h1>Hello {name}!</h1>
+  <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+</main>
+
+<style lang="scss">
+  /* ... */
+  main {
+    /* ... */
+    h1 {
+      color: $primary-color; /* SCSS 변수 사용이 가능해집니다. */
+      text-transform: uppercase;
+      font-size: 4em;
+      font-weight: 100;
+    }
+  }
+  /* ... */
+</style>
+```
 
 ## PostCSS 설정
+`postcss`와 `autoprefixer`, `postcss-loader` 패키지를 다운로드 합니다.
 
-### `autoprefixer` 설정
+```bash
+npm i -D postcss autoprefixer postcss-loader
+```
+
+### 컴포넌트의 스타일에 `autoprefixer` 설정
+`svelte.config.js` 파일에서 아래와 같이 `autoprefixer`를 설정해줍니다.
+
+```js
+// svelte.config.js
+const autoprefixer = require('autoprefixer');
+
+//...
+module.exports = {
+  //...
+  preprocess: sveltePreprocess({
+    //...
+    postcss: {
+      plugins: [autoprefixer()]
+    },
+  }),
+}
+```
+
+위의 설정이 끝나면 아래 코드와 같이 정의된 스타일이,
+
+```html
+<script lang="ts">
+  export let name: string;
+</script>
+
+<main>
+  <h1>Hello {name}!</h1>
+  <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+</main>
+
+<style lang="scss">
+  /* ... */
+  main {
+    /* ... */
+    h1 {
+      user-select: none;
+      /* ... */
+    }
+  }
+  /* ... */
+</style>
+```
+
+아래 그림처럼 `-webkit`, `-moz`, `-ms` 등, 브라우저 밴더 접두사가 추가됩니다.
+
+![autoprefixer](/assets/img/posts/svelte/autoprefixer.png)
+
+### SCSS 파일에 `autoprefixer` 설정
+`webpack.config.js`에 아래 코드와 같이 `postcss-loader`를 사용해줍니다.
+
+```js
+// webpack.config.js
+//...
+
+module.exports = {
+  //...
+  module: {
+    rules: [
+      //...
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          /**
+           * MiniCssExtractPlugin doesn't support HMR.
+           * For developing, use 'style-loader' instead.
+           * */
+          prod ? MiniCssExtractPlugin.loader : 'style-loader',
+          'css-loader',
+          'sass-loader',
+          'postcss-loader'
+        ]
+      },
+      //...
+
+    ]
+  },
+  //...
+};
+```
+
+`postcss.config.js`를 프로젝트 루트에 아래 코드와 같이 만들어 줍니다.
+
+```js
+// postcss.config.js
+module.exports = {
+  plugins: [
+    require('autoprefixer')
+  ]
+}
+```
+
+위의 설정이 끝나면 아래 코드와 같이 정의된 스타일이,
+
+```scss
+main {
+  h1 {
+    margin: 0;
+    user-select: none;
+  }
+}
+```
+
+아래 그림처럼 `-webkit`, `-moz`, `-ms` 등, 브라우저 밴더 접두사가 추가됩니다.
+
+![autoprefixer](/assets/img/posts/svelte/autoprefixer_scss.png)
 
 ## Alias 설정
 
