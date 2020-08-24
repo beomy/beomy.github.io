@@ -164,7 +164,7 @@ SCSS 파일에 정의 된 스타일이나 변수들을 컴포넌트의 `<style>`
 module.exports = {
   //...
   preprocess: sveltePreprocess({
-    sourceMap: !production,
+    //...
     scss: {
       prependData: `@import "src/assets/scss/variables.scss";`
     }
@@ -176,7 +176,7 @@ module.exports = {
 
 ```scss
 /* src/assets/scss/variables.scss */
-$primary-color: red;
+$primary-color: #ff3e00;
 ```
 
 ```html
@@ -325,6 +325,19 @@ export default {
 };
 ```
 
+Alias를 사용해서 TypeScript 파일에서 TypeScript 파일을 `import` 하기 위해서는 아래 코드와 같이 `tsconfig.json` 파일을 수정해야 합니다.
+
+```json
+// tsconfig.json
+{
+  //...
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": { "@/*": ["src/*"] }
+  }
+}
+```
+
 위의 설정이 끝나면, 아래 코드와 같이 alias를 사용할 수 있습니다. `src` 디렉토리 위치를 `@`로 대체한 예제입니다.
 
 ```ts
@@ -377,20 +390,20 @@ module.exports = {
 // webpack.config.js
 //...
 module.exports = {
-	//...
-	module: {
-		rules: [
-			{
-				test: /\.svelte$/,
-				use: {
-					loader: 'svelte-loader',
-					options: require('./svelte.config'),
-				}
-			},
-			//...
-		]
-	},
-	//...
+  //...
+  module: {
+    rules: [
+      {
+        test: /\.svelte$/,
+        use: {
+          loader: 'svelte-loader',
+          options: require('./svelte.config')
+        }
+      },
+      //...
+    ]
+  },
+  //...
 };
 ```
 
@@ -557,7 +570,7 @@ module.exports = {
 
 ```scss
 /* src/assets/scss/variables.scss */
-$primary-color: red;
+$primary-color: #ff3e00;
 ```
 
 ```html
@@ -607,7 +620,7 @@ module.exports = {
     //...
     postcss: {
       plugins: [autoprefixer()]
-    },
+    }
   }),
 }
 ```
@@ -701,14 +714,92 @@ main {
 ![autoprefixer](/assets/img/posts/svelte/autoprefixer_scss.png)
 
 ## Alias 설정
+Alias를 사용하기 위해 `webpack.config.js` 파일을 아래 코드와 같이 수정합니다.
+
+```js
+// webpack.config.js
+//...
+module.exports = {
+  //...
+  resolve: {
+    alias: {
+      //...
+      '@': path.resolve(__dirname, 'src')
+    },
+    //...
+  },
+  //...
+};
+```
+
+Rollup과 동일하게 `tsconfig.json` 파일을 아래와 같이 수정해야 합니다.
+
+```json
+// tsconfig.json
+{
+  //...
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": { "@/*": ["src/*"] }
+  }
+}
+```
+
+위의 설정이 끝나면, 아래 코드와 같이 alias를 사용할 수 있습니다. `src` 디렉토리 위치를 `@`로 대체한 예제입니다.
+
+```ts
+// main.ts
+import '@/assets/scss/common.scss';
+import App from '@/App.svelte';
+
+const app = new App({
+  target: document.body,
+  props: {
+    name: 'world'
+  }
+});
+
+export default app;
+```
 
 ## `svelte-check` 설정
+Rollup에서는 템플릿에 `svelte-check` 패키지가 추가되어 있지만, Webpack에서는 추가되어 있지 않기 때문에 아래와 같이 패키지를 설치해야 합니다.
+
+```bash
+npm i -D svelte-check
+```
+
+패키지 다운로드가 되면 `package.json`의 `script`에 아래와 같이 `validate`를 추가해 줍니다.
+
+```json
+// package.json
+{
+  //...
+  "scripts": {
+    //...
+    "validate": "svelte-check"
+  }
+}
+```
+
+`npm run validate` 명령어를 실행하면 Svelte를 컴파일 할 때 발생하는 error와 warning를 확인 할 수 있습니다.
 
 # 부록: 템플릿
+지금까지 이야기 했덜 설정을 추가해서 Rollup 템플릿과 Webpack 템플릿을 만들었습니다.
 
 ## `beomy/template`
+아래 명령어를 사용하여 Svelte + TS + SCSS + α(`rollup`, `autoprefixer`, `alias`)를 사용할 수 있는 프로젝트 보일러 플레이트를 만들 수 있습니다.
+
+```bash
+npx degit beomy/template my-svelte-project
+```
 
 ## `beomy/template-webpack`
+아래 명령어를 사용하여 Svelte + TS + SCSS + α(`webpack`, `autoprefixer`, `alias`)를 사용할 수 있는 프로젝트 보일러 플레이트를 만들 수 있습니다.
+
+```bash
+npx degit beomy/template-webpack my-svelte-project
+```
 
 #### 참고
 - [https://svelte.dev/blog/svelte-and-typescript](https://svelte.dev/blog/svelte-and-typescript)
