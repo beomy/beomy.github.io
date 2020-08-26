@@ -8,6 +8,8 @@ summary: rollup + sass + typescript와 webpack + sass + typescript를 사용할 
 ---
 {% include toc.html %}
 
+**Outdate 되었습니다. 최신 내용은 [[Svelte] Svelte + TS + SCSS + α](/tech/svelte/svelte-ts-scss/)에 포스팅 되었습니다.**
+
 이번 포스트에서는 rollup + sass + typescript와 webpack + sass + typescript를 사용할 수 있도록 Svelte 프로젝트를 구성하는 방법을 이야기합니다. 현재 Svelte(v3.18.0)는 typescript를 공식 지원을 하지 않습니다.
 
 # Quick Start Guide
