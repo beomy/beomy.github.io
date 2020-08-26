@@ -8,10 +8,10 @@ summary: Svelte + TS + SCSS 구조의 프로젝트를 만들어보도록 하겠�
 ---
 {% include toc.html %}
 
-전처리를 해주는 `svelte-preprocess`가 Svelte 공식 지원 라이브러리로 편입되면서, Svelte가 TypeScript를 공식 지원하게 되었습니다. 이번 포스트에서는 Rollup, Webpack 번들러에서 `svelte-preprocess`를 사용해서 Svelte에 TypeScript와 SCSS 등 몇 가지 유용한 가능을 적용하는 방법을 살펴보도록 하겠습니다.
+전처리를 해주는 `svelte-preprocess`가 Svelte 공식 지원 라이브러리로 편입되면서, Svelte가 TypeScript를 공식 지원하게 되었습니다. 이번 포스트에서는 Rollup, Webpack 번들러에서 `svelte-preprocess`를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias 가능을 적용한 프로젝트를 생성하는 방법을 살펴보도록 하겠습니다.
 
 # Rollup
-Rollup 번들러를 사용해서 Svelte에 TypeScript와 SCSS를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template](https://github.com/sveltejs/template) 템플릿을 다운로드하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
+Rollup 번들러를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template](https://github.com/sveltejs/template) 템플릿을 다운로드하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
 
 ```bash
 npx degit sveltejs/template svelte-typescript-app
@@ -72,9 +72,9 @@ module.exports = {
 }
 ```
 
+### TypeScript 사용
 위의 코드와 같이 설정이 끝나면 아래와 같이 TypeScript 사용이 가능해집니다.
 
-### TypeScript 사용
 ```html
 <!-- App.svelte -->
 <script lang="ts"> // lang="ts"를 선언한 <script>에서 TypeScript를 사용할 수 있습니다.
@@ -156,7 +156,7 @@ export default app;
 ```
 
 ### `prependData` 설정
-SCSS 파일에 정의된 스타일이나 변수들을 컴포넌트의 `<style>`에서 `@import` 해서 사용해야 할 때, `prependData`를 사용하면 컴포넌트의 `<style>`에서 `@import`를 사용하지 않아도 SCSS 변수를 가져와 사용할 수 있습니다. 아래와 같이 `svelte.config.js` 파일에서 `prependData`를 정의할 수 있습니다.
+SCSS 파일에 정의된 스타일이나 변수들을 컴포넌트의 `<style>`에서 `@import` 해서 사용해야 할 때, `prependData`를 사용하면 컴포넌트의 `<style>`에서 `@import`를 사용하지 않고 SCSS 변수를 가져와 사용할 수 있습니다. 아래와 같이 `svelte.config.js` 파일에서 `prependData`를 정의할 수 있습니다.
 
 ```js
 // svelte.config.js
@@ -356,7 +356,7 @@ export default app;
 ```
 
 # Webpack
-Webpack 번들러를 사용해서 Svelte에 TypeScript와 SCSS를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack) 템플릿을 다운로드하고 패키지를 다운로드합니다.
+Webpack 번들러를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack) 템플릿을 다운로드하고 패키지를 다운로드합니다.
 
 ```bash
 npx degit sveltejs/template svelte-typescript-app
@@ -364,7 +364,7 @@ cd svelte-typescript-app
 npm install
 ```
 
-Webpack 번들러를 사용한 템플릿은 Rollup 번들러를 사용한 템플릿과 다르게 전처리기가 적용된 템플릿으로 변경해 주는 스크립트가 없습니다. TypeScript나 SCSS를 사용하기 위해 `svelte-preprocess` 패키지를 다운로드합니다.
+Webpack 번들러를 사용한 템플릿은 Rollup 번들러를 사용한 템플릿과 다르게 전처리기가 적용된 템플릿으로 변경해 주는 스크립트가 없어 따로 패키지를 다운로드하고 설정해야 합니다. TypeScript와 SCSS를 사용하기 위해 `svelte-preprocess` 패키지를 다운로드합니다.
 
 ```bash
 npm i -D svelte-preprocess
