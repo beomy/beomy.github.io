@@ -9,11 +9,11 @@ category: [tech, etc]
 어디까지 강의를 할지..
 AWS 빼자..
 
-1. 초급
-2. 중급
+1. 입문 (Beginner)
+2. 중급 (Intermidate)
   - Express
   - Mongo DB
-3. 고급
+3. 고급 (Advanced)
   - AWS
   - TS, SASS
 
