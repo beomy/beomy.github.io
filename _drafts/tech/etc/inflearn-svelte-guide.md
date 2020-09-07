@@ -5,24 +5,20 @@ featured-img: javascript/js.png
 category: [tech, etc]
 ---
 
-# 큰틀
-어디까지 강의를 할지..
-AWS 빼자..
-
-1. 입문 (Beginner)
-2. 중급 (Intermidate)
-  - Express
-  - Mongo DB
-3. 고급 (Advanced)
-  - AWS
-  - TS, SASS
-
-# 입문
+# 입문 (Beginner)
 ## JSON.parser 만들기
 
-# 중급
+# 중급 (Intermidate)
+## Express
+## Mongo DB
+- [https://velopert.com/594](https://velopert.com/594)
+## JWT
+- [https://velopert.com/2448](https://velopert.com/2448)
 
-# 고급
+# 고급 (Advanced)
+## AWS
+## TS
+## SASS
 
 ## AWS
 
