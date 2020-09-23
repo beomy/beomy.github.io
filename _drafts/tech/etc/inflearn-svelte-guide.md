@@ -12,8 +12,8 @@ category: [tech, etc]
 ## 커리큘럼
 - 오리엔테이션
   - FrontEnd와 BackEnd 구조: 어떤 것을 만들지 보여주기
-  - BackEnd 사용 라이브러리 정리: `axios`, `cors`, `jsonwebtoken`, `mongoose`
-  - FrontEnd 사용 라이브러리 정리: `axios`, `jwt-decode`, `lodash`, `svelte-spa-router`
+  - BackEnd 사용 라이브러리 정리: `express`, `axios`, `cors`, `jsonwebtoken`, `mongoose`
+  - FrontEnd 사용 라이브러리 정리: `svelte`, `axios`, `jwt-decode`, `lodash`, `svelte-spa-router`
 - [BackEnd] 프로젝트 구성
   - 프로젝트 구조 설계 및 개발환경 세팅: `babel-node`, `nodemon`
   - MongoDB 연결
@@ -29,8 +29,8 @@ category: [tech, etc]
   - Join 컴포넌트
 - [BackEnd] 스도쿠 구현
   - Middleware로 인증 공통화
-  - 스도쿠 API 연결
-  - 스도쿠 GET/POST/PUT
+  - sugoku API 연결
+  - 스도쿠 API 만들기
   - 힌트, 메모 API 만들기
 - [FrontEnd] 스도쿠 구현
   - Difficulty 컴포넌트
