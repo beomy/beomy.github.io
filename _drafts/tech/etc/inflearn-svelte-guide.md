@@ -11,19 +11,20 @@ category: [tech, etc]
 # 실습 (Practice)
 ## 커리큘럼
 - 오리엔테이션
-  - FrontEnd와 BackEnd 구조: 어떤 것을 만들지 보여주기
-  - BackEnd 사용 라이브러리 정리: `express`, `axios`, `cors`, `jsonwebtoken`, `mongoose`
-  - FrontEnd 사용 라이브러리 정리: `svelte`, `axios`, `jwt-decode`, `lodash`, `svelte-spa-router`
+  - 프로젝트 구조: 어떤 것을 만들지 보여주기
+  - BackEnd 사용 라이브러리: `express`, `axios`, `cors`, `jsonwebtoken`, `mongoose`
+  - FrontEnd 사용 라이브러리: `svelte`, `axios`, `jwt-decode`, `lodash`, `svelte-spa-router`
 - [BackEnd] 프로젝트 구성
-  - 프로젝트 구조 설계 및 개발환경 세팅: `babel-node`, `nodemon`
+  - 구조설계 및 개발환경 세팅: `babel-node`, `nodemon`
   - MongoDB 연결
 - [FrontEnd] 프로젝트 구성
-  - 프로젝트 구조 설계 및 개발환경 세팅:  `svelte-spa-router`, `axios`
-  - 백엔드 연동: CORS 해결
+  - 구조설계 및 개발환경 세팅: `alias`
+- [FrontEnd, Backend] 프로젝트 연동
+  - CORS 해결
 - [BackEnd] 로그인 구현
-  - 회원 유효성 체크(`/login/duplicate`) API 만들기
-  - 회원 가입(`/login/join`) API 만들기
-  - 로그인(`/login`) API 만들기: `JWT`
+  - 회원 유효성 체크 API 만들기
+  - 회원 가입 API 만들기
+  - 로그인 API 만들기: `JWT`
 - [FrontEnd] 로그인 구현
   - Login 컴포넌트
   - Join 컴포넌트
