@@ -14,17 +14,19 @@ category: [tech, etc]
   - 프로젝트 구조: 어떤 것을 만들지 보여주기
   - BackEnd 사용 라이브러리: `express`, `axios`, `cors`, `jsonwebtoken`, `mongoose`
   - FrontEnd 사용 라이브러리: `svelte`, `axios`, `jwt-decode`, `lodash`, `svelte-spa-router`
-- [BackEnd] 프로젝트 구성
-  - 구조설계 및 개발환경 세팅: `babel-node`, `nodemon`
-  - MongoDB 연결
-- [FrontEnd] 프로젝트 구성
-  - 구조설계 및 개발환경 세팅: `alias`
-- [FrontEnd, Backend] 프로젝트 연동
-  - CORS 해결
+- 프로젝트 구성
+  - BackEnd 구조설계 및 개발환경 세팅: `babel-node`, `nodemon`
+  - FrontEnd 구조설계 및 개발환경 세팅: `alias`
+  - FrontEnd, BackEnd 연동: `axios`, `cors`
+  - 부록: 자바스크립트 모듈 시스템
+  - 부록: CORS
 - [BackEnd] 로그인 구현
-  - 회원 유효성 체크 API 만들기
-  - 회원 가입 API 만들기
-  - 로그인 API 만들기: `JWT`
+  - ToDo 리스트
+  - MongoDB 연결
+  - 회원 유효성 체크 API
+  - 회원 가입 API
+  - JWT 인증 로그인 API
+  - 부록: JWT
 - [FrontEnd] 로그인 구현
   - Login 컴포넌트
   - Join 컴포넌트
