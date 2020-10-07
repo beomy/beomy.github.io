@@ -11,23 +11,25 @@ category: [tech, etc]
 # 실습 (Practice)
 ## 커리큘럼
 - 오리엔테이션
-  - 프로젝트 구조: 어떤 것을 만들지 보여주기
+  - 프로젝트 구조
   - BackEnd 사용 라이브러리: `express`, `axios`, `cors`, `jsonwebtoken`, `mongoose`
   - FrontEnd 사용 라이브러리: `svelte`, `axios`, `jwt-decode`, `lodash`, `svelte-spa-router`
 - 프로젝트 구성
-  - BackEnd 구조설계 및 개발환경 세팅: `babel-node`, `nodemon`
-  - FrontEnd 구조설계 및 개발환경 세팅: `alias`
-  - FrontEnd, BackEnd 연동: `axios`, `cors`
+  - BackEnd 구조설계 및 개발환경 세팅 with `babel`, `nodemon`
+  - FrontEnd 구조설계 및 개발환경 세팅 with `@rollup/plugin-alias`
+  - FrontEnd, BackEnd 연동 with `axios`, `cors`
   - 부록: 자바스크립트 모듈 시스템
   - 부록: CORS
 - [BackEnd] 로그인 구현
   - ToDo 리스트
   - MongoDB 연결
+  - 회원 가입 API with `mongoose`, `crypto`, `http-errors`
   - 회원 유효성 체크 API
-  - 회원 가입 API
-  - JWT 인증 로그인 API
+  - 로그인 API with `jsonwebtoken`
   - 부록: JWT
+  - 부록: MongoDB
 - [FrontEnd] 로그인 구현
+  - ToDo 리스트
   - Login 컴포넌트
   - Join 컴포넌트
 - [BackEnd] 스도쿠 구현
