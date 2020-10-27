@@ -5,7 +5,6 @@ featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 summary: baseCompile 함수에서 사용하는 parse, optimize, generate 함수에 대해 이야기합니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 `baseCompile` 함수에서 사용하는 `parse`, `optimize`, `generate` 함수에 대해 이야기합니다. `parse`, `optimize`, `generate` 함수는 모두 많은 양의 코드를 보유(?)하고 있습니다. 자세히 코드를 살펴보지는 않고 어떤 작업들을 하는지만 살펴볼 것입니다. 
 

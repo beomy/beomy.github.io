@@ -5,7 +5,6 @@ featured-img: browser/browser.png
 category: [tech, browser]
 summary: 브라우저 렌더링 최적화 방법에 대해 이야기할 것입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 렌더링 최적화에 관해 이야기할 것입니다. 렌더링 최적화를 위해서는 우선 렌더링 과정을 이해하는 것이 좋습니다. [[Browser] 브라우저 렌더링](/tech/browser/browser-rendering)에서 브라우저의 렌더링 과정을 설명합니다. 이 포스트를 읽으신 후 이번 포스트를 보는 것이 이해하는 데 더 도움이 될 것 같습니다.
 

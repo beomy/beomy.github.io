@@ -5,7 +5,6 @@ featured-img: browser/browser.png
 category: [tech, browser]
 summary: 브라우저의 화면이 수정될 때, 렌더링 과정을 최적화 하는 방법에 대해 이야기 할 것입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 화면이 수정될 때, 렌더링 과정을 최적화하는 방법에 대해 이야기할 것입니다. 화면을 다시 그리는 과정은 크게 Reflow(Layout이라고도 함)와 Repaint(Redraw라고도 함) 두 개로 나눌 수 있습니다.
 

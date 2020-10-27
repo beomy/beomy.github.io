@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Svelte는 애니메이션을 간편히 사용할 수 있도록 애니메이션 디렉티브를 제공합니다.
 ---
-{% include toc.html %}
 
 Svelte는 애니메이션을 간편히 사용할 수 있도록 애니메이션 디렉티브를 제공합니다. 이번 포스트에서는 애니메이션 디렉티브를 이야기하도록 하겠습니다.
 

@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Svelte의 데이터 바인딩을 이야기합니다. 많이 사용되지는 않지만 필요할 때 사용하면 편리한 기능들입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 [[Svelte] 데이터 바인딩 기초](/tech/svelte/bindings-basic)에 이어 두 번째 데이터 바인딩을 이야기합니다. 많이 사용되지는 않지만 필요할 때 사용하면 편리한 기능들입니다.
 

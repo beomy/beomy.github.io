@@ -5,7 +5,6 @@ featured-img: browser/browser.png
 category: [tech, browser]
 summary: 브라우저에서 리소스에 우선순위를 지정하여 다운로드할 수 있게 하는 방법에 대해 이야기하도록 하겠습니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 [[Browser] Critical Rendering Path 최적화](/tech/browser/critical-rendering-path/#리소스-우선순위-지정)에서 이야기한 리소스 우선순위를 지정할 수 있는 `link` 태그의 `preload`와 `preconnect`, `prefetch`에 대해 이야기하도록 하겠습니다.
 

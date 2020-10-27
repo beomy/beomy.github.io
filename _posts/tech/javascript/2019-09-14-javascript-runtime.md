@@ -5,7 +5,6 @@ featured-img: javascript/js.png
 category: [tech, javaScript]
 summary: 자바스크립트 런타임의 동작 원리를 이야기 하도록 하겠습니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 자바스크립트 런타임의 동작 원리를 이야기하도록 하겠습니다.
 

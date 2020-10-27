@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Svelte의 기본 문법을 Vue.js와 비교하여 이야기합니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 Svelte의 기본 문법을 이야기합니다.
 

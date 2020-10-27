@@ -5,7 +5,6 @@ featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 summary: Vue에서 데이터 변화를 감지하는 방법을 이야기할 것입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 Observer와 Dep, Watcher에 대해 이야기 하도록 하겠습니다. Vue는 data가 변경되면, 자동으로 웹페이지를 업데이트 합니다. 이 때 [감시자(옵저버) 패턴](https://ko.wikipedia.org/wiki/옵서버_패턴)을 사용하는데, 옵저버 패턴에 관한 사전 지식이 있다면, 이해 하는데 도움이 될 것 같습니다.
 

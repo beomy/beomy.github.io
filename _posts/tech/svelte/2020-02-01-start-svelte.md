@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: rollup + sass + typescript와 webpack + sass + typescript를 사용할 수 있도록 Svelte 프로젝트를 구성하는 방법을 이야기합니다.
 ---
-{% include toc.html %}
 
 **Outdate 되었습니다. 최신 내용은 [[Svelte] Svelte + TS + SCSS + α](/tech/svelte/svelte-ts-scss/)에 포스팅 되었습니다.**
 

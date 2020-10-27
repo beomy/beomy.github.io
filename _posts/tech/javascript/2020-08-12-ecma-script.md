@@ -5,7 +5,6 @@ featured-img: javascript/js.png
 category: [tech, javaScript]
 summary: ECMAScript와 TC39 제안 프로세스가 무엇인지 알아보도록 하겠습니다.
 ---
-{% include toc.html %}
 
 ECMAScript는 ES5, ES6 등의 줄임말로 많이 접해 보셨을 겁니다. 이번 포스트에서는 ECMAScript가 무엇인지 이야기하도록 하겠습니다.
 

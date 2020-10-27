@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Context API는 컴포넌트의 데이터와 함수를 props 외의 방법으로 전달하는 기능을 제공합니다.
 ---
-{% include toc.html %}
 
 Context API는 컴포넌트의 데이터와 함수를 props 외의 방법으로 전달하는 기능을 제공합니다.
 

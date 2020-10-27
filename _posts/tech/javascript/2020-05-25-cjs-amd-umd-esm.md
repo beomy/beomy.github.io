@@ -5,7 +5,6 @@ featured-img: javascript/js.png
 category: [tech, javaScript]
 summary: 자바스크립트를 모듈화할 수 있게 한 CJS, AMD, UMD, ESM에 대해 살펴보겠습니다.
 ---
-{% include toc.html %}
 
 처음 자바스크립트는 모듈을 가져오거나 내보내는 방법이 없어, 하나의 파일에 모든 기능들이 들어가야 했습니다. CJS, AMD, UMD, ESM이 등장 후에는 모듈로 개발하고 배포할 수 있게 되었습니다. 이번 포스트에서는 모듈화 개발을 할 수 있게 한 CJS, AMD, UMD, ESM가 무엇인지 살펴보겠습니다.
 

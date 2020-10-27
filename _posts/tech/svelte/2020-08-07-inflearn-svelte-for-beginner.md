@@ -6,7 +6,6 @@ height-img: 500px
 category: [tech, svelte]
 summary: 스벨트 입문 강의가 인프런에 런칭되었습니다!
 ---
-{% include toc.html %}
 
 # 스벨트 입문 강의를 출시했습니다.
 블로그의 내용과 공식 문서를 토대로 인프런에 [스벨트 입문 A부터 Z까지](https://www.inflearn.com/course/스벨트-입문) 강의를 출시했습니다. 공식 문서의 내용을 모두 담아 다른 강의나 다른 블로그를 찾아볼 필요 없이 이 강의 하나면 한 번에 해결하실 수 있습니다.

@@ -5,7 +5,6 @@ featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 summary: Vue 코어 함수에서 호출하는 초기화 동작을 이야기할 것입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 Vue 코어 함수에서 호출하는 `_init` 함수의 초기화 동작에 대해 이야기 할 것입니다.
 

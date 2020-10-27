@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: 새롭게 등장한 Svelte라는 프레임워크를 소개합니다.
 ---
-{% include toc.html %}
 
 Vue.js, React, Angular를 프론트엔드 프레임워크 3대장이라고 흔히들 말합니다. 이번 포스트에서는 새롭게 등장한 Svelte라는 프레임워크를 소개합니다. 아직 정식 한글 문서를 제공하지 않고 있지만, 프레임워크 3대장이라고 불리는 다른 프레임워크보다 낮은 러닝 커브를 가집니다.
 

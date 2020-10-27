@@ -5,7 +5,6 @@ featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 summary: _render()와 _update()에서 호출하는 render 함수와 __patch__ 함수에 대해 이야기 하도록 하겠습니다.
 ---
-{% include toc.html %}
 
 [7. View Render - 컴파일러]({{ site.url }}/tech/vuejs/view-render-compiler/#랜더링-함수)에서 이야기 한 `mountComponent` 함수에서 view를 랜더링 하는데 사용된 2가지 함수인 `_render()`와 `_update()`에서 호출하는 `render` 함수와 `__patch__` 함수에 대해 이야기 하도록 하겠습니다.
 

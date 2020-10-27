@@ -39,6 +39,7 @@
     "start": "gulp",
     "jekyll": "sudo bundle exec jekyll serve --watch --draft",
     "style": "sudo gulp sass",
+    "js": "sudo gulp js",
     "lint": "eslint --fix _js"
   },
   "repository": {

@@ -5,7 +5,6 @@ featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 summary: Vue의 큰 구조와 Vue의 코어 함수를 살펴볼 것입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 Vue의 코어 함수를 찾고, Vue의 큰 구조에 대해 이야기 할 것입니다. Vue의 큰 구조를 이해하면, 코드를 분석 할 때, 자세히 봐야할 파일과 그렇지 않아도 되는 파일들을 구분 하는데 도움이 될 수 있습니다.
 
