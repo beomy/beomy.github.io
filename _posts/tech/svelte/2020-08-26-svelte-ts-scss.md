@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Svelte + TS + SCSS 구조의 프로젝트를 만들어보도록 하겠습니다.
 ---
-{% include toc.html %}
 
 전처리를 해주는 `svelte-preprocess`가 Svelte 공식 지원 라이브러리로 편입되면서, Svelte가 TypeScript를 공식 지원하게 되었습니다. 이번 포스트에서는 Rollup, Webpack 번들러에서 `svelte-preprocess`를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias 가능을 적용한 프로젝트를 생성하는 방법을 살펴보도록 하겠습니다.
 

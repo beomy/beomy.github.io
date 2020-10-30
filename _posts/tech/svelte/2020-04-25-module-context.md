@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Module context를 사용하면 같은 컴포넌트로 생성한 인스턴스 간의 코드를 공유할 수 있습니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 코드를 공유할 수 있는 모듈 컨텍스트를 이야기하도록 하겠습니다.
 

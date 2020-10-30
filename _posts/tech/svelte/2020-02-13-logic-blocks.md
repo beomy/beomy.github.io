@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Svelte 내의 HTML에서 조건문, 반복문을 표현하는 방법을 이야기합니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 HTML에서 조건문, 반복문을 표현하는 방법을 이야기합니다. Vue.js에는 없는 await 블록 기능은 Svelte의 장점이라고 생각합니다.
 

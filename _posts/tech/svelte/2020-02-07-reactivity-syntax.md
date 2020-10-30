@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: 사용자 행동에 따라 반응형으로 동작하는 웹을 만들기 위한 Svelte 문법을 이야기합니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 사용자 행동에 따라 반응형으로 동작하는 웹을 만들기 위한 Svelte 문법을 이야기합니다. Vue.js에 이벤트 리스너(Event Listener)를 등록하듯 Svelte에서 이벤트 리스너를 등록하는 방법과 Vue.js의 `computed` 속성, `watch` 속성과 유사한 동작을 하는 Svelte의 `$` 문법을 이야기합니다.
 

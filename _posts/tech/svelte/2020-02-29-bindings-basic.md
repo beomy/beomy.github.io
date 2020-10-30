@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Svelte의 기본적인 데이터 바인딩을 이야기합니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 데이터 바인딩을 이야기합니다. Vue.js에서 `v-model`로 데이터 바인딩 하는 방법을 Svelte에서는 어떻게 바인딩 하는지 알아보도록 하겠습니다.
 

@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: Svelte는 유용한 몇가지 내장 요소(element)를 제공합니다.
 ---
-{% include toc.html %}
 
 Svelte는 유용한 몇 가지 내장 요소(element)를 제공합니다.
 

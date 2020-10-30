@@ -5,7 +5,6 @@ featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 summary: Vue 코어 함수의 mixin 레이어를 이야기할 것입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 [2. Initialize - Vue 코어 함수]({{ site.url }}/tech/vuejs/initialize-vue-core-function/)에서 이야기 했던 `src/core/instance/index.js` 파일의  5개의 mixin에 대해 알아보도록 하겠습니다.
 

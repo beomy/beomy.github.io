@@ -4,7 +4,6 @@ title: '[ETC] gzip이란?'
 featured-img: javascript/js.png
 category: [tech, etc]
 ---
-{% include toc.html %}
 
 1. Browser: 이봐 Server야, index.html 파일좀 찾아줄 수 있니? 이번엔 압축된 버전으로 받고 싶어.
 2. Server: 음.. 파일 좀 찾아보고….. 예! 압축시킬 수 있는 환경이야! 신난다! 압축해서 줄게

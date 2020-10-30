@@ -27,7 +27,7 @@ function tocPos () {
 
     $( document ).scroll( function() {
         var scrollTop = $( this ).scrollTop();
-        if ( scrollTop >= 50 ) {
+        if ( scrollTop >= 120 ) {
             $( ".toc" ).addClass( "fixed" );
         } else {
             $( ".toc" ).removeClass( "fixed" );

@@ -5,7 +5,6 @@ featured-img: browser/browser.png
 category: [tech, browser]
 summary: 브라우저가 화면을 렌더링 하는 과정에 대해 이야기할 것입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 브라우저가 화면을 렌더링 하는 과정에 대해 이야기할 것입니다. 렌더링 과정을 이해하면 웹페이지의 렌더링 최적화에 도움이 될 수 있겠죠? 렌더링 최적화 방법은 [[Browser] Critical Rendering Path 최적화](/tech/browser/critical-rendering-path)에서 다룰 예정입니다.
 

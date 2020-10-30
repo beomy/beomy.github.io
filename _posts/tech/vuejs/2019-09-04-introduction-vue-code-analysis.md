@@ -5,7 +5,6 @@ featured-img: vuejs/vuejs.png
 category: [tech, vuejs]
 summary: Vue의 코드를 분석하기 전에 준비 사항과 분석을 시작하는 과정을 이야기할 것입니다.
 ---
-{% include toc.html %}
 
 Vue를 사용하면서, Vue의 코드를 한번 분석해 보고 싶었습니다. Vue를 GitHub에서 받고 코드를 열어 봤지만 어디서부터 봐야 하는지 몰라, 분석하고 싶은 생각을 저리저리~ 뒤로 미루던 차에 [코드 분석에 도움이 되는 포스트](https://github.com/numbbbbb/read-vue-source-code)를 발견하였습니다. 이 포스트를 토대로 Vue 코드를 분석해 나가려고 합니다.
 

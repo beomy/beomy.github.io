@@ -60,6 +60,14 @@ layout: compress
                 (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
         </div>
+        
+        <div class="toc-wrapper" style="top:-{{image_height}}">
+          <div>
+            <nav class="toc">
+              {% include toc.html html=content sanitize=true id='markdown-toc' h_min=1 h_max=2 %}
+            </nav>
+          </div>
+        </div>
       
         {{ content }}
 

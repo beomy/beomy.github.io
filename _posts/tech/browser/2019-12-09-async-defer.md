@@ -5,7 +5,6 @@ featured-img: browser/browser.png
 category: [tech, browser]
 summary: script 태그를 비동기 처리하여 브라우저의 파싱을 차단하지 않는 방법에 대해 이야기할 것입니다.
 ---
-{% include toc.html %}
 
 자바스크립트는 파서 차단 리소스(parser blocking resource)입니다. 브라우저는 HTML을 파싱 하다가 자바스크립트를 만나면 진행하던 파싱을 중단하고 자바스크립트 리소스를 다운로드해 파싱하고 실행합니다. 자세한 내용은 [JavaScript와 CSS](/tech/browser/browser-rendering/#참고-javascript와-css)를 참고 바랍니다.
 

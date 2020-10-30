@@ -6,7 +6,6 @@ height-img: 200px
 category: [tech, svelte]
 summary: 컴포넌트의 생명주기(Lifecycle)를 이야기할 것입니다.
 ---
-{% include toc.html %}
 
 이번 포스트에서는 컴포넌트의 생명주기(Lifecycle)를 이야기할 것입니다. 생명주기를 라이프 사이클이라고도 하는데, 앞으로는 생명주기라는 단어 대신 라이프 사이클이라는 단어를 사용하도록 하겠습니다.
 
