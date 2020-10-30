@@ -1,0 +1,2 @@
+- [https://namu.wiki/w/MongoDB](https://namu.wiki/w/MongoDB)
+- [https://namu.wiki/w/NoSQL](https://namu.wiki/w/NoSQL)
