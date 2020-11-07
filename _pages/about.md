@@ -26,7 +26,7 @@ beomyhlee@gmail.com
 - [svelte-swiper](https://www.npmjs.com/package/svelte-swiper): swiper.js를 매핑한 Svelte 컴포넌트
 
 # Activities
-#### 개인 블로그
+#### 블로그
 - [https://beomy.tistory.com](https://beomy.tistory.com)
 - [https://beomy.github.io](https://beomy.github.io)
 

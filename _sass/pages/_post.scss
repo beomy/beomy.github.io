@@ -33,6 +33,10 @@
   padding: 50px 0;
 }
 
+img {
+  border-radius: 0.5rem;
+}
+
 .controls__inner {
   display: flex;
   align-items: center;
@@ -123,23 +127,15 @@
           }
         }
         > li {
-          // counter-increment: chapter;
+          padding-bottom: 5px;
           a {
-            color: #ccc;
+            color: #aaa;
             border: none;
             font-size: 0.8rem;
           }
-          // > a:before {
-          //   content: counter(chapter) ". ";
-          // }
           > ul {
             padding-left: 15px;
-            // > li {
-            //   counter-increment: sub_chapter;
-            //   > a:before {
-            //     content: counter(chapter)'-'counter(sub_chapter) ". ";
-            //   }
-            // }
+            border-left: 1px solid #e9ecef;
           }
         }
       }  
