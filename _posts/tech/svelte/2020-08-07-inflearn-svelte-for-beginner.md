@@ -8,7 +8,7 @@ summary: 스벨트 입문 강의가 인프런에 런칭되었습니다!
 ---
 
 # 스벨트 입문 강의를 출시했습니다.
-블로그의 내용과 공식 문서를 토대로 인프런에 [스벨트 입문 A부터 Z까지](https://www.inflearn.com/course/스벨트-입문) 강의를 출시했습니다. 공식 문서의 내용을 모두 담아 다른 강의나 다른 블로그를 찾아볼 필요 없이 이 강의 하나면 한 번에 해결하실 수 있습니다.
+블로그의 내용과 공식 문서를 토대로 인프런에 [스벨트 입문 A부터 Z까지](https://www.inflearn.com/course/스벨트-입문?inst=77d01d70) 강의를 출시했습니다. 공식 문서의 내용을 모두 담아 다른 강의나 다른 블로그를 찾아볼 필요 없이 이 강의 하나면 한 번에 해결하실 수 있습니다.
 
 <div style="padding-top: 56.25%; position: relative;">
   <iframe frameborder="0" allowfullscreen="true" src="https://www.youtube.com/embed/20ihgYRe1fE?showinfo=0" data-tour-cover-tag="covered" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
@@ -40,4 +40,4 @@ React를 처음 접할 때 헉! 하는 부분은 큰 러닝 커브라고 생각�
 # 미리미리 배워두어요
 이런 추세라면 스벨트가 리엑트, 뷰, 앵귤러 만큼 많은 곳에서 찾는 프레임워크로 성장하는 것은 시간문제로 보입니다. 더 유명해 지기 전에 스벨트 입문강의로 스벨트를 공부해봅시다!
 
-[![스벨트 입문 A부터 Z까지](/assets/img/posts/inflearn/svelte_banner_big.jpeg)](https://www.inflearn.com/course/스벨트-입문)
+[![스벨트 입문 A부터 Z까지](/assets/img/posts/inflearn/svelte_banner_big.jpeg)](https://www.inflearn.com/course/스벨트-입문?inst=77d01d70)

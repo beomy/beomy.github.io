@@ -5,6 +5,10 @@
   padding-top: 2.5em;
   flex: 1;
 
+  img {
+    border-radius: 0.5rem;
+  }  
+
   @include breakpoint($md) {
     padding-top: 5em;
   }
@@ -31,10 +35,6 @@
 
 .comments {
   padding: 50px 0;
-}
-
-img {
-  border-radius: 0.5rem;
 }
 
 .controls__inner {
@@ -85,16 +85,51 @@ img {
   }
 }
 
+#markdown-toc {
+  padding: 0 0 0 10px;
+  li {
+    list-style-type: none;
+    a {
+      &.active, &:hover {
+        color: #000;
+        code {
+          color: #000;
+        }
+      }
+    }
+  }
+  > li {
+    padding-bottom: 5px;
+    a {
+      color: #aaa;
+      border: none;
+    }
+    > ul {
+      padding-left: 15px;
+      border-left: 1px solid #e9ecef;
+    }
+  }
+}
+
 @media (max-width: 1400px) {
   .toc-wrapper {
     margin-bottom: 50px;
     .toc > div {
       display: none;
     }
+    #markdown-toc {
+      li {
+        padding: 3px 0;
+      }
+    }
   }
 }
 @media (min-width: 1400px) {
   .toc-wrapper {
+    > h2 {
+      display: none;
+    }
+
     position: absolute;
     top: 0;
     right: 0;
@@ -112,33 +147,14 @@ img {
         position: fixed;
         top: 80px;
       }
-      #markdown-toc {
-        padding: 0 0 0 10px;
-        border-left: 2px solid rgb(233, 236, 239);;
-        li {
-          list-style-type: none;
-          a {
-            &.active, &:hover {
-              color: #000;
-              code {
-                color: #000;
-              }
-            }
-          }
+    }
+
+    #markdown-toc {
+      > li {
+        a {
+          font-size: 0.8rem;
         }
-        > li {
-          padding-bottom: 5px;
-          a {
-            color: #aaa;
-            border: none;
-            font-size: 0.8rem;
-          }
-          > ul {
-            padding-left: 15px;
-            border-left: 1px solid #e9ecef;
-          }
-        }
-      }  
+      }
     }
   }
-}  
+}

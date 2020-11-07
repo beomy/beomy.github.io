@@ -36,7 +36,7 @@ beomyhlee@gmail.com
 #### 강의
 <ul class="about-seminar">
   <li>
-    <a href="https://www.inflearn.com/course/스벨트-입문" target="_blank">
+    <a href="https://www.inflearn.com/course/스벨트-입문?inst=77d01d70" target="_blank">
       <img src="/assets/img/about/inflearn-svelte.png">
       <div class="detail"><span>Svelte 입문 강의 - A부터 Z까지</span></div>
     </a>
