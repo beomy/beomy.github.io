@@ -16,18 +16,6 @@ CORS는 Cross-Origin Resource Sharing의 약자입니다. 교차 출처 리소�
 
 HTTP는 80번, HTTPS는 443번 포트를 사용하는데 생략이 가능합니다. 위의 그림을 보면 HTTPS 프로토콜을 사용하기 때문에 HTTPS 프로토콜의 443번 포트가 생략된 주소입니다.
 
-## 같은 출처 VS 다른 출처
-현재 웹페이지의 주소가 `https://beomy.github.io/tech/`일 때, 같은 출처인지 다른 출처인지 아래 테이블과 같이 결과를 얻을 수 있습니다.
-
-|URL|결과|이유|
-|-----------------------------------|---------|-------------------------|
-|`https://beomy.github.io/about`|같은 출처|Protocal, Host, Port 동일|
-|`https://beomy.github.io/about?q=work`|같은 출처|Protocal, Host, Port 동일|
-|`https://beomy.github.io/about#word`|같은 출처|Protocal, Host, Port 동일|
-|`http://beomy.github.io`|다른 출처|Protocal 다름|
-|`http://beomy.github.io:81/about`|다른 출처|Port 다름|
-|`http://beomy.heroku.com`|다른 출처|Host 다름|
-
 ## 동일 출처 정책(Same-Origin Policy, SOP)이란?
 브라우저는 동일 출처 정책(Same-Origin Policy, SOP)를 지켜서 다른 출처의 리소스 접근을 금지합니다.
 
@@ -35,13 +23,25 @@ HTTP는 80번, HTTPS는 443번 포트를 사용하는데 생략이 가능합니�
 
 하지만 실제로 웹페이지는 상당히 자주 다른 출처의 리소스를 사용해야 합니다. 예를 들어 `beomy.github.io`라는 도메인 주소를 사용하는 웹페이지에서 `beomy-api.github.io`라는 API 서버로 데이터를 요청해서 화면을 그린다면 이 웹페이지는 동일 출처 정책을 위반한 것이 됩니다.
 
-# CORS 해결 방법
+## 같은 출처 VS 다른 출처
+현재 웹페이지의 주소가 `https://beomy.github.io/tech/`일 때, 같은 출처인지 다른 출처인지 아래 테이블과 같이 결과를 얻을 수 있습니다.
+
+|URL|결과|이유|
+|-----------------------------------|---------|-------------------------|
+|`https://beomy.github.io/about`|같은 출처|Protocal, Host, Port 동일|
+|`https://beomy.github.io/about?q=work`|같은 출처|Protocal, Host, Port 동일|
+|`https://beomy.github.io/about#work`|같은 출처|Protocal, Host, Port 동일|
+|`http://beomy.github.io`|다른 출처|Protocal 다름|
+|`http://beomy.github.io:81/about`|다른 출처|Port 다름|
+|`http://beomy.heroku.com`|다른 출처|Host 다름|
+
+# CORS 사용방법
 
 ## HTTP 응답 헤더
 
 ## HTTP 요청 헤더
 
-# CORS 동작 방법
+# CORS 동작원리
 
 ## Simple request
 
