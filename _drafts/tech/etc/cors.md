@@ -2,7 +2,7 @@
 layout: post
 title: '[ETC] CORS란?'
 featured-img: browser/browser.png
-category: [tech, browser]
+category: [tech, etc]
 summary: 교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)에 대해 살펴보도록 하겠습니다.
 ---
 
