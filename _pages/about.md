@@ -41,4 +41,10 @@ beomyhlee@gmail.com
       <div class="detail"><span>Svelte 입문 강의 - A부터 Z까지</span></div>
     </a>
   </li>
+  <li>
+    <a href="https://www.inflearn.com/course/스벨트-실전-스도쿠실습?inst=2f7ebc2f" target="_blank">
+      <img src="/assets/img/about/inflearn-svelte-practice.jpeg">
+      <div class="detail"><span>Svelte 실전 강의 - 스도쿠 만들기</span></div>
+    </a>
+  </li>
 </ul>
