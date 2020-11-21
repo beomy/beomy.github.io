@@ -76,3 +76,5 @@ CORS는 단순 요청 방법과 예비 요청을 먼저 보내는 방법 2가지
 - [https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy](https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy)
 - [https://ko.wikipedia.org/wiki/동일-출처_정책](https://ko.wikipedia.org/wiki/동일-출처_정책)
 - [https://velog.io/@yejinh/CORS-4tk536f0db](https://velog.io/@yejinh/CORS-4tk536f0db)
+- [https://ko.wikipedia.org/wiki/사이트_간_스크립팅](https://ko.wikipedia.org/wiki/사이트_간_스크립팅)
+- [https://ko.wikipedia.org/wiki/사이트_간_요청_위조](https://ko.wikipedia.org/wiki/사이트_간_요청_위조)
