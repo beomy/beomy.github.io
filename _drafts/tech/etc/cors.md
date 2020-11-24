@@ -54,7 +54,7 @@ CORS는 단순 요청 방법과 예비 요청을 먼저 보내는 방법 2가지
 ~~단순 요청 그림~~
 
 ## Preflight Request
-Preflight Request는 서버에 예비 요청을 보내서 안전한지 판한 후 본 요청을 보내는 방법입니다.
+Preflight Request는 서버에 예비 요청을 보내서 안전한지 판단 후 본 요청을 보내는 방법입니다.
 
 # CORS 에러 해결방법
 
