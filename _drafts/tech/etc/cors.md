@@ -16,14 +16,14 @@ summary: 교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)에 
 위의 그림의 `CORS policy` 오류 메시지는 CORS 정책을 위반할 때 발생하게 됩니다. CORS는 Cross-Origin Resource Sharing의 약자입니다. 교차 출처 리소스 공유로 번역 될 수 있는데, 다른 출처의 리소스를 공유하는 방법입니다.
 
 ### URL 구조
-다른 출처(Origin)의 출처가 무엇인지 살펴봐야 하는데, 출처가 무엇인지 알기 위해서 먼저 URL의 구조를 살펴보아야 합니다.
+다른 출처(Origin)의 출처가 무엇인지 살펴봐야 하는데, 출처가 무엇인지 알기 위해서 먼저 URL의 구조를 살펴보아야 합니다. URL 구조는 아래 그림과 같습니다.
 
 ![URL 구조](/assets/img/posts/etc/url.png)
 
 프르토콜의 HTTP는 80번, HTTPS는 443번 포트를 사용하는데, 80번과 443번 포트는 생략이 가능합니다.
 
 ## 출처(Origin)란?
-출처(Origin)란 Protocal, Host, Port를 합친 것을 말합니다. 브라우저 개발자 도구의 콘솔창에 `location.origin`를 실행하면 출처를 확인 할 수 있습니다.
+출처(Origin)란 URL 구조에서 살펴본 Protocal, Host, Port를 합친 것을 말합니다. 브라우저 개발자 도구의 콘솔창에 `location.origin`를 실행하면 출처를 확인 할 수 있습니다.
 
 ![location.origin](/assets/img/posts/etc/location_origin.png)
 
@@ -46,7 +46,7 @@ summary: 교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)에 
 동일 출처 정책을 지키면 외부 리소스를 가져오지 못해 불편하지만, 동일 출처 정책은 [XSS](https://ko.wikipedia.org/wiki/사이트_간_스크립팅)나 [XSRF](https://ko.wikipedia.org/wiki/사이트_간_요청_위조)등의 보안 취약점을 노린 공격을 방어할 수 있습니다. 하지만 현실적으로는 외부 리소스를 참고하는 것은 필요하기 때문에 외부 리소스를 가져올 수 있는 방법이 존재해야 합니다. 외부 리소스를 사용하기 위한 SOP의 예외 조항이 CORS입니다.
 
 # CORS 동작원리
-CORS는 단순 요청 방법과 예비 요청을 먼저 보내는 방법 2가지 방법이 있습니다.
+CORS의 동작방식은 단순 요청 방법과 예비 요청을 먼저 보내는 방법 2가지 방법이 있습니다.
 
 ## Simple request
 단순 요청 방법은 서버에게 바로 요청을 보내는 방법입니다. 아래 그림은 자바스크립트에서 API를 요청할 때 브라우저와 서버의 동작을 나타내는 그림입니다.
