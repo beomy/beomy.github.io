@@ -51,16 +51,56 @@ CORS의 동작방식은 단순 요청 방법과 예비 요청을 먼저 보내�
 ## Simple request
 단순 요청 방법은 서버에게 바로 요청을 보내는 방법입니다. 아래 그림은 자바스크립트에서 API를 요청할 때 브라우저와 서버의 동작을 나타내는 그림입니다.
 
-~~단순 요청 그림~~
+![단순 요청](/assets/img/posts/etc/cors_simle_request.png)
 
-## Preflight Request
-Preflight Request는 서버에 예비 요청을 보내서 안전한지 판단한 후 본 요청을 보내는 방법입니다. 아래 그림은 Preflight Request 동작을 나탸내는 그립입니다.
+단순 요청은 서버에 API를 요청하고, 서버는 `Access-Controll-Allow-Origin` 헤더를 포함한 응답을 브라우저에 보냅니다. 브라우저는 `Access-Controll-Allow-Origin` 헤더를 확인해서 CORS 동작을 수행할지 판단합니다.
 
-~~Preflight Request 요청 그림~~
+### Simple request 조건
+서버로 전달하는 요청(request)이 아래의 3가지 조건을 만족해야 서버로 전달하는 요청이 단순 요청으로 동작합니다.
+
+- 요청 메소드(method)는 GET, HEAD, POST 중 하나여야 합니다.
+- Accept, Accept-Language, Content-Language, Content-Type, DPR, Downlink, Save-Data, Viewport-Width, Width를 제외한 헤더를 사용하면 안됩니다.
+- Content-Type 헤더는 application/x-www-form-urlencoded, multipart/form-data, text/plain 중 하나를 사용해야 합니다.
+
+첫번째 조건은 어렵지 않은 조건이지만 2번, 3번 조건은 까다로운 조건입니다. 2번 조건은 사용자 인증에 사용되는 `Authorization` 헤더도 포함되지 않아 까다로운 조건이며, 3번 조건은 많은 REST API들이 `Content-Type`으로 `application/json`을 사용하기 때문에 지켜지기 어려운 조건입니다.
+
+## Preflight request
+Preflight 요청는 서버에 예비 요청을 보내서 안전한지 판단한 후 본 요청을 보내는 방법입니다. 아래 그림은 Preflight 요청 동작을 나탸내는 그립입니다.
+
+![Preflight request 요청](/assets/img/posts/etc/cors_preflight_request.png)
+
+`GET`, `POST`, `PUT`, `DELETE` 등의 메소드로 API를 요청했는데, 크롬 개발자도구의 네트워크 탭에 `OPTIONS` 메소드로 요청을 보내는 것을 보신적 있으시다면 CORS를 경험하셨던 것입니다. Preflight 요청은 실제 리소스를 요청하기 전에 `OPTIONS`라는 메소드를 통해 실제 요청을 전송할지 판단합니다.
+
+`OPTIONS` 메소드로 서버에 예비 요청을 먼저 보내고, 서버는 이 예비 요청에 대한 응답으로 `Access-Controll-Allow-Origin` 헤더를 포함한 응답을 브라우저에 보냅니다. 브라우저는 단순 요청과 동일하게 `Access-Controll-Allow-Origin` 헤더를 확인해서 CORS 동작을 수행할지 판단합니다.
 
 # CORS 에러 해결방법
+앞에서 이야기 한 CORS 동작 원리를 보면, 서버에서 `Access-Controll-Allow-Origin` 헤더를 포함한 응답을 브라우저에 보내는 방식으로 CORS 에러를 해결 할 수 있습니다. 프론트엔드 개발자가 CORS 에러를 확인했다면, 서버측에 응답(response)에 `Access-Controll-Allow-Origin` 헤더를 포함해 달라고 요청해야 합니다.
 
 ## HTTP 응답 헤더
+`Access-Controll-Allow-Origin` 뿐만 아니라, CORS를 위한 몇가지 응답 헤더가 있습니다.
+
+### Access-Controll-Allow-Origin: \<origin\> | *
+`Access-Controll-Allow-Origin` 헤더에 작성된 출처만 브라우저가 리소스에 접근 할 수 있도록 허용합니다. 아래와 같이 헤더가 작성되었다면 `beomy-api.heroku.com`에서만 브라우저가 리소스를 접근 할 수 있습니다.
+
+```
+Access-Controll-Allow-Origin: beomy-api.heroku.com
+```
+
+아래와 같이 `*`(와일드 카드)가 작성되었다면, 브라우저는 출처에 상관 없이 모든 리소스에 접근할 수 있습니다.
+
+```
+Access-Controll-Allow-Origin: *
+```
+
+### Access-Control-Expose-Headers: \<header-name\>[, \<header-name\>]
+
+### Access-Control-Max-Age: \<delta-seconds\>
+
+### Access-Control-Allow-Credentials: true
+
+### Access-Control-Allow-Methods: \<method\>[, \<method\>]
+
+### Access-Control-Allow-Headers: \<header-name\>[, \<header-name\>]
 
 ## HTTP 요청 헤더
 
