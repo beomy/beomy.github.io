@@ -93,6 +93,7 @@ Access-Controll-Allow-Origin: *
 ```
 
 ### Access-Control-Expose-Headers: \<header-name\>[, \<header-name\>]
+Access-Control-Allow-Headers와 차이?
 
 ### Access-Control-Max-Age: \<delta-seconds\>
 
