@@ -110,6 +110,7 @@ Access-Control-Allow-Headers와 차이?
 ## JSONP
 
 ## 프록시..?
+개발 환경에서만 가능?
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/CORS](https://developer.mozilla.org/ko/docs/Web/HTTP/CORS)
