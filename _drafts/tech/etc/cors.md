@@ -105,6 +105,12 @@ Access-Control-Allow-Headers와 차이?
 
 ## HTTP 요청 헤더
 
+### Origin: <origin>
+
+### Access-Control-Request-Method: <method>
+
+### Access-Control-Request-Headers: <field-name>[, <field-name>]
+
 # 기타 해결방법
 
 ## JSONP
