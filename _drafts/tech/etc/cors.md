@@ -115,8 +115,7 @@ Access-Control-Allow-Headers와 차이?
 
 ## JSONP
 
-## 프록시..?
-개발 환경에서만 가능?
+## 프록시 서버
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/CORS](https://developer.mozilla.org/ko/docs/Web/HTTP/CORS)
@@ -126,3 +125,4 @@ Access-Control-Allow-Headers와 차이?
 - [https://ko.wikipedia.org/wiki/동일-출처_정책](https://ko.wikipedia.org/wiki/동일-출처_정책)
 - [https://velog.io/@yejinh/CORS-4tk536f0db](https://velog.io/@yejinh/CORS-4tk536f0db)
 - [https://ko.wikipedia.org/wiki/JSONP](https://ko.wikipedia.org/wiki/JSONP)
+- [https://velog.io/@jmkim87/지긋지긋한-CORS-파헤쳐보자](https://velog.io/@jmkim87/지긋지긋한-CORS-파헤쳐보자)
