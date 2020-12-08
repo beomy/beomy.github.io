@@ -117,6 +117,8 @@ Access-Control-Allow-Headers와 차이?
 
 ## 프록시 서버
 
+### 번들러 프록시 설정
+
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/CORS](https://developer.mozilla.org/ko/docs/Web/HTTP/CORS)
 - [https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
