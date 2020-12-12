@@ -76,13 +76,7 @@ Preflight 요청는 서버에 예비 요청을 보내서 안전한지 판단한 
 # CORS 에러 해결방법
 앞에서 이야기 한 CORS 동작 원리를 보면, 서버에서 `Access-Control-Allow-Origin` 헤더를 포함한 응답을 브라우저에 보내는 방식으로 CORS 에러를 해결 할 수 있습니다. 프론트엔드 개발자가 CORS 에러를 확인했다면, 서버측에 응답(response)에 `Access-Control-Allow-Origin` 헤더를 포함해 달라고 요청해야 합니다.
 
-## HTTP 요청 헤더
-
-### Origin: <origin>
-
-### Access-Control-Request-Method: <method>
-
-### Access-Control-Request-Headers: <field-name>[, <field-name>]
+~~Access-Control-Allow-Origin 사용 방법~~
 
 ## HTTP 응답 헤더
 `Access-Control-Allow-Origin` 뿐만 아니라, CORS를 위한 몇가지 응답 헤더가 있습니다.
@@ -112,6 +106,14 @@ Access-Control-Request-Method에 대한 응답 결과
 
 ### Access-Control-Allow-Headers: \<header-name\>[, \<header-name\>]
 Access-Control-Request-Headers에 대한 응답 결과
+
+## HTTP 요청 헤더
+
+### Origin: <origin>
+
+### Access-Control-Request-Method: <method>
+
+### Access-Control-Request-Headers: <field-name>[, <field-name>]
 
 # 기타 해결방법
 
