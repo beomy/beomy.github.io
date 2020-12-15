@@ -58,7 +58,7 @@ CORS의 동작방식은 단순 요청 방법과 예비 요청을 먼저 보내�
 ### Simple request 조건
 서버로 전달하는 요청(request)이 아래의 3가지 조건을 만족해야 서버로 전달하는 요청이 단순 요청으로 동작합니다.
 
-- 요청 메소드(method)는 GET, HEAD, POST 중 하나여야 합니다.
+- 요청 메서드(method)는 GET, HEAD, POST 중 하나여야 합니다.
 - Accept, Accept-Language, Content-Language, Content-Type, DPR, Downlink, Save-Data, Viewport-Width, Width를 제외한 헤더를 사용하면 안됩니다.
 - Content-Type 헤더는 application/x-www-form-urlencoded, multipart/form-data, text/plain 중 하나를 사용해야 합니다.
 
@@ -69,9 +69,9 @@ Preflight 요청는 서버에 예비 요청을 보내서 안전한지 판단한 
 
 ![Preflight request 요청](/assets/img/posts/etc/cors_preflight_request.png)
 
-`GET`, `POST`, `PUT`, `DELETE` 등의 메소드로 API를 요청했는데, 크롬 개발자도구의 네트워크 탭에 `OPTIONS` 메소드로 요청을 보내는 것을 보신적 있으시다면 CORS를 경험하셨던 것입니다. Preflight 요청은 실제 리소스를 요청하기 전에 `OPTIONS`라는 메소드를 통해 실제 요청을 전송할지 판단합니다.
+`GET`, `POST`, `PUT`, `DELETE` 등의 메서드로 API를 요청했는데, 크롬 개발자도구의 네트워크 탭에 `OPTIONS` 메서드로 요청을 보내는 것을 보신적 있으시다면 CORS를 경험하셨던 것입니다. Preflight 요청은 실제 리소스를 요청하기 전에 `OPTIONS`라는 메서드를 통해 실제 요청을 전송할지 판단합니다.
 
-`OPTIONS` 메소드로 서버에 예비 요청을 먼저 보내고, 서버는 이 예비 요청에 대한 응답으로 `Access-Control-Allow-Origin` 헤더를 포함한 응답을 브라우저에 보냅니다. 브라우저는 단순 요청과 동일하게 `Access-Control-Allow-Origin` 헤더를 확인해서 CORS 동작을 수행할지 판단합니다.
+`OPTIONS` 메서드로 서버에 예비 요청을 먼저 보내고, 서버는 이 예비 요청에 대한 응답으로 `Access-Control-Allow-Origin` 헤더를 포함한 응답을 브라우저에 보냅니다. 브라우저는 단순 요청과 동일하게 `Access-Control-Allow-Origin` 헤더를 확인해서 CORS 동작을 수행할지 판단합니다.
 
 # CORS 에러 해결방법
 앞에서 이야기 한 CORS 동작 원리를 보면, 서버에서 `Access-Control-Allow-Origin` 헤더를 포함한 응답을 브라우저에 보내는 방식으로 CORS 에러를 해결 할 수 있습니다. 프론트엔드 개발자가 CORS 에러를 확인했다면, 서버측에 `Access-Control-Allow-Origin` 등 CORS를 해결하기 위한 몇가지 응답 헤더를 포함해 달라고 요청해야 합니다.
@@ -104,6 +104,7 @@ Access-Control-Allow-Origin: *
 fetch('http://localhost:3001/cors', {
   method: 'PUT',
 }).then(function(response) {
+}).catch(function(error) {
 })
 ```
 
@@ -111,7 +112,7 @@ fetch('http://localhost:3001/cors', {
 
 ![access-control-allow-origin](/assets/img/posts/etc/access-control-allow-origin.png)
 
-서버측에서 아래와 같이 응답헤더를 추가해 주어야 합니다. 서버 코드는 Node.js의 Express로 작성하였습니다. 와일드 카드를 사용하여 모든 출처에서 리소스를 접근 할 수 있도록 설정하였습니다.
+서버측에서 아래와 같이 응답 헤더를 추가해 주어야 합니다. 서버 코드는 Node.js의 Express로 작성하였습니다. 와일드 카드를 사용하여 모든 출처에서 리소스를 접근 할 수 있도록 설정하였습니다.
 
 ```js
 router.options('/cors', (req, res, next) => {
@@ -124,20 +125,65 @@ router.put('/cors', (req, res, next) => {
 })
 ```
 
-### Access-Control-Expose-Headers: \<header-name\>[, \<header-name\>]
+### Access-Control-Allow-Methods: \<method\>[, \<method\>]
+브라우저에서 보내는 요청 헤더에 포함 된 `Access-Control-Request-Method` 헤더에 대한 응답 결과입니다. 리소스 접근을 허용하는 HTTP 메서드를 지정해 주는 헤더입니다.
+
+#### 사용 방법
+사용 방법은 아래 코드와 같습니다. `Access-Control-Allow-Methods` 헤더에 `GET`, `PUT`, `POST`, `DELETE` 등의 HTTP 메소드를 `,`를 구분자로 하여 넘겨줍니다.
+
+```
+Access-Control-Allow-Methods: GET, PUT
+```
+
+#### 예시
+아래 코드를 브라우저에서 실행하여 CORS를 처리하지 않은 서버에 API를 호출하게 되면,
+
+```js
+fetch('http://localhost:3001/cors', {
+  method: 'PUT',
+}).then(function(response) {
+}).catch(function(error) {
+})
+```
+
+아래와 같은 에러가 발생합니다.
+
+![access-control-allow-methods](/assets/img/posts/etc/access-control-allow-methods.png)
+
+서버측에서 아래와 같이 응답 헤더를 추가해주어야 합니다.
+
+```js
+router.options('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Allow-Methods', req.get('Access-Control-Request-Method'))
+  res.send()
+})
+router.put('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  res.send()
+})
+```
+
+`Access-Control-Allow-Origin`는 `*`로 모든 출처를 허용한 상태이고, 브라우저의 요청 헤더에 포함된 `Access-Control-Request-Method` 헤더 값을 그대로 `Access-Control-Allow-Methods` 헤더에 추가해 주었습니다. `Access-Control-Request-Method` 헤더는 HTTP 요청 헤더에서 설명하도록 하겠습니다.
+
+### Access-Control-Expose-Headers: \<header-name\>[, \<header-name\>]*
 서버측에서 응답 헤더에 `Access-Control-Expose-Headers`를 추가해 줘야 브라우저의 자바스크립트에서 헤더에 접근 할 수 있습니다.
 
 #### 사용 방법
+아래와 같이 `,`로 구분하여 여러개의 헤더를 넣을 수 있습니다.
+
+```
+Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header
+```
+
+#### 예시
+
+### Access-Control-Allow-Headers: \<header-name\>[, \<header-name\>]
+Access-Control-Request-Headers에 대한 응답 결과
 
 ### Access-Control-Max-Age: \<delta-seconds\>
 
 ### Access-Control-Allow-Credentials: true
-
-### Access-Control-Allow-Methods: \<method\>[, \<method\>]
-Access-Control-Request-Method에 대한 응답 결과
-
-### Access-Control-Allow-Headers: \<header-name\>[, \<header-name\>]
-Access-Control-Request-Headers에 대한 응답 결과
 
 ## HTTP 요청 헤더
 
@@ -165,3 +211,4 @@ Access-Control-Request-Headers에 대한 응답 결과
 - [https://ko.wikipedia.org/wiki/JSONP](https://ko.wikipedia.org/wiki/JSONP)
 - [https://velog.io/@jmkim87/지긋지긋한-CORS-파헤쳐보자](https://velog.io/@jmkim87/지긋지긋한-CORS-파헤쳐보자)
 - [https://homoefficio.github.io/2015/07/21/Cross-Origin-Resource-Sharing/](https://homoefficio.github.io/2015/07/21/Cross-Origin-Resource-Sharing/)
+- [https://developer.mozilla.org/ko/docs/Web/API/Request/credentials](https://developer.mozilla.org/ko/docs/Web/API/Request/credentials)
