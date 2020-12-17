@@ -150,7 +150,7 @@ fetch('http://localhost:3001/cors', {
 
 ![access-control-allow-methods](/assets/img/posts/etc/access-control-allow-methods.png)
 
-서버측에서 아래와 같이 응답 헤더를 추가해주어야 합니다.
+서버측에서 아래와 같이 응답 헤더를 추가해 주어야 합니다.
 
 ```js
 router.options('/cors', (req, res, next) => {
@@ -177,9 +177,80 @@ Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header
 ```
 
 #### 예시
+서버측에서 아래 코드와 같이 `Access-Control-Expose-Headers` 헤더에 `X-Custom-Beomy`를 추가해 주고, `X-Custom-Beomy` 헤더에 값을 담아 응답을 하면
+
+```js
+router.options('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Allow-Methods', req.get('Access-Control-Request-Method'))
+  res.send()
+})
+router.put('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Expose-Headers', 'X-Custom-Beomy')
+  res.set('X-Custom-Beomy', 'Bemoy')
+  res.send()
+})
+```
+
+브라우저에서는 아래 코드를 실행해서, `X-Custom-Beomy` 헤더 값을 가져올 수 있게 됩니다.
+
+```js
+fetch('http://localhost:3001/cors', {
+  method: 'PUT',
+}).then(function(response) {
+  console.log(response.headers.get('X-Custom-Beomy')) // Beomy
+}).catch(function(error) {
+})
+```
+
+서버측에서 `Access-Control-Expose-Headers: X-Custom-Beomy`로 자바스크립트에서 접근할 헤더를 명시해 주지 않으면, 자바스크립트에서 `X-Custom-Beomy` 헤더 값은 `undefined`가 됩니다.
 
 ### Access-Control-Allow-Headers: \<header-name\>[, \<header-name\>]
-Access-Control-Request-Headers에 대한 응답 결과
+브라우저에서 보내는 요청 헤데에 포함 된 `Access-Control-Request-Headers` 헤더에 대한 응답 결과입니다.
+
+#### 사용 방법
+자바스크립트에서 커스텀 헤더를 서버에 전달하게 되면, OPTIONS 요청 헤더의 `Access-Control-Request-Headers` 헤더에 커스텀 헤더 이름이 추가됩니다. 서버에서는 `Access-Control-Request-Headers`에 작성된 값을 보고 `Access-Control-Allow-Headers` 응답 헤더에 커스텀 헤더 이름을 명시해 주어야 합니다.
+
+```
+Access-Control-Allow-Headers: X-Custom-Request
+```
+
+#### 예시
+아래 코드를 브라우저에서 실행하여, `Access-Control-Allow-Headers` 처리되지 않은 API를 호출하게 되면,
+
+```js
+fetch('http://localhost:3001/cors', {
+  method: 'PUT',
+  headers: {
+    'X-Custom-Request': 'Beomy',
+  }
+}).then(function(response) {
+}).catch(function(error) {
+})
+```
+
+아래와 같은 에러가 발생합니다.
+
+![access-control-allow-headers](/assets/img/posts/etc/access-control-allow-headers.png)
+
+서버측에서 아래와 같이 응답 헤더를 추가해 주어야 합니다.
+
+```js
+router.options('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Allow-Methods', req.get('Access-Control-Request-Method'))
+  res.set('Access-Control-Allow-Headers', req.get('Access-Control-Request-Headers'))
+  res.send()
+})
+router.put('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  console.log(req.get('X-Custom-Request')) // Beomy
+  res.send()
+})
+```
+
+브라우저의 자바스크립트에서 `X-Custom-Request` 헤더에 `Beomy` 값을 서버에 전달하였고, 서버에서는 `Access-Control-Allow-Headers` 헤더에 `Access-Control-Request-Headers` 헤더 값을 저장하여 서버에서 `X-Custom-Request` 값을 사용할 수 있게 한 코드입니다.
 
 ### Access-Control-Max-Age: \<delta-seconds\>
 
