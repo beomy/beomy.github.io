@@ -39,7 +39,7 @@ summary: 교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)에 
 |`https://beomy.github.io:81/about`|다른 출처|Port 다름|
 |`https://beomy.heroku.com`|다른 출처|Host 다름|
 
-# 동일 출처 정책(Same-Origin Policy, SOP)이란?
+# 동일 출처 정책(Same-Origin Policy)이란?
 [Postman](https://www.postman.com/)으로 API를 테스트 하거나, 다른 서버에서 API를 호출할 때는 멀쩡히 잘 동작하다가 브라우저에서 API를 호출 할때만 `CORS policy` 오류가 발생해서 당혹스러울 때가 있으셨을 수도 있습니다. 그 이유는 브라우저가 동일 출처 정책(Same-Origin Policy, SOP)를 지켜서 다른 출처의 리소스 접근을 금지하기 때문입니다. 하지만 실제로 웹페이지는 상당히 자주 다른 출처의 리소스를 사용해야 합니다. 예를 들어 `beomy.github.io`라는 도메인 주소를 사용하는 웹페이지에서 `beomy-api.github.io`라는 API 서버로 데이터를 요청해서 화면을 그린다면 이 웹페이지는 동일 출처 정책을 위반한 것이 됩니다.
 
 ## 동일 출처 정책의 장점
@@ -125,11 +125,11 @@ router.put('/cors', (req, res, next) => {
 })
 ```
 
-### Access-Control-Allow-Methods: \<method\>[, \<method\>]
+### Access-Control-Allow-Methods: \<method\>[, \<method\>]*
 브라우저에서 보내는 요청 헤더에 포함 된 `Access-Control-Request-Method` 헤더에 대한 응답 결과입니다. 리소스 접근을 허용하는 HTTP 메서드를 지정해 주는 헤더입니다.
 
 #### 사용 방법
-사용 방법은 아래 코드와 같습니다. `Access-Control-Allow-Methods` 헤더에 `GET`, `PUT`, `POST`, `DELETE` 등의 HTTP 메소드를 `,`를 구분자로 하여 넘겨줍니다.
+사용 방법은 아래 코드와 같습니다. `Access-Control-Allow-Methods` 헤더에 `GET`, `PUT`, `POST`, `DELETE` 등의 HTTP 메서드를 `,`를 구분자로 하여 넘겨줍니다.
 
 ```
 Access-Control-Allow-Methods: GET, PUT
@@ -206,7 +206,7 @@ fetch('http://localhost:3001/cors', {
 
 서버측에서 `Access-Control-Expose-Headers: X-Custom-Beomy`로 자바스크립트에서 접근할 헤더를 명시해 주지 않으면, 자바스크립트에서 `X-Custom-Beomy` 헤더 값은 `undefined`가 됩니다.
 
-### Access-Control-Allow-Headers: \<header-name\>[, \<header-name\>]
+### Access-Control-Allow-Headers: \<header-name\>[, \<header-name\>]*
 브라우저에서 보내는 요청 헤데에 포함 된 `Access-Control-Request-Headers` 헤더에 대한 응답 결과입니다.
 
 #### 사용 방법
@@ -253,24 +253,174 @@ router.put('/cors', (req, res, next) => {
 브라우저의 자바스크립트에서 `X-Custom-Request` 헤더에 `Beomy` 값을 서버에 전달하였고, 서버에서는 `Access-Control-Allow-Headers` 헤더에 `Access-Control-Request-Headers` 헤더 값을 저장하여 서버에서 `X-Custom-Request` 값을 사용할 수 있게 한 코드입니다.
 
 ### Access-Control-Max-Age: \<delta-seconds\>
+preflight 요청 결과를 캐시할 수 있는 시간을 나타냅니다.
+
+#### 사용 방법
+아래와 같이 초 단위로 캐시 시간을 설정합니다.
+
+```
+Access-Control-Max-Age: 60
+```
+
+1분 동안 preflight를 캐시하게 됩니다.
+
+#### 예제
+```js
+fetch('http://localhost:3001/cors', {
+  method: 'PUT'
+}).then(function(response) {
+}).catch(function(error) {
+})
+```
+
+```js
+router.options('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Allow-Methods', req.get('Access-Control-Request-Method'))
+  res.set('Access-Control-Max-Age', 60)
+  res.send()
+})
+router.put('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  res.send()
+})
+```
+
+서버에서 응답 헤더 `Access-Control-Max-Age`에 60을 지정하면 60초 동안에 preflight를 캐시하기 때문에 60초 동안 OPTIONS 메서드를 통한 CORS 확인 동작 없이 동작하게 됩니다.
 
 ### Access-Control-Allow-Credentials: true
+`credentials` 플래그가 `true`일 때 요청에 대한 응답을 할 수 있는지를 나타냅니다. `false`로 설정해 주고 싶을 경우에는 헤더를 생략하면 됩니다.
+
+#### 사용 방법
+```
+Access-Control-Allow-Credentials: true
+```
+
+#### 예제
+아래 코드를 브라우저에서 실행하여, `Access-Control-Allow-Credentials` 처리되지 않은 API를 호출하게 되면,
+
+```js
+fetch('http://localhost:3001/cors', {
+  method: 'PUT',
+  credentials: 'include'
+}).then(function(response) {
+}).catch(function(error) {
+})
+```
+
+아래와 같은 에러가 발생합니다.
+
+![access-control-allow-credentials](/assets/img/posts/etc/access-control-allow-credentials.png)
+
+서버측에서 아래와 같이 응답 헤더를 추가해 주어야 합니다.
+
+```js
+router.options('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', 'https://www.google.com')
+  res.set('Access-Control-Allow-Methods', req.get('Access-Control-Request-Method'))
+  res.set('Access-Control-Allow-Credentials', true)
+  res.send()
+})
+router.put('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', 'https://www.google.com')
+  res.set('Access-Control-Allow-Credentials', true)
+  res.send()
+})
+```
+
+`Access-Control-Allow-Origin` 헤더도 `*`(와일드카드)가 아닌 출처를 명시해 주어야 합니다.
 
 ## HTTP 요청 헤더
+CORS를 위해서, 브라우저에서 서버로 요청하는 헤더를 살펴보도록 하겠습니다. 요청 헤더들은 별도로 명시해 주지 않아도 브라우저에서 OPTIONS 요청에 추가합니다.
 
 ### Origin: \<origin\>
+`Origin` 헤더는 요청하는 대상의 출처를 나타냅니다.
 
 ### Access-Control-Request-Method: \<method\>
+`Access-Control-Request-Method` 헤더는 실제 요청에서 어떤 HTTP 메서드를 사용할지 서버에 알려주기 위해 사용됩니다.
 
 ### Access-Control-Request-Headers: \<field-name\>[, \<field-name\>]
+`Access-Control-Request-Headers` 헤더는 브라우저에서 보내는 헤더를 서버에 알려주기 위해 사용됩니다.
 
 # 기타 해결방법
+서버측에서 응답 헤더들을 추가하는 방법 이외의 CORS를 우회하는 방법을 이야기 해보도록 하겠습니다.
 
 ## JSONP
+JSONP(JSON with Padding)은 `<script>` 요소는 외부 출처 리소스를 가져올 수 있는 특징을 사용하는 방법입니다. 아래 코드와 같은 방법으로 사용할 수 있습니다.
+
+```html
+<!-- Frontend -->
+<!DOCTYPE html>
+<html>
+  <script>
+    function jsonpFn (data) {
+      console.log(data) // beomy
+    }
+  </script>
+  <script
+    type="application/javascript"
+    src="http://localhost:3001/cors?callback=jsonpFn"
+  >
+  </script>
+</html>
+```
+
+```js
+// Backend
+router.get('/cors', (req, res, next) => {
+  res.send(`${req.query.callback}('beomy')`)
+})
+```
 
 ## 프록시 서버
+프론트엔드와 백엔드 사이에 프록시 서버를 두는 방법으로 CORS를 해결 할 수도 있습니다. 개발 환경에서 CORS를 해결해야 한다면, Webpack Dev Server 등의 라이브러리를 사용해서 프록시 설정을 하는 방법도 있습니다.
 
-### 번들러 프록시 설정
+# 부록
+
+## Request.credentials
+`fetch` 메서드의 `credentials` 옵션은 `Access-Control-Allow-Credentials` 헤더와 연관된 옵션입니다. `credentials` 옵션은 아래와 같이 3개의 값을 가질 수 있습니다.
+
+|옵션 값|설명|
+|-----------------------------------|---------|
+|same-origin (기본값)|같은 출처 간 요청에만 인증 정보를 전달함|
+|include|모든 요청에 인증 정보를 전달함|
+|omit|인증 정보를 전달하지 않음|
+
+`same-origin`은 기본 값으로 같은 출처 간에 쿠키등의 인증 정보 전달이 가능합니다. `include`는 출처에 상관 없이 모든 요청에 쿠키등의 인증 정보를 전달 할 수 있습니다. `omit`은 쿠키등의 인증 정보를 전달하지 않습니다.
+
+아래와 같은 자바스크립트 코드를 출처가 `localhost:5000`인 페이지에서 실행 할 경우,
+
+```js
+fetch('http://localhost:3001/cors', {
+  method: 'PUT',
+  credentials: 'include'
+}).then(function(response) {
+}).catch(function(error) {
+})
+```
+
+서버측에서 아래와 같이 CORS가 처리 되어 있다면,
+
+```js
+router.options('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:5000')
+  res.set('Access-Control-Allow-Methods', req.get('Access-Control-Request-Method'))
+  res.set('Access-Control-Allow-Credentials', true)
+  res.send()
+})
+router.put('/cors', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:5000')
+  res.set('Access-Control-Allow-Credentials', true)
+  res.cookie('beomy', 'My name is Beomy', { maxAge: 10000 })
+  res.send()
+})
+```
+
+아래 그림과 같이 페이지와 서버간의 출처가 다르더라고 쿠키가 세팅됩니다.
+
+![credentials](/assets/img/posts/etc/credentials.gif)
+
+`credentials: 'include'`로 설정되지 않는다면 다른 출처에서 쿠키를 세팅할 수 없습니다.
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/CORS](https://developer.mozilla.org/ko/docs/Web/HTTP/CORS)
