@@ -264,7 +264,7 @@ preflight 요청 결과를 캐시 할 수 있는 시간을 나타냅니다.
 Access-Control-Max-Age: 60
 ```
 
-위의 코드는 1분 동안 preflight 요청을 캐시 하는 코드입니다. 1분 동안 `OPTIONS` 메서드를 사용하는 예비 요청을 보내지 않습니다.
+위의 코드는 60초 동안 preflight 요청을 캐시 하는 코드입니다. 60초 동안 `OPTIONS` 메서드를 사용하는 예비 요청을 보내지 않습니다.
 
 #### 예제
 ```js
@@ -288,10 +288,8 @@ router.put('/cors', (req, res, next) => {
 })
 ```
 
-서버에서 응답 헤더 `Access-Control-Max-Age`에 60을 지정하면 60초 동안에 preflight를 캐시 하기 때문에 60초 동안 OPTIONS 메서드를 통한 CORS 확인 동작 없이 동작하게 됩니다.
-
 ### Access-Control-Allow-Credentials: true
-`credentials` 플래그가 `true`일 때 요청에 대한 응답을 할 수 있는지를 나타냅니다. `false`로 설정해 주고 싶을 경우에는 헤더를 생략하면 됩니다.
+자바스크립트 요청에서 `credentials`가 `include`일 때 요청에 대한 응답을 할 수 있는지를 나타냅니다. `false`로 설정해 주고 싶을 경우에는 헤더를 생략하면 됩니다.
 
 #### 사용 방법
 ```
@@ -330,25 +328,25 @@ router.put('/cors', (req, res, next) => {
 })
 ```
 
-`Access-Control-Allow-Origin` 헤더도 `*`(와일드카드)가 아닌 출처를 명시해 주어야 합니다.
+`Access-Control-Allow-Credentials: true` 추가 뿐만 아니라, `Access-Control-Allow-Origin` 헤더도 `*`(와일드카드)가 아닌 출처를 명시해 주어야 합니다.
 
 ## HTTP 요청 헤더
-CORS를 위해서, 브라우저에서 서버로 요청하는 헤더를 살펴보도록 하겠습니다. 요청 헤더들은 별도로 명시해 주지 않아도 브라우저에서 OPTIONS 요청에 추가합니다.
+CORS를 위해서, 브라우저에서 서버로 요청하는 헤더를 살펴보도록 하겠습니다. 요청 헤더들은 별도로 명시해 주지 않아도 브라우저에서 `OPTIONS` 요청에 추가합니다.
 
 ### Origin: \<origin\>
-`Origin` 헤더는 요청하는 대상의 출처를 나타냅니다.
+`Origin` 헤더는 요청하는 대상의 출처를 나타냅니다. API를 호출하는 페이지의 출처 값이 저장됩니다.
 
 ### Access-Control-Request-Method: \<method\>
-`Access-Control-Request-Method` 헤더는 실제 요청에서 어떤 HTTP 메서드를 사용할지 서버에 알려주기 위해 사용됩니다.
+`Access-Control-Request-Method` 헤더는 실제 요청이 어떤 HTTP 메서드를 사용하는지 서버에 알려주기 위해 사용됩니다.
 
 ### Access-Control-Request-Headers: \<field-name\>[, \<field-name\>]
-`Access-Control-Request-Headers` 헤더는 브라우저에서 보내는 헤더를 서버에 알려주기 위해 사용됩니다.
+`Access-Control-Request-Headers` 헤더는 브라우저에서 보내는 커스텀 헤더 이름을 서버에 알려주기 위해 사용됩니다.
 
 # 기타 해결 방법
 서버에서 응답 헤더들을 추가하는 방법 이외의 CORS를 우회하는 방법을 이야기해보도록 하겠습니다.
 
 ## JSONP
-JSONP(JSON with Padding)은 `<script>` 요소는 외부 출처 리소스를 가져올 수 있는 특징을 사용하는 방법입니다. 아래 코드와 같은 방법으로 사용할 수 있습니다.
+JSONP(JSON with Padding)는 `<script>` 요소가 외부 출처 리소스를 가져올 수 있는 특징을 사용하는 방법입니다. 아래 코드와 같은 방법으로 사용할 수 있습니다.
 
 ```html
 <!-- Frontend -->
@@ -388,7 +386,7 @@ router.get('/cors', (req, res, next) => {
 |include|모든 요청에 인증 정보를 전달함|
 |omit|인증 정보를 전달하지 않음|
 
-`same-origin`은 기본 값으로 같은 출처 간에 쿠키 등의 인증 정보 전달이 가능합니다. `include`는 출처에 상관없이 모든 요청에 쿠키 등의 인증 정보를 전달할 수 있습니다. `omit`은 쿠키 등의 인증 정보를 전달하지 않습니다.
+`same-origin`은 기본 값으로, 같은 출처 간에 쿠키 등의 인증 정보 전달이 가능합니다. `include`는 출처에 상관없이 모든 요청에 쿠키 등의 인증 정보를 전달할 수 있습니다. `omit`은 쿠키 등의 인증 정보를 전달하지 않습니다.
 
 아래와 같은 자바스크립트 코드를 출처가 `localhost:5000`인 페이지에서 실행할 경우,
 
