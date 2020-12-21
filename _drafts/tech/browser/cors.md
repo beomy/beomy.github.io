@@ -1,33 +1,33 @@
 ---
 layout: post
-title: '[ETC] CORS란?'
-featured-img: etc/cors.png
-category: [tech, etc]
+title: '[Browser] CORS란?'
+featured-img: browser/cors.png
+category: [tech, browser]
 summary: 교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)에 대해 살펴보도록 하겠습니다.
 ---
 
 이번 포스트에서는 교차 출처 리소스 공유(Cross-Origin Resource Sharing, CORS)에 대해 이야기해보도록 하겠습니다. 아래 사진과 같은 에러를 보신 적이 있으셨을 수도 있습니다.
 
-![access-control-allow-origin](/assets/img/posts/etc/access-control-allow-origin.png)
+![access-control-allow-origin](/assets/img/posts/browser/access-control-allow-origin.png)
 
 보통은 서버에서 해결해 줘야 하기 때문에 프론트엔드 개발자가 가볍게 넘길 수도 있지만, 어떤 이유로 발생하는 것인지, 어떻게 해결해야 하는 것인지 알아두는 것이 좋을 것 같아 포스팅을 준비하였습니다.
 
 # CORS란?
-![access-control-allow-origin](/assets/img/posts/etc/access-control-allow-origin.png)
+![access-control-allow-origin](/assets/img/posts/browser/access-control-allow-origin.png)
 
 위의 그림의 `CORS policy` 오류 메시지는 CORS 정책을 위반할 때 발생하게 됩니다. CORS는 Cross-Origin Resource Sharing의 약자입니다. 교차 출처 리소스 공유로 번역될 수 있는데, 브라우저에서 다른 출처의 리소스를 공유하는 방법입니다.
 
 ## URL 구조
 다른 출처의 출처가 무엇인지 살펴봐야 하는데, 출처가 무엇인지 알기 위해서 먼저 URL의 구조를 살펴보아야 합니다. URL 구조는 아래 그림과 같습니다.
 
-![URL 구조](/assets/img/posts/etc/url.png)
+![URL 구조](/assets/img/posts/browser/url.png)
 
 프로토콜의 HTTP는 80번, HTTPS는 443번 포트를 사용하는데, 80번과 443번 포트는 생략이 가능합니다.
 
 ## 출처(Origin)란?
 출처(Origin)란 URL 구조에서 살펴본 Protocal, Host, Port를 합친 것을 말합니다. 브라우저 개발자 도구의 콘솔 창에 `location.origin`를 실행하면 출처를 확인할 수 있습니다.
 
-![location.origin](/assets/img/posts/etc/location_origin.png)
+![location.origin](/assets/img/posts/browser/location_origin.png)
 
 ## 같은 출처 VS 다른 출처
 같은 출처인지 다른 출처인지 이해를 돕기 위해 예제를 하나 살펴보도록 하겠습니다. 현재 웹페이지의 주소가 `https://beomy.github.io/tech/`일 때 같은 출처인지 다른 출처인지 아래 테이블과 같은 결과를 얻을 수 있습니다.
@@ -53,7 +53,7 @@ CORS의 동작 방식은 단순 요청 방법과 예비 요청을 먼저 보내�
 ## Simple request
 단순 요청 방법은 서버에게 바로 요청을 보내는 방법입니다. 아래 그림은 자바스크립트에서 API를 요청할 때 브라우저와 서버의 동작을 나타내는 그림입니다.
 
-![단순 요청](/assets/img/posts/etc/cors_simle_request.png)
+![단순 요청](/assets/img/posts/browser/cors_simle_request.png)
 
 단순 요청은 서버에 API를 요청하고, 서버는 `Access-Control-Allow-Origin` 헤더를 포함한 응답을 브라우저에 보냅니다. 브라우저는 `Access-Control-Allow-Origin` 헤더를 확인해서 CORS 동작을 수행할지 판단합니다.
 
@@ -69,7 +69,7 @@ CORS의 동작 방식은 단순 요청 방법과 예비 요청을 먼저 보내�
 ## Preflight request
 Preflight 요청은 서버에 예비 요청을 보내서 안전한지 판단한 후 본 요청을 보내는 방법입니다. 아래 그림은 Preflight 요청 동작을 나타내는 그립입니다.
 
-![Preflight request 요청](/assets/img/posts/etc/cors_preflight_request.png)
+![Preflight request 요청](/assets/img/posts/browser/cors_preflight_request.png)
 
 `GET`, `POST`, `PUT`, `DELETE` 등의 메서드로 API를 요청했는데, 크롬 개발자 도구의 네트워크 탭에 `OPTIONS` 메서드로 요청이 보내지는 것을 보신 적 있으시다면 CORS를 경험하셨던 것입니다. Preflight 요청은 실제 리소스를 요청하기 전에 `OPTIONS`라는 메서드를 통해 실제 요청을 전송할지 판단합니다.
 
@@ -112,7 +112,7 @@ fetch('http://localhost:3001/cors', {
 
 아래와 같은 에러가 발생합니다.
 
-![access-control-allow-origin](/assets/img/posts/etc/access-control-allow-origin.png)
+![access-control-allow-origin](/assets/img/posts/browser/access-control-allow-origin.png)
 
 서버에서 아래와 같이 응답 헤더를 추가해 주어야 합니다. 서버 코드는 Node.js의 Express로 작성하였습니다. 와일드카드를 사용하여 모든 출처에서 리소스를 접근할 수 있도록 설정하였습니다.
 
@@ -150,7 +150,7 @@ fetch('http://localhost:3001/cors', {
 
 아래와 같은 에러가 발생합니다.
 
-![access-control-allow-methods](/assets/img/posts/etc/access-control-allow-methods.png)
+![access-control-allow-methods](/assets/img/posts/browser/access-control-allow-methods.png)
 
 서버에서 아래와 같이 응답 헤더를 추가해 주어야 합니다.
 
@@ -234,7 +234,7 @@ fetch('http://localhost:3001/cors', {
 
 아래와 같은 에러가 발생합니다.
 
-![access-control-allow-headers](/assets/img/posts/etc/access-control-allow-headers.png)
+![access-control-allow-headers](/assets/img/posts/browser/access-control-allow-headers.png)
 
 서버에서 아래와 같이 응답 헤더를 추가해 주어야 합니다.
 
@@ -310,7 +310,7 @@ fetch('http://localhost:3001/cors', {
 
 아래와 같은 에러가 발생합니다.
 
-![access-control-allow-credentials](/assets/img/posts/etc/access-control-allow-credentials.png)
+![access-control-allow-credentials](/assets/img/posts/browser/access-control-allow-credentials.png)
 
 서버에서 아래와 같이 응답 헤더를 추가해 주어야 합니다.
 
@@ -418,7 +418,7 @@ router.put('/cors', (req, res, next) => {
 
 아래 그림과 같이 페이지와 서버 간의 출처가 다르더라고 쿠키가 세팅됩니다.
 
-![credentials](/assets/img/posts/etc/credentials.gif)
+![credentials](/assets/img/posts/browser/credentials.gif)
 
 `credentials: 'include'`로 설정되지 않는다면 다른 출처에서 쿠키를 세팅할 수 없습니다.
 
