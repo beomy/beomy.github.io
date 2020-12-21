@@ -22,7 +22,7 @@
                 {% endunless %}
               {% endfor %}
             {% else %}
-              <li><span>{{ link.description }}</span></li>
+              <li><a href="{{ site.url }}/{{ link.url }}">{{ link.description }}</a></li>
             {% endif %}
           </ul>
       </li>
