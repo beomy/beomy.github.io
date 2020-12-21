@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[ETC] XSRF와 XSS'
-featured-img: etc/cors.png
+featured-img: browser/cors.png
 category: [tech, etc]
 summary: XSRF와 XSS에 대해 살펴보도록 하겠습니다.
 ---
