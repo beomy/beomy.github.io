@@ -18,7 +18,6 @@ summary: XSRF와 XSS에 대해 살펴보도록 하겠습니다.
 1. 이용자는 웹사이트에 로그인하여 정상적인 쿠키를 발급받는다.
 2. 공격자는 링크(예를 들어, `http://www.geocities.com/attacker`와 같은)를 이메일이나 게시판 등의 경로를 통해 이용자에게 전달한다.
 3. 위의 링크의 HTML 페이지는 `<img src= "https://travel.service.com/travel_update?.src=Korea&.dst=Hell">` 같은 이미지 태그를 가집니다. 이 링크는 출발지와 도착지를 등록하기 위한 링크인데, 그 중 도착지 정보를 변조한 링크입니다.
-4. 
 
 ### 공격 예제
 
