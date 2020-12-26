@@ -47,3 +47,5 @@ XSRF 공격이 이루어지는 예제를 만들어 보도록 하겠습니다.
 - [https://ko.wikipedia.org/wiki/사이트_간_스크립팅](https://ko.wikipedia.org/wiki/사이트_간_스크립팅)
 - [https://ko.wikipedia.org/wiki/사이트_간_요청_위조](https://ko.wikipedia.org/wiki/사이트_간_요청_위조)
 - [https://ohgyun.com/543](https://ohgyun.com/543)
+- [https://rednooby.tistory.com/22](https://rednooby.tistory.com/22)
+- [https://3rd-big.tistory.com/23](https://3rd-big.tistory.com/23)
