@@ -23,7 +23,9 @@ summary: XSRF와 XSS에 대해 살펴보도록 하겠습니다.
 
 해당 서비스 페이지는 단순히 쿠키를 통해 본인확인이 이루어지기 때문에 공격자가 정상적인 이용자의 정보를 수정 가능하게 됩니다.
 
-### 공격 예제
+## 공격 예제
+~~다른 도메인에서도 공격이 가능한가?~~
+
 XSRF 공격이 이루어지는 예제를 만들어 보도록 하겠습니다.
 
 ## 대응방법
@@ -48,3 +50,4 @@ XSRF 공격이 이루어지는 예제를 만들어 보도록 하겠습니다.
 - [https://ohgyun.com/543](https://ohgyun.com/543)
 - [https://rednooby.tistory.com/22](https://rednooby.tistory.com/22)
 - [https://3rd-big.tistory.com/23](https://3rd-big.tistory.com/23)
+- [https://itstory.tk/entry/CSRF-공격이란-그리고-CSRF-방어-방법](https://itstory.tk/entry/CSRF-공격이란-그리고-CSRF-방어-방법)
