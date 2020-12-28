@@ -24,7 +24,6 @@ summary: XSRF와 XSS에 대해 살펴보도록 하겠습니다.
 ## 대응방법
 
 # XSS(Cross-Site Scripting)
-사이트 간 스크립팅
 
 ## 취약점
 
