@@ -6,6 +6,8 @@ category: [tech, etc]
 summary: XSRF와 XSS에 대해 살펴보도록 하겠습니다.
 ---
 
+이번 포스트에서는 웹 취약성을 노리는 XSRF(혹은 CSRF)와 XSS 공격에 대해 살펴보도록 하겠습니다.
+
 # XSRF(Crose-Site Request Forgery)
 사이트 간 요청 위조(XSRF 또는 CSRF라고 함)는 웹사이트 취약점 공격 중 하나입니다. 사용자가 자신의 의지와 무관하게 공격자가 의도한 행위(수정, 삭제, 등록 등)를 특정 웹사이트에 요청하게 하는 공격입니다.
 
