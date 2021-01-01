@@ -3,7 +3,7 @@ layout: post
 title: '[ETC] XSRF와 XSS'
 featured-img: browser/cors.png
 category: [tech, etc]
-summary: XSRF와 XSS에 대해 살펴보도록 하겠습니다.
+summary: 웹 취약성을 노리는 XSRF와 XSS에 대해 살펴보도록 하겠습니다.
 ---
 
 이번 포스트에서는 웹 취약성을 노리는 XSRF(혹은 CSRF)와 XSS 공격에 대해 살펴보도록 하겠습니다.
