@@ -8,6 +8,20 @@ summary: 웹 취약성을 노리는 XSRF와 XSS에 대해 살펴보도록 하겠
 
 이번 포스트에서는 웹 취약성을 노리는 XSRF(혹은 CSRF)와 XSS 공격에 대해 살펴보도록 하겠습니다.
 
+# XSS(Cross-Site Scripting)
+
+## 취약점
+
+## 공격 유형
+
+### 비 지속적(Non-persistent) 기법
+
+### 지속적(persistent) 기법
+
+## 공격 과정
+
+## 대응방법
+
 # XSRF(Crose-Site Request Forgery)
 사이트 간 요청 위조(XSRF 또는 CSRF라고 함)는 웹사이트 취약점 공격 중 하나입니다. 사용자가 자신의 의지와 무관하게 공격자가 의도한 행위(수정, 삭제, 등록 등)를 특정 웹사이트에 요청하게 하는 공격입니다.
 
@@ -29,20 +43,6 @@ summary: 웹 취약성을 노리는 XSRF와 XSS에 대해 살펴보도록 하겠
 ~~다른 도메인에서도 공격이 가능한가?~~
 
 XSRF 공격이 이루어지는 예제를 만들어 보도록 하겠습니다.
-
-## 대응방법
-
-# XSS(Cross-Site Scripting)
-
-## 취약점
-
-## 공격 유형
-
-### 비 지속적(Non-persistent) 기법
-
-### 지속적(persistent) 기법
-
-## 공격 과정
 
 ## 대응방법
 
