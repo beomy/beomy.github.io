@@ -40,11 +40,14 @@ summary: 웹 취약성을 노리는 XSRF와 XSS에 대해 살펴보도록 하겠
 해당 서비스 페이지는 단순히 쿠키를 통해 본인확인이 이루어지기 때문에 공격자가 정상적인 이용자의 정보를 수정 가능하게 됩니다.
 
 ## 공격 예제
-~~다른 도메인에서도 공격이 가능한가?~~
-
 XSRF 공격이 이루어지는 예제를 만들어 보도록 하겠습니다.
 
 ## 대응방법
+크롬 80버전 부터 새로운 쿠키 정책이 적용되어 Cookie의 SameSite 속성의 기본값이 Lax로 변경 되었습니다.
+
+# 부록
+
+## SameSite Cookie
 
 #### 참고
 - [https://ko.wikipedia.org/wiki/사이트_간_스크립팅](https://ko.wikipedia.org/wiki/사이트_간_스크립팅)
@@ -55,3 +58,6 @@ XSRF 공격이 이루어지는 예제를 만들어 보도록 하겠습니다.
 - [https://itstory.tk/entry/CSRF-공격이란-그리고-CSRF-방어-방법](https://itstory.tk/entry/CSRF-공격이란-그리고-CSRF-방어-방법)
 - [https://www.sickyourcoding.com/forQuiz/csrfintro](https://www.sickyourcoding.com/forQuiz/csrfintro)
 - [https://swk3169.tistory.com/24](https://swk3169.tistory.com/24)
+- [https://docs.microsoft.com/ko-kr/azure/active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser?tabs=dotnet](https://docs.microsoft.com/ko-kr/azure/active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser?tabs=dotnet)
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
+- [https://ifuwanna.tistory.com/223](https://ifuwanna.tistory.com/223)
