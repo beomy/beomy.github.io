@@ -73,6 +73,7 @@ Svelte는 7개의 트랜지션을 제공합니다. 자세한 내용은 [https://
 ### 파라미터
 - `delay` (number, default 0): 단위는 ms로 설정한 시간이 지난 후에 트랜지션을 시작합니다.
 - `duration` (number, default 400): 단위는 ms로 설정한 시간 동안 트랜지션 됩니다.
+- `easing` (function, default cubicInOut): easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
 
 ## `blur` 트랜지션
 `blur` 트랜지션은 요소를 흐릿하게 보였다가 뚜렷하게 보이도록 변경하거나, 점차 요소를 흐릿하게 하여 요소를 제거합니다.
