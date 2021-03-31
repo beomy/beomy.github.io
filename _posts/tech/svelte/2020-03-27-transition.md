@@ -65,7 +65,7 @@ Svelte는 DOM에 요소들이 추가, 제거되었을 때 트랜지션을 효과
 Svelte는 7개의 트랜지션을 제공합니다. 자세한 내용은 [https://svelte.dev/docs#svelte_transition](https://svelte.dev/docs#svelte_transition)를 참고 부탁드립니다.
 
 ## `fade` 트랜지션
-`fade` 트랜지션을 요소의 `opacity`를 조절하는 트랜지션입니다. 점차 불투명에서 투명으로, 투명에서 불투명으로 변경됩니다.
+`fade` 트랜지션은 요소의 `opacity`를 조절하는 트랜지션입니다. 점차 불투명에서 투명으로, 투명에서 불투명으로 변경됩니다.
 
 ### 실행 화면
 ![fade 트랜지션](/assets/img/posts/svelte/fade_transition.gif)
