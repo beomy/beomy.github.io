@@ -393,9 +393,9 @@ transition = (node: HTMLElement, params: any) => {
 
 - `delay`: 단위는 ms로 설정한 시간이 지난 후에 트랜지션을 시작합니다.
 - `duration`: 단위는 ms로 설정한 시간 동안 트랜지션 됩니다.
-- `easing`: `p => t` 형태의 easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
-- `css`: `(t, u) => css` 함수입니다. `t`는 0 ~ 1 사이의 값이고, `u`는 `u === 1 - t`입니다. 요소가 추가될 때 `t`는 0에서 1로 증가하고, 요소가 제거될 때 `t`는 1에서 0으로 감소합니다. `t`(혹은 `u`)의 변화에 따른 CSS 문자열을 리턴해야 합니다.
-- `tick`: `(t, u) => {...}` 함수입니다. 매 tick마다 호출되는 콜백 함수입니다.
+- `easing`: easing 함수입니다. [https://svelte.dev/docs#svelte_easing](https://svelte.dev/docs#svelte_easing) 참고 바랍니다.
+- `css`: `(t, u) => string` 함수입니다. `t`는 0 ~ 1 사이의 값이고, `u`는 `u === 1 - t`입니다. 요소가 추가될 때 `t`는 0에서 1로 증가하고, 요소가 제거될 때 `t`는 1에서 0으로 감소합니다. `t`(혹은 `u`)의 변화에 따른 CSS 문자열을 리턴해야 합니다.
+- `tick`: `(t, u) => void` 함수입니다. 매 tick마다 호출되는 콜백 함수입니다.
 
 `css`와 `tick` 속성을 사용하면 커스텀 한 트랜지션을 만들 수 있습니다. `tick` 속성은 매 `tick`마다 호출되는 콜백 함수이기 때문에 `tick`을 사용하여 만들어진 트랜지션은 매끄러운 애니메이션이 동작하지 않을 수 있습니다. 커스텀 한 트랜지션을 만들 때는 `css` 속성을 사용하여 만드는 것을 권장합니다.
 
