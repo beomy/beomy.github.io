@@ -12,7 +12,7 @@ summary: Svelte + TS + SCSS 구조의 프로젝트를 만들어보도록 하겠�
 # Rollup
 Rollup 번들러를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template](https://github.com/sveltejs/template) 템플릿을 다운로드하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
 
-```bash
+```none
 npx degit sveltejs/template svelte-typescript-app
 cd svelte-typescript-app
 node scripts/setupTypeScript.js
@@ -20,23 +20,25 @@ npm install
 ```
 
 ## `svelte.config.js` 생성
-VS Code를 사용할 경우 프로젝트 루트에 `svelte.config.js` 파일을 생성해 주어야 몇 가지 문법을 에러로 잡아내지 않습니다. `rollup.config.js`의 svelte 옵션을 `svelte.config.js` 파일을 만들고 해당 파일에 아래와 같이 옮겨 적어 줍니다.
+VS Code를 사용할 경우 프로젝트 루트에 `svelte.config.js` 파일을 생성해 주지 않으면 아래 그림과 같은 에러가 발생합니다.
+
+![VS Code Error](/assets/img/posts/svelte/vs_code_ts_error.png)
+
+`rollup.config.js`의 svelte 옵션을 `svelte.config.js` 파일을 만들고 해당 파일에 아래와 같이 옮겨 적어 줍니다.
 
 ```js
 // svelte.config.js
-const sveltePreprocess = require('svelte-preprocess')
+const sveltePreprocess = require('svelte-preprocess');
+
 const production = !process.env.ROLLUP_WATCH;
 
 module.exports = {
-  // enable run-time checks when not in production
-  dev: !production,
-  // we'll extract any component CSS out into
-  // a separate file - better for performance
-  css: css => {
-    css.write('public/build/bundle.css');
-  },
-  preprocess: sveltePreprocess(),
-}
+  preprocess: sveltePreprocess({ sourceMap: !production }),
+  compilerOptions: {
+    // enable run-time checks when not in production
+    dev: !production
+  }
+};
 ```
 
 `rollup.config.js`는 svelte 옵션을 아래와 같이 가져와 사용합니다.
@@ -56,20 +58,6 @@ export default {
 
 ## TypeScript 설정
 `node scripts/setupTypeScript.js`를 실행하면 TypeScript가 적용된 템플릿으로 변경됩니다.
-
-### `sveltePreprocess`에 `sourceMap` 추가
-디버깅에 용이하게 `svelte.config.js` 파일의 `sveltePreprocess` 함수에 `sourceMap` 설정을 추가하도록 하겠습니다.
-
-```js
-// svelte.config.js
-//...
-module.exports = {
-  //...
-  preprocess: sveltePreprocess({
-    sourceMap: !production
-  }),
-}
-```
 
 ### TypeScript 사용
 위의 코드와 같이 설정이 끝나면 아래와 같이 TypeScript 사용이 가능해집니다.
@@ -93,8 +81,35 @@ scss를 사용할 수 있도록 아래 코드와 같이 패키지를 다운로�
 npm i -D sass rollup-plugin-scss
 ```
 
+### 컴포넌트 스타일 태그에서 SCSS 사용하기
+`sass` 패키지를 다운로드하면 아래 코드와 같이 컴포넌트의 스타일 태그 안에서 SCSS를 사용할 수 있습니다.
+
+```html
+<script lang="ts">
+  export let name: string;
+</script>
+
+<main>
+  <h1>Hello {name}!</h1>
+  <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+</main>
+
+<style lang="scss">
+  main {
+    /* ... */
+    h1 {
+      color: #ff3e00;
+      text-transform: uppercase;
+      font-size: 4em;
+      font-weight: 100;
+    }
+  }
+  /* ... */
+</style>
+```
+
 ### 소스코드에서 SCSS 파일 `import`하기
-`svelte-preprocess`를 사용하면 Svelte 컴포넌트에서 `<style lang="scss">`를 사용해서 SCSS를 사용할 수 있지만, `.scss` 파일을 생성해서 스타일을 적용할 수는 없습니다. 소스코드에서 SCSS 파일을 `import`할 수 있도록 설정해 보도록 하겠습니다. `rollup.config.js`를 아래와 같이 수정합니다.
+`sass` 패키지를 다운로드 한 후 `svelte-preprocess`를 사용하면 Svelte 컴포넌트에서 `<style lang="scss">`를 사용해서 SCSS를 사용할 수 있지만, `.scss` 파일을 `import`하여 스타일을 적용할 수는 없습니다. 소스코드에서 SCSS 파일을 `import`할 수 있도록 설정해 보도록 하겠습니다. `rollup.config.js`를 아래와 같이 수정합니다.
 
 ```js
 // rollup.config.js
@@ -126,7 +141,7 @@ export default {
 
   <link rel='icon' type='image/png' href='/favicon.png'>
   <link rel='stylesheet' href='/global.css'>
-  <link rel='stylesheet' href='/build/assets.css'> <!-- CSS 우선순의에 유의해서 선언 위치를 정해줍니다. -->
+  <link rel='stylesheet' href='/build/assets.css'> <!-- CSS 우선순위에 유의해서 선언 위치를 정해줍니다. -->
   <link rel='stylesheet' href='/build/bundle.css'>
 
   <script defer src='/build/bundle.js'></script>
@@ -138,6 +153,15 @@ export default {
 ```
 
 위에 코드와 같이 설정이 끝나면 아래와 같이 `main.ts`에서 SCSS 파일 `import`가 가능해집니다.
+
+```scss
+// src/assets/scss/common.scss
+main {
+  p {
+    font-size: 2em;
+  }
+}
+```
 
 ```ts
 // src/main.ts
@@ -205,10 +229,10 @@ $primary-color: #ff3e00;
 ```
 
 ## PostCSS 설정
-자동 접두사를 사용하기 위해서 PostCSS를 사용해야 합니다. 아래 코드와 같이 `postcss`와 `autoprefixer`, `rollup-plugin-postcss` 패키지를 다운로드합니다.
+자동 접두사를 사용하기 위해서 PostCSS를 사용해야 합니다. 아래 코드와 같이 `postcss`와 `autoprefixer` 패키지를 다운로드합니다.
 
 ```bash
-npm i -D postcss autoprefixer rollup-plugin-postcss
+npm i -D postcss autoprefixer
 ```
 
 ### 컴포넌트의 스타일에 `autoprefixer` 설정
@@ -216,18 +240,19 @@ npm i -D postcss autoprefixer rollup-plugin-postcss
 
 ```js
 // svelte.config.js
+const sveltePreprocess = require('svelte-preprocess');
 const autoprefixer = require('autoprefixer');
 
 //...
 module.exports = {
-  //...
   preprocess: sveltePreprocess({
     //...
     postcss: {
       plugins: [autoprefixer()]
-    },
+    }
   }),
-}
+  //...
+};
 ```
 
 위의 설정이 끝나면 아래 코드와 같이 정의된 스타일이,
@@ -255,23 +280,28 @@ module.exports = {
 </style>
 ```
 
-아래 그림처럼 `-webkit`, `-moz`, `-ms` 등, 브라우저 밴더 접두사가 추가됩니다.
+아래 그림처럼 `-webkit-`, `-moz-`, `-ms-` 등, 브라우저 밴더 접두사가 추가됩니다.
 
 ![autoprefixer](/assets/img/posts/svelte/autoprefixer.png)
 
 ### SCSS 파일에 `autoprefixer` 설정
-`rollup.config.js`에 아래 코드와 같이 `postcss`를 사용해 줍니다.
+`rollup.config.js`에 아래 코드와 같이 `scss`에 `processor` 옵션을 사용해 줍니다.
 
 ```js
 // rollup.config.js
 //...
 import scss from 'rollup-plugin-scss';
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
 
 export default {
   plugins: [
     //...
-    postcss({
-      plugins: [require('autoprefixer'),]
+    scss({
+      output: 'public/build/assets.css',
+      processor: css => postcss([autoprefixer])
+        .process(css)
+        .then(result => result.css)
     }),
     //...
   ]
@@ -282,14 +312,14 @@ export default {
 
 ```scss
 main {
-  h1 {
-    margin: 0;
+  p {
+    font-size: 2em;
     user-select: none;
   }
 }
 ```
 
-아래 그림처럼 `-webkit`, `-moz`, `-ms` 등, 브라우저 밴더 접두사가 추가됩니다.
+아래 그림처럼 `-webkit-`, `-moz-`, `-ms-` 등, 브라우저 밴더 접두사가 추가됩니다.
 
 ![autoprefixer](/assets/img/posts/svelte/autoprefixer_scss.png)
 
@@ -355,31 +385,32 @@ export default app;
 ```
 
 # Webpack
-Webpack 번들러를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack) 템플릿을 다운로드하고 패키지를 다운로드합니다.
+Webpack 번들러를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack) 템플릿을 다운로드하고 패키지를 다운로드하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
 
-```bash
+```none
 npx degit sveltejs/template svelte-typescript-app
 cd svelte-typescript-app
+node scripts/setupTypeScript.js
 npm install
 ```
 
-Webpack 번들러를 사용한 템플릿은 Rollup 번들러를 사용한 템플릿과 다르게 전처리기가 적용된 템플릿으로 변경해 주는 스크립트가 없어 따로 패키지를 다운로드하고 설정해야 합니다. TypeScript와 SCSS를 사용하기 위해 `svelte-preprocess` 패키지를 다운로드합니다.
-
-```bash
-npm i -D svelte-preprocess
-```
-
 ## `svelte.config.js` 생성
-Rollup 번들러와 동일한 이유로 파일을 프로젝트 루트에 `svelte.config.js` 파일을 만들고, `webpack.config.js`의 `svelte-loader` 옵션을 옮겨 적고, `preprocess` 옵션도 추가해 줍니다.
+Rollup 번들러와 동일한 이유로 파일을 프로젝트 루트에 `svelte.config.js` 파일을 만들고, `webpack.config.js`의 `svelte-loader` 옵션을 옮겨 적어 줍니다.
 
 ```js
 // svelte.config.js
 const sveltePreprocess = require('svelte-preprocess');
 
+const mode = process.env.NODE_ENV || 'development';
+const prod = mode === 'production';
+
 module.exports = {
-  preprocess: sveltePreprocess(),
-  emitCss: true,
-  hotReload: true
+  compilerOptions: {
+    dev: !prod
+  },
+  emitCss: prod,
+  hotReload: !prod,
+  preprocess: sveltePreprocess({ sourceMap: !prod })
 }
 ```
 
@@ -407,78 +438,11 @@ module.exports = {
 ```
 
 ## TypeScript 설정
-Webpack 번들러를 사용한 템플릿은 Rollup 번들러를 사용한 템플릿과 다르게 TypeScript가 적용된 템플릿으로 변경해 주는 스크립트가 없습니다. TypeScript를 사용할 수 있게 설정하기 위해 아래 코드와 같이 패키지를 다운로드합니다.
-
-```bash
-npm i -D typescript @tsconfig/svelte ts-loader
-```
-
-### `sveltePreprocess`에 `sourceMap` 추가
-디버깅을 좀 더 용이하게 하기 위해 `svelte.config.js` 파일의 `sveltePreprocess` 함수에 `sourceMap` 설정을 추가해 줍니다.
-
-```js
-// svelte.config.js
-//...
-const mode = process.env.NODE_ENV || 'development';
-const prod = mode === 'production';
-
-module.exports = {
-  preprocess: sveltePreprocess({
-    sourceMap: !prod
-  }),
-  //...
-}
-```
-
-### `webpack.config.js`에 TypeScript 설정
-`webpack.config.js`를 아래 코드와 같이 수정해 줍니다.
-
-```js
-// webpack.config.js
-//...
-module.exports = {
-  entry: {
-    bundle: ['./src/main.ts']
-  },
-  resolve: {
-    //...
-    extensions: ['.mjs', '.js', '.svelte', '.tsx', '.ts'],
-    //...
-  },
-  module: {
-    rules: [
-      //...
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ]
-  },
-  //...
-};
-```
-
-- `entry.bundle` 경로를 `main.js`에서 `main.ts`로 변경합니다.
-- `main.js` 파일을 `main.ts` 파일로 파일명을 변경합니다.
-- `resolve.extenstions`의 배열에 TypeScript를 사용하기 위해 `.tsx`와 `.ts`를 추가해 줍니다.
-- `module.rolus`에 `ts-loader` 설정을 추가해 줍니다.
-
-### `tsconfig.json` 파일 생성
-프로젝트 루트 위치에 `tsconfig.json` 파일을 생성하고 아래 코드와 같이 설정합니다.
-
-```json
-{
-  "extends": "@tsconfig/svelte/tsconfig.json",
-
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
-}
-```
-
-위의 코드와 같이 설정이 끝나면 아래와 같이 TypeScript 사용이 가능해집니다.
+`node scripts/setupTypeScript.js`를 실행하면 TypeScript가 적용된 템플릿으로 변경됩니다.
 
 ### TypeScript 사용
+위의 코드와 같이 설정이 끝나면 아래와 같이 TypeScript 사용이 가능해집니다.
+
 ```html
 <!-- App.svelte -->
 <script lang="ts"> // lang="ts"를 선언한 <script>에서 TypeScript를 사용할 수 있습니다.
@@ -498,8 +462,35 @@ scss를 사용할 수 있도록 아래 코드와 같이 패키지를 다운로�
 npm i -D sass sass-loader
 ```
 
+### 컴포넌트 스타일 태그에서 SCSS 사용하기
+`sass` 패키지를 다운로드하면 아래 코드와 같이 컴포넌트의 스타일 태그 안에서 SCSS를 사용할 수 있습니다.
+
+```html
+<script lang="ts">
+  export let name: string;
+</script>
+
+<main>
+  <h1>Hello {name}!</h1>
+  <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+</main>
+
+<style lang="scss">
+  main {
+    /* ... */
+    h1 {
+      color: #ff3e00;
+      text-transform: uppercase;
+      font-size: 4em;
+      font-weight: 100;
+    }
+  }
+  /* ... */
+</style>
+```
+
 ### 소스코드에서 SCSS 파일 `import`하기
-Webpack 번들러에서도 소스코드에서 SCSS 파일을 `import`할 수 있도록 설정해 보도록 하겠습니다. `webpack.config.js`에서 `style-loader`와 `css-loader`를 사용하는 부분을 아래와 같이 수정합니다.
+Webpack 번들러에서도 소스코드에서 SCSS 파일을 `import`할 수 있도록 설정해 보도록 하겠습니다. `webpack.config.js`에서 `css-loader`를 사용하는 부분을 아래와 같이 수정합니다.
 
 ```js
 // webpack.config.js
@@ -513,11 +504,7 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          /**
-           * MiniCssExtractPlugin doesn't support HMR.
-           * For developing, use 'style-loader' instead.
-           * */
-          prod ? MiniCssExtractPlugin.loader : 'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
@@ -532,9 +519,20 @@ module.exports = {
 
 위의 코드와 같이 설정이 끝나면 아래와 같이 `main.ts`에서 SCSS 파일 `import`가 가능해집니다.
 
+```scss
+// src/assets/scss/common.scss
+main {
+  p {
+    font-size: 2em;
+  }
+}
+```
+
 ```ts
 // src/main.ts
+import './global.css';
 import './assets/scss/common.scss';
+
 import App from './App.svelte';
 
 const app = new App({
@@ -559,9 +557,9 @@ module.exports = {
     //...
     scss: {
       prependData: `@import "src/assets/scss/variables.scss";`
-    }
-  }),
-  //...
+    },
+    //...
+  })
 }
 ```
 
@@ -610,8 +608,8 @@ npm i -D postcss autoprefixer postcss-loader
 
 ```js
 // svelte.config.js
+//...
 const autoprefixer = require('autoprefixer');
-
 //...
 module.exports = {
   //...
@@ -620,7 +618,7 @@ module.exports = {
     postcss: {
       plugins: [autoprefixer()]
     }
-  }),
+  })
 }
 ```
 
@@ -649,7 +647,7 @@ module.exports = {
 </style>
 ```
 
-아래 그림처럼 `-webkit`, `-moz`, `-ms` 등, 브라우저 밴더 접두사가 추가됩니다.
+아래 그림처럼 `-webkit-`, `-moz-`, `-ms-` 등, 브라우저 밴더 접두사가 추가됩니다.
 
 ![autoprefixer](/assets/img/posts/svelte/autoprefixer.png)
 
@@ -668,14 +666,19 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          /**
-           * MiniCssExtractPlugin doesn't support HMR.
-           * For developing, use 'style-loader' instead.
-           * */
-          prod ? MiniCssExtractPlugin.loader : 'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  'autoprefixer'
+                ]
+              }
+            }
+          }
         ]
       },
       //...
@@ -686,29 +689,18 @@ module.exports = {
 };
 ```
 
-`postcss.config.js`를 프로젝트 루트에 아래 코드와 같이 만들어 줍니다.
-
-```js
-// postcss.config.js
-module.exports = {
-  plugins: [
-    require('autoprefixer')
-  ]
-}
-```
-
 위의 설정이 끝나면 아래 코드와 같이 정의된 스타일이,
 
 ```scss
 main {
-  h1 {
-    margin: 0;
+  p {
+    font-size: 2em;
     user-select: none;
   }
 }
 ```
 
-아래 그림처럼 `-webkit`, `-moz`, `-ms` 등, 브라우저 밴더 접두사가 추가됩니다.
+아래 그림처럼 `-webkit-`, `-moz-`, `-ms-` 등, 브라우저 밴더 접두사가 추가됩니다.
 
 ![autoprefixer](/assets/img/posts/svelte/autoprefixer_scss.png)
 
@@ -748,7 +740,9 @@ Rollup과 동일하게 `tsconfig.json` 파일을 아래와 같이 수정해야 �
 
 ```ts
 // main.ts
+import '@/global.css';
 import '@/assets/scss/common.scss';
+
 import App from '@/App.svelte';
 
 const app = new App({
@@ -760,28 +754,6 @@ const app = new App({
 
 export default app;
 ```
-
-## `svelte-check` 설정
-Rollup에서는 템플릿에 `svelte-check` 패키지가 추가되어 있지만, Webpack에서는 추가되어 있지 않기 때문에 아래와 같이 패키지를 설치해야 합니다.
-
-```bash
-npm i -D svelte-check
-```
-
-패키지 다운로드가 되면 `package.json`의 `script`에 아래와 같이 `validate`를 추가해 줍니다.
-
-```json
-// package.json
-{
-  //...
-  "scripts": {
-    //...
-    "validate": "svelte-check"
-  }
-}
-```
-
-`npm run validate` 명령어를 실행하면 Svelte를 컴파일 할 때 발생하는 error와 warning를 확인할 수 있습니다.
 
 # 부록: 템플릿
 지금까지 이야기했던 설정을 추가해서 Rollup 템플릿과 Webpack 템플릿을 만들었습니다.
