@@ -47,6 +47,8 @@ XSS의 공격 유형은 표준으로 정해져 있지는 않지만, 비지속적
 
 `<script>` 태그는 화면에 노출되지 않기 때문에 사용자는 자신의 개인 정보가 유출되는지 모른체 피해를 입게 됩니다.
 
+한 번 스크립트가 실행 되는 게시글을 올릴 수 있다면, 그 게시글이 삭제 될 때까지 지속적으로 사용자들에게 피해를 줄 수 있기 때문에 지속적 XSS 공격이라고 이야기 합니다.
+
 ## 대응 방법
 XSS 공격을 막기 위해서는 페이지에서 공격자가 입력한 스크립트를 실행하지 못하게 해야 합니다. 스크립트를 실행하지 못하게 하려면, 공격자의 스크립트 입력을 막거나 브라우저가 스크립트를 실행하지 못하게 공격자의 스크립트 값을 변경해야 합니다.
 
@@ -80,15 +82,83 @@ XSRF 공격 과정은 아래와 같습니다.
  해당 서비스 페이지는 단순히 쿠키를 통해 본인확인이 이루어지기 때문에 XSRF 공격이 가능하게 됩니다.
 
 ## 공격 예제
-XSRF 공격이 이루어지는 예제를 만들어 보도록 하겠습니다.
+XSRF 공격이 이루어지는 예제를 Express를 사용하여 만들었습니다. 아래 두 코드는 XSRF 공격의 대상이 되는 FrontEnd와 BackEnd 예제 코드 입니다.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  XSRF 대상 Front End 입니다.
+
+  <div>
+    <input type="text" name="id" placeholder="ID" />
+    <input type="password" name="password" placeholder="비밀번호" />
+    <input type="submit" value="로그인" onclick="login()"/>
+  </div>
+
+  <script>
+    function login () {
+      const id = document.querySelector('[name=id]').value;
+      const password = document.querySelector('[name=password]').value;
+      fetch('/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ id, password }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+  </script>
+</body>
+
+</html>
+```
+
+```js
+var express = require('express');
+var router = express.Router();
+
+router.post('/login', function(req, res, next) {
+  res.cookie('login-token', 'test', { sameSite: 'none', secure: true });
+  res.send();
+});
+
+router.get('/change', function(req, res, next) {
+  if (req.cookies['login-token'] === 'test') {
+    console.log(`비밀 번호가 변경되었습니다.`);
+  }
+  res.send();
+})
+
+module.exports = router;
+```
+
+FrontEnd 페이지는 로그인 페이지 입니다. ID와 Password를 입력 받아 `users/login` API를 호출합니다.  `users/login`에서는 쿠키에 `login-token`이라는 이름으로 토큰을 설정합니다. `user/change`에서는 `login-token`이 `test`일 경우 회원의 비밀 번호를 변경 할 수 있게 됩니다.
+
+아래 코드는 로그인 후 공격자가 사용자에게 접근을 유도하여 접근하게 되는 페이지입니다.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  피싱 페이지 입니다.
+
+  <img src="http://localhost:3000/users/change?id=test&password=test" />
+</body>
+</html>
+```
+
+img 태그는 Get 방식으로 src로 선언된 주소를 호출하기 때문에 서버의 user/change API가 호출됩니다. 쿠키를 통해서만 인증이 이루어지기 때문에 아래 그림과 같이 XSRF 공격이 성공하게 됩니다.
+
+![XSRF 공격 시도](/assets/img/posts/etc/xsrf_phising.gif)
 
 ## 대응 방법
 크롬 80버전 부터 새로운 쿠키 정책이 적용되어 Cookie의 SameSite 속성의 기본값이 Lax로 변경 되었습니다.
 
-Referer 체크
-GET/POST 구분
-Security Token 사용
-CORS
+- Referer 체크
+- GET/POST 구분
+- Security Token 사용
+- CORS
 
 # XSS와 XSRF의 차이
 
