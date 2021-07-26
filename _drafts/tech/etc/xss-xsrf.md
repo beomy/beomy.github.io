@@ -156,18 +156,23 @@ img 태그는 Get 방식으로 src로 선언된 주소를 호출하기 때문에
 XSRF 공격을 막기 위해서는 피싱 페이지에서 호출한 백엔드 API가 실패 되도록 해야 합니다. 백엔드 API가 정상적으로 응답해야 하는지 판단해야 하기 때문에 XSRF 공격은 XSS와는 다르게 보통 백엔드 측에서 대응해 줘야 합니다.
 
 ### 쿠키의 SameSite 사용
-크롬 80버전 부터 새로운 쿠키 정책이 적용되어 Cookie의 SameSite 속성의 기본값이 Lax로 변경 되었습니다.
+HTTP 응답 헤더 Set-Cookie에 SameSite 속성을 사용하면 쿠키를 동일한 사이트에서만 쿠키를 전달 할 수 있게 할 수 있습니다. SameSite로 설정할 수 있는 값은 아래 목록과 같이 `None`, `Lax`, `Strict` 3종류가 있습니다.
 
-- Referer 체크
+- `SameSite: None`: SameSite 속성이 등장 하기 전 부터 동작하는 쿠키방식입니다. `None`으로 설정된 쿠키는 크로스 사이트, 다른 도메인의 요청에도 항상 쿠가가 전송됩니다.
+- `SameSite: Lax`: 원래의 사이트에서 링크 이동을 통해 이동 된 경우에만 쿠키를 전달합니다. 즉 `<a>` 태그를 통한 링크 이동시에 이동한 사이트로 쿠키가 전송됩니다. 또한 Get 방식의 HTTP 요청시에 쿠키가 전송되기 때문에 데이터의 값을 업데이트하는 API인 경우 Get 방식을 피해야 합니다.
+- `SameSite: Strict`: 동일한 사이트에서만 쿠키를 전송하는 가장 엄격한 형태입니다.
+
+### Referer 체크
 - CORS
-- GET/POST 구분
-- Security Token 사용
+
+### Security Token 사용
 
 # XSS와 XSRF의 차이
 
 # 부록
 
 ## SameSite Cookie
+크롬 80버전 부터 새로운 쿠키 정책이 적용되어 Cookie의 SameSite 속성의 기본값이 Lax로 변경 되었습니다.
 
 #### 참고
 - [https://ko.wikipedia.org/wiki/사이트_간_스크립팅](https://ko.wikipedia.org/wiki/사이트_간_스크립팅)
@@ -183,3 +188,4 @@ XSRF 공격을 막기 위해서는 피싱 페이지에서 호출한 백엔드 AP
 - [https://ifuwanna.tistory.com/223](https://ifuwanna.tistory.com/223)
 - [http://blog.plura.io/?p=7614](http://blog.plura.io/?p=7614)
 - [https://swk3169.tistory.com/23](https://swk3169.tistory.com/23)
+- [https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies](https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies)
