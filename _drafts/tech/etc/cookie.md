@@ -13,6 +13,14 @@ summary: SameSite
 ## 구조
 
 ## 속성
+- Name
+- Value
+- Domain
+- Path
+- Expires
+- HttpOnly
+- Secure
+- SameSite
 
 ## CookieStorage
 
