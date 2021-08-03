@@ -3,7 +3,7 @@ layout: post
 title: '[ETC] Cookie 톺아보기'
 featured-img: etc/xss_xsrf_banner.png
 category: [tech, etc]
-summary: SameSite
+summary: Cookie에 대해 살펴보도록 하겠습니다.
 ---
 
 # 쿠키란
