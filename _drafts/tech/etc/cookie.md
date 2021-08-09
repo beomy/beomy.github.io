@@ -13,18 +13,28 @@ summary: Cookie에 대해 살펴보도록 하겠습니다.
 ## 구조
 
 ## 속성
-- Name
-- Value
 - Domain
 - Path
 - Expires
-- HttpOnly
+- Max-Age
 - Secure
+- HttpOnly
 - SameSite
 
-## CookieStorage
+## 쿠키 사양
+4,096바이트 크기의 쿠키를 지원할 것
+한 도메인 당 최소 50개 쿠키를 지원할 것(예: 각 웹사이트 당)
+총 최소 3,000개 쿠키를 지원할 것.
 
-## document.cookie
+## 쿠키 설정
+
+### Set-Cookie와 Cookie
+
+## 브라우저에서 쿠키 업데이트
+
+### CookieStorage
+
+### document.cookie
 
 ## 세션 쿠키
 
@@ -38,8 +48,13 @@ summary: Cookie에 대해 살펴보도록 하겠습니다.
 
 ## sessionStorage
 
+## 구글에서 쿠키 차단
+
+## 무상태 프로토콜
+
 #### 참고
 - [https://ko.wikipedia.org/wiki/HTTP_쿠키](https://ko.wikipedia.org/wiki/HTTP_쿠키)
+- [https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
 - [https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies](https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies)
 - [https://seob.dev/posts/브라우저-쿠키와-SameSite-속성/](https://seob.dev/posts/브라우저-쿠키와-SameSite-속성/)
 - [https://www.hahwul.com/2020/01/18/samesite-lax/](https://www.hahwul.com/2020/01/18/samesite-lax/)
@@ -49,3 +64,4 @@ summary: Cookie에 대해 살펴보도록 하겠습니다.
 - [https://cherish-it.tistory.com/12](https://cherish-it.tistory.com/12)
 - [https://yangbongsoo.tistory.com/5?category=919814](https://yangbongsoo.tistory.com/5?category=919814)
 - [https://jinn-blog.tistory.com/97](https://jinn-blog.tistory.com/97)
+- [https://ko.wikipedia.org/wiki/무상태_프로토콜](https://ko.wikipedia.org/wiki/무상태_프로토콜)
