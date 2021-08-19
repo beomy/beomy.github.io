@@ -121,5 +121,4 @@ Cookie: id=beomy; post=cookie
 - [https://yangbongsoo.tistory.com/5?category=919814](https://yangbongsoo.tistory.com/5?category=919814)
 - [https://jinn-blog.tistory.com/97](https://jinn-blog.tistory.com/97)
 - [https://ko.wikipedia.org/wiki/무상태_프로토콜](https://ko.wikipedia.org/wiki/무상태_프로토콜)
-
 - [http://it.chosun.com/site/data/html_dir/2020/02/16/2020021600579.html](http://it.chosun.com/site/data/html_dir/2020/02/16/2020021600579.html)
