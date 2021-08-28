@@ -89,17 +89,20 @@ Cookie: id=beomy; post=cookie
 `Expires`와 `Max-Age` 두가지 속성이 정의되지 않는 쿠키를 세션 쿠키라고 합니다. 세션 쿠키는 현재 브라우저의 세션이 끝날 때 삭제되는 쿠키입니다.
 
 ### 보안 속성
+
 #### Secure
+
 #### HttpOnly
+
 #### SameSite
 
 ### 스코프 속성
+
 #### Domain
+
 #### Path
 
 # 브라우저에서 쿠키 업데이트
-
-## CookieStorage
 
 ## document.cookie
 
