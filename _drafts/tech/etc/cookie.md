@@ -77,13 +77,17 @@ Cookie: id=beomy; post=cookie
 `Expires` 속성을 사용하면 속성에 정의된 날짜에 삭제되는 쿠키를 만듭니다. 사용 방법은 아래 코드와 같습니다.
 
 ```none
+Set-Cookie: id=beomy; Expires=Sun, 29 Aug 2021 12:00:00 GMT;
 ```
 
 #### `Max-Age`
 `Max-Age` 속성을 사용하면 속성에 정의된 기간 이후에 삭제되는 쿠키를 만듭니다. 사용 방법은 아래 코드와 같습니다.
 
 ```none
+Set-Cookie: id=beomy; Max-Age=600;
 ```
+
+`Max-Age` 속성은 초 단위를 사용합니다. 위의 코드는 10분 동안 유지되는 쿠키입니다. 음수가 지정되면 해당 쿠키는 즉시 만료됩니다. `Expires`와 `Max-Age` 속성 둘 다 지정되었을 경우 `Max-Age` 속성을 더 우선합니다.
 
 #### 세션 쿠키
 `Expires`와 `Max-Age` 두가지 속성이 정의되지 않는 쿠키를 세션 쿠키라고 합니다. 세션 쿠키는 현재 브라우저의 세션이 끝날 때 삭제되는 쿠키입니다.
@@ -102,15 +106,11 @@ Cookie: id=beomy; post=cookie
 
 #### Path
 
-# 브라우저에서 쿠키 업데이트
+# document.cookie
 
-## document.cookie
+# SameSite 속성
 
-# 심화
-
-## SameSite 속성
-
-## 서드 파트 쿠키
+# 서드 파트 쿠키
 
 # 부록
 
