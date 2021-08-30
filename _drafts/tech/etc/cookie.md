@@ -94,17 +94,17 @@ Set-Cookie: id=beomy; Max-Age=600;
 
 ### 보안 속성
 
-#### Secure
+#### `Secure`
 
-#### HttpOnly
+#### `HttpOnly`
 
-#### SameSite
+#### `SameSite`
 
 ### 스코프 속성
 
-#### Domain
+#### `Domain`
 
-#### Path
+#### `Path`
 
 # document.cookie
 
