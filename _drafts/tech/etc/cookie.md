@@ -108,7 +108,7 @@ Set-Cookie: id=beomy; Max-Age=600;
 
 # document.cookie
 
-# SameSite 속성
+# `SameSite` 속성
 
 # 서드 파트 쿠키
 
