@@ -106,7 +106,7 @@ Set-Cookie: id=beomy; Max-Age=600;
 
 #### `Path`
 
-# document.cookie
+# `document.cookie`
 
 # `SameSite` 속성
 
