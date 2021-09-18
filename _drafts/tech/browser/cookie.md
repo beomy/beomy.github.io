@@ -113,9 +113,18 @@ Set-Cookie: id=beomy; Secure;
 ```
 
 ### `HttpOnly`
-[XSS](/tech/etc/xss-xsrf/#xsscross-site-scripting) 공격을 방지하기 위해 `HttpOnly` 속성이 정의 된 쿠키는 자바스크립트의 `document.cookie` API를 통해 접근할 수 없습니다.
+[XSS](/tech/etc/xss-xsrf/#xsscross-site-scripting) 공격을 방어하기 위해 `HttpOnly` 속성이 정의 된 쿠키는 자바스크립트의 `document.cookie` API를 통해 접근할 수 없습니다. `HttpOnly` 쿠키는 서버에 전송하는 용도로만 사용할 수 있습니다. 사용 방법은 아래 코드와 같습니다.
+
+```none
+Set-Cookie: id=beomy; HttpOnly;
+```
+
+아래 그림은 `HttpOnly` 속성이 정의 된 쿠키와 정의 되지 않은 쿠키의 `document.cookie`를 비교한 그림입니다.
+
+![document.cookie 비교](/assets/img/posts/browser/httponly-cookie.gif)
 
 ### `SameSite`
+[XSRF](/tech/etc/xss-xsrf/#xsrfcrose-site-request-forgery) 공격을 방어하기 위해 `SameSite` 속성을 사용할 수 있습니다.
 
 ## 스코프 속성
 
@@ -123,19 +132,17 @@ Set-Cookie: id=beomy; Secure;
 
 ### `Path`
 
-# `document.cookie`
-
-# `SameSite` 속성
-
-# 서드 파트 쿠키
-
 # 부록
+
+## `SameSite` 속성
+
+## 서드 파트 쿠키
+
+### 크롬, 서드파트 쿠키 지원 중단
 
 ## localStorage
 
 ## sessionStorage
-
-## 크롬, 서드파트 쿠키 지원 중단
 
 ## 무상태 프로토콜
 
