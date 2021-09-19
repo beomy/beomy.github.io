@@ -124,7 +124,11 @@ Set-Cookie: id=beomy; HttpOnly;
 ![document.cookie 비교](/assets/img/posts/browser/httponly-cookie.gif)
 
 ### `SameSite`
-[XSRF](/tech/etc/xss-xsrf/#xsrfcrose-site-request-forgery) 공격을 방어하기 위해 `SameSite` 속성을 사용할 수 있습니다.
+[XSRF](/tech/etc/xss-xsrf/#xsrfcrose-site-request-forgery) 공격을 방어하기 위해 `SameSite` 속성을 사용할 수 있습니다. `SameSite` 속성은 `None`, `Lax`, `Static` 중 하나를 설정할 수 있습니다.
+
+- `None`: `SameSite` 속성이 등장하기 전에 동작하던 쿠키 방식입니다. `None`으로 설정된 쿠키는 크로스 사이트 요청에도 항상 전송됩니다. 즉 A 사이트에서 설정된 쿠키가 B 사이트에서 발생하는 요청에도 쿠키가 전달됩니다.
+- `Lax`: 웹 페이지 이동과 안전한 HTTP 메서드 요청의 경우 쿠키를 전송합니다. `<a href>`, `<link href> `, `<form method=get>`에서는 쿠키가 전송됩니다.
+- `Static`: `Strict`로 설정된 쿠키는 `Lax`에서 허용한 몇몇 예외를 포함하여 모든 크로스 사이트 요청에 쿠키를 전송하지 않습니다.
 
 ## 스코프 속성
 
@@ -134,11 +138,11 @@ Set-Cookie: id=beomy; HttpOnly;
 
 # 부록
 
-## `SameSite` 속성
-
-## 서드 파트 쿠키
+## 퍼스트 쿠키과 서드 파트 쿠키
 
 ### 크롬, 서드파트 쿠키 지원 중단
+
+## `SameSite` 속성
 
 ## localStorage
 
