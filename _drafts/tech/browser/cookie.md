@@ -128,11 +128,25 @@ Set-Cookie: id=beomy; HttpOnly;
 
 - `None`: `SameSite` 속성이 등장하기 전에 동작하던 쿠키 방식입니다. `None`으로 설정된 쿠키는 크로스 사이트 요청에도 항상 전송됩니다. 즉 A 사이트에서 설정된 쿠키가 B 사이트에서 발생하는 요청에도 쿠키가 전달됩니다.
 - `Lax`: 웹 페이지 이동과 안전한 HTTP 메서드 요청의 경우 쿠키를 전송합니다. `<a href>`, `<link href> `, `<form method=get>`에서는 쿠키가 전송됩니다.
-- `Static`: `Strict`로 설정된 쿠키는 `Lax`에서 허용한 몇몇 예외를 포함하여 모든 크로스 사이트 요청에 쿠키를 전송하지 않습니다.
+- `Static`: `Strict`로 설정된 쿠키는 `Lax`에서 허용한 몇 가지 예외를 포함하여 모든 크로스 사이트 요청에 쿠키를 전송하지 않습니다.
+
+사용 방법은 아래 코드와 같습니다.
+
+```none
+Set-Cookie: id=beomy; SameSite=Lax;
+```
 
 ## 스코프 속성
+`Domain`과 `Path` 두 가지 속성을 사용하면 쿠키의 유효범위를 설정할 수 있습니다.
 
 ### `Domain`
+`Domain` 속성에는 쿠키가 전송되게 될 호스트가 정의됩니다. `Domain` 속성에 정의 된 URL에 쿠키가 전송됩니다. 사용 방법은 아래 코드와 같습니다.
+
+```none
+Set-Cookie: id=beomy; Domain=beomy.io;
+```
+
+`Domain`이 정의 되어 있지 않으면 현재 도메인이 기본 값으로 설정됩니다. 위의 코드의 `Domain=beomy.io`와 같이 `Domain`이 정의되면 쿠키들은 `sub.beomy.io`, `domain.beomy.io`와 같은 서브 도메인에서도 쿠키가 포함되어 전송됩니다.
 
 ### `Path`
 
