@@ -149,6 +149,13 @@ Set-Cookie: id=beomy; Domain=beomy.io;
 `Domain`이 정의 되어 있지 않으면 현재 도메인이 기본 값으로 설정됩니다. 위의 코드의 `Domain=beomy.io`와 같이 `Domain`이 정의되면 쿠키들은 `sub.beomy.io`, `domain.beomy.io`와 같은 서브 도메인에서도 쿠키가 포함되어 전송됩니다.
 
 ### `Path`
+`Domain` 속성은 쿠키의 도메인의 유효범위를 지정한다면, `Path` 속성읜 쿠키의 디렉토리의 유효범위를 지정합니다. 사용 방법은 아래 코드와 같습니다.
+
+```none
+Set-Cookie: id=beomy; Path=/cookie;
+```
+
+위의 코드처럼 `Path=/cookie`로 `Path` 속성을 지정하면 `/cookie`, `/cookie/path`, `/cookie/domain`와 같은 서브 디렉토리에서 쿠키가 포함되어 전송됩니다.
 
 # 부록
 
@@ -158,9 +165,11 @@ Set-Cookie: id=beomy; Domain=beomy.io;
 
 ## `SameSite` 속성
 
-## localStorage
+## 브라우저 저장소
 
-## sessionStorage
+### localStorage
+
+### sessionStorage
 
 ## 무상태 프로토콜
 
