@@ -146,7 +146,7 @@ Set-Cookie: id=beomy; SameSite=Lax;
 Set-Cookie: id=beomy; Domain=beomy.io;
 ```
 
-`Domain`이 정의 되어 있지 않으면 현재 도메인이 기본 값으로 설정됩니다. 위의 코드의 `Domain=beomy.io`와 같이 `Domain`이 정의되면 쿠키들은 `sub.beomy.io`, `domain.beomy.io`와 같은 서브 도메인에서도 쿠키가 포함되어 전송됩니다.
+`Domain`이 정의 되어 있지 않으면 현재 서버 주소가 기본 값으로 설정됩니다. 위의 코드의 `Domain=beomy.io`와 같이 `Domain`이 정의되면 쿠키들은 `sub.beomy.io`, `domain.beomy.io`와 같은 서브 도메인에서도 쿠키가 포함되어 전송됩니다.
 
 ### `Path`
 `Domain` 속성은 쿠키의 도메인의 유효범위를 지정한다면, `Path` 속성읜 쿠키의 디렉토리의 유효범위를 지정합니다. 사용 방법은 아래 코드와 같습니다.
@@ -159,9 +159,17 @@ Set-Cookie: id=beomy; Path=/cookie;
 
 # 부록
 
-## 퍼스트 쿠키과 서드 파트 쿠키
+## 퍼스트 파티 쿠키와 서드 파티 쿠키
+쿠키는 `Domain` 속성을 정의할 수 있는데 `Domain` 속성의 값이 현재 보고 있는 페이지의 도메인과 동일하면 퍼스트 파티 쿠키, 도메인이 다르다면 서드 파티 쿠키라고 이야기합니다.
 
-### 크롬, 서드파트 쿠키 지원 중단
+### 퍼스트 쿠키 (First-Party Cookie)
+퍼스트 파티 쿠키는 사용자가 방문한 웹 사이트에서 직접 발행한 쿠키를 말합니다. 예를 들어 사용자가 `naver.com`에 접속했을 때, `naver.com`에서 로그인 인증 쿠키를 발행하는 경우는 퍼스트 파티 쿠키에 해당됩니다.
+
+### 서드파트 쿠키 (Third-Party Cookie)
+
+#### 크롬, 서드파트 쿠키 지원 중단
+
+#### iframe에서 쿠키
 
 ## `SameSite` 속성
 
@@ -187,3 +195,4 @@ Set-Cookie: id=beomy; Path=/cookie;
 - [https://jinn-blog.tistory.com/97](https://jinn-blog.tistory.com/97)
 - [https://ko.wikipedia.org/wiki/무상태_프로토콜](https://ko.wikipedia.org/wiki/무상태_프로토콜)
 - [http://it.chosun.com/site/data/html_dir/2020/02/16/2020021600579.html](http://it.chosun.com/site/data/html_dir/2020/02/16/2020021600579.html)
+- [https://sy34.net/what-is-cookie/](https://sy34.net/what-is-cookie/)
