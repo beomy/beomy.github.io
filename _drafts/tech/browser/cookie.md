@@ -18,7 +18,7 @@ summary: 쿠키를 통해 사용자 인증이 이루어질 경우 쿠키가 탈�
 과거(쿠키가 클라이언트 측에 정보를 저장할 수 있는 유일한 방법이 었을 때)에는 클라이언트 측에 정보를 저장하기 위해 쿠키가 주로 사용되었지만, 모든 요청마다 쿠키가 함께 전송되기 때문에 성능 저하의 원인이 될 수 있어 지금은 클라이언트 측에 저장하기 위해서는 로컬 스토리지나 세션 스토리지를 사용하는 것이 좋습니다.
 
 # 쿠키 목적
-쿠키는 상태가 없는(stateless) HTTP 프로토콜에서 상태 정보를 기억하기 위해 사용됩니다. 쿠키를 사용하면 이전 요청의 상태를 저장할 수 있기 때문에 쿠키는 크게 아래와 같은 3가지 목적으로 사용됩니다.
+쿠키는 상태가 없는(stateless) HTTP 프로토콜에서 상태 정보를 기억하기 위해 사용됩니다. 상태가 없는(무상태) 프로토콜은 이전 요청과 상관없이 각각의 요청을 독립적인 트랜잭션으로 취급하기 때문에 이전 요청의 상태를 저장하지 않습니다. 쿠키를 사용하면 이전 요청의 상태를 저장할 수 있기 때문에 쿠키는 크게 아래와 같은 3가지 목적으로 사용됩니다.
 
 - 세션 관리(Sessing Mnangement): 서버에 저장해야 할 로그인, 장바구니 등의 정보 관리
 - 개인화(Personalization): 사용자 선호, 테마 등의 정보 관리
@@ -162,24 +162,25 @@ Set-Cookie: id=beomy; Path=/cookie;
 ## 퍼스트 파티 쿠키와 서드 파티 쿠키
 쿠키는 `Domain` 속성을 정의할 수 있는데 `Domain` 속성의 값이 현재 보고 있는 페이지의 도메인과 동일하면 퍼스트 파티 쿠키, 도메인이 다르다면 서드 파티 쿠키라고 이야기합니다.
 
-### 퍼스트 쿠키 (First-Party Cookie)
+### 퍼스트 파티 쿠키 (First-Party Cookie)
 퍼스트 파티 쿠키는 사용자가 방문한 웹 사이트에서 직접 발행한 쿠키를 말합니다. 예를 들어 사용자가 `naver.com`에 접속했을 때, `naver.com`에서 로그인 인증 쿠키를 발행하는 경우는 퍼스트 파티 쿠키에 해당됩니다.
 
-### 서드파트 쿠키 (Third-Party Cookie)
+### 서드 파트 쿠키 (Third-Party Cookie)
+서드 파티 쿠키는 사용자가 방문한 웹 사이트에서 발행한 쿠키가 아니라, 다른 웹 사이트에서 발행한 쿠키를 말합니다. 구글은 2023년 말까지 크롬에서 서드 파티 쿠키 지원을 중단하겠다고 발표했습니다.
 
-#### 크롬, 서드파트 쿠키 지원 중단
+보통 광고 서버에서 발행하는 쿠키가 서드 파트 쿠키입니다. 예를 들어 사용자가 `ads.com`의 스크립트가 심어져 있는 `amazon.com`에서 A 상품을 보았다면, `ads.com`은 사용자가 `amazon.com`에서 A 상품을 봤다는 정보를 담아 쿠키를 발행합니다. 그리고 사용자가 `beomy.github.io`라는 사이트에 방문 했을 때, `beomy.github.io`에 `ads.com` 스크립트가 심어져 있다면 `ads.com`은 사용자가 `amazon.com`에서 A 상품을 봤다는 것을 쿠키를 통해 알 수 있기 때문에 쿠키 정보로 광고를 보여줄 수 있게 됩니다.
 
-#### iframe에서 쿠키
+## `SameSite=Lax`
+[크로미움의 SameSite 속성 설명](https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies)을 보면 아래와 같이 `Lax` 속성을 설명합니다.
 
-## `SameSite` 속성
+A cookie with "SameSite=Lax" will be sent with a same-site request, or a cross-site top-level navigation with a "safe" HTTP method.
 
 ## 브라우저 저장소
+브라우저에서 지원하는 저장소는 쿠키 이외에 로컬 스토리지와 세션 스토리지가 있습니다.
 
 ### localStorage
 
 ### sessionStorage
-
-## 무상태 프로토콜
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
@@ -196,3 +197,4 @@ Set-Cookie: id=beomy; Path=/cookie;
 - [https://ko.wikipedia.org/wiki/무상태_프로토콜](https://ko.wikipedia.org/wiki/무상태_프로토콜)
 - [http://it.chosun.com/site/data/html_dir/2020/02/16/2020021600579.html](http://it.chosun.com/site/data/html_dir/2020/02/16/2020021600579.html)
 - [https://sy34.net/what-is-cookie/](https://sy34.net/what-is-cookie/)
+- [https://report.roa.ai/article/171766](https://report.roa.ai/article/171766)
