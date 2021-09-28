@@ -31,7 +31,8 @@ beomyhlee@gmail.com
 - [https://beomy.github.io](https://beomy.github.io)
 
 #### 출판
-- [비제이퍼블릭][ReactJS 이 정도는 알아야지](https://book.naver.com/bookdb/book_detail.nhn?bid=13193284) (2018.01)
+- [비제이퍼블릭][ReactJS 이 정도는 알아야지](https://book.naver.com/bookdb/book_detail.nhn?bid=13193284) (2018.01.31)
+- [비제이퍼블릭][Svelte로 맛보는 웹 애플리케이션 개발](https://book.naver.com/bookdb/book_detail.naver?bid=20941596) (2021.09.30)
 
 #### 강의
 <ul class="about-seminar">
