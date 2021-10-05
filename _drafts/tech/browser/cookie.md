@@ -180,6 +180,7 @@ A cookie with "SameSite=Lax" will be sent with a same-site request, or a cross-s
 
 ### localStorage
 
+
 ### sessionStorage
 
 #### 참고
