@@ -176,7 +176,7 @@ Set-Cookie: id=beomy; Path=/cookie;
 A cookie with "SameSite=Lax" will be sent with a same-site request, or a cross-site top-level navigation with a "safe" HTTP method.
 
 ## 브라우저 저장소
-브라우저에서 지원하는 저장소는 쿠키 이외에 로컬 스토리지와 세션 스토리지가 있습니다.
+브라우저에서 지원하는 저장소는 쿠키 이외에 로컬 스토리지(localStorage)와 세션 스토리지(sessionStorage)가 있습니다.
 
 ### localStorage
 
