@@ -170,11 +170,6 @@ Set-Cookie: id=beomy; Path=/cookie;
 
 보통 광고 서버에서 발행하는 쿠키가 서드 파트 쿠키입니다. 예를 들어 사용자가 `ads.com`의 스크립트가 심어져 있는 `amazon.com`에서 A 상품을 보았다면, `ads.com`은 사용자가 `amazon.com`에서 A 상품을 봤다는 정보를 담아 쿠키를 발행합니다. 그리고 사용자가 `beomy.github.io`라는 사이트에 방문 했을 때, `beomy.github.io`에 `ads.com` 스크립트가 심어져 있다면 `ads.com`은 사용자가 `amazon.com`에서 A 상품을 봤다는 것을 쿠키를 통해 알 수 있기 때문에 쿠키 정보로 광고를 보여줄 수 있게 됩니다.
 
-## `SameSite=Lax`
-[크로미움의 SameSite 속성 설명](https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies)을 보면 아래와 같이 `Lax` 속성을 설명합니다.
-
-A cookie with "SameSite=Lax" will be sent with a same-site request, or a cross-site top-level navigation with a "safe" HTTP method.
-
 ## 브라우저 저장소
 브라우저에서 지원하는 저장소는 쿠키 이외에 로컬 스토리지(localStorage)와 세션 스토리지(sessionStorage)가 있습니다.
 
