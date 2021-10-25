@@ -19,7 +19,7 @@ A cookie with "SameSite=Lax" will be sent with a same-site request, or a cross-s
 
 # 부록
 
-## Chrome 
+## Chrome 80버전
 
 #### 참고
 - [https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies](https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies)
