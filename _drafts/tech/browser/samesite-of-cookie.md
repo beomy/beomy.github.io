@@ -9,24 +9,25 @@ summary: 쿠키의 속성 중 SameSite 속성은 서드 파티 쿠키의 보안 
 쿠키의 속성 중 `SameSite` 속성은 [서드 파티 쿠키](/tech/browser/cookie/#퍼스트-파티-쿠키와-서드-파티-쿠키)의 보안 이슈를 해결하기 위해 만들어진 속성으로, Cross-Site 요청에 쿠키를 포함할지 포함하지 않을지 결정하는 쿠키 보안 속성입니다. 이번 포스트에서는 쿠키의 `SameSite` 속성을 살펴보도록 하겠습니다.
 
 # Same Site 란
-Same Site를 직역하면 동일한 사이트로 변역될 수 있을 것 같습니다. 여기서 사이트는 도메인(`naver.com`)과 도메인 앞 부분(`www`)이 결합된 것을 말합니다. 예를 들어 `www.naver.com` 사이트는 `naver.com` 도메인의 일부분입니다.
-
 [공개 접미사 목록](https://publicsuffix.org/list/public_suffix_list.dat)을 보면 어떤 사이트들이 동일한 사이트로 판단되는지 알 수 있습니다. 예를 들어, `www.naver.com`과 `search.naver.com`는 동일한 사이트로 판단되지만, 공개 접미사 목록에 있는 `github.io`는 `beomy.github.io`와 `samesite.github.io`는 서로 다른 사이트로 판단합니다.
 
 # `SameSite` 속성
+`SameSite` 속성은 `None`, `Lax`과 `Strict` 3개 중 하나의 값을 가질 수 있습니다. `SameSite` 속성이 등장하기 전의 Cookie는 `None` 방식으로 동작했지만, 크롬 80버전 이상부터 `SameSite`의 기본 값은 `Lax`가 되었습니다.
+
+~~img, iframe, xhr, fetch, form 테스트~~
+
+## `None`
 
 ## `Lax`
 [크로미움의 SameSite 속성 설명](https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies)을 보면 아래와 같이 `Lax` 속성을 설명합니다.
 
 A cookie with "SameSite=Lax" will be sent with a same-site request, or a cross-site top-level navigation with a "safe" HTTP method.
 
-## `None`
-
 ## `Strict`
 
 # 부록
 
-## Chrome 80버전에서 `SameSite` 속성
+## 도메인과 사이트
 
 ## `Domain` 속성과 `SameSite` 속성
 
@@ -44,3 +45,4 @@ A cookie with "SameSite=Lax" will be sent with a same-site request, or a cross-s
 - [https://jinn-blog.tistory.com/97](https://jinn-blog.tistory.com/97)
 - [https://stackoverflow.com/questions/57090774/what-are-the-security-differences-between-cookies-with-domain-vs-samesite-strict](https://stackoverflow.com/questions/57090774/what-are-the-security-differences-between-cookies-with-domain-vs-samesite-strict)
 - [https://ko.strephonsays.com/difference-between-domain-and-website](https://ko.strephonsays.com/difference-between-domain-and-website)
+- [https://www.hostwinds.kr/tutorials/whats-difference-domain-web-site](https://www.hostwinds.kr/tutorials/whats-difference-domain-web-site)
