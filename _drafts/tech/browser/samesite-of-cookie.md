@@ -14,9 +14,23 @@ summary: 쿠키의 속성 중 SameSite 속성은 서드 파티 쿠키의 보안 
 # `SameSite` 속성
 `SameSite` 속성은 `None`, `Lax`과 `Strict` 3개 중 하나의 값을 가질 수 있습니다. `SameSite` 속성이 등장하기 전의 Cookie는 `None` 방식으로 동작했지만, 크롬 80버전 이상부터 `SameSite`의 기본 값은 `Lax`가 되었습니다.
 
-~~img, iframe, xhr, fetch, form 테스트~~
+`None`, `Lax`, `Strick`에서 어떻게 쿠키가 전송되는지 확인해 보도록 하겠습니다.
+https://beomy-a.herokuapp.com/
 
 ## `None`
+`None` 속성은 `SameSite` 속성이 만들어지기 전과 동일한 방식으로 쿠키를 전송하기 위한 속성입니다. `SameSite` 속성에 `None`을 사용하기 위해서는 쿠기에 `Secure` 속성이 정의되어야 합니다. `SameSite=None` 일 때 `img` 태그, `iframe`, `xhr` 요청, `form` 요청에서 쿠키가 전송되는지 확인해 보도록 하겠습니다.
+
+### img 태그에서 쿠키 전송
+
+### a 태그에서 쿠키 전송
+
+### iframe에서 쿠키 전송
+
+### fetch 요청에서 쿠키 전송
+
+### xhr 요청에서 쿠키 전송
+
+### form 태그에서 쿠키 전송
 
 ## `Lax`
 [크로미움의 SameSite 속성 설명](https://www.chromium.org/administrators/policy-list-3/cookie-legacy-samesite-policies)을 보면 아래와 같이 `Lax` 속성을 설명합니다.
