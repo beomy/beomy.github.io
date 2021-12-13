@@ -17,8 +17,9 @@ beomyhlee@gmail.com
   - **DataBase**: MSSQL, Mysql
 
 # Works
+- **야놀자** (2021.12 ~ )
+- **위메프** (2019.06 ~ 2021.12)
 - **Infraware Technology** (2015.01 ~ 2019.06)
-- **위메프** (2019.06 ~ )
 
 # Libraries
 - [vue-fast-scroll](https://www.npmjs.com/package/vue-fast-scroll): 네이티브의 Fast Scroll과 같은 동작을 할 수 있도록 기능을 제공하는 Vue Plugin
