@@ -14,28 +14,61 @@ HTTP(**H**yper **T**ext **T**ransfer **P**rotocol)는 W3(**W**orld **W**ide **W*
 # HTTP 요청 메시지
 클라이언트에가 서버에게 보내는 요청 메시지의 형태는 아래와 같은 내용을 포함해야 합니다.
 
-- 요청 내용: `GET /beomy.html`
-- 헤더(Header): `User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)`
+- 요청 내용: `GET /http.html HTTP/1.1`
+- 헤더(Header): `beomy.github.io`
 - 빈줄
 - 바디(Body)
+
+바디가 없는 GET 요청 메시지를 표현하면 아래와 같습니다.
+
+```none
+GET /http.html HTTP/1.1
+Host: beomy.github.io
+```
+
+바디가 있는 POST 요청 메시지를 표현하면 아래와 같습니다.
+
+```none
+POST /http.html HTTP/1.1
+Host: beomy.github.io
+Content-Type: application/json
+Content-Length: 32
+
+{
+    "data": "데이터가 바디에 담깁니다."
+}
+```
 
 ## 요청 메서드
 HTTP/1.0 이후 버전부터 아래 표와 같은 HTTP 메서드가 존재합니다.
 
-|HTTP 메서드|요청에 Body가 있음|응답에 Body가 있음|안전|멱등(Idempotent)|캐시 가능|
-|:--:|:--:|:--:|:--:|:--:|:--:|
-|GET|No|Yes|Yes|Yes|Yes|
-|HEAD|No|No|Yes|Yes|Yes|
-|POST|Yes|Yes|No|No|Yes|
-|PUT|Yes|Yes|No|Yes|No|
+|HTTP 메서드|RFC|요청에 Body가 있음|응답에 Body가 있음|안전|멱등(Idempotent)|캐시 가능|
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|GET|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|Optional|Yes|Yes|Yes|Yes|
+|HEAD|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|Optional|No|Yes|Yes|Yes|
+|POST|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|Yes|Yes|No|No|Yes|
+|PUT|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|Yes|Yes|No|Yes|No|
+|DELETE|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|Optional|Yes|No|Yes|No|
+|CONNECT|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|Optional|Yes|No|No|No|
+|OPTIONS|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|Optional|Yes|Yes|No|No|
+|TRACE|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|No|Yes|No|Yes|No|
+|PATCH|[RFC 5789](https://datatracker.ietf.org/doc/html/rfc5789)|Yes|Yes|No|No|No|
 
-> #### 멱등이란
-> 요거는???
+> **안전한 메서드**
+
+> **멱등 메서드**
+
+> **캐시 가능한 메서드**
 
 ### GET
 ### HEAD
 ### POST
 ### PUT
+### DELETE
+### CONNECT
+### OPTIONS
+### TRACE
+### PATCH
 
 # HTTP 응답 메시지
 ## 응답 코드
@@ -51,7 +84,7 @@ HTTP의 버전은 초기 버전인 HTTP/0.9부터, HTTP/1.0, HTTP/1.1, HTTP/2, �
 HTTP 초기 버전에는 버전 번호가 없었습니다. HTTP/0.9는 다음 버전이 등장하면서 구별하기 위해 0.9라고 불리게 됬습니다. HTTP/0.9에서 요청은 아래 코드와 같이 한 줄로 매우 간단합니다.
 
 ```none
-GET /beomy.html
+GET /http.html
 ```
 
 HTTP 메서드는 GET만 존재하고, 헤더 정보가 없었습니다. `Centent-Type`이라는 헤더 정보 조차도 없었기 때문에 HTML 파일만 전송 될 수 있고 다른 유형의 파일은 전송 할 수 없었습니다. 또한 상태 혹은 오류 코드도 없었고, 문제가 발생한 경우 문제에 대한 내용을 담고 있는 HTML 파일이 전송됬습니다.
@@ -68,7 +101,7 @@ HTTP 메서드는 GET만 존재하고, 헤더 정보가 없었습니다. `Centen
 HTTP/0.9 버전은 사용하는데 매우 제한적이었기 때문에, 브라우저와 서버가 모두 범용적으로 사용할 수 있도록 확장되었습니다. HTTP/1.0에서 요청과 응답 코드는 아래와 같습니다.
 
 ```none
-GET /beomy.html HTTP/1.0
+GET /http.html HTTP/1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
 ```
 
@@ -128,6 +161,7 @@ HTTPS(**H**yper **T**ext **T**ransfer **P**rotocol over **S**ecure Socket Layer)
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
 - [https://ko.wikipedia.org/wiki/HTTP](https://ko.wikipedia.org/wiki/HTTP)
+- [https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)
 - [https://ko.wikipedia.org/wiki/HTTPS](https://ko.wikipedia.org/wiki/HTTPS)
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
