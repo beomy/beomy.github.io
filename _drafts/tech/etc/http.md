@@ -6,19 +6,21 @@ category: [tech, etc]
 summary: HTTP는 인터넷에서 데이터를 구조 받을 수 있는 프로토콜로 텍스트 기반의 통신 규약입니다.
 ---
 
-HTTP는 인터넷에서 데이터를 구조 받을 수 있는 프로토콜로 텍스트 기반의 통신 규약입니다. 이번 포스트에서 HTTP가 무엇인지 살펴보도록 하겠습니다.
+HTTP는 인터넷에서 데이터를 주고 받을 수 있는 프로토콜로 텍스트 기반의 통신 규약입니다. 이번 포스트에서 HTTP가 무엇인지 살펴보도록 하겠습니다.
 
 # HTTP란
-HTTP(**H**yper **T**ext **T**ransfer **P**rotocol)는 W3(**W**orld **W**ide **W**eb)에서 정보를 주고 받을 수 있는 프로토콜로, HTTP는 클라이언드와 서버 사이에 이루어지는 요청/응답(request/response) 프로토콜입니다. 예를 들어 웹 브라우저가 HTTP를 통해 서버로부터 웹페이지(HTML)나 이미지를 요청하면 서버는 이 요청에 응답하여 필요한 정보를 전달하게 됩니다.
+HTTP(Hyper Text Transfer Protocol)는 W3(World Wide Web)에서 정보를 주고 받을 수 있는 프로토콜로, HTTP는 클라이언드와 서버 사이에 이루어지는 요청/응답(request/response) 프로토콜입니다. 예를 들어 웹 브라우저가 HTTP를 통해 서버로부터 웹페이지(HTML)나 이미지를 요청하면 서버는 이 요청에 응답하여 필요한 정보를 전달하게 됩니다.
+
+# HTTP 특징
+- **간단함**: HTTP는 사람이 읽고 해석할 수 있을 정도로 간단하게 만들어졌습니다. 아래에서 이야기 할 요청/응답 메시지 구조를 보면 알 수 있듯이 사람이 읽을 수 있도록 만들어진 프로토콜입니다.
+- **확장성**: 클라이언트와 서버가 서로 커스텀 헤더에 대한 합의가 이루어진다면, 헤더를 추가하는 등 확장이 용이한 프로토콜입니다.
+- **무상태**: HTTP는 상태를 저장하지 않습니다. 통신 상태나 이전 호출 결과 등등을 저장하지 않습니다. 상태 저장이 필요한 경우 쿠키나 세션등을 사용해야 합니다.
+- **비연결성**: HTTP는 클라이언트와 서버가 연결을 맺은 후 클라이언트의 요청에 서버가 응답을 마치면 연결이 끊어지게 됩니다. 이런 특징은 연결을 계속 유지할 때 필요한 자원을 줄일 수 있지만 매 요청마다 연결을 맺어야 하는 오버헤드가 발생하게 됩니다. HTTP 버전이 올라가면서 이런 오버헤드는 최적화 되었습니다.
 
 # HTTP 요청 메시지
-클라이언트에가 서버에게 보내는 요청 메시지의 형태는 아래와 같은 내용을 포함해야 합니다.
+클라이언트가 서버에게 보내는 요청 메시지의 구조를 좀 더 자세히 살펴보겠습니다.
 
-- 요청 내용: `GET /http.html HTTP/1.1`
-- 헤더(Header): `beomy.github.io`
-- 빈줄
-- 바디(Body)
-
+## 요청 메시지 구조
 바디가 없는 GET 요청 메시지를 표현하면 아래와 같습니다.
 
 ```none
@@ -39,6 +41,28 @@ Content-Length: 32
 }
 ```
 
+각 줄의 끝은 `<CR><LF>`로 끝나야 합니다. 캐리지 리턴(Carriage Return)과 라인 피드(Line Feed) 외에 다른 화이트 스페이스가 포함되면 안됩니다.
+
+> **캐리지 리턴(Carriage Return)과 라인 피드(Line Feed)**
+>
+> 캐리지 리턴과 라인 피드는 타자기에서 사용하는 용어로, 캐리지 리턴(줄여서 CR)은 현재 위치를 나타내는 커서를 맨 앞으로 이동시킨다라는 뜻입니다. 라인 피드(줄여서 LF)는 커서의 위치를 아랫줄로 이동시킨다는 뜻입니다.
+> 
+> 타자기에서 다음 줄로 이동 할 때, 타자기의 커서를 맨 앞으로 이동한 후 종이를 위로 올려줘야 합니다. 즉 CR 후 LF를 해야 다음 줄로 이동하게 됩니다.
+> 
+> 윈도우에서는 CR + LF 이 두 동작을 합쳐서 Enter 동작을 하게 됩니다.
+
+### 요청 라인(Request Line)
+`GET /http.html HTTP/1.1` 이 부분이 요청 라인입니다. 요청 라인의 구조는 아래 그림과 같습니다.
+
+### 요청 헤더(Request Header)
+`Host: beomy.github.io` 이 부분이 요청 헤더입니다.
+
+### 빈 줄
+`<CR><LF>`으로만 구성된 줄입니다. 
+
+### 메시지 바디(Message Body)
+바디(Body)
+
 ## 요청 메서드
 HTTP/1.0 이후 버전부터 아래 표와 같은 HTTP 메서드가 존재합니다.
 
@@ -53,6 +77,8 @@ HTTP/1.0 이후 버전부터 아래 표와 같은 HTTP 메서드가 존재합니
 |OPTIONS|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|Optional|Yes|Yes|No|No|
 |TRACE|[RFC 7231](https://datatracker.ietf.org/doc/html/rfc7231)|No|Yes|No|Yes|No|
 |PATCH|[RFC 5789](https://datatracker.ietf.org/doc/html/rfc5789)|Yes|Yes|No|No|No|
+
+> **Body 사용가능 여부**
 
 > **안전한 메서드**
 
@@ -71,6 +97,9 @@ HTTP/1.0 이후 버전부터 아래 표와 같은 HTTP 메서드가 존재합니
 ### PATCH
 
 # HTTP 응답 메시지
+
+## 응답 메시지 구조
+
 ## 응답 코드
 ### 2xx - 성공
 ### 3xx - 리다이렉션
@@ -110,6 +139,7 @@ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
 Date: Fri, 10 Dec 2021 02:15:06 GMT
 Server: AmazonS3
 Content-Type: text/html
+
 <HTML>
   A page with an image
   <IMG SRC="/myimage.gif">
@@ -128,6 +158,7 @@ User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
 Date: Fri, 10 Dec 2021 02:15:07 GMT
 Server: AmazonS3
 Content-Type: text/gif
+
 (image content)
 ```
 
@@ -146,11 +177,13 @@ Content-Type: text/gif
 
 # 부록
 
+## 무상태 프로토콜
+
 ## 월드 와이드 웹
 World Wide Web
 
 ## HTTPS란
-HTTPS(**H**yper **T**ext **T**ransfer **P**rotocol over **S**ecure Socket Layer)는
+HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 
 ## TCP와 UDP
 
@@ -167,3 +200,7 @@ HTTPS(**H**yper **T**ext **T**ransfer **P**rotocol over **S**ecure Socket Layer)
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
 - [https://ykarma1996.tistory.com/86](https://ykarma1996.tistory.com/86)
 - [https://developers.google.com/web/fundamentals/performance/http2?hl=ko](https://developers.google.com/web/fundamentals/performance/http2?hl=ko)
+- [https://ko.wikipedia.org/wiki/무상태_프로토콜](https://ko.wikipedia.org/wiki/무상태_프로토콜)
+- [https://kyun2da.dev/CS/http란/](https://kyun2da.dev/CS/http란/)
+- [https://kwangcheolchae.wordpress.com/2012/12/04/캐리지-리턴이란/](https://kwangcheolchae.wordpress.com/2012/12/04/캐리지-리턴이란/)
+- [https://ko.wikipedia.org/wiki/캐리지_리턴](https://ko.wikipedia.org/wiki/캐리지_리턴)
