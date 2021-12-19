@@ -23,7 +23,7 @@ HTTP는 아래 목록과 같이 간단함, 확장성, 무상태, 비연결성 4�
 클라이언트가 서버에게 보내는 요청 메시지의 구조와 요청 메서드에 대해 살펴보겠습니다.
 
 ## 요청 메시지 구조
-요청 메시지 구조를 먼저 코드로 살펴보면, 바디가 없는 GET 요청 메시지는 아래와 같습니다.
+요청 메시지는 요청 라인, 요청 헤더, 빈 라인, 메시지 바디 4가지로 구성됩니다. 코드로 살펴보면 메시지 바디가 없는 GET 요청 메시지는 아래와 같습니다.
 
 ```none
 GET /http.html HTTP/1.1
@@ -53,16 +53,18 @@ Content-Length: 32
 > 
 > 타자기와 동일하게 윈도우에서도 CR + LF 이 두 동작을 합쳐서 Enter 동작을 하게 됩니다.
 
-바디가 있는 POST 요청 메시지를 보면서 구조를 더 자세히 살펴보도록 하겠습니다.
+바디가 있는 POST 요청 메시지를 보면서 4가지 구조를 하나씩 살펴보도록 하겠습니다.
 
 ### 요청 라인(Request Line)
 `POST /http.html HTTP/1.1` 이 부분이 요청 라인입니다. 요청 라인의 구조는 아래 그림과 같습니다.
 
 ![요청 라인 구조](/assets/img/posts/etc/request_line.png)
 
-요청 라인은 요청 메서드, 요청하는 서버의 URL, HTTP 버전, 줄 바꿈을 위한 CR + LF 순서로 작성됩니다. 요청 메서드는 대소문자를 구분(GET과 get은 다름)하기 때문에 항상 대문자로 적어 주셔야 합니다.
+요청 라인은 요청 메서드, 요청하는 서버의 URL, HTTP 버전, 줄 바꿈을 위한 CR + LF 순서로 작성됩니다.
 
-### 요청 헤더(Request Header)
+요청 메서드는 대소문자를 구분(GET과 get은 다름)하기 때문에 항상 대문자로 적어 주셔야 합니다. 요청 메서드는 좀 더 자세히 살펴보기 위해 아래에서 좀 더 이야기 하도록 하겠습니다.
+
+### 요청 헤더(Request Headers)
 아래 코드 부분이 요청 헤더입니다.
 
 ```none
@@ -73,15 +75,15 @@ Content-Length: 32
 
 요청 헤더의 구조는 아래 그림과 같습니다.
 
+![요청 헤더 구조](/assets/img/posts/etc/request_header.png)
 
+HTTP/1.0에서는 요청 헤더가 존재하지 않아도 상관없었지만, HTTP/1.1 버전 이후로 1개 이상의 헤더가 존재해야 합니다. 헤더 이름은 대소문자를 구분하지 않습니다. 즉, `host: beomy.github.io`와 `Host: beomy.github.io`는 동알한 헤더이기 때문에 사용할 때 주의해야 합니다.
 
-HTTP/1.0에서는 요청 헤더가 존재하지 않아도 상관없었지만, HTTP/1.1 버전 이후로 1개 이상의 헤더가 존재해야 합니다.
-
-### 빈 줄
+### 빈 라인
 `<CR><LF>`으로만 구성된 줄입니다. 
 
 ### 메시지 바디(Message Body)
-바디(Body)
+요청 메시지의 바디는 데이터를 담아 서버에 요청을 보내도 보내지 않아도 되는 선택적인 부분입니다.  메시지 바디에 어떤 형태의 데이터가 담겨 있는지는 `Content-Type` 헤더를 통해 알 수 있습니다.
 
 ## 요청 메서드
 HTTP/1.0 이후 버전부터 아래 표와 같은 HTTP 메서드가 존재합니다.
@@ -119,6 +121,14 @@ HTTP/1.0 이후 버전부터 아래 표와 같은 HTTP 메서드가 존재합니
 # HTTP 응답 메시지
 
 ## 응답 메시지 구조
+
+### 상태 표시 라인(Status Line)
+
+### 응답 헤더(Response Headers)
+
+### 빈 라인
+
+### 메세지 바디(Message Body)
 
 ## 응답 코드
 ### 2xx - 성공
@@ -199,6 +209,8 @@ Content-Type: text/gif
 
 ## 무상태 프로토콜
 
+## 메시지 바디
+
 ## 월드 와이드 웹
 World Wide Web
 
@@ -215,6 +227,8 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
 - [https://ko.wikipedia.org/wiki/HTTP](https://ko.wikipedia.org/wiki/HTTP)
 - [https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+- [https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)
+- [https://en.wikipedia.org/wiki/HTTP_message_body](https://en.wikipedia.org/wiki/HTTP_message_body)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)
 - [https://ko.wikipedia.org/wiki/HTTPS](https://ko.wikipedia.org/wiki/HTTPS)
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
