@@ -121,7 +121,6 @@ HTTP/0.9에서는 GET 메서드가, HTTP/1.0에서는 GET, HEAD, POST 메서드�
 > 아래 그림에서 `cache-control`, `expires` 등의 응답 헤더를 사용하여 캐시를 제어할 수 있습니다.
 > 
 > ![HTTP 캐시 응답 헤더](/assets/img/posts/etc/http_cache_response_header.png)
-> 
 
 요청 메서드를 하나씩 살펴보도록 하겠습니다.
 
