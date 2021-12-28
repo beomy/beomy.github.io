@@ -57,14 +57,14 @@ Content-Length: 32
 
 4가지 구조를 하나씩 살펴보도록 하겠습니다.
 
-### 요청 라인
+### 요청 라인(Request line)
 `POST /http.html HTTP/1.1` 이 부분이 요청 라인입니다. 요청 라인의 구조는 아래 그림과 같습니다.
 
 ![요청 라인 구조](/assets/img/posts/etc/request_line.png)
 
 요청 라인은 요청 메서드, 요청하는 서버의 URL, HTTP 버전, 줄 바꿈을 위한 CR + LF 순서로 작성됩니다. 요청 메서드는 대소문자를 구분(GET과 get은 다름)하기 때문에 항상 대문자로 적어 주셔야 합니다.
 
-### 0개 이상의 요청 헤더
+### 0개 이상의 요청 헤더(Request header fields)
 HTTP/1.0에서는 요청 헤더가 존재하지 않아도 상관없었지만, HTTP/1.1 버전 이후로 1개 이상의 헤더가 존재해야 합니다.
 
 아래 코드 부분이 요청 헤더입니다.
@@ -81,10 +81,10 @@ Content-Length: 32
 
 헤더 이름은 대소문자를 구분하지 않습니다. 즉, `host: beomy.github.io`와 `Host: beomy.github.io`는 동알한 헤더이기 때문에 사용할 때 주의해야 합니다.
 
-### 빈 라인
+### 빈 라인(Empty line)
 `<CR><LF>`으로만 구성된 줄입니다. 
 
-### 메시지 바디(선택)
+### 메시지 본문(Message body) - 선택
 요청 메시지의 바디는 데이터를 담아 서버에 요청을 보내도 보내지 않아도 되는 선택적인 부분입니다. 메시지 바디에 어떤 형태의 데이터가 담겨 있는지는 `Content-Type` 헤더를 통해 알 수 있습니다.
 
 ## 요청 메서드
@@ -125,7 +125,15 @@ HTTP/0.9에서는 GET 메서드가, HTTP/1.0에서는 GET, HEAD, POST 메서드�
 요청 메서드를 하나씩 살펴보도록 하겠습니다.
 
 ### GET
+GET 메서드는 단어의 뜻처럼 데이터를 서버에서 가져오기 위해 사용되는 메서드입니다. GET 메서드 요청은 데이터를 가져오기만 하고 데이터를 업데이트(혹은 추가)하는 등의 다른 역할을 해서는 안됩니다.
+
+GET 메서드 요청은 URL에 요청에 필요한 정보를 담기 때문에 북마크나 링크 공유가 가능합니다. 또한 캐시가 가능하기 때문에 동일한 GET 메서드 요청을 할 경우 네트워크 비용을 줄일 수 있습니다.
+
 ### HEAD
+HEAD 메서드 요청은 GET 메서드 요청을 했을 때 응답 받을 헤더를 요청하는 메서드입니다. HEAD 메서드 요청에 대한 응답에는 메시지 본문이 포함되지 않습니다. 하지만 `Content-Length` 헤더처럼 응답 메시지 본문의 정보를 답는 헤더는 포함될 수 있습니다.
+
+HEAD 메서드 요청은 GET 메서드 요청의 응답에서 메시지 본문만 없을 뿐 동일한 결과를 응답받게 됩니다.
+
 ### POST
 ### PUT
 ### DELETE
@@ -146,7 +154,7 @@ HTTP/0.9에서는 GET 메서드가, HTTP/1.0에서는 GET, HEAD, POST 메서드�
 
 ### 빈 라인
 
-### 메세지 바디(Message Body)
+### 메세지 본문(Message Body)
 
 ## 응답 코드
 ### 2xx - 성공
@@ -154,11 +162,13 @@ HTTP/0.9에서는 GET 메서드가, HTTP/1.0에서는 GET, HEAD, POST 메서드�
 ### 4xx - 클라이언트 에러
 ### 5xx - 서버 에러
 
+## 응답 헤더
+
 # 부록
 
 ## 무상태 프로토콜
 
-## 메시지 바디
+## 메시지 본문
 
 ## 월드 와이드 웹
 World Wide Web
@@ -184,3 +194,5 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://kyun2da.dev/CS/http란/](https://kyun2da.dev/CS/http란/)
 - [https://kwangcheolchae.wordpress.com/2012/12/04/캐리지-리턴이란/](https://kwangcheolchae.wordpress.com/2012/12/04/캐리지-리턴이란/)
 - [https://ko.wikipedia.org/wiki/캐리지_리턴](https://ko.wikipedia.org/wiki/캐리지_리턴)
+- [https://www.zerocho.com/category/HTTP/post/5b3723477b58fc001b8f6385](https://www.zerocho.com/category/HTTP/post/5b3723477b58fc001b8f6385)
+- [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD)
