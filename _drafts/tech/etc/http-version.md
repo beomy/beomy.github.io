@@ -74,6 +74,14 @@ Content-Type: text/gif
 
 ## Express에서 HTTP/3 사용
 
+# 부록
+
+## TCP와 UDP
+
+### TCP
+
+### UDP
+
 #### 참고
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
 - [https://ykarma1996.tistory.com/86](https://ykarma1996.tistory.com/86)
