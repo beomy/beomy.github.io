@@ -125,16 +125,22 @@ HTTP/0.9에서는 GET 메서드가, HTTP/1.0에서는 GET, HEAD, POST 메서드�
 요청 메서드를 하나씩 살펴보도록 하겠습니다.
 
 ### GET
-GET 메서드는 단어의 뜻처럼 데이터를 서버에서 가져오기 위해 사용되는 메서드입니다. GET 메서드 요청은 데이터를 가져오기만 하고 데이터를 업데이트(혹은 추가)하는 등의 다른 역할을 해서는 안됩니다.
+GET은 가져오다라는 뜻으로 단어의 뜻처럼 데이터를 서버에서 가져오기 위해 사용되는 메서드입니다. GET 메서드 요청은 데이터를 가져오기만 하고 데이터를 업데이트(혹은 추가)하는 등의 다른 역할을 해서는 안됩니다.
 
 GET 메서드 요청은 URL에 요청에 필요한 정보를 담기 때문에 북마크나 링크 공유가 가능합니다. 또한 캐시가 가능하기 때문에 동일한 GET 메서드 요청을 할 경우 네트워크 비용을 줄일 수 있습니다.
 
 ### HEAD
 HEAD 메서드 요청은 GET 메서드 요청을 했을 때 응답 받을 헤더를 요청하는 메서드입니다. HEAD 메서드 요청에 대한 응답에는 메시지 본문이 포함되지 않습니다. 하지만 `Content-Length` 헤더처럼 응답 메시지 본문의 정보를 답는 헤더는 포함될 수 있습니다.
 
-HEAD 메서드 요청은 GET 메서드 요청의 응답에서 메시지 본문만 없을 뿐 동일한 결과를 응답받게 됩니다.
+서버가 정상 동작하는지 확인(Health Check)하거나 `Content-Length` 헤더를 확인하여 응답 받을 메시지의 크기를 알아내는 등의 헤더 정보를 통한 메타 정보를 조회할 때 유용한 메서드입니다.
 
 ### POST
+POST 메서드는 보통 서버에 새로운 데이터를 생성할 때 사용되지만, 메일을 보내야 하는 요청 같은 CRUD(Create, Read, Update, Delete)로 정의하기 힘든 요청에도 POST 메서드를 사용하기도 합니다.
+
+POST 메서드 요청은 서버에 새로운 데이터를 추가하기 때문에 안전한 메서드가 아닙니다. 또한 매번 요청할 때마다 서버에 새로운 데이터를 추가하기 때문에 멱등 메서드 역시 아닙니다.
+
+HTML의 `<form>` 태그의 `action` 속성으로 POST로 설정하면 `<form>` 태그 안에 `<input>` 태그 데이터들이 메시지 본문에 담겨 POST 메서드 요청을 하게 됩니다.
+
 ### PUT
 ### DELETE
 ### CONNECT
@@ -176,12 +182,6 @@ World Wide Web
 ## HTTPS란
 HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 
-## TCP와 UDP
-
-### TCP
-
-### UDP
-
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
 - [https://ko.wikipedia.org/wiki/HTTP](https://ko.wikipedia.org/wiki/HTTP)
@@ -196,3 +196,5 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://ko.wikipedia.org/wiki/캐리지_리턴](https://ko.wikipedia.org/wiki/캐리지_리턴)
 - [https://www.zerocho.com/category/HTTP/post/5b3723477b58fc001b8f6385](https://www.zerocho.com/category/HTTP/post/5b3723477b58fc001b8f6385)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD)
+- [https://gyrfalcon.tistory.com/entry/HTTP-응답-코드-종류-HTTP-메소드-종류](https://gyrfalcon.tistory.com/entry/HTTP-응답-코드-종류-HTTP-메소드-종류)
+- [https://im-developer.tistory.com/166](https://im-developer.tistory.com/166)
