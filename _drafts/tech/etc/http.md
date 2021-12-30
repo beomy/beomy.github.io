@@ -141,9 +141,19 @@ POST 메서드 요청은 서버에 새로운 데이터를 추가하기 때문에
 
 HTML의 `<form>` 태그의 `action` 속성으로 POST로 설정하면 `<form>` 태그 안에 `<input>` 태그 데이터들이 메시지 본문에 담겨 POST 메서드 요청을 하게 됩니다.
 
+POST 메서드 요청은 `Cache-Control` 헤더나 `Expires` 헤더가 정확히 정의되어 있다면 캐시가 가능합니다.
+
 ### PUT
+PUT 메서드 요청은 요청 데이터에 해당되는 데이터가 서버에 존재한다면 서버 데이터 값을 요청 데이터로 전체 수정을 하고, 데이터가 존재하지 않는다면 데이터를 생성합니다. 데이터를 생성하게 되면 응답 코드로 `201 (Created)`를 응답해야 하고, 수정이 되었다면 응답 코드로 `200 (OK)` 또는 `204 (No Content)`를 응답해야 합니다.
+
+데이터가 없다면 생성하고 있다면 전체 수정을 하기 때문에 N번 요청을 하더라도 동일한 결과가 나타나기 때문에 POST와 다르게 멱등 메서드입니다. 하지만 PUT 메서드 요청은 캐시되지 않습니다.
+
 ### DELETE
+DELETE 메서드 요청은 데이터를 삭제하기 위해 사용되는 메서드입니다.
+
 ### CONNECT
+
+
 ### OPTIONS
 ### TRACE
 ### PATCH
@@ -198,3 +208,5 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD)
 - [https://gyrfalcon.tistory.com/entry/HTTP-응답-코드-종류-HTTP-메소드-종류](https://gyrfalcon.tistory.com/entry/HTTP-응답-코드-종류-HTTP-메소드-종류)
 - [https://im-developer.tistory.com/166](https://im-developer.tistory.com/166)
+- [https://kingjakeu.github.io/study/2020/07/15/http-post-put/](https://kingjakeu.github.io/study/2020/07/15/http-post-put/)
+- [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT)
