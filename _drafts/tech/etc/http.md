@@ -153,7 +153,6 @@ DELETE 메서드 요청은 데이터를 삭제하기 위해 사용되는 메서�
 
 ### CONNECT
 
-
 ### OPTIONS
 ### TRACE
 ### PATCH
