@@ -152,6 +152,7 @@ PUT 메서드 요청은 요청 데이터에 해당되는 데이터가 서버에 
 DELETE 메서드 요청은 데이터를 삭제하기 위해 사용되는 메서드입니다.
 
 ### CONNECT
+CONNECT 메서드는 클라이언드가 프록시를 통해 서버와 SSL 통신을 할 때 사용됩니다. HTTP의 CONNECT 메서드는 HTTP 터널링의 가장 일반적인 형태입니다.
 
 ### OPTIONS
 ### TRACE
@@ -209,3 +210,6 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://im-developer.tistory.com/166](https://im-developer.tistory.com/166)
 - [https://kingjakeu.github.io/study/2020/07/15/http-post-put/](https://kingjakeu.github.io/study/2020/07/15/http-post-put/)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT)
+- [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/CONNECT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/CONNECT)
+- [https://www.kensei.co.kr/1102](https://www.kensei.co.kr/1102)
+- [https://en.wikipedia.org/wiki/HTTP_tunnel](https://en.wikipedia.org/wiki/HTTP_tunnel)
