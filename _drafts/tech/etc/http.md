@@ -155,7 +155,9 @@ DELETE 메서드 요청은 데이터를 삭제하기 위해 사용되는 메서�
 CONNECT 메서드는 클라이언드가 프록시를 통해 서버와 SSL 통신을 할 때 사용됩니다. HTTP의 CONNECT 메서드는 HTTP 터널링의 가장 일반적인 형태입니다.
 
 ### OPTIONS
+
 ### TRACE
+
 ### PATCH
 
 ## 요청 헤더
