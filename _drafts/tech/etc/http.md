@@ -155,7 +155,7 @@ DELETE 메서드 요청은 데이터를 삭제하기 위해 사용되는 메서�
 CONNECT 메서드는 클라이언드가 프록시를 통해 서버와 SSL 통신을 할 때 사용됩니다. HTTP의 CONNECT 메서드는 HTTP 터널링의 가장 일반적인 형태입니다.
 
 ### OPTIONS
-CORS
+OPTIONS 메서드는 유효한 요청인지 확인하기 위한 예비 요청(Preflight request)으로 사용되는 메서드입니다. CORS에서 사용되는 예비 요청에 대한 자세한 내용은 [[Browser] CORS란?](/tech/browser/cors/#preflight-request)을 참고 부탁드립니다.
 
 ### TRACE
 
@@ -215,4 +215,5 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/CONNECT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/CONNECT)
 - [https://www.kensei.co.kr/1102](https://www.kensei.co.kr/1102)
-- [https://en.wikipedia.org/wiki/HTTP_tunnel](https://en.wikipedia.org/wiki/HTTP_tunnel)
+- [https://medium.com/@lyhlg0201/http-method-d561b77df7](https://medium.com/@lyhlg0201/http-method-d561b77df7)
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE)
