@@ -158,7 +158,7 @@ CONNECT 메서드는 클라이언드가 프록시를 통해 서버와 SSL 통신
 OPTIONS 메서드는 유효한 요청인지 확인하기 위한 예비 요청(Preflight request)으로 사용되는 메서드입니다. CORS에서 사용되는 예비 요청에 대한 자세한 내용은 [[Browser] CORS란?](/tech/browser/cors/#preflight-request)을 참고 부탁드립니다.
 
 ### TRACE
-TRACE 메서드는
+TRACE 메서드는 웹 브라우저가 보내는 HTTP 요청 내용을 반사하는 역할을 합니다.
 
 ### PATCH
 
@@ -218,3 +218,4 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://www.kensei.co.kr/1102](https://www.kensei.co.kr/1102)
 - [https://medium.com/@lyhlg0201/http-method-d561b77df7](https://medium.com/@lyhlg0201/http-method-d561b77df7)
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE)
+- [https://webhack.dynu.net/?idx=20161111.001](https://webhack.dynu.net/?idx=20161111.001)
