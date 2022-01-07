@@ -2,7 +2,7 @@
 layout: post
 title: '[ETC] HTTP 터너링'
 featured-img: etc/HTTP_logo.svg
-category: [tech, etc]가
+category: [tech, etc]
 summary:
 ---
 
