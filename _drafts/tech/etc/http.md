@@ -65,7 +65,7 @@ Content-Length: 32
 요청 라인은 요청 메서드, 요청하는 서버의 URL, HTTP 버전, 줄 바꿈을 위한 CR + LF 순서로 작성됩니다. 요청 메서드는 대소문자를 구분(GET과 get은 다름)하기 때문에 항상 대문자로 적어 주셔야 합니다.
 
 ### 0개 이상의 요청 헤더(Request header fields)
-HTTP/1.0에서는 요청 헤더가 존재하지 않아도 상관없었지만, HTTP/1.1 버전 이후로 1개 이상의 헤더가 존재해야 합니다.
+HTTP/1.0에서는 요청 헤더가 존재하지 않아도 상관없었지만, HTTP/1.1 버전 이후로 Host 헤더가 필수 헤더가 되어 1개 이상의 헤더가 존재해야 합니다.
 
 아래 코드 부분이 요청 헤더입니다.
 
@@ -158,11 +158,25 @@ CONNECT 메서드는 클라이언드가 프록시를 통해 서버와 SSL 통신
 OPTIONS 메서드는 유효한 요청인지 확인하기 위한 예비 요청(Preflight request)으로 사용되는 메서드입니다. CORS에서 사용되는 예비 요청에 대한 자세한 내용은 [[Browser] CORS란?](/tech/browser/cors/#preflight-request)을 참고 부탁드립니다.
 
 ### TRACE
-TRACE 메서드는 웹 브라우저가 보내는 HTTP 요청 내용을 반사하는 역할을 합니다. 아래 그림과 같이 HTTP 요청이 변조되었는지 확인하기 위한 용도로 사용될 수 있는 메서드입니다. 
+TRACE 메서드는 웹 브라우저가 보내는 HTTP 요청을 HTTP 응답의 body에 담아 응답하는 역할을 합니다. 아래 그림과 같이 HTTP 요청을 보내고 응답을 받습니다.
+
+![HTTP TRACE](/assets/img/posts/etc/http_trace.png)
+
+HTTP 요청 데이터를 HTTP 응답의 body에 담아 응답하기 때문에 요청 메시지가 변조되었는지 확인하기 위한 용도로 사용되는 메서드입니다.
 
 ### PATCH
+PATCH 메서드는 데이터를 업데이트 한다는 의미에서 PUT 메서드와 유사하지만 PUT 메서드는 전체 수정, PATCH 메서드는 부분 수정을 의미합니다. PATCH 메서드는 수정하려고 하는 데이터를 찾을 수 있는 식별자와 수정하려는 값만 요청 데이터에 담아 보내면 되기 때문에, PUT 메서드 보다 네트워크 비용을 줄 일 수 있습니다.
+
+PATCH 메서드는 PUT 메서드와 달리 멱등 메서드가 아닙니다. 예를 들어 블로그의 방문자 수를 카운트 해야 할 경우 새로운 데이터를 추가하는 것도, 전체 데이터를 교체하는 것도 아니기 때문에 PATCH 메서드를 사용할 수 있는데, 방문자 수를 카운트하는 PATCH 메서드를 10번 호출한다면 10명의 방문자가 카운트 되어 호출 할 때 마다 다른 결과가 나타나기 때문에 멱등 메서드가 아니게 됩니다.
 
 ## 요청 헤더
+요청 헤더는 `Host`와 같은 표준 헤더와 `X-Request-With`와 같이 보통 `X-`로 시작하는 커스텀 헤더가 있습니다.
+
+### 표준 헤더
+|이름|설명|예시|
+
+
+### 커스텀 헤더
 
 # HTTP 응답 메시지
 
@@ -200,7 +214,6 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
 - [https://ko.wikipedia.org/wiki/HTTP](https://ko.wikipedia.org/wiki/HTTP)
 - [https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
-- [https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)
 - [https://en.wikipedia.org/wiki/HTTP_message_body](https://en.wikipedia.org/wiki/HTTP_message_body)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)
 - [https://ko.wikipedia.org/wiki/HTTPS](https://ko.wikipedia.org/wiki/HTTPS)
@@ -209,13 +222,15 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://kwangcheolchae.wordpress.com/2012/12/04/캐리지-리턴이란/](https://kwangcheolchae.wordpress.com/2012/12/04/캐리지-리턴이란/)
 - [https://ko.wikipedia.org/wiki/캐리지_리턴](https://ko.wikipedia.org/wiki/캐리지_리턴)
 - [https://www.zerocho.com/category/HTTP/post/5b3723477b58fc001b8f6385](https://www.zerocho.com/category/HTTP/post/5b3723477b58fc001b8f6385)
-- [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD)
 - [https://gyrfalcon.tistory.com/entry/HTTP-응답-코드-종류-HTTP-메소드-종류](https://gyrfalcon.tistory.com/entry/HTTP-응답-코드-종류-HTTP-메소드-종류)
 - [https://im-developer.tistory.com/166](https://im-developer.tistory.com/166)
 - [https://kingjakeu.github.io/study/2020/07/15/http-post-put/](https://kingjakeu.github.io/study/2020/07/15/http-post-put/)
-- [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT)
-- [https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/CONNECT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/CONNECT)
 - [https://www.kensei.co.kr/1102](https://www.kensei.co.kr/1102)
 - [https://medium.com/@lyhlg0201/http-method-d561b77df7](https://medium.com/@lyhlg0201/http-method-d561b77df7)
-- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE)
 - [https://webhack.dynu.net/?idx=20161111.001](https://webhack.dynu.net/?idx=20161111.001)
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD)
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT)
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/CONNECT)
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE)
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH)
+- [https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)
