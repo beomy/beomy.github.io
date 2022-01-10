@@ -170,13 +170,9 @@ PATCH 메서드는 데이터를 업데이트 한다는 의미에서 PUT 메서�
 PATCH 메서드는 PUT 메서드와 달리 멱등 메서드가 아닙니다. 예를 들어 블로그의 방문자 수를 카운트 해야 할 경우 새로운 데이터를 추가하는 것도, 전체 데이터를 교체하는 것도 아니기 때문에 PATCH 메서드를 사용할 수 있는데, 방문자 수를 카운트하는 PATCH 메서드를 10번 호출한다면 10명의 방문자가 카운트 되어 호출 할 때 마다 다른 결과가 나타나기 때문에 멱등 메서드가 아니게 됩니다.
 
 ## 요청 헤더
-요청 헤더는 `Host`와 같은 표준 헤더와 `X-Request-With`와 같이 보통 `X-`로 시작하는 커스텀 헤더가 있습니다.
+요청 헤더는 `Host`와 같은 표준 헤더와 `X-Request-With`와 같은 Custom의 약자인 `X-`로 시작하는 비표준 헤더가 있습니다. 요청 헤더는 자유롭게 만들어 사용할 수 있기 때문에 `X-`로 시작하지 않는 비표준 헤더를 만들어 사용할 수 있습니다.
 
-### 표준 헤더
-|이름|설명|예시|
-
-
-### 커스텀 헤더
+[요청 헤더 목록](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)에서 표준 헤더와 자주 사용되는 비표준 헤더의 목록을 더 자세히 확인할 수 있습니다.
 
 # HTTP 응답 메시지
 
@@ -186,7 +182,7 @@ PATCH 메서드는 PUT 메서드와 달리 멱등 메서드가 아닙니다. 예
 
 ### 응답 헤더(Response Headers)
 
-### 빈 라인
+### 빈 라인(Empty line)
 
 ### 메세지 본문(Message Body)
 
@@ -233,4 +229,4 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT](https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/CONNECT)
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE)
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH)
-- [https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)
+- [https://en.wikipedia.org/wiki/List_of_HTTP_header_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
