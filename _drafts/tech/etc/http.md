@@ -178,22 +178,7 @@ PATCH 메서드는 PUT 메서드와 달리 멱등 메서드가 아닙니다. 예
 서버에서 클라이언트로 보내는 응답 메시지의 구조와 응답 코드, 응답 헤더에 대해 살펴보겠습니다.
 
 ## 응답 메시지 구조
-요청 메시지는 상태 표시 라인, 응답 헤더, 빈 라인, 메시지 본문 4가지로 구성됩니다. 코드로 살펴보면 응답 메시지는 아래와 같습니다.
-
-```none
-HTTP/1.1 200 OK
-Content-Type: text/html; charset=UTF-8
-Content-Length: 155
-
-<html>
-  <head>
-    <title>An Example Page</title>
-  </head>
-  <body>
-    <p>Hello World, this is a very simple HTML document.</p>
-  </body>
-</html>
-```
+요청 메시지는 아래 그림과 같이 상태 표시 라인, 응답 헤더, 빈 라인, 메시지 본문 4가지로 구성됩니다.
 
 ### 상태 표시 라인(Status Line)
 
