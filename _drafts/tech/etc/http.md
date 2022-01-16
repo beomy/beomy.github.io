@@ -23,14 +23,14 @@ HTTP는 아래 목록과 같이 간단함, 확장성, 무상태, 비연결성 4�
 클라이언트가 서버에게 보내는 요청 메시지의 구조와 요청 메서드, 요청 헤더에 대해 살펴보겠습니다.
 
 ## 요청 메시지 구조
-요청 메시지는 요청 라인, 요청 헤더, 빈 라인, 메시지 본문 4가지로 구성됩니다. 코드로 살펴보면 메시지 바디가 없는 GET 요청 메시지는 아래와 같습니다.
+요청 메시지는 요청 라인, 요청 헤더, 빈 라인, 메시지 본문 4가지로 구성됩니다. 코드로 살펴보면 메시지 본문이 없는 GET 요청 메시지는 아래와 같습니다.
 
 ```none
 GET /http.html HTTP/1.1
 Host: beomy.github.io
 ```
 
-바디가 있는 POST 요청 메시지를 표현하면 아래와 같습니다.
+본문이 있는 POST 요청 메시지를 표현하면 아래와 같습니다.
 
 ```none
 POST /http.html HTTP/1.1
@@ -51,7 +51,7 @@ Content-Length: 32
 > 
 > 타자기에서 다음 줄로 이동 할 때, 타자기의 커서를 맨 앞으로 이동한 후 종이를 위로 올려줘야 합니다. 즉 CR 후 LF를 해야 다음 줄로 이동하게 됩니다. 타자기와 동일하게 윈도우에서도 CR + LF 이 두 동작을 합쳐서 Enter 동작을 하게 됩니다.
 
-바디가 있는 POST 요청 메시지를 보면서 아래 그림과 같이 4가지 구조로 나누어 볼 수 있습니다.
+본문이 있는 POST 요청 메시지를 보면서 아래 그림과 같이 4가지 구조로 나누어 볼 수 있습니다.
 
 ![요청 메시지 구조](/assets/img/posts/etc/request_message.png)
 
@@ -85,7 +85,7 @@ Content-Length: 32
 `<CR><LF>`으로만 구성된 줄입니다. 
 
 ### 메시지 본문(Message body) - 선택
-요청 메시지의 바디는 데이터를 담아 서버에 요청을 보내도 보내지 않아도 되는 선택적인 부분입니다. 메시지 바디에 어떤 형태의 데이터가 담겨 있는지는 `Content-Type` 헤더를 통해 알 수 있습니다.
+요청 메시지의 본문은 데이터를 담아 서버에 요청을 보내도 보내지 않아도 되는 선택적인 부분입니다. 메시지 본문에 어떤 형태의 데이터가 담겨 있는지는 `Content-Type` 헤더를 통해 알 수 있습니다.
 
 ## 요청 메서드
 HTTP/0.9에서는 GET 메서드가, HTTP/1.0에서는 GET, HEAD, POST 메서드가, HTTP/1.1에서는 PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH 메서드가 추가되었습니다. 각 메서드는 아래 표와 같이 정리할 수 있습니다.
@@ -180,15 +180,38 @@ PATCH 메서드는 PUT 메서드와 달리 멱등 메서드가 아닙니다. 예
 ## 응답 메시지 구조
 요청 메시지는 아래 그림과 같이 상태 표시 라인, 응답 헤더, 빈 라인, 메시지 본문 4가지로 구성됩니다.
 
-### 상태 표시 라인(Status Line)
+![응답 메시지 구조](/assets/img/posts/etc/response_message.png)
 
-### 응답 헤더(Response Headers)
+4가지 구조를 하나씩 살펴보도록 하겠습니다.
+
+### 상태 표시 라인(Status line)
+`HTTP/1.1 200 OK` 이 부분이 상태 표시 라인입니다. 상태 표시 라인의 구조는 아래 그림과 같습니다.
+
+![응답 메시지 구조](/assets/img/posts/etc/response_status_line.png)
+
+### 0개 이상의 응답 헤더(Response header fields)
+아래 코드 부분이 요청 헤더입니다.
+
+```none
+Content-Type: text/html; charset=UTF-8
+Content-Length: 155
+```
+
+응답 헤더의 구조는 아래 그림과 같습니다.
+
+![요청 헤더 구조](/assets/img/posts/etc/response_header.png)
+
+응답 메시지의 헤더와 동일하게 헤더 이름은 대소문자를 구분하지 않습니다. 즉, `content-type: text/html; charset=UTF-8`와 `Content-Type: text/html; charset=UTF-8`는 동알한 헤더입니다.
 
 ### 빈 라인(Empty line)
+요청 메시지의 빈 라인과 동일하게 `<CR><LF>`으로만 구성된 줄입니다.
 
-### 메세지 본문(Message Body)
+### 메세지 본문(Message body) - 선택
+응답 메시지의 본문은 요청 메시지와 동일하게 보내도 보내지 않아도 되는 선택적인 부분입니다. 메시지 본문에 어떤 형태의 데이터가 담겨 있는지는 `Content-Type` 헤더를 통해 알 수 있습니다.
 
 ## 응답 코드
+
+### 1xx - 응답 정보
 
 ### 2xx - 성공
 
@@ -201,8 +224,6 @@ PATCH 메서드는 PUT 메서드와 달리 멱등 메서드가 아닙니다. 예
 ## 응답 헤더
 
 # 부록
-
-## 무상태 프로토콜
 
 ## 메시지 본문
 
@@ -236,3 +257,4 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE)
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH)
 - [https://en.wikipedia.org/wiki/List_of_HTTP_header_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
+- [https://en.wikipedia.org/wiki/List_of_HTTP_status_codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
