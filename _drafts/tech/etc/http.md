@@ -227,7 +227,9 @@ Content-Length: 155
 
 # 부록
 
-## 메시지 본문
+## 요청 메시지에서 Body
+보통 GET 메서드 요청은 메시지 본문(Body)을 사용하지 않고 `https://beomy.github.io/?id=1234` 에서 `?id=1234` 와 같이 URL의 `?` 문자 뒤에 오는 쿼리를 사용하여 데이터를 서버로 전달하는 방법을 사용합니다.
+
 https://datatracker.ietf.org/doc/html/rfc7230#section-3.3
 2014년도에 나온 문서인데, GET 메소드가 body를 포함할 수도 있다고 하는 것 같아요.
 GET 메소드를 사용하면 클라이언드나 서버에서 body를 무시할 수 있어서 GET의 body에 데이터를 담으면 안되지만,
@@ -265,3 +267,4 @@ HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH)
 - [https://en.wikipedia.org/wiki/List_of_HTTP_header_fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 - [https://en.wikipedia.org/wiki/List_of_HTTP_status_codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+- [https://brunch.co.kr/@kd4/158](https://brunch.co.kr/@kd4/158)
