@@ -227,8 +227,8 @@ Content-Length: 155
 
 # 부록
 
-## 요청 메시지에서 Body
-보통 GET 메서드 요청은 메시지 본문(Message body)을 사용하지 않고 `https://beomy.github.io/?id=1234` 에서 `?id=1234` 와 같이 URL의 `?` 문자 뒤에 오는 쿼리를 사용하여 데이터를 서버로 전달하는 방법을 사용합니다. GET 메서드 요청은 URL에 데이터를 담아야 한다는 정의는 [RFC2616의 9.3 GET](https://datatracker.ietf.org/doc/html/rfc2616#section-9.3)에 아래와 같이 명시 되어 있습니다.
+## GET 메서드 요청에서 Body
+보통 GET 메서드 요청은 메시지 본문(Message body)을 사용하지 않고 `https://beomy.github.io/?id=1234`에서 `?id=1234`와 같이 URL의 `?`문자 뒤에 오는 쿼리를 사용하여 데이터를 서버로 전달하는 방법을 사용합니다. GET 메서드 요청은 URL에 데이터를 담아야 한다는 정의는 [RFC2616의 9.3 GET](https://datatracker.ietf.org/doc/html/rfc2616#section-9.3)에 아래와 같이 명시 되어 있습니다.
 
 > The GET method means retrieve whatever information (in the form of an entity) is identified by the Request-URI.
 
@@ -236,11 +236,11 @@ Content-Length: 155
 
 > if the request method does not include defined semantics for an entity-body, then the message-body SHOULD be ignored when handling the request.
 
-https://datatracker.ietf.org/doc/html/rfc7230#section-3.3
-2014년도에 나온 문서인데, GET 메소드가 body를 포함할 수도 있다고 하는 것 같아요.
-GET 메소드를 사용하면 클라이언드나 서버에서 body를 무시할 수 있어서 GET의 body에 데이터를 담으면 안되지만,
-GET은 body를 사용하지 않는다가 표준으로 정해져 있지는 않은것 같아보입니다.
-몰랐던 내용이라 공유 드려요
+이 설명에 의하면 GET 메서드는 데이터는 쿼리를 통해 전달되기 때문에 GET 요청에서 메시지 본문은 무시되어 서버에 전달되지 않게 됩니다. 이런 설명은 [RFC7230의 3.3 Message Body](https://datatracker.ietf.org/doc/html/rfc7230#section-3.3)에서 삭제 되고, 아래와 같은 설명이 추가 되었습니다.
+
+> Request message framing is independent of method semantics, even if the method does not define any use for a message body.
+
+메서드의 의미와 메서드 본문의 의미가 독립적으로 구분되면서 GET 메서드 요청에도 메시지 본문을 사용하는 것이 가능해졌습니다. 하지만 클라이언트나 서버에서 GET 메서드의 메시지 본문을 무시하는 경우가 종종 있기 때문에, GET 메서드에서 메시지 본문을 사용할 때 주의해야 합니다. 
 
 ## 월드 와이드 웹
 World Wide Web
