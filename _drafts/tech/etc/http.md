@@ -242,12 +242,6 @@ Content-Length: 155
 
 메서드의 의미와 메서드 본문의 의미가 독립적으로 구분되면서 GET 메서드 요청에도 메시지 본문을 사용하는 것이 가능해졌습니다. 하지만 클라이언트나 서버에서 GET 메서드의 메시지 본문을 무시하는 경우가 종종 있기 때문에, GET 메서드에서 메시지 본문을 사용할 때 주의해야 합니다. 
 
-## 월드 와이드 웹
-World Wide Web
-
-## HTTPS란
-HTTPS(Hyper Text Transfer Protocol over Secure Socket Layer)는
-
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
 - [https://ko.wikipedia.org/wiki/HTTP](https://ko.wikipedia.org/wiki/HTTP)
