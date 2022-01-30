@@ -3,7 +3,7 @@ layout: post
 title: '[ETC] HTTP 버전'
 featured-img: etc/HTTP_logo.svg
 category: [tech, etc]
-summary:
+summary: HTTP의 버전은 초기 버전인 HTTP/0.9부터, HTTP/1.0, HTTP/1.1, HTTP/2, 그리고 가장 최근 버전인 HTTP/3까지 5개의 버전이 있습니다.
 ---
 
 HTTP의 버전은 초기 버전인 HTTP/0.9부터, HTTP/1.0, HTTP/1.1, HTTP/2, 그리고 가장 최근 버전인 HTTP/3까지 5개의 버전이 있습니다.
