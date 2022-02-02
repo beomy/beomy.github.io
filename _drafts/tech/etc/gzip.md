@@ -3,6 +3,7 @@ layout: post
 title: '[ETC] gzip이란?'
 featured-img: javascript/js.png
 category: [tech, etc]
+summary:
 ---
 
 1. Browser: 이봐 Server야, index.html 파일좀 찾아줄 수 있니? 이번엔 압축된 버전으로 받고 싶어.
