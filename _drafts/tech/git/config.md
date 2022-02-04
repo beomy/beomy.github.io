@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[ETC] Git 설정'
-featured-img: etc/HTTP_logo.svg
+featured-img: 
 category: [tech, etc]
 summary:
 ---
