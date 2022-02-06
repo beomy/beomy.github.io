@@ -3,6 +3,7 @@ layout: post
 title: '[ETC] RFC란?'
 featured-img: javascript/js.png
 category: [tech, etc]
+summary:
 ---
 
 #### 참고
