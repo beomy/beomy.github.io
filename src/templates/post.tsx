@@ -28,8 +28,8 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
   const previous = usePost(pageContext.previous);
   const next = usePost(pageContext.next);
   const disqusConfig = {
-    url: pageContext.slug,
-    identifier: pageContext.slug,
+    url: `${data.site.siteMetadata.siteUrl}${pageContext.slug}`,
+    identifier: `${data.site.siteMetadata.siteUrl}${pageContext.slug}`,
     title: post.title,
   };
 
@@ -74,6 +74,11 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
 
 export const query = graphql`
   query ($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       tableOfContents(maxDepth: 2)
