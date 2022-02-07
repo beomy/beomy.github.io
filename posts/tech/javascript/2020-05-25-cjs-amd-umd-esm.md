@@ -2,7 +2,7 @@
 layout: post
 title: '[JavaScript] CJS, AMD, UMD, ESM'
 featured-img: javascript/js.png
-category: [tech, javaScript]
+category: [tech, javascript]
 summary: 자바스크립트를 모듈화할 수 있게 한 CJS, AMD, UMD, ESM에 대해 살펴보겠습니다.
 ---
 

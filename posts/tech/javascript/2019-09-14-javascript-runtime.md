@@ -2,7 +2,7 @@
 layout: post
 title: '[JavaScript] 자바스크립트 런타임'
 featured-img: javascript/js.png
-category: [tech, javaScript]
+category: [tech, javascript]
 summary: 자바스크립트 런타임의 동작 원리를 이야기 하도록 하겠습니다.
 ---
 

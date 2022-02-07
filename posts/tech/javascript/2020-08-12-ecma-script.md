@@ -2,14 +2,14 @@
 layout: post
 title: '[JavaScript] ECMAScript 란'
 featured-img: javascript/js.png
-category: [tech, javaScript]
+category: [tech, javascript]
 summary: ECMAScript와 TC39 제안 프로세스가 무엇인지 알아보도록 하겠습니다.
 ---
 
 ECMAScript는 ES5, ES6 등의 줄임말로 많이 접해 보셨을 겁니다. 이번 포스트에서는 ECMAScript가 무엇인지 이야기하도록 하겠습니다.
 
 # ECMAScript 란?
-1996년 넷스케이프에서 넷스케이프 네비게이터 2.0을 출시하면서 자바스크립트를 지원하기 시작했습니다. 자바스크립트의 성공은 마이크로소프트가 J스트립트라는 언어를 개발하는 계기가 되었고 IE3에 J스크립트를 포함하여 출시하였습니다. 
+1996년 넷스케이프에서 넷스케이프 네비게이터 2.0을 출시하면서 자바스크립트를 지원하기 시작했습니다. 자바스크립트의 성공은 마이크로소프트가 J스트립트라는 언어를 개발하는 계기가 되었고 IE3에 J스크립트를 포함하여 출시하였습니다.
 
 넷스케이프는 표준화를 위해 자바스크립트 기술 규격을 ECMA(European Computer Manufactureers Association) 인터네셔널에 제출하였고, 이 규격에 대한 작업은 ECMA-262 이름으로 1996년 11월에 시작되어, 초판은 1997년 6월에 채택되었습니다.
 
