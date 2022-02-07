@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, PageProps } from 'gatsby';
+import { Disqus } from 'gatsby-plugin-disqus';
 import { ThemeProvider } from '@emotion/react';
 import theme from '@/assets/themes/default';
 import { IData, IMarkdownRemark } from '@/model/GraphQL';
@@ -26,6 +27,11 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
   const post = usePost(data.markdownRemark);
   const previous = usePost(pageContext.previous);
   const next = usePost(pageContext.next);
+  const disqusConfig = {
+    url: pageContext.slug,
+    identifier: pageContext.slug,
+    title: post.title,
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,6 +66,7 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
           width="300px"
         />
       </Contents>
+      <Disqus config={disqusConfig} />
       <Footer />
     </ThemeProvider>
   );

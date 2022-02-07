@@ -200,6 +200,12 @@ const plugins = [
   },
   `gatsby-plugin-emotion`,
   `gatsby-plugin-sass`,
+  {
+    resolve: `gatsby-plugin-disqus`,
+    options: {
+      shortname: `beomy`,
+    },
+  },
   // this (optional) plugin enables Progressive Web App + Offline functionality
   // To learn more, visit: https://gatsby.dev/offline
   // 'gatsby-plugin-offline`,
