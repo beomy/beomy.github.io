@@ -57,6 +57,7 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
           <PostHeader {...post} />
           <PostContents html={post.html} />
           <PostNavigator previous={previous} next={next} />
+          <Disqus config={disqusConfig} />
         </PostWrapper>
         <TableOfContents
           toc={post.tableOfContents}
@@ -66,7 +67,6 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
           width="300px"
         />
       </Contents>
-      <Disqus config={disqusConfig} />
       <Footer />
     </ThemeProvider>
   );
