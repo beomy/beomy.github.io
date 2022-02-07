@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { getSrc } from 'gatsby-plugin-image';
 import { IData } from '@/model/GraphQL';
 
 interface IProp {
@@ -14,12 +15,18 @@ interface IProp {
   title?: string;
   path?: string;
   type?: string;
+  image?: string;
 }
 
-function Seo({ description, lang, meta, title, path, type }: IProp) {
-  const { site } = useStaticQuery<IData>(
+function Seo({ description, lang, meta, title, path, type, image }: IProp) {
+  const { site, file } = useStaticQuery<IData>(
     graphql`
       query {
+        file(relativePath: { eq: "beomy-logo.png" }) {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
         site {
           siteMetadata {
             title
@@ -35,6 +42,7 @@ function Seo({ description, lang, meta, title, path, type }: IProp) {
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
   const url = `${site.siteMetadata.siteUrl}${path}`;
+  const metaImage = image || getSrc(file.childImageSharp.gatsbyImageData);
 
   return (
     <Helmet
@@ -77,6 +85,10 @@ function Seo({ description, lang, meta, title, path, type }: IProp) {
           content: type,
         },
         {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -104,6 +116,7 @@ Seo.defaultProps = {
   title: '',
   path: '',
   type: 'website',
+  image: '',
 };
 
 export default Seo;

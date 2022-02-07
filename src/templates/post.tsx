@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, PageProps } from 'gatsby';
+import { getSrc } from 'gatsby-plugin-image';
 import { Disqus } from 'gatsby-plugin-disqus';
 import { ThemeProvider } from '@emotion/react';
 import theme from '@/assets/themes/default';
@@ -40,6 +41,7 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
         description={post.summary}
         path={pageContext.slug}
         type="article"
+        image={getSrc(data.file.childImageSharp.gatsbyImageData)}
         meta={[
           {
             property: 'article:published_time',
@@ -73,10 +75,15 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
 }
 
 export const query = graphql`
-  query ($slug: String!) {
+  query ($slug: String!, $image: [String]) {
     site {
       siteMetadata {
         siteUrl
+      }
+    }
+    file(relativePath: { in: $image }) {
+      childImageSharp {
+        gatsbyImageData
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

@@ -37,8 +37,18 @@ export interface ISite {
   siteMetadata: ISiteMetadata;
 }
 
+export interface IImageSharp {
+  gatsbyImageData: any;
+}
+
+export interface IFile {
+  childImageSharp: IImageSharp;
+}
+
 export interface IData {
   markdownRemark: IMarkdownRemark;
   allMarkdownRemark: IAllMarkdownRemark;
   site: ISite;
+  imageSharp: IImageSharp;
+  file: IFile;
 }

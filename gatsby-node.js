@@ -77,6 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
             frontmatter {
               layout
               category
+              thumbnail: featured_img
             }
           }
         }
@@ -96,6 +97,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // Data passed to context is available
         // in page queries as GraphQL variables.
         slug: node.fields.slug,
+        image: node.frontmatter.thumbnail,
         next,
         previous,
       },
