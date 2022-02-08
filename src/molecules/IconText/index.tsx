@@ -6,6 +6,7 @@ import StyledIconText from './IconText.styled';
 interface IProp extends SpaceProps, ColorProps, TypographyProps {
   Icon: IconType;
   children: ReactNode;
+  color?: any;
 }
 
 function IconText({ Icon, children, ...props }: IProp) {
@@ -18,5 +19,9 @@ function IconText({ Icon, children, ...props }: IProp) {
     </StyledIconText>
   );
 }
+
+IconText.defaultProps = {
+  color: undefined,
+};
 
 export default IconText;

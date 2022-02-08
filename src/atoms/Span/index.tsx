@@ -4,10 +4,15 @@ import StyledSpan from './Span.styled';
 
 interface IProp extends ColorProps, TypographyProps, SpaceProps {
   children: ReactNode;
+  color?: any;
 }
 
-function Ul({ children, ...props }: IProp) {
+function Span({ children, ...props }: IProp) {
   return <StyledSpan {...props}>{children}</StyledSpan>;
 }
 
-export default Ul;
+Span.defaultProps = {
+  color: undefined,
+};
+
+export default Span;

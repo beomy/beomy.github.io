@@ -12,8 +12,8 @@ const StyledDecoInput = styled.div<TypographyProps>`
     width: calc(100% - 70px);
   }
   button {
-    width: ${(props) => props.fontSize};
-    height: ${(props) => props.fontSize};
+    width: ${(props: any) => props.fontSize};
+    height: ${(props: any) => props.fontSize};
     .clear {
       visibility: hidden;
       margin-right: 5px;

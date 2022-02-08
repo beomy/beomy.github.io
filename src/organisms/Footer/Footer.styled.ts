@@ -12,10 +12,6 @@ const StyledFooter = styled.footer`
     width: 100px;
     margin: 0 auto 10px;
   }
-  span {
-    color: ${({ theme }: any) => theme.colors.text2};
-    font-size: ${({ theme }: any) => theme.fontSizes[1]};
-  }
 `;
 
 export default StyledFooter;

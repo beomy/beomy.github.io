@@ -1,7 +1,7 @@
 import React from 'react';
 import { getYear } from 'date-fns';
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
-import { A } from '@/atoms';
+import { A, Span } from '@/atoms';
 import StyledFooter from './Footer.styled';
 
 function Footer() {
@@ -19,7 +19,9 @@ function Footer() {
           <FaLinkedinIn size={20} />
         </A>
       </nav>
-      <span>© {getYear(new Date())} Beomy. All rights reserved.</span>
+      <Span color="text2" fontSize={1}>
+        © {getYear(new Date())} Beomy. All rights reserved.
+      </Span>
     </StyledFooter>
   );
 }

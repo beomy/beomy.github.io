@@ -5,6 +5,8 @@ import StyledImg from './Img.styled';
 interface IProp {
   src: string;
   alt?: string;
+  height?: any;
+  width?: any;
 }
 
 function Img({ src, alt, ...props }: IProp & LayoutProps & SpaceProps) {
@@ -13,6 +15,8 @@ function Img({ src, alt, ...props }: IProp & LayoutProps & SpaceProps) {
 
 Img.defaultProps = {
   alt: '',
+  height: undefined,
+  width: undefined,
 };
 
 export default Img;
