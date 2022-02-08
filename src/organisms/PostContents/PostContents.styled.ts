@@ -13,6 +13,12 @@ const StyledContents = styled.div`
   pre {
     border-radius: 10px;
   }
+  :not(pre) {
+    code[class*='language-'] {
+      word-break: break-word;
+    }
+  }
+
   table {
     display: table;
     width: 100%;
