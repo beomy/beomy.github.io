@@ -12,10 +12,12 @@ function Search({ data, location }: PageProps<IData>) {
   const { keyword } = searchToObject(location.search);
   const filteredPosts = posts.filter(
     (post) =>
-      post.title?.toLocaleUpperCase().includes(keyword.toLocaleUpperCase()) ||
-      post.summary?.toLocaleUpperCase().includes(keyword.toLocaleUpperCase()) ||
+      post.title?.toLocaleUpperCase().includes(keyword?.toLocaleUpperCase()) ||
+      post.summary
+        ?.toLocaleUpperCase()
+        .includes(keyword?.toLocaleUpperCase()) ||
       !!post.category?.find(
-        (x) => x.toLocaleUpperCase() === keyword.toLocaleUpperCase(),
+        (x) => x.toLocaleUpperCase() === keyword?.toLocaleUpperCase(),
       ),
   );
 

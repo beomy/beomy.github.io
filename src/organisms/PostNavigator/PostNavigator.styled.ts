@@ -42,8 +42,9 @@ const StyledPostNavigator = styled.div`
     }
   }
   ${({ theme }: any) => `${theme.mediaQueries.sm}`} {
-    flex-direction: column;
+    display: block;
     a {
+      width: auto;
       + a {
         margin-left: 0;
       }
