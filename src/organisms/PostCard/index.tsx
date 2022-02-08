@@ -1,6 +1,11 @@
 import React from 'react';
-import { MdAccessTime, MdCalendarToday } from 'react-icons/md';
+import {
+  MdAccessTime,
+  MdCalendarToday,
+  MdOutlineModeComment,
+} from 'react-icons/md';
 import { format, parse } from 'date-fns';
+import { CommentCount } from 'gatsby-plugin-disqus';
 import { IPost } from '@/model/Post';
 import { H4, P } from '@/atoms';
 import { IconText, PostBannerImg } from '@/molecules';
@@ -21,6 +26,11 @@ function PostCard({
     createdDate instanceof Date
       ? createdDate
       : parse(createdDate, EDateFormat.DASH_YYYY_MM_DD, new Date());
+  const disqusConfig = {
+    url: `https://beomy.github.io${url}`,
+    identifier: `https://beomy.github.io${url}`,
+    title,
+  };
 
   return (
     <StyledPostCard to={url}>
@@ -34,12 +44,20 @@ function PostCard({
         </P>
       </div>
       <div className="footer">
-        <P m={0} p="10px 15px" color="gray" fontSize={0} fontWeight="thin">
-          <IconText Icon={MdCalendarToday} mr="20px">
-            {format(date, EDateFormat.LOCALE_YYYY_MM_DD)}
+        <div>
+          <div>
+            <IconText Icon={MdCalendarToday} fontSize={0} mr="10px">
+              {format(date, EDateFormat.LOCALE_YYYY_MM_DD)}
+            </IconText>
+            <IconText Icon={MdAccessTime} fontSize={0}>
+              {timeToRead}분 소요
+            </IconText>
+          </div>
+          <IconText Icon={MdOutlineModeComment} fontSize={0}>
+            <CommentCount config={disqusConfig} placeholder="0" />
+            개의 댓글
           </IconText>
-          <IconText Icon={MdAccessTime}>{timeToRead}분 소요</IconText>
-        </P>
+        </div>
       </div>
     </StyledPostCard>
   );

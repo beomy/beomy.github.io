@@ -22,7 +22,7 @@ const StyledContents = styled.div`
     border: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
     border-radius: 4px;
     th {
-      background-color: ${({ theme }: any) => theme.colors.bgGray};
+      background-color: ${({ theme }: any) => theme.colors.bg1};
     }
     th,
     td {

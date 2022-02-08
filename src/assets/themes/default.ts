@@ -1,11 +1,12 @@
-const breakpoints: any = ['767px', '1056px', '1440px', '1919px'];
+const breakpoints = ['767px', '1056px', '1440px', '1919px'];
 const colors = {
-  black: '#292929',
-  gray: '#959595',
+  black: '#000',
   white: '#fff',
   border: '#efefef',
-  bgGray: '#f5f5f5',
   primary: '#20c997',
+  bg1: '#f5f5f5',
+  text1: '#292929',
+  text2: '#959595',
 };
 const fontSizes = [
   '12px',
@@ -19,13 +20,18 @@ const fontSizes = [
   '72px',
 ];
 const mediaQueries = {
-  xSmall: `@media screen and (max-width: ${breakpoints[0]})`,
-  small: `@media screen and (max-width: ${breakpoints[1]})`,
-  medium: `@media screen and (max-width: ${breakpoints[2]})`,
-  large: `@media screen and (max-width: ${breakpoints[3]})`,
+  xs: `@media screen and (max-width: ${breakpoints[0]})`,
+  sm: `@media screen and (max-width: ${breakpoints[1]})`,
+  m: `@media screen and (max-width: ${breakpoints[2]})`,
+  lg: `@media screen and (max-width: ${breakpoints[3]})`,
 };
 const sizes = {
-  screen: ['calc(100% - 20px)', '1024px', '1376px', '1728px'],
+  screen: {
+    xs: 'calc(100% - 20px)',
+    sm: '1024px',
+    m: '1376px',
+    lg: '1728px',
+  },
 };
 const fontWeights = {
   thin: 300,

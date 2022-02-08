@@ -18,7 +18,6 @@ const StyledIconText = styled.span<SpaceProps & ColorProps & TypographyProps>`
   }
   .text {
     ${typography};
-    vertical-align: middle;
   }
 `;
 

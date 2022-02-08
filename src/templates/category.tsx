@@ -24,7 +24,7 @@ function Category({ data, pageContext, path }: PageProps<IData, IContext>) {
       <Seo title={pageContext.slug} path={pageContext.slug} />
       <Header />
       <Contents
-        width={['screen.0', 'screen.0', 'screen.1', 'screen.2', 'screen.3']}
+        width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m', 'screen.lg']}
       >
         <SubMenu firstDepth={firstDepth} subMenu={subMenu} />
         <PostList posts={posts} />

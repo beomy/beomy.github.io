@@ -15,23 +15,23 @@ const StyledTableOfContents = styled.div<
   ${layout};
   ${flexbox};
   ${space};
-  ${({ theme }: any) => `${theme.mediaQueries.small}`} {
+  ${({ theme }: any) => `${theme.mediaQueries.sm}`} {
     display: none;
   }
   > div {
     position: fixed;
     ${layout};
     a {
-      color: ${({ theme }: any) => theme.colors.gray};
+      color: ${({ theme }: any) => theme.colors.text2};
       text-decoration: none;
       &:hover {
-        color: ${({ theme }: any) => theme.colors.black};
+        color: ${({ theme }: any) => theme.colors.text1};
       }
     }
     .active {
       transform: scale(1.05);
       a {
-        color: ${({ theme }: any) => theme.colors.black};
+        color: ${({ theme }: any) => theme.colors.text1};
       }
     }
     li {

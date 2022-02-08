@@ -53,7 +53,7 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
       <Contents
         display="flex"
         lineHeight={2}
-        width={['screen.0', 'screen.0', 'screen.1', 'screen.2']}
+        width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m']}
       >
         <PostWrapper width={['100%', '100%', 'calc(100% - 360px)']}>
           <PostHeader {...post} />

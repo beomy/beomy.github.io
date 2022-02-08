@@ -43,24 +43,24 @@ const StyledHeader = styled.header`
     align-items: center;
     .bar {
       margin: auto;
-      width: ${({ theme }: any) => theme.sizes.screen[2]};
+      width: ${({ theme }: any) => theme.sizes.screen.m};
     }
     &.active {
       height: 80px;
       visibility: visible;
     }
   }
-  ${({ theme }: any) => `${theme.mediaQueries.medium}`} {
+  ${({ theme }: any) => `${theme.mediaQueries.m}`} {
     > div {
       > .bar {
-        width: ${({ theme }: any) => theme.sizes.screen[1]};
+        width: ${({ theme }: any) => theme.sizes.screen.sm};
       }
     }
   }
-  ${({ theme }: any) => `${theme.mediaQueries.small}`} {
+  ${({ theme }: any) => `${theme.mediaQueries.sm}`} {
     > div {
       > .bar {
-        width: ${({ theme }: any) => theme.sizes.screen[0]};
+        width: ${({ theme }: any) => theme.sizes.screen.xs};
       }
     }
     > nav {

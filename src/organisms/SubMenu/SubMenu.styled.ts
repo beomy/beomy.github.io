@@ -5,7 +5,7 @@ const StyledSubMenu = styled.ul`
   padding: 0;
   align-items: center;
   justify-content: center;
-  ${({ theme }: any) => `${theme.mediaQueries.small}`} {
+  ${({ theme }: any) => `${theme.mediaQueries.sm}`} {
     display: none;
   }
   a {

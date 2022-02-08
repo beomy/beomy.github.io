@@ -41,7 +41,7 @@ const StyledPostNavigator = styled.div`
       margin-left: 10px;
     }
   }
-  ${({ theme }: any) => `${theme.mediaQueries.small}`} {
+  ${({ theme }: any) => `${theme.mediaQueries.sm}`} {
     flex-direction: column;
     a {
       + a {

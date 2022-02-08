@@ -11,7 +11,7 @@ function Default({ children }: IProp) {
   return (
     <ThemeProvider theme={theme}>
       <Header />
-      <Contents width={['screen.0', 'screen.0', 'screen.1', 'screen.2']}>
+      <Contents width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m']}>
         {children}
       </Contents>
       <Footer />

@@ -8,10 +8,14 @@ function Footer() {
   return (
     <StyledFooter>
       <nav>
-        <A href="https://github.com/beomy" target="_blank">
+        <A href="https://github.com/beomy" target="_blank" p="5px 10px">
           <FaGithub size={20} />
         </A>
-        <A href="https://www.linkedin.com/in/효범-이-930453134" target="_blank">
+        <A
+          href="https://www.linkedin.com/in/효범-이-930453134"
+          target="_blank"
+          p="5px 10px"
+        >
           <FaLinkedinIn size={20} />
         </A>
       </nav>

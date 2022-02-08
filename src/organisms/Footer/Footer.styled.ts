@@ -12,16 +12,8 @@ const StyledFooter = styled.footer`
     width: 100px;
     margin: 0 auto 10px;
   }
-  a {
-    padding: 5px 10px;
-    color: ${({ theme }: any) => theme.colors.gray};
-    &.active,
-    &:hover {
-      color: ${({ theme }: any) => theme.colors.black};
-    }
-  }
   span {
-    color: ${({ theme }: any) => theme.colors.gray};
+    color: ${({ theme }: any) => theme.colors.text2};
     font-size: ${({ theme }: any) => theme.fontSizes[1]};
   }
 `;
