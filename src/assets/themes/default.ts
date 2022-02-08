@@ -3,7 +3,7 @@ const colors = {
   black: '#000',
   white: '#fff',
   border: '#efefef',
-  primary: '#20c997',
+  primary: '#1b8181',
   bg1: '#f5f5f5',
   text1: '#292929',
   text2: '#959595',

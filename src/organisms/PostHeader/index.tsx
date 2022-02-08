@@ -19,10 +19,10 @@ function PostHeader({ title, thumbnail, createdDate, timeToRead }: IPost) {
         {title}
       </H1>
       <div>
-        <IconText Icon={MdCalendarToday} mr="20px" color="gray" fontSize={1}>
+        <IconText Icon={MdCalendarToday} mr="20px" color="text2" fontSize={1}>
           {format(date, EDateFormat.LOCALE_YYYY_MM_DD)}
         </IconText>
-        <IconText Icon={MdAccessTime} color="gray" fontSize={1}>
+        <IconText Icon={MdAccessTime} color="text2" fontSize={1}>
           {timeToRead}분 소요
         </IconText>
       </div>

@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import { ColorProps } from 'styled-system';
+import { ColorProps, TypographyProps, SpaceProps } from 'styled-system';
 import StyledSpan from './Span.styled';
 
-interface IProp extends ColorProps {
+interface IProp extends ColorProps, TypographyProps, SpaceProps {
   children: ReactNode;
 }
 
