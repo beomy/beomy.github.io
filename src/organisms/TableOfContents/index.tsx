@@ -16,7 +16,7 @@ function TableOfContents({ toc, ...props }: IProp) {
       (anchor) => (anchor.attributes as any).href.value,
     );
     const handleScroll = throttle(() => {
-      const scrollY = window.scrollY + 1;
+      const scrollY = (window.scrollY ?? window.pageYOffset) + 1;
       const postOffsets = anchorHrefList.map(
         (href) =>
           document.getElementById(decodeURIComponent(href.substring(1)))
@@ -33,7 +33,7 @@ function TableOfContents({ toc, ...props }: IProp) {
           return;
         }
       }
-    }, 20);
+    }, 50);
     document.addEventListener('scroll', handleScroll);
     return () => {
       document.removeEventListener('scroll', handleScroll);

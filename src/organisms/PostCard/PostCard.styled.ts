@@ -20,9 +20,20 @@ const StyledPostCard = styled(Link)`
   ${({ theme }: any) => `${theme.mediaQueries.xs}`} {
     width: 100%;
   }
+  .header {
+    > div {
+      position: relative;
+      padding-top: 50%;
+      .gatsby-image-wrapper-constrained {
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
   .body {
     padding: 15px;
-    flex: 1 1 0;
+    flex-grow: 1;
+    flex-shrink: 1;
   }
   .footer {
     border-top: ${({ theme }: any) => `1px solid ${theme.colors.border}`};

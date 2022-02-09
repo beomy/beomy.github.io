@@ -35,7 +35,9 @@ function PostCard({
   return (
     <StyledPostCard to={url}>
       <div className="header">
-        <PostBannerImg img={thumbnail} />
+        <div>
+          <PostBannerImg img={thumbnail} />
+        </div>
       </div>
       <div className="body">
         <H4 m="0 0 10px 0">{title}</H4>
