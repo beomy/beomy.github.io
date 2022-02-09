@@ -7,7 +7,7 @@ const StyledA = styled.a<SpaceProps>`
   ${space};
   &.active,
   &:hover {
-    color: ${({ theme }: any) => theme.colors.tex1};
+    color: ${({ theme }: any) => theme.colors.text1};
   }
 `;
 
