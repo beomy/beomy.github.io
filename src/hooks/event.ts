@@ -24,12 +24,13 @@ export function useInput(
 export function useScroll(delta = 0) {
   const [move, setMove] = useState(0);
   useLayoutEffect(() => {
-    let { scrollY } = window;
+    let scrollY = window.scrollY ?? window.pageYOffset;
     const onScroll = throttle(() => {
-      const diff = scrollY - window.scrollY;
+      const curScrollY = window.scrollY ?? window.pageYOffset;
+      const diff = scrollY - curScrollY;
       if (Math.abs(diff) > delta) {
         setMove(diff);
-        scrollY = window.scrollY;
+        scrollY = curScrollY;
       }
     }, 50);
     document.addEventListener('scroll', onScroll);

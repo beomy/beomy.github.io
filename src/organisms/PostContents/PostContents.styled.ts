@@ -83,7 +83,7 @@ const StyledContents = styled.div`
     margin-bottom: 0;
     + ul {
       margin: 0;
-      line-height: 1.2;
+      line-height: 1.5;
     }
   }
 `;
