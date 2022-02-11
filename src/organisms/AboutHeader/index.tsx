@@ -6,7 +6,9 @@ import StyledAboutHeader from './AboutHeader.styled';
 function AboutHeader() {
   return (
     <StyledAboutHeader>
-      <StaticImage src="../../assets/images/beomy-icon.png" alt="Beomy" />
+      <div className="icon">
+        <StaticImage src="../../assets/images/beomy-icon.png" alt="Beomy" />
+      </div>
       <div>
         <H1>이효범 (Beomy)</H1>
         <div>beomyhlee@gmail.com</div>

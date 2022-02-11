@@ -2,14 +2,14 @@ import React from 'react';
 import { LayoutProps, SpaceProps } from 'styled-system';
 import StyledImg from './Img.styled';
 
-interface IProp {
+interface IProp extends LayoutProps, SpaceProps {
   src: string;
   alt?: string;
   height?: any;
   width?: any;
 }
 
-function Img({ src, alt, ...props }: IProp & LayoutProps & SpaceProps) {
+function Img({ src, alt, ...props }: IProp) {
   return <StyledImg src={src} alt={alt} {...props} />;
 }
 
