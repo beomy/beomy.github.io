@@ -12,4 +12,6 @@ category: [tech, etc]
 ->gzip 인코딩과 디코딩 방식을 이용하면, 보다 빠른 송수신이 가능하게 되는 이점이 있습니다.
 주의할점 : 두 Client & Server 모두 gzip 인코딩&디코딩을 할 수 있는 환경이어야 합니다.
 
-- [https://soul0.tistory.com/160](https://soul0.tistory.com/160)
+`Transfer-Encoding`, `Accept-Encoding`
+
+- [https://velog.io/@ss-won/FE-번역-Gzip-압축으로-사이트-최적화하는-방법](https://velog.io/@ss-won/FE-번역-Gzip-압축으로-사이트-최적화하는-방법)
