@@ -11,7 +11,7 @@ const StyledPostCard = styled(Link)`
   color: ${({ theme }: any) => theme.colors.text1};
   text-decoration: none;
   line-height: 1.4;
-  border: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
+  border: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
   box-shadow: rgb(0 0 0 / 6%) 0 4px 16px 0;
   box-sizing: border-box;
   ${({ theme }: any) => `${theme.mediaQueries.sm}`} {
@@ -36,7 +36,7 @@ const StyledPostCard = styled(Link)`
     flex-shrink: 1;
   }
   .footer {
-    border-top: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
+    border-top: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
     > div {
       display: flex;
       align-items: center;

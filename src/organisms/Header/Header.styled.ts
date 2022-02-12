@@ -19,7 +19,7 @@ const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 15px 75px;
-    border-bottom: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
+    border-bottom: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
     .menu {
       display: none;
     }

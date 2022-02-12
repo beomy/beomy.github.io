@@ -46,7 +46,7 @@ const StyledTableOfContents = styled.div<
         > ul {
           padding-left: 15px;
           border-left: ${({ theme }: any) =>
-            `1px solid ${theme.colors.border}`};
+            `1px solid ${theme.colors.border1}`};
         }
       }
     }

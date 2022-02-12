@@ -12,8 +12,11 @@ const StyledPostNavigator = styled.div`
     flex-basis: 0;
     height: 70px;
     margin-bottom: 10px;
-    + div {
-      margin-left: 10px;
+    :first-of-type {
+      margin-right: 5px;
+    }
+    :last-child {
+      margin-left: 5px;
     }
     &.empty {
       height: 0;
@@ -22,11 +25,14 @@ const StyledPostNavigator = styled.div`
   a {
     display: flex;
     align-items: center;
-    border: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
+    border: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
     border-radius: 10px;
     padding-left: 15px;
     padding-right: 15px;
     height: 100%;
+    &:hover {
+      border: ${({ theme }: any) => `1px solid ${theme.colors.border2}`};
+    }
     &.previous {
       text-align: left;
       .contents {

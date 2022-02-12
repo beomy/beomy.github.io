@@ -49,7 +49,7 @@ const StyledMenu = styled.menu`
     align-items: center;
     justify-content: space-between;
     height: 45px;
-    border-bottom: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
+    border-bottom: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
     a {
       > div {
         vertical-align: middle;

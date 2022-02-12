@@ -25,7 +25,7 @@ const StyledContents = styled.div`
     overflow-x: auto;
     border-collapse: collapse;
     border-spacing: 0;
-    border: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
+    border: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
     border-radius: 4px;
     th {
       background-color: ${({ theme }: any) => theme.colors.bg1};
@@ -33,7 +33,7 @@ const StyledContents = styled.div`
     th,
     td {
       padding: 6px 13px;
-      border: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
+      border: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
     }
   }
   h1 {

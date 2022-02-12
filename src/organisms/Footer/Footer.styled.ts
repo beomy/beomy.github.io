@@ -4,7 +4,7 @@ const StyledFooter = styled.footer`
   text-align: center;
   padding: 25px 0;
   background-color: ${({ theme }: any) => theme.colors.white};
-  border-top: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
+  border-top: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
   nav {
     display: flex;
     align-items: center;

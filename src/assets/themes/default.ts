@@ -2,8 +2,9 @@ const breakpoints = ['767px', '1056px', '1440px', '1919px'];
 const colors = {
   black: '#000',
   white: '#fff',
-  border: '#efefef',
   primary: '#1b8181',
+  border1: '#efefef',
+  border2: '#bcbcbc',
   bg1: '#f5f5f5',
   text1: '#292929',
   text2: '#959595',
