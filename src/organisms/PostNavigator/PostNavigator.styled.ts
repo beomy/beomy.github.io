@@ -6,16 +6,27 @@ const StyledPostNavigator = styled.div`
   justify-content: space-between;
   line-height: 1.4;
   margin-top: 20px;
+  > div {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    height: 70px;
+    margin-bottom: 10px;
+    + div {
+      margin-left: 10px;
+    }
+    &.empty {
+      height: 0;
+    }
+  }
   a {
     display: flex;
     align-items: center;
     border: ${({ theme }: any) => `1px solid ${theme.colors.border}`};
     border-radius: 10px;
-    margin-bottom: 10px;
     padding-left: 15px;
     padding-right: 15px;
-    width: 100%;
-    height: 70px;
+    height: 100%;
     &.previous {
       text-align: left;
       .contents {
@@ -37,15 +48,14 @@ const StyledPostNavigator = styled.div`
         }
       }
     }
-    + a {
-      margin-left: 10px;
-    }
   }
-  ${({ theme }: any) => `${theme.mediaQueries.sm}`} {
+  ${({ theme }: any) => `${theme.mediaQueries.xs}`} {
     display: block;
-    a {
-      width: auto;
-      + a {
+    > div {
+      flex-grow: initial;
+      flex-shrink: initial;
+      flex-basis: initial;
+      + div {
         margin-left: 0;
       }
     }
