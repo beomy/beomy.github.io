@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { IData } from '@/model/GraphQL';
+import { IData } from '@/model/graphQL';
 import { PostList, Seo } from '@/organisms';
 import List from '@/templates/list';
 import { usePosts } from '@/hooks/post';

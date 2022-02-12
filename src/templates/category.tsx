@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { ThemeProvider } from '@emotion/react';
 import theme from '@/assets/themes/default';
-import { IData } from '@/model/GraphQL';
+import { IData } from '@/model/graphQL';
 import { Seo, Header, Contents, PostList, SubMenu, Footer } from '@/organisms';
 import { useMenu, usePosts } from '@/hooks/post';
 

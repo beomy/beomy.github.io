@@ -6,10 +6,10 @@ import {
 } from 'react-icons/md';
 import { format, parse } from 'date-fns';
 import { CommentCount } from 'gatsby-plugin-disqus';
-import { IPost } from '@/model/Post';
+import { IPost } from '@/model/post';
 import { H4, P } from '@/atoms';
 import { IconText, PostBannerImg } from '@/molecules';
-import { EDateFormat } from '@/model/DateFormat';
+import { EDateFormat } from '@/model/dateFormat';
 import StyledPostCard from './PostCard.styled';
 
 type IProp = IPost;

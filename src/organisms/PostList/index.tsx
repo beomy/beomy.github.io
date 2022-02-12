@@ -1,5 +1,5 @@
 import React from 'react';
-import { IPost } from '@/model/Post';
+import { IPost } from '@/model/post';
 import { PostCard } from '@/organisms';
 import StyledPostList from './PostList.styled';
 

@@ -1,5 +1,5 @@
-import { IMarkdownRemark, IAllMarkdownRemark, IData } from '@/model/GraphQL';
-import { IPost } from '@/model/Post';
+import { IMarkdownRemark, IAllMarkdownRemark, IData } from '@/model/graphQL';
+import { IPost } from '@/model/post';
 import { graphql, useStaticQuery } from 'gatsby';
 import { arrayToTree } from '@/utils/tree';
 

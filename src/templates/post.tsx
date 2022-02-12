@@ -4,7 +4,7 @@ import { getSrc } from 'gatsby-plugin-image';
 import { Disqus } from 'gatsby-plugin-disqus';
 import { ThemeProvider } from '@emotion/react';
 import theme from '@/assets/themes/default';
-import { IData, IMarkdownRemark } from '@/model/GraphQL';
+import { IData, IMarkdownRemark } from '@/model/graphQL';
 import {
   Seo,
   Header,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
-import { IData } from '@/model/GraphQL';
+import { IData } from '@/model/graphQL';
 
 interface IProp {
   description?: string;

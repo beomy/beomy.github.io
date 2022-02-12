@@ -1,8 +1,8 @@
 import React from 'react';
 import { MdAccessTime, MdCalendarToday } from 'react-icons/md';
 import { parse, format } from 'date-fns';
-import { EDateFormat } from '@/model/DateFormat';
-import { IPost } from '@/model/Post';
+import { EDateFormat } from '@/model/dateFormat';
+import { IPost } from '@/model/post';
 import { H1 } from '@/atoms';
 import { IconText, PostBannerImg } from '@/molecules';
 import StyledPostHeader from './PostHeader.styled';

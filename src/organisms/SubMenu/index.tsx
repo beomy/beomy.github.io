@@ -1,5 +1,5 @@
 import React from 'react';
-import { ITreeItem } from '@/model/Tree';
+import { ITreeItem } from '@/model/tree';
 import { Li, Link } from '@/atoms';
 import StyledSubMenu from './SubMenu.styled';
 
