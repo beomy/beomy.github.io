@@ -61,7 +61,10 @@ const StyledPostNavigator = styled.div`
       flex-grow: initial;
       flex-shrink: initial;
       flex-basis: initial;
-      + div {
+      :first-of-type {
+        margin-right: 0;
+      }
+      :last-child {
         margin-left: 0;
       }
     }
