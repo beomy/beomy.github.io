@@ -79,40 +79,19 @@ Content-Type: text/gif
 HTTP/1.1은 HTTP의 첫번째 표준 버전으로 HTTP/1.0과 동일한 구조를 가집니다.
 
 ## 개선 사항
-성HTTP는 TCP 통신을 사용하는데 HTTP/1.0에서는 매 요청 마다 네트워크를 연결하고 연결을 끊는 작업이 이루어집니다. 만약 동일한 서버에 5번의 요청을 보낸다면 네트워크 연결 -> 요청 -> 응답 -> 네트워크 연결 해제 이 과정이 반복해서 5번 일어나게 됩니다. HTTP/1.1에서는 네트워크 연결을 유지하여 성능을 최적화 하는 등의 HTTP/1.0의 몇가지 단점을 보완하게 됩니다.
+HTTP는 TCP 통신을 사용하는데 HTTP/1.0에서는 매 요청 마다 네트워크를 연결하고 연결을 끊는 작업이 이루어집니다. 만약 동일한 서버에 5번의 요청을 보낸다면 네트워크 연결 -> 요청 -> 응답 -> 네트워크 연결 해제 이 과정이 반복해서 5번 일어나게 됩니다. HTTP/1.1에서는 네트워크 연결을 유지하여 성능을 최적화 하는 등의 HTTP/1.0의 몇가지 단점을 보완하게 됩니다.
 
 네트워크 연결 재사용, 파이프라이닝 추가, 청크된 응답 지원, 캐시 제어 기능 추가, 콘텐치의 언어, 인코딩, 타입 협의 도입, 동일한 IP에 다른 도메인 호스팅 기능 추가, 이렇게 6가지 개선 사항을 하나씩 살펴보도록 하겠습니다.
 
-### 네트워크 연결 재사용
-3번의 HTTP 통신을 살 때 네트워크 연결을 재사용하는 경우와 재사용하지 않을 경우의 차이는 아래 그림과 같습니다.
-
-|연결을 재사용하지 않는 경우|연결을 재사용한 경우|
-|:--:|:--:|
-|![네트워크 연결 재사용 안함](/assets/img/posts/etc/http_short_lived_connection.png)|![네트워크 연결 재사용](/assets/img/posts/etc/http_persistent_connection.png)|
-
-이렇게 네트워크 연결을 재사용할 수 있게 된 이유는 `Connection` 헤더와 `Keep-Alive` 헤더에 있습니다.
-
-#### `Connection` 헤더
-`Connection` 헤더는 현재의 전송이 완료된 후 네트워크 연결을 유지할지 유지하지 않을지를 결정합니다. HTTP/1.0에서는 `close`가 HTTP/1.1에서는 `keep-alive`가 기본 값입니다.
-
-#### `Keep-Alive` 헤더
-
-### 파이프라이닝 추가
-
-### 청크된 응답 지원
-`Transfer-Encoding` 헤더
-
-### 캐시 제어 기능 추가
-캐시 관련 헤더
-
-### 콘텐츠 협상 도입
-콘텐츠의 언어, 인코딩, 타입 협상 도입
-`Accept`, `Accept-Language`, `Accept-Encoding`
-
-### 동일한 IP에 다른 도메인 호스트 기능 추가
-`Host` 헤더
+- 커넥션 재사용
+- 파이프라이닝 추가
+- 청크된 응답 지원: `Transfer-Encoding` 헤더
+- 캐시 제어 기능 추가: 캐시 관련 헤더
+- 콘텐츠 협상 도입: 콘텐츠의 언어, 인코딩, 타입 협상 도입, `Accept`, `Accept-Language`, `Accept-Encoding`
+- 동일한 IP에 다른 도메인 호스트 기능 추가: `Host` 헤더
 
 # HTTP/2
+HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 연결을 맺고 있어야 해서 서버 리소스의 소비, Dos Attack
 헤더 필드 압축, 멀티플렉싱
 
 # HTTP/3
@@ -122,13 +101,31 @@ HTTP/1.1은 HTTP의 첫번째 표준 버전으로 HTTP/1.0과 동일한 구조�
 
 ## TCP
 
-## 연결 과정
+### 연결 과정
 3-Way Handshaking
 
-## 종료 과정
+### 종료 과정
 4-Way Handshaking
 
 ## UDP
+
+## 커넥션 관리
+HTTP/1.x 버전이 되면서 네트워크 연결
+
+HTTP/1.0은 단기 커넥션(Short-lived Connections)이
+
+3번의 HTTP 통신을 살 때 네트워크 연결을 재사용하는 경우와 재사용하지 않을 경우의 차이는 아래 그림과 같습니다.
+
+|단기 커넥션(Short-lived Connections)|지속 커넥션(Persistent Connections)|
+|:--:|:--:|
+|![단기 커넥션](/assets/img/posts/etc/http_short_lived_connection.png)|![지속 커넥션](/assets/img/posts/etc/http_persistent_connection.png)|
+
+이렇게 네트워크 연결을 재사용할 수 있게 된 이유는 `Connection` 헤더와 `Keep-Alive` 헤더에 있습니다.
+
+### `Connection` 헤더
+`Connection` 헤더는 현재의 전송이 완료된 후 네트워크 연결을 유지할지 유지하지 않을지를 결정합니다. HTTP/1.0에서는 `Connection` 헤더를 정의하지 않거나 `close`로 설정된 경우 네트워크 연결을 재사용하지 않습니다.
+
+### `Keep-Alive` 헤더
 
 #### 참고
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
@@ -142,9 +139,11 @@ HTTP/1.1은 HTTP의 첫번째 표준 버전으로 HTTP/1.0과 동일한 구조�
 - [https://bbubbush.tistory.com/21](https://bbubbush.tistory.com/21)
 - [https://javaplant.tistory.com/24](https://javaplant.tistory.com/24)
 - [https://hirlawldo.tistory.com/106](https://hirlawldo.tistory.com/106)
-- [https://developer.mozilla.org/ko/docs/Web/HTTP/Connection_management_in_HTTP_1.x](https://developer.mozilla.org/ko/docs/Web/HTTP/Connection_management_in_HTTP_1.x)
+- [https://developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x](https://developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x)
 - [https://ssungkang.tistory.com/entry/네트워크-HTTP-11-VS-HTTP-20](https://ssungkang.tistory.com/entry/네트워크-HTTP-11-VS-HTTP-20)
 - [https://goodgid.github.io/HTTP-Keep-Alive/](https://goodgid.github.io/HTTP-Keep-Alive/)
 - [https://goyunji.tistory.com/8](https://goyunji.tistory.com/8)
 - [https://gahui-developer123.tistory.com/106](https://gahui-developer123.tistory.com/106)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Connection](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Connection)
+- [https://www.popit.kr/나만-모르고-있던-http2/](https://www.popit.kr/나만-모르고-있던-http2/)
+- [https://medium.com/@jperasmus11/domain-sharding-on-the-modern-web-dc97df4f6a90](https://medium.com/@jperasmus11/domain-sharding-on-the-modern-web-dc97df4f6a90)
