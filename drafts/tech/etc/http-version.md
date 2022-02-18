@@ -75,20 +75,30 @@ Content-Type: text/gif
 (image content)
 ```
 
+## 커넥션 관리
+HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 커넥션이란 각각의 HTTP 요청의 각각의 커넥션에서 실행 되는 것을 이야기 합니다. 1개의 요청은 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제가 한 세트로 동작합니다. 2개의 요청을 보내게 되면 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 -> 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 순서로 동작하게 됩니다.
+
+이런 단기 커넥션은 매 요청마다 커넥션을 연결하고 해제 하는 오버헤드가 발생하게 되는데 이런 오버헤드를 줄이기 위해 HTTP/1.0에서는 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 커넥션을 재사용 할 수 있게 했습니다. 아래 그림은 커넥션을 재사용하는 경우와 재사용하지 않을 경우의 차이입니다.
+
+|단기 커넥션(Short-lived Connections)|지속 커넥션(Persistent Connections)|
+|:--:|:--:|
+|![단기 커넥션](/assets/img/posts/etc/http_short_lived_connection.png)|![지속 커넥션](/assets/img/posts/etc/http_persistent_connection.png)|
+
 # HTTP/1.1
-HTTP/1.1은 HTTP의 첫번째 표준 버전으로 HTTP/1.0과 동일한 구조를 가집니다.
+HTTP/1.1은 HTTP/1.0과 동일한 구조를 가지지만 HTTP/1.0에 비해 많은 성능 개선이 이루어졌습니다.
 
 ## 개선 사항
-HTTP는 TCP 통신을 사용하는데 HTTP/1.0에서는 매 요청 마다 네트워크를 연결하고 연결을 끊는 작업이 이루어집니다. 만약 동일한 서버에 5번의 요청을 보낸다면 네트워크 연결 -> 요청 -> 응답 -> 네트워크 연결 해제 이 과정이 반복해서 5번 일어나게 됩니다. HTTP/1.1에서는 네트워크 연결을 유지하여 성능을 최적화 하는 등의 HTTP/1.0의 몇가지 단점을 보완하게 됩니다.
+HTTP/1.1은 이전 버전인 HTTP/1.0에 비해 많은 개선이 이루어 졌습니다. 아래 목록은 HTTP/1.1에서 이뤄진 대표적인 개선 사항 6가지 입니다.
 
-네트워크 연결 재사용, 파이프라이닝 추가, 청크된 응답 지원, 캐시 제어 기능 추가, 콘텐치의 언어, 인코딩, 타입 협의 도입, 동일한 IP에 다른 도메인 호스팅 기능 추가, 이렇게 6가지 개선 사항을 하나씩 살펴보도록 하겠습니다.
-
-- 커넥션 재사용
-- 파이프라이닝 추가
+- 커넥션 재사용: HTTP/1.0에서 커넥션은 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 커넥션을 끊지 않고 재사용할 수 있었지만, 기본적으로 단기 커넥션이였습니다. HTTP/1.1에서는 `Connection` 헤더를 사용하지 않아도 기본 값으로 지속 커넥션을 지원하게 되었습니다.
+- 파이프라이닝 추가:
 - 청크된 응답 지원: `Transfer-Encoding` 헤더
 - 캐시 제어 기능 추가: 캐시 관련 헤더
 - 콘텐츠 협상 도입: 콘텐츠의 언어, 인코딩, 타입 협상 도입, `Accept`, `Accept-Language`, `Accept-Encoding`
 - 동일한 IP에 다른 도메인 호스트 기능 추가: `Host` 헤더
+
+## 커넥션 관리
+파이프라이닝
 
 # HTTP/2
 HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 연결을 맺고 있어야 해서 서버 리소스의 소비, Dos Attack
@@ -96,6 +106,30 @@ HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 �
 
 # HTTP/3
 핸드쉐이킹 등에 쓰이는 자원을 사용하지 않기 위해 UDP 사용, UDP는 통신만 담당하기 때문에 무결성을 보장하기 위한 코드가 추가된 QUIC를 사용
+
+# 커넥션 관리
+
+## 단기 커넥션 (Short-lived Connection)
+
+## 지속 커넥션 (Persistent Connection)
+3번의 HTTP 통신을 살 때 네트워크 연결을 재사용하는 경우와 재사용하지 않을 경우의 차이는 아래 그림과 같습니다.
+
+|단기 커넥션(Short-lived Connections)|지속 커넥션(Persistent Connections)|
+|:--:|:--:|
+|![단기 커넥션](/assets/img/posts/etc/http_short_lived_connection.png)|![지속 커넥션](/assets/img/posts/etc/http_persistent_connection.png)|
+
+## 병렬 커넥션 (Parallel Connection) - 도메인 샤딩
+
+## 파이프라이닝 (Pipelining)
+
+## 멀티플렉싱
+
+# 요약
+- HTTP/0.9:
+- HTTP/1.0:
+- HTTP/1.1:
+- HTTP/2.0:
+- HTTP/3.0:
 
 # 부록
 
@@ -109,18 +143,9 @@ HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 �
 
 ## UDP
 
-## 커넥션 관리
-HTTP/1.x 버전이 되면서 네트워크 연결
+## HOL 블로킹 (Head-Of-Line Blocking)
 
-HTTP/1.0은 단기 커넥션(Short-lived Connections)이
-
-3번의 HTTP 통신을 살 때 네트워크 연결을 재사용하는 경우와 재사용하지 않을 경우의 차이는 아래 그림과 같습니다.
-
-|단기 커넥션(Short-lived Connections)|지속 커넥션(Persistent Connections)|
-|:--:|:--:|
-|![단기 커넥션](/assets/img/posts/etc/http_short_lived_connection.png)|![지속 커넥션](/assets/img/posts/etc/http_persistent_connection.png)|
-
-이렇게 네트워크 연결을 재사용할 수 있게 된 이유는 `Connection` 헤더와 `Keep-Alive` 헤더에 있습니다.
+## `Connection`, `Keep-Alive` 헤더
 
 ### `Connection` 헤더
 `Connection` 헤더는 현재의 전송이 완료된 후 네트워크 연결을 유지할지 유지하지 않을지를 결정합니다. HTTP/1.0에서는 `Connection` 헤더를 정의하지 않거나 `close`로 설정된 경우 네트워크 연결을 재사용하지 않습니다.
@@ -147,3 +172,5 @@ HTTP/1.0은 단기 커넥션(Short-lived Connections)이
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Connection](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Connection)
 - [https://www.popit.kr/나만-모르고-있던-http2/](https://www.popit.kr/나만-모르고-있던-http2/)
 - [https://medium.com/@jperasmus11/domain-sharding-on-the-modern-web-dc97df4f6a90](https://medium.com/@jperasmus11/domain-sharding-on-the-modern-web-dc97df4f6a90)
+- [https://kamranahmed.info/blog/2016/08/13/http-in-depth/](https://kamranahmed.info/blog/2016/08/13/http-in-depth/)
+- [https://letitkang.tistory.com/79](https://letitkang.tistory.com/79)
