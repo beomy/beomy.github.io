@@ -78,7 +78,7 @@ Content-Type: text/gif
 ## 커넥션 관리
 HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 커넥션이란 각각의 HTTP 요청의 각각의 커넥션에서 실행 되는 것을 이야기 합니다. 1개의 요청은 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제가 한 세트로 동작합니다. 2개의 요청을 보내게 되면 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 -> 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 순서로 동작하게 됩니다.
 
-이런 단기 커넥션은 매 요청마다 커넥션을 연결하고 해제 하는 오버헤드가 발생하게 되는데 이런 오버헤드를 줄이기 위해 HTTP/1.0에서는 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 커넥션을 재사용 할 수 있는 kee-alive 커넥션을 도입하였습니다. 아래 그림은 커넥션을 재사용하는 경우와 재사용하지 않을 경우의 차이입니다.
+이런 단기 커넥션은 매 요청마다 커넥션을 연결하고 해제 하는 오버헤드가 발생하게 되는데 이런 오버헤드를 줄이기 위해 HTTP/1.0에서는 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 커넥션을 재사용 할 수 있는 Keep-Alive 커넥션을 도입하였습니다. 아래 그림은 커넥션을 재사용하는 경우와 재사용하지 않을 경우의 차이입니다.
 
 |단기 커넥션(Short-lived Connections)|지속 커넥션(Persistent Connections)|
 |:--:|:--:|
@@ -95,10 +95,11 @@ HTTP/1.1은 이전 버전인 HTTP/1.0에 비해 많은 개선이 이루어 졌�
 - 청크된 응답 지원: `Transfer-Encoding` 헤더
 - 캐시 제어 기능 추가: 캐시 관련 헤더
 - 콘텐츠 협상 도입: 콘텐츠의 언어, 인코딩, 타입 협상 도입, `Accept`, `Accept-Language`, `Accept-Encoding`
-- 동일한 IP에 다른 도메인 호스트 기능 추가: `Host` 헤더
+- 동일한 IP에 다른 도메인 호스트 기능 추가: `Host` 헤더, 도메인 샤딩, 병렬 커넥션
 
 ## 커넥션 관리
 파이프라이닝
+도메인 샤딩
 
 # HTTP/2
 HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 연결을 맺고 있어야 해서 서버 리소스의 소비, Dos Attack
@@ -174,3 +175,4 @@ HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 �
 - [https://medium.com/@jperasmus11/domain-sharding-on-the-modern-web-dc97df4f6a90](https://medium.com/@jperasmus11/domain-sharding-on-the-modern-web-dc97df4f6a90)
 - [https://kamranahmed.info/blog/2016/08/13/http-in-depth/](https://kamranahmed.info/blog/2016/08/13/http-in-depth/)
 - [https://letitkang.tistory.com/79](https://letitkang.tistory.com/79)
+- [https://kscodebase.tistory.com/297](https://kscodebase.tistory.com/297)
