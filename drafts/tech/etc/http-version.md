@@ -80,9 +80,11 @@ HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 �
 
 이런 단기 커넥션은 매 요청마다 커넥션을 연결하고 해제 하는 오버헤드가 발생하게 되는데 이런 오버헤드를 줄이기 위해 HTTP/1.0에서는 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 커넥션을 재사용 할 수 있는 Keep-Alive 커넥션을 도입하였습니다. 아래 그림은 커넥션을 재사용하는 경우와 재사용하지 않을 경우의 차이입니다.
 
-|단기 커넥션(Short-lived Connections)|지속 커넥션(Persistent Connections)|
+|커낵션 재사용 안함|커낵션 재사용|
 |:--:|:--:|
-|![단기 커넥션](/assets/img/posts/etc/http_short_lived_connection.png)|![지속 커넥션](/assets/img/posts/etc/http_persistent_connection.png)|
+|![커낵션 재사용 안함](/assets/img/posts/etc/http_short_lived_connection.png)|![커넥션 재사용](/assets/img/posts/etc/http_persistent_connection.png)|
+
+Keep-Alive 커넥션의 문제점
 
 # HTTP/1.1
 HTTP/1.1은 HTTP/1.0과 동일한 구조를 가지지만 HTTP/1.0에 비해 많은 성능 개선이 이루어졌습니다.
@@ -119,9 +121,11 @@ HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 �
 |:--:|:--:|
 |![단기 커넥션](/assets/img/posts/etc/http_short_lived_connection.png)|![지속 커넥션](/assets/img/posts/etc/http_persistent_connection.png)|
 
-## 병렬 커넥션 (Parallel Connection) - 도메인 샤딩
+## 병렬 커넥션 (Parallel Connection)
+도메인 샤딩
 
 ## 파이프라이닝 (Pipelining)
+Head Of Line Blocking 이슈가 발생하여, 모던 브라우저의 경우 파이프라이닝을 사용하지 못하게 하고 6~8개의 커넥션(병렬 커넥션)을 사용하는 방식
 
 ## 멀티플렉싱
 
