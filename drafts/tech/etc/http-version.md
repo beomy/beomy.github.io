@@ -84,7 +84,7 @@ HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 �
 |:--:|:--:|
 |![커낵션 재사용 안함](/assets/img/posts/etc/http_short_lived_connection.png)|![커넥션 재사용](/assets/img/posts/etc/http_persistent_connection.png)|
 
-Keep-Alive 커넥션의 문제점
+~~Keep-Alive 커넥션의 문제점~~
 
 # HTTP/1.1
 HTTP/1.1은 HTTP/1.0과 동일한 구조를 가지지만 HTTP/1.0에 비해 많은 성능 개선이 이루어졌습니다.
@@ -100,8 +100,15 @@ HTTP/1.1은 이전 버전인 HTTP/1.0에 비해 많은 개선이 이루어 졌�
 - 동일한 IP에 다른 도메인 호스트 기능 추가: `Host` 헤더, 도메인 샤딩, 병렬 커넥션
 
 ## 커넥션 관리
+지속 커넥션
+지속 커넥션은 HTTP/1.0에서 사용하는 Keep-Alive 커넥션과 HTTP/1.1에서 사용하는 Persistent 커넥션이 있습니다.
+
 파이프라이닝
+
 도메인 샤딩
+- Each transaction opens/closes a new connection, costing time and bandwidth.
+- Each new connection has reduced performance because of TCP slow start.
+- There is a practical limit on the number of open parallel connections.
 
 # HTTP/2
 HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 연결을 맺고 있어야 해서 서버 리소스의 소비, Dos Attack
@@ -150,12 +157,16 @@ Head Of Line Blocking 이슈가 발생하여, 모던 브라우저의 경우 파�
 
 ## HOL 블로킹 (Head-Of-Line Blocking)
 
+## Dos, DDos
+
 ## `Connection`, `Keep-Alive` 헤더
 
 ### `Connection` 헤더
 `Connection` 헤더는 현재의 전송이 완료된 후 네트워크 연결을 유지할지 유지하지 않을지를 결정합니다. HTTP/1.0에서는 `Connection` 헤더를 정의하지 않거나 `close`로 설정된 경우 네트워크 연결을 재사용하지 않습니다.
 
 ### `Keep-Alive` 헤더
+
+### Kee-Alive 커넥션의 문제점
 
 #### 참고
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
@@ -180,3 +191,4 @@ Head Of Line Blocking 이슈가 발생하여, 모던 브라우저의 경우 파�
 - [https://kamranahmed.info/blog/2016/08/13/http-in-depth/](https://kamranahmed.info/blog/2016/08/13/http-in-depth/)
 - [https://letitkang.tistory.com/79](https://letitkang.tistory.com/79)
 - [https://kscodebase.tistory.com/297](https://kscodebase.tistory.com/297)
+- [https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch04s05.html](https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch04s05.html)
