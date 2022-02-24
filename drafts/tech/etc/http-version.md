@@ -78,13 +78,19 @@ Content-Type: text/gif
 ## 커넥션 관리
 HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 커넥션이란 각각의 HTTP 요청의 각각의 커넥션에서 실행 되는 것을 이야기 합니다. 1개의 요청은 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제가 한 세트로 동작합니다. 2개의 요청을 보내게 되면 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 -> 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 순서로 동작하게 됩니다.
 
-이런 단기 커넥션은 매 요청마다 커넥션을 연결하고 해제 하는 오버헤드가 발생하게 되는데 이런 오버헤드를 줄이기 위해 HTTP/1.0에서는 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 커넥션을 재사용 할 수 있는 Keep-Alive 커넥션을 도입하였습니다. 아래 그림은 커넥션을 재사용하는 경우와 재사용하지 않을 경우의 차이입니다.
+### Keep-Alive 커넥션
+단기 커넥션은 매 요청마다 커넥션을 연결하고 해제 하는 오버헤드가 발생하게 되는데 이런 오버헤드를 줄이기 위해 HTTP/1.0에서는 커넥션을 재사용 할 수 있는 Keep-Alive 커넥션을 도입하였습니다. 아래 그림은 커넥션을 재사용하는 경우와 재사용하지 않을 경우의 차이입니다.
 
 |커낵션 재사용 안함|커낵션 재사용|
 |:--:|:--:|
 |![커낵션 재사용 안함](/assets/img/posts/etc/http_short_lived_connection.png)|![커넥션 재사용](/assets/img/posts/etc/http_persistent_connection.png)|
 
-~~Keep-Alive 커넥션의 문제점~~
+`Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 Keep-Alive 커넥션을 만들 수 있습니다.
+
+- `Connection` 헤더: 현재의 전송이 완료된 후 네트워크 연결을 유지할지 유지하지 않을지를 결정합니다. HTTP/1.0에서는 `Connection` 헤더를 정의하지 않거나 `close`로 설정된 경우 네트워크 연결을 재사용하지 않습니다.
+- `Keep-Alive` 헤더
+
+### 멍청한 프록시
 
 # HTTP/1.1
 HTTP/1.1은 HTTP/1.0과 동일한 구조를 가지지만 HTTP/1.0에 비해 많은 성능 개선이 이루어졌습니다.
@@ -92,7 +98,7 @@ HTTP/1.1은 HTTP/1.0과 동일한 구조를 가지지만 HTTP/1.0에 비해 많�
 ## 개선 사항
 HTTP/1.1은 이전 버전인 HTTP/1.0에 비해 많은 개선이 이루어 졌습니다. 아래 목록은 HTTP/1.1에서 이뤄진 대표적인 개선 사항 6가지 입니다.
 
-- 커넥션 재사용: HTTP/1.0에서 커넥션은 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 커넥션을 끊지 않고 재사용할 수 있었지만, 기본적으로 단기 커넥션이였습니다. HTTP/1.1에서는 `Connection` 헤더를 사용하지 않아도 기본 값으로 지속 커넥션을 지원하게 되었습니다.
+- 커넥션 재사용: HTTP/1.0은 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용한 Keep-Alive 커넥션을 사용했지만, HTTP/1.1에서는 `Connection` 헤더를 사용하지 않아도 커넥션을 유지하는 지속 커넥션을 지원합니다.
 - 파이프라이닝 추가:
 - 청크된 응답 지원: `Transfer-Encoding` 헤더
 - 캐시 제어 기능 추가: 캐시 관련 헤더
@@ -100,11 +106,15 @@ HTTP/1.1은 이전 버전인 HTTP/1.0에 비해 많은 개선이 이루어 졌�
 - 동일한 IP에 다른 도메인 호스트 기능 추가: `Host` 헤더, 도메인 샤딩, 병렬 커넥션
 
 ## 커넥션 관리
-지속 커넥션
+
+### 지속 커넥션
 지속 커넥션은 HTTP/1.0에서 사용하는 Keep-Alive 커넥션과 HTTP/1.1에서 사용하는 Persistent 커넥션이 있습니다.
+Keep-Alive의 멍청한 프록시 문제 해결 방법: 커넥션 관련 기능에 대한 클라이언트의 지원 범위를 알고 있지 않은 한 지속 커넥션을 맺지 않는다.
 
-파이프라이닝
+### 파이프라이닝 커넥션
+Head Of Line Blocking 이슈가 발생하여, 모던 브라우저의 경우 파이프라이닝을 사용하지 못하게 하고 6~8개의 커넥션(병렬 커넥션)을 사용하는 방식
 
+### 병렬 커넥션
 도메인 샤딩
 - Each transaction opens/closes a new connection, costing time and bandwidth.
 - Each new connection has reduced performance because of TCP slow start.
@@ -114,27 +124,12 @@ HTTP/1.1은 이전 버전인 HTTP/1.0에 비해 많은 개선이 이루어 졌�
 HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 연결을 맺고 있어야 해서 서버 리소스의 소비, Dos Attack
 헤더 필드 압축, 멀티플렉싱
 
+## 커넥션 관리
+
+### 멀티플렉싱
+
 # HTTP/3
 핸드쉐이킹 등에 쓰이는 자원을 사용하지 않기 위해 UDP 사용, UDP는 통신만 담당하기 때문에 무결성을 보장하기 위한 코드가 추가된 QUIC를 사용
-
-# 커넥션 관리
-
-## 단기 커넥션 (Short-lived Connection)
-
-## 지속 커넥션 (Persistent Connection)
-3번의 HTTP 통신을 살 때 네트워크 연결을 재사용하는 경우와 재사용하지 않을 경우의 차이는 아래 그림과 같습니다.
-
-|단기 커넥션(Short-lived Connections)|지속 커넥션(Persistent Connections)|
-|:--:|:--:|
-|![단기 커넥션](/assets/img/posts/etc/http_short_lived_connection.png)|![지속 커넥션](/assets/img/posts/etc/http_persistent_connection.png)|
-
-## 병렬 커넥션 (Parallel Connection)
-도메인 샤딩
-
-## 파이프라이닝 (Pipelining)
-Head Of Line Blocking 이슈가 발생하여, 모던 브라우저의 경우 파이프라이닝을 사용하지 못하게 하고 6~8개의 커넥션(병렬 커넥션)을 사용하는 방식
-
-## 멀티플렉싱
 
 # 요약
 - HTTP/0.9:
@@ -158,15 +153,6 @@ Head Of Line Blocking 이슈가 발생하여, 모던 브라우저의 경우 파�
 ## HOL 블로킹 (Head-Of-Line Blocking)
 
 ## Dos, DDos
-
-## `Connection`, `Keep-Alive` 헤더
-
-### `Connection` 헤더
-`Connection` 헤더는 현재의 전송이 완료된 후 네트워크 연결을 유지할지 유지하지 않을지를 결정합니다. HTTP/1.0에서는 `Connection` 헤더를 정의하지 않거나 `close`로 설정된 경우 네트워크 연결을 재사용하지 않습니다.
-
-### `Keep-Alive` 헤더
-
-### Kee-Alive 커넥션의 문제점
 
 #### 참고
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
