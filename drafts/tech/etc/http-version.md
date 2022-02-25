@@ -85,12 +85,37 @@ HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 �
 |:--:|:--:|
 |![커낵션 재사용 안함](/assets/img/posts/etc/http_short_lived_connection.png)|![커넥션 재사용](/assets/img/posts/etc/http_persistent_connection.png)|
 
-`Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 Keep-Alive 커넥션을 만들 수 있습니다.
+#### `Connection`와 `Keep-Alive` 헤더
+`Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 Keep-Alive 커넥션을 만들 수 있습니다. 아래 코드는 5개의 요청이 처리될 동안 커넥션을 유지하거나 2분 동안 커넥션을 유지하는 Keep-Alive 커넥션입니다.
 
-- `Connection` 헤더: 현재의 전송이 완료된 후 네트워크 연결을 유지할지 유지하지 않을지를 결정합니다. HTTP/1.0에서는 `Connection` 헤더를 정의하지 않거나 `close`로 설정된 경우 네트워크 연결을 재사용하지 않습니다.
-- `Keep-Alive` 헤더
+```http request
+Connection: Keep-Alive
+Keep-Alive: max=5, timeout=120
+```
 
-### 멍청한 프록시
+아래 그림과 같이 클라이언트와 서버 사이에는 프록시 서버, 캐시 서버 등과 같은 중개 서버가 놓일 수 있습니다. HTTP 메시지는 클라이언트에서 중개 서버를 거쳐 목적지까지 전달됩니다.
+
+![HTTP 커넥션](/assets/img/posts/etc/http_connection.png)
+
+현재 맺고 있는 커넥션에만 적용해야 하는 옵션을 지정해야 할 때, `Connection` 헤더를 사용하여 옵션을 전달할 수 있습니다. `Connection` 헤더의 값은 해당 커넥션에만 헤당 되는 헤더(Hop-by-Hop 헤더)명, 커넥션에 대한 비표준 옵션들, close, 이렇게 3종류의 값들이 쉼표(,)로 구분되어 있으며 다른 커넥션에 전달되지 않습니다.
+
+`Keep-Alive` 헤더는 `Keep-Alive: max=5, timeout=120` 쉼표로 구분되는 `max`와 `timeout` 두가지 옵션이 있습니다.
+
+- `max`: 몇 개의 HTTP 요청을 처리할 때까지 커넥션을 유지할 것인지를 나타냅니다.
+- `timeout`: 커넥션이 얼마간 유지할 것인지를 나타냅니다.
+
+#### 멍청한 프록시 (Dumb Proxy)
+커넥션을 재사용하기 위해 클라이언트에서 `Connection: Keep-Alive` 헤더를 전송하고, 서버가 Keep-Alive를 지원한다면 응답에 `Connection: Keep-Alive` 헤더를 전송하여 클라이언트와 서버는 커넥션을 끊지 않고 유지합니다. 하지만 이 과정에서 클라이언트와 서버 사이에 `Connection` 헤더를 이해하지 못하는 멍청한 프록시가 있을 경우 Keep-Alive 커넥션은 문제가 발생합니다.
+
+아래 그림은 멍청한 프록시 문제가 발생하는 상황을 나타내는 그림입니다.
+
+![멍청한 프록시](/assets/img/posts/etc/dumb_proxy.png)
+
+1. TEST
+2. TEST
+3. TEST
+4. TEST
+5. TEST
 
 # HTTP/1.1
 HTTP/1.1은 HTTP/1.0과 동일한 구조를 가지지만 HTTP/1.0에 비해 많은 성능 개선이 이루어졌습니다.
