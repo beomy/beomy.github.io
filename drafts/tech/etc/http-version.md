@@ -31,14 +31,6 @@ GET /http.html
 # HTTP/1.0
 HTTP/0.9 버전은 사용하는데 매우 제한적이었기 때문에, HTTP/1.0에서는 브라우저와 서버가 모두 범용적으로 사용할 수 있도록 확장되었습니다.
 
-## 개선 사항
-HTTP/1.0에서 아래 목록들이 개선되었습니다.
-
-- 요청 메시지의 요청 라인에 HTTP 버전 추가: `GET /http.html HTTP/1.0`와 같이 요청 라인 마지막에 HTTP 버전 정보가 추가되었습니다.
-- 응답 메시지에 상태 라인 추가: 응답 데이터만 보냈던 HTTP/0.9와 달리 HTTP/1.0에는 `HTTP/1.0 200 OK`와 같이 상태 코드가 포함된 상태 라인이 추가되었습니다.
-- 요청, 응답 메시지에 헤더 기능 추가: 요청, 응답 메시지에 헤더를 추가할 수 있게 되어 `Content-Type: text/html`과 같은 메타데이터를 전송할 수 있게 되었습니다.
-- HTML 파일 이외의 다른 데이터 전송 가능: 어떤 유형의 데이터를 보냈는지 표시하는 `Content-Type` 헤더 덕분에 HTML 파일 이외의 데이터를 전송할 수 있게 되었습니다.
-
 ## 구조
 HTTP/1.0에서 요청과 응답 메시지 코드는 아래와 같습니다.
 
@@ -75,15 +67,23 @@ Content-Type: text/gif
 (image content)
 ```
 
+## 개선 사항
+아래 목록은 HTTP/1.0에서 이뤄진 대표적인 개선 사항 4가지 입니다.
+
+- **요청 메시지의 요청 라인에 HTTP 버전 추가**: `GET /http.html HTTP/1.0`와 같이 요청 라인 마지막에 HTTP 버전 정보가 추가되었습니다.
+- **응답 메시지에 상태 라인 추가**: 응답 데이터만 보냈던 HTTP/0.9와 달리 HTTP/1.0에는 `HTTP/1.0 200 OK`와 같이 상태 코드가 포함된 상태 라인이 추가되었습니다.
+- **요청, 응답 메시지에 헤더 기능 추가**: 요청, 응답 메시지에 헤더를 추가할 수 있게 되어 `Content-Type: text/html`과 같은 메타데이터를 전송할 수 있게 되었습니다.
+- **HTML 파일 이외의 다른 데이터 전송 가능**: 어떤 유형의 데이터를 보냈는지 표시하는 `Content-Type` 헤더 덕분에 HTML 파일 이외의 데이터를 전송할 수 있게 되었습니다.
+
 ## 커넥션 관리
-HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 커넥션이란 각각의 HTTP 요청의 각각의 커넥션에서 실행 되는 것을 이야기 합니다. 1개의 요청은 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제가 한 세트로 동작합니다. 2개의 요청을 보내게 되면 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 -> 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 순서로 동작하게 됩니다.
+HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 커넥션이란 각각의 HTTP 요청의 각각의 커넥션에서 실행 되는 것을 이야기 합니다. 1개의 요청은 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제가 한 세트로 동작합니다. 2개의 요청을 보내게 되면 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 -> 커넥션 연결 -> 요청 -> 응답 -> 커넥션 해제 순서로 동작하게 됩니다. 단기 커넥션은 매 요청마다 커넥션을 연결하고 해제 하는 오버헤드가 발생하게 되는데 이런 오버헤드를 줄이기 위해 HTTP/1.0에서는 커넥션을 재사용 할 수 있는 Keep-Alive 커넥션을 도입하였습니다.
 
 ### Keep-Alive 커넥션
-단기 커넥션은 매 요청마다 커넥션을 연결하고 해제 하는 오버헤드가 발생하게 되는데 이런 오버헤드를 줄이기 위해 HTTP/1.0에서는 커넥션을 재사용 할 수 있는 Keep-Alive 커넥션을 도입하였습니다. 아래 그림은 커넥션을 재사용하는 경우와 재사용하지 않을 경우의 차이입니다.
+아래 그림은 커넥션을 재사용하지 않는 경우와 재사용하는 경우를 비교한 그림입니다.
 
-|커낵션 재사용 안함|커낵션 재사용|
+|단기 커넥션|지속 커넥션(Keep-Alive 커넥션)|
 |:--:|:--:|
-|![커낵션 재사용 안함](/assets/img/posts/etc/http_short_lived_connection.png)|![커넥션 재사용](/assets/img/posts/etc/http_persistent_connection.png)|
+|![단기 커넥션](/assets/img/posts/etc/http_short_lived_connection.png)|![지속 커넥션(Keep-Alive 커넥션)](/assets/img/posts/etc/http_persistent_connection.png)|
 
 #### `Connection`와 `Keep-Alive` 헤더
 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 Keep-Alive 커넥션을 만들 수 있습니다. 아래 코드는 5개의 요청이 처리될 동안 커넥션을 유지하거나 2분 동안 커넥션을 유지하는 Keep-Alive 커넥션입니다.
@@ -111,59 +111,110 @@ Keep-Alive: max=5, timeout=120
 
 ![멍청한 프록시](/assets/img/posts/etc/dumb_proxy.png)
 
-1. TEST
-2. TEST
-3. TEST
-4. TEST
-5. TEST
+1. 클라이언트는 프록시에 `Connection: Keep-Alive` 헤더와 함께 메시지를 보내고 커넥션이 유지하기를 요청합니다.
+2. 멍청한 프록시는 `Connection` 헤더를 단순 확장 헤더로만 인식하고 다음 서버에 메시지를 그대로 전달합니다. `Connection` 헤더는 Hop-by-Hop 헤더이기 때문에 다음 서버로 전달되면 안됩니다.
+3. HTTP 요청이 서버에 도착하면 서버는 `Connection: Keep-Alive` 헤더를 보고 커넥션을 유지하고자 하는 요청으로 인식하고 커넥션을 유자하기 위해 `Connection: Keep-Alive` 헤더를 포함하여 응답합니다. 서버는 `Connection: Keep-Alive` 헤더를 이해하고 프록시와 커넥션을 유지하지만 프록시는 `Connection: Keep-Alive` 헤더를 이해하지 못하고 서버와 커넥션이 끊기길 기다립니다.
+4. 멍청한 프록시는 서버로부터 받은 `Connection: Keep-Alive` 헤더를 포함하고 있는 응답 메시지를 클라이언트에 전달합니다. 클라이언트에서는 `Connection: Keep-Alive` 헤더를 보고 커넥션을 유지하는 것으로 판단합니다.
+5. 클라이언트는 `Connection: Keep-Alive` 헤더를 포함하고 있는 응답 메시지를 받으면 유지되고 있는 커넥션을 통해 다음 요청을 보내게 됩니다. 하지만 프록시는 같은 커넥션에 다른 요청이 오는 경우를 예상하지 못해 요청은 무시됩니다. 브라우저는 타임아웃 되어 커넥션이 끊길 때까지 요청을 기다릴 수 밖에 없게 됩니다.
+
+멍청한 프록시 문제를 해결하기 위한 아이디어로 `Proxy-Connection` 헤더가 등장했습니다. 부록에서 `Proxy-Connection` 헤더에 대해 좀 더 자세히 이야기 하도록 하겠습니다.
 
 # HTTP/1.1
 HTTP/1.1은 HTTP/1.0과 동일한 구조를 가지지만 HTTP/1.0에 비해 많은 성능 개선이 이루어졌습니다.
 
 ## 개선 사항
-HTTP/1.1은 이전 버전인 HTTP/1.0에 비해 많은 개선이 이루어 졌습니다. 아래 목록은 HTTP/1.1에서 이뤄진 대표적인 개선 사항 6가지 입니다.
+아래 목록은 HTTP/1.1에서 이뤄진 대표적인 개선 사항 6가지 입니다.
 
-- 커넥션 재사용: HTTP/1.0은 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용한 Keep-Alive 커넥션을 사용했지만, HTTP/1.1에서는 `Connection` 헤더를 사용하지 않아도 커넥션을 유지하는 지속 커넥션을 지원합니다.
-- 파이프라이닝 추가:
-- 청크된 응답 지원: `Transfer-Encoding` 헤더
-- 캐시 제어 기능 추가: 캐시 관련 헤더
-- 콘텐츠 협상 도입: 콘텐츠의 언어, 인코딩, 타입 협상 도입, `Accept`, `Accept-Language`, `Accept-Encoding`
-- 동일한 IP에 다른 도메인 호스트 기능 추가: `Host` 헤더, 도메인 샤딩, 병렬 커넥션
+- **커넥션 재사용**: HTTP/1.0은 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용한 Keep-Alive 커넥션을 사용했지만, HTTP/1.1에서는 `Connection` 헤더를 사용하지 않아도 커넥션을 유지하는 지속(Persistent) 커넥션을 지원합니다.
+- **파이프라이닝 추가**: HTTP/1.1은 지속 커넥션에 파이프라이닝을 추가하면서 여러 요청을 보낼 때의 성능 개선을 시도했습니다.
+- **청크된 응답 지원**: `Transfer-Encoding: chunked` 헤더를 사용하여 하나의 HTTP 메시지를 여러개로 나누어 전송이 가능해 졌습니다.
+- **캐시 제어 기능 추가**: `Cache-Control` 헤더를 사용하여 캐시 제어 관련 기능이 추가되었습니다.
+- **콘텐츠 협상 도입**: `Accept`, `Accept-Language`, `Accept-Encoding` 등의 헤더를 사용하여 콘텐트(HTTP를 통해 전송되는 데이터)의 언어, 인코딩 방식, 타입 등의 협상 기능이 추가되었습니다.
+- **동일한 IP에 다른 도메인 호스트 기능 추가**: HTTP/1.1에서는 `Host` 헤더가 필수 값이 되었습니다. `Host` 헤더를 사용하여 동일 IP 주소에 다른 도메인을 호스팅하는 가상 호스팅이 가능해 졌습니다.
 
 ## 커넥션 관리
+HTTP/1.1에서는 성능 개선을 위해 커넥션을 병렬, 지속, 파이프라이닝 하면서 성능 개선을 시도하였습니다.
 
-### 지속 커넥션
-지속 커넥션은 HTTP/1.0에서 사용하는 Keep-Alive 커넥션과 HTTP/1.1에서 사용하는 Persistent 커넥션이 있습니다.
-Keep-Alive의 멍청한 프록시 문제 해결 방법: 커넥션 관련 기능에 대한 클라이언트의 지원 범위를 알고 있지 않은 한 지속 커넥션을 맺지 않는다.
+### 병렬(Parallel) 커넥션
+병렬 커넥션은 여러개의 요청을 보내야 할 때, 하나의 커넥션을 사용하는 것이 아니라 아래 그림과 같이 동시에 여러개의 커넥션을 만들어 사용하는 방식입니다.
 
-### 파이프라이닝 커넥션
-Head Of Line Blocking 이슈가 발생하여, 모던 브라우저의 경우 파이프라이닝을 사용하지 못하게 하고 6~8개의 커넥션(병렬 커넥션)을 사용하는 방식
+![병렬 커넥션](/assets/img/posts/etc/http_parallel_connection.png)
 
-### 병렬 커넥션
-도메인 샤딩
-- Each transaction opens/closes a new connection, costing time and bandwidth.
-- Each new connection has reduced performance because of TCP slow start.
-- There is a practical limit on the number of open parallel connections.
+병렬 커넥션은 여러개의 요청을 동시에 보내기 때문에 요청을 보내고 응답을 받은 후 다음 요청을 보내는 단기, 지속 커넥션 보다 빠를 수 있지만 항상 더 빠른 것은 아닙니다. 각각의 요청은 여전히 커넥션을 맺고, 끊을 때의 오버헤드가 발생하고 대역폭이 좁은 네트워크에서는 여러개의 요청을 보내는 것에 한계가 있기 때문에 성능상의 장점이 거의 없게 됩니다. 만약 100명의 사용자가 100개의 커넥션을 맺고 있다면 서버는 총 10000개의 커넥션을 유지해야 합니다. 서버가 많은 커넥션을 맺고 있다면 성능은 크게 떨어지게 됩니다.
+
+최신 브라우저에서는 6~8개의 병렬 커넥션을 지원하지만, 도메인 샤딩을 통해 그 이상의 커넥션을 맺을 수도 있습니다. 하지만 브라우저에서 지원하는 개수 이상의 커넥션을 맺게 되면 DoS 공격에 취약해지기 때문에 도메인 샤딩은 피하는 것이 좋습니다.
+
+> **도메인 샤딩 (Domain Sharding)**
+>
+> 도메인 샤딩이란 이미지, JS, CSS 등의 정적 파일을 빠르게 내려 받기 위한 방법으로 `www1.example.com`, `www2.example.com`과 같이 여러개의 서브 도메인을 만들어 각각의 도메인 별로 커넥션을 맺는 방법입니다. 아래 그림은 같이 도메인 샤딩을 사용할 때와 사용하지 않을 때를 비교한 그림입니다.
+>
+> |도메인 샤딩 미사용|도메인 샤딩 사용|
+> |:--:|:--:|
+> |![도메인 샤딩 미사용](/assets/img/posts/etc/http_not_use_domain_sharding.png)|![도메인 샤딩 사용](/assets/img/posts/etc/http_use_domain_sharding.png)|
+
+### 지속(Persistent) 커넥션
+지속 커넥션은 HTTP/1.0에서 사용하는 Keep-Alive 커넥션과 HTTP/1.1에서 사용하는 지속(Persistent) 커넥션이 있습니다. HTTP/1.1에서는 Keep-Alive 커넥션을 지원하지 않는 대신, 더 개선된 지속 커넥션을 지원합니다. HTTP/1.0의 Keep-Alive 커넥션과 과 달리 HTTP/1.1의 지속 커넥션은 기본적으로 커넥션을 유지합니다. 지속 커넥션은 아래 목록과 같은 특징이 있습니다.
+
+- 클라이언트에서 `Connection: close` 헤더를 포함해 보내면 클라이언트는 그 커넥션으로 추가적인 요청을 보낼 수 없습니다.
+- HTTP/1.1 프록시는 클라이언트가 커넥션 관련 기능을 지원하지는 알지 못한다면 지속 커넥션을 맺지 않습니다. 클라이언트가 커넥션 관련 기능을 제공하지 않는다면 지속 커넥션을 맺지 않는 방식으로 멍청한 프록시 문제를 해결했습니다.
+
+### 파이프라인(Pipelined) 커넥션
+HTTP/1.1은 지속 커넥션을 통해 요청을 파이프라이닝 할 수 있습니다. 아래 그림은 지속 커넥션과 파이프라이닝 커낵션을 비교한 그림입니다.
+
+|지속 커넥션(Keep-Alive 커넥션)|파이프라인 커넥션|
+|:--:|:--:|
+|![지속 커넥션(Keep-Alive 커넥션)](/assets/img/posts/etc/http_persistent_connection.png)|![파이프라인 커넥션](/assets/img/posts/etc/http_pipeline_connection.png)|
+
+파이프라인 커넥션은 아래 목록과 같은 특징이 있습니다.
+
+- 파이프라인 커넥션은 지속 커넥션을 사용하기 때문에 클라이언트는 지속 커넥션인지 확인하기 전까지는 파이프라인 커넥션을 사용하면 안됩니다.
+- 여러 개의 요청은 응답이 도착하기 전까지 큐에 쌓이는데, 응답은 요청 순서와 동일하게 와야 합니다.
+
+파이프라인 커넥션은 아래와 같은 문제점을 가지고 있습니다.
+
+- 파이프라인 커넥션도 Keep-Alive 커넥션과 동일하게 프록시 문제를 가지고 있습니다. 클라이언트와 서버 사이에 놓이는 모든 프록시 서버가 파이프라이닝을 지원해야 합니다. 파이프라이닝을 지원하지 않는 프록시 서버가 있다면 파이프라이닝으로 전송되는 요청들은 정상동작하지 않게 됩니다.
+- 파이프라닝은 HOL 블로킹(Head Of Line Blocking) 문제가 있습니다. 그래서 최신 브라우저에서는 파이프라인 커넥션을 사용하지 않고 6~8개의 병렬 커넥션을 사용합니다.
+
+> **HOL 블로킹 (Head-Of-Line Blocking)**
+>
+> HOL 블로킹이란 여러 개의 요청에 대한 응답이 순서대로 와야 하는데 첫번째 요청의 결과가 늦게 도착하여 두번째, 세번째 응답이 지연(블로킹, Blocking)되는 현상을 이야기합니다. 아래 그림과 같이 첫번째 요청이 늦어지게 되면 그 이후의 모든 응답 결과는 지연되게 됩니다.
+>
+> |HOL 블로킹 미발생|HOL 블로킹 발생|
+> |:--:|:--:|
+> |![파이프라인 커넥션](/assets/img/posts/etc/http_pipeline_connection.png)|![Head-Of-Line Blocking](/assets/img/posts/etc/http_hol_blocking.png)|
 
 # HTTP/2
-HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 연결을 맺고 있어야 해서 서버 리소스의 소비, Dos Attack
-헤더 필드 압축, 멀티플렉싱
+등장 배경: 요청에 대한 응답을 받은 후 다시 요청을 보낼 수 있는 형태의 HTTP/1.1의 문제점(회전 지연, Latency)을 해결하기 위해 병렬 커넥션이나 파이프라인 커넥션이 도입되었지만 근본적인 문제를 해결하지 못함, 이 문제를 해결하기 위해 SPDY에 기반한 HTTP/2를 만듬, 헤더를 압축하여 대역폭을 절약했고, 하나의 커넥션에 여러 요청을 동시에 보내 Latency를 해결함
+
+왜 HTTP/1.2가 아닌가, 새로운 페러다임. 단위가 달라짐
+
+## 구조
+HTTP/2는 바이너리 프레이밍 계층을 사용해 요청과 응답의 멀티플렉싱을 지원합니다. HTTP 메시지를 바이너리 형태의 프레임으로 나누고 이를 전송 후 받은 쪽에서 다시 조립합니다.
+
+압축된 바이너리 형태, 클라이언트나 서버가 바이너리 해석, 프레임 조립은 클라이언트나 서버에서 해주기 때문에 어플리케이션은 신경쓰지 않아도 됨
+헤더, :status
+용어: 스트림, 메시지, 프레임
+
+## 개선 사항
+- 헤더 필드 압축
+- 서버 푸시
+- 멀티플렉싱
+- HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 연결을 맺고 있어야 해서 서버 리소스의 소비, Dos Attack
 
 ## 커넥션 관리
 
 ### 멀티플렉싱
+HTTP/1.1의 파이프라이닝은 HTTP/2.0의 멀티플랙싱으로 대채되었습니다.
 
 # HTTP/3
 핸드쉐이킹 등에 쓰이는 자원을 사용하지 않기 위해 UDP 사용, UDP는 통신만 담당하기 때문에 무결성을 보장하기 위한 코드가 추가된 QUIC를 사용
 
-# 요약
-- HTTP/0.9:
-- HTTP/1.0:
-- HTTP/1.1:
-- HTTP/2.0:
-- HTTP/3.0:
-
 # 부록
+
+## `Proxy-Connection` 헤더
+이런 멍청한 프록시 문제를 해결하기 위한 아이디어로 `Proxy-Connection` 헤더가 등장하였습니다.
+
+## Dos, DDos
 
 ## TCP
 
@@ -175,9 +226,7 @@ HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 �
 
 ## UDP
 
-## HOL 블로킹 (Head-Of-Line Blocking)
-
-## Dos, DDos
+## 웹 브라우저의 HTTP 버전별 지원 현황
 
 #### 참고
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
@@ -203,3 +252,4 @@ HTTP/1.1에서 네트워크 재사용의 단점: 유휴(idle) 상태에서도 �
 - [https://letitkang.tistory.com/79](https://letitkang.tistory.com/79)
 - [https://kscodebase.tistory.com/297](https://kscodebase.tistory.com/297)
 - [https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch04s05.html](https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch04s05.html)
+- [https://developers.google.com/web/fundamentals/performance/http2?hl=ko](https://developers.google.com/web/fundamentals/performance/http2?hl=ko)
