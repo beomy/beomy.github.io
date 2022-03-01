@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdArrowBack, MdArrowForward } from 'react-icons/md';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import cn from 'classnames';
 import { IPost } from '@/model/post';
 import { Link } from '@/atoms';
@@ -17,7 +17,7 @@ function PostNavigator({ previous, next }: IProp) {
         {previous && (
           <Link to={previous.url} className="previous">
             <div className="icon">
-              <MdArrowBack size={35} />
+              <FiChevronLeft size="auto" />
             </div>
             <div className="contents">
               <div>이전 포스트</div>
@@ -34,7 +34,7 @@ function PostNavigator({ previous, next }: IProp) {
               <div>{next.title}</div>
             </div>
             <div className="icon">
-              <MdArrowForward size={35} />
+              <FiChevronRight size="auto" />
             </div>
           </Link>
         )}

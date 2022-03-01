@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import { MdSearch, MdClose, MdMenu } from 'react-icons/md';
+import { FiMenu, FiSearch, FiX } from 'react-icons/fi';
 import cn from 'classnames';
 import { useScroll } from '@/hooks/event';
 import { Button, Link, Li } from '@/atoms';
@@ -29,7 +29,7 @@ function Header() {
     <StyledHeader className={cn({ hide: scrollY < 0 })}>
       <nav>
         <Button className="menu" onClick={handleClickMenuBtn}>
-          <MdMenu size={30} />
+          <FiMenu size={30} />
         </Button>
         <Link to="/">
           <StaticImage
@@ -72,11 +72,11 @@ function Header() {
         </ul>
         {isSearch ? (
           <Button ml="25px" onClick={handleClickSearchBtn}>
-            <MdClose size={20} />
+            <FiX size={20} />
           </Button>
         ) : (
           <Button ml="25px" onClick={handleClickSearchBtn}>
-            <MdSearch size={20} />
+            <FiSearch size={20} />
           </Button>
         )}
       </nav>

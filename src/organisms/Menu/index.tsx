@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import { MdClose } from 'react-icons/md';
+import { FiX } from 'react-icons/fi';
 import { useMenu } from '@/hooks/post';
 import { Button, Link, Li, A, Ul } from '@/atoms';
 import StyledMenu from './Menu.styeld';
@@ -26,7 +26,7 @@ function Menu({ className, onClose }: IProp) {
             />
           </Link>
           <Button onClick={onClose} width="45px">
-            <MdClose size={20} />
+            <FiX size={20} />
           </Button>
         </div>
         <Ul>

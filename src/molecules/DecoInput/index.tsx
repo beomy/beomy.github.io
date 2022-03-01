@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { MdClose, MdSearch } from 'react-icons/md';
+import { FiSearch, FiX } from 'react-icons/fi';
 import cn from 'classnames';
 import { TypographyProps } from 'styled-system';
 import { useInput } from '@/hooks/event';
@@ -40,11 +40,11 @@ function DecoInput({
         className={cn('clear', { active: isClearable })}
         onClick={() => onReset()}
       >
-        <MdClose size={props.fontSize as number | string} />
+        <FiX size={props.fontSize as number | string} />
       </Button>
       {searchable && (
         <Button className="search" onClick={() => onSearch(str)}>
-          <MdSearch size={props.fontSize as number | string} />
+          <FiSearch size={props.fontSize as number | string} />
         </Button>
       )}
     </StyledDecoInput>

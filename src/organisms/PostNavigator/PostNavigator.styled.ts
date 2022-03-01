@@ -36,7 +36,7 @@ const StyledPostNavigator = styled.div`
     &.previous {
       text-align: left;
       .contents {
-        margin-left: 10px;
+        margin-left: 15px;
         margin-right: auto;
       }
     }
@@ -44,8 +44,12 @@ const StyledPostNavigator = styled.div`
       text-align: right;
       .contents {
         margin-left: auto;
-        margin-right: 10px;
+        margin-right: 15px;
       }
+    }
+    .icon {
+      width: 35px;
+      height: 35px;
     }
     .contents {
       > div {

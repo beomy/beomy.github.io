@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  MdAccessTime,
-  MdCalendarToday,
-  MdOutlineModeComment,
-} from 'react-icons/md';
+import { FiCalendar, FiClock, FiMessageSquare } from 'react-icons/fi';
 import { format, parse } from 'date-fns';
 import { CommentCount } from 'gatsby-plugin-disqus';
 import { IPost } from '@/model/post';
@@ -48,14 +44,14 @@ function PostCard({
       <div className="footer">
         <div>
           <div>
-            <IconText Icon={MdCalendarToday} fontSize={0} mr="10px">
+            <IconText Icon={FiCalendar} iconSize={14} fontSize={0} mr="10px">
               {format(date, EDateFormat.LOCALE_YYYY_MM_DD)}
             </IconText>
-            <IconText Icon={MdAccessTime} fontSize={0}>
+            <IconText Icon={FiClock} iconSize={14} fontSize={0}>
               {timeToRead}분 소요
             </IconText>
           </div>
-          <IconText Icon={MdOutlineModeComment} fontSize={0}>
+          <IconText Icon={FiMessageSquare} iconSize={14} fontSize={0}>
             <CommentCount config={disqusConfig} placeholder="0" />
             개의 댓글
           </IconText>

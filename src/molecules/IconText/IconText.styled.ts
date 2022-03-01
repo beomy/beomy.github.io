@@ -16,9 +16,6 @@ const StyledIconText = styled.span<SpaceProps & ColorProps & TypographyProps>`
     margin-right: 5px;
     vertical-align: middle;
   }
-  .text {
-    ${typography};
-  }
 `;
 
 export default StyledIconText;
