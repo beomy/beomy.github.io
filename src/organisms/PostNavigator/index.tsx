@@ -17,7 +17,7 @@ function PostNavigator({ previous, next }: IProp) {
         {previous && (
           <Link to={previous.url} className="previous">
             <div className="icon">
-              <FiChevronLeft size="auto" />
+              <FiChevronLeft size="100%" />
             </div>
             <div className="contents">
               <div>이전 포스트</div>
@@ -34,7 +34,7 @@ function PostNavigator({ previous, next }: IProp) {
               <div>{next.title}</div>
             </div>
             <div className="icon">
-              <FiChevronRight size="auto" />
+              <FiChevronRight size="100%" />
             </div>
           </Link>
         )}
