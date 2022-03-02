@@ -183,17 +183,32 @@ HTTP/1.1은 지속 커넥션을 통해 요청을 파이프라이닝 할 수 있�
 > |![파이프라인 커넥션](/assets/img/posts/etc/http_pipeline_connection.png)|![Head-Of-Line Blocking](/assets/img/posts/etc/http_holb.png)|
 
 # HTTP/2
-등장 배경: 요청에 대한 응답을 받은 후 다시 요청을 보낼 수 있는 형태의 HTTP/1.1의 문제점(회전 지연, Latency)을 해결하기 위해 병렬 커넥션이나 파이프라인 커넥션이 도입되었지만 근본적인 문제를 해결하지 못함
-이 문제를 해결하기 위해 SPDY에 기반한 HTTP/2를 만듬, 헤더를 압축하여 대역폭을 절약했고, 하나의 커넥션에 여러 요청을 동시에 보내 Latency를 해결함
+HTTP/1.1에서는 요청에 대한 응답을 받은 후에 다시 요청을 보낼 수 있는 형태입니다. 그래서 앞 선 요청의 응답을 늦게 받은 경우 뒤이어 오는 응답도 늦게 처리를 될 수 밖에 없는 지연문제가 있습니다. 병렬 커넥션이나 파이프라인 커넥션을 도입했지만, 병렬 커넥션을 만들 수 있는 개수가 한정되어 있고 파이프라인 커넥션 구현 구현이 어려운 점, 그리고 파이프라인 커넥션에서도 앞 선 요청에 느린 응답을 받는 경우 지연 현상이 있어 근본적으로 해결하지는 못했습니다. 이런 문제를 해결하기 위해 SPDY(스피디)에 기반한 HTTP/2를 만들게 되었습니다. HTTP/2는 헤더를 압축하여 대역폭을 절약했고 하나의 커넥션에 여러 요청을 동시에 보낼 수 있게 해 지연 문제를 해결하였습니다.
 
-왜 HTTP/1.2가 아닌가, 새로운 페러다임. 단위가 달라짐
+HTTP/2는 아래 그림과 같이 바이너리 프레이밍 계층을 도입하였습니다. 이 계층은 이전의 HTTP/1.1 서버나 클라이언트(브라우저)와 호환되지 않기 때문에 HTTP/1.2와 같이 마이너 버전을 올리지 않고, HTTP/2로 메이저 버전이 올라갔습니다.
+
+![파이프라인 커넥션](/assets/img/posts/etc/http_binary_framing_layer.svg)
+
+위의 그림의 바이너리 프레임 계층에서는 바이너리 해석이나 프레임 조립을 하게 되면데 이 작업들은 서버(혹은 클라이언트)에서 해주기 때문에 TCP 소켓을 사용한 웹 서버나 클라이언트를 만드는 개발자가 아닌 어플리케이션 개발자 입장에서 HTTP/1.*과 HTTP/2는 차이점이 없습니다.
 
 ## 구조
-HTTP/2는 바이너리 프레이밍 계층을 사용해 요청과 응답의 멀티플렉싱을 지원합니다. HTTP 메시지를 바이너리 형태의 프레임으로 나누고 이를 전송 후 받은 쪽에서 다시 조립합니다.
+HTTP/2는 이전의 HTTP 표준을 대체하는 것이 아니라 확장하는 프로토콜입니다. HTTP 메서드, 상태 코드, URI 및 헤더 필드 같은 핵심 개념은 변경되지 않습니다.
 
-압축된 바이너리 형태, 클라이언트나 서버가 바이너리 해석, 프레임 조립은 클라이언트나 서버에서 해주기 때문에 어플리케이션은 신경쓰지 않아도 됨
-헤더, :status
+### 용어
 용어: 스트림, 메시지, 프레임(종류들..)
+
+### HTTP 헤더
+
+#### `Connection` 헤더
+
+#### 요청 의사 헤더 (Request Pseudo-Header Fields)
+- `:method`
+- `:scheme`
+- `:authority`
+- `:path`
+
+#### 응답 의사 헤더 (Response Pseudo-Header Fields)
+- `:status`
 
 ## 개선 사항
 - 헤더 필드 압축
@@ -203,6 +218,8 @@ HTTP/2는 바이너리 프레이밍 계층을 사용해 요청과 응답의 멀�
 ## 커넥션 관리
 
 ### 멀티플렉싱
+HTTP/2는 바이너리 프레이밍 계층을 사용해 요청과 응답의 멀티플렉싱을 지원합니다. HTTP 메시지를 바이너리 형태의 프레임으로 나누고 이를 전송 후 받은 쪽에서 다시 조립합니다.
+
 HTTP/1.1의 파이프라이닝은 HTTP/2.0의 멀티플랙싱으로 대채되었습니다.
 
 # HTTP/3
@@ -259,3 +276,4 @@ HTTP/1.1의 파이프라이닝은 HTTP/2.0의 멀티플랙싱으로 대채되었
 - [https://developers.google.com/web/fundamentals/performance/http2?hl=ko](https://developers.google.com/web/fundamentals/performance/http2?hl=ko)
 - [https://http2.github.io/faq/](https://http2.github.io/faq/)
 - [https://seokbeomkim.github.io/posts/http1-http2/](https://seokbeomkim.github.io/posts/http1-http2/)
+- [https://httpwg.org/specs/rfc7540.html](https://httpwg.org/specs/rfc7540.html)
