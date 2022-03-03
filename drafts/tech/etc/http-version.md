@@ -197,6 +197,8 @@ HTTP/2는 이전의 HTTP 표준을 대체하는 것이 아니라 확장하는 �
 ### 용어
 용어: 스트림, 메시지, 프레임(종류들..)
 
+프레임: DATA, HEADERS. PRIORITY, RST_STREAM, SETTINGS, PUSH_PROMISE, PING, GOAWAY, WINDOW_UPDATE, CONTINUATION
+
 ### HTTP 헤더
 
 #### `Connection` 헤더
