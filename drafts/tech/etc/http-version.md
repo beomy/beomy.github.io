@@ -278,6 +278,8 @@ TCP는 현재 연결에 알맞는 혼잡 윈도우의 크기를 결정하기 위
 |안드로이드 브라우저|51||
 |크롬 - 안드로이드|51||
 
+### HTTP/3.0
+
 #### 참고
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
 - [https://ykarma1996.tistory.com/86](https://ykarma1996.tistory.com/86)
