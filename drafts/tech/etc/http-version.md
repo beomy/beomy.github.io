@@ -88,7 +88,7 @@ HTTP/1.0에서 기본적으로 커넥션은 단기 커넥션입니다. 단기 �
 #### `Connection`와 `Keep-Alive` 헤더
 `Connection: keep-alive`와 `Keep-Alive` 헤더를 사용하여 Keep-Alive 커넥션을 만들 수 있습니다. 아래 코드는 5개의 요청이 처리될 동안 커넥션을 유지하거나 2분 동안 커넥션을 유지하는 Keep-Alive 커넥션입니다.
 
-```http request
+```http
 Connection: Keep-Alive
 Keep-Alive: max=5, timeout=120
 ```
@@ -220,18 +220,49 @@ HTTP/2.0을 이해하기 위해서 먼저 HTTP/2.0에서 사용하는 용어를 
 > - CONTINUATION: HEADER 블록을 확장하는데 사용한다.
 
 ### HTTP 헤더
-HTTP/1.*에서는 메시지를 요청/상태 라인과 헤더로 나뉩니다.
+HTTP/1.*에서는 메시지를 요청/상태 라인과 헤더로 나뉩니다. HTTP/2.0은 이런 구분을 없애고 가상 헤더(Pseudo-Header)를 사용하여 모두 헤더로 만들었습니다.
 
 #### 요청 가상 헤더 (Request Pseudo-Header Fields)
-- `:method`
-- `:scheme`
-- `:authority`
-- `:path`
+HTTP/1.1에서 아래와 같은 요청은
+
+```http
+GET / HTTP/1.1
+Host: beomy.github.io
+Accept-Encoding: compress, gzip
+```
+
+HTTP/2.0에서 아래와 같은 요청의 형태를 가지게 됩니다.
+
+```http
+:scheme: https
+:method: GET
+:path: /
+:authority: beomy.github.io
+accept-encoding: compress, gzip
+```
+
+요청 메시지의 요청 라인은 `:scheme`, `:method`, `:path`, `:authority` 헤더로 나누어집니다.
 
 #### 응답 가상 헤더 (Response Pseudo-Header Fields)
-- `:status`
+HTTP/1.1에서 아래와 같은 응답은
+
+```http
+HTTP/1.1 200 OK
+Content-type: text/plain
+```
+
+HTTP/2.0에서 아래와 같은 응답의 형태를 가지게 됩니다.
+
+```http
+:status:200
+content-type: text/plain
+```
+
+응답 메시지의 상태 라인은 `:status` 헤더를 사용하여 표현됩니다.
 
 ## 개선 사항
+HTTP/2.0은 HTTP/1.1의 성능 개선을 위해 아래 목록과 같은 기능을 추가했습니다.
+
 - 헤더 필드 압축
 - 서버 푸시
 - 다중화(멀티플렉싱)
