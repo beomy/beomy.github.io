@@ -243,6 +243,11 @@ accept-encoding: compress, gzip
 
 요청 메시지의 요청 라인은 `:scheme`, `:method`, `:path`, `:authority` 헤더로 나누어집니다.
 
+- `:scheme`: https와 같은 프로토콜 종류를 나타냅니다.
+- `:method`: GET, POST와 같은 HTTP 메소드를 나타냅니다.
+- `:path`: 요청 라인의 URL의 값을 나타냅니다.
+- `:authority`: Host 헤더의 값을 나타냅니다. HTTP/2.0에서는 HOST 헤더 대신 `:authority` 가상 헤더를 권장합니다.
+
 #### 응답 가상 헤더 (Response Pseudo-Header Fields)
 HTTP/1.1에서 아래와 같은 응답은
 
@@ -260,16 +265,34 @@ content-type: text/plain
 
 응답 메시지의 상태 라인은 `:status` 헤더를 사용하여 표현됩니다.
 
+- `:status`: 상태 라인의 코드 값을 나타냅니다.
+
 ## 개선 사항
 HTTP/2.0은 HTTP/1.1의 성능 개선을 위해 아래 목록과 같은 기능을 추가했습니다.
 
-- 헤더 필드 압축
-- 서버 푸시
-- 다중화(멀티플렉싱)
+### 헤더 필드 압축
+HTTP/2.0에서는 HPACK를 사용하여 헤더를 압축하여 전송합니다. HPACK은 테이블 참조 압축 알고리즘으로, 허프만 코딩(Huffman coding)을 사용하여 압축합니다. HPACK은 중복된 헤더를 전송을 최소화하기 위해 정적(static) 테이블과 동적(dynamic) 테이블 2개의 테이블을 참조합니다. 정적 테이블([정적 테이블 목록](https://httpwg.org/specs/rfc7541.html#static.table.definition))은 1~61번까지 61개의 자주 사용되는 헤더가 정의된 테이블입니다. 동적 테이블은 HTTP 메시지를 주고 받는 과정에서 헤더 중복을 피하기 위해 동적으로 추가되는 헤더 정보들을 정의하는 테이블입니다.
 
-## 커넥션 관리
+HPACK은 아래 그림과 같이 헤더를 압축하게 됩니다.
+
+![HPACK](/assets/img/posts/etc/hpack.png)
+
+- 첫번째 요청 헤더(Request #1)의 `:method: GET`은 정적 테이블 인텍스 2번에, `:scheme: https`는 7번, `:path: /`는 4번, `:authority`는 1번에 정의되어 있습니다.
+- 정적 테이블에 정의 된 값들은 인덱스만 전송합니다. `:authority` 헤더의 값과 `custom-header: i'm beomy`는 정적 테이블에 정의되어 있지 않기 때문에 허프만 코딩으로 압축 한 후 전송합니다.
+- 중복된 헤더 전송을 최소화하기 위해 `:authority: beomy.github.io`는 동적 테이블 인덱스 62번에, `custom-header: i'm beomy`는 63번에 추가합니다.
+- 두번째 요청 헤더(Request #2)의 `:method: GET`, `:scheme: https`, `:path: /` 헤더는 각각 정적 테이블의 2, 7, 4번에 정의되어 있습니다. `:authority: beomy.github.io`와 `custom-header: i'm beomy`는 동적 테이블의 62, 63번에 정의되어 있습니다.
+- 정적 테이블과 동적 테이블에 정의 된 값들은 인덱스만 전송합니다. `custom-header2: hellow!`는 정적/동적 테이블에 정의되어 있지 않기 때문에 허프만 코딩으로 압축 한 후 전송합니다.
+- 중복된 헤더 전송을 최소화하기 위해 `custom-header2: hellow!`는 동적 테이블 64번에 추가합니다.
+
+> **허프만 코딩(Huffman coding)이란**
+>
+> 어쩌구 저쩌구~
+
+### 서버 푸시
 
 ### 멀티플렉싱
+
+## 커넥션 관리
 HTTP/2.0는 프레임 형식 덕분에 요청과 응답을 서로 뒤섞는 다중화가 가능합니다. 다중화는 HTTP의 HOLB
 
 HTTP/2는 바이너리 프레이밍 계층을 사용해 요청과 응답의 멀티플렉싱을 지원합니다. HTTP 메시지를 바이너리 형태의 프레임으로 나누고 이를 전송 후 받은 쪽에서 다시 조립합니다.
@@ -371,3 +394,5 @@ HTTP/2.0과 HTTP/3.0은 비교적 최근에 발표된 프로토콜이기 때문�
 - [https://http2.github.io/faq/](https://http2.github.io/faq/)
 - [https://seokbeomkim.github.io/posts/http1-http2/](https://seokbeomkim.github.io/posts/http1-http2/)
 - [https://httpwg.org/specs/rfc7540.html](https://httpwg.org/specs/rfc7540.html)
+- [https://httpwg.org/specs/rfc7541.html](https://httpwg.org/specs/rfc7541.html)
+- [https://ssup2.github.io/theory_analysis/HTTP2/](https://ssup2.github.io/theory_analysis/HTTP2/)
