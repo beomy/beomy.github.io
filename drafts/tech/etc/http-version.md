@@ -298,16 +298,28 @@ PUSH_PROMISE 프레임을 사용하여 HTTP/2.0은 클라이언트가 데이터�
 위의 그림은 서버 푸시를 사용하는 것과 사용하지 않을 때 절약되는 시간을 나타내는 그림입니다. 서버가 화면에 렌더링하는 HTML 페이지에 대한 요청을 처리하는 사이에 푸시를 하는 것이 가장 이상적입니다.
 
 ## 커넥션 관리
-HTTP/2.0에서는 HTTP/1.*에서 성능 이슈가 있던 HTTP의 HOLB 이슈를 다중화(멀티플렉싱, Multiplexing)을 사용하여 해결하였습니다,
+HTTP/2.0에서는 HTTP/1.*에서 성능 이슈가 있던 HTTP의 HOLB 이슈를 다중화(멀티플렉싱, Multiplexing)을 사용하여 해결하였습니다.
 
 ### 멀티플렉싱
-HTTP/2.0는 프레임 형식 덕분에 요청과 응답을 서로 뒤섞는 다중화가 가능합니다. HTTP 메시지를 바이너리 형태의 프레임으로 나누고 이를 전송 후 받은 쪽에서 다시 조립합니다. HTTP/2.0에서는 커넥션을 통해 아래 그림과 같이 데이터가 전달됩니다.
+HTTP/2.0는 프레임 형식 덕분에 요청과 응답을 서로 뒤섞는 다중화가 가능합니다. 아래 그림과 같이 HTTP/1.*에서는 요청을 보내고 응답을 기다리고 다시 요청을 보내는 형태를 사용하였다면 HTTP/2.0은 동시에 여러 요청을 보내고 동시에 여러 응답을 받는 형태를 사용합니다.
+
+![커넥션 개수 차이](/assets/img/posts/etc/multiplexing_connection.png)
+
+HTTP/2.0의 멀티플렉스은 아래 그림과 같이 하나의 커넥션에서 여러 요청/응답 데이터가 전달됩니다.
 
 ![단기 커넥션](/assets/img/posts/etc/multiplexing.svg)
 
-HTTP/1.1의 파이프라이닝은 HTTP/2.0의 멀티플랙싱으로 대채되었습니다.
+위의 그림은 `stream 1`, `stream 3`, `stream 5`, 3개의 병렬 스트림이 존재하고 각 스트림에서 HTTP 요청/응답이 전송되고 있는 그림입니다.
+
+HTTP/2.0은 HTTP 메시지를 프레임으로 나누어 전송 한 후 받는 쪽에서 조립하기 때문에 동시에 여러 요청/응답을 보낼 수 있게 되었습니다. 이런 특징은 여러 요청/응답이 HOLB 문제 없이 병렬로 전송될 수 있게 되었고, 하나의 연결에 여러 요청/응답을 병렬로 전달할 수 있기 때문에 HTTP/1.1의 파이프라이닝을 대체할 수 있게 되었습니다. 또한 HTTP 메시지를 프레임으로 세분화 할 수 있기 때문에 HTTP/1.1의 청크 분할 전송(`Transfer-Encoding: chunked`)도 필요 없게 되었습니다.
+
+|HTTP/1.1 파이브라이닝의 HOLB|HTTP/2.0 멀티플렉싱|
+|:--:|:--:|
+|![Head-Of-Line Blocking](/assets/img/posts/etc/http_holb.png)|![멀티플렉신](/assets/img/posts/etc/multiplexing_no_holb.png)|
 
 # HTTP/3
+TCP 기반인 HTTP/1.*, HTTP/2.0과 다르게 HTTP/3는 UDP 기반으로 통신합니다. HTTP/3는 QUIC(퀵)을 사용하는데, QUIC는 TLS 암호화를 기본적으로 사용합니다.
+
 핸드쉐이킹 등에 쓰이는 자원을 사용하지 않기 위해 UDP 사용, UDP는 통신만 담당하기 때문에 무결성을 보장하기 위한 코드가 추가된 QUIC를 사용
 
 # 부록
@@ -376,7 +388,6 @@ HTTP/2.0과 HTTP/3.0은 비교적 최근에 발표된 프로토콜이기 때문�
 |크롬 - 안드로이드|98|
 
 #### 참고
-- [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
 - [https://ykarma1996.tistory.com/86](https://ykarma1996.tistory.com/86)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
 - [https://velog.io/@seeker1207/HTTP-0.9에서-HTTP-3.0까지](https://velog.io/@seeker1207/HTTP-0.9에서-HTTP-3.0까지)
@@ -404,3 +415,6 @@ HTTP/2.0과 HTTP/3.0은 비교적 최근에 발표된 프로토콜이기 때문�
 - [https://httpwg.org/specs/rfc7540.html](https://httpwg.org/specs/rfc7540.html)
 - [https://httpwg.org/specs/rfc7541.html](https://httpwg.org/specs/rfc7541.html)
 - [https://ssup2.github.io/theory_analysis/HTTP2/](https://ssup2.github.io/theory_analysis/HTTP2/)
+- [https://ykarma1996.tistory.com/86](https://ykarma1996.tistory.com/86)
+- [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
+- [https://blog.cloudflare.com/ko-kr/http3-the-past-present-and-future-ko-kr/](https://blog.cloudflare.com/ko-kr/http3-the-past-present-and-future-ko-kr/)
