@@ -305,7 +305,6 @@ HTTP/2.0는 프레임 형식 덕분에 요청과 응답을 서로 뒤섞는 다�
 
 ![단기 커넥션](/assets/img/posts/etc/multiplexing.svg)
 
-
 HTTP/1.1의 파이프라이닝은 HTTP/2.0의 멀티플랙싱으로 대채되었습니다.
 
 # HTTP/3
