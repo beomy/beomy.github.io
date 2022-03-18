@@ -195,11 +195,11 @@ HTTP/2는 아래 그림과 같이 바이너리 프레이밍 계층을 도입하�
 HTTP/2는 이전의 HTTP 표준을 대체하는 것이 아니라 확장하는 프로토콜입니다. HTTP 메서드, 상태 코드, URI 및 헤더 필드 같은 핵심 개념은 변경되지 않습니다.
 
 ### 용어
-HTTP/2.0을 이해하기 위해서 먼저 HTTP/2.0에서 사용하는 용어를 정리해 보겠습니다. 아래 그림을 보면 스트림, 메시지, 프레임의 개념을 좀 더 쉽게 이해할 수 있습니다.
+HTTP/2을 이해하기 위해서 먼저 HTTP/2에서 사용하는 용어를 정리해 보겠습니다. 아래 그림을 보면 스트림, 메시지, 프레임의 개념을 좀 더 쉽게 이해할 수 있습니다.
 
 ![스트림, 메시지, 프레임](/assets/img/posts/etc/streams_messages_frames01.svg)
 
-- 프레임: HTTP/1.*에서는 텍스트 형태의 HTTP 메시지가 전송되지만 HTTP/2.0에서는 HTTP 메시지가 HEADERS와 DATA 프레임에 담겨 바이너리 형태로 전송됩니다.
+- 프레임: HTTP/1.*에서는 텍스트 형태의 HTTP 메시지가 전송되지만 HTTP/2에서는 HTTP 메시지가 HEADERS와 DATA 프레임에 담겨 바이너리 형태로 전송됩니다.
 - 스트림: 스트림은 하나의 연결 위에서 개별 HTTP 요청/응답 쌍을 구성하는 일련의 프레임 모음입니다. 클라이언트는 요청을 할 때 새 스트림을 개시합니다. 그러면 서버는 동일한 스트림 위에서 응답합니다.
 - 메시지: HTTP/1.*에서와 마찬가지로 메시지는 HTTP 요청이나 응답을 이야기 합니다. 응답/요청 메시지는 아래 그림과 같이 프레임으로 전송됩니다.
   ![메시지와 프레임](/assets/img/posts/etc/message_frame.png)
@@ -220,7 +220,7 @@ HTTP/2.0을 이해하기 위해서 먼저 HTTP/2.0에서 사용하는 용어를 
 > - CONTINUATION: HEADER 블록을 확장하는데 사용한다.
 
 ### HTTP 헤더
-HTTP/1.*에서는 메시지를 요청/상태 라인과 헤더로 나뉩니다. HTTP/2.0은 이런 구분을 없애고 가상 헤더(Pseudo-Header)를 사용하여 모두 헤더로 만들었습니다.
+HTTP/1.*에서는 메시지를 요청/상태 라인과 헤더로 나뉩니다. HTTP/2은 이런 구분을 없애고 가상 헤더(Pseudo-Header)를 사용하여 모두 헤더로 만들었습니다.
 
 #### 요청 가상 헤더 (Request Pseudo-Header Fields)
 HTTP/1.1에서 아래와 같은 요청은
@@ -231,7 +231,7 @@ Host: beomy.github.io
 Accept-Encoding: compress, gzip
 ```
 
-HTTP/2.0에서 아래와 같은 요청의 형태를 가지게 됩니다.
+HTTP/2에서 아래와 같은 요청의 형태를 가지게 됩니다.
 
 ```http
 :scheme: https
@@ -246,7 +246,7 @@ accept-encoding: compress, gzip
 - `:scheme`: https와 같은 프로토콜 종류를 나타냅니다.
 - `:method`: GET, POST와 같은 HTTP 메소드를 나타냅니다.
 - `:path`: 요청 라인의 URL의 값을 나타냅니다.
-- `:authority`: Host 헤더의 값을 나타냅니다. HTTP/2.0에서는 HOST 헤더 대신 `:authority` 가상 헤더를 권장합니다.
+- `:authority`: Host 헤더의 값을 나타냅니다. HTTP/2에서는 HOST 헤더 대신 `:authority` 가상 헤더를 권장합니다.
 
 #### 응답 가상 헤더 (Response Pseudo-Header Fields)
 HTTP/1.1에서 아래와 같은 응답은
@@ -256,7 +256,7 @@ HTTP/1.1 200 OK
 Content-type: text/plain
 ```
 
-HTTP/2.0에서 아래와 같은 응답의 형태를 가지게 됩니다.
+HTTP/2에서 아래와 같은 응답의 형태를 가지게 됩니다.
 
 ```http
 :status:200
@@ -268,10 +268,10 @@ content-type: text/plain
 - `:status`: 상태 라인의 코드 값을 나타냅니다.
 
 ## 개선 사항
-HTTP/2.0은 HTTP/1.1의 성능 개선을 위해 아래 목록과 같은 기능을 추가했습니다.
+HTTP/2은 HTTP/1.1의 성능 개선을 위해 아래 목록과 같은 기능을 추가했습니다.
 
 ### 헤더 필드 압축
-HTTP/2.0에서는 HPACK를 사용하여 헤더를 압축하여 전송합니다. HPACK은 테이블 참조 압축 알고리즘으로, 허프만 코딩(Huffman coding)을 사용하여 압축합니다. HPACK은 중복된 헤더를 전송을 최소화하기 위해 정적(static) 테이블과 동적(dynamic) 테이블 2개의 테이블을 참조합니다. 정적 테이블([정적 테이블 목록](https://httpwg.org/specs/rfc7541.html#static.table.definition))은 1~61번까지 61개의 자주 사용되는 헤더가 정의된 테이블입니다. 동적 테이블은 HTTP 메시지를 주고 받는 과정에서 헤더 중복을 피하기 위해 동적으로 추가되는 헤더 정보들을 정의하는 테이블입니다.
+HTTP/2에서는 HPACK를 사용하여 헤더를 압축하여 전송합니다. HPACK은 테이블 참조 압축 알고리즘으로, 허프만 코딩(Huffman coding)을 사용하여 압축합니다. HPACK은 중복된 헤더를 전송을 최소화하기 위해 정적(static) 테이블과 동적(dynamic) 테이블 2개의 테이블을 참조합니다. 정적 테이블([정적 테이블 목록](https://httpwg.org/specs/rfc7541.html#static.table.definition))은 1~61번까지 61개의 자주 사용되는 헤더가 정의된 테이블입니다. 동적 테이블은 HTTP 메시지를 주고 받는 과정에서 헤더 중복을 피하기 위해 동적으로 추가되는 헤더 정보들을 정의하는 테이블입니다.
 
 HPACK은 아래 그림과 같이 헤더를 압축하게 됩니다.
 
@@ -289,7 +289,7 @@ HPACK은 아래 그림과 같이 헤더를 압축하게 됩니다.
 > 허프만 코딩은 빈도가 많은 문자는 적은 비트 표현하고 빈도에 따라 차즘 많은 비트 수로 표현하는 압축 방식입니다. 아스키 코드는 항상 문자를 8비트로 표현하는데 허프만 코딩을 사용하여 자주 사용되는 문자를 (예를 들어) 2비트로 표현함으로 데이터를 압축할 수 있게 됩니다.
 
 ### 서버 푸시
-PUSH_PROMISE 프레임을 사용하여 HTTP/2.0은 클라이언트가 데이터를 요청하기 전에 미리 그 데이터를 전송하는 서버 푸시가 가능합니다. 서버 푸시는 처음 방문한 페이지를 렌더링하는데 필요한 CSS와 JS 파일을 푸시할 때 사용하기 좋습니다.
+PUSH_PROMISE 프레임을 사용하여 HTTP/2은 클라이언트가 데이터를 요청하기 전에 미리 그 데이터를 전송하는 서버 푸시가 가능합니다. 서버 푸시는 처음 방문한 페이지를 렌더링하는데 필요한 CSS와 JS 파일을 푸시할 때 사용하기 좋습니다.
 
 |서버 푸시 미사용|서버 푸시 사용|
 |:--:|:--:|
@@ -298,27 +298,29 @@ PUSH_PROMISE 프레임을 사용하여 HTTP/2.0은 클라이언트가 데이터�
 위의 그림은 서버 푸시를 사용하는 것과 사용하지 않을 때 절약되는 시간을 나타내는 그림입니다. 서버가 화면에 렌더링하는 HTML 페이지에 대한 요청을 처리하는 사이에 푸시를 하는 것이 가장 이상적입니다.
 
 ## 커넥션 관리
-HTTP/2.0에서는 HTTP/1.*에서 성능 이슈가 있던 HTTP의 HOLB 이슈를 다중화(멀티플렉싱, Multiplexing)을 사용하여 해결하였습니다.
+HTTP/2에서는 HTTP/1.*에서 성능 이슈가 있던 HTTP의 HOLB 이슈를 다중화(멀티플렉싱, Multiplexing)을 사용하여 해결하였습니다.
 
 ### 멀티플렉싱
-HTTP/2.0는 프레임 형식 덕분에 요청과 응답을 서로 뒤섞는 다중화가 가능합니다. 아래 그림과 같이 HTTP/1.*에서는 요청을 보내고 응답을 기다리고 다시 요청을 보내는 형태를 사용하였다면 HTTP/2.0은 동시에 여러 요청을 보내고 동시에 여러 응답을 받는 형태를 사용합니다.
+HTTP/2는 프레임 형식 덕분에 요청과 응답을 서로 뒤섞는 다중화가 가능합니다. 아래 그림과 같이 HTTP/1.*에서는 요청을 보내고 응답을 기다리고 다시 요청을 보내는 형태를 사용하였다면 HTTP/2은 동시에 여러 요청을 보내고 동시에 여러 응답을 받는 형태를 사용합니다.
 
 ![커넥션 개수 차이](/assets/img/posts/etc/multiplexing_connection.png)
 
-HTTP/2.0의 멀티플렉스은 아래 그림과 같이 하나의 커넥션에서 여러 요청/응답 데이터가 전달됩니다.
+HTTP/2의 멀티플렉스은 아래 그림과 같이 하나의 커넥션에서 여러 요청/응답 데이터가 전달됩니다.
 
 ![단기 커넥션](/assets/img/posts/etc/multiplexing.svg)
 
 위의 그림은 `stream 1`, `stream 3`, `stream 5`, 3개의 병렬 스트림이 존재하고 각 스트림에서 HTTP 요청/응답이 전송되고 있는 그림입니다.
 
-HTTP/2.0은 HTTP 메시지를 프레임으로 나누어 전송 한 후 받는 쪽에서 조립하기 때문에 동시에 여러 요청/응답을 보낼 수 있게 되었습니다. 이런 특징은 여러 요청/응답이 HOLB 문제 없이 병렬로 전송될 수 있게 되었고, 하나의 연결에 여러 요청/응답을 병렬로 전달할 수 있기 때문에 HTTP/1.1의 파이프라이닝을 대체할 수 있게 되었습니다. 또한 HTTP 메시지를 프레임으로 세분화 할 수 있기 때문에 HTTP/1.1의 청크 분할 전송(`Transfer-Encoding: chunked`)도 필요 없게 되었습니다.
+HTTP/2은 HTTP 메시지를 프레임으로 나누어 전송 한 후 받는 쪽에서 조립하기 때문에 동시에 여러 요청/응답을 보낼 수 있게 되었습니다. 이런 특징은 여러 요청/응답이 HOLB 문제 없이 병렬로 전송될 수 있게 되었고, 하나의 연결에 여러 요청/응답을 병렬로 전달할 수 있기 때문에 HTTP/1.1의 파이프라이닝을 대체할 수 있게 되었습니다. 또한 HTTP 메시지를 프레임으로 세분화 할 수 있기 때문에 HTTP/1.1의 청크 분할 전송(`Transfer-Encoding: chunked`)도 필요 없게 되었습니다.
 
-|HTTP/1.1 파이브라이닝의 HOLB|HTTP/2.0 멀티플렉싱|
+|HTTP/1.1 파이브라이닝의 HOLB|HTTP/2 멀티플렉싱|
 |:--:|:--:|
 |![Head-Of-Line Blocking](/assets/img/posts/etc/http_holb.png)|![멀티플렉신](/assets/img/posts/etc/multiplexing_no_holb.png)|
 
 # HTTP/3
-TCP 기반인 HTTP/1.*, HTTP/2.0과 다르게 HTTP/3는 UDP 기반으로 통신합니다. HTTP/3는 QUIC(퀵)을 사용하는데, QUIC은 Quick UDP Internet Connection의 약자입니다.
+TCP 기반인 HTTP/1.*, HTTP/2과 다르게 HTTP/3는 UDP 기반으로 통신합니다. HTTP/3는 QUIC(퀵)을 사용하는데, QUIC은 Quick UDP Internet Connection의 약자입니다.
+
+~~HTTP/2와 HTTP/3 구조 차이 그림~~
 
 ## 개선 사항
 ||TCP|UDP|
@@ -338,19 +340,27 @@ TCP는 좋은 기능이 다 들어있는 무거운 라이브러리, UDP는 필�
 ### TCP의 Handshaking
 핸드쉐이킹 등에 쓰이는 자원을 사용하지 않기 위해 UDP 사용
 
-TCP에서 연결을 맺기 위한 3-way Handshaking과 연결을 끊기 위한 4-way Handshaking 비용이 절약 된다.
+TLS 버전 별로 핸드쉐이킹에 조금씩 차이가 있기 때문에 TLS 1.3에서 핸드쉐이크 비교,
+TLS 1.3은 TLS 연결을 맺은 적이 있다면 이전 연결에서 사용했떤 정보를 이용해서 처음부터 연결 정보를 교환하지 않아도 되도록하는 함 (왕복 시간 없는 연결 재시작)
+연결을 한적이 없을 경우의 핸드쉐이크와 연결을 한적이 있을 경우의 헨드 쉐이크 비교
+- [https://blog.cloudflare.com/ko-kr/even-faster-connection-establishment-with-quic-0-rtt-resumption-ko-kr/](https://blog.cloudflare.com/ko-kr/even-faster-connection-establishment-with-quic-0-rtt-resumption-ko-kr/)
+- [https://blog.cloudflare.com/the-road-to-quic/](https://blog.cloudflare.com/the-road-to-quic/)
+
+연결을 처음 맺는 경우 TCP + TLS에서 HTTP 요청을 보내려면 2번 서버를 왕복해야 하지만, QUIC의 경우 1번만 가능
+연결을 맺은 적이 있는 경우 TCP + TLS는 클라이언트와 서버는 TLS 데이터를 교환하기 위해 여전히 TCP 연결을 만들어야 하기 때문에 3-way 핸드쉐이킹 후 HTTP 요청 전송이 가능하다. QUIC의 경우 핸드쉐이킹 완료할 필요 없이 바로 HTTP 요청 전송이 가능하다.
+
+TLS의 경우 왕복 시간 없음은 TLS 핸드쉐이크 자체만 의미한다. 클라이언트와 서버는 TLS 데이터를 교환하기 위해 여전히 TCP 연결을 만들어야 한다.
+
+### TCP의 느린 시작
+QUIC은 QUIC 연결을 공유 하기 때문에 느린 시작이 필요하지 않습니다.
 
 ### TCP의 HOLB
 TCP는 전체 데이터를 순서대로 전달해야 합니다. 데이터 일부를 담고 있는 TCP 패킷이 손실되면 TCP는 손실 된 패킷을 재전송됩니다. 손실 된 패킷을 재전송하는 동안에 완전히 독립된 HTTP 메시지도 손실 된 패킷을 성공적으로 받을 때까지 어플리케이션에 전달하지 못합니다. 이런 상황을 TCP의 HOLB라고 하는데 UDP는 전송 순서를 보장하지 않아도 되기 때문에 HOLB 이슈가 발생하지 않습니다.
-
-### TCP의 느린 시작
 
 # 부록
 
 ## `Proxy-Connection` 헤더
 이런 멍청한 프록시 문제를 해결하기 위한 아이디어로 `Proxy-Connection` 헤더가 등장하였습니다.
-
-## Dos, DDos
 
 ## HOLB (Head-Of-Line Blocking)
 
@@ -382,9 +392,9 @@ TCP는 현재 연결에 알맞는 혼잡 윈도우의 크기를 결정하기 위
 ## UDP
 
 ## 웹 브라우저의 HTTP 버전별 지원 현황
-HTTP/2.0과 HTTP/3.0은 비교적 최근에 발표된 프로토콜이기 때문에 브라우저에서 지원하는지 확인 후 사용하는 것이 좋습니다.
+HTTP/2과 HTTP/3은 비교적 최근에 발표된 프로토콜이기 때문에 브라우저에서 지원하는지 확인 후 사용하는 것이 좋습니다.
 
-### HTTP/2.0 지원 브라우저
+### HTTP/2 지원 브라우저
 |브라우저명|최소 버전|비고|
 |:--:|:--:|:--:|
 |크롬|41||
@@ -397,7 +407,7 @@ HTTP/2.0과 HTTP/3.0은 비교적 최근에 발표된 프로토콜이기 때문�
 |안드로이드 브라우저|51||
 |크롬 - 안드로이드|51||
 
-### HTTP/3.0 지원 브라우저
+### HTTP/3 지원 브라우저
 |브라우저명|최소 버전|
 |:--:|:--:|
 |크롬|87|
@@ -441,3 +451,7 @@ HTTP/2.0과 HTTP/3.0은 비교적 최근에 발표된 프로토콜이기 때문�
 - [https://ykarma1996.tistory.com/86](https://ykarma1996.tistory.com/86)
 - [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/)
 - [https://blog.cloudflare.com/ko-kr/http3-the-past-present-and-future-ko-kr/](https://blog.cloudflare.com/ko-kr/http3-the-past-present-and-future-ko-kr/)
+- [https://m.blog.naver.com/sehyunfa/221680799006](https://m.blog.naver.com/sehyunfa/221680799006)
+- [https://www.cloudflare.com/ko-kr/learning/ssl/transport-layer-security-tls/](https://www.cloudflare.com/ko-kr/learning/ssl/transport-layer-security-tls/)
+- [https://blog.cloudflare.com/ko-kr/even-faster-connection-establishment-with-quic-0-rtt-resumption-ko-kr/](https://blog.cloudflare.com/ko-kr/even-faster-connection-establishment-with-quic-0-rtt-resumption-ko-kr/)
+- [https://blog.cloudflare.com/the-road-to-quic/](https://blog.cloudflare.com/the-road-to-quic/)
