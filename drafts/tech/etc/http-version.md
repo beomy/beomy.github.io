@@ -318,9 +318,32 @@ HTTP/2.0은 HTTP 메시지를 프레임으로 나누어 전송 한 후 받는 �
 |![Head-Of-Line Blocking](/assets/img/posts/etc/http_holb.png)|![멀티플렉신](/assets/img/posts/etc/multiplexing_no_holb.png)|
 
 # HTTP/3
-TCP 기반인 HTTP/1.*, HTTP/2.0과 다르게 HTTP/3는 UDP 기반으로 통신합니다. HTTP/3는 QUIC(퀵)을 사용하는데, QUIC는 TLS 암호화를 기본적으로 사용합니다.
+TCP 기반인 HTTP/1.*, HTTP/2.0과 다르게 HTTP/3는 UDP 기반으로 통신합니다. HTTP/3는 QUIC(퀵)을 사용하는데, QUIC은 Quick UDP Internet Connection의 약자입니다.
 
-핸드쉐이킹 등에 쓰이는 자원을 사용하지 않기 위해 UDP 사용, UDP는 통신만 담당하기 때문에 무결성을 보장하기 위한 코드가 추가된 QUIC를 사용
+## 개선 사항
+||TCP|UDP|
+|:--:|:--:|:--:|
+|연결 방식|연결혈 서비스|비연결형 서비스|
+|패킷 교환|가상 회선 방식|데이터그램 방식|
+|전송 순서 보장|보장함|보장하지 않음|
+|신뢰성|높음|낮음|
+|전송 속도|느림|빠름|
+
+UDP는 통신만 담당하기 때문에 무결성을 보장하기 위한 코드가 추가된 QUIC를 사용
+
+QUIC는 TCP가 가지던 신뢰성과 무결성을 포기한 것인가? UDP는 하얀 도화지 같은 프로토콜입니다. QUIC에서 신뢰성과 무결성을 보장하기 위한 기능들이 들어가 있다.
+
+TCP는 좋은 기능이 다 들어있는 무거운 라이브러리, UDP는 필수 기능만 들어있는 가벼운 라이브러리
+
+### TCP의 Handshaking
+핸드쉐이킹 등에 쓰이는 자원을 사용하지 않기 위해 UDP 사용
+
+TCP에서 연결을 맺기 위한 3-way Handshaking과 연결을 끊기 위한 4-way Handshaking 비용이 절약 된다.
+
+### TCP의 HOLB
+TCP는 전체 데이터를 순서대로 전달해야 합니다. 데이터 일부를 담고 있는 TCP 패킷이 손실되면 TCP는 손실 된 패킷을 재전송됩니다. 손실 된 패킷을 재전송하는 동안에 완전히 독립된 HTTP 메시지도 손실 된 패킷을 성공적으로 받을 때까지 어플리케이션에 전달하지 못합니다. 이런 상황을 TCP의 HOLB라고 하는데 UDP는 전송 순서를 보장하지 않아도 되기 때문에 HOLB 이슈가 발생하지 않습니다.
+
+### TCP의 느린 시작
 
 # 부록
 
