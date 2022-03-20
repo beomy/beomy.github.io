@@ -318,11 +318,12 @@ HTTP/2은 HTTP 메시지를 프레임으로 나누어 전송 한 후 받는 쪽�
 |![Head-Of-Line Blocking](/assets/img/posts/etc/http_holb.png)|![멀티플렉신](/assets/img/posts/etc/multiplexing_no_holb.png)|
 
 # HTTP/3
-TCP 기반인 HTTP/1.*, HTTP/2과 다르게 HTTP/3는 UDP 기반으로 통신합니다. HTTP/3는 QUIC(퀵)을 사용하는데, QUIC은 Quick UDP Internet Connection의 약자입니다.
+TCP 기반인 HTTP/1.*이나 HTTP/2와는 다르게 HTTP/3는 UDP 기반으로 통신합니다. HTTP/3는 QUIC(퀵)을 사용하는데, QUIC은 Quick UDP Internet Connection의 약자입니다. 아래 그림과 같이 HTTP/3는 HTTP/1.1, HTTP/2와 차이가 있습니다.
 
-~~HTTP/2와 HTTP/3 구조 차이 그림~~
+![HTTP 구조 비교](/assets/img/posts/etc/http1_http2_http3.png)
 
-## 개선 사항
+보통 아래 표와 같이 TCP와 UDP를 비교합니다.
+
 ||TCP|UDP|
 |:--:|:--:|:--:|
 |연결 방식|연결혈 서비스|비연결형 서비스|
@@ -331,31 +332,40 @@ TCP 기반인 HTTP/1.*, HTTP/2과 다르게 HTTP/3는 UDP 기반으로 통신합
 |신뢰성|높음|낮음|
 |전송 속도|느림|빠름|
 
-UDP는 통신만 담당하기 때문에 무결성을 보장하기 위한 코드가 추가된 QUIC를 사용
+TCP는 좋은 기능이 다 들어있는 무거운 라이브러리라고 한다면 UDP는 필수 기능만 들어있는 가벼운 라이브러리로 비유할 수 있습니다. UDP는 통신만 담당하는 하얀 도화지와 같기 때문에 QUIC에는 TCP가 가진 신뢰성과 무결성을 똑같이 보장하기 위한 기능들이 들어가 있습니다.
 
-QUIC는 TCP가 가지던 신뢰성과 무결성을 포기한 것인가? UDP는 하얀 도화지 같은 프로토콜입니다. QUIC에서 신뢰성과 무결성을 보장하기 위한 기능들이 들어가 있다.
-
-TCP는 좋은 기능이 다 들어있는 무거운 라이브러리, UDP는 필수 기능만 들어있는 가벼운 라이브러리
+## 개선 사항
+HTTP/3은 UDP를 사용하여 TCP 기반의 HTTP 성능 문제를 해결하였습니다.
 
 ### TCP의 Handshaking
-핸드쉐이킹 등에 쓰이는 자원을 사용하지 않기 위해 UDP 사용
+TCP
 
-TLS 버전 별로 핸드쉐이킹에 조금씩 차이가 있기 때문에 TLS 1.3에서 핸드쉐이크 비교,
+UDP를 사용하면 연결을 맺기 위해 사용되는 핸드셰이킹 비용을 절약할 수 있습니다.
+
+TLS 버전 별로 핸드셰이킹에 조금씩 차이가 있기 때문에 TLS 1.3에서 핸드쉐이크 비교,
 TLS 1.3은 TLS 연결을 맺은 적이 있다면 이전 연결에서 사용했떤 정보를 이용해서 처음부터 연결 정보를 교환하지 않아도 되도록하는 함 (왕복 시간 없는 연결 재시작)
-연결을 한적이 없을 경우의 핸드쉐이크와 연결을 한적이 있을 경우의 헨드 쉐이크 비교
+연결을 한적이 없을 경우의 핸드쉐이크와 연결을 한적이 있을 경우(0-RTT 연결 재시작)의 핸드셰이킹 비교
 - [https://blog.cloudflare.com/ko-kr/even-faster-connection-establishment-with-quic-0-rtt-resumption-ko-kr/](https://blog.cloudflare.com/ko-kr/even-faster-connection-establishment-with-quic-0-rtt-resumption-ko-kr/)
 - [https://blog.cloudflare.com/the-road-to-quic/](https://blog.cloudflare.com/the-road-to-quic/)
 
+> **RTT 란**
+
 연결을 처음 맺는 경우 TCP + TLS에서 HTTP 요청을 보내려면 2번 서버를 왕복해야 하지만, QUIC의 경우 1번만 가능
-연결을 맺은 적이 있는 경우 TCP + TLS는 클라이언트와 서버는 TLS 데이터를 교환하기 위해 여전히 TCP 연결을 만들어야 하기 때문에 3-way 핸드쉐이킹 후 HTTP 요청 전송이 가능하다. QUIC의 경우 핸드쉐이킹 완료할 필요 없이 바로 HTTP 요청 전송이 가능하다.
+연결을 맺은 적이 있는 경우 TCP + TLS는 클라이언트와 서버는 TLS 데이터를 교환하기 위해 여전히 TCP 연결을 만들어야 하기 때문에 3-way 핸드셰이킹 후 HTTP 요청 전송이 가능하다. QUIC의 경우 핸드셰이킹 완료할 필요 없이 바로 HTTP 요청 전송이 가능하다.
 
 TLS의 경우 왕복 시간 없음은 TLS 핸드쉐이크 자체만 의미한다. 클라이언트와 서버는 TLS 데이터를 교환하기 위해 여전히 TCP 연결을 만들어야 한다.
 
+QUIC는 TCP의 3-way 핸드셰이킹와 TLS 1.3의 핸드셰이킹를 동시에 진행합니다.
+
 ### TCP의 느린 시작
-QUIC은 QUIC 연결을 공유 하기 때문에 느린 시작이 필요하지 않습니다.
+QUIC은 연결을 공유하기 때문에 느린 시작이 필요하지 않습니다.
 
 ### TCP의 HOLB
-TCP는 전체 데이터를 순서대로 전달해야 합니다. 데이터 일부를 담고 있는 TCP 패킷이 손실되면 TCP는 손실 된 패킷을 재전송됩니다. 손실 된 패킷을 재전송하는 동안에 완전히 독립된 HTTP 메시지도 손실 된 패킷을 성공적으로 받을 때까지 어플리케이션에 전달하지 못합니다. 이런 상황을 TCP의 HOLB라고 하는데 UDP는 전송 순서를 보장하지 않아도 되기 때문에 HOLB 이슈가 발생하지 않습니다.
+TCP는 전체 데이터를 순서대로 전달해야 합니다. 데이터 일부를 담고 있는 TCP 패킷이 손실되면 TCP는 손실 된 패킷을 재전송됩니다. 손실 된 패킷을 재전송하는 동안에 완전히 독립된 HTTP 메시지도 손실 된 패킷을 성공적으로 받을 때까지 어플리케이션에 전달하지 못합니다. 이런 상황을 TCP의 HOLB라고 하는데 UDP는 패킷이 독립적으로 전송되기 때문에 HOLB 이슈가 발생하지 않습니다.
+
+데이터그램이란 독립적인 관계를 지니는 패킷이라는 뜻이다.
+
+> **TCP의 HOLB**
 
 # 부록
 
