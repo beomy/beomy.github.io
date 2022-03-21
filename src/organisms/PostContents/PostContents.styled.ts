@@ -74,8 +74,10 @@ const StyledContents = styled.div`
     }
   }
   p {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    > img {
+      margin: 2rem auto;
+    }
   }
 
   #참고 {
