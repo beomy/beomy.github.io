@@ -17,7 +17,11 @@ function Category({ data, pageContext, path }: PageProps<IData, IContext>) {
     .split('/')
     .filter((x) => !!x)
     .shift();
-  const subMenu = menuTree.find((x) => x.key === firstDepth);
+  const subMenu = menuTree.find((x) => x.key === firstDepth) ?? {
+    key: '',
+    counter: 0,
+    children: [],
+  };
 
   return (
     <ThemeProvider theme={theme}>
