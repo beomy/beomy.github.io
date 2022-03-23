@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { IMarkdownRemark, IAllMarkdownRemark, IData } from '@/model/graphQL';
 import { IPost } from '@/model/post';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -53,5 +54,5 @@ export function useMenu() {
   );
   const posts = usePosts(allMarkdownRemark);
   const menuArray = posts.map((x) => x.category).filter((x) => !!x);
-  return arrayToTree(menuArray);
+  return useMemo(() => arrayToTree(menuArray), [allMarkdownRemark]);
 }

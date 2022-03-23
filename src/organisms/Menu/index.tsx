@@ -35,12 +35,16 @@ function Menu({ className, onClose }: IProp) {
           </Li>
           {menuTree.map((menu) => (
             <Li key={menu.key} mb="30px">
-              <Link to={`/${menu.key}/`}>{menu.key}</Link>
+              <Link to={`/${menu.key}/`}>
+                {menu.key} <small>({menu.counter})</small>
+              </Link>
               {menu.children.length > 0 && (
                 <Ul mt="10px">
                   {menu.children.map((sub) => (
                     <Li key={sub.key} mb="10px">
-                      <Link to={`/${menu.key}/${sub.key}/`}>{sub.key}</Link>
+                      <Link to={`/${menu.key}/${sub.key}/`}>
+                        {sub.key} <small>({sub.counter})</small>
+                      </Link>
                     </Li>
                   ))}
                 </Ul>

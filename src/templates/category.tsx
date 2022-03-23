@@ -17,7 +17,7 @@ function Category({ data, pageContext, path }: PageProps<IData, IContext>) {
     .split('/')
     .filter((x) => !!x)
     .shift();
-  const subMenu = menuTree.find((x) => x.key === firstDepth)?.children ?? [];
+  const subMenu = menuTree.find((x) => x.key === firstDepth);
 
   return (
     <ThemeProvider theme={theme}>
@@ -26,7 +26,7 @@ function Category({ data, pageContext, path }: PageProps<IData, IContext>) {
       <Contents
         width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m', 'screen.lg']}
       >
-        <SubMenu firstDepth={firstDepth} subMenu={subMenu} />
+        <SubMenu menu={subMenu} />
         <PostList posts={posts} />
       </Contents>
       <Footer />

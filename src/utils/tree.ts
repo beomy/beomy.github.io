@@ -5,7 +5,7 @@ export function arrayToTree(arr: string[][]) {
   for (const sub of arr) {
     let travel = tree;
     for (const key of sub) {
-      const item: ITreeItem = { key, children: [] };
+      const item: ITreeItem = { key, counter: 1, children: [] };
       const target = travel.find((x) => x.key === key);
       if (!target) {
         travel.push(item);
@@ -16,6 +16,7 @@ export function arrayToTree(arr: string[][]) {
         });
         travel = item.children;
       } else {
+        target.counter += 1;
         travel = target.children;
       }
     }

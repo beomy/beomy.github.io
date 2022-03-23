@@ -4,26 +4,25 @@ import { Li, Link } from '@/atoms';
 import StyledSubMenu from './SubMenu.styled';
 
 interface IProp {
-  firstDepth: string;
-  subMenu: ITreeItem[];
+  menu: ITreeItem;
 }
 
-function SubMenu({ firstDepth, subMenu }: IProp) {
+function SubMenu({ menu }: IProp) {
   return (
     <StyledSubMenu>
       <Li m="0 20px">
-        <Link to={`/${firstDepth}/`} p="5px 10px" activeClassName="active">
-          전체
+        <Link to={`/${menu.key}/`} p="5px 10px" activeClassName="active">
+          전체 <small>({menu.counter})</small>
         </Link>
       </Li>
-      {subMenu.map((menu) => (
-        <Li key={menu.key} m="0 20px">
+      {menu.children.map((child) => (
+        <Li key={child.key} m="0 20px">
           <Link
-            to={`/${firstDepth}/${menu.key}/`}
+            to={`/${menu.key}/${child.key}/`}
             p="5px 10px"
             activeClassName="active"
           >
-            {menu.key}
+            {child.key} <small>({child.counter})</small>
           </Link>
         </Li>
       ))}
