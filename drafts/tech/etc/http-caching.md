@@ -10,6 +10,10 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 
 캐시는 갑작스런 요청 쇄도에 대처할 때 특히 중요합니다. 많은 사람이 거의 동시에 웹 문서에 접근할 때, 트래픽이 급증하고 네트워크와 웹 서버에 심각한 장애를 일으킬 수 있습니다.
 
+# 캐시 목적
+
+# 캐시 장점
+
 # 캐시 종류
 
 ## 브라우저 캐시
@@ -17,6 +21,12 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 ## 프록시 캐시
 
 ## 게이트웨이 캐시
+
+# 신선도 검사
+`If-Modified-Since`
+
+# 적중과 부적중
+클라이언트에서 구별할 수 있는 방법 `Date`, `Age` 헤더
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Caching](https://developer.mozilla.org/ko/docs/Web/HTTP/Caching)
