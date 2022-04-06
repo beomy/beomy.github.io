@@ -21,6 +21,8 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 
 ## 게이트웨이 캐시
 
+# 캐시 처리 단계
+
 # 신선도 검사
 `If-Modified-Since`
 
