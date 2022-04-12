@@ -27,7 +27,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 # 캐시 처리 단계
 
 ## 신선도 검사
-`If-Modified-Since`
+`If-Modified-Since` 헤더
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Caching](https://developer.mozilla.org/ko/docs/Web/HTTP/Caching)
