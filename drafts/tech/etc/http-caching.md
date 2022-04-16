@@ -28,7 +28,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 ## 신선도 검사
 `If-Modified-Since` 헤더
 
-클라이언트에서 구별할 수 있는 방법: `Date`, `Age` 헤더
+클라이언트에서 쿠키의 신선도를 구별할 수 있는 방법: `Date`, `Age` 헤더
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Caching](https://developer.mozilla.org/ko/docs/Web/HTTP/Caching)
