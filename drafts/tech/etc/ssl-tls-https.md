@@ -3,7 +3,6 @@ layout: post
 title: '[ETC] SSL, TLS, HTTPS'
 featured-img: etc/HTTP_logo.png
 category: [tech, etc]
-summary:
 ---
 
 #### 참고
