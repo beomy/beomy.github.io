@@ -3,7 +3,6 @@ layout: post
 title: '[ETC] HTTP 터너링'
 featured-img: etc/HTTP_logo.png
 category: [tech, etc]
-summary:
 ---
 
 #### 참고
