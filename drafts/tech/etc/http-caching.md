@@ -52,6 +52,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 ~~`Last-Modified` 응답 헤더의 필요 여부 확인~~
 
 ### `If-None-Match` 헤더
+`ETag`
 
 # 부록
 - 클라이언트에서 캐시의 신선도를 구별할 수 있는 방법: `Date`, `Age` 헤더
@@ -63,3 +64,4 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 - [https://pjh3749.tistory.com/264](https://pjh3749.tistory.com/264)
 - [https://toss.tech/article/smart-web-service-cache](https://toss.tech/article/smart-web-service-cache)
 - [https://hahahoho5915.tistory.com/33](https://hahahoho5915.tistory.com/33)
+- [https://withbundo.blogspot.com/2017/07/http-13-http-iii-if-match-if-modified.html](https://withbundo.blogspot.com/2017/07/http-13-http-iii-if-match-if-modified.html)
