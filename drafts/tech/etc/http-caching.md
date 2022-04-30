@@ -32,7 +32,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 - 발송
 - 로깅: 선택
 
-# 캐시 신선하게 유지하기
+# 캐시 신선도
 
 ## 문서 만료
 `Cache-Control`, `Expires` 해더는 우유의 유통기한과 마찬가지로, 헤더에 기록된 시간보다 오래됬으면 캐시를 새롭게 업데이트 한다.
@@ -46,13 +46,27 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 ## 서버 재검사
 문서의 신선도를 매 요청마다 검증할 필요없이 문서가 만료되었을 때 한 번만 서버와 재검사 하도록 하는 것을 말한다.
 
-### `If-Modified-Since` 헤더
+### `If-Modified-Since` 헤더: 날짜 재검사
 만약 문서가 주어진 날짜 이후로 수정되었다면 요청은 평범하게 성공한다. 반면에 문서가 주어진 날짜 이전에 수정되었다면 본문을 포함하지 않는 `304 Not Modified` 응답 메시지를 클라이언트에게 응답한다. 응답 헤더는 포함하지만 갱신이 필요한 것들만 보낸다.
 
 ~~`Last-Modified` 응답 헤더의 필요 여부 확인~~
 
-### `If-None-Match` 헤더
-- `ETag` 헤더
+### `If-None-Match` 헤더: 엔터티 태그 재검사
+`ETag` 헤더: Entity Tag
+
+### `ETag`와 `Last-Modified`
+
+# 캐시 제어
+
+## no-cache와 no-store
+
+## max-age
+
+## expires
+
+## must-revalidate
+
+## 휴리스틱 만료
 
 # 부록
 - 클라이언트에서 캐시의 신선도를 구별할 수 있는 방법: `Date`, `Age` 헤더
