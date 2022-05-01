@@ -58,7 +58,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 
 # 캐시 제어
 
-## no-cache와 no-store
+## no-cache, no-store
 
 ## max-age
 
