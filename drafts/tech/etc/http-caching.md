@@ -52,7 +52,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 ~~`Last-Modified` 응답 헤더의 필요 여부 확인~~
 
 ### `If-None-Match` 헤더: 엔터티 태그 재검사
-`ETag` 헤더: Entity Tag
+- `ETag` 헤더: Entity Tag
 
 ### `ETag`와 `Last-Modified`
 
