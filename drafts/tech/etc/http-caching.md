@@ -49,7 +49,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 ### `If-Modified-Since` 헤더: 날짜 재검사
 만약 문서가 주어진 날짜 이후로 수정되었다면 요청은 평범하게 성공한다. 반면에 문서가 주어진 날짜 이전에 수정되었다면 본문을 포함하지 않는 `304 Not Modified` 응답 메시지를 클라이언트에게 응답한다. 응답 헤더는 포함하지만 갱신이 필요한 것들만 보낸다.
 
-~`Last-Modified` 응답 헤더의 필요 여부 확인~
+~~`Last-Modified` 응답 헤더의 필요 여부 확인~~
 
 ### `If-None-Match` 헤더: 엔터티 태그 재검사
 - `ETag` 헤더: Entity Tag
