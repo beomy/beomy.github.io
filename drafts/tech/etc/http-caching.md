@@ -52,7 +52,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 `Cache-Control`과 `Expires` 헤더를 사용하여 우유의 유통기한을 표시하는 것과 동일하게 캐시의 유효기간을 표시할 수 있습니다. 헤더에 기록된 시간보다 오래되었으면 캐시를 새롭게 업데이트 합니다.
 
 ### `Cache-Control: max-age` 헤더
-문서의 최대 나이를 정의합니다. 문서가 처음 생성된 이후부터 신성하다고 판단하는 시간이 초단위로 지정합니다. `Cache-Control: max-age=484200`와 같이 사용했다면 응답 값을 받은 후 484200초 동안 신선한 캐시로 판단합니다.
+문서의 최대 나이를 정의합니다. 문서가 처음 생성된 이후부터 신선하다고 판단하는 시간이 초단위로 지정합니다. `Cache-Control: max-age=484200`와 같이 사용했다면 응답 값을 받은 후 484200초 동안 신선한 캐시로 판단합니다.
 
 ### `Expires` 헤더
 절대 유효기간을 지정하는 헤더입니다. `Expires: Wed, 23 Mar 2022 08:00:00 GMT`과 같이 사용했다면 현재 시간이 지정된 시간의 이전라면 신선한 캐시로 판단합니다. 많은 서버가 시간이 동기화 되어 있지 않거나 부정확한 시계를 가지고 있기 때문에 경과된 시간(`Cache-Control: max-age`)로 신선도를 판단하는 것이 좋다고 판단하여 `Exprices` 헤더는 Deprecated 되었습니다.
@@ -106,6 +106,7 @@ If-None-Match: "foobar", "BEOMY1203", "http catch"
 ```
 
 # 캐시 제어
+`Cache-Control` 헤더를 사용하여 브라우저 같은 개인 전용 캐시와 프록시, CDN 과 같은 공용 캐시의 캐시 제어 설정을 할 수 있습니다. `Cache-Control` 헤더는 아래 표와 같은 디렉티브를 사용할 수 있습니다.
 
 |디렉티브 이름|요청 메시지에서 사용가능 여부|응답 메시지에서 사용가능 여부|
 |:--:|:--:|:--:|
@@ -126,10 +127,81 @@ If-None-Match: "foobar", "BEOMY1203", "http catch"
 |`stale-while-revalidate`|X|O|
 |`stale-if-error`|O|O|
 
-여러개를 사용할 수 있다.
-`Cache-Control: private, max-age=600`
+`Cache-Control`의 디렉티브는 `Cache-Control: private, max-age=600`처럼 여러개를 사용할 수 있습니다.
 
-## 캐시 능력
+## 응답에서 사용되는 디렉티브
+응답 메시지에서 사용할 수 있는 `Cache-Control` 디렉티브를 살펴보겠습니다.
+
+### `max-age`
+`max-age` 디렉티브는 아래와 같이 `Cache-Control=<초>` 형태로 사용됩니다.
+
+```http
+Cache-Control: max-age=604800
+```
+
+응답 메시지가 생성된 후 `<초>` 동안 신선한 캐시로 판단합니다. 브라우저는 한번 받아온 문서의 유효기간이 지나기 전이라면, 서버에 요청을 보내지 않고 디스크 또는 메모리에 캐시된 사본을 가져와 사용합니다.
+
+`max-age`는 클라이언트가 응답을 받은 후 경과되는 시간이 아닌, 서버에서 응답이 생성된 후 경과되는 시간을 가지고 있기 때문에 네트워크 경로의 다른 캐시가 100초 동안 응답을 저장하고 있었다면 아래와 같이 응답을 받게 되고,
+
+```http
+Cache-Control: max-age=604800
+Age: 100
+```
+
+클라이언트는 604800에서 100을 뺀 604700초 동안 신선한 캐시로 판단하게 됩니다.
+
+> **`Age` 헤더와 `Date` 헤더**
+>
+> `Age` 헤더는 데이터가 프록시 캐시 내에 머무는 초 단위의 시간을 가집니다. `Age: 100`이라면 서버에게 받은 데이터를 프록시 캐시가 100초 동안 가지고 있는 상태를 이야기 합니다. `Age` 헤더 외에도 `Date` 헤더와 현재 시간의 차이로 데이터가 프록시 캐시 내에서 머무는 시간을 계산할 수 있습니다.
+>
+> 클라이언트에서 `Date`와 `Age` 헤더로 캐시가 언제 만들어졌는지 확인할 수 있습니다.
+
+### `s-maxage`
+`s-maxage` 디렉티브는 아래와 같이 `max-age` 디렉티브와 동일한 역할, 동일한 형태로 사용됩니다.
+
+```http
+Cache-Control: s-maxage=604800
+```
+
+차이점은 `s-maxage` 디렉티브는 프록시 캐시와 같은 공용 캐시에서만 동작하고, `max-age` 디렉티브가 존재하는 경우 무시됩니다.
+
+### `no-cache`
+`no-cache` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: no-cache
+```
+
+`no-cache`라는 이름 때문에 햇갈릴 수 있지만, `no-cache`는 응답 값을 캐시로 저장하지만, 서버와 재검사 후 클라이언트로 응답 값을 제공합니다. 문자 그대로 캐시를 저장하지 않기 위해서는 `no-store` 디렉티브를 사용해야 합니다. `Cache-Control: no-cache`는 `Cache-Control: max-age=0`과 동일한 동작을 합니다.
+
+### `must-revalidate`
+`must-revalidate` 디렉티브는 아래와 같이 일반적으로 `max-age` 디렉티브와 함께 사용됩니다.
+
+```http
+Cache-Control: max-age=604800, must-revalidate
+```
+
+보통 프록시 캐시는 응답 값을 캐시로 저장하고 캐시가 신선하다면 재사용하고 오래 되었다면 재검사하게 됩니다. 캐시와 서버의 연결이 끊어졌을 경우와 같이 캐시는 성능을 개선하기 위해 신선하지 않은 데이터를 클라이언트에 제공할 수 있는데, 캐시가 신선하지 않은 데이터 전달을 막기 위해 서버는 `Cache-Control: must-revalidate` 응답 헤더를 사용할 수 있습니다. `must-revalidate` 디렉티브를 사용하면 캐시가 신선하지 않다면 재검사하고 만약 서버와 연결이 끊어져 값을 전달할 수 없다면 `504 Gateway Timeout`을 발생시킵니다.
+
+### `proxy-revalidate`
+
+### `no-store`
+
+### `private`
+
+### `public`
+
+### `must-understand`
+
+### `no-transform`
+
+### `immutable`
+
+### `stale-while-revalidate`
+
+### `stale-if-error`
+
+## 요청에서 사용되는 디렉티브
 
 ## `no-store`
 캐시로 저장하지 않는다
@@ -151,9 +223,6 @@ If-None-Match: "foobar", "BEOMY1203", "http catch"
 ## `must-revalidate`
 캐시는 성능을 개선하기 위해 신선하지 않은 객체를 제공할 수 있도록 설정될 수 있는데, 캐시가 만료 정보를 엄격하게 따리길 원한다면 원 서버는 `Cache-Control: must-revalidate` 응답 헤더를 사용할 수 있습니다.
 
-# 부록
-- `Date`, `Age` 헤더: 클라이언트에서 캐시의 신선도를 구별할 수 있는 방법
-
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Caching](https://developer.mozilla.org/ko/docs/Web/HTTP/Caching)
 - [https://pjh3749.tistory.com/264](https://pjh3749.tistory.com/264)
@@ -162,3 +231,4 @@ If-None-Match: "foobar", "BEOMY1203", "http catch"
 - [https://withbundo.blogspot.com/2017/07/http-13-http-iii-if-match-if-modified.html](https://withbundo.blogspot.com/2017/07/http-13-http-iii-if-match-if-modified.html)
 - [https://web.dev/i18n/ko/http-cache/](https://web.dev/i18n/ko/http-cache/)
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
+- [https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age)
