@@ -202,8 +202,24 @@ Cache-Control: no-store
 `no-store` 디렉티브를 사용하면 개인 전용 캐시, 공용 캐시 모두 응답 값을 저장하지 않습니다.
 
 ### `private`
+`private` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: private
+```
+
+`private` 디렉티브는 응답 값을 브라우저 로컬 캐시와 같은 개인 전용 캐시에만 저장될 수 있게 합니다.
 
 ### `public`
+`public` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: public
+```
+
+인증이 필요한 경우 브라우저는 `Authorization` 헤더와 함께 요청을 보냅니다. 인증을 통해 권한이 있는 사용자만 접근을 할 수 있게 제한하기 때문에 `Authorization` 헤더가 포함된 요청에 대한 응답은 일반적으로 캐시에 저장되지 않아야 합니다. 하지만 `public` 디렉티브를 사용하면 `Authorization` 헤더를 포함한 요청에 대한 응답 값도 캐시하게 됩니다.
+
+`s-maxage` 디렉티브와 `must-revalidate` 디렉티브도 `public` 디렉티브와 동일하게 `Authorization` 헤더를 포함한 요청에 대한 응답 값도 캐시하기 때문에, `s-maxage` 디렉티브와 `must-revalidate` 디렉티브를 사용한다면 `public` 디렉티브를 함께 사용하지 않아도 됩니다.
 
 ### `must-understand`
 
@@ -216,6 +232,25 @@ Cache-Control: no-store
 ### `stale-if-error`
 
 ## 요청에서 사용되는 디렉티브
+
+### `no-cache`
+
+### `no-store`
+
+### `max-age`
+
+### `max-stale`
+
+### `min-fresh`
+
+### `no-transform`
+
+### `only-if-cached`
+
+
+
+
+
 
 ## `no-store`
 캐시로 저장하지 않는다
