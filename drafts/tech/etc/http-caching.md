@@ -157,7 +157,7 @@ Age: 100
 > 클라이언트에서 `Date`와 `Age` 헤더로 캐시가 언제 만들어졌는지 확인할 수 있습니다.
 
 ### `s-maxage`
-`s-maxage` 디렉티브는 아래와 같이 `max-age` 디렉티브와 동일한 역할, 동일한 형태로 사용됩니다.
+`s-maxage` 디렉티브는 `max-age` 디렉티브와 동일한 역할, 동일한 형태로 사용됩니다.
 
 ```http
 Cache-Control: s-maxage=604800
@@ -184,8 +184,22 @@ Cache-Control: max-age=604800, must-revalidate
 보통 프록시 캐시는 응답 값을 캐시로 저장하고 캐시가 신선하다면 재사용하고 오래 되었다면 재검사하게 됩니다. 캐시와 서버의 연결이 끊어졌을 경우와 같이 캐시는 성능을 개선하기 위해 신선하지 않은 데이터를 클라이언트에 제공할 수 있는데, 캐시가 신선하지 않은 데이터 전달을 막기 위해 서버는 `Cache-Control: must-revalidate` 응답 헤더를 사용할 수 있습니다. `must-revalidate` 디렉티브를 사용하면 캐시가 신선하지 않다면 재검사하고 만약 서버와 연결이 끊어져 값을 전달할 수 없다면 `504 Gateway Timeout`을 발생시킵니다.
 
 ### `proxy-revalidate`
+`proxy-revalidate` 디렉티브는 `must-revalidate` 디렉티브와 동일한 역활, 동일한 형태로 사용됩니다.
+
+```http
+Cache-Control: max-age=604800, proxy-revalidate
+```
+
+차이점은 `proxy-revalidate` 디렉티브는 프록시 캐시와 같은 공용 캐시에서만 동작하는 디렉티브입니다.
 
 ### `no-store`
+`no-store` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: no-store
+```
+
+`no-store` 디렉티브를 사용하면 개인 전용 캐시, 공용 캐시 모두 응답 값을 저장하지 않습니다.
 
 ### `private`
 
