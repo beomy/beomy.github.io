@@ -222,6 +222,15 @@ Cache-Control: public
 `s-maxage` 디렉티브와 `must-revalidate` 디렉티브도 `public` 디렉티브와 동일하게 `Authorization` 헤더를 포함한 요청에 대한 응답 값도 캐시하기 때문에, `s-maxage` 디렉티브와 `must-revalidate` 디렉티브를 사용한다면 `public` 디렉티브를 함께 사용하지 않아도 됩니다.
 
 ### `must-understand`
+`must-understand` 디렉티브는 fallback 동작을 위해 보통 아래 코드와 같이 `no-store` 디렉티브와 함께 사용됩니다.
+
+```http
+Cache-Control: must-understand, no-store
+```
+
+[RFC-2616의 6.1.1 섹션](https://www.rfc-editor.org/rfc/rfc2616#section-6.1.1)을 살펴보면, HTTP의 상태 코드(2xx, 4xx 등..)은 커스텀이 가능합니댜. 상태 코드를 캐시 이해할 수 있다면 캐시로 저장합니다. 하지만 상태 코드가 커스텀되어 캐시가 커스텀된 상태 코드를 이해하지 못한다면 캐시로 저장하지 않습니다.
+
+예를 들어, 위의 코드와 같이 `must-understand` 디렉티브와 `no-store` 디렉티브가 함께 작성되었다면, 캐시가 `must-understand`를 지원하지 않을 경우, `no-store` 형태로 캐시가 동작하고, `must-understand`를 지원할 경우, 캐시가 상태 코드를 이해할 수 있다면 캐시로 저장하고 이해하지 못하면 캐시로 저장하지 않습니다.
 
 ### `no-transform`
 
@@ -281,3 +290,4 @@ Cache-Control: public
 - [https://web.dev/i18n/ko/http-cache/](https://web.dev/i18n/ko/http-cache/)
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age)
+- [https://www.rfc-editor.org/rfc/rfc2616#section-6.1.1](https://www.rfc-editor.org/rfc/rfc2616#section-6.1.1)
