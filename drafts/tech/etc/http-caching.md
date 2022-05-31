@@ -233,6 +233,11 @@ Cache-Control: must-understand, no-store
 예를 들어, 위의 코드와 같이 `must-understand` 디렉티브와 `no-store` 디렉티브가 함께 작성되었다면, 캐시가 `must-understand`를 지원하지 않을 경우, `no-store` 형태로 캐시가 동작하고, `must-understand`를 지원할 경우, 캐시가 상태 코드를 이해할 수 있다면 캐시로 저장하고 이해하지 못하면 캐시로 저장하지 않습니다.
 
 ### `no-transform`
+`no-transform` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: no-transform
+```
 
 ### `immutable`
 
