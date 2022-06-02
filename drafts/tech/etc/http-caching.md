@@ -262,11 +262,6 @@ Cache-Control: no-transform
 
 ### `only-if-cached`
 
-
-
-
-
-
 ## `no-store`
 캐시로 저장하지 않는다
 
