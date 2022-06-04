@@ -62,7 +62,7 @@ HTTP 캐시는 첫 HTTP 요청 시 HTML, Image, JS, CSS 등의 파일을 다운�
 ## 서버 재검사
 캐시된 문서가 만료되었다고 그 문서가 서버에 현재 존재하는 값과 실제로 다르다는 것을 의미하지 않습니다. 시간이 지났으니 문서가 변경되었는지 검사할 시간이 됬다는 것을 의미합니다. 이 검사를 캐시가 서버에게 문서가 변경되었는지 여부를 확인하는 서버 재검사라고 부릅니다. 문서의 신선도를 매 요청마다 검증할 필요없이 문서가 만료되었을 때 한 번만 서버와 재검사하면 되기 때문에 신선한 캐시를 제공하면서 서버 트래픽을 줄일 수 있게 됩니다.
 
-클라이언트가 서버에게 조건부 GET 요청을 보낼 수 있는데, 이 요청은 서버가 가지고 있는 문서와 캐시가 가지고 있는 문서가 다를 때만 응답 본문을 보내달라고 하는 방법입니다. 조건부 GET은 `If-` 접두어로 시작하는 헤더를 추가하여 사용할 수 있습니다.
+클라이언트가 서버에게 조건부 GET(Conditional GET) 요청을 보낼 수 있는데, 이 요청은 서버가 가지고 있는 문서와 캐시가 가지고 있는 문서가 다를 때만 응답 본문을 보내달라고 하는 방법입니다. 조건부 GET은 `If-` 접두어로 시작하는 헤더를 추가하여 사용할 수 있습니다.
 
 ### `If-Modified-Since` 헤더: 날짜 재검사
 `If-Modified-Since` 헤더는 가장 많이 쓰이는 캐시 재검사 헤더입니다. `If-Modified-Since` 재검사 요청(IMS 요청)은 서버에게 특정 날짜 이후로 변경된 경우에만 응답 본문을 보내달라고 하는 요청입니다.
@@ -239,8 +239,24 @@ Cache-Control: must-understand, no-store
 Cache-Control: no-transform
 ```
 
+일부 프록시 캐시는 전송량을 줄이기 위해서 이미지를 변환할 수 있습니다. `no-transform`는 응답 내용을 변환하지 않도록 하는 디렉티브입니다.
 
 ### `immutable`
+`immutable` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: max-age=604800, immutable
+```
+
+웹 브라우저는 `max-age` 디렉티브가 설정되어 있어도 페이지를 새로고침할 때 조건부 요청(`If-None-match` 헤더 나 `If-Modified-Since` 헤더를 포함한 요청)을 보내 캐시 검증을 진행합니다. `immutable` 디렉티브는 `max-age`가 있으면 페이지를 새로고침하더라도 파일이 변하지 않았을 것이라 확신하고 조건부 요청을 보내지 않습니다.
+
+변경되지 않은 정적 리소스의 경우 브라우저가 새로고침 되었더라도 정적 리소스는 수정되지 않기 때문에 조건부 요청은 불필요합니다. 이런 경우 사용할 수 있는 디렉티브가 `immutable`입니다. 만약 정적 리소스가 수정이 될 경우, 아래 코드와 같이 버전이나 해시 값를 URL에 포함하여 최신 버전으로 리소스를 업데이트 할 수 있게 합니다.
+
+```html
+<script src="https://beomy.github.io/static-resource.0.0.0.js"></script>
+```
+
+이러한 형태를 캐시 무효화 패턴(cache-busting pattern)이라고 합니다.
 
 ### `stale-while-revalidate`
 
@@ -292,3 +308,4 @@ Cache-Control: no-transform
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age)
 - [https://www.rfc-editor.org/rfc/rfc2616#section-6.1.1](https://www.rfc-editor.org/rfc/rfc2616#section-6.1.1)
+- [https://tech.ssut.me/cache-optimization-using-cache-control-immutable/](https://tech.ssut.me/cache-optimization-using-cache-control-immutable/)
