@@ -260,6 +260,7 @@ Cache-Control: max-age=604800, immutable
 
 ### `stale-while-revalidate`
 
+
 ### `stale-if-error`
 
 ## 요청에서 사용되는 디렉티브
