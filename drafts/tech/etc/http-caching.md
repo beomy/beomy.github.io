@@ -248,7 +248,7 @@ Cache-Control: no-transform
 Cache-Control: max-age=604800, immutable
 ```
 
-웹 브라우저는 `max-age` 디렉티브가 설정되어 있어도 페이지를 새로고침할 때 조건부 요청(`If-None-match` 헤더 나 `If-Modified-Since` 헤더를 포함한 요청)을 보내 캐시 검증을 진행합니다. `immutable` 디렉티브는 `max-age`가 있으면 페이지를 새로고침하더라도 파일이 변하지 않았을 것이라 확신하고 조건부 요청을 보내지 않습니다.
+웹 브라우저는 `max-age` 디렉티브가 설정되어 있어도 페이지를 새로고침할 때 조건부 요청(`If-None-match` 헤더 나 `If-Modified-Since` 헤더를 포함한 요청)을 보내 캐시 검증을 진행합니다. `immutable` 디렉티브는 `max-age`가 있으면 페이지를 새로고침하더라도 `max-age` 조건에 맞다면 파일이 변하지 않았을 것이라 확신하고 조건부 요청을 보내지 않습니다.
 
 변경되지 않은 정적 리소스의 경우 브라우저가 새로고침 되었더라도 정적 리소스는 수정되지 않기 때문에 조건부 요청은 불필요합니다. 이런 경우 사용할 수 있는 디렉티브가 `immutable`입니다. 만약 정적 리소스가 수정이 될 경우, 아래 코드와 같이 버전이나 해시 값를 URL에 포함하여 최신 버전으로 리소스를 업데이트 할 수 있게 합니다.
 
@@ -259,7 +259,11 @@ Cache-Control: max-age=604800, immutable
 이러한 형태를 캐시 무효화 패턴(cache-busting pattern)이라고 합니다.
 
 ### `stale-while-revalidate`
+`stale-while-revalidate` 디렉티브는 아래와 같은 형태로 사용됩니다.
 
+```http
+Cache-Control: max-age=604800, stale-while-revalidate=86400
+```
 
 ### `stale-if-error`
 
