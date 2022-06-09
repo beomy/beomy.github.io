@@ -139,7 +139,7 @@ If-None-Match: "foobar", "BEOMY1203", "http catch"
 Cache-Control: max-age=604800
 ```
 
-응답 메시지가 생성된 후 `<초>` 동안 신선한 캐시로 판단합니다. 브라우저는 한번 받아온 문서의 유효기간이 지나기 전이라면, 서버에 요청을 보내지 않고 디스크 또는 메모리에 캐시된 사본을 가져와 사용합니다.
+위의 코드의 경우 응답 메시지가 생성된 후 604800초 동안 신선한 캐시로 판단합니다. 브라우저는 한번 받아온 문서의 유효기간이 지나기 전이라면, 서버에 요청을 보내지 않고 디스크 또는 메모리에 캐시된 사본을 가져와 사용합니다.
 
 `max-age`는 클라이언트가 응답을 받은 후 경과되는 시간이 아닌, 서버에서 응답이 생성된 후 경과되는 시간을 가지고 있기 때문에 네트워크 경로의 다른 캐시가 100초 동안 응답을 저장하고 있었다면 아래와 같이 응답을 받게 되고,
 
@@ -265,7 +265,14 @@ Cache-Control: max-age=604800, immutable
 Cache-Control: max-age=604800, stale-while-revalidate=86400
 ```
 
-위의 코드는 7일(604800초) 동안 캐시가 신선한 상태입니다. 7일 후에는 캐시가 신선하지 않아 재검사를 해야 합니다. 하루(86400초) 동안에는 재검사하는 동안에 오래된 캐시를 재사용했다가 재검사가 끝나고 캐시가 업데이트 되면 업데이트 된 캐시를 사용하게 됩니다.
+위의 코드는 7일(604800초) 동안 캐시가 신선한 상태입니다. 7일 후에는 캐시가 신선하지 않아 재검사를 해야 하는데, 하루(86400초) 동안에는 요청이 오면 오래된 캐시를 재사용하여 응답하고 동시에 재검사를 진행하여 캐시를 업데이트 합니다.
+
+예를 들어 클라이언트의 요청에 응답으로 원 서버가 `Cache-Control: max-age=1, stale-while-revalidate=59`와 같이 캐시에게 응답을 보낼 경우 캐시는 아래와 같이 동작합니다.
+
+- HTTP 요청이 1초 내에 반복적으로 발생할 경우: 별도의 검증 없이 그대로 캐시된 값을 응답합니다.
+- HTTP 요청이 1 ~ 60초 사이에 반복적으로 발생할 경우: 캐시된 값은 오래되었지만 캐시된 값을 응답합니다. 동시에 재검사를 통해 캐시를 새로운 값으로 업데이트 합니다.
+- HTTP 요청이 60초 이후로 발생할 경우: 원 서버로 요청을 보냅니다.
+
 
 ### `stale-if-error`
 `stale-if-error` 디렉티브는 원본 서버가 에러(500, 502, 503, 504 에러) 응답을 보냈을 때 오래된 응답 값을 재사용할 수 있게 하는 디렉티브 입니다. `stale-if-error` 디렉티브는 아래와 같은 형태로 사용됩니다.
@@ -295,18 +302,25 @@ Cache-Control: no-cache
 Cache-Control: no-store
 ```
 
-`no-store` 디렉티브를 요청 메시지에서 사용하면 캐시가 해당 요청 및 응답을 저장하지 않게 됩니다. 주요 브라우저는 요청 메시지에 보내는 `no-store` 디렉티브를 지원하지 않습니다.
+`no-store` 디렉티브를 요청 메시지에서 사용하면 캐시가 해당 요청 및 응답을 저장하지 않게 됩니다.
 
 ### `max-age`
 `max-age` 디렉티브는 아래와 같은 형태로 사용됩니다.
 
 ```http
-Cache-Control: max-age=604800
+Cache-Control: max-age=3600
 ```
 
 요청 메시지에서 사용되는 `max-age` 디렉티브는 N(0 이상의 정수)초 내에 원본 서버에서 생성된 응답을 받기 위해 사용됩니다.
 
 ### `max-stale`
+`max-stale` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: max-stale=3600
+```
+
+`max-stale` 디렉티브는 N초 이내에 오래된 캐시를 재사용할 수 하는 디렉티브입니다. `max-stale`에 초를 지정하지 않으면 모든 오래된 캐시를 재사용할 수 있습니다.
 
 ### `min-fresh`
 
@@ -314,7 +328,7 @@ Cache-Control: max-age=604800
 
 ### `only-if-cached`
 
-
+# 브라우저 지원현황
 
 
 
@@ -353,3 +367,4 @@ Cache-Control: max-age=604800
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age)
 - [https://www.rfc-editor.org/rfc/rfc2616#section-6.1.1](https://www.rfc-editor.org/rfc/rfc2616#section-6.1.1)
 - [https://tech.ssut.me/cache-optimization-using-cache-control-immutable/](https://tech.ssut.me/cache-optimization-using-cache-control-immutable/)
+- [https://www.rfc-editor.org/rfc/rfc7234#section-5.2.1](https://www.rfc-editor.org/rfc/rfc7234#section-5.2.1)
