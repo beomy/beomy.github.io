@@ -320,41 +320,36 @@ Cache-Control: max-age=3600
 Cache-Control: max-stale=3600
 ```
 
-`max-stale` 디렉티브는 N초 이내에 오래된 캐시를 재사용할 수 하는 디렉티브입니다. `max-stale`에 초를 지정하지 않으면 모든 오래된 캐시를 재사용할 수 있습니다.
+`max-stale` 디렉티브는 N초 이내에 오래된 캐시를 받을 수 있게 하는 디렉티브입니다. `max-stale`에 초를 지정하지 않으면 모든 오래된 캐시를 재사용할 수 있습니다.
 
 ### `min-fresh`
+`min-fresh` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: min-fresh=600
+```
+
+`min-fresh` 디렉티브는 N초 동안 신선한 상태로 유지 될 수 있는 캐시를 받을 수 있게 하는 디렉티브입니다.
+
+예를 들어 클라리언트의 `Cache-Control: min-fresh=600`가 포함된 요청에 응답으로 원 서버가 `Cache-Control: max-age=3600`와 같이 캐시에 응답을 보낼 경우 51분 후 부터는 캐시된 값을 클라이언트로 전달하지 못하게 됩니다.
 
 ### `no-transform`
+`no-transform` 디렉티브는 아래와 같은 형태로 사용됩니다.
+
+```http
+Cache-Control: no-transform
+```
+
+요청에서 사용되는 것과 동일한 기능을 가집니다.
 
 ### `only-if-cached`
+`only-if-cached` 디렉티브는 아래와 같은 형태로 사용됩니다.
 
-# 브라우저 지원현황
+```http
+Cache-Control: only-if-cached
+```
 
-
-
-
-
----
-
-## `no-store`
-캐시로 저장하지 않는다
-
-## `no-cache`
-`Cache-Control: max-age=0`과 동일한 동작을 합니다. 캐시로 저장되지만, 서버와 재검사 후에 클라이언트로 응답 값을 제공된다.
-
-## `private`
-브라우저는 문서를 캐시할 수 있지만 중간 프록시 캐시는 캐시할 수 없습니다.
-
-## `public`
-모든 캐시가 저장할 수 있습니다.
-
-## `max-age`
-`Cache-Control: max-age=3600`와 같이 초 단위의 값을 사용합니다. 설정 된 시간이 동안만 캐시가 신선한 것으로 간주됩니다.
-
-브라우저는 한번 받아온 문서의 유효기간이 지나기 전이라면, 서버에 요청을 보내지 않고 디스크 또는 메모리에 캐시된 사본을 가져와 사용합니다.
-
-## `must-revalidate`
-캐시는 성능을 개선하기 위해 신선하지 않은 객체를 제공할 수 있도록 설정될 수 있는데, 캐시가 만료 정보를 엄격하게 따리길 원한다면 원 서버는 `Cache-Control: must-revalidate` 응답 헤더를 사용할 수 있습니다.
+`only-if-cached` 디렉티브는 이미 캐시된 값만 받기 위해 사용됩니다. 요청에 일치되는 캐시된 값이 있다면 캐시된 값을 재사용하고 캐시된 값이 없다면 504 Gateway Timeout으로 응답합니다.
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/HTTP/Caching](https://developer.mozilla.org/ko/docs/Web/HTTP/Caching)
