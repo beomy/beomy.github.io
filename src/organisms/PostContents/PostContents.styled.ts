@@ -88,6 +88,29 @@ const StyledContents = styled.div`
       line-height: 1.5;
     }
   }
+
+  [data-language] {
+    position: relative;
+    &:before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0 10px;
+      font-size: ${({ theme }: any) => theme.fontSizes[0]};
+    }
+  }
+  [data-language='http']:before {
+    content: 'HTTP';
+  }
+  [data-language='html']:before {
+    content: 'HTML';
+  }
+  [data-language='js']:before {
+    content: 'JS';
+  }
+  [data-language='ts']:before {
+    content: 'TS';
+  }
 `;
 
 export default StyledContents;
