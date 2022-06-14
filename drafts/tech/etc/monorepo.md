@@ -6,6 +6,7 @@ category: [tech, etc]
 summary:
 ---
 
+# 용어
 - repo : 저장소를 의미하는 repository의 준말
 - Multirepo : 복수의 저장소에 각각의 프로젝트를 두어 분산시키는 구조
 - Monorepo: 하나의 저장소에 여러 프로젝트를 두는 구조
