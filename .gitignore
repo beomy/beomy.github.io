@@ -23,3 +23,12 @@ yarn-error.log\*
 
 # Custom
 .idea
+
+# Yarn berry
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
