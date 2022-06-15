@@ -111,6 +111,15 @@ const StyledContents = styled.div`
   [data-language='ts']:before {
     content: 'TS';
   }
+  [data-language='bash']:before {
+    content: 'BASH';
+  }
+  [data-language='scss']:before {
+    content: 'SCSS';
+  }
+  [data-language='json']:before {
+    content: 'JSON';
+  }
 `;
 
 export default StyledContents;

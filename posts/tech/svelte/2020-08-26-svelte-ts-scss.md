@@ -12,7 +12,7 @@ summary: Svelte + TS + SCSS 구조의 프로젝트를 만들어보도록 하겠�
 # Rollup
 Rollup 번들러를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template](https://github.com/sveltejs/template) 템플릿을 다운로드하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
 
-```none
+```bash
 npx degit sveltejs/template svelte-typescript-app
 cd svelte-typescript-app
 node scripts/setupTypeScript.js
@@ -387,7 +387,7 @@ export default app;
 # Webpack
 Webpack 번들러를 사용해서 Svelte에 TypeScript와 SCSS, autoprefixer, alias를 사용할 수 있도록 설정해 보도록 하겠습니다. 아래 코드와 같이 Svelte에서 제공하는 [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack) 템플릿을 다운로드하고 패키지를 다운로드하고 `setupTypeScript` 파일을 실행 후 패키지를 다운로드합니다.
 
-```none
+```bash
 npx degit sveltejs/template svelte-typescript-app
 cd svelte-typescript-app
 node scripts/setupTypeScript.js
