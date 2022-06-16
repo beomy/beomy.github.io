@@ -26,6 +26,6 @@ yarn-error.log\*
 /static
 
 # Yarn berry
-.yarn
+.yarn/
 .pnp.cjs
 .pnp.loader.mjs

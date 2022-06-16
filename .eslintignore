@@ -23,9 +23,9 @@ yarn-error.log\*
 
 # Custom
 .idea
-static
+static/
 
 # Yarn berry
-.yarn
+.yarn/
 .pnp.cjs
 .pnp.loader.mjs
