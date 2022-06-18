@@ -20,12 +20,12 @@ summary:
 # pnpm
 
 # nx
-cra-to-nx
+- cra-to-nx
 
 # lerna
 
 # yarn berry
-zero install
+- zero install
 
 #### 참고
 - [https://velog.io/@sms8377/DevOps-MonoRepo린](https://velog.io/@sms8377/DevOps-MonoRepo린)
