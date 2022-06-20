@@ -19,7 +19,7 @@ summary:
 
 # pnpm
 
-# nx
+# nx + yarn(1.x)
 - cra-to-nx
 
 # lerna
