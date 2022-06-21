@@ -20,6 +20,7 @@ summary:
 # pnpm
 
 # nx + yarn(1.x)
+- google
 - cra-to-nx
 
 # lerna
