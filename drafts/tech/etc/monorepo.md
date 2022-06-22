@@ -31,3 +31,5 @@ summary:
 #### 참고
 - [https://velog.io/@sms8377/DevOps-MonoRepo린](https://velog.io/@sms8377/DevOps-MonoRepo린)
 - [https://medium.com/myrealtrip-product/monorepo로-대규모-react-프로젝트-관리하기-d12b65340306](https://medium.com/myrealtrip-product/monorepo로-대규모-react-프로젝트-관리하기-d12b65340306)
+- [https://d2.naver.com/helloworld/7553804](https://d2.naver.com/helloworld/7553804)
+-
