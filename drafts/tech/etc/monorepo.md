@@ -19,11 +19,12 @@ summary:
 
 # pnpm
 
-# nx + yarn(1.x)
+# nx
 - google
 - cra-to-nx
+- 단일 근원 원칙
 
-# lerna
+# lerna + yarn(1.x)
 
 # yarn berry
 - zero install
