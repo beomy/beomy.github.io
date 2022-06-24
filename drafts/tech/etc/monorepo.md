@@ -15,7 +15,7 @@ summary:
 
 # Turborepo
 - Vercel에서 관리함
-- Vercel, AWS에서 사용중
+- Vercel과 AWS, Miro, PayPal, Discord, LINE+에서 사용중
 
 # pnpm
 
@@ -33,4 +33,4 @@ summary:
 - [https://velog.io/@sms8377/DevOps-MonoRepo린](https://velog.io/@sms8377/DevOps-MonoRepo린)
 - [https://medium.com/myrealtrip-product/monorepo로-대규모-react-프로젝트-관리하기-d12b65340306](https://medium.com/myrealtrip-product/monorepo로-대규모-react-프로젝트-관리하기-d12b65340306)
 - [https://d2.naver.com/helloworld/7553804](https://d2.naver.com/helloworld/7553804)
--
+- [https://engineering.linecorp.com/ko/blog/monorepo-with-turborepo/](https://engineering.linecorp.com/ko/blog/monorepo-with-turborepo/)
