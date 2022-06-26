@@ -24,6 +24,7 @@ summary:
 - google
 - cra-to-nx
 - 단일 근원 원칙
+- node 16.x 에서 지원 (14.17.0 미지원)
 
 # lerna + yarn(1.x)
 
