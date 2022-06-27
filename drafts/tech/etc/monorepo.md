@@ -17,8 +17,10 @@ summary:
 - Vercel에서 관리함
 - Vercel과 AWS, Miro, PayPal, Discord, LINE+에서 사용중
 - yarn berry (yarn 3.x) 지원
+- next: Turborepo + pnpm
 
 # pnpm
+- vue 3.0
 
 # nx
 - google
