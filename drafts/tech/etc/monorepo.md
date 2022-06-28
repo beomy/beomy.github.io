@@ -16,11 +16,11 @@ summary:
 # Turborepo
 - Vercel에서 관리함
 - Vercel과 AWS, Miro, PayPal, Discord, LINE+에서 사용중
-- yarn berry (yarn 3.x) 지원
-- next: Turborepo + pnpm
+- yarn berry (yarn 3.x) 지원: pnp는 미지원
 
 # pnpm
-- vue 3.0
+- vue 3.0: pnpm
+- next: Turborepo + pnpm
 
 # nx
 - google
