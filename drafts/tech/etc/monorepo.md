@@ -19,7 +19,7 @@ summary:
 - yarn berry (yarn 3.x) 지원: pnp는 미지원
 
 # pnpm
-- vue 3.0: pnpm
+- vue3: pnpm
 - next: Turborepo + pnpm
 
 # nx
@@ -32,6 +32,10 @@ summary:
 
 # yarn berry
 - zero install
+
+# yarn workspace
+
+# npm workspace
 
 #### 참고
 - [https://velog.io/@sms8377/DevOps-MonoRepo린](https://velog.io/@sms8377/DevOps-MonoRepo린)
