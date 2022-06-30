@@ -18,24 +18,24 @@ summary:
 - Vercel과 AWS, Miro, PayPal, Discord, LINE+에서 사용중
 - yarn berry (yarn 3.x) 지원: pnp는 미지원
 
-# pnpm
+# PNPM
 - vue3: pnpm
 - next: Turborepo + pnpm
 
-# nx
+# Nx
 - google
 - cra-to-nx
 - 단일 근원 원칙
 - node 16.x 에서 지원 (14.17.0 미지원)
 
-# lerna + yarn(1.x)
+# Lerna + Yarn(1.x)
 
-# yarn berry
+# Yarn berry
 - zero install
 
-# yarn workspace
+# Yarn workspace
 
-# npm workspace
+# NPM workspace
 
 #### 참고
 - [https://velog.io/@sms8377/DevOps-MonoRepo린](https://velog.io/@sms8377/DevOps-MonoRepo린)
