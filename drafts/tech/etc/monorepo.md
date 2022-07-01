@@ -14,7 +14,7 @@ summary:
 - vertical: 마이리얼트립의 상품 카테고리
 
 # Turborepo
-- Vercel에서 관리함
+- 개발사: Vercel
 - Vercel과 AWS, Miro, PayPal, Discord, LINE+에서 사용중
 - yarn berry (yarn 3.x) 지원: pnp는 미지원
 
@@ -23,8 +23,8 @@ summary:
 - next: Turborepo + pnpm
 
 # Nx
-- google
-- cra-to-nx
+- 개발사: google
+- cra-to-nx로 cra 프로젝트 생성 가능
 - 단일 근원 원칙
 - node 16.x 에서 지원 (14.17.0 미지원)
 
