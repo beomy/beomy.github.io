@@ -24,7 +24,7 @@ summary:
 - 단일 근원 원칙
 - node 16.x 에서 지원 (14.17.0 미지원)
 
-# Lerna
+# Lerna + yarn
 - 지원 중단
 - yarn 3.0 미지원
 
