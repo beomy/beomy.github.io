@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[ETC] 모노레포'
+title: '[ETC] Monorepo'
 featured-img: etc/HTTP_logo.png
 category: [tech, etc]
 summary:
