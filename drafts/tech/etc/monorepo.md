@@ -26,7 +26,6 @@ summary:
 
 # Lerna + yarn
 - 지원 중단
-- yarn 3.0 미지원
 
 # Yarn berry(Yarn 3.*) workspace
 - PnP(Plug'n'Play): node_modules를 사용하지 않고 `.yarn/cache`에 패키지들이 zip 형태로 저장되고, `.pnp.cjs`에 패키지의 의존성 정보를 저장하여 디스트 I/O 없이 `.pnp.cjs`를 사용하여 패키지가 어떤 라이브러리에 의존성을 가지는지 알 수 있습니다.
