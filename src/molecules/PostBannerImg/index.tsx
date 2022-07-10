@@ -55,6 +55,12 @@ function PostBannerImg({ img }: IProp) {
         alt="포스트 배너"
       />
     ),
+    'etc/monorepo.png': (
+      <StaticImage
+        src="../../assets/images/etc/monorepo.png"
+        alt="포스트 배너"
+      />
+    ),
   };
   return (
     imgComponents[img] ?? (
