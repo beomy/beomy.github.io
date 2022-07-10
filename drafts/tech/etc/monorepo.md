@@ -3,7 +3,6 @@ layout: post
 title: '[ETC] Monorepo'
 featured-img: etc/monorepo.png
 category: [tech, etc]
-summary:
 ---
 
 # Turborepo
