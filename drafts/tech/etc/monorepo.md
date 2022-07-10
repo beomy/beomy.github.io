@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[ETC] Monorepo'
-featured-img: etc/HTTP_logo.png
+featured-img: etc/monorepo.png
 category: [tech, etc]
 summary:
 ---
