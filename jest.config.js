@@ -24,9 +24,7 @@ module.exports = {
     '\\.cache',
     '<rootDir>.*/public',
   ],
-  testEnvironmentOptions: {
-    url: 'http://localhost',
-  },
+  testURL: `http://localhost`,
   transform: { '^.+\\.[tj]sx?$': 'ts-jest' },
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
 };
