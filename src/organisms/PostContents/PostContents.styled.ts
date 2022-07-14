@@ -21,6 +21,7 @@ const StyledContents = styled.div`
 
   table {
     display: table;
+    table-layout: fixed;
     width: 100%;
     overflow-x: auto;
     border-collapse: collapse;
