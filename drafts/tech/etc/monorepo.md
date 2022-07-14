@@ -32,6 +32,11 @@ stateofjs 참고
 
 @emotion + storybook 지원 가능? -> pnpMode loose
 
+zero-install인데 왜 yarn install을 해야 하느냐 -> pnpMode loose가 아닌 이유는 .yarn/unplugged 폴더 때문입니다.
+unplugged 폴더가 뭐냐? zero-install은 패키지를 zip으로 관리하여 읽기 전용으로 동작하는데, 쉘스크립트 실행등의 실행 파일.. 같이 읽기 전용으로 패키지가 동작하기 어려운 경우 unplugged 폴더를 만들어 그곳에 zip 파일을 압축해제 해야 합니다.
+zero-install에서 yarn install이 필요한 이유는 unplugged 폴더를 만들기 위해서 입니다.
+진짜! yarn install 없이 바로 실행하려면?? .yanrc.yml에 enableScripts: false를 추가하면 됩니다.
+
 ## NPM workspace
 
 ## PNPM
