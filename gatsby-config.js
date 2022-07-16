@@ -1,3 +1,5 @@
+const path = require('path');
+
 const siteMetadata = {
   title: `Beomy`,
   description: `Front-End 개발자 Beomy의 기술 블로그입니다.`,
@@ -65,7 +67,7 @@ const plugins = [
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `images`,
-      path: `${__dirname}/src/assets/images`,
+      path: path.join(__dirname, `/src/assets/images`),
     },
   },
   `gatsby-transformer-sharp`,
@@ -105,7 +107,7 @@ const plugins = [
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `posts`,
-      path: `${__dirname}/posts`,
+      path: path.join(__dirname, `/posts`),
     },
   },
   {
@@ -215,6 +217,13 @@ const plugins = [
       // other options
     },
   },
+  {
+    resolve: `gatsby-plugin-compile-es6-packages`,
+    options: {
+      modules: [`gatsby-link`, `gatsby-script`, `@builder.io/partytown`],
+      test: /\.[c|m]?js$/,
+    },
+  },
   // this (optional) plugin enables Progressive Web App + Offline functionality
   // To learn more, visit: https://gatsby.dev/offline
   // 'gatsby-plugin-offline`,
@@ -225,7 +234,7 @@ if (process.env.NODE_ENV === `development`) {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `drafts`,
-      path: `${__dirname}/drafts`,
+      path: path.join(__dirname, `/drafts`),
     },
   });
 }

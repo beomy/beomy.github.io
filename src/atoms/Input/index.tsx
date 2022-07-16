@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, KeyboardEventHandler } from 'react';
+import { ChangeEventHandler, KeyboardEventHandler } from 'react';
 import StyledInput from './Input.styled';
 
 interface IProp {
@@ -28,7 +28,7 @@ function Input({
       onFocus={onFocus}
       onBlur={onBlur}
       onChange={onChange}
-      onKeyPress={onKeyPress}
+      onKeyDown={onKeyPress}
     />
   );
 }

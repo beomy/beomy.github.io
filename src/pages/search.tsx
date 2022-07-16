@@ -1,4 +1,3 @@
-import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { IData } from '@/model/graphQL';
 import { searchToObject } from '@/utils/location';

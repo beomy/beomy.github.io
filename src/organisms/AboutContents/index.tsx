@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { H1 } from '@/atoms';
 import StyledAboutContents from './AboutContents.styled';
 

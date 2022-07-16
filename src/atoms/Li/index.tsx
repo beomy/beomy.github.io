@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { SpaceProps, LayoutProps } from 'styled-system';
 import StyledLi from './Li.styled';
 

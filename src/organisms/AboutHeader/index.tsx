@@ -1,4 +1,3 @@
-import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import { H1 } from '@/atoms';
 import StyledAboutHeader from './AboutHeader.styled';

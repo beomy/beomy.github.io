@@ -58,7 +58,7 @@ export function useMenu() {
   );
   const posts = usePosts(allMarkdownRemark);
   const menuArray = useMemo(
-    () => posts.map((x) => x.category).filter((x) => !!x),
+    () => posts.map((x) => x.category ?? []).filter((x) => !!x),
     [posts],
   );
   return useMemo(() => arrayToTree(menuArray), [menuArray]);

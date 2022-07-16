@@ -1,4 +1,3 @@
-import React from 'react';
 import { LayoutProps, SpaceProps } from 'styled-system';
 import StyledImg from './Img.styled';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
 import { Disqus } from 'gatsby-plugin-disqus';

@@ -15,8 +15,8 @@ export function useInput(
   (text: string) => void,
 ] {
   const [value, setValue] = useState<string>(initValue);
-  const onChange = useCallback((e) => setValue(e.target.value), [value]);
-  const onReset = useCallback(() => setValue(initValue), []);
+  const onChange = useCallback((e: any) => setValue(e.target.value), []);
+  const onReset = useCallback(() => setValue(initValue), [initValue]);
 
   return [value, onChange, onReset, setValue];
 }
@@ -37,6 +37,6 @@ export function useScroll(delta = 0) {
     return () => {
       document.removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [delta]);
   return move;
 }
