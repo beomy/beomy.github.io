@@ -12,7 +12,7 @@ category: [tech, etc]
 ## 멀티레포
 
 # 모노레포 툴
-stateofjs 참고
+[stateofjs](https://2021.stateofjs.com/en-US/libraries/monorepo-tools) 참고
 
 ## Lerna
 - 지원 중단
