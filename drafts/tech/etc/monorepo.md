@@ -19,14 +19,14 @@ category: [tech, etc]
 
 ## Nx
 - 개발사: google
-- cra-to-nx로 cra 프로젝트 생성 가능
+- cra-to-nx로 cra 프로젝트 생성 가능, 다른 생성 방법도 함께
 - 단일 근원 원칙
-- node 16.x 에서 지원 (14.17.0 미지원)
-- Lerna에서 마이그레이션 방법
+- node 16.x 에서 지원 (14.17.0 미지원) - 안써도 될 듯
+- Lerna에서 마이그레이션 방법 (app 당 package.json 가능?)
 
 ## Turborepo
 - 개발사: Vercel
-- Vercel과 AWS, Miro, PayPal, Discord, LINE+에서 사용중
+- Vercel과 AWS, Micro, PayPal, Discord, LINE+에서 사용중
 - yarn berry (yarn 3.x) 지원: pnp는 미지원
 
 ## Yarn berry(Yarn 3.*) workspace
