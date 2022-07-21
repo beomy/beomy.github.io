@@ -42,6 +42,7 @@ function TableOfContents({ toc, ...props }: IProp) {
 
   return (
     <StyledTableOfContents {...props}>
+      {/* eslint-disable-next-line react/no-danger */}
       <div ref={tocRef} dangerouslySetInnerHTML={{ __html: toc }} />
     </StyledTableOfContents>
   );
