@@ -3,6 +3,7 @@ layout: post
 title: '[ETC] Monorepo'
 featured-img: etc/monorepo.png
 category: [tech, etc]
+summary:
 ---
 
 # 모노레포의 등장 배경
