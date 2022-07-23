@@ -16,7 +16,7 @@ summary:
 [stateofjs](https://2021.stateofjs.com/en-US/libraries/monorepo-tools) 참고
 
 ## Lerna
-- 지원 중단: nx에 넘김
+- 지원 중단: nx 개발사인 Nrwl에 넘김
 
 ## Nx
 - 개발사: google
