@@ -3,14 +3,18 @@ layout: post
 title: '[ETC] Monorepo'
 featured-img: etc/monorepo.png
 category: [tech, etc]
-summary:
+summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 레파지토리(Repository)에서 관리 할 수 있습니다. 이번 포스트에서는 모노레포의 개념과 모노레포 프로젝트를 구현하는 툴들을 살펴보도록하겠습니다.
 ---
+
+모노레포를 사용하면 여러개의 프로젝트를 하나의 레파지토리(Repository)에서 관리 할 수 있습니다. 이번 포스트에서는 모노레포의 개념과 모노레포 프로젝트를 구현하는 툴들을 살펴보도록하겠습니다.
 
 # 모노레포의 등장 배경
 
 ## 모놀리식 어플리케이션
 
 ## 멀티레포
+
+# 모노레포를 사용해야 할 경우
 
 # 모노레포 툴
 [stateofjs](https://2021.stateofjs.com/en-US/libraries/monorepo-tools) 참고
