@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import { FiMenu, FiSearch, FiX } from 'react-icons/fi';
@@ -18,7 +18,7 @@ function Header() {
     () => setIsSearch(!isSearch),
     [isSearch],
   );
-  const handleSearch = useCallback((str) => {
+  const handleSearch = useCallback((str: string) => {
     setIsSearch(false);
     navigate(`/search?keyword=${str}`);
   }, []);

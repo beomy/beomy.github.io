@@ -1,4 +1,3 @@
-import React from 'react';
 import { getYear } from 'date-fns';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { A, Span } from '@/atoms';

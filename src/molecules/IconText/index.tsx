@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
 import { SpaceProps, ColorProps, TypographyProps } from 'styled-system';
 import StyledIconText from './IconText.styled';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { ThemeProvider } from '@emotion/react';
 import theme from '@/assets/themes/default';

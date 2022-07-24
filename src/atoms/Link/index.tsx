@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { GatsbyLinkProps } from 'gatsby';
 import { SpaceProps, LayoutProps } from 'styled-system';
 import StyledLink from './Link.styled';

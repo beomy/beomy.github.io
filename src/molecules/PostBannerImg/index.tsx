@@ -1,8 +1,7 @@
-import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 
 interface IProp {
-  img: string;
+  img?: string;
 }
 
 function PostBannerImg({ img }: IProp) {
@@ -63,7 +62,7 @@ function PostBannerImg({ img }: IProp) {
     ),
   };
   return (
-    imgComponents[img] ?? (
+    imgComponents[img as keyof typeof imgComponents] ?? (
       <StaticImage
         src="https://dummyimage.com/2000x1000/000/fff.png"
         alt="포스트 배너"

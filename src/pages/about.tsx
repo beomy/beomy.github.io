@@ -1,4 +1,3 @@
-import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import Default from '@/templates/default';
 import { Ul, Li, A, H4 } from '@/atoms';

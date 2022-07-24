@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { FiSearch, FiX } from 'react-icons/fi';
 import cn from 'classnames';
 import { TypographyProps } from 'styled-system';
@@ -34,7 +34,7 @@ function DecoInput({
         value={str}
         placeholder={placeholder}
         onChange={onChange}
-        onKeyPress={(e) => e.key === 'Enter' && onSearch(str)}
+        onKeyPress={(e) => e.key === 'Enter' && onSearch?.(str)}
       />
       <Button
         className={cn('clear', { active: isClearable })}
@@ -43,7 +43,7 @@ function DecoInput({
         <FiX size={props.fontSize as number | string} />
       </Button>
       {searchable && (
-        <Button className="search" onClick={() => onSearch(str)}>
+        <Button className="search" onClick={() => onSearch?.(str)}>
           <FiSearch size={props.fontSize as number | string} />
         </Button>
       )}

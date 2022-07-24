@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import theme from '@/assets/themes/default';
 import { Header, Contents, Footer } from '@/organisms';

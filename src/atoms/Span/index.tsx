@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ColorProps, TypographyProps, SpaceProps } from 'styled-system';
 import StyledSpan from './Span.styled';
 

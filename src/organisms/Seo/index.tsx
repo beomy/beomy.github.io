@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
@@ -40,7 +39,7 @@ function Seo({ description, lang, meta, title, path, type, image }: IProp) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  const defaultTitle = site.siteMetadata.title;
   const url = `${site.siteMetadata.siteUrl}${path}`;
   const metaImage = image || getSrc(file.childImageSharp.gatsbyImageData);
 
@@ -50,7 +49,7 @@ function Seo({ description, lang, meta, title, path, type, image }: IProp) {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={`%s | ${defaultTitle}`}
       meta={[
         {
           name: `description`,
@@ -104,7 +103,7 @@ function Seo({ description, lang, meta, title, path, type, image }: IProp) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ].concat(meta ?? [])}
     />
   );
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FiCalendar, FiClock } from 'react-icons/fi';
 import { parse, format } from 'date-fns';
 import { EDateFormat } from '@/model/dateFormat';
@@ -7,7 +6,12 @@ import { H1 } from '@/atoms';
 import { IconText, PostBannerImg } from '@/molecules';
 import StyledPostHeader from './PostHeader.styled';
 
-function PostHeader({ title, thumbnail, createdDate, timeToRead }: IPost) {
+function PostHeader({
+  title,
+  thumbnail,
+  createdDate = new Date(),
+  timeToRead,
+}: IPost) {
   const date =
     createdDate instanceof Date
       ? createdDate

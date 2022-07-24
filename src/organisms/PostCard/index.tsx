@@ -1,4 +1,3 @@
-import React from 'react';
 import { FiCalendar, FiClock, FiMessageSquare } from 'react-icons/fi';
 import { format, parse } from 'date-fns';
 import { CommentCount } from 'gatsby-plugin-disqus';
@@ -14,7 +13,7 @@ function PostCard({
   title,
   summary,
   thumbnail,
-  createdDate,
+  createdDate = new Date(),
   timeToRead,
   url,
 }: IProp) {

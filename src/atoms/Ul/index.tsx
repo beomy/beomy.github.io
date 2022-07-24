@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { SpaceProps, LayoutProps, FlexboxProps } from 'styled-system';
 import StyledUl from './Ul.styled';
 

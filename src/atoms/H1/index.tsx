@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { SpaceProps, TypographyProps } from 'styled-system';
 import StyledH1 from './H1.styled';
 
