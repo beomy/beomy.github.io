@@ -73,9 +73,6 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 레
 - vue3: pnpm
 - next: Turborepo + pnpm
 
-#### 기타
-codeowner: https://goodgid.github.io/Github-CODEOWNERS/
-
 #### 참고
 - [https://2021.stateofjs.com/en-US/libraries/monorepo-tools](https://2021.stateofjs.com/en-US/libraries/monorepo-tools)
 - [https://velog.io/@sms8377/DevOps-MonoRepo린](https://velog.io/@sms8377/DevOps-MonoRepo린)
