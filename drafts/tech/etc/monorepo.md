@@ -37,6 +37,7 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 레
 ## Yarn berry(Yarn 3.*) workspace
 
 ### Yarn classic(Yarn 1.*)의 문제점
+- Yarn 1 버전을 classic Yarn 2 이상의 버전을 berry라고 함
 - 의존성 탐색 알고리즘의 비효율
 - 저장 공간과 설치 시간
 - 유령 의존성(phantom dependency)
