@@ -17,7 +17,7 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 레
 # 모노레포를 사용해야 할 경우
 
 # 모노레포 툴
-[stateofjs](https://2021.stateofjs.com/en-US/libraries/monorepo-tools) 참고
+- [stateofjs](https://2021.stateofjs.com/en-US/libraries/monorepo-tools) 참고
 
 ## Lerna
 - 지원 중단: nx 개발사인 Nrwl에 넘김
