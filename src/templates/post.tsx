@@ -2,8 +2,8 @@ import { graphql, PageProps } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
 import { Disqus } from 'gatsby-plugin-disqus';
 import { ThemeProvider } from '@emotion/react';
+import type { Data, MarkdownRemark } from '@/model/graphQL';
 import theme from '@/assets/themes/default';
-import { IData, IMarkdownRemark } from '@/model/graphQL';
 import {
   Seo,
   Header,
@@ -15,15 +15,15 @@ import {
   PostNavigator,
   Footer,
 } from '@/organisms';
-import { usePost } from '@/hooks/post';
+import { usePost } from '@/hooks';
 
-interface IContext {
-  previous: IMarkdownRemark;
-  next: IMarkdownRemark;
+type Context = {
+  previous: MarkdownRemark;
+  next: MarkdownRemark;
   slug: string;
-}
+};
 
-function Post({ data, pageContext }: PageProps<IData, IContext>) {
+const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
   const post = usePost(data.markdownRemark);
   const previous = usePost(pageContext.previous);
   const next = usePost(pageContext.next);
@@ -71,7 +71,7 @@ function Post({ data, pageContext }: PageProps<IData, IContext>) {
       <Footer />
     </ThemeProvider>
   );
-}
+};
 
 export const query = graphql`
   query ($slug: String!, $image: [String]) {
@@ -101,4 +101,5 @@ export const query = graphql`
     }
   }
 `;
+
 export default Post;

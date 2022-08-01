@@ -1,10 +1,10 @@
 import { graphql, PageProps } from 'gatsby';
-import { IData } from '@/model/graphQL';
+import type { Data } from '@/model/graphQL';
 import { PostList, Seo } from '@/organisms';
 import List from '@/templates/list';
-import { usePosts } from '@/hooks/post';
+import { usePosts } from '@/hooks';
 
-function Home({ data }: PageProps<IData>) {
+const Home = ({ data }: PageProps<Data>) => {
   const posts = usePosts(data.allMarkdownRemark);
 
   return (
@@ -13,7 +13,7 @@ function Home({ data }: PageProps<IData>) {
       <PostList posts={posts} />
     </List>
   );
-}
+};
 
 export const query = graphql`
   query {

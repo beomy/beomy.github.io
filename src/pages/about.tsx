@@ -3,7 +3,7 @@ import Default from '@/templates/default';
 import { Ul, Li, A, H4 } from '@/atoms';
 import { Seo, AboutHeader, AboutContents } from '@/organisms';
 
-function About() {
+const About = () => {
   return (
     <Default>
       <Seo title="About" path="/about/" />
@@ -141,6 +141,6 @@ function About() {
       </AboutContents>
     </Default>
   );
-}
+};
 
 export default About;

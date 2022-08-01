@@ -1,11 +1,11 @@
-import { ITreeItem } from '@/model/tree';
+import { TreeItem } from '@/model/tree';
 
 export function arrayToTree(arr: string[][]) {
-  const tree: ITreeItem[] = [];
+  const tree: TreeItem[] = [];
   for (const sub of arr) {
     let travel = tree;
     for (const key of sub) {
-      const item: ITreeItem = { key, counter: 1, children: [] };
+      const item: TreeItem = { key, counter: 1, children: [] };
       const target = travel.find((x) => x.key === key);
       if (!target) {
         travel.push(item);

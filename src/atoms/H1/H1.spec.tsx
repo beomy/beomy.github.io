@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import Title from './index';
+import Title from './H1';
 
 describe(`Index`, () => {
   it(`renders a Title component`, () => {

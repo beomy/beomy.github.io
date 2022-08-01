@@ -1,4 +1,4 @@
-export enum EDateFormat {
+export enum DateFormat {
   /* Date */
   YYYY_MM = 'yyyy.MM',
   YYYY_MM_DD = 'yyyy.MM.dd',
