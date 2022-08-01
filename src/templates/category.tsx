@@ -1,15 +1,15 @@
 import { graphql, PageProps } from 'gatsby';
 import { ThemeProvider } from '@emotion/react';
+import type { Data } from '@/model/graphQL';
 import theme from '@/assets/themes/default';
-import { IData } from '@/model/graphQL';
 import { Seo, Header, Contents, PostList, SubMenu, Footer } from '@/organisms';
-import { useMenu, usePosts } from '@/hooks/post';
+import { useMenu, usePosts } from '@/hooks';
 
-interface IContext {
+type Context = {
   slug: string;
-}
+};
 
-function Category({ data, pageContext, path }: PageProps<IData, IContext>) {
+const Category = ({ data, pageContext, path }: PageProps<Data, Context>) => {
   const posts = usePosts(data.allMarkdownRemark);
   const menuTree = useMenu();
   const firstDepth = path
@@ -35,7 +35,7 @@ function Category({ data, pageContext, path }: PageProps<IData, IContext>) {
       <Footer />
     </ThemeProvider>
   );
-}
+};
 
 export const query = graphql`
   query ($slug: [String]) {

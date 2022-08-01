@@ -1,5 +1,5 @@
-export interface ITreeItem {
+export type TreeItem = {
   key: string;
   counter: number;
-  children: ITreeItem[];
-}
+  children: TreeItem[];
+};

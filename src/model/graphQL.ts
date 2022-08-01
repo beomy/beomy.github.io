@@ -1,54 +1,54 @@
-export interface IFields {
+export type Fields = {
   createdDate: string;
   slug: string;
-}
+};
 
-export interface IFrontmatter {
+export type Frontmatter = {
   category: string[];
   thumbnail: string;
   layout: string;
   summary: string;
   title: string;
-}
+};
 
-export interface ISiteMetadata {
+export type SiteMetadata = {
   title: string;
   description: string;
   author: string;
   siteUrl: string;
-}
+};
 
-export interface IMarkdownRemark {
+export type MarkdownRemark = {
   html?: string;
   tableOfContents?: string;
   timeToRead: number;
   excerpt: string;
-  frontmatter: IFrontmatter;
-  fields: IFields;
-}
+  frontmatter: Frontmatter;
+  fields: Fields;
+};
 
-export interface IAllMarkdownRemark {
+export type AllMarkdownRemark = {
   edges: {
-    node: IMarkdownRemark;
+    node: MarkdownRemark;
   }[];
-}
+};
 
-export interface ISite {
-  siteMetadata: ISiteMetadata;
-}
+export type Site = {
+  siteMetadata: SiteMetadata;
+};
 
-export interface IImageSharp {
+export type ImageSharp = {
   gatsbyImageData: any;
-}
+};
 
-export interface IFile {
-  childImageSharp: IImageSharp;
-}
+export type File = {
+  childImageSharp: ImageSharp;
+};
 
-export interface IData {
-  markdownRemark: IMarkdownRemark;
-  allMarkdownRemark: IAllMarkdownRemark;
-  site: ISite;
-  imageSharp: IImageSharp;
-  file: IFile;
-}
+export type Data = {
+  markdownRemark: MarkdownRemark;
+  allMarkdownRemark: AllMarkdownRemark;
+  site: Site;
+  imageSharp: ImageSharp;
+  file: File;
+};

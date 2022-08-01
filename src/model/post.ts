@@ -1,4 +1,4 @@
-export interface IPost {
+export type Post = {
   title: string;
   url: string;
   thumbnail?: string;
@@ -8,4 +8,4 @@ export interface IPost {
   category?: string[];
   html?: string;
   tableOfContents?: string;
-}
+};

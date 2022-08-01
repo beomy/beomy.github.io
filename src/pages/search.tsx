@@ -1,12 +1,12 @@
 import { graphql, PageProps } from 'gatsby';
-import { IData } from '@/model/graphQL';
+import type { Data } from '@/model/graphQL';
 import { searchToObject } from '@/utils/location';
 import { H2, Span } from '@/atoms';
 import { PostList, Seo } from '@/organisms';
 import List from '@/templates/list';
-import { usePosts } from '@/hooks/post';
+import { usePosts } from '@/hooks';
 
-function Search({ data, location }: PageProps<IData>) {
+const Search = ({ data, location }: PageProps<Data>) => {
   const posts = usePosts(data.allMarkdownRemark);
   const { keyword } = searchToObject(location.search);
   const filteredPosts = posts.filter(
@@ -38,7 +38,7 @@ function Search({ data, location }: PageProps<IData>) {
       <PostList posts={filteredPosts} />
     </List>
   );
-}
+};
 
 export const query = graphql`
   query {

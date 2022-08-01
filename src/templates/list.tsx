@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import theme from '@/assets/themes/default';
 import { Header, Contents, Footer } from '@/organisms';
 
-interface IProp {
+type ListProps = {
   children: ReactNode;
-}
+};
 
-function List({ children }: IProp) {
+const List = ({ children }: ListProps) => {
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -19,6 +19,6 @@ function List({ children }: IProp) {
       <Footer />
     </ThemeProvider>
   );
-}
+};
 
 export default List;

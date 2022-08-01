@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import theme from '@/assets/themes/default';
 import { Header, Contents, Footer } from '@/organisms';
 
-interface IProp {
+type DefaultProps = {
   children: ReactNode;
-}
+};
 
-function Default({ children }: IProp) {
+const Default = ({ children }: DefaultProps) => {
   return (
     <ThemeProvider theme={theme}>
       <Header />
@@ -17,6 +17,6 @@ function Default({ children }: IProp) {
       <Footer />
     </ThemeProvider>
   );
-}
+};
 
 export default Default;
