@@ -81,3 +81,4 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 레
 - [https://d2.naver.com/helloworld/0923884](https://d2.naver.com/helloworld/0923884)
 - [https://d2.naver.com/helloworld/7553804](https://d2.naver.com/helloworld/7553804)
 - [https://engineering.linecorp.com/ko/blog/monorepo-with-turborepo/](https://engineering.linecorp.com/ko/blog/monorepo-with-turborepo/)
+- [https://daaa0555.tistory.com/457](https://daaa0555.tistory.com/457)
