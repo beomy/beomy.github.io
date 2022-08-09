@@ -1,9 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
@@ -11,55 +8,17 @@ module.exports = {
     browser: true,
     es6: true,
     node: true,
-    jest: true,
   },
-  plugins: ['react', 'jsx-a11y', 'prettier', 'jest', '@typescript-eslint'],
-  extends: [
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-    'plugin:jest/recommended',
-    'standard',
-    'plugin:prettier/recommended',
-  ],
+  plugins: ['prettier', '@typescript-eslint'],
+  extends: ['standard', 'plugin:prettier/recommended'],
   rules: {
     'prettier/prettier': 'error',
-    'react/prop-types': 'off',
-    'react/jsx-filename-extension': 'off',
-    'react/jsx-props-no-spreading': 'off',
     'import/prefer-default-export': 'off',
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: [
-          '**/*.test.[jt]s',
-          '**/*.spec.[jt]s',
-          '**/*.test.[jt]sx',
-          '**/*.spec.[jt]sx',
-        ],
-      },
-    ],
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        ts: 'never',
-        tsx: 'never',
-        js: 'never',
-        jsx: 'never',
-      },
-    ],
+    'import/extensions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     quotes: 'off',
-    //    "@typescript-eslint/quotes": [
-    //      2,
-    //      "backtick",
-    //      {
-    //        "avoidEscape": true
-    //      }
-    //    ],
     '@typescript-eslint/no-unused-vars': [2, { argsIgnorePattern: '^_' }],
   },
   settings: {
@@ -67,9 +26,6 @@ module.exports = {
       typescript: {
         project: '.',
       },
-    },
-    react: {
-      version: 'detect',
     },
   },
 };

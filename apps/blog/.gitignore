@@ -11,8 +11,12 @@
 # testing
 /coverage
 
-# workspaces
-apps/
+# gatsby
+.cache/
+public/
+
+# production
+/build
 
 # misc
 .DS_Store
@@ -32,5 +36,9 @@ yarn-error.log*
 
 # Yarn berry
 .yarn/*
-.pnp.cjs
-.pnp.loader.mjs
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

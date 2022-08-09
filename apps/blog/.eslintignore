@@ -11,8 +11,13 @@
 # testing
 /coverage
 
-# workspaces
-apps/
+# gatsby
+.cache/
+public/
+static/
+
+# production
+/build
 
 # misc
 .DS_Store
