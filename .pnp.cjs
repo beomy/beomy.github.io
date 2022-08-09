@@ -16970,7 +16970,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/parser", "npm:7.18.10"],\
             ["@babel/runtime", "npm:7.18.9"],\
             ["@babel/traverse", "npm:7.18.10"],\
+            ["@emotion/react", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:11.10.0"],\
             ["@types/babel__core", null],\
+            ["@types/emotion__react", null],\
             ["@types/gatsby", null],\
             ["@types/gatsby-plugin-sharp", null],\
             ["@types/gatsby-source-filesystem", null],\
@@ -16993,7 +16995,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "packagePeers": [\
             "@babel/core",\
+            "@emotion/react",\
             "@types/babel__core",\
+            "@types/emotion__react",\
             "@types/gatsby-plugin-sharp",\
             "@types/gatsby-source-filesystem",\
             "@types/gatsby",\

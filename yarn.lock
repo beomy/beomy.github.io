@@ -1596,8 +1596,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@beomy/games@workspace:apps/games"
   dependencies:
-    "@sveltejs/vite-plugin-svelte": ^1.0.1
-    "@tsconfig/svelte": ^3.0.0
+    "@sveltejs/vite-plugin-svelte": 1.0.1
+    "@tsconfig/svelte": 3.0.0
     "@types/lodash-es": 4.17.6
     "@typescript-eslint/eslint-plugin": 5.32.0
     "@typescript-eslint/parser": 5.32.0
@@ -1609,14 +1609,14 @@ __metadata:
     prettier: 2.7.1
     prettier-plugin-svelte: 2.7.0
     sass: 1.54.3
-    svelte: ^3.49.0
-    svelte-check: ^2.8.0
+    svelte: 3.49.0
+    svelte-check: 2.8.0
     svelte-hammer: 0.1.7
-    svelte-preprocess: ^4.10.7
+    svelte-preprocess: 4.10.7
     svelte-spa-router: 3.3.0
-    tslib: ^2.4.0
-    typescript: ^4.6.4
-    vite: ^3.0.0
+    tslib: 2.4.0
+    typescript: 4.7.4
+    vite: 3.0.4
   languageName: unknown
   linkType: soft
 
@@ -4308,7 +4308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^1.0.1":
+"@sveltejs/vite-plugin-svelte@npm:1.0.1":
   version: 1.0.1
   resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.1"
   dependencies:
@@ -4474,7 +4474,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/svelte@npm:^3.0.0":
+"@tsconfig/svelte@npm:3.0.0":
   version: 3.0.0
   resolution: "@tsconfig/svelte@npm:3.0.0"
   checksum: 92986428a6aa87d5db9377de65cd7bd6bf73367bc3ec03bb06faba7db2ac51c45470402212914bbc76c00efa08e1116e9d269aea38274e04dbb183705dbb7a09
@@ -19802,7 +19802,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-check@npm:^2.8.0":
+"svelte-check@npm:2.8.0":
   version: 2.8.0
   resolution: "svelte-check@npm:2.8.0"
   dependencies:
@@ -19841,7 +19841,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-preprocess@npm:^4.0.0, svelte-preprocess@npm:^4.10.7":
+"svelte-preprocess@npm:4.10.7, svelte-preprocess@npm:^4.0.0":
   version: 4.10.7
   resolution: "svelte-preprocess@npm:4.10.7"
   dependencies:
@@ -19899,7 +19899,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:^3.49.0":
+"svelte@npm:3.49.0":
   version: 3.49.0
   resolution: "svelte@npm:3.49.0"
   checksum: 5b7cb8dbf6b6581b50fab1de63cbcb81816081a1240b03e234b299268fff2f3237bf8f92b683a848f95453353b5694dfe26fa05a55da185a4bb0cd8b80d87dd4
@@ -20447,17 +20447,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:2.4.0, tslib@npm:^2, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:~2.4.0":
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
+  languageName: node
+  linkType: hard
+
 "tslib@npm:^1.10.0, tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:~2.4.0":
-  version: 2.4.0
-  resolution: "tslib@npm:2.4.0"
-  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
@@ -21140,7 +21140,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^3.0.0":
+"vite@npm:3.0.4":
   version: 3.0.4
   resolution: "vite@npm:3.0.4"
   dependencies:
