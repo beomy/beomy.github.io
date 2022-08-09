@@ -10,16 +10,17 @@
   "keywords": [],
   "scripts": {
     "blog": "yarn workspace @beomy/blog",
-    "type-check": "tsc --noEmit",
-    "lint": "eslint '**/*.+(ts|js)' --fix",
-    "format": "prettier '**/*.+(ts|js)' --write",
+    "games": "yarn workspace @beomy/games",
+    "type-check": "yarn workspaces foreach run type-check",
+    "lint": "yarn workspaces foreach run lint",
+    "format": "yarn workspaces foreach run format",
     "postinstall": "husky install",
     "commit": "cz"
   },
   "lint-staged": {
     "*.{ts,js}": [
-      "yarn lint",
-      "yarn format"
+      "eslint '**/*.+(ts|js)' --fix",
+      "prettier '**/*.+(ts|js)' --write"
     ]
   },
   "devDependencies": {
