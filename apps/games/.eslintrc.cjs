@@ -28,6 +28,17 @@ module.exports = {
     ],
     'import/no-mutable-exports': 'off',
     semi: [2, 'never'],
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/restrict-plus-operands': 'off',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+    '@typescript-eslint/no-loop-func': 'off',
+    'import/first': 'off',
+    'no-return-assign': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
   },
   overrides: [
     {
