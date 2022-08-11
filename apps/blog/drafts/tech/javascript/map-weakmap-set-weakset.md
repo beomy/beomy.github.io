@@ -1,0 +1,1 @@
+- [https://ko.javascript.info/weakmap-weakset](https://ko.javascript.info/weakmap-weakset)
