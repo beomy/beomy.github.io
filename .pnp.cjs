@@ -4298,8 +4298,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@beomy/blog", "workspace:apps/blog"],\
             ["@babel/preset-react", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:7.18.6"],\
             ["@babel/preset-typescript", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:7.18.6"],\
-            ["@commitlint/cli", "npm:17.0.3"],\
-            ["@commitlint/config-conventional", "npm:17.0.3"],\
             ["@emotion/react", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:11.10.0"],\
             ["@emotion/styled", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:11.10.0"],\
             ["@styled-system/should-forward-prop", "npm:5.1.5"],\
@@ -4320,9 +4318,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:e4c42e778c3a0f42a2344934c4beaf7ee95e05075856dc64c2cdea22e89f213967faad47a6ae3168a29eb91f9bb18cba7d7a05386873c58c826bb2ab23935759#npm:5.32.0"],\
             ["babel-jest", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:28.1.3"],\
             ["babel-preset-gatsby", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:2.20.0"],\
-            ["classnames", "npm:2.3.1"],\
-            ["commitizen", "npm:4.2.5"],\
-            ["cz-conventional-changelog", "npm:3.3.0"],\
             ["date-fns", "npm:2.29.1"],\
             ["eslint", "npm:8.21.0"],\
             ["eslint-config-prettier", "virtual:e4c42e778c3a0f42a2344934c4beaf7ee95e05075856dc64c2cdea22e89f213967faad47a6ae3168a29eb91f9bb18cba7d7a05386873c58c826bb2ab23935759#npm:8.5.0"],\
@@ -4358,8 +4353,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-source-filesystem", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:4.20.0"],\
             ["gatsby-transformer-remark", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:5.20.0"],\
             ["gatsby-transformer-sharp", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:4.20.0"],\
-            ["gh-pages", "npm:4.0.0"],\
-            ["husky", "npm:8.0.1"],\
             ["identity-obj-proxy", "npm:3.0.0"],\
             ["jest", "virtual:941265d27660c28c876df0e0f5a1cecb397af80ce6d5909d011f65a9e3129e347c4cfb29789f94b4da3b7e501c24880b732d2779e3e7fa605f1641f4e0f131dd#npm:28.1.3"],\
             ["jest-environment-jsdom", "npm:28.1.3"],\
@@ -11928,15 +11921,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/cjs-module-lexer-npm-1.2.2-473ce063ea-977f3f042b.zip/node_modules/cjs-module-lexer/",\
           "packageDependencies": [\
             ["cjs-module-lexer", "npm:1.2.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["classnames", [\
-        ["npm:2.3.1", {\
-          "packageLocation": "./.yarn/cache/classnames-npm-2.3.1-f2ae0a8d3c-14db8889d5.zip/node_modules/classnames/",\
-          "packageDependencies": [\
-            ["classnames", "npm:2.3.1"]\
           ],\
           "linkType": "HARD"\
         }]\
