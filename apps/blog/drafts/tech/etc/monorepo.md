@@ -68,6 +68,9 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 레
 ### 오프라인 캐시
 `.yarn/release/yarn-<version>.cjs`
 
+### Yarn Pnp 단점
+- node_modules에 디펜던시가 있는 라이브러리 사용 불가.
+
 ## NPM workspace
 
 ## PNPM
