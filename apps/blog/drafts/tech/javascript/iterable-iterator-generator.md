@@ -21,7 +21,7 @@ summary:
 
 # Generator
 - Generator 함수(`function*`)는 iterable 객체를 반환하는 함수입니다.
-- Generator 함수의 `yield` 키워드를 사용(ex `yield 1`)하면 Iterator 객체의 value 값을 넘겨줄 수 있습니다.
+- Generator 함수의 `yield` 키워드를 사용(ex `yield 1`)하면 Iterator 객체의 `value` 값을 넘겨줄 수 있습니다.
 
 #### 참고
 - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols)
