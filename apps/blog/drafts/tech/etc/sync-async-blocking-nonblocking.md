@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[ETC] 동기/비동기와 블로킹/논블로킹'
-featured-img:
+featured-img: javascript/js.png
 category: [tech, etc]
 summary:
 ---
