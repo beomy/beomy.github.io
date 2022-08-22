@@ -3,9 +3,10 @@ layout: post
 title: '[ETC] package.json 톺아보기'
 featured-img: javascript/js.png
 category: [tech, etc]
+summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에 작성할 수 있는 필드를 살펴보도록 하겠습니다.
 ---
 
-Manifest
+package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 사용하는 패키지 매니저(npm, yarn 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지에서 설정 가능한 필드를 확인하는 것이 좋습니다. 또한 eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig` 필드)도 package.json에서 가능하기 때문에 이러한 설정 역시 사용하는 라이브러리의 공식 홈페이지에서 확인하고 사용하는 것이 좋습니다.
 
 # name
 ```
@@ -74,6 +75,8 @@ Manifest
 # peerDependencies
 require(import) 하지 않지만 특정 라이브러리나 툴에 호환성이 필요할 경우 사용되는 dependencies
 
+# peerDependenciesMeta
+
 # bundleDependencies(bundledDependencies)
 
 # optionalDependencies
@@ -85,14 +88,7 @@ require(import) 하지 않지만 특정 라이브러리나 툴에 호환성이 �
 "private": true
 ```
 
-# resolutions
-
-# type
-`commonjs`(기본 값)와 `module` 중 하나를 사용할 수 있습니다.
-
-```
-"type": "commonjs"
-```
+# publishConfig
 
 # 기타 필드
 - description
@@ -108,6 +104,11 @@ require(import) 하지 않지만 특정 라이브러리나 툴에 호환성이 �
 - man
 - directories: [npm package.json](https://github.com/npm/cli/blob/latest/package.json)
 - repository
+- resolutions(yarn)
+- type(node): `commonjs`(기본 값)와 `module` 중 하나를 사용할 수 있습니다.
+- packageManager(node)
+- exports(node)
+- imports(node)
 
 # 외부 라이브러리 연동
 - eslint
