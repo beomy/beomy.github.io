@@ -43,11 +43,11 @@ package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트
 - `1.2.x`: 1.2.0, 1.2.1, etc., but not 1.3.0
 - `http://...`: See 'URLs as Dependencies' below
 - `*`: Matches any version
--  `""`: (just an empty string) Same as *
--  `version1 - version2`: Same as >=version1 <=version2.
--  `range1 || range2`: Passes if either range1 or range2 are satisfied.
--  `git...`: See 'Git URLs as Dependencies' below
--  `user/repo`: See 'GitHub URLs' below
+- `""`: (just an empty string) Same as *
+- `version1 - version2`: Same as >=version1 <=version2.
+- `range1 || range2`: Passes if either range1 or range2 are satisfied.
+- `git...`: See 'Git URLs as Dependencies' below
+- `user/repo`: See 'GitHub URLs' below
 - `tag`: A specific version tagged and published as tag See npm dist-tag
 - `path/path/path`: See Local Paths below
 
