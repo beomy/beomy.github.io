@@ -89,7 +89,7 @@ require(import) 하지 않지만 특정 라이브러리나 툴에 호환성이 �
 ```
 
 # publishConfig
-- types 안됨 - 다시 테스트
+- types 안됨 
 - exports 됨
 - main 됨
 
