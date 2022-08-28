@@ -76,7 +76,7 @@ package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트
 # devDependencies
 
 # peerDependencies
-require(import) 하지 않지만 특정 라이브러리나 툴에 호환성이 필요할 경우 사용되는 dependencies
+- require(import) 하지 않지만 특정 라이브러리나 툴에 호환성이 필요할 경우 사용되는 dependencies
 
 # peerDependenciesMeta
 
