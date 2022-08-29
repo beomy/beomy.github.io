@@ -6,17 +6,31 @@ category: [tech, etc]
 summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에 작성할 수 있는 필드를 살펴보도록 하겠습니다.
 ---
 
-package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 사용하는 패키지 매니저(npm, yarn 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지에서 설정 가능한 필드를 확인하는 것이 좋습니다. 또한 eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig` 필드)도 package.json에서 가능하기 때문에 이러한 설정 역시 사용하는 라이브러리의 공식 홈페이지에서 확인하고 사용하는 것이 좋습니다.
+`package.json`에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 사용하는 패키지 매니저(npm, yarn 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지에서 설정 가능한 필드를 확인하는 것이 좋습니다. 또한 eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig` 필드)도 `package.json`에서 가능하기 때문에 이러한 설정 역시 사용하는 라이브러리의 공식 홈페이지에서 확인하고 사용하는 것이 좋습니다.
 
-# name
+`package.json`에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
+
+# `name`
+`name` 필드는 프로젝트의 이름을 나타냅니다. 아래와 같이 `name` 필드를 작성할 수 있습니다.
+
 ```
 "name": "@beomy/blog"
 ```
 
-# version
+`@beomy/blog`의 `@beomy/` 같이 `@`로 시작하여 프로젝트의 스코프를 지정할 수도 있습니다.
+
+프로젝트가 NPM에 배포된다면 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어 `@beomy/blog@1.2.3`)은 유니크한 값이여야 합니다.
+
+# `version`
+`version` 필드는 프로젝트의 버전을 나타냅니다. 아래와 같이 `version` 필드를 작성할 수 있습니다.
+
 ```
 "version": "1.2.3"
 ```
+
+> **버전 구분**
+>
+> patch, minor, major
 
 # files
 
@@ -25,6 +39,8 @@ package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트
 # module
 
 # browser
+
+# exports
 
 # bin
 - [serve 패키지](https://github.com/vercel/serve/blob/main/package.json)
@@ -115,7 +131,6 @@ package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트
 - resolutions(yarn)
 - type(node): `commonjs`(기본 값)와 `module` 중 하나를 사용할 수 있습니다.
 - packageManager(node)
-- exports(node)
 - imports(node)
 
 # 외부 라이브러리 연동
