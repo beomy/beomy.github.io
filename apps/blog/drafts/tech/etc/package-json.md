@@ -19,14 +19,14 @@ summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스
 
 `@beomy/blog`의 `@beomy/` 같이 `@`로 시작하여 프로젝트의 스코프를 지정할 수도 있습니다.
 
-프로젝트가 NPM에 배포된다면 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어 `@beomy/blog@1.2.3`)은 유니크한 값이여야 합니다.
-
 # `version`
 `version` 필드는 프로젝트의 버전을 나타냅니다. 아래와 같이 `version` 필드를 작성할 수 있습니다.
 
 ```
 "version": "1.2.3"
 ```
+
+프로젝트가 NPM에 배포된다면 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어 `@beomy/blog@1.2.3`)은 유니크한 값이여야 합니다.
 
 > **버전 구분**
 >
