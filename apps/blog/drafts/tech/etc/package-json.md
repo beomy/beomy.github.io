@@ -17,7 +17,7 @@ summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스
 "name": "@beomy/blog"
 ```
 
-`@beomy/blog`의 `@beomy/` 같이 `@`로 시작하여 프로젝트의 스코프를 지정할 수도 있습니다.
+`@beomy/blog`의 `@beomy/` 같이 `@`로 시작하여, 프로젝트의 스코프를 지정할 수도 있습니다.
 
 # `version`
 `version` 필드는 프로젝트의 버전을 나타냅니다. 아래와 같이 `version` 필드를 작성할 수 있습니다.
