@@ -30,9 +30,9 @@ summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스
 
 > **버전 구분**
 >
-> - patch
-> - minor
-> - major
+> - patch: 0.0.*
+> - minor: 0.*.0
+> - major: *.0.0
 
 # files
 
