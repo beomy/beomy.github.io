@@ -21,7 +21,7 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 "name": "@beomy/blog"
 ```
 
-`@beomy/blog`의 `@beomy/` 같이 `@`로 시작하여, 프로젝트의 스코프를 지정할 수도 있습니다.
+`@beomy/` 같이 `name` 필드는 `@`로 시작하여 스코프를 지정할 수도 있습니다.
 
 # `version`
 `version` 필드는 프로젝트의 버전을 나타냅니다. 아래와 같이 `version` 필드를 작성할 수 있습니다.
