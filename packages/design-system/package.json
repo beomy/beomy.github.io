@@ -20,7 +20,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
     "lint": "eslint '**/*.+(ts|js|tsx)' --fix",
     "format": "prettier '**/*.+(ts|js|tsx)' --write",
     "prepack": "yarn build",
