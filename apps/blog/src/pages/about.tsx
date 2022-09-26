@@ -1,6 +1,7 @@
 import { StaticImage } from 'gatsby-plugin-image';
+import { Anchor } from '@beomy/design-system';
 import Default from '@/templates/default';
-import { Ul, Li, A, H4 } from '@/atoms';
+import { Ul, Li, H4 } from '@/atoms';
 import { Seo, AboutHeader, AboutContents } from '@/organisms';
 
 const About = () => {
@@ -46,35 +47,35 @@ const About = () => {
         <Ul>
           <Li>
             <b>
-              <A
+              <Anchor
                 href="https://www.npmjs.com/package/vue-fast-scroll"
                 target="_blank"
               >
                 vue-fast-scroll
-              </A>
+              </Anchor>
             </b>
             : 네이티브의 Fast Scroll과 같은 동작을 할 수 있도록 기능을 제공하는
             Vue Plugin
           </Li>
           <Li>
             <b>
-              <A
+              <Anchor
                 href="https://www.npmjs.com/package/svelte-hammer"
                 target="_blank"
               >
                 svelte-hammer
-              </A>
+              </Anchor>
             </b>
             : Hammer 기능을 Svelte의 디렉티브로 제공
           </Li>
           <Li>
             <b>
-              <A
+              <Anchor
                 href="https://www.npmjs.com/package/svelte-swiper"
                 target="_blank"
               >
                 svelte-swiper
-              </A>
+              </Anchor>
             </b>
             : swiper.js를 매핑한 Svelte 컴포넌트
           </Li>
@@ -84,39 +85,39 @@ const About = () => {
         <H4>블로그</H4>
         <Ul>
           <Li>
-            <A href="https://beomy.tistory.com" target="_blank">
+            <Anchor href="https://beomy.tistory.com" target="_blank">
               https://beomy.tistory.com
-            </A>
+            </Anchor>
           </Li>
           <Li>
-            <A href="https://beomy.github.io" target="_blank">
+            <Anchor href="https://beomy.github.io" target="_blank">
               https://beomy.github.io
-            </A>
+            </Anchor>
           </Li>
         </Ul>
         <H4>출판</H4>
         <Ul>
           <Li>
-            <A
-              href="https://book.naver.com/bookdb/book_detail.nhn?bid=13193284"
+            <Anchor
+              href="https://search.shopping.naver.com/book/catalog/32505045623?query=ReactJS%20%EC%9D%B4%20%EC%A0%95%EB%8F%84%EB%8A%94%20%EC%95%8C%EC%95%84%EC%95%BC%EC%A7%80&NaPm=ct%3Dl82vyeb4%7Cci%3Dc1faf7af802915eef6ae938d962b330ac2f57243%7Ctr%3Dboksl%7Csn%3D95694%7Chk%3D07d7aa7d89394782bc13d8632a35c60339ac19f1"
               target="_blank"
             >
               [비제이퍼블릭]ReactJS 이 정도는 알아야지 (2018.01.31)
-            </A>
+            </Anchor>
           </Li>
           <Li>
-            <A
-              href="https://book.naver.com/bookdb/book_detail.naver?bid=20941596"
+            <Anchor
+              href="https://search.shopping.naver.com/book/catalog/32492632526?query=Svelte%EB%A1%9C%20%EB%A7%9B%EB%B3%B4%EB%8A%94%20%EC%9B%B9%20%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%20%EA%B0%9C%EB%B0%9C&NaPm=ct%3Dl82vyva8%7Cci%3D97dc99386aaf831da6695033c79d297ea9ac9a4e%7Ctr%3Dboksl%7Csn%3D95694%7Chk%3Db8b0c2f5ae0a3029c21cfd8eb5a24d2092d00b61"
               target="_blank"
             >
               [비제이퍼블릭]Svelte로 맛보는 웹 애플리케이션 개발 (2021.09.30)
-            </A>
+            </Anchor>
           </Li>
         </Ul>
         <H4>강의</H4>
         <Ul display="flex" flexWrap="wrap">
           <Li width={['100%', '50%', '25%']} mr="10px" mb="10px">
-            <A
+            <Anchor
               href="https://www.inflearn.com/course/스벨트-입문?inst=77d01d70"
               target="_blank"
             >
@@ -124,10 +125,10 @@ const About = () => {
                 src="../assets/images/svelte/inflearn-svelte.png"
                 alt="Svelte For Beginner"
               />
-            </A>
+            </Anchor>
           </Li>
           <Li width={['100%', '50%', '25%']} mb="10px">
-            <A
+            <Anchor
               href="https://www.inflearn.com/course/스도쿠-실전-스도쿠실습?inst=2f7ebc2f"
               target="_blank"
             >
@@ -135,7 +136,7 @@ const About = () => {
                 src="../assets/images/svelte/inflearn-svelte-practice.jpeg"
                 alt="Svelte For Practice"
               />
-            </A>
+            </Anchor>
           </Li>
         </Ul>
       </AboutContents>

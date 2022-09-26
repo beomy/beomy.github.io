@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { UlStyles, LinkStyles } from '@/atoms';
+import { AnchorStyles } from '@beomy/design-system';
+import { UlStyles } from '@/atoms';
 import type { MenuProps } from './Menu.types';
 
 export const Dim = styled.div<{ active: boolean }>`
-  background: ${({ theme }: any) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.black};
   opacity: 0;
   width: 100%;
   height: 0;
@@ -26,7 +27,7 @@ export const Container = styled.div<{ active: boolean }>`
   width: 285px;
   height: 100%;
   position: absolute;
-  background: ${({ theme }: any) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.grey[100]};
   transform: translateX(-100%);
   ${({ active }) =>
     active &&
@@ -41,7 +42,8 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 45px;
-  border-bottom: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
+  border-bottom: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
+  padding-left: 20px;
 `;
 
 export const Wrapper = styled.menu<Partial<MenuProps>>`
@@ -66,7 +68,7 @@ export const Wrapper = styled.menu<Partial<MenuProps>>`
   ${UlStyles.Wrapper} {
     padding-left: 30px;
   }
-  ${LinkStyles.Wrapper} {
+  ${AnchorStyles.A}, ${AnchorStyles.Link} {
     text-transform: capitalize;
   }
 `;

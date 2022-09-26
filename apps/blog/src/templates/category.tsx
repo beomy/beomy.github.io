@@ -1,7 +1,9 @@
+import type { Theme } from '@emotion/react';
 import { graphql, PageProps } from 'gatsby';
 import { ThemeProvider } from '@emotion/react';
+import { BaseStyles } from '@beomy/design-system';
+import { light } from '@beomy/design-system/tokens';
 import type { Data } from '@/model/graphQL';
-import theme from '@/assets/themes/default';
 import { Seo, Header, Contents, PostList, SubMenu, Footer } from '@/organisms';
 import { useMenu, usePosts } from '@/hooks';
 
@@ -23,7 +25,8 @@ const Category = ({ data, pageContext, path }: PageProps<Data, Context>) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={light as Theme}>
+      <BaseStyles />
       <Seo title={pageContext.slug} path={pageContext.slug} />
       <Header />
       <Contents

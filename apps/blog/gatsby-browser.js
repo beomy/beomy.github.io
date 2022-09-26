@@ -5,6 +5,4 @@
  */
 
 // You can delete this file if you're not using it
-import '@/assets/styles/reset.scss';
-import '@/assets/styles/global.scss';
 import 'prismjs/themes/prism.min.css';

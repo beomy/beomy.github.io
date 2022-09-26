@@ -406,7 +406,7 @@ type ImageSharp implements Node {
 
     A list of image pixel densities to generate. It will never generate images larger than the source, and will always include a 1x image.
     Default is [ 1, 2 ] for FIXED images, meaning 1x and 2x and [0.25, 0.5, 1, 2] for CONSTRAINED. In this case, an image with a constrained layout
-    and width = 400 would generate images at 100, 200, 400 and 800px wide. Ignored for FULL_WIDTH images, which use breakpoints instead
+    and width = 400 would generate images at 100, 200, 400 and 800px wide. Ignored for FULL_WIDTH images, which use size instead
     """
     outputPixelDensities: [Float],
     """

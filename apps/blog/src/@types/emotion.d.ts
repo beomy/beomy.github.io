@@ -1,8 +1,6 @@
 import '@emotion/react';
-import light from '@/assets/themes/default';
-
-type Light = typeof light;
+import type { Theme as BeomyTheme } from '@beomy/design-system/tokens';
 
 declare module '@emotion/react' {
-  export interface Theme extends Light {}
+  export interface Theme extends BeomyTheme {}
 }

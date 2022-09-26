@@ -1,9 +1,11 @@
+import type { Theme } from '@emotion/react';
 import { graphql, PageProps } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
 import { Disqus } from 'gatsby-plugin-disqus';
 import { ThemeProvider } from '@emotion/react';
+import { BaseStyles } from '@beomy/design-system';
+import { light } from '@beomy/design-system/tokens';
 import type { Data, MarkdownRemark } from '@/model/graphQL';
-import theme from '@/assets/themes/default';
 import {
   Seo,
   Header,
@@ -34,7 +36,8 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={light as Theme}>
+      <BaseStyles />
       <Seo
         title={post.title}
         description={post.summary}

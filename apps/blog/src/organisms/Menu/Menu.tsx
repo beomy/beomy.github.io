@@ -1,7 +1,7 @@
 import { StaticImage } from 'gatsby-plugin-image';
-import { FiX } from 'react-icons/fi';
+import { Anchor, Icon } from '@beomy/design-system';
 import { useMenu } from '@/hooks';
-import { Button, Link, Li, A, Ul } from '@/atoms';
+import { Button, Li, Ul } from '@/atoms';
 import type { MenuProps } from './Menu.types';
 import * as S from './Menu.styles';
 
@@ -13,33 +13,33 @@ const Menu = ({ active, onClose }: MenuProps) => {
       <S.Dim active={active} onClick={onClose} />
       <S.Container active={active}>
         <S.Header>
-          <Link to="/" pl="20px">
+          <Anchor to="/">
             <StaticImage
               src="../../assets/images/beomy-logo.png"
               alt="블로그 로고"
               width={60}
             />
-          </Link>
+          </Anchor>
           <Button onClick={onClose} width="45px">
-            <FiX size={20} />
+            <Icon type="FiX" size={20} />
           </Button>
         </S.Header>
         <Ul>
           <Li mb="30px">
-            <Link to="/about">About</Link>
+            <Anchor to="/about">About</Anchor>
           </Li>
           {menuTree.map((menu) => (
             <Li key={menu.key} mb="30px">
-              <Link to={`/${menu.key}/`}>
+              <Anchor to={`/${menu.key}/`}>
                 {menu.key} <small>({menu.counter})</small>
-              </Link>
+              </Anchor>
               {menu.children.length > 0 && (
                 <Ul mt="10px">
                   {menu.children.map((sub) => (
                     <Li key={sub.key} mb="10px">
-                      <Link to={`/${menu.key}/${sub.key}/`}>
+                      <Anchor to={`/${menu.key}/${sub.key}/`}>
                         {sub.key} <small>({sub.counter})</small>
-                      </Link>
+                      </Anchor>
                     </Li>
                   ))}
                 </Ul>
@@ -47,9 +47,9 @@ const Menu = ({ active, onClose }: MenuProps) => {
             </Li>
           ))}
           <Li>
-            <A href="/games" target="_blank">
+            <Anchor href="/games" target="_blank">
               Games
-            </A>
+            </Anchor>
           </Li>
         </Ul>
       </S.Container>
