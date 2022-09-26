@@ -1,8 +1,8 @@
-import { FiCalendar, FiClock } from 'react-icons/fi';
 import { parse, format } from 'date-fns';
+import { IconText } from '@beomy/design-system';
 import { DateFormat } from '@/model/dateFormat';
 import { H1 } from '@/atoms';
-import { IconText, PostBannerImg } from '@/molecules';
+import { PostBannerImg } from '@/molecules';
 import type { PostHeaderProps } from './PostHeader.types';
 import * as S from './PostHeader.styles';
 
@@ -23,18 +23,10 @@ const PostHeader = ({
         {title}
       </H1>
       <div>
-        <IconText
-          Icon={FiCalendar}
-          mr="20px"
-          color="text2"
-          iconSize={16}
-          fontSize={1}
-        >
+        <IconText icon="FiCalendar" mr="20px">
           {format(date, DateFormat.LOCALE_YYYY_MM_DD)}
         </IconText>
-        <IconText Icon={FiClock} color="text2" iconSize={16} fontSize={1}>
-          {timeToRead}분 소요
-        </IconText>
+        <IconText icon="FiClock">{timeToRead}분 소요</IconText>
       </div>
       <PostBannerImg img={thumbnail} />
     </S.Wrapper>

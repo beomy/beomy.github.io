@@ -25,32 +25,29 @@ export const Wrapper = styled.div`
     overflow-x: auto;
     border-collapse: collapse;
     border-spacing: 0;
-    border: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
+    border: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
     border-radius: 4px;
-    th {
-      background-color: ${({ theme }: any) => theme.colors.bg1};
-    }
     th,
     td {
       padding: 6px 13px;
-      border: ${({ theme }: any) => `1px solid ${theme.colors.border1}`};
+      border: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
     }
   }
   h1 {
     margin: 45px 0 20px 0;
-    font-size: ${({ theme }: any) => theme.fontSizes[5]};
+    font-size: ${({ theme }) => theme.fontSizes[5]};
   }
   h2 {
     margin: 40px 0 20px 0;
-    font-size: ${({ theme }: any) => theme.fontSizes[4]};
+    font-size: ${({ theme }) => theme.fontSizes[4]};
   }
   h3 {
     margin: 35px 0 20px 0;
-    font-size: ${({ theme }: any) => theme.fontSizes[3]};
+    font-size: ${({ theme }) => theme.fontSizes[3]};
   }
   h4 {
     margin: 30px 0 20px 0;
-    font-size: ${({ theme }: any) => theme.fontSizes[2]};
+    font-size: ${({ theme }) => theme.fontSizes[2]};
   }
   blockquote {
     margin: 2rem 0;
@@ -96,7 +93,7 @@ export const Wrapper = styled.div`
       top: 0;
       right: 0;
       padding: 0 10px;
-      font-size: ${({ theme }: any) => theme.fontSizes[0]};
+      font-size: ${({ theme }) => theme.fontSizes[0]};
     }
   }
   [data-language='http']:before {

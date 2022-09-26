@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "@beomy/design-system": "workspace:*",
     "@emotion/react": "11.10.0",
     "@emotion/styled": "11.10.0",
     "@styled-system/should-forward-prop": "5.1.5",

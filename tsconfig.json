@@ -3,12 +3,12 @@
     "target": "esnext",
     "lib": ["dom", "esnext"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "."
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

@@ -1,8 +1,8 @@
+import type { SpaceProps, TypographyProps } from 'styled-system';
 import styled from '@emotion/styled';
 import shouldForwardProp from '@styled-system/should-forward-prop';
-import { Link } from '@/atoms';
-import type { SpaceProps, TypographyProps } from 'styled-system';
 import { space, typography } from 'styled-system';
+import { Anchor as BeomyAnchor } from '@beomy/design-system';
 
 export const BtnWrapper = styled.div`
   flex-grow: 1;
@@ -19,7 +19,7 @@ export const BtnWrapper = styled.div`
   &:empty {
     height: 0;
   }
-  ${({ theme }) => `${theme.mediaQueries.xs}`} {
+  ${({ theme }) => `${theme.sizes.mediaQueries.xs}`} {
     flex-grow: initial;
     flex-shrink: initial;
     flex-basis: initial;
@@ -32,26 +32,10 @@ export const BtnWrapper = styled.div`
   }
 `;
 
-export const BtnLink = styled(Link, { shouldForwardProp })<TypographyProps>`
-  display: flex;
-  align-items: center;
-  border: ${({ theme }) => `1px solid ${theme.colors.border1}`};
-  border-radius: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 100%;
-  ${typography};
-  &:hover {
-    border: ${({ theme }) => `1px solid ${theme.colors.border2}`};
-  }
-`;
-
 export const Contents = styled('div', { shouldForwardProp })<SpaceProps>`
   ${space};
-  > div {
-    &:first-of-type {
-      font-size: ${({ theme }) => theme.fontSizes[0]};
-    }
+  small {
+    font-size: ${({ theme }) => theme.fontSizes[0]};
   }
 `;
 
@@ -66,7 +50,17 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   line-height: 1.4;
   margin-top: 20px;
-  ${({ theme }) => `${theme.mediaQueries.xs}`} {
+  ${({ theme }) => `${theme.sizes.mediaQueries.xs}`} {
     display: block;
   }
+`;
+
+export const Anchor = styled(BeomyAnchor, {
+  shouldForwardProp,
+})<TypographyProps>`
+  display: flex;
+  align-items: center;
+  height: 70px;
+  line-height: 1.4;
+  ${typography};
 `;

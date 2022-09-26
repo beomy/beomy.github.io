@@ -1,8 +1,8 @@
-import { FiCalendar, FiClock, FiMessageSquare } from 'react-icons/fi';
 import { format, parse } from 'date-fns';
 import { CommentCount } from 'gatsby-plugin-disqus';
+import { IconText } from '@beomy/design-system';
 import { H4, P } from '@/atoms';
-import { IconText, PostBannerImg } from '@/molecules';
+import { PostBannerImg } from '@/molecules';
 import { DateFormat } from '@/model/dateFormat';
 import type { PostCardProps } from './PostCard.types';
 import * as S from './PostCard.styles';
@@ -38,14 +38,12 @@ const PostCard = ({
       </S.Body>
       <S.Footer>
         <div>
-          <IconText Icon={FiCalendar} iconSize={14} fontSize={0} mr="10px">
+          <IconText icon="FiCalendar" mr="10px">
             {format(date, DateFormat.LOCALE_YYYY_MM_DD)}
           </IconText>
-          <IconText Icon={FiClock} iconSize={14} fontSize={0}>
-            {timeToRead}분 소요
-          </IconText>
+          <IconText icon="FiClock">{timeToRead}분 소요</IconText>
         </div>
-        <IconText Icon={FiMessageSquare} iconSize={14} fontSize={0}>
+        <IconText icon="FiMessageSquare">
           <CommentCount config={disqusConfig} placeholder="0" />
           개의 댓글
         </IconText>

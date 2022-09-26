@@ -1,6 +1,8 @@
+import type { Theme } from '@emotion/react';
 import type { ReactNode } from 'react';
 import { ThemeProvider } from '@emotion/react';
-import theme from '@/assets/themes/default';
+import { BaseStyles } from '@beomy/design-system';
+import { light } from '@beomy/design-system/tokens';
 import { Header, Contents, Footer } from '@/organisms';
 
 type DefaultProps = {
@@ -9,7 +11,8 @@ type DefaultProps = {
 
 const Default = ({ children }: DefaultProps) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={light as Theme}>
+      <BaseStyles />
       <Header />
       <Contents width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m']}>
         {children}

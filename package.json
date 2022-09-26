@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "author": "Hyo Bum Lee",
   "license": "MIT",
@@ -11,6 +12,7 @@
   "scripts": {
     "blog": "yarn workspace @beomy/blog",
     "games": "yarn workspace @beomy/games",
+    "design-system": "yarn workspace @beomy/design-system",
     "type-check": "yarn workspaces foreach run type-check",
     "lint": "yarn workspaces foreach run lint",
     "format": "yarn workspaces foreach run format",
@@ -51,5 +53,5 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "packageManager": "yarn@3.2.2"
+  "packageManager": "yarn@3.2.3"
 }

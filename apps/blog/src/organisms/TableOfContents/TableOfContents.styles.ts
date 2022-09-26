@@ -3,27 +3,27 @@ import { layout, flexbox, space } from 'styled-system';
 import type { TableOfContentsProps } from './TableOfContents.types';
 
 export const Wrapper = styled.div<TableOfContentsProps>`
-  font-size: ${({ theme }: any) => theme.fontSizes[1]};
+  font-size: ${({ theme }) => theme.fontSizes[1]};
   ${layout};
   ${flexbox};
   ${space};
-  ${({ theme }: any) => `${theme.mediaQueries.sm}`} {
+  ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
     display: none;
   }
   > div {
     position: fixed;
     ${layout};
     a {
-      color: ${({ theme }: any) => theme.colors.text2};
+      color: ${({ theme }) => theme.colors.caption};
       text-decoration: none;
       &:hover {
-        color: ${({ theme }: any) => theme.colors.text1};
+        color: ${({ theme }) => theme.colors.title};
       }
     }
     .active {
       transform: scale(1.05);
       a {
-        color: ${({ theme }: any) => theme.colors.text1};
+        color: ${({ theme }) => theme.colors.title};
       }
     }
     li {
@@ -37,8 +37,7 @@ export const Wrapper = styled.div<TableOfContentsProps>`
       > li {
         > ul {
           padding-left: 15px;
-          border-left: ${({ theme }: any) =>
-            `1px solid ${theme.colors.border1}`};
+          border-left: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
         }
       }
     }

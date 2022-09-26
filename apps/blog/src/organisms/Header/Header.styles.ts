@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Button, Ul } from '@/atoms';
-import { DecoInputStyles } from '@/molecules';
+import { TextFieldStyles, AnchorStyles } from '@beomy/design-system';
+import { Ul } from '@/atoms';
 
-export const MenuBtn = styled(Button)`
+export const MenuBtn = styled.button`
   display: none;
-  ${({ theme }) => `${theme.mediaQueries.sm}`} {
+  ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
     display: block;
   }
 `;
@@ -14,8 +14,11 @@ export const GNB = styled(Ul)`
   margin: 0 0 0 auto;
   padding: 0;
   display: flex;
-  ${({ theme }) => `${theme.mediaQueries.sm}`} {
+  ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
     display: none;
+  }
+  ${AnchorStyles.A} {
+    padding: 5px 10px;
   }
 `;
 
@@ -24,8 +27,8 @@ export const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 15px 75px;
-  border-bottom: ${({ theme }) => `1px solid ${theme.colors.border1}`};
-  ${({ theme }) => `${theme.mediaQueries.sm}`} {
+  border-bottom: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
+  ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
     padding: 10px 20px;
   }
 `;
@@ -43,14 +46,14 @@ export const Search = styled.div<{ active: boolean }>`
       height: 80px;
       visibility: visible;
     `}
-  ${DecoInputStyles.Wrapper} {
+  ${TextFieldStyles.Wrapper} {
     margin: auto;
     height: 100%;
     width: ${({ theme }) => theme.sizes.screen.m};
-    ${({ theme }) => `${theme.mediaQueries.m}`} {
+    ${({ theme }) => `${theme.sizes.mediaQueries.m}`} {
       width: ${({ theme }) => theme.sizes.screen.sm};
     }
-    ${({ theme }) => `${theme.mediaQueries.sm}`} {
+    ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
       width: ${({ theme }) => theme.sizes.screen.xs};
     }
   }

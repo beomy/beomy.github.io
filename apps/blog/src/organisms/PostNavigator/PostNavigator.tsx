@@ -1,4 +1,4 @@
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { Icon } from '@beomy/design-system';
 import type { PostNavigatorProps } from './PostNavigator.types';
 import * as S from './PostNavigator.styles';
 
@@ -7,28 +7,28 @@ const PostNavigator = ({ previous, next }: PostNavigatorProps) => {
     <S.Wrapper>
       <S.BtnWrapper>
         {previous && (
-          <S.BtnLink to={previous.url} textAlign="left">
+          <S.Anchor type="border" to={previous.url}>
             <S.Icon>
-              <FiChevronLeft size="100%" />
+              <Icon type="FiChevronLeft" size="100%" />
             </S.Icon>
             <S.Contents ml="15px" mr="auto">
-              <div>이전 포스트</div>
+              <small>이전 포스트</small>
               <div>{previous.title}</div>
             </S.Contents>
-          </S.BtnLink>
+          </S.Anchor>
         )}
       </S.BtnWrapper>
       <S.BtnWrapper>
         {next && (
-          <S.BtnLink to={next.url} textAlign="right">
+          <S.Anchor type="border" to={next.url} textAlign="right">
             <S.Contents ml="auto" mr="15px">
-              <div>다음 포스트</div>
+              <small>다음 포스트</small>
               <div>{next.title}</div>
             </S.Contents>
             <S.Icon>
-              <FiChevronRight size="100%" />
+              <Icon type="FiChevronRight" size="100%" />
             </S.Icon>
-          </S.BtnLink>
+          </S.Anchor>
         )}
       </S.BtnWrapper>
     </S.Wrapper>
