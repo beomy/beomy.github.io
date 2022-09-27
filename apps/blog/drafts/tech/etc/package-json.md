@@ -30,7 +30,7 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 "version": "1.2.3"
 ```
 
-프로젝트가 NPM에 배포된다면 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어 `@beomy/blog@1.2.3`)은 유니크한 값이여야 합니다.
+프로젝트가 NPM에 배포 될 때 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어 `@beomy/blog@1.2.3`)은 유니크한 값이여야 합니다.
 
 > **버전 구분**
 >
@@ -75,7 +75,7 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 > - `user/repo`: See 'GitHub URLs' below
 > - `tag`: A specific version tagged and published as tag See npm dist-tag
 > - `path/path/path`: See Local Paths below
-> 
+>
 > ```json
 > {
 >   "dependencies": {
@@ -114,7 +114,7 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 ```
 
 # publishConfig
-- types 안됨 
+- types 안됨
 - exports 됨
 - main 됨
 
