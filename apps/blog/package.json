@@ -25,9 +25,11 @@
   },
   "dependencies": {
     "@beomy/design-system": "workspace:*",
+    "@beomy/utils": "workspace:*",
     "@emotion/react": "11.10.0",
     "@emotion/styled": "11.10.0",
     "@styled-system/should-forward-prop": "5.1.5",
+    "color": "4.2.3",
     "date-fns": "2.29.1",
     "gatsby": "4.20.0",
     "gatsby-plugin-compile-es6-packages": "2.1.1",
@@ -57,6 +59,7 @@
     "react-dom": "18.2.0",
     "react-helmet": "6.1.0",
     "react-icons": "4.4.0",
+    "recoil": "0.7.5",
     "sass": "1.54.1",
     "styled-system": "5.1.5",
     "tsconfig-paths-webpack-plugin": "4.0.0"

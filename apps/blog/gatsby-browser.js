@@ -5,4 +5,13 @@
  */
 
 // You can delete this file if you're not using it
-import 'prismjs/themes/prism.min.css';
+// import 'prismjs/themes/prism.min.css';
+import { PageComponent, RootComponent } from './wrap-elements';
+
+export const wrapPageElement = ({ element }) => {
+  return <PageComponent>{element}</PageComponent>;
+};
+
+export const wrapRootElement = ({ element }) => {
+  return <RootComponent>{element}</RootComponent>;
+};

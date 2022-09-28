@@ -1,3 +1,3 @@
-export * from 'react-icons/fi';
+export * from 'react-icons/bs';
 
 export type { IconBaseProps } from 'react-icons';

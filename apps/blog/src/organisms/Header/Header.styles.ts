@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import Color from 'color';
 import { TextFieldStyles, AnchorStyles } from '@beomy/design-system';
 import { Ul } from '@/atoms';
 
@@ -22,12 +23,24 @@ export const GNB = styled(Ul)`
   }
 `;
 
+export const Action = styled.div`
+  margin-left: 25px;
+  display: flex;
+  button {
+    + button {
+      margin-left: 25px;
+    }
+  }
+`;
+
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 75px;
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
+  background-color: ${({ theme }) =>
+    Color(theme.colors.background).alpha(0.8).toString()};
   ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
     padding: 10px 20px;
   }
@@ -35,8 +48,9 @@ export const Nav = styled.nav`
 
 export const Search = styled.div<{ active: boolean }>`
   height: 0;
-  background-color: rgba(250, 250, 250, 0.8);
-  transition: all 0.35s ease-in-out 0s;
+  background-color: ${({ theme }) =>
+    Color(theme.colors.grey[98]).alpha(0.8).toString()};
+  transition: height 0.35s ease-in-out 0s;
   visibility: hidden;
   display: flex;
   align-items: center;
@@ -67,9 +81,14 @@ export const Wrapper = styled.header<{ hide: boolean }>`
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.8);
   box-shadow: rgb(0 0 0 / 8%) 0 0 15px;
   transition: top 0.2s ease-in-out;
+  button {
+    color: ${({ theme }) => theme.colors.body};
+    &:hover {
+      color: ${({ theme }) => theme.colors.title};
+    }
+  }
   ${({ hide }) =>
     hide &&
     css`

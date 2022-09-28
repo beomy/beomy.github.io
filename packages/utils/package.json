@@ -27,5 +27,8 @@
   },
   "peerDependencies": {
     "react": "18.x"
+  },
+  "dependencies": {
+    "react-use": "17.4.0"
   }
 }

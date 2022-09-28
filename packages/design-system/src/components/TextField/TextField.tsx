@@ -34,11 +34,11 @@ const TextField = ({
         onKeyDown={(e) => e.key === 'Enter' && onSearch?.(str)}
       />
       <S.ClearButton active={isClearable} onClick={handleClear}>
-        <Icon type="FiX" />
+        <Icon type="BsXCircle" />
       </S.ClearButton>
       {searchable && (
         <button onClick={() => onSearch?.(str)}>
-          <Icon type="FiSearch" />
+          <Icon type="BsSearch" />
         </button>
       )}
     </S.Wrapper>

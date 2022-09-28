@@ -8,13 +8,13 @@ const Footer = () => {
     <S.Wrapper>
       <S.Nav>
         <Anchor href="https://github.com/beomy" target="_blank">
-          <Icon type="FiGithub" size={20} />
+          <Icon type="BsGithub" size={20} />
         </Anchor>
         <Anchor
           href="https://www.linkedin.com/in/효범-이-930453134"
           target="_blank"
         >
-          <Icon type="FiLinkedin" size={20} />
+          <Icon type="BsLinkedin" size={20} />
         </Anchor>
       </S.Nav>
       <Span color="caption" fontSize={1}>

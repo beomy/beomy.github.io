@@ -12,11 +12,23 @@ export const GlobalStyles = ({ theme }: StyleProps) => css`
       'Nanum Gothic', 'Noto Sans KR', 'Noto Sans CJK KR', arial, 돋움, Dotum,
       Tahoma, Geneva, sans-serif;
     font-size: ${theme.fontSizes[2]};
-    color: ${theme.colors.title};
+    color: ${theme.colors.body};
     background-color: ${theme.colors.background};
     word-break: break-word;
     margin: 0;
     padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: ${theme.colors.title};
+  }
+
+  a {
+    color: ${theme.colors.blue[50]};
   }
 
   input {

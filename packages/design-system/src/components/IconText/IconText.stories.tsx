@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof IconText> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  icon: 'FiActivity',
+  icon: 'BsSearch',
 };

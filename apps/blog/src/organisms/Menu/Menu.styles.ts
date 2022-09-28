@@ -28,7 +28,8 @@ export const Container = styled.div<{ active: boolean }>`
   height: 100%;
   position: absolute;
   background: ${({ theme }) => theme.colors.grey[100]};
-  transform: translateX(-100%);
+  transform: translateX(100%);
+  right: 0;
   ${({ active }) =>
     active &&
     css`
@@ -49,8 +50,8 @@ export const Header = styled.div`
 export const Wrapper = styled.menu<Partial<MenuProps>>`
   position: fixed;
   top: 0;
-  left: 0;
-  width: 0;
+  right: 0;
+  //width: 0;
   height: 100%;
   z-index: 9999;
   margin: 0;

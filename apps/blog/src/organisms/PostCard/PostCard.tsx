@@ -38,12 +38,12 @@ const PostCard = ({
       </S.Body>
       <S.Footer>
         <div>
-          <IconText icon="FiCalendar" mr="10px">
+          <IconText icon="BsCalendar" mr="10px">
             {format(date, DateFormat.LOCALE_YYYY_MM_DD)}
           </IconText>
-          <IconText icon="FiClock">{timeToRead}분 소요</IconText>
+          <IconText icon="BsClock">{timeToRead}분 소요</IconText>
         </div>
-        <IconText icon="FiMessageSquare">
+        <IconText icon="BsChatLeft">
           <CommentCount config={disqusConfig} placeholder="0" />
           개의 댓글
         </IconText>

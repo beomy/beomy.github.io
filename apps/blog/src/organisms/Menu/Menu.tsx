@@ -1,11 +1,12 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import { Anchor, Icon } from '@beomy/design-system';
-import { useMenu } from '@/hooks';
+import { useMenu, useBeomyTheme } from '@/hooks';
 import { Button, Li, Ul } from '@/atoms';
 import type { MenuProps } from './Menu.types';
 import * as S from './Menu.styles';
 
 const Menu = ({ active, onClose }: MenuProps) => {
+  const [theme = 'light'] = useBeomyTheme();
   const menuTree = useMenu();
 
   return (
@@ -14,14 +15,22 @@ const Menu = ({ active, onClose }: MenuProps) => {
       <S.Container active={active}>
         <S.Header>
           <Anchor to="/">
-            <StaticImage
-              src="../../assets/images/beomy-logo.png"
-              alt="블로그 로고"
-              width={60}
-            />
+            {theme === 'light' ? (
+              <StaticImage
+                src="../../assets/images/beomy-logo.png"
+                alt="블로그 로고"
+                width={60}
+              />
+            ) : (
+              <StaticImage
+                src="../../assets/images/beomy-logo-negative.png"
+                alt="블로그 로고"
+                width={60}
+              />
+            )}
           </Anchor>
           <Button onClick={onClose} width="45px">
-            <Icon type="FiX" size={20} />
+            <Icon type="BsXCircle" size={20} />
           </Button>
         </S.Header>
         <Ul>

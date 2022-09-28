@@ -15,6 +15,8 @@ export type InputProps = {
 
   /** 입력 값 초기화 flag */
   searchable?: boolean;
+
+  /** 돋보기 아이콘 클릭시 호출되는 이벤트 핸들러 */
   onSearch?: (text: string) => void;
 } & Pick<TypographyProps, 'fontSize'>;
 

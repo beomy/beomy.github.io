@@ -1,10 +1,8 @@
-import type { Theme } from '@emotion/react';
+import { Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 import { graphql, PageProps } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
 import { Disqus } from 'gatsby-plugin-disqus';
-import { ThemeProvider } from '@emotion/react';
-import { BaseStyles } from '@beomy/design-system';
-import { light } from '@beomy/design-system/tokens';
 import type { Data, MarkdownRemark } from '@/model/graphQL';
 import {
   Seo,
@@ -17,7 +15,7 @@ import {
   PostNavigator,
   Footer,
 } from '@/organisms';
-import { usePost } from '@/hooks';
+import { usePost, useBeomyTheme } from '@/hooks';
 
 type Context = {
   previous: MarkdownRemark;
@@ -26,6 +24,7 @@ type Context = {
 };
 
 const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
+  const [theme = 'light'] = useBeomyTheme();
   const post = usePost(data.markdownRemark);
   const previous = usePost(pageContext.previous);
   const next = usePost(pageContext.next);
@@ -36,8 +35,7 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
   };
 
   return (
-    <ThemeProvider theme={light as Theme}>
-      <BaseStyles />
+    <Fragment>
       <Seo
         title={post.title}
         description={post.summary}
@@ -51,6 +49,16 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
           },
         ]}
       />
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href={
+            theme === 'light'
+              ? 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css'
+              : 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css'
+          }
+        />
+      </Helmet>
       <Header />
       <Contents
         display="flex"
@@ -72,7 +80,7 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
         />
       </Contents>
       <Footer />
-    </ThemeProvider>
+    </Fragment>
   );
 };
 

@@ -48,7 +48,7 @@ const S = {
 export const BorderExample = () => (
   <S.Anchor to="https://www.naver.com" type="border">
     <S.Icon>
-      <Icon type="FiChevronLeft" size="100%" />
+      <Icon type="BsChevronLeft" size="100%" />
     </S.Icon>
     <S.Contents>
       <small>이전 포스트</small>

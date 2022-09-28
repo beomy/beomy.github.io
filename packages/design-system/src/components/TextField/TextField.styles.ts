@@ -3,7 +3,7 @@ import { typography } from 'styled-system';
 import type { InputProps, ClearButtonProps } from './TextField.types';
 
 export const ClearButton = styled.button<ClearButtonProps>`
-  visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
+  visibility: ${({ active }) => (active ? 'inherit' : 'hidden')};
 `;
 
 export const Input = styled.input`

@@ -9,9 +9,9 @@ const PostNavigator = ({ previous, next }: PostNavigatorProps) => {
         {previous && (
           <S.Anchor type="border" to={previous.url}>
             <S.Icon>
-              <Icon type="FiChevronLeft" size="100%" />
+              <Icon type="BsChevronLeft" size="100%" />
             </S.Icon>
-            <S.Contents ml="15px" mr="auto">
+            <S.Contents ml="20px" mr="auto">
               <small>이전 포스트</small>
               <div>{previous.title}</div>
             </S.Contents>
@@ -21,12 +21,12 @@ const PostNavigator = ({ previous, next }: PostNavigatorProps) => {
       <S.BtnWrapper>
         {next && (
           <S.Anchor type="border" to={next.url} textAlign="right">
-            <S.Contents ml="auto" mr="15px">
+            <S.Contents ml="auto" mr="20px">
               <small>다음 포스트</small>
               <div>{next.title}</div>
             </S.Contents>
             <S.Icon>
-              <Icon type="FiChevronRight" size="100%" />
+              <Icon type="BsChevronRight" size="100%" />
             </S.Icon>
           </S.Anchor>
         )}

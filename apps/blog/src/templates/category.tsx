@@ -1,8 +1,5 @@
-import type { Theme } from '@emotion/react';
+import { Fragment } from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { ThemeProvider } from '@emotion/react';
-import { BaseStyles } from '@beomy/design-system';
-import { light } from '@beomy/design-system/tokens';
 import type { Data } from '@/model/graphQL';
 import { Seo, Header, Contents, PostList, SubMenu, Footer } from '@/organisms';
 import { useMenu, usePosts } from '@/hooks';
@@ -25,8 +22,7 @@ const Category = ({ data, pageContext, path }: PageProps<Data, Context>) => {
   };
 
   return (
-    <ThemeProvider theme={light as Theme}>
-      <BaseStyles />
+    <Fragment>
       <Seo title={pageContext.slug} path={pageContext.slug} />
       <Header />
       <Contents
@@ -36,7 +32,7 @@ const Category = ({ data, pageContext, path }: PageProps<Data, Context>) => {
         <PostList posts={posts} />
       </Contents>
       <Footer />
-    </ThemeProvider>
+    </Fragment>
   );
 };
 

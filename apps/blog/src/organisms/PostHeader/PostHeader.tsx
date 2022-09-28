@@ -23,10 +23,10 @@ const PostHeader = ({
         {title}
       </H1>
       <div>
-        <IconText icon="FiCalendar" mr="20px">
+        <IconText icon="BsCalendar" mr="20px">
           {format(date, DateFormat.LOCALE_YYYY_MM_DD)}
         </IconText>
-        <IconText icon="FiClock">{timeToRead}분 소요</IconText>
+        <IconText icon="BsClock">{timeToRead}분 소요</IconText>
       </div>
       <PostBannerImg img={thumbnail} />
     </S.Wrapper>

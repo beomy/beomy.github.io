@@ -6,6 +6,7 @@ import { H4Styles, PStyles } from '@/atoms';
 export const Header = styled.div`
   position: relative;
   padding-top: 50%;
+  background-color: ${({ theme }) => theme.colors.white};
   .gatsby-image-wrapper-constrained {
     position: absolute;
     top: 0;
@@ -36,7 +37,7 @@ export const Footer = styled.div`
   }
 `;
 
-export const Wrapper = styled(Link)`
+export const Wrapper = styled<any>(Link)`
   width: 320px;
   border-radius: 4px;
   margin: 10px;

@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     width: auto;
     margin: 0 auto;
     border-radius: 10px;
+    background-color: ${({ theme }) => theme.colors.white};
   }
   pre {
     border-radius: 10px;
@@ -116,5 +117,8 @@ export const Wrapper = styled.div`
   }
   [data-language='json']:before {
     content: 'JSON';
+  }
+  [data-language='css']:before {
+    content: 'CSS';
   }
 `;
