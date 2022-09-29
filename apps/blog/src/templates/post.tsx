@@ -24,7 +24,7 @@ type Context = {
 };
 
 const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
-  const [theme = 'light'] = useBeomyTheme();
+  const [theme] = useBeomyTheme();
   const post = usePost(data.markdownRemark);
   const previous = usePost(pageContext.previous);
   const next = usePost(pageContext.next);
@@ -53,9 +53,9 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
         <link
           rel="stylesheet"
           href={
-            theme === 'light'
-              ? 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css'
-              : 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css'
+            theme === 'dark'
+              ? 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css'
+              : 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css'
           }
         />
       </Helmet>

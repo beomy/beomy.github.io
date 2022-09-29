@@ -8,7 +8,7 @@ import { Menu } from '@/organisms';
 import * as S from './Header.styles';
 
 const Header = () => {
-  const [theme = 'light', setTheme] = useBeomyTheme();
+  const [theme, setTheme] = useBeomyTheme();
   const [isSearch, setIsSearch] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const scrollY = useScroll(20);
@@ -36,15 +36,15 @@ const Header = () => {
     <S.Wrapper hide={scrollY < 0}>
       <S.Nav>
         <Anchor to="/">
-          {theme === 'light' ? (
+          {theme === 'dark' ? (
             <StaticImage
-              src="../../assets/images/beomy-logo.png"
+              src="../../assets/images/beomy-logo-negative.png"
               alt="블로그 로고"
               width={90}
             />
           ) : (
             <StaticImage
-              src="../../assets/images/beomy-logo-negative.png"
+              src="../../assets/images/beomy-logo.png"
               alt="블로그 로고"
               width={90}
             />
@@ -70,7 +70,7 @@ const Header = () => {
         <S.Action>
           <Button onClick={handleClickTheme}>
             <Icon
-              type={theme === 'light' ? 'BsSunFill' : 'BsMoonFill'}
+              type={theme === 'dark' ? 'BsMoonFill' : 'BsSunFill'}
               size={20}
             />
           </Button>

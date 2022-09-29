@@ -6,7 +6,7 @@ import type { MenuProps } from './Menu.types';
 import * as S from './Menu.styles';
 
 const Menu = ({ active, onClose }: MenuProps) => {
-  const [theme = 'light'] = useBeomyTheme();
+  const [theme] = useBeomyTheme();
   const menuTree = useMenu();
 
   return (
@@ -15,15 +15,15 @@ const Menu = ({ active, onClose }: MenuProps) => {
       <S.Container active={active}>
         <S.Header>
           <Anchor to="/">
-            {theme === 'light' ? (
+            {theme === 'dark' ? (
               <StaticImage
-                src="../../assets/images/beomy-logo.png"
+                src="../../assets/images/beomy-logo-negative.png"
                 alt="블로그 로고"
                 width={60}
               />
             ) : (
               <StaticImage
-                src="../../assets/images/beomy-logo-negative.png"
+                src="../../assets/images/beomy-logo.png"
                 alt="블로그 로고"
                 width={60}
               />

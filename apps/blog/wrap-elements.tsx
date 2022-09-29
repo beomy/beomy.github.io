@@ -3,7 +3,8 @@ import { RecoilRoot, useRecoilState } from 'recoil';
 import { ThemeProvider } from '@emotion/react';
 import { BaseStyles } from '@beomy/design-system';
 import * as themes from '@beomy/design-system/tokens';
-import { useMount } from '@beomy/utils';
+import { useMount, useLocalStorage } from '@beomy/utils';
+import { Theme } from '@/model/theme';
 import { useBeomyTheme } from '@/hooks';
 import { themeState } from '@/stores/themeStore';
 
@@ -12,11 +13,21 @@ type ElementProps = {
 };
 
 export const PageComponent = ({ children }: ElementProps) => {
-  const [theme = 'light'] = useBeomyTheme();
+  const [theme] = useBeomyTheme();
+  const [localStorageTheme] = useLocalStorage<Theme>('beomy.theme');
   const [, setRecoilTheme] = useRecoilState(themeState);
 
   useMount(() => {
     const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (localStorageTheme) {
+      setRecoilTheme(localStorageTheme);
+    } else if (matchMedia.matches) {
+      setRecoilTheme('dark');
+    } else {
+      setRecoilTheme('light');
+    }
+
     const handleModeChange = (value: MediaQueryListEvent) => {
       if (localStorage.getItem('beomy.theme')) return;
       setRecoilTheme(value.matches ? 'dark' : 'light');
@@ -26,7 +37,7 @@ export const PageComponent = ({ children }: ElementProps) => {
   });
 
   return (
-    <ThemeProvider theme={themes[theme]}>
+    <ThemeProvider theme={themes[theme ?? 'light']}>
       <BaseStyles />
       {children}
     </ThemeProvider>
