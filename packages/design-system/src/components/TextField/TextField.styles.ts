@@ -1,6 +1,20 @@
 import styled from '@emotion/styled';
+import { css, Theme } from '@emotion/react';
 import { typography } from 'styled-system';
-import type { InputProps, ClearButtonProps } from './TextField.types';
+import type { TextFieldProps, ClearButtonProps } from './TextField.types';
+
+type StyleProps = TextFieldProps & { theme: Theme };
+
+const borderStyles = ({ border, theme }: StyleProps) =>
+  border &&
+  css`
+    border: 1px solid ${theme.colors.grey[90]};
+    border-radius: 10px;
+    padding: 5px 15px;
+    &:hover {
+      border: 1px solid ${theme.colors.grey[70]};
+    }
+  `;
 
 export const ClearButton = styled.button<ClearButtonProps>`
   visibility: ${({ active }) => (active ? 'inherit' : 'hidden')};
@@ -8,10 +22,20 @@ export const ClearButton = styled.button<ClearButtonProps>`
 
 export const Input = styled.input`
   height: 100%;
-  width: calc(100% - 70px);
+  flex-grow: 1;
 `;
 
-export const Wrapper = styled.div<Partial<InputProps>>`
+export const Action = styled.div`
+  display: inline-flex;
+  button {
+    display: inline-flex;
+    + button {
+      margin-left: 20px;
+    }
+  }
+`;
+
+export const Wrapper = styled.div<Partial<TextFieldProps>>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,9 +44,5 @@ export const Wrapper = styled.div<Partial<InputProps>>`
     color: ${({ theme }) => theme.colors.body};
     ${typography};
   }
-  button {
-    + button {
-      margin-left: 5px;
-    }
-  }
+  ${borderStyles};
 `;

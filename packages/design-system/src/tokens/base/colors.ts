@@ -21,7 +21,6 @@ export type GreyColorLevel = ColorLevels & {
 };
 
 export type Palette = {
-  CTA: ColorToken;
   grey: GreyColorLevel;
   primary: ColorLevels;
   blue: ColorLevels;
@@ -38,11 +37,6 @@ export type Palette = {
   body: ColorToken;
   caption: ColorToken;
 };
-
-export const ctaStartBase = Color.hsl(277, 80, 50);
-export const ctaEndBase = Color.hsl(234, 75, 50);
-
-export const CTA: ColorToken = `linear-gradient(45deg, ${ctaStartBase.toString()} 0%, ${ctaEndBase.toString()} 100%)`;
 
 export const greyBase = Color.hsl(0, 0, 50);
 export const grey: GreyColorLevel = {

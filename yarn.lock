@@ -2287,6 +2287,7 @@ __metadata:
     "@storybook/manager-webpack5": ^6.5.12
     "@storybook/react": ^6.5.12
     "@storybook/testing-library": ^0.0.13
+    "@styled-system/should-forward-prop": 5.1.5
     "@types/color": 3.0.3
     "@types/react": 18.0.15
     "@types/react-dom": 18.0.6

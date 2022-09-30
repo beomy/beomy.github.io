@@ -1,11 +1,14 @@
-import { TypographyProps } from 'styled-system';
+import type { TypographyProps } from 'styled-system';
 
-export type InputProps = {
+export type TextFieldProps = {
   /** input 태그의 type 속성 */
-  type: string;
+  type?: string;
+
+  /** border을 가지는 TextField */
+  border?: boolean;
 
   /** input 태그의 value 속성 */
-  value: string;
+  value?: string;
 
   /** input 태그의 placeholder 속성 */
   placeholder?: string;
@@ -18,6 +21,9 @@ export type InputProps = {
 
   /** 돋보기 아이콘 클릭시 호출되는 이벤트 핸들러 */
   onSearch?: (text: string) => void;
+
+  /** 사용자 입력값 변경시 호출되는 이벤트 핸들러 */
+  onChange?: (text: string) => void;
 } & Pick<TypographyProps, 'fontSize'>;
 
 export type ClearButtonProps = {

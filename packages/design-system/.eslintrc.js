@@ -34,6 +34,7 @@ module.exports = {
           '**/*.spec.[jt]s',
           '**/*.test.[jt]sx',
           '**/*.spec.[jt]sx',
+          '.storybook/**',
         ],
       },
     ],

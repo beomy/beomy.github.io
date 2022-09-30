@@ -3,8 +3,8 @@ import type { HTMLAttributeAnchorTarget, ReactNode } from 'react';
 export type AnchorProps = {
   children?: ReactNode;
 
-  /** 스타일 타입 */
-  type?: 'normal' | 'border';
+  /** border을 가지는 Anchor */
+  border?: boolean;
 
   /** Gatsby Link 옵션: 이동할 URL */
   to?: string;

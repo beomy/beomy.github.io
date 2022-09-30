@@ -55,9 +55,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Anchor = styled(BeomyAnchor, {
-  shouldForwardProp,
-})<TypographyProps>`
+export const Anchor = styled(BeomyAnchor)<TypographyProps>`
   display: flex;
   align-items: center;
   height: 70px;

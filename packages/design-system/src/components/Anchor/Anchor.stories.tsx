@@ -46,7 +46,7 @@ const S = {
 };
 
 export const BorderExample = () => (
-  <S.Anchor to="https://www.naver.com" type="border">
+  <S.Anchor to="https://www.naver.com" border>
     <S.Icon>
       <Icon type="BsChevronLeft" size="100%" />
     </S.Icon>

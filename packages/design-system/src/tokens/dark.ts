@@ -1,7 +1,6 @@
 import {
   black,
   blue,
-  CTA,
   dimmed,
   green,
   reverseGrey,
@@ -20,7 +19,6 @@ import { fontWeights } from './base/fontWeights';
 import * as sizes from './base/sizes';
 
 const colors: Palette = {
-  CTA,
   grey: reverseGrey,
   primary,
   blue,

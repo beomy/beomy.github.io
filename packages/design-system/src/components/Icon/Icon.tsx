@@ -12,7 +12,7 @@ const Icon = ({ type, ...props }: IconProps) => {
     setTrigger(true);
   }, [type]);
 
-  return <IconComponent {...props} css={trigger && spinIn} />;
+  return <IconComponent {...props} css={trigger ? spinIn : null} />;
 };
 
 export default Icon;
