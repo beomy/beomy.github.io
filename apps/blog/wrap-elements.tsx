@@ -7,6 +7,7 @@ import { useMount, useLocalStorage } from '@beomy/utils';
 import { Theme } from '@/model/theme';
 import { useBeomyTheme } from '@/hooks';
 import { themeState } from '@/stores/themeStore';
+import { Notification } from '@/organisms';
 
 type ElementProps = {
   children: ReactNode;
@@ -40,6 +41,7 @@ export const PageComponent = ({ children }: ElementProps) => {
     <ThemeProvider theme={themes[theme ?? 'light']}>
       <BaseStyles />
       {children}
+      <Notification />
     </ThemeProvider>
   );
 };

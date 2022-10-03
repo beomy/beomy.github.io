@@ -38,8 +38,11 @@ const TableOfContents = ({ toc, ...props }: TableOfContentsProps) => {
   }, []);
 
   return (
-    <S.Wrapper {...props}>
-      <div ref={tocRef} dangerouslySetInnerHTML={{ __html: toc ?? '' }} />
+    <S.Wrapper title="목차" {...props}>
+      <S.Toc
+        ref={tocRef}
+        dangerouslySetInnerHTML={{ __html: toc ?? '' }}
+      ></S.Toc>
     </S.Wrapper>
   );
 };

@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react';
 import { navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import { TextField, Anchor, Icon } from '@beomy/design-system';
+import { TextField, Anchor, Icon, IconButton } from '@beomy/design-system';
 import { useScroll, useBeomyTheme } from '@/hooks';
-import { Button, Li } from '@/atoms';
+import { Li } from '@/atoms';
 import { Menu } from '@/organisms';
 import * as S from './Header.styles';
 
@@ -62,21 +62,22 @@ const Header = () => {
             </Anchor>
           </Li>
           <Li m="0 20px">
-            <Anchor to="/games" partiallyActive>
+            <Anchor href="/games" target="_blank">
               Games
             </Anchor>
           </Li>
         </S.GNB>
         <S.Action>
-          <Button onClick={handleClickTheme}>
-            <Icon
-              type={theme === 'dark' ? 'BsMoonFill' : 'BsSunFill'}
-              size={20}
-            />
-          </Button>
-          <Button onClick={handleClickSearchBtn}>
-            <Icon type={isSearch ? 'BsXCircle' : 'BsSearch'} size={20} />
-          </Button>
+          <IconButton
+            icon={theme === 'dark' ? 'BsMoonFill' : 'BsSunFill'}
+            size={20}
+            onClick={handleClickTheme}
+          />
+          <IconButton
+            icon={isSearch ? 'BsXCircle' : 'BsSearch'}
+            size={20}
+            onClick={handleClickSearchBtn}
+          />
           <S.MenuBtn onClick={handleClickMenuBtn}>
             <Icon type="BsList" size={30} />
           </S.MenuBtn>

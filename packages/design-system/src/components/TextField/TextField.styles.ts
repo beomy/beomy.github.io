@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { css, Theme } from '@emotion/react';
 import { typography } from 'styled-system';
-import type { TextFieldProps, ClearButtonProps } from './TextField.types';
+import type { TextFieldProps } from './TextField.types';
 
 type StyleProps = TextFieldProps & { theme: Theme };
 
@@ -16,21 +16,16 @@ const borderStyles = ({ border, theme }: StyleProps) =>
     }
   `;
 
-export const ClearButton = styled.button<ClearButtonProps>`
-  visibility: ${({ active }) => (active ? 'inherit' : 'hidden')};
-`;
-
 export const Input = styled.input`
+  min-height: 36px;
   height: 100%;
   flex-grow: 1;
 `;
 
 export const Action = styled.div`
-  display: inline-flex;
   button {
-    display: inline-flex;
     + button {
-      margin-left: 20px;
+      margin-left: 5px;
     }
   }
 `;

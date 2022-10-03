@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { layout, space, typography } from 'styled-system';
+import { layout, space, typography, flexbox } from 'styled-system';
 import type { ContentsProps } from './Contents.types';
 
 export const Wrapper = styled.div<ContentsProps>`
@@ -8,4 +8,5 @@ export const Wrapper = styled.div<ContentsProps>`
   ${layout};
   ${space};
   ${typography};
+  ${flexbox};
 `;

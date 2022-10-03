@@ -1,44 +1,39 @@
 import styled from '@emotion/styled';
-import { layout, flexbox, space } from 'styled-system';
+import { FieldSet } from '@beomy/design-system';
 import type { TableOfContentsProps } from './TableOfContents.types';
 
-export const Wrapper = styled.div<TableOfContentsProps>`
+export const Wrapper = styled(FieldSet)`
+  max-height: 600px;
+  overflow: auto;
+`;
+
+export const Toc = styled.div<TableOfContentsProps>`
   font-size: ${({ theme }) => theme.fontSizes[1]};
-  ${layout};
-  ${flexbox};
-  ${space};
-  ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
-    display: none;
+  a {
+    color: ${({ theme }) => theme.colors.caption};
+    text-decoration: none;
+    &:hover {
+      color: ${({ theme }) => theme.colors.title};
+    }
   }
-  > div {
-    position: fixed;
-    ${layout};
+  .active {
+    transform: scale(1.05);
     a {
-      color: ${({ theme }) => theme.colors.caption};
-      text-decoration: none;
-      &:hover {
-        color: ${({ theme }) => theme.colors.title};
-      }
+      color: ${({ theme }) => theme.colors.title};
     }
-    .active {
-      transform: scale(1.05);
-      a {
-        color: ${({ theme }) => theme.colors.title};
-      }
-    }
-    li {
-      list-style: none;
-    }
-    p {
-      margin: 0;
-    }
-    > ul {
-      padding: 0;
-      > li {
-        > ul {
-          padding-left: 15px;
-          border-left: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
-        }
+  }
+  li {
+    list-style: none;
+  }
+  p {
+    margin: 0;
+  }
+  > ul {
+    margin: 0;
+    padding: 0;
+    > li {
+      > ul {
+        padding-left: 15px;
       }
     }
   }

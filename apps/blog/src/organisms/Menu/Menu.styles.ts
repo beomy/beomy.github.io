@@ -17,7 +17,7 @@ export const Dim = styled.div<{ active: boolean }>`
   ${({ active }) =>
     active &&
     css`
-      opacity: 0.3;
+      opacity: 0.7;
       height: 100%;
       transition: opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
     `}
@@ -51,7 +51,6 @@ export const Wrapper = styled.menu<Partial<MenuProps>>`
   position: fixed;
   top: 0;
   right: 0;
-  //width: 0;
   height: 100%;
   z-index: 9999;
   margin: 0;
@@ -69,7 +68,7 @@ export const Wrapper = styled.menu<Partial<MenuProps>>`
   ${UlStyles.Wrapper} {
     padding-left: 30px;
   }
-  ${AnchorStyles.A}, ${AnchorStyles.Link} {
+  ${AnchorStyles.Wrapper} {
     text-transform: capitalize;
   }
 `;

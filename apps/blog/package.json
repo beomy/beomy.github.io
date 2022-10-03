@@ -59,6 +59,7 @@
     "react-dom": "18.2.0",
     "react-helmet": "6.1.0",
     "react-icons": "4.4.0",
+    "react-share": "4.4.0",
     "recoil": "0.7.5",
     "sass": "1.54.1",
     "styled-system": "5.1.5",

@@ -30,7 +30,6 @@ const StyledColor = styled.div<ColorProps>`
 const Colors = () => {
   const colorList = {
     grey: colorPalette.grey,
-    reverseGrey: colorPalette.reverseGrey,
     primary: colorPalette.primary,
     blue: colorPalette.blue,
     green: colorPalette.green,

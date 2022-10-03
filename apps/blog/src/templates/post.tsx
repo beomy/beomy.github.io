@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { graphql, PageProps } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
 import { Disqus } from 'gatsby-plugin-disqus';
+import styled from '@emotion/styled';
 import type { Data, MarkdownRemark } from '@/model/graphQL';
 import {
   Seo,
@@ -11,9 +12,9 @@ import {
   PostContents,
   PostHeader,
   TableOfContents,
-  PostWrapper,
   PostNavigator,
   Footer,
+  PostShare,
 } from '@/organisms';
 import { usePost, useBeomyTheme } from '@/hooks';
 
@@ -23,14 +24,41 @@ type Context = {
   slug: string;
 };
 
+const StyledPostMainContents = styled.div`
+  width: calc(100% - 360px);
+  ${({ theme }) => theme.sizes.mediaQueries.sm} {
+    width: 100%;
+  }
+`;
+
+const StyledPostSubContents = styled.div`
+  margin-top: 40px;
+  margin-left: 60px;
+  flex: 0 0 300px;
+  width: 300px;
+  ${({ theme }) => theme.sizes.mediaQueries.sm} {
+    display: none;
+  }
+  > div {
+    position: fixed;
+    width: inherit;
+    fieldset {
+      + fieldset {
+        margin-top: 10px;
+      }
+    }
+  }
+`;
+
 const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
   const [theme] = useBeomyTheme();
   const post = usePost(data.markdownRemark);
   const previous = usePost(pageContext.previous);
   const next = usePost(pageContext.next);
+  const url = `${data.site.siteMetadata.siteUrl}${pageContext.slug}`;
   const disqusConfig = {
-    url: `${data.site.siteMetadata.siteUrl}${pageContext.slug}`,
-    identifier: `${data.site.siteMetadata.siteUrl}${pageContext.slug}`,
+    url,
+    identifier: url,
     title: post.title,
   };
 
@@ -65,19 +93,18 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
         lineHeight={2}
         width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m']}
       >
-        <PostWrapper width={['100%', '100%', 'calc(100% - 360px)']}>
+        <StyledPostMainContents>
           <PostHeader {...post} />
           <PostContents html={post.html} />
           <PostNavigator previous={previous} next={next} />
           <Disqus config={disqusConfig} />
-        </PostWrapper>
-        <TableOfContents
-          toc={post.tableOfContents}
-          ml="60px"
-          mt="90px"
-          flex="0 0 300px"
-          width="300px"
-        />
+        </StyledPostMainContents>
+        <StyledPostSubContents>
+          <div>
+            <PostShare url={url} />
+            <TableOfContents toc={post.tableOfContents} />
+          </div>
+        </StyledPostSubContents>
       </Contents>
       <Footer />
     </Fragment>

@@ -18,17 +18,17 @@ export const GNB = styled(Ul)`
   ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
     display: none;
   }
-  ${AnchorStyles.A} {
+  ${AnchorStyles.Wrapper} {
     padding: 5px 10px;
   }
 `;
 
 export const Action = styled.div`
-  margin-left: 25px;
+  margin-left: 10px;
   display: flex;
   button {
     + button {
-      margin-left: 25px;
+      margin-left: 10px;
     }
   }
 `;
@@ -37,7 +37,7 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 75px;
+  padding: 10px 75px;
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
   background-color: ${({ theme }) =>
     Color(theme.colors.background).alpha(0.8).toString()};

@@ -25,7 +25,3 @@ export type TextFieldProps = {
   /** 사용자 입력값 변경시 호출되는 이벤트 핸들러 */
   onChange?: (text: string) => void;
 } & Pick<TypographyProps, 'fontSize'>;
-
-export type ClearButtonProps = {
-  active: boolean;
-} & Pick<TypographyProps, 'fontSize'>;

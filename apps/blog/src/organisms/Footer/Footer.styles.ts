@@ -7,7 +7,7 @@ export const Nav = styled.nav`
   justify-content: space-around;
   width: 100px;
   margin: 0 auto 10px;
-  ${AnchorStyles.A} {
+  ${AnchorStyles.Wrapper} {
     padding: 5px 10px;
   }
 `;

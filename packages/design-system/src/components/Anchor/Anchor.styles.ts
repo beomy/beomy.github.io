@@ -1,6 +1,5 @@
 import type { Theme } from '@emotion/react';
 import shouldForwardProp from '@styled-system/should-forward-prop';
-import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import type { AnchorProps } from './Anchor.types';
@@ -28,12 +27,7 @@ const commonStyles = ({ theme }: StyleProps) => css`
   }
 `;
 
-export const Link = styled(GatsbyLink, { shouldForwardProp })`
-  ${commonStyles};
-  ${borderStyles};
-`;
-
-export const A = styled('a', { shouldForwardProp })`
+export const Wrapper = styled('a', { shouldForwardProp })`
   ${commonStyles};
   ${borderStyles};
 `;

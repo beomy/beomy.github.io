@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useUpdateEffect } from '@beomy/utils';
 import type { IconProps } from './Icon.types';
 import * as Icons from '../../icons';
-import { spinIn } from './Icon.styles';
+import { spinInStyles } from './Icon.styles';
 
 const Icon = ({ type, ...props }: IconProps) => {
   const IconComponent = Icons[type];
@@ -12,7 +12,7 @@ const Icon = ({ type, ...props }: IconProps) => {
     setTrigger(true);
   }, [type]);
 
-  return <IconComponent {...props} css={trigger ? spinIn : null} />;
+  return <IconComponent {...props} css={trigger ? spinInStyles : null} />;
 };
 
 export default Icon;

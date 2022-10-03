@@ -2,7 +2,7 @@ import React, { useMemo, useCallback, useRef, useEffect } from 'react';
 import { useInput } from '@beomy/utils/hooks';
 import type { TextFieldProps } from './TextField.types';
 import * as S from './TextField.styles';
-import Icon from '../Icon';
+import IconButton from '../IconButton';
 
 const TextField = ({
   type,
@@ -39,13 +39,13 @@ const TextField = ({
         onKeyDown={(e) => e.key === 'Enter' && onSearch?.(str)}
       />
       <S.Action>
-        <S.ClearButton active={isClearable} onClick={handleClear}>
-          <Icon type="BsXCircle" />
-        </S.ClearButton>
+        <IconButton
+          icon="BsXCircle"
+          display={isClearable ? undefined : 'none'}
+          onClick={handleClear}
+        />
         {searchable && (
-          <button onClick={() => onSearch?.(str)}>
-            <Icon type="BsSearch" />
-          </button>
+          <IconButton icon="BsSearch" onClick={() => onSearch?.(str)} />
         )}
       </S.Action>
     </S.Wrapper>

@@ -12,7 +12,7 @@ export const Wrapper = styled.ul`
   ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
     display: none;
   }
-  ${AnchorStyles.Link} {
+  ${AnchorStyles.Wrapper} {
     text-transform: capitalize;
     padding: 5px 10px;
   }
