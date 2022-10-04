@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   position: fixed;
+  z-index: 9;
   top: 70px;
   right: 0;
   display: flex;

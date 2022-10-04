@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react';
+import type { MouseEvent } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { throttle } from 'lodash-es';
 import type { TableOfContentsProps } from './TableOfContents.types';
 import * as S from './TableOfContents.styles';
 
-const TableOfContents = ({ toc, ...props }: TableOfContentsProps) => {
+const TableOfContents = ({ toc, onClick, ...props }: TableOfContentsProps) => {
   const tocRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,11 +38,21 @@ const TableOfContents = ({ toc, ...props }: TableOfContentsProps) => {
     };
   }, []);
 
+  const handleClickToc = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
+      if ((e.target as any).nodeName === 'A') {
+        onClick?.();
+      }
+    },
+    [onClick],
+  );
+
   return (
     <S.Wrapper title="목차" {...props}>
       <S.Toc
         ref={tocRef}
         dangerouslySetInnerHTML={{ __html: toc ?? '' }}
+        onClick={handleClickToc as any}
       ></S.Toc>
     </S.Wrapper>
   );

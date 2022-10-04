@@ -1,5 +1,7 @@
 export { default as Button } from './Button';
 export * from './Button';
+export { default as Dim } from './Dim';
+export * from './Dim';
 export { default as Img } from './Img';
 export * from './Img';
 export { default as H1 } from './H1';

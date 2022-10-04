@@ -10,6 +10,7 @@ export const Wrapper = styled.fieldset`
     title ? '5px 15px 10px 15px' : '10px 15px'};
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.colors.grey[70]};
+  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const Legend = styled.legend`

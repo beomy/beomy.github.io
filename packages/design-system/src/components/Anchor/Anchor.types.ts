@@ -8,7 +8,10 @@ export type AnchorProps = {
 
   /** Gatsby Link 옵션: 이동할 URL */
   to?: string;
-  /** Gatsby Link 옵션: 하위 URL에 Active 적용 */
+  /**
+   * Gatsby Link 옵션: 하위 URL에 Active 적용
+   * @default false
+   */
   partiallyActive?: boolean;
 
   /** A 태그 옵션: 이동할 URL */

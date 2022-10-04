@@ -33,8 +33,8 @@ export const PageComponent = ({ children }: ElementProps) => {
       if (localStorage.getItem('beomy.theme')) return;
       setRecoilTheme(value.matches ? 'dark' : 'light');
     };
-    matchMedia.addEventListener('change', handleModeChange);
-    return () => matchMedia.removeEventListener('change', handleModeChange);
+    matchMedia?.addEventListener?.('change', handleModeChange);
+    return () => matchMedia?.removeEventListener?.('change', handleModeChange);
   });
 
   return (

@@ -1,8 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
+import { uniqueId } from 'lodash-es';
+import Notification from './Notification';
 import { light } from '../../src/tokens';
-import { BaseStyles, TextField } from '../../src';
+import { BaseStyles, TextField, MessageTypes } from '../../src';
 import * as IconList from '../../src/icons';
 
 const StyledIconContainer = styled.div`
@@ -11,7 +13,7 @@ const StyledIconContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const StyledIconWrapper = styled.div`
+const StyledIconWrapper = styled.button`
   width: 100px;
   text-align: center;
   margin: 10px;
@@ -19,12 +21,24 @@ const StyledIconWrapper = styled.div`
 
 const Icons = () => {
   const [str, setStr] = useState<string>('');
+  const [message, setMessage] = useState<MessageTypes.MessageProps[]>([]);
 
   const filteredIconList = useMemo(() => {
     return Object.entries(IconList).filter(([key]) => {
       return key.toLowerCase().includes(str.toLowerCase());
     });
   }, [str]);
+
+  const handleClick = useCallback((iconName: string) => {
+    setMessage((value) => {
+      window.navigator.clipboard.writeText(iconName);
+      return value.concat({
+        id: uniqueId('message'),
+        text: '아이콘 이름이 복사되었습니다.',
+        type: 'info',
+      });
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={light}>
@@ -37,7 +51,7 @@ const Icons = () => {
       />
       <StyledIconContainer>
         {filteredIconList.map(([key, Icon]) => (
-          <StyledIconWrapper key={key}>
+          <StyledIconWrapper key={key} onClick={() => handleClick(key)}>
             <div>
               <Icon size="30px" />
             </div>
@@ -45,6 +59,7 @@ const Icons = () => {
           </StyledIconWrapper>
         ))}
       </StyledIconContainer>
+      <Notification message={message} setMessage={setMessage} />
     </ThemeProvider>
   );
 };

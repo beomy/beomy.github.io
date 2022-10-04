@@ -1,7 +1,7 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import { Anchor, Icon } from '@beomy/design-system';
 import { useMenu, useBeomyTheme } from '@/hooks';
-import { Button, Li, Ul } from '@/atoms';
+import { Button, Li, Ul, Dim } from '@/atoms';
 import type { MenuProps } from './Menu.types';
 import * as S from './Menu.styles';
 
@@ -11,7 +11,7 @@ const Menu = ({ active, onClose }: MenuProps) => {
 
   return (
     <S.Wrapper active={active}>
-      <S.Dim active={active} onClick={onClose} />
+      <Dim active={active} onClick={onClose} />
       <S.Container active={active}>
         <S.Header>
           <Anchor to="/">
