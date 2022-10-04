@@ -82,7 +82,7 @@ export const StyledPostSubContents = styled.div<{ active: boolean }>`
       background-color: ${({ theme }) => theme.colors.background};
       position: absolute;
       left: -50px;
-      bottom: 30px;
+      bottom: 20px;
       transform: ${({ active }) => (active ? 'rotate(0deg)' : 'rotate(45deg)')};
     }
   }

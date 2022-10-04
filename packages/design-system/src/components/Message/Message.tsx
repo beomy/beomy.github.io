@@ -30,7 +30,8 @@ const Message = ({
   }, [id, onClose]);
 
   useMount(() => {
-    setTimeout(() => onClose?.(id), delay);
+    const timeoutId = setTimeout(() => onClose?.(id), delay);
+    return () => clearTimeout(timeoutId);
   });
 
   return (

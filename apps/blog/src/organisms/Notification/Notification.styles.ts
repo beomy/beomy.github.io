@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
-  padding: 10px;
+  padding: 0 10px;
   box-sizing: border-box;
   ${({ theme }) => theme.sizes.mediaQueries.xs} {
     width: 100%;

@@ -16,19 +16,21 @@ const Notification = () => {
   );
 
   return (
-    <Portal>
-      <S.Wrapper>
-        {message.map((item) => (
-          <Message
-            key={item.id}
-            id={item.id}
-            text={item.text}
-            type={item.type}
-            onClose={handleCloseMessage}
-          />
-        ))}
-      </S.Wrapper>
-    </Portal>
+    message.length > 0 && (
+      <Portal>
+        <S.Wrapper>
+          {message.map((item) => (
+            <Message
+              key={item.id}
+              id={item.id}
+              text={item.text}
+              type={item.type}
+              onClose={handleCloseMessage}
+            />
+          ))}
+        </S.Wrapper>
+      </Portal>
+    )
   );
 };
 
