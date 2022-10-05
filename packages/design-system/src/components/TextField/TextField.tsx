@@ -42,10 +42,15 @@ const TextField = ({
         <IconButton
           icon="BsXCircle"
           display={isClearable ? undefined : 'none'}
+          aria-label="clear"
           onClick={handleClear}
         />
         {searchable && (
-          <IconButton icon="BsSearch" onClick={() => onSearch?.(str)} />
+          <IconButton
+            icon="BsSearch"
+            aria-label="search"
+            onClick={() => onSearch?.(str)}
+          />
         )}
       </S.Action>
     </S.Wrapper>

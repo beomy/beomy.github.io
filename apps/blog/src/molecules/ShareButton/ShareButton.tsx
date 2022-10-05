@@ -41,6 +41,8 @@ const ShareButton = ({ target, url, size }: ShareButtonProps) => {
       border
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onFocus={() => setHover(true)}
+      onBlur={() => setHover(false)}
     >
       <Icon type={isHover ? 'BsLink45Deg' : iconType} size={size} />
     </S.Wrapper>

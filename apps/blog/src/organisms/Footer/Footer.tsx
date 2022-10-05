@@ -7,12 +7,17 @@ const Footer = () => {
   return (
     <S.Wrapper>
       <S.Nav>
-        <Anchor href="https://github.com/beomy" target="_blank">
+        <Anchor
+          href="https://github.com/beomy"
+          target="_blank"
+          aria-label="github"
+        >
           <Icon type="BsGithub" size={20} />
         </Anchor>
         <Anchor
           href="https://www.linkedin.com/in/효범-이-930453134"
           target="_blank"
+          aria-label="linkedin"
         >
           <Icon type="BsLinkedin" size={20} />
         </Anchor>

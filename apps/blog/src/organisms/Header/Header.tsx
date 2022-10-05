@@ -72,13 +72,15 @@ const Header = () => {
             icon={theme === 'dark' ? 'BsMoonFill' : 'BsSunFill'}
             size={20}
             onClick={handleClickTheme}
+            aria-label="theme"
           />
           <IconButton
             icon={isSearch ? 'BsXCircle' : 'BsSearch'}
             size={20}
+            aria-label="search"
             onClick={handleClickSearchBtn}
           />
-          <S.MenuBtn onClick={handleClickMenuBtn}>
+          <S.MenuBtn onClick={handleClickMenuBtn} aria-label="menu">
             <Icon type="BsList" size={30} />
           </S.MenuBtn>
         </S.Action>

@@ -27,6 +27,8 @@ export const PostShare = ({ url }: PostShareProps) => {
         border
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
+        onFocus={() => setHover(true)}
+        onBlur={() => setHover(false)}
         onClick={handleClickChip}
       />
     </S.Wrapper>
