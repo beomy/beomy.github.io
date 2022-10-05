@@ -25,6 +25,7 @@ export const PostShare = ({ url }: PostShareProps) => {
         icon={isHover ? 'BsLink45Deg' : 'BsPaperclip'}
         size="24px"
         border
+        aria-label="link"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         onFocus={() => setHover(true)}
