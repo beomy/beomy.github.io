@@ -1,4 +1,4 @@
-import type { LayoutProps } from 'styled-system';
+import type { LayoutProps, SpaceProps } from 'styled-system';
 import type { IconProps } from '../Icon/Icon.types';
 import { MouseEvent } from 'react';
 
@@ -11,4 +11,5 @@ export type IconButtonProps = {
 
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 } & Omit<IconProps, 'type'> &
-  Pick<LayoutProps, 'display'>;
+  Pick<LayoutProps, 'display'> &
+  SpaceProps;

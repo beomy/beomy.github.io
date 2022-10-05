@@ -9,6 +9,7 @@ const IconButton = ({
   onClick,
   onMouseEnter,
   onMouseLeave,
+  size,
   ...props
 }: IconButtonProps) => {
   return (
@@ -18,8 +19,9 @@ const IconButton = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      {...props}
     >
-      <Icon type={icon} {...props} />
+      <Icon type={icon} size={size} />
     </S.Wrapper>
   );
 };

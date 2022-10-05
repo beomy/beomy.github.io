@@ -40,7 +40,7 @@ const Message = ({
         {text}
       </S.IconText>
       <span>
-        <IconButton icon="BsXCircle" onClick={handleClose} />
+        <IconButton icon="BsXCircle" aria-label="close" onClick={handleClose} />
       </span>
     </S.Wrapper>
   );

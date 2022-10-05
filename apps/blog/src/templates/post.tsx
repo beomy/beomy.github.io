@@ -151,7 +151,12 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
               toc={post.tableOfContents}
               onClick={handleClickCloseSub}
             />
-            <IconButton icon="BsXLg" border onClick={handleClickCloseSub} />
+            <IconButton
+              icon="BsXLg"
+              aria-label="toc"
+              border
+              onClick={handleClickCloseSub}
+            />
           </StyledPostSubContents>
         </StyledPostSub>
       </Contents>

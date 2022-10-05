@@ -1,7 +1,7 @@
 import { StaticImage } from 'gatsby-plugin-image';
-import { Anchor, Icon } from '@beomy/design-system';
+import { Anchor, IconButton } from '@beomy/design-system';
 import { useMenu, useBeomyTheme } from '@/hooks';
-import { Button, Li, Ul, Dim } from '@/atoms';
+import { Li, Ul, Dim } from '@/atoms';
 import type { MenuProps } from './Menu.types';
 import * as S from './Menu.styles';
 
@@ -29,9 +29,13 @@ const Menu = ({ active, onClose }: MenuProps) => {
               />
             )}
           </Anchor>
-          <Button onClick={onClose} width="45px">
-            <Icon type="BsXCircle" size={20} />
-          </Button>
+          <IconButton
+            icon="BsXCircle"
+            size={20}
+            mr="5px"
+            aria-label="close"
+            onClick={onClose}
+          />
         </S.Header>
         <Ul>
           <Li mb="30px">

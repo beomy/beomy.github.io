@@ -71,8 +71,8 @@ const Header = () => {
           <IconButton
             icon={theme === 'dark' ? 'BsMoonFill' : 'BsSunFill'}
             size={20}
-            onClick={handleClickTheme}
             aria-label="theme"
+            onClick={handleClickTheme}
           />
           <IconButton
             icon={isSearch ? 'BsXCircle' : 'BsSearch'}

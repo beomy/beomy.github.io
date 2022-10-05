@@ -1,5 +1,3 @@
-export { default as Button } from './Button';
-export * from './Button';
 export { default as Dim } from './Dim';
 export * from './Dim';
 export { default as Img } from './Img';

@@ -1,5 +1,5 @@
 import type { Theme } from '@emotion/react';
-import { layout } from 'styled-system';
+import { layout, space } from 'styled-system';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -37,4 +37,5 @@ export const Wrapper = styled('button', {
   ${commonStyles};
   ${hoverStyles};
   ${layout};
+  ${space};
 `;
