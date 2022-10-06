@@ -52,10 +52,10 @@ export const Wrapper = styled.div`
   }
   blockquote {
     margin: 2rem 0;
-    border-left: 4px solid ${({ theme }) => theme.colors.green[80]};
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border: 1px solid ${({ theme }) => theme.colors.grey[90]};
+    border-left: 4px solid ${({ theme }) => theme.colors.green[50]};
     background: ${({ theme }) => theme.colors.grey[98]};
+    border-radius: 4px;
     padding: 1rem 1rem 1rem 2rem;
     h1,
     h2,

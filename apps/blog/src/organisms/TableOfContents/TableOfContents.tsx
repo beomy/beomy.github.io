@@ -28,6 +28,7 @@ const TableOfContents = ({ toc, onClick, ...props }: TableOfContentsProps) => {
         const max = postOffsets[i + 1] ?? Infinity;
         if (min && scrollY >= min && scrollY < max) {
           anchorList[i].parentElement?.classList.add('active');
+          anchorList[i].focus();
           return;
         }
       }

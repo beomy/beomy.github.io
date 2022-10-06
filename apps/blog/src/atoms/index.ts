@@ -1,7 +1,5 @@
 export { default as Dim } from './Dim';
 export * from './Dim';
-export { default as Img } from './Img';
-export * from './Img';
 export { default as H1 } from './H1';
 export * from './H1';
 export { default as H2 } from './H2';

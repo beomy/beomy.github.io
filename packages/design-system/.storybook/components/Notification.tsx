@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { Message, MessageTypes } from '../../src';
 import styled from '@emotion/styled';
 
@@ -10,7 +10,7 @@ type NotificationProps = {
 
 const StyledWrapper = styled.div`
   position: fixed;
-  top: 0px;
+  top: 0;
   right: 0;
   display: flex;
   flex-direction: column;

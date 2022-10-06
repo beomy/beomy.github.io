@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from 'react';
-import { ThemeProvider } from '@emotion/react';
+import React, { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 import { uniqueId } from 'lodash-es';
 import Notification from './Notification';
