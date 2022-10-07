@@ -1,24 +1,24 @@
 ---
 layout: post
 title: '[ETC] package.json 톺아보기'
-featured-img: javascript/js.png
+featured-img: etc/package_json.png
 category: [tech, etc]
-summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에 작성할 수 있는 필드를 살펴보도록 하겠습니다.
+summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
 ---
 
-`package.json`에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다.
+`package.json`에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 `package.json`에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
 
-사용하는 패키지 매니저(npm, yarn 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지에서 설정 가능한 필드를 확인하는 것이 좋습니다.
+사용하는 패키지 매니저(npm, yarn 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지([npm](https://docs.npmjs.com/cli/v8/configuring-npm/package-json), [yarn 2.*](https://yarnpkg.com/configuration/manifest))에서 설정 가능한 필드를 확인하는 것이 좋습니다.
 
 eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig` 필드)도 `package.json`에서 가능하기 때문에 이러한 설정 역시 사용하는 라이브러리의 공식 홈페이지에서 확인하고 사용하는 것이 좋습니다.
-
-`package.json`에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
 
 # `name`
 `name` 필드는 프로젝트의 이름을 나타냅니다. 아래와 같이 `name` 필드를 작성할 수 있습니다.
 
-```
-"name": "@beomy/blog"
+```json
+{
+  "name": "@beomy/blog"
+}
 ```
 
 `@beomy/` 같이 `name` 필드는 `@`로 시작하여 스코프를 지정할 수도 있습니다.
@@ -26,29 +26,173 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 # `version`
 `version` 필드는 프로젝트의 버전을 나타냅니다. 아래와 같이 `version` 필드를 작성할 수 있습니다.
 
-```
-"version": "1.2.3"
+```json
+{
+  "version": "1.2.3"
+}
 ```
 
-프로젝트가 NPM에 배포 될 때 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어 `@beomy/blog@1.2.3`)은 유니크한 값이여야 합니다.
-
-> **버전 구분**
+> **NPM 패키지에서 `name`과 `verion`**
 >
-> - patch: 0.0.*
-> - minor: 0.*.0
-> - major: *.0.0
+> 프로젝트가 NPM에 배포 될 때 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어 `@beomy/blog@1.2.3`)은 유니크한 값이여야 합니다.
 
-# files
+> **오픈소스의 버전 구분**
+>
+> 버전은 아래 그림과 같이 Major, Minor, Patch로 구성되어 있습니다. 이런 형태의 버전 표시방법은 오픈소스 프로젝트에 일반적으로 사용됩니다.
+>
+> ![package.json version](/assets/img/posts/etc/package_version.png)
+>
+> - Major: API가 변경/삭제 되어 사용자가 Major 버전을 업데이트 할 경우 기존의 코드가 동작하지 않을 수 있을 때, Major 버전을 업데이트하여 배포합니다.
+> - Minor: 이전 버전과 호환되는 방식으로 API가 추가/변경 되었을 때 Minor 버전을 업데이트하여 배포합니다.
+> - Patch: 이전 버전과 호환되는 버그 수정을 할 경우 Patch 버전을 업데이트하여 배포합니다.
 
-# main
+# `files`
+`files` 필드는 패키지가 설치될 때 포함될 항목들을 저장하는 필드입니다. 아래와 같이 glob 형태로 작성할 수 있습니다.
 
-# module
+```json
+{
+  "files": [
+    "dist/**/*",
+    "lib/**/*"
+  ]
+}
+```
 
-# browser
+`files` 필드를 사용하지 않고 프로젝트 루프에 `.npmignore` 파일을 생성하여 NPM에 배포하지 않을 파일들을 지정할 수도 있습니다. `.npmignore` 파일이 없는 경우 `.gitignore` 파일에 작성된 목록들이 NPM에 배포되지 않습니다.
 
-# exports
+# `main`
+`main` 필드는 패키지를 사용할 때 진입되는 경로입니다. 아래와 같이 작성할 수 있습니다.
+
+```json
+{
+  "main": "./sources/index.js"
+}
+```
+
+아래 package.json과 같이 작성된 패키지가 있다면,
+
+```json
+{
+  "name": "beomy-lib",
+  "main": "lib/index.js"
+}
+```
+
+`import BeomyLib from 'beomy-lib'`으로 패키지를 가져오면 `beomy-lib`의 `lib/index.js`를 가져오는 것과 동일합니다.
+
+```js
+import BeomyLib from 'beomy-lib'
+// Loads ./node_modules/beomy-lib/lib/index.js
+```
+
+# `module` (Yarn 2.*)
+`module` 필드는 `main` 필드와 유사한 목적으로 사용 되는 필드입니다. ES6 호환 환경에서 패키지를 사용할 때 진입되는 경로입니다. 아래와 같이 작성할 수 있습니다.
+
+```json
+{
+  "module": "./sources/index.mjs"
+}
+```
+
+# `browser` (NPM)
+`browser` 필드는 패키지가 클라이언트 사이드(Client side), 브라우저에서 사용되는 패키지라면 `main` 필드 대신 사용되는 필드입니다. 아래와 같이 작성할 수 있습니다.
+
+```json
+{
+  "browser": "./sources/index.js"
+}
+```
+
+`browser` 필드를 사용하면 클라이언트 사이드에서 동작하는 패키지라는 것을 명시하는 것이기 때문에, `window` 객체와 같이 Node.js에서 사용이 불가능한 요소에 대한 힌트를 사용자에게 제공하게 됩니다.
+
+# `type` (Node)
+`type` 필드는 `commonjs`(기본 값)와 `module` 중 하나를 사용할 수 있습니다. `type` 필드가 정의되어 있지 않다면 `commonjs`로 처리됩니다. 아래와 같이 작성할 수 있습니다.
+
+```json
+{
+  "type": "module"
+}
+```
+
+파일의 확장자가 `.mjs`이거나 `type` 필드가 `module`일 경우 패키지는 ES Module를 사용하여 `import`나 `import()` 함수를 사용할 수 있게 됩니다. 파일 확장자가 `.cjs`이거나 `type` 필드가 `commonjs`일 경우(혹은 생략) `import`, `import()` 함수, `require()` 함수를 사용할 수 있습니다.
+
+# `packageManager` (Node)
+`packageManager` 필드는 패키지가 특정 패키지 매니저를 사용해야 할 경우 특정 패키지와 버전을 지정할 수 있는 필드입니다. 아래와 같이 작성할 수 있습니다.
+
+```json
+{
+  "packageManager": "yarn@3.2.3"
+}
+```
+
+# `exports` (Node)
+`main` 필드와 `exports` 필드를 사용하면 패키지의 진입점을 설정할 수 있습니다. `exports` 필드는 `main` 필드와 다르게 여러개의 진입점을 설정할 수 있습니다. 아래와 같이 작성할 수 있습니다.
+
+```json
+{
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib": "./lib/index.js",
+    "./feature": "./feature/index.js"
+  }
+}
+```
+
+Node 10 버전 이하에서는 `main` 필드를 사용해야 하고,  11 버전 이상에서는 `exports` 필드와 `main` 필드가 모두 정의되어 있는 경우 `exports` 필드가 우선합니다.
+
+```json
+{
+  "name": "beomy-lib",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib": "./lib/index.js",
+    "./feature": "./feature/index.js"
+  }
+}
+```
+
+위의 코드에서는 `./feature/utils.js`가 `exports` 필드에 명시 되어있지 않기 때문에 `import util from 'beomy-lib/feature/utils.js'`가 불가능합니다. 이러한 경우 다른 파일들과 동일하게 `./feature/utils.js`를 `exports` 필드에 추가하거나 아래와 같이 작성하여 해결 할 수 있습니다.
+
+```json
+{
+  "name": "beomy-lib",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib": "./lib/index.js",
+    "./feature": "./feature/index.js",
+    "./feature/*.js": "./feature/*.js"
+  }
+}
+```
+
+```js
+import BeomyLib from 'beomy-lib'
+// Loads ./node_modules/beomy-lib/lib/index.js
+
+import BeomyLib from 'beomy-lib/lib'
+// Loads ./node_modules/beomy-lib/lib/index.js
+
+import BeomyLib from 'beomy-lib/feature'
+// Loads ./node_modules/beomy-lib/feature/index.js
+
+import BeomyLib from 'beomy-lib/feature/utils.js'
+// Loads ./node_modules/beomy-lib/feature/utils.js
+```
+
+# `types` (Typescript)
+`types` 필드는 타입스크립트의 `d.ts` 타입 정의 파일의 경로를 저장하는 필드입니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```json
+{
+  "types": "./lib/index.d.ts"
+}
+```
+
+타입 정의 파일의 이름이 `index.d.ts`이고 패키지 루트(`index.js`의 위치)에 있으면 생략 가능합니다.
 
 # bin
+`bin` 필드는
+
 - [serve 패키지](https://github.com/vercel/serve/blob/main/package.json)
 
 # scripts
@@ -102,7 +246,8 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 
 # peerDependenciesMeta
 
-# bundleDependencies(bundledDependencies)
+# bundleDependencies
+- bundledDependencies
 
 # optionalDependencies
 
@@ -117,8 +262,6 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 - types 안됨
 - exports 됨
 - main 됨
-
-# types - 못찾겠다.
 
 # 기타 필드
 - description
@@ -135,8 +278,6 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 - directories: [npm package.json](https://github.com/npm/cli/blob/latest/package.json)
 - repository
 - resolutions(yarn)
-- type(node): `commonjs`(기본 값)와 `module` 중 하나를 사용할 수 있습니다.
-- packageManager(node)
 - imports(node)
 
 # 외부 라이브러리 연동
@@ -149,6 +290,8 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 - [https://yceffort.kr/2021/10/debt-of-package-json](https://yceffort.kr/2021/10/debt-of-package-json)
 - [https://gigibean.tistory.com/m/73](https://gigibean.tistory.com/m/73)
 - [https://docs.npmjs.com/cli/v8/configuring-npm/package-json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json)
-- [https://nodejs.org/api/packages.html#nodejs-packagejson-field-definitions](https://nodejs.org/api/packages.html#nodejs-packagejson-field-definitions)
+- [https://nodejs.org/api/packages.html](https://nodejs.org/api/packages.html)
 - [https://yarnpkg.com/configuration/manifest](https://yarnpkg.com/configuration/manifest)
 - [https://heropy.blog/2019/01/31/node-js-npm-module-publish/](https://heropy.blog/2019/01/31/node-js-npm-module-publish/)
+- [https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH와-명세에-관하여](https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH와-명세에-관하여)
+- [https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html](https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html)
