@@ -18,9 +18,7 @@ export const IconChangeExample = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   return (
     <>
-      <div>
-        <button onClick={() => setToggle((value) => !value)}>Toggle</button>
-      </div>
+      <button onClick={() => setToggle((value) => !value)}>Toggle</button>
       <Icon type={toggle ? 'BsLink45Deg' : 'BsFacebook'} size="24px" />
     </>
   );
