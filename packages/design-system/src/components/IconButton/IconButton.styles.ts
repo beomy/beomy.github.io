@@ -1,13 +1,20 @@
-import type { Theme } from '@emotion/react';
+import type { CssProps, StyledProps } from '../../models';
 import { layout, space } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import {
+  createShouldForwardProp,
+  props,
+} from '@styled-system/should-forward-prop';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { IconButtonProps } from './IconButton.types';
 
-type StyleProps = Pick<IconButtonProps, 'border'> & { theme: Theme };
+const shouldForwardProp = createShouldForwardProp([
+  ...props,
+  'resetButtonStyle',
+  'url',
+]);
 
-export const hoverStyles = ({ theme, border }: StyleProps) =>
+export const hoverStyles = ({ theme, border }: CssProps<IconButtonProps>) =>
   border
     ? css`
         border: 1px solid ${theme.colors.grey[90]};
@@ -23,17 +30,16 @@ export const hoverStyles = ({ theme, border }: StyleProps) =>
         }
       `;
 
-export const commonStyles = ({ theme }: StyleProps) => css`
+export const commonStyles = ({ theme }: CssProps<IconButtonProps>) => css`
   display: inline-flex;
   padding: 10px;
   border-radius: 100%;
   color: ${theme.colors.body};
 `;
 
-export const Wrapper = styled('button', {
-  shouldForwardProp: (prop) =>
-    shouldForwardProp(prop) || prop === 'resetButtonStyle' || prop === 'url',
-})<any>`
+export const Wrapper = styled('button', { shouldForwardProp })<
+  StyledProps<IconButtonProps>
+>`
   ${commonStyles};
   ${hoverStyles};
   ${layout};

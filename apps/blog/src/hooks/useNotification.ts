@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { uniqueId } from 'lodash-es';
 import { MessageTypes } from '@beomy/design-system';
-import { messageState } from '@/stores/notificationStore';
+import { messageState } from '@/stores/notification';
 
 const useNotification = () => {
   const [, setMessage] =

@@ -17,7 +17,7 @@ export const Default = Template.bind({});
 
 export const ATag = Template.bind({});
 ATag.args = {
-  href: 'https://wwww.naver.com',
+  href: 'https://www.naver.com',
 };
 
 export const GatsbyLink = Template.bind({});

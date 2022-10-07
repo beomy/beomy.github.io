@@ -1,12 +1,10 @@
-import type { Theme } from '@emotion/react';
+import type { CssProps, StyledProps } from '../../models';
 import type { MessageProps } from './Message.types';
 import styled from '@emotion/styled';
 import Color from 'color';
 import BeomyIconText from '../IconText';
 
-type StyleProps = Partial<MessageProps> & { theme: Theme };
-
-const getColor = ({ type, theme }: StyleProps) => {
+const getColor = ({ type, theme }: CssProps<MessageProps>) => {
   if (type === 'success') {
     return theme.colors.green[50];
   } else if (type === 'warning') {
@@ -18,7 +16,7 @@ const getColor = ({ type, theme }: StyleProps) => {
   }
 };
 
-export const IconText = styled(BeomyIconText)<Partial<MessageProps>>`
+export const IconText = styled(BeomyIconText)<StyledProps<MessageProps>>`
   flex-grow: 1;
   svg {
     margin-right: 10px;
@@ -29,7 +27,7 @@ export const IconText = styled(BeomyIconText)<Partial<MessageProps>>`
   }
 `;
 
-export const Wrapper = styled.div<any>`
+export const Wrapper = styled.div`
   display: inline-flex;
   justify-content: space-between;
   padding: 10px;

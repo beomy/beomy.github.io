@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { Portal, Message, MessageTypes } from '@beomy/design-system';
-import { messageState } from '@/stores/notificationStore';
+import { messageState } from '@/stores/notification';
 import * as S from './Notification.styles';
 
 const Notification = () => {
@@ -9,28 +9,27 @@ const Notification = () => {
     useRecoilState<MessageTypes.MessageProps[]>(messageState);
 
   const handleCloseMessage = useCallback(
-    (id: string) => {
+    (id?: string) => {
       setMessage((value) => value.filter((i) => i.id !== id));
     },
     [setMessage],
   );
 
+  if (!message.length) return null;
   return (
-    message.length > 0 && (
-      <Portal>
-        <S.Wrapper>
-          {message.map((item) => (
-            <Message
-              key={item.id}
-              id={item.id}
-              text={item.text}
-              type={item.type}
-              onClose={handleCloseMessage}
-            />
-          ))}
-        </S.Wrapper>
-      </Portal>
-    )
+    <Portal>
+      <S.Wrapper>
+        {message.map((item) => (
+          <Message
+            key={item.id}
+            id={item.id}
+            text={item.text}
+            type={item.type}
+            onClose={handleCloseMessage}
+          />
+        ))}
+      </S.Wrapper>
+    </Portal>
   );
 };
 

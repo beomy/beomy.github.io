@@ -1,12 +1,10 @@
-import type { Theme } from '@emotion/react';
+import type { AnchorProps } from './Anchor.types';
+import type { CssProps } from '../../models';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import type { AnchorProps } from './Anchor.types';
 
-type StyleProps = AnchorProps & { theme: Theme };
-
-const borderStyles = ({ theme, border }: StyleProps) =>
+const borderStyles = ({ theme, border }: CssProps<AnchorProps>) =>
   border &&
   css`
     border: 1px solid ${theme.colors.grey[90]};
@@ -17,7 +15,7 @@ const borderStyles = ({ theme, border }: StyleProps) =>
     }
   `;
 
-const commonStyles = ({ theme }: StyleProps) => css`
+const commonStyles = ({ theme }: CssProps<AnchorProps>) => css`
   box-sizing: border-box;
   color: ${theme.colors.body};
   text-decoration: none;

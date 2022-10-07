@@ -1,11 +1,7 @@
-import type { Theme } from '@emotion/react';
+import type { CssProps } from '../../models';
 import { css } from '@emotion/react';
 
-type StyleProps = {
-  theme: Theme;
-};
-
-export const GlobalStyles = ({ theme }: StyleProps) => css`
+export const GlobalStyles = ({ theme }: CssProps) => css`
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
       'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', 나눔고딕,

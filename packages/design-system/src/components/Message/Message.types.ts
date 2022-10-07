@@ -1,7 +1,7 @@
 export type MessageProps = {
-  id: string;
+  id?: string;
   text: string;
   type?: 'success' | 'info' | 'warning' | 'error';
   delay?: number;
-  onClose?: (id: string) => void;
+  onClose?: (id?: string) => void;
 };

@@ -1,11 +1,10 @@
-import styled from '@emotion/styled';
-import { css, Theme } from '@emotion/react';
-import { typography } from 'styled-system';
+import type { CssProps } from '../../models';
 import type { TextFieldProps } from './TextField.types';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { typography } from 'styled-system';
 
-type StyleProps = TextFieldProps & { theme: Theme };
-
-const borderStyles = ({ border, theme }: StyleProps) =>
+const borderStyles = ({ border, theme }: CssProps<TextFieldProps>) =>
   border &&
   css`
     border: 1px solid ${theme.colors.grey[90]};
@@ -30,11 +29,12 @@ export const Action = styled.div`
   }
 `;
 
-export const Wrapper = styled.div<Partial<TextFieldProps>>`
+export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  box-sizing: border-box;
   > * {
     color: ${({ theme }) => theme.colors.body};
     ${typography};

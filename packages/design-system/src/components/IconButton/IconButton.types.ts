@@ -9,7 +9,10 @@ export type IconButtonProps = {
   /** border을 가지는 IconButton */
   border?: boolean;
 
+  size?: string | number;
+
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-} & Omit<IconProps, 'type'> &
-  Pick<LayoutProps, 'display'> &
+  onMouseEnter?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onMouseLeave?: (event: MouseEvent<HTMLButtonElement>) => void;
+} & LayoutProps &
   SpaceProps;

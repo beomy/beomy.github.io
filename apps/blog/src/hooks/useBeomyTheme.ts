@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { useLocalStorage } from '@beomy/utils';
 import { Theme } from '@/model/theme';
-import { themeState } from '@/stores/themeStore';
+import { themeState } from '@/stores/theme';
 
 type UseBeomyThemeHook = () => [
   Theme | undefined,

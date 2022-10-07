@@ -125,7 +125,12 @@ const plugins = [
             className: `table-of-contents`,
           },
         },
-        `gatsby-remark-autolink-headers`,
+        {
+          resolve: `gatsby-remark-autolink-headers`,
+          options: {
+            isIconAfterHeader: true,
+          },
+        },
         {
           resolve: `gatsby-remark-prismjs`,
           options: {
