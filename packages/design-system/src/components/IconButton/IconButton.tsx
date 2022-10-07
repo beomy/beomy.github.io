@@ -6,10 +6,12 @@ const IconButton = ({
   icon,
   border,
   display,
+  size,
   onClick,
   onMouseEnter,
   onMouseLeave,
-  size,
+  onFocus,
+  onBlur,
   ...props
 }: IconButtonProps) => {
   return (
@@ -19,6 +21,8 @@ const IconButton = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onFocus={onFocus}
+      onBlur={onBlur}
       {...props}
     >
       <Icon type={icon} size={size} />

@@ -17,21 +17,23 @@ export const PostShare = ({ url }: PostShareProps) => {
 
   return (
     <S.Wrapper title="공유하기">
-      <ShareButton target="facebook" url={url} size="24px" />
-      <ShareButton target="twitter" url={url} size="24px" />
-      <ShareButton target="linkedin" url={url} size="24px" />
-      <ShareButton target="line" url={url} size="24px" />
-      <IconButton
-        icon={isHover ? 'BsLink45Deg' : 'BsPaperclip'}
-        size="24px"
-        border
-        aria-label="link"
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onFocus={() => setHover(true)}
-        onBlur={() => setHover(false)}
-        onClick={handleClickChip}
-      />
+      <S.Contents>
+        <ShareButton target="facebook" url={url} size="24px" />
+        <ShareButton target="twitter" url={url} size="24px" />
+        <ShareButton target="linkedin" url={url} size="24px" />
+        <ShareButton target="line" url={url} size="24px" />
+        <IconButton
+          icon={isHover ? 'BsLink45Deg' : 'BsPaperclip'}
+          size="24px"
+          border
+          aria-label="link"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onFocus={() => setHover(true)}
+          onBlur={() => setHover(false)}
+          onClick={handleClickChip}
+        />
+      </S.Contents>
     </S.Wrapper>
   );
 };

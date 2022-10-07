@@ -1,6 +1,6 @@
+import type { AnchorProps } from './Anchor.types';
 import React from 'react';
 import { Link } from 'gatsby';
-import type { AnchorProps } from './Anchor.types';
 import * as S from './Anchor.styles';
 
 const Anchor = (props: AnchorProps) => {

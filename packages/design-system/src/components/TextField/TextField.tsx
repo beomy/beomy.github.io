@@ -1,6 +1,6 @@
+import type { TextFieldProps } from './TextField.types';
 import React, { useMemo, useCallback, useRef, useEffect } from 'react';
 import { useInput } from '@beomy/utils/hooks';
-import type { TextFieldProps } from './TextField.types';
 import * as S from './TextField.styles';
 import IconButton from '../IconButton';
 

@@ -28,7 +28,7 @@ export const MessageExample = () => {
   const [message, setMessage] = useState<MessageTypes.MessageProps[]>([]);
 
   const handleCloseMessage = useCallback(
-    (id: string) => {
+    (id?: string) => {
       setMessage((value) => value.filter((i) => i.id !== id));
     },
     [setMessage],

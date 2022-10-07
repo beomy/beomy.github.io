@@ -1,6 +1,6 @@
+import type { IconProps } from './Icon.types';
 import { useState, useMemo } from 'react';
 import { useUpdateEffect } from '@beomy/utils';
-import type { IconProps } from './Icon.types';
 import * as Icons from '../../icons';
 import * as S from './Icon.styles';
 
