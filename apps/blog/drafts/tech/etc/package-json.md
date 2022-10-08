@@ -6,11 +6,13 @@ category: [tech, etc]
 summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
 ---
 
-`package.json`에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 `package.json`에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
+`package.json`에는 프로젝트에 대한 설명, 종속성 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 `package.json`에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
 
-사용하는 패키지 매니저(npm, yarn 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지([npm](https://docs.npmjs.com/cli/v8/configuring-npm/package-json), [yarn 2.*](https://yarnpkg.com/configuration/manifest))에서 설정 가능한 필드를 확인하는 것이 좋습니다.
+사용하는 패키지 매니저(npm, yarn, pnpm 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지([npm](https://docs.npmjs.com/cli/v8/configuring-npm/package-json), [yarn 2.*](https://yarnpkg.com/configuration/manifest), [pnpm](https://pnpm.io/package_json))에서 설정 가능한 필드를 확인하는 것이 좋습니다.
 
 eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig` 필드)도 `package.json`에서 가능하기 때문에 이러한 설정 역시 사용하는 라이브러리의 공식 홈페이지에서 확인하고 사용하는 것이 좋습니다.
+
+`package.json`에 설정 가능한 필드를 하나씩 살펴보도록 하겠습니다. 필드 이름 옆 괄호로 어떠한 환경에서 설정 가능한 필드인지 나타내었습니다.
 
 # `name`
 `name` 필드는 프로젝트의 이름을 나타냅니다. 아래와 같이 `name` 필드를 작성할 수 있습니다.
@@ -180,7 +182,7 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 ```
 
 # `types` (Typescript)
-`types` 필드는 타입스크립트의 `d.ts` 타입 정의 파일의 경로를 저장하는 필드입니다. 아래 코드와 같이 사용할 수 있습니다.
+`types` 필드는 타입스크립트의 `d.ts` 타입 정의 파일의 경로를 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -190,59 +192,137 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 
 타입 정의 파일의 이름이 `index.d.ts`이고 패키지 루트(`index.js`의 위치)에 있으면 생략 가능합니다.
 
-# bin
-`bin` 필드는
+# `bin`
+`bin` 필드는 실행 가능한 자바스크립트 파일을 상위 패키지에 노출하는데 사용되는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
-- [serve 패키지](https://github.com/vercel/serve/blob/main/package.json)
+```json
+{
+  "bin": {
+    "my-bin": "./dist/my-bin.js"
+  }
+}
+```
 
-# scripts
-- 라이프 사이클
+`bin` 필드의 사용 방법은 글로벌로 설치되어 많이 사용되는 패키지를 살펴보면 쉽게 이해 할 수 있습니다. `create-react-app` 패키지의 `bin` 필드는 아래 코드와 같이 되어 있습니다.
 
-# dependencies
+```json
+{
+  "bin": {
+    "create-react-app": "./index.js"
+  }
+}
+```
+
+# `scripts`
+`scripts` 필드는 실행 명령어를 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "scripts": {
+    "test": "jest",
+    "build": "webpack-cli --config ./webpack.config.js",
+    "count-words": "echo \"$@\" | wc -w"
+  }
+}
+```
+
+NPM의 경우 `npm run test`와 같이 `npm run <scripts 필드에 작성한 명령어>` 형태로 사용할 수 있습니다. Yarn의 경우도 비슷하게 `yarn run <scripts 필드에 작성한 명령어>` 형태로 사용할 수 있는데, `run`을 생략하여 `yarn <scripts 필드에 작성한 명령어>` 형태로도 사용할 수 있습니다.
+
+# `dependencies`
+`dependencies` 필드는 패키지에서 사용되는 종속성들을 나열하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "dependencies": {
+    "foo": "1.0.0 - 2.9999.9999",
+    "bar": ">=1.0.2 <2.1.2",
+    "baz": ">1.0.2 <=2.3.4",
+    "boo": "2.0.1",
+    "qux": "<1.0.0 || >=2.3.1 <2.4.5 || >=2.5.2 <3.0.0",
+    "til": "~1.2",
+    "elf": "~1.2.3",
+    "two": "2.x",
+    "thr": "3.3.x",
+    "lat": "latest",
+    "dyl": "file:../dyl"
+  }
+}
+```
+
+NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용할 경우 `yarn add <종속 패키지 이름>` 명령어를 사용하면 패키지를 다운로드 받고 `dependencies` 필드에 다운로드 된 종속 패키지가 버전 정보와 함께 저장됩니다.
 
 > **패키지 버전 표시 방법**
 >
-> - `version`: Must match version exactly
-> - `>version`: Must be greater than version
-> - `>=version`: etc
-> - `<version`:
-> - `<=version`:
-> - `~version`: "Approximately equivalent to version" See semver
-> - `^version`: "Compatible with version" See semver
-> - `1.2.x`: 1.2.0, 1.2.1, etc., but not 1.3.0
-> - `http://...`: See 'URLs as Dependencies' below
-> - `*`: Matches any version
-> - `""`: (just an empty string) Same as *
-> - `version1 - version2`: Same as >=version1 <=version2.
-> - `range1 || range2`: Passes if either range1 or range2 are satisfied.
-> - `git...`: See 'Git URLs as Dependencies' below
-> - `user/repo`: See 'GitHub URLs' below
-> - `tag`: A specific version tagged and published as tag See npm dist-tag
-> - `path/path/path`: See Local Paths below
+> 패키지에 종속 패키지를 추가할 경우 `dependencies` 필드에 `<패키지 이름>: "<패키지 버전 정보>"` 형태로 저장됩니다. 패키지를 다운로드 받을 때 `<패키지 버전 정보>`와 매칭되는 패키지를 다운로드 받습니다. `<패키지 버전 정보>`의 형태는 아래와 같습니다.
 >
-> ```json
-> {
->   "dependencies": {
->     "foo": "1.0.0 - 2.9999.9999",
->     "bar": ">=1.0.2 <2.1.2",
->     "baz": ">1.0.2 <=2.3.4",
->     "boo": "2.0.1",
->     "qux": "<1.0.0 || >=2.3.1 <2.4.5 || >=2.5.2 <3.0.0",
->     "asd": "http://asdf.com/asdf.tar.gz",
->     "til": "~1.2",
->     "elf": "~1.2.3",
->     "two": "2.x",
->     "thr": "3.3.x",
->     "lat": "latest",
->     "dyl": "file:../dyl"
->   }
-> }
-> ```
+> - `version`: 정확한 `version`의 패키지와 매칭됩니다.
+> - `1.2.x`: `1.2.0`, `1.2.1`와 깉이 `1.2` 버전 대역의 패키지와 매칭됩니다.
+> - `>version`: `version`보다 큰 버전의 패키지와 매칭됩니다.
+> - `>=version`: `version`보다 크거나 같은 버전의 패키지와 매칭됩니다.
+> - `<version`: `version`보다 작은 버전의 패키지와 매칭됩니다.
+> - `<=version`: `version`보다 작거나 같은 버전의 패키지와 매칭됩니다.
+> - `~version`: `verison`과 가장 동일한 버전의 패키지와 매칭됩니다. 예를 들어,
+>   - `~1.2.3`은 `>=1.2.3 <1.3.0-0`과 동일한 의미입니다.
+>   - `~1.2`는 `>=1.2.0 <1.3.0-0`과 `1.2.x`와 동일한 의미입니다.
+>   - `~1`은 `>=1.0.0 <2.0.0-0`과 `1.x`와 동일한 의미입니다.
+> - `^version`: `version`과 호환 가능한 버전의 패키지와 매칭됩니다. 예를 들어,
+>   - `^1.2.3`은 `>=1.2.3 <2.0.0-0`과 동일한 의미입니다.
+>   - `^0.2.3`은 `>=0.2.3 <0.3.0-0`과 동일한 의미입니다.
+>   - `^0.0.3`은 `>=0.0.3 <0.0.4-0`과 동일한 의미입니다.
+> - `*`: 모든 버전의 패키지와 매칭됩니다.
+> - `""`(공백 문자): `*`와 동일합니다.
+> - `version1 - version2`: `>=version1 <=version2`와 동일합니다.
+> - `range1 || range2`: `range1` 또는 `range2`에 만족하는 버전의 패키지와 매칭됩니다.
+> - `path/path/path`: `pathe/path/path` 로컬 경로에 해당하는 패키지와 매칭됩니다.
 
-# devDependencies
+# `devDependencies`
+`devDependencies` 필드는 개발 종속성들을 나열하는 필드입니다. `dependencies` 필드와 동일하게 작성합니다. `devDependencies` 필드에 나열된 종속성들은 패키지 개발자의 로컬에는 설치되지만, 패키지를 소비하는 소비자에게는 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
 
-# peerDependencies
-- require(import) 하지 않지만 특정 라이브러리나 툴에 호환성이 필요할 경우 사용되는 dependencies
+```json
+{
+  "devDependencies": {
+    "webpack": "^5.0.0"
+  }
+}
+```
+
+# `peerDependencies`
+`peerDependencies` 종속성은 상속되어야 하는 종속성을 나열하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  }
+}
+```
+
+상속되어야 하는 종속성이란 패키지 개발에 필요한 종속성을 peer(해석하면 또래)에게서 재공받는 종속성입니다.
+
+예를 들어 react와 emotion을 사용하여 UI 컴포넌트를 패키지로 만든다고 하면, react나 emotion은 UI 컴포넌트 패키지 입장에서는 패키지 소비자에게서 제공받아야 합니다. 별도의 react와 emotion을 사용하면 소비자와 제공자가 각각의 react, emotion을 가지고 있기 때문에 react, emotion 패키지 내부의 데이터(예를 들면 emotion의 테마 정보)를 소비자와 제공자가 공유해 사용할 수 없게 됩니다.
+
+# `dependenciesMeta` (Yarn 2.*, PNPM)
+`dependenciesMeta` 필드는 `dependencies` 필드와 `devDependencies` 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 프로젝트가 모노레포로 구성되어 여러개의 workspace가 있는 경우 프로젝트 루트의 `package.json`에 정의되어야 합니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "dependenciesMeta": {
+    "fsevents": {
+      "built": false,
+      "optional": false,
+      "unplugged": false
+    }
+  }
+}
+```
+
+추가 설정 할 패키지 이름을 키로 하고 값으로 오는 객체에 Yarn 2.*에서는 `build`, `optional`, `unplugged`을 PNPM에서는 `injected` 설정을 추가할 수 있습니다. 각각의 설정의 내용은 아래와 같습니다.
+
+- `built`(Yarn 2.*):
+- `optional`(Yarn 2.*):
+- `unplugged`(Yarn 2.*):
+- `injected`(PNPM):
 
 # peerDependenciesMeta
 
@@ -252,18 +332,25 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 # optionalDependencies
 
 # overrides
+pnpm의 경우 `pnpm.overrides`
 
 # private
-```
-"private": true
+```json
+{
+  "private": true
+}
 ```
 
 # publishConfig
-- types 안됨
+패키지 매니저에 따라 어떠한 값들이 오버라이드 되는지 다름
+
 - exports 됨
 - main 됨
+- types 안됨
 
-# 기타 필드
+# 부록
+
+## 기타 필드
 - description
 - keywords
 - homepage
@@ -280,7 +367,11 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 - resolutions(yarn)
 - imports(node)
 
-# 외부 라이브러리 연동
+## script life cycle
+- 라이프 사이클
+- yarn에서는 pre post 라이프 사이클 불가능 [https://yarnpkg.com/advanced/lifecycle-scripts](https://yarnpkg.com/advanced/lifecycle-scripts)
+
+## 외부 라이브러리 연동
 - eslint
 - prettier
 - lint-staged
@@ -295,3 +386,8 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 - [https://heropy.blog/2019/01/31/node-js-npm-module-publish/](https://heropy.blog/2019/01/31/node-js-npm-module-publish/)
 - [https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH와-명세에-관하여](https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH와-명세에-관하여)
 - [https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html](https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html)
+- [https://docs.npmjs.com/cli/v8/using-npm/scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts)
+- [https://yarnpkg.com/advanced/lifecycle-scripts](https://yarnpkg.com/advanced/lifecycle-scripts)
+- [https://github.com/npm/node-semver#versions](https://github.com/npm/node-semver#versions)
+- [https://pnpm.io/package_json](https://pnpm.io/package_json)
+- [https://dev.to/arcanis/introducing-yarn-2-4eh1](https://dev.to/arcanis/introducing-yarn-2-4eh1)
