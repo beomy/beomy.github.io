@@ -319,8 +319,8 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 
 추가 설정 할 패키지 이름을 키로 하고 값으로 오는 객체에 Yarn 2.*에서는 `build`, `optional`, `unplugged`을 PNPM에서는 `injected` 설정을 추가할 수 있습니다. 각각의 설정의 내용은 아래와 같습니다.
 
-- `built`(Yarn 2.*):
-- `optional`(Yarn 2.*):
+- `built`(Yarn 2.*): 빌드 스크립트를 실행할지 실행하지 않을지 결정하는 플레그입니다. `false`를 지정하면 빌드 스크립트를 실행하지 않습니다. `.yarnrc.yml` 파일에 `enableScripts: false`를 저장하면 모든 패키지의 빌드 스크립트를 실행하지 않게 됩니다.
+- `optional`(Yarn 2.*): 빌드가 성공했는지
 - `unplugged`(Yarn 2.*):
 - `injected`(PNPM):
 
