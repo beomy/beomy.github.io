@@ -77,6 +77,15 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 저
 - vue3: pnpm
 - next: Turborepo + pnpm
 
+# 부록
+
+## Yarn의 Unplugged
+- [https://imch.dev/posts/commitizen-with-yarn-pnp/](https://imch.dev/posts/commitizen-with-yarn-pnp/)
+- [https://yarnpkg.com/getting-started/qa](https://yarnpkg.com/getting-started/qa)
+- [https://yarnpkg.com/configuration/yarnrc#enableScripts](https://yarnpkg.com/configuration/yarnrc#enableScripts)
+- [https://yarnpkg.com/advanced/lexicon#unplugged-package](https://yarnpkg.com/advanced/lexicon#unplugged-package)
+
+
 #### 참고
 - [https://2021.stateofjs.com/en-US/libraries/monorepo-tools](https://2021.stateofjs.com/en-US/libraries/monorepo-tools)
 - [https://velog.io/@sms8377/DevOps-MonoRepo린](https://velog.io/@sms8377/DevOps-MonoRepo린)
