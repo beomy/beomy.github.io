@@ -8,7 +8,7 @@ summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스
 
 `package.json`에는 프로젝트에 대한 설명, 종속성 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 `package.json`에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
 
-사용하는 패키지 매니저(npm, yarn, pnpm 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지([npm](https://docs.npmjs.com/cli/v8/configuring-npm/package-json), [yarn 2.*](https://yarnpkg.com/configuration/manifest), [pnpm](https://pnpm.io/package_json))에서 설정 가능한 필드를 확인하는 것이 좋습니다.
+사용하는 패키지 매니저(npm, yarn, pnpm 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지([npm](https://docs.npmjs.com/cli/v8/configuring-npm/package-json), [yarn 2+](https://yarnpkg.com/configuration/manifest), [pnpm](https://pnpm.io/package_json))에서 설정 가능한 필드를 확인하는 것이 좋습니다.
 
 eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig` 필드)도 `package.json`에서 가능하기 때문에 이러한 설정 역시 사용하는 라이브러리의 공식 홈페이지에서 확인하고 사용하는 것이 좋습니다.
 
@@ -87,7 +87,7 @@ import BeomyLib from 'beomy-lib'
 // Loads ./node_modules/beomy-lib/lib/index.js
 ```
 
-# `module` (Yarn 2.*)
+# `module` (Yarn 2+)
 `module` 필드는 `main` 필드와 유사한 목적으로 사용 되는 필드입니다. ES6 호환 환경에서 패키지를 사용할 때 진입되는 경로입니다. 아래와 같이 작성할 수 있습니다.
 
 ```json
@@ -302,7 +302,21 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 
 예를 들어 react와 emotion을 사용하여 UI 컴포넌트를 패키지로 만든다고 하면, react나 emotion은 UI 컴포넌트 패키지 입장에서는 패키지 소비자에게서 제공받아야 합니다. 별도의 react와 emotion을 사용하면 소비자와 제공자가 각각의 react, emotion을 가지고 있기 때문에 react, emotion 패키지 내부의 데이터(예를 들면 emotion의 테마 정보)를 소비자와 제공자가 공유해 사용할 수 없게 됩니다.
 
-# `dependenciesMeta` (Yarn 2.*, PNPM)
+# `bundleDependencies` (NPM)
+`bundleDependencies` 필드는 `bundledDependencies` 이름으로 사용될 수 있습니다. `bundledDependencies` 이름 그대로 패키지를 배포(publish) 할 때 번들로 제공할 패키지를 배열로 정의합니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "bundleDependencies": [
+    "renderized",
+    "super-streams"
+  ]
+}
+```
+
+# optionalDependencies
+
+# `dependenciesMeta` (Yarn 2+, PNPM)
 `dependenciesMeta` 필드는 `dependencies` 필드와 `devDependencies` 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 프로젝트가 모노레포로 구성되어 여러개의 workspace가 있는 경우 프로젝트 루트의 `package.json`에 정의되어야 합니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
@@ -317,19 +331,27 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 }
 ```
 
-추가 설정 할 패키지 이름을 키로 하고 값으로 오는 객체에 Yarn 2.*에서는 `build`, `optional`, `unplugged`을 PNPM에서는 `injected` 설정을 추가할 수 있습니다. 각각의 설정의 내용은 아래와 같습니다.
+설정 할 패키지 이름을 키로 하고 값으로 오는 객체에 Yarn 2+에서는 `build`, `optional`, `unplugged`, PNPM에는 `injected` 설정을 추가할 수 있습니다. 각각의 설정의 내용은 아래와 같습니다.
 
-- `built`(Yarn 2.*): 빌드 스크립트를 실행할지 실행하지 않을지 결정하는 플레그입니다. `false`를 지정하면 빌드 스크립트를 실행하지 않습니다. `.yarnrc.yml` 파일에 `enableScripts: false`를 저장하면 모든 패키지의 빌드 스크립트를 실행하지 않게 됩니다.
-- `optional`(Yarn 2.*): 빌드가 성공했는지
-- `unplugged`(Yarn 2.*):
-- `injected`(PNPM):
+- `built`(Yarn 2+): Yarn 2+에서 사용하는 플래그로, 빌드 스크립트를 실행할지 실행하지 않을지 결정하는 플레그입니다. `false`를 지정하면 빌드 스크립트를 실행하지 않습니다. `.yarnrc.yml` 파일에 `enableScripts: false`를 저장하면 모든 패키지의 빌드 스크립트를 실행하지 않게 됩니다.
+- `optional`(Yarn 2+): Yarn 2+에서 사용하는 플래그로, 단어 그대로 옵셔널을 설정활 수 있는 플래그입니다. `true`를 지정하면 성공한 것으로 판단되어 `os`, `cpu`, `libc` 등의 패키지 제약을 설정하는 필드들을 무시하게 됩니다. 이 옵션이 `true`로 설정된 패키지는 패키지가 컴파일 될 때 `optionalDependencies` 필드에 작성되어 집니다.
+- `unplugged`(Yarn 2+): Yarn 2+에서 사용하는 플래그로, 자바스크립트가 아닌 다른 언어로 된 스크립트를 포함하는 패키지에만 필요한 설정입니다. `true`인 경우 설치시 `.yarn/unplugged` 디렉토리(`.yarnrc.yml` 설정에서 디렉토리 이름 변경 가능)로 분리됩니다.
+- `injected`(PNPM): PNPM에서 사용하는 플래그로, `true`로 설정하면 패키지가 심볼릭 링크가 아닌 하드 링크됩니다.
 
-# peerDependenciesMeta
+# `peerDependenciesMeta`
+`peerDependenciesMeta` 필드는 `peerDependencies` 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
-# bundleDependencies
-- bundledDependencies
+```json
+{
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  }
+}
+```
 
-# optionalDependencies
+`optional` 값을 `true`로 설정할 경우 패키지 소비자쪽에서 `peerDependencies`로 패키지를 추가하지 않아도 에러가 발생하지 않게 됩니다.
 
 # overrides
 pnpm의 경우 `pnpm.overrides`
