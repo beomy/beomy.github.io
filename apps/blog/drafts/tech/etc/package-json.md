@@ -181,8 +181,27 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 // Loads ./node_modules/beomy-lib/feature/utils.js
 ```
 
+# `imports` (Node)
+`exports` 필드가 패키지 소비자에게 패키지를 진입할 수 있는 진입점을 제공하는 필드라면, `imports` 필드는 패키지를 개발하는 생성자에게 진입점을 제공하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "imports": {
+    "#dep": {
+      "node": "dep-node-native",
+      "default": "./dep-polyfill.js"
+    }
+  },
+  "dependencies": {
+    "dep-node-native": "^1.0.0"
+  }
+}
+```
+
+외부 패키지와 구분될 수 있도록 `#`으로 시작해야 합니다. 위의 코드와 같이 조건별로 진입점을 다르게 제공할 수 있습니다. 패키지 생성자는 `import #dep`로 가져와 사용할 수 있습니다.
+
 # `types` (Typescript)
-`types` 필드는 타입스크립트의 `d.ts` 타입 정의 파일의 경로를 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+`types` 필드는 타입스크립트의 `d.ts` 타입 정의 파일의 경로를 저장하는 필드입니다. `types` 필드 대신 `typings` 필드를 사용할 수 있습니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -228,6 +247,59 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 
 NPM의 경우 `npm run test`와 같이 `npm run <scripts 필드에 작성한 명령어>` 형태로 사용할 수 있습니다. Yarn의 경우도 비슷하게 `yarn run <scripts 필드에 작성한 명령어>` 형태로 사용할 수 있는데, `run`을 생략하여 `yarn <scripts 필드에 작성한 명령어>` 형태로도 사용할 수 있습니다.
 
+# `engines` (NPM, PNPM)
+`engines` 필드는 패키지가 동작하는 Node, 패키지 매니저(NPM, PNPM)를 지정하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "engines": {
+    "node": ">=0.10.3 <15",
+    "npm": "~1.0.20",
+    "pnpm": ">=3" // PNPM을 사용한다면,
+  }
+}
+```
+
+해당 패키지 소비자의 `.npmrc` 설정 중 `engine-strict`가 설정되어 있지 않다면 `engines` 필드는 권고 사항으로 인정됩니다. 해당 패키지가 `dependencies`에 작성되었다면 패키지가 설치될 때 경고가 발생합니다.
+
+# `os`
+`os` 필드는 허용되는 os 목록을 저장하는 필드입니다. 패키지를 설치할 때 `process.platform` 값과 비교하여 일치하는 값이 없을 경우 `dependencies`에 작성된 패키지였다면 `postinstall` 스크립트가 실행되지 않고, `optionalDependencies`에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "os": [
+    "linux",
+    "darwin",
+    "win32"
+  ]
+}
+```
+
+# `cpu`
+`cpu` 필드는 허용되는 cpu 목록을 저장하는 필드이니다. 패키지를 설치할 때 `process.arch` 값과 비교하여 일치하는 값이 없을 경우 `dependencies`에 작성된 패키지였다면 `postinstall` 스크립트가 실행되지 않고, `optionalDependencies`에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "cpu": [
+    "x64",
+    "ia32",
+    "arm64"
+  ]
+}
+```
+
+# `libc` (Yarn 2+)
+`libc` 필드는 허용하는 표준 C 라이브러리 목록을 저장하는 필드입니다. 패키지를 설치할 때 호스트의 표준 C 라이브러리와 비교하여 일치하는 값이 없을 경우 `dependencies`에 작성된 패키지였다면 `postinstall` 스크립트가 실행되지 않고, `optionalDependencies`에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "libc": [
+    "glibc",
+    "musl"
+  ]
+}
+```
+
 # `dependencies`
 `dependencies` 필드는 패키지에서 사용되는 종속성들을 나열하는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
@@ -249,11 +321,11 @@ NPM의 경우 `npm run test`와 같이 `npm run <scripts 필드에 작성한 명
 }
 ```
 
-NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용할 경우 `yarn add <종속 패키지 이름>` 명령어를 사용하면 패키지를 다운로드 받고 `dependencies` 필드에 다운로드 된 종속 패키지가 버전 정보와 함께 저장됩니다.
+NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용할 경우 `yarn add <종속 패키지 이름>` 명령어를 사용하면 패키지를 설치하고 `dependencies` 필드에 설치 된 종속 패키지가 버전 정보와 함께 저장됩니다.
 
 > **패키지 버전 표시 방법**
 >
-> 패키지에 종속 패키지를 추가할 경우 `dependencies` 필드에 `<패키지 이름>: "<패키지 버전 정보>"` 형태로 저장됩니다. 패키지를 다운로드 받을 때 `<패키지 버전 정보>`와 매칭되는 패키지를 다운로드 받습니다. `<패키지 버전 정보>`의 형태는 아래와 같습니다.
+> 패키지에 종속 패키지를 추가할 경우 `dependencies` 필드에 `<패키지 이름>: "<패키지 버전 정보>"` 형태로 저장됩니다. 패키지를 설치할 때 `<패키지 버전 정보>`와 매칭되는 패키지를 설치합니다. `<패키지 버전 정보>`의 형태는 아래와 같습니다.
 >
 > - `version`: 정확한 `version`의 패키지와 매칭됩니다.
 > - `1.2.x`: `1.2.0`, `1.2.1`와 깉이 `1.2` 버전 대역의 패키지와 매칭됩니다.
@@ -314,7 +386,16 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 }
 ```
 
-# optionalDependencies
+# `optionalDependencies`
+`optionalDependencies` 필드는 이름 그대로 선택적 종속성 패키지를 나열하는 필드입니다. 종속성이 사용되지만 패키지를 찾을 수 없거나 설치에 실패한 경우에도 패키지 설치를 계속 진행하기 위해 사용하는 필드 입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "optionalDependencies": {
+    "fsevents": "^5.0.0"
+  }
+}
+```
 
 # `dependenciesMeta` (Yarn 2+, PNPM)
 `dependenciesMeta` 필드는 `dependencies` 필드와 `devDependencies` 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 프로젝트가 모노레포로 구성되어 여러개의 workspace가 있는 경우 프로젝트 루트의 `package.json`에 정의되어야 합니다. 아래와 같이 사용할 수 있습니다.
@@ -353,43 +434,107 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 
 `optional` 값을 `true`로 설정할 경우 패키지 소비자쪽에서 `peerDependencies`로 패키지를 추가하지 않아도 에러가 발생하지 않게 됩니다.
 
-# overrides
-pnpm의 경우 `pnpm.overrides`
+# `overrides` (NPM)
+NPM에서 `overrides` 필드는 종속성의 종속성 버전을 바꾸기 위해서 사용됩니다. 아래 코드와 같이 사용할 수 있습니다.
 
-# private
+```json
+{
+  "overrides": {
+    "foo": "1.0.0", // `dependencies`에 의해 설치된 버전과 상관없이 항상 1.0.0버전의 foo 패키지가 설치됩니다.
+    "bar": {
+      ".": "1.0.0", // `dependencies`에 의해 설치된 버전과 상관없이 항상 1.0.0버전의 bar 패키지가 설치됩니다.
+      "baz": "1.0.0" // bar 패키지의 baz 종속 패키지의 버전을 1.0.0으로 설치합니다.
+    },
+    "boo": {
+      "qux": {
+        "til": "1.0.0" // boo 패키지의 qux 종속 패키지의 til 종속 패키지의 버전을 1.0.0으로 설치합니다.
+      }
+    },
+    "elf@2.0.0": {
+      "two": "1.0.0" // 2.0.0 버전의 elf 패키지의 two 종속 패키지의 버전을 1.0.0으로 설치합니다.
+    }
+  }
+}
+```
+
+위의 코드와 같이 종속 패키지의 버전을 특정할 때 깊이를 조절할 수 있으며, 특정 버전의 패키지 종속성만 버전을 수정할 수도 있습니다.
+
+PNPM의 경우 `pnpm.overrides`, `resolutions` 필드가, Yarn 2+의 경우 `resolutions` 필드가 `overrides` 필드와 동일한 기능을 합니다.
+
+# `resolutions` (Yarn 2+, PNPM)
+`resolutions` 필드는 NPM의 `overrides` 필드와 동일한 기능을 하지만 사용 방법이 조금 다릅니다. `resolutions` 필드는 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "resolutions": {
+    "relay-compiler": "3.0.0",
+    "webpack/memory-fs": "0.4.1",
+    "@babel/core/json5": "2.1.0",
+    "@babel/core/@babel/generator": "7.3.4",
+    "@babel/core@npm:7.0.0/@babel/generator": "7.3.4"
+  }
+}
+```
+
+# `private`
+`private` 필드의 값을 `true`로 설정하면 패키지 배포(publish)가 되지 않습니다. 아래와 같이 사용할 수 있습니다.
+
 ```json
 {
   "private": true
 }
 ```
 
-# publishConfig
-패키지 매니저에 따라 어떠한 값들이 오버라이드 되는지 다름
+# `publishConfig`
+`publishConfig` 필드를 사용하면 패키지를 배포(publish) 할 때 몇가지 설정들을 오버라이드 할 수 있습니다. 패키지 매니저에 따라 오버라이드 할 수 있는 값들이 다르기 때문에 패키지 매니저의 공식 문서에서 오버라이드 되는 필드들을 확인하는 것이 좋습니다. 아래와 같이 사용할 수 있습니다.
 
-- exports 됨
-- main 됨
-- types 안됨
+```json
+{
+  "publishConfig": {
+    "access": "public",
+    "bin": "./build/bin.js",
+    "browser": "./build/browser.js",
+    "executableFiles": [
+      "./dist/shim.js"
+    ],
+    "main": "./build/index.js",
+    "exports": {
+      ".": "./build/index.js",
+      "./lib": "./build/index.js",
+      "./feature": "./build/feature/index.js"
+    },
+    "module": "./build/index.mjs",
+    "registry": "https://npm.pkg.github.com"
+  }
+}
+```
+
+Yarn 2+에서는 `bin`, `browser`, `main`, `module`, `exports` 필드를 오버라이드 할 수 있고, `access`, `executableFiles`, `registry` 필드를 추가로 설정할 수 있습니다.
+- `access`: NPM에 패키지를 공개할지 공개하지 않을지 결정하는 필드입니다. `public`, `restricted` 두 개의 값 중 하나를 설정해야 하는데, `restricted`을 설정하면 패키지가 비공개 됩니다.
+- `executableFiles`: 기본적으로 `bin` 필드에 나열된 파일 외에는 실행 가능한 파일로 표시되지 않습니다. `executableFiles` 필드를 사용하면 `bin` 필드를 통해 직접 실행할 수 없는 경우에도 실행가능 플래그(+x - 파일 권한 r(read), w(write), x(excute) 중 x)가 설정됩니다.
+- `registry`: 패키지의 레지스토리 경로를 저장하는 필드입니다.
+
+PNPM에서는 `bin`, `main`, `exports`, `types`(또는 `typings`), `module`, `browser`, `cpu`, `os` 필드 등을 오버라이드 할 수 있고, `executableFiles`, `directory`, `linkDirectory` 필드를 추가로 설정할 수 있습니다.
+- `executableFiles`: Yarn 2+와 동일한 기능을 하는 필드입니다.
+- `directory`: 현재 `package.json` 위치를 기준을 배포(publish) 되는 디렉토리를 저장하는 필드입니다.
+- `linkDirectory`: `true`로 설정할 경우 개발 중에 `publishConfig.directory` 위치에 심볼릭 링크가 생성됩니다.
 
 # 부록
 
 ## 기타 필드
-- description
+위에서 이야기한 필드들은 패키지를 개발할 때 코드와 연관되어 있는 필드들입니다. 아래 목록은 코드와는 조금은 상관 없은 필드들입니다.
+- `description`:
 - keywords
 - homepage
 - bugs
 - license
 - author, contributors
 - funding
-- engines
-- os
-- cpu
 - man
 - directories: [npm package.json](https://github.com/npm/cli/blob/latest/package.json)
 - repository
-- resolutions(yarn)
-- imports(node)
 
-## script life cycle
+## Script life cycle
 - 라이프 사이클
 - yarn에서는 pre post 라이프 사이클 불가능 [https://yarnpkg.com/advanced/lifecycle-scripts](https://yarnpkg.com/advanced/lifecycle-scripts)
 
