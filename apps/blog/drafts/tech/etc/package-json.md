@@ -96,7 +96,7 @@ import BeomyLib from 'beomy-lib'
 }
 ```
 
-# `browser` (NPM)
+# `browser`
 `browser` 필드는 패키지가 클라이언트 사이드(Client side), 브라우저에서 사용되는 패키지라면 `main` 필드 대신 사용되는 필드입니다. 아래와 같이 작성할 수 있습니다.
 
 ```json
@@ -510,11 +510,13 @@ PNPM의 경우 `pnpm.overrides`, `resolutions` 필드가, Yarn 2+의 경우 `res
 ```
 
 Yarn 2+에서는 `bin`, `browser`, `main`, `module`, `exports` 필드를 오버라이드 할 수 있고, `access`, `executableFiles`, `registry` 필드를 추가로 설정할 수 있습니다.
+
 - `access`: NPM에 패키지를 공개할지 공개하지 않을지 결정하는 필드입니다. `public`, `restricted` 두 개의 값 중 하나를 설정해야 하는데, `restricted`을 설정하면 패키지가 비공개 됩니다.
 - `executableFiles`: 기본적으로 `bin` 필드에 나열된 파일 외에는 실행 가능한 파일로 표시되지 않습니다. `executableFiles` 필드를 사용하면 `bin` 필드를 통해 직접 실행할 수 없는 경우에도 실행가능 플래그(+x - 파일 권한 r(read), w(write), x(excute) 중 x)가 설정됩니다.
 - `registry`: 패키지의 레지스토리 경로를 저장하는 필드입니다.
 
 PNPM에서는 `bin`, `main`, `exports`, `types`(또는 `typings`), `module`, `browser`, `cpu`, `os` 필드 등을 오버라이드 할 수 있고, `executableFiles`, `directory`, `linkDirectory` 필드를 추가로 설정할 수 있습니다.
+
 - `executableFiles`: Yarn 2+와 동일한 기능을 하는 필드입니다.
 - `directory`: 현재 `package.json` 위치를 기준을 배포(publish) 되는 디렉토리를 저장하는 필드입니다.
 - `linkDirectory`: `true`로 설정할 경우 개발 중에 `publishConfig.directory` 위치에 심볼릭 링크가 생성됩니다.
@@ -523,10 +525,11 @@ PNPM에서는 `bin`, `main`, `exports`, `types`(또는 `typings`), `module`, `br
 
 ## 기타 필드
 위에서 이야기한 필드들은 패키지를 개발할 때 코드와 연관되어 있는 필드들입니다. 아래 목록은 코드와는 조금은 상관 없은 필드들입니다.
-- `description`:
-- keywords
-- homepage
-- bugs
+
+- `description`: 패키지에 대한 설명을 저장하는 필드입니다.
+- `keywords`: 패키지의 키워드를 나열하는 필드입니다. `npm search`로 사용자들이 필요한 패키지를 검색할 때 사용되는 정보입니다.
+- `homepage`: 패키지의 홈페이지 주소를 저장하는 필드입니다.
+- `bugs`:
 - license
 - author, contributors
 - funding
@@ -539,6 +542,7 @@ PNPM에서는 `bin`, `main`, `exports`, `types`(또는 `typings`), `module`, `br
 - yarn에서는 pre post 라이프 사이클 불가능 [https://yarnpkg.com/advanced/lifecycle-scripts](https://yarnpkg.com/advanced/lifecycle-scripts)
 
 ## 외부 라이브러리 연동
+안써도 될 듯
 - eslint
 - prettier
 - lint-staged
