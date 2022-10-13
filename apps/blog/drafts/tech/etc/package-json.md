@@ -512,7 +512,7 @@ PNPM의 경우 `pnpm.overrides`, `resolutions` 필드가, Yarn 2+의 경우 `res
 Yarn 2+에서는 `bin`, `browser`, `main`, `module`, `exports` 필드를 오버라이드 할 수 있고, `access`, `executableFiles`, `registry` 필드를 추가로 설정할 수 있습니다.
 
 - `access`: NPM에 패키지를 공개할지 공개하지 않을지 결정하는 필드입니다. `public`, `restricted` 두 개의 값 중 하나를 설정해야 하는데, `restricted`을 설정하면 패키지가 비공개 됩니다.
-- `executableFiles`: 기본적으로 `bin` 필드에 나열된 파일 외에는 실행 가능한 파일로 표시되지 않습니다. `executableFiles` 필드를 사용하면 `bin` 필드를 통해 직접 실행할 수 없는 경우에도 실행가능 플래그(+x - 파일 권한 r(read), w(write), x(excute) 중 x)가 설정됩니다.
+- `executableFiles`: 기본적으로 `bin` 필드에 나열된 파일 외에는 실행 가능한 파일로 표시되지 않습니다. `executableFiles` 필드를 사용하면 `bin` 필드를 통해 직접 실행할 수 없는 경우에도 실행가능 플래그(파일 권한 r(read), w(write), x(excute) 중 x)가 설정됩니다.
 - `registry`: 패키지의 레지스토리 경로를 저장하는 필드입니다.
 
 PNPM에서는 `bin`, `main`, `exports`, `types`(또는 `typings`), `module`, `browser`, `cpu`, `os` 필드 등을 오버라이드 할 수 있고, `executableFiles`, `directory`, `linkDirectory` 필드를 추가로 설정할 수 있습니다.
@@ -521,31 +521,212 @@ PNPM에서는 `bin`, `main`, `exports`, `types`(또는 `typings`), `module`, `br
 - `directory`: 현재 `package.json` 위치를 기준을 배포(publish) 되는 디렉토리를 저장하는 필드입니다.
 - `linkDirectory`: `true`로 설정할 경우 개발 중에 `publishConfig.directory` 위치에 심볼릭 링크가 생성됩니다.
 
-# 부록
+# `workspaces` (NPM, Yarn 2+)
+`workspaces` 필드는 프로젝트를 모노레포로 구성할 때 하위 프로젝트를 나열하는 필드입니다. glob 패턴으로 작성할 수 있습니다. 아래와 같이 사용할 수 있습니다.
 
-## 기타 필드
-위에서 이야기한 필드들은 패키지를 개발할 때 코드와 연관되어 있는 필드들입니다. 아래 목록은 코드와는 조금은 상관 없은 필드들입니다.
+```json
+{
+  "workspaces": [
+    "packages/*"
+  ]
+}
+```
 
-- `description`: 패키지에 대한 설명을 저장하는 필드입니다.
-- `keywords`: 패키지의 키워드를 나열하는 필드입니다. `npm search`로 사용자들이 필요한 패키지를 검색할 때 사용되는 정보입니다.
-- `homepage`: 패키지의 홈페이지 주소를 저장하는 필드입니다.
-- `bugs`:
-- license
-- author, contributors
-- funding
-- man
-- directories: [npm package.json](https://github.com/npm/cli/blob/latest/package.json)
-- repository
+NPM과 Yarn의 경우 `package.json`의 `workspaces` 필드를 사용하여 모노레포를 구현할 수 있지만, PNPM의 경우 `pnpm-workspace.yaml` 파일에 하위 프로젝트를 저장하여 모노레포를 구현하게 됩니다.
 
-## Script life cycle
-- 라이프 사이클
-- yarn에서는 pre post 라이프 사이클 불가능 [https://yarnpkg.com/advanced/lifecycle-scripts](https://yarnpkg.com/advanced/lifecycle-scripts)
+# `description`
+패키지에 대한 설명을 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
-## 외부 라이브러리 연동
-안써도 될 듯
-- eslint
-- prettier
-- lint-staged
+```json
+{
+  "description": "A packaged foo fooer for fooing foos"
+}
+```
+
+# `keywords`
+패키지의 키워드를 나열하는 필드입니다. `npm search`로 사용자들이 필요한 패키지를 검색할 때 사용되는 정보입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "keywords": ["xhr", "http", "ajax", "promise", "node"]
+}
+```
+
+# `homepage`
+패키지의 홈페이지 주소를 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "homepage": "https://beomy.github.io"
+}
+```
+
+# `bugs`
+패키지의 이슈가 있을 경우 제보할 수 있는 이메일이나 url을 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "bugs": {
+    "url" : "https://github.com/owner/project/issues",
+    "email" : "project@hostname.com"
+  }
+}
+```
+url만 제공하고 싶을 경우 `"bugs": "https://github.com/owner/project/issues"`이렇게 문자열을 저장하면 됩니다.
+
+# `license`
+패키지의 라이센스를 표시하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "license" : "BSD-3-Clause",
+  "license" : "(ISC OR GPL-3.0)", // 여러개의 라이센스를 가지고 있을 때
+  "license" : "SEE LICENSE IN <filename>" // 커스텀한 라이센스를 표시할 때
+}
+```
+
+아래와 같은 방식은 더이상 사용되지 않습니다.
+
+```json
+// Not valid metadata
+{
+  "license" : {
+    "type" : "ISC",
+    "url" : "https://opensource.org/licenses/ISC"
+  }
+}
+```
+
+```json
+// Not valid metadata
+{
+  "licenses" : [
+    {
+      "type": "MIT",
+      "url": "https://www.opensource.org/licenses/mit-license.php"
+    },
+    {
+      "type": "Apache-2.0",
+      "url": "https://opensource.org/licenses/apache2.0.php"
+    }
+  ]
+}
+```
+
+# `author`, `contributors`
+`author`, `contributors` 두 개의 필드는 모두 패키지를 만드는데 기여한 사람들을 저장할 때 사용되는 필드입니다.
+
+`author` 필드는 한 사람을 표시할 수 있습니다. 아래와 같이 사용할 수 있습니다.
+```json
+{
+  "author": {
+    "name": "Hyo Bum lee",
+    "email": "beomyh.lee@gmail.com",
+    "url": "https://beomy.github.io"
+  },
+  "author": "Hyo Bum lee <beomyh.lee@gmail.com> (https://beomy.github.io)" // 한 줄로 표시할 수 있습니다.
+}
+```
+
+`contributors` 필드는 여러 사람을 배열로 표시할 수 있습니다.
+```json
+{
+  "contributors": [
+    {
+      "name": "Hyo Bum lee",
+      "email": "beomyh.lee@gmail.com",
+      "url": "https://beomy.github.io"
+    },
+    {
+      "name": "Beomy",
+      "email": "beomyh.lee@gmail.com",
+      "url": "https://beomy.github.io"
+    }
+  ]
+}
+```
+
+# `funding`
+패키지 개발자에게 펀딩할 수 있는 경로를 표시하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "funding": {
+    "type" : "individual",
+    "url" : "http://example.com/donate"
+  },
+  "funding": {
+    "type" : "patreon",
+    "url" : "https://www.patreon.com/my-account"
+  },
+  "funding": "http://example.com/donate",
+  "funding": [
+    {
+      "type" : "individual",
+      "url" : "http://example.com/donate"
+    },
+    "http://example.com/donateAlso",
+    {
+      "type" : "patreon",
+      "url" : "https://www.patreon.com/my-account"
+    }
+  ]
+}
+```
+
+# `man`
+manual 프로그램이 읽은 파일 혹인 파일 배열을 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "man": "./man/doc.1",
+  "man": [
+    "./man/foo.1",
+    "./man/bar.1"
+  ]
+}
+```
+
+# `directories`
+CommonJS 패키지 스펙에서는 `directories` 필드를 사용하여 패키지 구성을 나타낼 수 있습니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "directories": {
+    "bin": "./bin",
+    "doc": "./doc",
+    "lib": "./lib",
+    "man": "./man"
+  }
+}
+```
+- `directories.bin`: `bin` 필드와 동일한 기능을 하는 필드입니다. `directories.bin`와 `bin` 하나의 필드만 설정되어야 합니다.
+- `directories.doc`: 패키지의 문서, 마크다운 파일들의 위치를 표시하는 필드입니다.
+- `directories.lib`: 패키지의 라이브러리의 위치를 표시하는 필드입니다.
+- `directories.man`: `man` 필드와 동일한 기능을 하는 필드입니다. 메뉴얼 페이지의 경로를 저장합니다. `man` 필드에 배열 형태로 저장하는 것을 간단(Sugar)하게 만들 수 있는 필드입니다.
+[npm-cli](https://github.com/npm/cli/blob/latest/package.json)에서 `directories` 필드가 설정되어 있는 것을 확인할 수 있습니다.
+
+# `repository`
+코드가 있는 위치를 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+
+```json
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/cli.git"
+  },
+  "repository": "npm/npm",
+  "repository": "github:user/repo",
+  "repository": "gist:11081aaa281",
+  "repository": "bitbucket:user/repo",
+  "repository": "gitlab:user/repo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/facebook/react.git",
+    "directory": "packages/react-dom" // 모노레포로 구성되어 루트에 패키지가 없는 경우 경로를 지정할 수 있습니다.
+  }
+}
+```
 
 #### 참고
 - [https://flaviocopes.com/npm-peer-dependencies/](https://flaviocopes.com/npm-peer-dependencies/)
@@ -562,3 +743,4 @@ PNPM에서는 `bin`, `main`, `exports`, `types`(또는 `typings`), `module`, `br
 - [https://github.com/npm/node-semver#versions](https://github.com/npm/node-semver#versions)
 - [https://pnpm.io/package_json](https://pnpm.io/package_json)
 - [https://dev.to/arcanis/introducing-yarn-2-4eh1](https://dev.to/arcanis/introducing-yarn-2-4eh1)
+- [https://programmingsummaries.tistory.com/385](https://programmingsummaries.tistory.com/385)
