@@ -8,7 +8,7 @@ summary: package.json에는 프로젝트에 대한 설명, 패키지, 실행 스
 
 `package.json`에는 프로젝트에 대한 설명, 종속성 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 `package.json`에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.
 
-사용하는 패키지 매니저(npm, yarn, pnpm 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지([npm](https://docs.npmjs.com/cli/v8/configuring-npm/package-json), [yarn 2+](https://yarnpkg.com/configuration/manifest), [pnpm](https://pnpm.io/package_json))에서 설정 가능한 필드를 확인하는 것이 좋습니다.
+사용하는 패키지 매니저(NPM, Yarn, PNPM 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지([NPM](https://docs.npmjs.com/cli/v8/configuring-npm/package-json), [Yarn 2+](https://yarnpkg.com/configuration/manifest), [PNPM](https://pnpm.io/package_json))에서 설정 가능한 필드를 확인하는 것이 좋습니다.
 
 eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig` 필드)도 `package.json`에서 가능하기 때문에 이러한 설정 역시 사용하는 라이브러리의 공식 홈페이지에서 확인하고 사용하는 것이 좋습니다.
 
@@ -23,7 +23,7 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 }
 ```
 
-`@beomy/` 같이 `name` 필드는 `@`로 시작하여 스코프를 지정할 수도 있습니다.
+`@beomy/`처럼 `name` 필드는 `@`로 시작하여 스코프를 지정할 수도 있습니다.
 
 # `version`
 `version` 필드는 프로젝트의 버전을 나타냅니다. 아래와 같이 `version` 필드를 작성할 수 있습니다.
@@ -34,9 +34,9 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 }
 ```
 
-> **NPM 패키지에서 `name`과 `verion`**
+> **NPM 패키지에서 `name`과 `version`**
 >
-> 프로젝트가 NPM에 배포 될 때 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어 `@beomy/blog@1.2.3`)은 유니크한 값이여야 합니다.
+> 프로젝트가 NPM에 배포(Publish) 될 때 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어, `@beomy/blog@1.2.3`)은 유니크 한 값이여야 합니다.
 
 > **오픈소스의 버전 구분**
 >
@@ -49,7 +49,7 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 > - Patch: 이전 버전과 호환되는 버그 수정을 할 경우 Patch 버전을 업데이트하여 배포합니다.
 
 # `files`
-`files` 필드는 패키지가 설치될 때 포함될 항목들을 저장하는 필드입니다. 아래와 같이 glob 형태로 작성할 수 있습니다.
+`files` 필드는 패키지가 설치될 때 포함될 항목들을 저장하는 필드입니다. 아래와 같이 glob 패턴으로 작성할 수 있습니다.
 
 ```json
 {
@@ -63,7 +63,7 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 `files` 필드를 사용하지 않고 프로젝트 루프에 `.npmignore` 파일을 생성하여 NPM에 배포하지 않을 파일들을 지정할 수도 있습니다. `.npmignore` 파일이 없는 경우 `.gitignore` 파일에 작성된 목록들이 NPM에 배포되지 않습니다.
 
 # `main`
-`main` 필드는 패키지를 사용할 때 진입되는 경로입니다. 아래와 같이 작성할 수 있습니다.
+`main` 필드는 패키지 사용자가 패키지를 사용할 때 진입 되는 경로입니다. 아래와 같이 작성할 수 있습니다.
 
 ```json
 {
@@ -71,7 +71,7 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 }
 ```
 
-아래 package.json과 같이 작성된 패키지가 있다면,
+아래 `package.json`과 같이 작성된 패키지가 있다면,
 
 ```json
 {
@@ -88,7 +88,7 @@ import BeomyLib from 'beomy-lib'
 ```
 
 # `module` (Yarn 2+)
-`module` 필드는 `main` 필드와 유사한 목적으로 사용 되는 필드입니다. ES6 호환 환경에서 패키지를 사용할 때 진입되는 경로입니다. 아래와 같이 작성할 수 있습니다.
+`module` 필드는 `main` 필드와 유사한 목적으로 사용 되는 필드입니다. ES6 호환 환경에서 패키지를 사용할 때 진입 되는 경로입니다. 아래와 같이 작성할 수 있습니다.
 
 ```json
 {
@@ -123,12 +123,12 @@ import BeomyLib from 'beomy-lib'
 
 ```json
 {
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@3.2.4"
 }
 ```
 
 # `exports` (Node)
-`main` 필드와 `exports` 필드를 사용하면 패키지의 진입점을 설정할 수 있습니다. `exports` 필드는 `main` 필드와 다르게 여러개의 진입점을 설정할 수 있습니다. 아래와 같이 작성할 수 있습니다.
+`main` 필드와 `exports` 필드를 사용하면 패키지의 진입점을 설정할 수 있습니다. `exports` 필드는 `main` 필드와 다르게 여러 개의 진입점을 설정할 수 있습니다. 아래와 같이 작성할 수 있습니다.
 
 ```json
 {
@@ -182,7 +182,7 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 ```
 
 # `imports` (Node)
-`exports` 필드가 패키지 소비자에게 패키지를 진입할 수 있는 진입점을 제공하는 필드라면, `imports` 필드는 패키지를 개발하는 생성자에게 진입점을 제공하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+`exports` 필드가 패키지 사용자에게 패키지를 진입할 수 있는 진입점을 제공하는 필드라면, `imports` 필드는 패키지를 개발하는 패키지 생성자에게 진입점을 제공하는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -198,7 +198,7 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 }
 ```
 
-외부 패키지와 구분될 수 있도록 `#`으로 시작해야 합니다. 위의 코드와 같이 조건별로 진입점을 다르게 제공할 수 있습니다. 패키지 생성자는 `import #dep`로 가져와 사용할 수 있습니다.
+외부 패키지와 구분될 수 있도록 `#`으로 시작해야 합니다. 위의 코드와 같이 조건 별로 진입점을 다르게 제공할 수 있습니다. 패키지 생성자는 `import #dep`로 가져와 사용할 수 있습니다.
 
 # `types` (Typescript)
 `types` 필드는 타입스크립트의 `d.ts` 타입 정의 파일의 경로를 저장하는 필드입니다. `types` 필드 대신 `typings` 필드를 사용할 수 있습니다. 아래와 같이 사용할 수 있습니다.
@@ -222,7 +222,7 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 }
 ```
 
-`bin` 필드의 사용 방법은 글로벌로 설치되어 많이 사용되는 패키지를 살펴보면 쉽게 이해 할 수 있습니다. `create-react-app` 패키지의 `bin` 필드는 아래 코드와 같이 되어 있습니다.
+`bin` 필드의 사용 방법은 글로벌로 설치되어 많이 사용되는 패키지를 살펴보면 쉽게 이해 할 수 있습니다. [create-react-app](https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/package.json) 패키지의 `bin` 필드는 아래 코드와 같이 되어 있습니다.
 
 ```json
 {
@@ -248,7 +248,7 @@ import BeomyLib from 'beomy-lib/feature/utils.js'
 NPM의 경우 `npm run test`와 같이 `npm run <scripts 필드에 작성한 명령어>` 형태로 사용할 수 있습니다. Yarn의 경우도 비슷하게 `yarn run <scripts 필드에 작성한 명령어>` 형태로 사용할 수 있는데, `run`을 생략하여 `yarn <scripts 필드에 작성한 명령어>` 형태로도 사용할 수 있습니다.
 
 # `engines` (NPM, PNPM)
-`engines` 필드는 패키지가 동작하는 Node, 패키지 매니저(NPM, PNPM)를 지정하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+`engines` 필드는 패키지가 동작하는 Node 버전이나, 패키지 매니저(NPM, PNPM) 버전을 지정하는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -260,31 +260,39 @@ NPM의 경우 `npm run test`와 같이 `npm run <scripts 필드에 작성한 명
 }
 ```
 
-해당 패키지 소비자의 `.npmrc` 설정 중 `engine-strict`가 설정되어 있지 않다면 `engines` 필드는 권고 사항으로 인정됩니다. 해당 패키지가 `dependencies`에 작성되었다면 패키지가 설치될 때 경고가 발생합니다.
+패키지 사용자의 `.npmrc` 설정 중 `engine-strict`가 설정되어 있지 않다면 `engines` 필드는 권고 사항입니다. 해당 패키지가 `dependencies`에 작성되었다면 패키지가 설치될 때 경고가 발생합니다.
 
 # `os`
 `os` 필드는 허용되는 os 목록을 저장하는 필드입니다. 패키지를 설치할 때 `process.platform` 값과 비교하여 일치하는 값이 없을 경우 `dependencies`에 작성된 패키지였다면 `postinstall` 스크립트가 실행되지 않고, `optionalDependencies`에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
-  "os": [
-    "linux",
-    "darwin",
-    "win32"
-  ]
+  "os": ["linux", "darwin", "win32"]
+}
+```
+
+아래 코드와 같이 `!`를 사용하여 차단할 os를 지정할 수도 있습니다.
+
+```json
+{
+  "os": ["!win32"]
 }
 ```
 
 # `cpu`
-`cpu` 필드는 허용되는 cpu 목록을 저장하는 필드이니다. 패키지를 설치할 때 `process.arch` 값과 비교하여 일치하는 값이 없을 경우 `dependencies`에 작성된 패키지였다면 `postinstall` 스크립트가 실행되지 않고, `optionalDependencies`에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
+`cpu` 필드는 허용되는 cpu 목록을 저장하는 필드입니다. 패키지를 설치할 때 `process.arch` 값과 비교하여 일치하는 값이 없을 경우 `dependencies`에 작성된 패키지였다면 `postinstall` 스크립트가 실행되지 않고, `optionalDependencies`에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
-  "cpu": [
-    "x64",
-    "ia32",
-    "arm64"
-  ]
+  "cpu": ["x64", "ia32", "arm64"]
+}
+```
+
+`os` 필드와 마찬가지로 `!`를 사용하여 차단할 cpu를 지정할 수도 있습니다.
+
+```json
+{
+  "cpu": ["!arm", "!mips"]
 }
 ```
 
@@ -321,19 +329,19 @@ NPM의 경우 `npm run test`와 같이 `npm run <scripts 필드에 작성한 명
 }
 ```
 
-NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용할 경우 `yarn add <종속 패키지 이름>` 명령어를 사용하면 패키지를 설치하고 `dependencies` 필드에 설치 된 종속 패키지가 버전 정보와 함께 저장됩니다.
+NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용할 경우 `yarn add <종속 패키지 이름>`, PNPM을 사용할 경우 `pnpm install <종속 패키지 이름>` 명령어를 사용하면 패키지를 설치하고 `dependencies` 필드에 설치 된 종속 패키지가 버전 정보와 함께 저장됩니다.
 
 > **패키지 버전 표시 방법**
 >
-> 패키지에 종속 패키지를 추가할 경우 `dependencies` 필드에 `<패키지 이름>: "<패키지 버전 정보>"` 형태로 저장됩니다. 패키지를 설치할 때 `<패키지 버전 정보>`와 매칭되는 패키지를 설치합니다. `<패키지 버전 정보>`의 형태는 아래와 같습니다.
+> 패키지에 종속 패키지를 추가할 경우 `dependencies` 필드에 `<패키지 이름>: "<패키지 버전 정보>"` 형태로 저장됩니다. 패키지를 설치할 때 `<패키지 버전 정보>`와 매칭되는 패키지가 설치됩니다. `<패키지 버전 정보>`의 형태는 아래와 같습니다.
 >
 > - `version`: 정확한 `version`의 패키지와 매칭됩니다.
-> - `1.2.x`: `1.2.0`, `1.2.1`와 깉이 `1.2` 버전 대역의 패키지와 매칭됩니다.
+> - `1.2.x`: `1.2.0`, `1.2.1`와 같이 `1.2` 버전 대역의 패키지와 매칭됩니다.
 > - `>version`: `version`보다 큰 버전의 패키지와 매칭됩니다.
 > - `>=version`: `version`보다 크거나 같은 버전의 패키지와 매칭됩니다.
 > - `<version`: `version`보다 작은 버전의 패키지와 매칭됩니다.
 > - `<=version`: `version`보다 작거나 같은 버전의 패키지와 매칭됩니다.
-> - `~version`: `verison`과 가장 동일한 버전의 패키지와 매칭됩니다. 예를 들어,
+> - `~version`: `version`과 가장 동일한 버전의 패키지와 매칭됩니다. 예를 들어,
 >   - `~1.2.3`은 `>=1.2.3 <1.3.0-0`과 동일한 의미입니다.
 >   - `~1.2`는 `>=1.2.0 <1.3.0-0`과 `1.2.x`와 동일한 의미입니다.
 >   - `~1`은 `>=1.0.0 <2.0.0-0`과 `1.x`와 동일한 의미입니다.
@@ -345,10 +353,10 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 > - `""`(공백 문자): `*`와 동일합니다.
 > - `version1 - version2`: `>=version1 <=version2`와 동일합니다.
 > - `range1 || range2`: `range1` 또는 `range2`에 만족하는 버전의 패키지와 매칭됩니다.
-> - `path/path/path`: `pathe/path/path` 로컬 경로에 해당하는 패키지와 매칭됩니다.
+> - `path/path/path`: `path/path/path` 로컬 경로에 해당하는 패키지와 매칭됩니다.
 
 # `devDependencies`
-`devDependencies` 필드는 개발 종속성들을 나열하는 필드입니다. `dependencies` 필드와 동일하게 작성합니다. `devDependencies` 필드에 나열된 종속성들은 패키지 개발자의 로컬에는 설치되지만, 패키지를 소비하는 소비자에게는 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
+`devDependencies` 필드는 개발 종속성들을 나열하는 필드입니다. `dependencies` 필드와 동일하게 작성합니다. `devDependencies` 필드에 나열된 종속성들은 패키지 개발자의 로컬에는 설치되지만, 패키지를 사용하는 사용자에게는 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -359,7 +367,7 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 ```
 
 # `peerDependencies`
-`peerDependencies` 종속성은 상속되어야 하는 종속성을 나열하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+`peerDependencies` 종속성은 상속 받아야 하는 종속성을 나열하는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -370,12 +378,12 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 }
 ```
 
-상속되어야 하는 종속성이란 패키지 개발에 필요한 종속성을 peer(해석하면 또래)에게서 재공받는 종속성입니다.
+상속 받아야 하는 종속성이란 패키지 개발에 필요한 종속성을 peer(해석하면 또래)에게 제공받는 종속성입니다.
 
-예를 들어 react와 emotion을 사용하여 UI 컴포넌트를 패키지로 만든다고 하면, react나 emotion은 UI 컴포넌트 패키지 입장에서는 패키지 소비자에게서 제공받아야 합니다. 별도의 react와 emotion을 사용하면 소비자와 제공자가 각각의 react, emotion을 가지고 있기 때문에 react, emotion 패키지 내부의 데이터(예를 들면 emotion의 테마 정보)를 소비자와 제공자가 공유해 사용할 수 없게 됩니다.
+예를 들어 react와 emotion을 사용하여 UI 컴포넌트를 패키지로 만든다고 하면, react나 emotion은 UI 컴포넌트 패키지 입장에서는 패키지 사용자에게서 제공받아야 합니다. 별도의 react와 emotion을 사용하면 사용자와 생성자가 각각의 react, emotion을 가지고 있기 때문에 react, emotion 패키지 내부의 데이터(예를 들면 emotion의 테마 정보)를 공유해 사용할 수 없게 됩니다.
 
 # `bundleDependencies` (NPM)
-`bundleDependencies` 필드는 `bundledDependencies` 이름으로 사용될 수 있습니다. `bundledDependencies` 이름 그대로 패키지를 배포(publish) 할 때 번들로 제공할 패키지를 배열로 정의합니다. 아래와 같이 사용할 수 있습니다.
+`bundleDependencies` 필드는 `bundledDependencies` 이름으로 사용될 수 있습니다. `bundleDependencies` 이름 그대로 패키지를 배포(publish) 할 때 번들로 제공할 패키지를 배열로 정의합니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -398,7 +406,7 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 ```
 
 # `dependenciesMeta` (Yarn 2+, PNPM)
-`dependenciesMeta` 필드는 `dependencies` 필드와 `devDependencies` 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 프로젝트가 모노레포로 구성되어 여러개의 workspace가 있는 경우 프로젝트 루트의 `package.json`에 정의되어야 합니다. 아래와 같이 사용할 수 있습니다.
+`dependenciesMeta` 필드는 `dependencies` 필드와 `devDependencies` 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 프로젝트가 모노레포로 구성되어 여러 개의 workspace가 있는 경우 프로젝트 루트의 `package.json`에 정의되어야 합니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -414,10 +422,10 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 
 설정 할 패키지 이름을 키로 하고 값으로 오는 객체에 Yarn 2+에서는 `build`, `optional`, `unplugged`, PNPM에는 `injected` 설정을 추가할 수 있습니다. 각각의 설정의 내용은 아래와 같습니다.
 
-- `built`(Yarn 2+): Yarn 2+에서 사용하는 플래그로, 빌드 스크립트를 실행할지 실행하지 않을지 결정하는 플레그입니다. `false`를 지정하면 빌드 스크립트를 실행하지 않습니다. `.yarnrc.yml` 파일에 `enableScripts: false`를 저장하면 모든 패키지의 빌드 스크립트를 실행하지 않게 됩니다.
-- `optional`(Yarn 2+): Yarn 2+에서 사용하는 플래그로, 단어 그대로 옵셔널을 설정활 수 있는 플래그입니다. `true`를 지정하면 성공한 것으로 판단되어 `os`, `cpu`, `libc` 등의 패키지 제약을 설정하는 필드들을 무시하게 됩니다. 이 옵션이 `true`로 설정된 패키지는 패키지가 컴파일 될 때 `optionalDependencies` 필드에 작성되어 집니다.
-- `unplugged`(Yarn 2+): Yarn 2+에서 사용하는 플래그로, 자바스크립트가 아닌 다른 언어로 된 스크립트를 포함하는 패키지에만 필요한 설정입니다. `true`인 경우 설치시 `.yarn/unplugged` 디렉토리(`.yarnrc.yml` 설정에서 디렉토리 이름 변경 가능)로 분리됩니다.
-- `injected`(PNPM): PNPM에서 사용하는 플래그로, `true`로 설정하면 패키지가 심볼릭 링크가 아닌 하드 링크됩니다.
+- `built`(Yarn 2+): 빌드 스크립트를 실행할지 실행하지 않을지 결정하는 플래그입니다. `false`를 지정하면 빌드 스크립트를 실행하지 않습니다. `.yarnrc.yml` 파일에 `enableScripts: false`를 저장하면 모든 패키지의 빌드 스크립트를 실행하지 않게 됩니다.
+- `optional`(Yarn 2+): 단어 그대로 옵셔널을 설정 할 수 있는 플래그입니다. `true`를 지정하면 설치가 성공한 것으로 판단되어 `os`, `cpu`, `libc` 등의 패키지 제약을 설정하는 필드들을 무시하게 됩니다. 이 옵션이 `true`로 설정된 패키지는 패키지가 컴파일 될 때 `optionalDependencies` 필드에 작성되어 집니다.
+- `unplugged`(Yarn 2+): 자바스크립트가 아닌 다른 언어로 된 스크립트를 포함하는 패키지에만 필요한 설정입니다. `true`인 경우 설치 시 패키지가 `.yarn/unplugged` 디렉토리(`.yarnrc.yml` 설정에서 디렉토리 이름 변경 가능)로 분리되어 설치됩니다.
+- `injected`(PNPM): `true`로 설정하면 패키지가 심볼릭 링크가 아닌 하드 링크됩니다.
 
 # `peerDependenciesMeta`
 `peerDependenciesMeta` 필드는 `peerDependencies` 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 아래와 같이 사용할 수 있습니다.
@@ -432,7 +440,7 @@ NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용�
 }
 ```
 
-`optional` 값을 `true`로 설정할 경우 패키지 소비자쪽에서 `peerDependencies`로 패키지를 추가하지 않아도 에러가 발생하지 않게 됩니다.
+패키지의 optional을 설정할 수 있는데, `optional` 값을 `true`로 설정할 경우 패키지 사용자쪽에서 `peerDependencies`로 패키지를 추가하지 않아도 에러가 발생하지 않게 됩니다.
 
 # `overrides` (NPM)
 NPM에서 `overrides` 필드는 종속성의 종속성 버전을 바꾸기 위해서 사용됩니다. 아래 코드와 같이 사용할 수 있습니다.
@@ -457,9 +465,9 @@ NPM에서 `overrides` 필드는 종속성의 종속성 버전을 바꾸기 위�
 }
 ```
 
-위의 코드와 같이 종속 패키지의 버전을 특정할 때 깊이를 조절할 수 있으며, 특정 버전의 패키지 종속성만 버전을 수정할 수도 있습니다.
+위의 코드와 같이 특정할 종속 패키지의 깊이를 조절할 수 있으며, 특정 버전의 패키지 종속성만 버전을 수정할 수도 있습니다.
 
-PNPM의 경우 `pnpm.overrides`, `resolutions` 필드가, Yarn 2+의 경우 `resolutions` 필드가 `overrides` 필드와 동일한 기능을 합니다.
+PNPM의 경우 `pnpm.overrides`, `resolutions` 필드가, Yarn 2+의 경우 `resolutions` 필드가 NPM의 `overrides` 필드와 동일한 기능을 합니다.
 
 # `resolutions` (Yarn 2+, PNPM)
 `resolutions` 필드는 NPM의 `overrides` 필드와 동일한 기능을 하지만 사용 방법이 조금 다릅니다. `resolutions` 필드는 아래와 같이 사용할 수 있습니다.
@@ -512,17 +520,17 @@ PNPM의 경우 `pnpm.overrides`, `resolutions` 필드가, Yarn 2+의 경우 `res
 Yarn 2+에서는 `bin`, `browser`, `main`, `module`, `exports` 필드를 오버라이드 할 수 있고, `access`, `executableFiles`, `registry` 필드를 추가로 설정할 수 있습니다.
 
 - `access`: NPM에 패키지를 공개할지 공개하지 않을지 결정하는 필드입니다. `public`, `restricted` 두 개의 값 중 하나를 설정해야 하는데, `restricted`을 설정하면 패키지가 비공개 됩니다.
-- `executableFiles`: 기본적으로 `bin` 필드에 나열된 파일 외에는 실행 가능한 파일로 표시되지 않습니다. `executableFiles` 필드를 사용하면 `bin` 필드를 통해 직접 실행할 수 없는 경우에도 실행가능 플래그(파일 권한 r(read), w(write), x(excute) 중 x)가 설정됩니다.
+- `executableFiles`: 기본적으로 `bin` 필드에 나열된 파일 외에는 실행 가능한 파일로 표시되지 않습니다. `executableFiles` 필드를 사용하면 `bin` 필드를 통해 직접 실행할 수 없는 파일의 경우에도 실행가능 플래그(파일 권한 r(read), w(write), x(execute) 중 x)가 설정됩니다.
 - `registry`: 패키지의 레지스토리 경로를 저장하는 필드입니다.
 
 PNPM에서는 `bin`, `main`, `exports`, `types`(또는 `typings`), `module`, `browser`, `cpu`, `os` 필드 등을 오버라이드 할 수 있고, `executableFiles`, `directory`, `linkDirectory` 필드를 추가로 설정할 수 있습니다.
 
 - `executableFiles`: Yarn 2+와 동일한 기능을 하는 필드입니다.
-- `directory`: 현재 `package.json` 위치를 기준을 배포(publish) 되는 디렉토리를 저장하는 필드입니다.
+- `directory`: 현재 `package.json` 위치를 기준으로 배포(publish) 되는 디렉토리를 저장하는 필드입니다.
 - `linkDirectory`: `true`로 설정할 경우 개발 중에 `publishConfig.directory` 위치에 심볼릭 링크가 생성됩니다.
 
 # `workspaces` (NPM, Yarn 2+)
-`workspaces` 필드는 프로젝트를 모노레포로 구성할 때 하위 프로젝트를 나열하는 필드입니다. glob 패턴으로 작성할 수 있습니다. 아래와 같이 사용할 수 있습니다.
+`workspaces` 필드는 프로젝트를 모노레포로 구성할 때 하위 프로젝트의 경로를 나열하는 필드입니다. glob 패턴으로 작성할 수 있습니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -572,7 +580,13 @@ NPM과 Yarn의 경우 `package.json`의 `workspaces` 필드를 사용하여 모�
   }
 }
 ```
-url만 제공하고 싶을 경우 `"bugs": "https://github.com/owner/project/issues"`이렇게 문자열을 저장하면 됩니다.
+url만 제공하고 싶을 경우 아래와 같이 문자열을 저장하면 됩니다.
+
+```json
+{
+  "bugs": "https://github.com/owner/project/issues"
+}
+```
 
 # `license`
 패키지의 라이센스를 표시하는 필드입니다. 아래와 같이 사용할 수 있습니다.
@@ -580,7 +594,7 @@ url만 제공하고 싶을 경우 `"bugs": "https://github.com/owner/project/iss
 ```json
 {
   "license" : "BSD-3-Clause",
-  "license" : "(ISC OR GPL-3.0)", // 여러개의 라이센스를 가지고 있을 때
+  "license" : "(ISC OR GPL-3.0)", // 여러 개의 라이센스를 가지고 있을 때
   "license" : "SEE LICENSE IN <filename>" // 커스텀한 라이센스를 표시할 때
 }
 ```
@@ -647,7 +661,7 @@ url만 제공하고 싶을 경우 `"bugs": "https://github.com/owner/project/iss
 ```
 
 # `funding`
-패키지 개발자에게 펀딩할 수 있는 경로를 표시하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+패키지 개발자에게 펀딩 할 수 있는 경로를 표시하는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -675,7 +689,7 @@ url만 제공하고 싶을 경우 `"bugs": "https://github.com/owner/project/iss
 ```
 
 # `man`
-manual 프로그램이 읽은 파일 혹인 파일 배열을 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
+manual 프로그램이 읽을 수 있는 파일 혹은 파일 배열을 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.
 
 ```json
 {
@@ -700,10 +714,12 @@ CommonJS 패키지 스펙에서는 `directories` 필드를 사용하여 패키�
   }
 }
 ```
+
 - `directories.bin`: `bin` 필드와 동일한 기능을 하는 필드입니다. `directories.bin`와 `bin` 하나의 필드만 설정되어야 합니다.
 - `directories.doc`: 패키지의 문서, 마크다운 파일들의 위치를 표시하는 필드입니다.
 - `directories.lib`: 패키지의 라이브러리의 위치를 표시하는 필드입니다.
-- `directories.man`: `man` 필드와 동일한 기능을 하는 필드입니다. 메뉴얼 페이지의 경로를 저장합니다. `man` 필드에 배열 형태로 저장하는 것을 간단(Sugar)하게 만들 수 있는 필드입니다.
+- `directories.man`: `man` 필드와 동일한 기능을 하는 필드입니다. 매뉴얼 페이지의 경로를 저장합니다. `man` 필드에 배열 형태로 저장하는 것을 간단(Sugar)하게 만들 수 있게 제공되는 필드입니다.
+
 [npm-cli](https://github.com/npm/cli/blob/latest/package.json)에서 `directories` 필드가 설정되어 있는 것을 확인할 수 있습니다.
 
 # `repository`
