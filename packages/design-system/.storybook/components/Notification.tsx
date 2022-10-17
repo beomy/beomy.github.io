@@ -20,8 +20,6 @@ const StyledWrapper = styled.div`
 `;
 
 const Notification = ({ message, setMessage }: NotificationProps) => {
-  console.log(message);
-
   const handleCloseMessage = useCallback(
     (id: string) => {
       setMessage((value) => value.filter((i) => i.id !== id));

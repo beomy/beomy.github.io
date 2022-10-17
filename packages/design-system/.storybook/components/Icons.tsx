@@ -29,6 +29,14 @@ const Icons = () => {
     });
   }, [str]);
 
+  const bsIconList = useMemo(() => {
+    return filteredIconList.filter(([key]) => /^Bs/.test(key));
+  }, [filteredIconList]);
+
+  const beomyIconList = useMemo(() => {
+    return filteredIconList.filter(([key]) => /^Bm/.test(key));
+  }, [filteredIconList]);
+
   const handleClick = useCallback((iconName: string) => {
     setMessage((value) => {
       window.navigator.clipboard.writeText(iconName);
@@ -49,8 +57,20 @@ const Icons = () => {
         searchable={false}
         border
       />
+      <h1>Beomy</h1>
       <StyledIconContainer>
-        {filteredIconList.map(([key, Icon]) => (
+        {beomyIconList.map(([key, Icon]) => (
+          <StyledIconWrapper key={key} onClick={() => handleClick(key)}>
+            <div>
+              <Icon size="30px" />
+            </div>
+            <small>{key}</small>
+          </StyledIconWrapper>
+        ))}
+      </StyledIconContainer>
+      <h1>React/BS</h1>
+      <StyledIconContainer>
+        {bsIconList.map(([key, Icon]) => (
           <StyledIconWrapper key={key} onClick={() => handleClick(key)}>
             <div>
               <Icon size="30px" />

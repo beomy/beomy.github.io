@@ -20,6 +20,8 @@
     }
   },
   "scripts": {
+    "postinstall": "yarn svgr",
+    "svgr": "svgr src/icons/svg",
     "build": "tsc --project tsconfig.build.json",
     "lint": "eslint '**/*.+(ts|js|tsx)' --fix",
     "format": "prettier '**/*.+(ts|js|tsx)' --write",
@@ -61,6 +63,7 @@
     "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
+    "@svgr/cli": "6.5.0",
     "@types/color": "3.0.3",
     "@types/lodash-es": "4.17.6",
     "@types/react": "18.0.15",
@@ -84,6 +87,7 @@
     "prettier": "2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "svgo": "2.8.0",
     "typescript": "4.7.4"
   },
   "peerDependencies": {
