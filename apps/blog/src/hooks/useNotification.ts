@@ -8,37 +8,29 @@ const useNotification = () => {
   const [, setMessage] =
     useRecoilState<MessageTypes.MessageProps[]>(messageState);
 
-  const info = useCallback(
-    (text: string) => {
+  const notification = useCallback(
+    (text: string, type: MessageTypes.MessageProps['type'] = 'info') => {
       setMessage((value) => {
-        return value.concat({ id: uniqueId('info'), type: 'info', text });
+        return value.concat({ id: uniqueId(type), type, text });
       });
     },
     [setMessage],
+  );
+  const info = useCallback(
+    (text: string) => notification(text, 'info'),
+    [notification],
   );
   const success = useCallback(
-    (text: string) => {
-      setMessage((value) => {
-        return value.concat({ id: uniqueId('success'), type: 'success', text });
-      });
-    },
-    [setMessage],
+    (text: string) => notification(text, 'success'),
+    [notification],
   );
   const warning = useCallback(
-    (text: string) => {
-      setMessage((value) => {
-        return value.concat({ id: uniqueId('warning'), type: 'warning', text });
-      });
-    },
-    [setMessage],
+    (text: string) => notification(text, 'warning'),
+    [notification],
   );
   const error = useCallback(
-    (text: string) => {
-      setMessage((value) => {
-        return value.concat({ id: uniqueId('error'), type: 'error', text });
-      });
-    },
-    [setMessage],
+    (text: string) => notification(text, 'error'),
+    [notification],
   );
 
   return {
