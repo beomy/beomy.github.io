@@ -223,6 +223,15 @@ const plugins = [
     },
   },
   {
+    resolve: `gatsby-plugin-google-gtag`,
+    options: {
+      trackingIds: ['G-MD8G3F353P'],
+      pluginConfig: {
+        head: true,
+      },
+    },
+  },
+  {
     resolve: `gatsby-plugin-compile-es6-packages`,
     options: {
       modules: [`gatsby-link`, `gatsby-script`, `@builder.io/partytown`],
