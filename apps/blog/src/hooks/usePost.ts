@@ -2,9 +2,9 @@ import { useMemo } from 'react';
 import type { MarkdownRemark } from '@/model/graphQL';
 import type { Post } from '@/model/post';
 
-type UsePostHook = (markdownRemark: MarkdownRemark) => Post;
+type UsePostType = (markdownRemark: MarkdownRemark) => Post;
 
-const usePost: UsePostHook = (markdownRemark) => {
+const usePost: UsePostType = (markdownRemark) => {
   return useMemo(
     () =>
       markdownRemark && {

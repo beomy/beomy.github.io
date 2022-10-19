@@ -4,7 +4,16 @@ import { uniqueId } from 'lodash-es';
 import { MessageTypes } from '@beomy/design-system';
 import { messageState } from '@/stores/notification';
 
-const useNotification = () => {
+type UseNotificationType = () => {
+  message: {
+    info: (text: string) => void;
+    success: (text: string) => void;
+    warning: (text: string) => void;
+    error: (text: string) => void;
+  };
+};
+
+const useNotification: UseNotificationType = () => {
   const [, setMessage] =
     useRecoilState<MessageTypes.MessageProps[]>(messageState);
 

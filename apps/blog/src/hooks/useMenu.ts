@@ -5,9 +5,9 @@ import type { TreeItem } from '@/model/tree';
 import { arrayToTree } from '@/utils/tree';
 import usePosts from './usePosts';
 
-type UseMenuHook = () => TreeItem[];
+type UseMenuType = () => TreeItem[];
 
-const useMenu: UseMenuHook = () => {
+const useMenu: UseMenuType = () => {
   const { allMarkdownRemark } = useStaticQuery<Data>(
     graphql`
       query {

@@ -5,12 +5,12 @@ import { useLocalStorage } from '@beomy/utils';
 import { Theme } from '@/model/theme';
 import { themeState } from '@/stores/theme';
 
-type UseBeomyThemeHook = () => [
+type UseBeomyThemeType = () => [
   Theme | undefined,
   Dispatch<SetStateAction<Theme>>,
 ];
 
-const useBeomyTheme: UseBeomyThemeHook = () => {
+const useBeomyTheme: UseBeomyThemeType = () => {
   const [recoilTheme, setRecoilTheme] = useRecoilState<Theme | undefined>(
     themeState,
   );
