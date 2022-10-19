@@ -1,4 +1,4 @@
-import { TreeItem } from '@/model/tree';
+import { TreeItem } from '@/models/tree';
 
 export function arrayToTree(arr: string[][]) {
   const tree: TreeItem[] = [];

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import type { MarkdownRemark } from '@/model/graphQL';
-import type { Post } from '@/model/post';
+import type { MarkdownRemark } from '@/models/graphQL';
+import type { Post } from '@/models/post';
 
 type UsePostType = (markdownRemark: MarkdownRemark) => Post;
 

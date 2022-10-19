@@ -1,6 +1,6 @@
 import { parse, format } from 'date-fns';
 import { IconText } from '@beomy/design-system';
-import { DateFormat } from '@/model/dateFormat';
+import { DateFormat } from '@/models/dateFormat';
 import { H1 } from '@/atoms';
 import { PostBannerImg } from '@/molecules';
 import type { PostHeaderProps } from './PostHeader.types';

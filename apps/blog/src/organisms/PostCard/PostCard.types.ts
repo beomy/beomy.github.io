@@ -1,3 +1,3 @@
-import { Post } from '@/model/post';
+import { Post } from '@/models/post';
 
 export type PostCardProps = Post;

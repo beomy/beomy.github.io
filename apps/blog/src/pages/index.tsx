@@ -1,5 +1,5 @@
 import { graphql, PageProps } from 'gatsby';
-import type { Data } from '@/model/graphQL';
+import type { Data } from '@/models/graphQL';
 import { PostList, Seo } from '@/organisms';
 import List from '@/templates/list';
 import { usePosts } from '@/hooks';

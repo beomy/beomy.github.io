@@ -6,7 +6,7 @@ import { Disqus } from 'gatsby-plugin-disqus';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { IconButton, IconButtonStyles } from '@beomy/design-system';
-import type { Data, MarkdownRemark } from '@/model/graphQL';
+import type { Data, MarkdownRemark } from '@/models/graphQL';
 import { Dim } from '@/atoms';
 import {
   Seo,

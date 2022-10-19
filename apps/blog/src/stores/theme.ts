@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { Theme } from '@/model/theme';
+import { Theme } from '@/models/theme';
 
 export const themeState = atom<Theme | undefined>({
   key: 'themeState',

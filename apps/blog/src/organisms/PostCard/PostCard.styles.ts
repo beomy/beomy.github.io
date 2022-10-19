@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { IconTextStyles } from '@beomy/design-system';
-import { H4Styles, PStyles } from '@/atoms';
+import { H4Styles } from '@/atoms';
 
 export const Header = styled.div`
   position: relative;
@@ -20,8 +20,10 @@ export const Body = styled.div`
   ${H4Styles.Wrapper} {
     color: ${({ theme }) => theme.colors.title};
   }
-  ${PStyles.Wrapper} {
+  p {
     color: ${({ theme }) => theme.colors.body};
+    margin: 0;
+    font-size: ${({ theme }) => theme.fontSizes[1]};
   }
 `;
 

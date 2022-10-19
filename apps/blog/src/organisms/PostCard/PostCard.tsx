@@ -1,9 +1,9 @@
 import { format, parse } from 'date-fns';
 import { CommentCount } from 'gatsby-plugin-disqus';
 import { IconText } from '@beomy/design-system';
-import { H4, P } from '@/atoms';
+import { H4 } from '@/atoms';
 import { PostBannerImg } from '@/molecules';
-import { DateFormat } from '@/model/dateFormat';
+import { DateFormat } from '@/models/dateFormat';
 import type { PostCardProps } from './PostCard.types';
 import * as S from './PostCard.styles';
 
@@ -32,9 +32,7 @@ const PostCard = ({
       </S.Header>
       <S.Body>
         <H4 m="0 0 10px 0">{title}</H4>
-        <P m={0} fontSize={1}>
-          {summary}
-        </P>
+        <p>{summary}</p>
       </S.Body>
       <S.Footer>
         <div>

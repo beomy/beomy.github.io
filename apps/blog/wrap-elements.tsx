@@ -4,7 +4,7 @@ import { ThemeProvider } from '@emotion/react';
 import { BaseStyles } from '@beomy/design-system';
 import * as themes from '@beomy/design-system/tokens';
 import { useMount, useLocalStorage } from '@beomy/utils';
-import { Theme } from '@/model/theme';
+import { Theme } from '@/models/theme';
 import { useBeomyTheme } from '@/hooks';
 import { themeState } from '@/stores/theme';
 import { Notification } from '@/organisms';

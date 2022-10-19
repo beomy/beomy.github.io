@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
-import type { Data } from '@/model/graphQL';
+import type { Data } from '@/models/graphQL';
 import type { SeoProps } from './Seo.types';
 
 const Seo = ({

@@ -2,7 +2,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { useLocalStorage } from '@beomy/utils';
-import { Theme } from '@/model/theme';
+import { Theme } from '@/models/theme';
 import { themeState } from '@/stores/theme';
 
 type UseBeomyThemeType = () => [

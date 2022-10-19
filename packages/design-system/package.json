@@ -7,7 +7,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./icons": "./src/icons/index.ts",
-    "./tokens": "./src/tokens/index.ts"
+    "./tokens": "./src/tokens/index.ts",
+    "./models": "./src/models/index.ts"
   },
   "types": "./dist/index.d.ts",
   "publishConfig": {
@@ -16,7 +17,8 @@
     "exports": {
       ".": "./dist/index.js",
       "./icons": "./dist/icons/index.js",
-      "./tokens": "./dist/tokens/index.ts"
+      "./tokens": "./dist/tokens/index.js",
+      "./models": "./dist/models/index.js"
     }
   },
   "scripts": {

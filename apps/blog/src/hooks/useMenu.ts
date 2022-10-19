@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import type { Data } from '@/model/graphQL';
-import type { TreeItem } from '@/model/tree';
+import type { Data } from '@/models/graphQL';
+import type { TreeItem } from '@/models/tree';
 import { arrayToTree } from '@/utils/tree';
 import usePosts from './usePosts';
 

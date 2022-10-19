@@ -1,6 +1,5 @@
 import { getYear } from 'date-fns';
 import { Anchor, Icon } from '@beomy/design-system';
-import { Span } from '@/atoms';
 import * as S from './Footer.styles';
 
 const Footer = () => {
@@ -22,9 +21,9 @@ const Footer = () => {
           <Icon type="BsLinkedin" size={20} />
         </Anchor>
       </S.Nav>
-      <Span color="caption" fontSize={1}>
+      <S.Description>
         © {getYear(new Date())} Beomy. All rights reserved.
-      </Span>
+      </S.Description>
     </S.Wrapper>
   );
 };

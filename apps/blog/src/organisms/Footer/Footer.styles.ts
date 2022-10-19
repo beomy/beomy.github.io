@@ -12,6 +12,11 @@ export const Nav = styled.nav`
   }
 `;
 
+export const Description = styled.span`
+  color: ${({ theme }) => theme.colors.caption};
+  font-size: ${({ theme }) => theme.fontSizes[1]};
+`;
+
 export const Wrapper = styled.footer`
   text-align: center;
   padding: 25px 0;

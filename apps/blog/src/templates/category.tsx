@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { graphql, PageProps } from 'gatsby';
-import type { Data } from '@/model/graphQL';
+import type { Data } from '@/models/graphQL';
 import { Seo, Header, Contents, PostList, SubMenu, Footer } from '@/organisms';
 import { useMenu, usePosts } from '@/hooks';
 

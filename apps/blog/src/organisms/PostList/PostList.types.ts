@@ -1,4 +1,4 @@
-import type { Post } from '@/model/post';
+import type { Post } from '@/models/post';
 
 export type PostListProps = {
   posts: Post[];
