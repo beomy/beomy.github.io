@@ -2,7 +2,7 @@ import type { DimProps } from './Dim.types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
-export const Warpper = styled.div<DimProps>`
+export const Wrapper = styled.div<DimProps>`
   background: ${({ theme }) => theme.colors.black};
   opacity: 0;
   width: 100%;

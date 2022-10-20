@@ -19,7 +19,7 @@ const shareButtonMap: {
   line: LineShareButton,
 };
 
-const sharIconMap: {
+const shareIconMap: {
   [key in ShareButtonProps['target']]: IconTypes.IconProps['type'];
 } = {
   facebook: 'BsFacebook',
@@ -31,7 +31,7 @@ const sharIconMap: {
 const ShareButton = ({ target, url, size }: ShareButtonProps) => {
   const [isHover, setHover] = useState<boolean>(false);
   const targetShareButton = useMemo(() => shareButtonMap[target], [target]);
-  const iconType = useMemo(() => sharIconMap[target], [target]);
+  const iconType = useMemo(() => shareIconMap[target], [target]);
 
   return (
     <S.Wrapper

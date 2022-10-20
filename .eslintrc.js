@@ -10,7 +10,11 @@ module.exports = {
     node: true,
   },
   plugins: ['prettier', '@typescript-eslint'],
-  extends: ['standard', 'plugin:prettier/recommended'],
+  extends: [
+    'standard',
+    'plugin:prettier/recommended',
+    'plugin:@cspell/recommended',
+  ],
   rules: {
     'prettier/prettier': 'error',
     'import/prefer-default-export': 'off',

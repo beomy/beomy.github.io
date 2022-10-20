@@ -1,1 +1,1 @@
-export * from './styeld';
+export * from './styled';

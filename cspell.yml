@@ -1,0 +1,25 @@
+words:
+  # Custom
+  - Kakaotalk
+  - beomy
+  - Beomy
+  - prismjs
+  - disqus
+  - Disqus
+  - partytown
+  - styl
+  - loadershim
+  - vuejs
+  - swiper
+  - inflearn
+  # Font
+  - Neue
+  - Malgun
+  - Nanum
+  - Noto
+  - Dotum
+  - Tahoma
+  # GraphQL
+  - frontmatter
+ignorePaths:
+  - "**/node_modules/**"

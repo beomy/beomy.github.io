@@ -39,6 +39,7 @@ module.exports = {
     'import/first': 'off',
     'no-return-assign': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
+    '@cspell/spellchecker': 'off',
   },
   overrides: [
     {
