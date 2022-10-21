@@ -1,4 +1,4 @@
-import { Fragment, useState, useCallback } from 'react';
+import { Fragment, useState, useCallback, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, PageProps } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
@@ -83,6 +83,7 @@ export const StyledPostSubContents = styled.div<{ active: boolean }>`
       position: absolute;
       left: -50px;
       bottom: 20px;
+      transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
       transform: ${({ active }) => (active ? 'rotate(0deg)' : 'rotate(45deg)')};
     }
   }
@@ -99,12 +100,25 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
     setActive((value) => !value);
   }, []);
 
-  const url = `${data.site.siteMetadata.siteUrl}${pageContext.slug}`;
-  const disqusConfig = {
-    url,
-    identifier: url,
-    title: post.title,
-  };
+  const prismUrl = useMemo(() => {
+    return theme === 'dark'
+      ? 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css'
+      : 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css';
+  }, [theme]);
+
+  const url = useMemo(
+    () => `${data.site.siteMetadata.siteUrl}${pageContext.slug}`,
+    [data.site.siteMetadata.siteUrl, pageContext.slug],
+  );
+
+  const disqusConfig = useMemo(
+    () => ({
+      url,
+      identifier: url,
+      title: post.title,
+    }),
+    [post.title, url],
+  );
 
   return (
     <Fragment>
@@ -122,14 +136,7 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
         ]}
       />
       <Helmet>
-        <link
-          rel="stylesheet"
-          href={
-            theme === 'dark'
-              ? 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css'
-              : 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css'
-          }
-        />
+        <link rel="stylesheet" href={prismUrl} />
       </Helmet>
       <Header />
       <Contents

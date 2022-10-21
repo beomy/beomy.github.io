@@ -56,4 +56,8 @@ export const parameters = {
     },
     expanded: true,
   },
+  a11y: {
+    element: '#root',
+    manual: false,
+  },
 };

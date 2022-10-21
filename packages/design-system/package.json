@@ -3,19 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "description": "Beomy 블로그의 디자인 시스템 프로젝트입니다.",
-  "main": "./src/index.ts",
+  "main": "./src/components/index.ts",
   "exports": {
-    ".": "./src/index.ts",
+    ".": "./src/components/index.ts",
     "./icons": "./src/icons/index.ts",
     "./tokens": "./src/tokens/index.ts",
     "./models": "./src/models/index.ts"
   },
-  "types": "./dist/index.d.ts",
+  "types": "./dist/components/index.d.ts",
   "publishConfig": {
     "access": "public",
-    "main": "./dist/index.js",
+    "main": "./dist/components/index.js",
     "exports": {
-      ".": "./dist/index.js",
+      ".": "./dist/components/index.js",
       "./icons": "./dist/icons/index.js",
       "./tokens": "./dist/tokens/index.js",
       "./models": "./dist/models/index.js"
@@ -56,6 +56,7 @@
     "@emotion/styled": "11.10.0",
     "@mdx-js/react": "^1.6.22",
     "@react-theming/storybook-addon": "1.1.7",
+    "@storybook/addon-a11y": "6.5.12",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-docs": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",

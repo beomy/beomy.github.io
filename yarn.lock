@@ -2387,6 +2387,7 @@ __metadata:
     "@emotion/styled": 11.10.0
     "@mdx-js/react": ^1.6.22
     "@react-theming/storybook-addon": 1.1.7
+    "@storybook/addon-a11y": 6.5.12
     "@storybook/addon-actions": ^6.5.12
     "@storybook/addon-docs": ^6.5.12
     "@storybook/addon-essentials": ^6.5.12
@@ -2501,6 +2502,9 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     react: 18.x
+  peerDependenciesMeta:
+    react:
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -6142,6 +6146,38 @@ __metadata:
   dependencies:
     "@sinonjs/commons": ^1.7.0
   checksum: 7d3aef54e17c1073101cb64d953157c19d62a40e261a30923fa1ee337b049c5f29cc47b1f0c477880f42b5659848ba9ab897607ac8ea4acd5c30ddcfac57fca6
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-a11y@npm:6.5.12":
+  version: 6.5.12
+  resolution: "@storybook/addon-a11y@npm:6.5.12"
+  dependencies:
+    "@storybook/addons": 6.5.12
+    "@storybook/api": 6.5.12
+    "@storybook/channels": 6.5.12
+    "@storybook/client-logger": 6.5.12
+    "@storybook/components": 6.5.12
+    "@storybook/core-events": 6.5.12
+    "@storybook/csf": 0.0.2--canary.4566f4d.1
+    "@storybook/theming": 6.5.12
+    axe-core: ^4.2.0
+    core-js: ^3.8.2
+    global: ^4.4.0
+    lodash: ^4.17.21
+    react-sizeme: ^3.0.1
+    regenerator-runtime: ^0.13.7
+    ts-dedent: ^2.0.0
+    util-deprecate: ^1.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: f93f3c4f4dd9f2f8cfc79200d6201a385d19a3d1bb71ed4b253347db2628f7f414d3479d5545302383a8ff7580bfa5f542ddc9c22ee95ff1abc005e152193580
   languageName: node
   linkType: hard
 
@@ -10255,7 +10291,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.4.3":
+"axe-core@npm:^4.2.0, axe-core@npm:^4.4.3":
   version: 4.4.3
   resolution: "axe-core@npm:4.4.3"
   checksum: c3ea000d9ace3ba0bc747c8feafc24b0de62a0f7d93021d0f77b19c73fca15341843510f6170da563d51535d6cfb7a46c5fc0ea36170549dbb44b170208450a2
@@ -10752,6 +10788,13 @@ __metadata:
     mixin-deep: ^1.2.0
     pascalcase: ^0.1.1
   checksum: a4a146b912e27eea8f66d09cb0c9eab666f32ce27859a7dfd50f38cd069a2557b39f16dba1bc2aecb3b44bf096738dd207b7970d99b0318423285ab1b1994edd
+  languageName: node
+  linkType: hard
+
+"batch-processor@npm:1.0.0":
+  version: 1.0.0
+  resolution: "batch-processor@npm:1.0.0"
+  checksum: 5519b024f6cd0e95a543bb3edf0ae19e5badae0c32b30b41839b4469bbb1f91e14fc04bff3759cd9c2621aa9e16def48c938783e9027e7ec977fba62d537a468
   languageName: node
   linkType: hard
 
@@ -13991,6 +14034,15 @@ __metadata:
   version: 1.4.257
   resolution: "electron-to-chromium@npm:1.4.257"
   checksum: 0e15301c7420acbe5cdf8497026156144acfe5bedaba11bf0f837d4ed6d388d6f65a796a1b0569130c254066eea3062e50a4c452466ce9864b2bd9313181076e
+  languageName: node
+  linkType: hard
+
+"element-resize-detector@npm:^1.2.2":
+  version: 1.2.4
+  resolution: "element-resize-detector@npm:1.2.4"
+  dependencies:
+    batch-processor: 1.0.0
+  checksum: 81c47b7e229c303889d3a9d78ec3f3232e88a6682f1e2424fb0632d9b4f503b2ca011e6954321060604da07749a5a972b6a175fdf6c6806093a3b80a304cde7b
   languageName: node
   linkType: hard
 
@@ -25382,6 +25434,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-sizeme@npm:^3.0.1":
+  version: 3.0.2
+  resolution: "react-sizeme@npm:3.0.2"
+  dependencies:
+    element-resize-detector: ^1.2.2
+    invariant: ^2.2.4
+    shallowequal: ^1.1.0
+    throttle-debounce: ^3.0.1
+  checksum: 97cb852c24bbd50acb310da89df564e0d069415f6635676dae3d3bdc583ece88090c0f2ee88a6b0dc36d2793af4a11e83bf6bbb41b86225dd0cf338e8f7e8552
+  languageName: node
+  linkType: hard
+
 "react-textarea-autosize@npm:^6.1.0":
   version: 6.1.0
   resolution: "react-textarea-autosize@npm:6.1.0"
@@ -26795,6 +26859,13 @@ __metadata:
   version: 1.2.2
   resolution: "shallow-compare@npm:1.2.2"
   checksum: 900b9fd6931e1c5293ee67765b3a7043b10f83c147cf60c2869076e772189e9b25b664efa93cda09c411b08ff32e3614cf1b349f92e91ae14298ef1726ae0964
+  languageName: node
+  linkType: hard
+
+"shallowequal@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "shallowequal@npm:1.1.0"
+  checksum: f4c1de0837f106d2dbbfd5d0720a5d059d1c66b42b580965c8f06bb1db684be8783538b684092648c981294bf817869f743a066538771dbecb293df78f765e00
   languageName: node
   linkType: hard
 

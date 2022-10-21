@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { uniqueId } from 'lodash-es';
 import Notification from './Notification';
 import { light } from '../../src/tokens';
-import { BaseStyles, TextField, MessageTypes } from '../../src';
+import { BaseStyles, TextField, MessageTypes } from '../../src/components';
 import * as IconList from '../../src/icons';
 
 const StyledIconContainer = styled.div`

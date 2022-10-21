@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
 import React, { useCallback } from 'react';
-import { Message, MessageTypes } from '../../src';
+import { Message, MessageTypes } from '../../src/components';
 import styled from '@emotion/styled';
 
 type NotificationProps = {
@@ -21,7 +21,7 @@ const StyledWrapper = styled.div`
 
 const Notification = ({ message, setMessage }: NotificationProps) => {
   const handleCloseMessage = useCallback(
-    (id: string) => {
+    (id?: string) => {
       setMessage((value) => value.filter((i) => i.id !== id));
     },
     [setMessage],
