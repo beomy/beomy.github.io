@@ -23,6 +23,7 @@ const IconButton = ({
       onMouseLeave={onMouseLeave}
       onFocus={onFocus}
       onBlur={onBlur}
+      aria-label="icon button"
       {...props}
     >
       <Icon type={icon} size={size} />

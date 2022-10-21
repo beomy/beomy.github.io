@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof IconButton>;
 
 const Template: ComponentStory<typeof IconButton> = (args) => (
-  <IconButton aria-label="icon button" {...args} />
+  <IconButton {...args} />
 );
 
 export const Default = Template.bind({});
