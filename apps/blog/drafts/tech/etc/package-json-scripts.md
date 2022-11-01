@@ -33,6 +33,7 @@ summary:
 
 # 부록
 ## npm ci (npm clean-install)
+## yarn frozen
 
 #### 참고
 - [https://docs.npmjs.com/cli/v8/using-npm/scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts)
