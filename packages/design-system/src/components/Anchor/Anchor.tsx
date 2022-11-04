@@ -1,10 +1,11 @@
 import type { AnchorProps } from './Anchor.types';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'gatsby';
 import * as S from './Anchor.styles';
 
 const Anchor = (props: AnchorProps) => {
-  return <S.Wrapper as={props.to ? Link : 'a'} {...props} />;
+  const component = useMemo(() => (props.to ? Link : 'a'), [props.to]);
+  return <S.Wrapper as={component} {...props} />;
 };
 
 export default Anchor;
