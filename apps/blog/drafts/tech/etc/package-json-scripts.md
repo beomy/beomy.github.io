@@ -11,7 +11,6 @@ summary:
 
 ## Pre와 Post 스크립트
 - yarn에서는 pre post 라이프 사이클 불가능
-- [https://yarnpkg.com/advanced/lifecycle-scripts](https://yarnpkg.com/advanced/lifecycle-scripts)
 
 ## 특별한 라이프 사이클 스크립트
 
