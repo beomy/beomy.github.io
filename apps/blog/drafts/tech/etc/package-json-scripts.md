@@ -29,6 +29,7 @@ summary:
 - postintall
 
 # 라이프 사이클 실행 순서
+- install
 
 # 부록
 ## npm ci (npm clean-install) === yarn frozen
