@@ -29,8 +29,8 @@ summary:
 - postintall
 
 # 라이프 사이클 실행 순서
-- install
-- publish
+## install
+## publish
 
 # 부록
 
