@@ -15,7 +15,7 @@ summary:
 ## 특별한 라이프 사이클 스크립트
 
 ### NPM
-- prepare: 패키지가 패킹되기 전, `npm publish` 혹은 `npm pack` 중에 실행되는 스크립트입니다.
+- prepare: 패키지가 패킹되기 전, `npm publish`, `npm pack` 중에 실행되는 스크립트입니다.
 - prepublish (DEPRECATED)
 - prepublishOnly
 - prepack
