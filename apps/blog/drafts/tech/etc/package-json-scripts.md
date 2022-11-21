@@ -31,6 +31,15 @@ summary:
 # 라이프 사이클 실행 순서
 ## install
 ## publish
+## ci
+## diff
+## pack
+## rebuild
+## restart
+## start
+## stop
+## test
+## version
 
 # 부록
 ## npm ci (npm clean-install)
