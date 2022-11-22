@@ -32,6 +32,7 @@ summary:
 ## install
 ## publish
 ## ci
+### yarn frozen
 ## diff
 ## pack
 ## rebuild
@@ -40,10 +41,6 @@ summary:
 ## stop
 ## test
 ## version
-
-# 부록
-## npm ci (npm clean-install)
-## yarn frozen
 
 #### 참고
 - [https://docs.npmjs.com/cli/v8/using-npm/scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts)
