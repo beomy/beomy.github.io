@@ -32,7 +32,7 @@ summary:
 ## install
 ## publish
 ## ci
-### yarn frozen
+- yarn frozen
 ## diff
 ## pack
 ## rebuild
