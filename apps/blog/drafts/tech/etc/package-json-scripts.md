@@ -12,9 +12,9 @@ summary:
 ## Pre와 Post 스크립트
 - yarn에서는 pre post 라이프 사이클 불가능
 
-## 특별한 라이프 사이클 스크립트
+# 라이프 사이클 스크립트
 
-### NPM
+## NPM
 - prepare: 패키지가 패킹되기 전, `npm publish`, `npm pack` 중에 실행되는 스크립트입니다.
 - prepublish (DEPRECATED)
 - prepublishOnly
@@ -22,25 +22,23 @@ summary:
 - postpack
 - dependencies
 
-### Yarn 2+
+### install
+### publish
+### ci
+### diff
+### pack
+### rebuild
+### restart
+### start
+### stop
+### test
+### version
+
+## Yarn 2+
 - prepack
 - postpack
 - prepublish
 - postintall
-
-# 라이프 사이클 실행 순서
-## install
-## publish
-## ci
-- yarn frozen
-## diff
-## pack
-## rebuild
-## restart
-## start
-## stop
-## test
-## version
 
 #### 참고
 - [https://docs.npmjs.com/cli/v8/using-npm/scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts)
