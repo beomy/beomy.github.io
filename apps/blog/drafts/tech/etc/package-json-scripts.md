@@ -47,7 +47,7 @@ summary: package.jon 파일의 scripts 필드는 빌드, 실행 등에 사용되
 `prepare` 스크립트는 패키지가 패킹 되기 전에 실행되는 스크립트로 아래의 경우 호출됩니다.
 
 - `npm publish`, `npm pack` 의 스크립트가 실행될 때 호출됩니다.
-- 로컬에서 어떠한 인자 없지 `npm install` 스크립트가 실행될 때 호출됩니다.
+- 로컬에서 파라이터 없이 `npm install` 스크립트가 실행될 때 호출됩니다.
 
 ## `prepublish` (DEPRECATED)
 
