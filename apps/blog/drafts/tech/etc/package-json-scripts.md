@@ -80,6 +80,7 @@ summary: package.jon 파일의 scripts 필드는 빌드, 실행 등에 사용되
 - test
 - version
 
+## 'Yarn' 명령어별 라이프 사이클 실행 순서
 
 #### 참고
 - [https://docs.npmjs.com/cli/v8/using-npm/scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts)
