@@ -62,6 +62,9 @@ export const StyledPostSubContents = styled.div<{ active: boolean }>`
   position: fixed;
   width: 320px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  top: 70px;
   fieldset {
     + fieldset {
       margin-top: 10px;
@@ -71,6 +74,7 @@ export const StyledPostSubContents = styled.div<{ active: boolean }>`
     display: none;
   }
   ${({ theme }) => theme.sizes.mediaQueries.sm} {
+    top: 0;
     right: 0;
     height: 100%;
     padding: 10px;
