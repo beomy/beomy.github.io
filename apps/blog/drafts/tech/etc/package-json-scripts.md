@@ -41,7 +41,7 @@ summary: package.jon 파일의 scripts 필드는 빌드, 실행 등에 사용되
 ![Yarn 2 Pre, Post 스크립트](/assets/img/posts/etc/pre_post_scripts_yarn.png)
 
 # `NPM` 라이프 사이클 스크립트
-`NPM`은 `prepare`, `prepublish`, `prepublishOnly`, `prepack`, `postpack`, `dependencies` 6개의 라이프 사이클 스크립트가 있습니다. 하나씩 살펴보도록 하겠습니다.
+`NPM`은 `prepare`, `prepublish`, `prepublishOnly`, `prepack`, `postpack`, `dependencies` 6개의 라이프 사이클 스크립트가 있습니다. 라이프 사이클 스크립트를 하나씩 살펴보도록 하겠습니다.
 
 ## `prepare`
 `prepare` 스크립트는 패키지가 패킹 되기 전에 실행되는 스크립트로 아래의 경우 호출됩니다.
