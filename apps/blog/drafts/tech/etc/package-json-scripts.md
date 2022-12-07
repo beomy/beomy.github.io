@@ -61,9 +61,14 @@ summary: package.jon 파일의 scripts 필드는 빌드, 실행 등에 사용되
 ## `dependencies`
 
 # `Yarn 2+` 라이프 사이클 스크립트
+`Yarn 2+`는 `prepack`, `postpack`, `prepublish`, `postintall` 4개의 라이프 사이클 스트립트가 있습니다.
+
 ## prepack
+
 ## postpack
+
 ## prepublish
+
 ## postintall
 
 # 부록
