@@ -50,7 +50,6 @@ summary: package.jon 파일의 scripts 필드는 빌드, 실행 등에 사용되
 - 로컬에서 파라이터 없이 `npm install` 스크립트가 실행될 때 호출됩니다.
 
 ## `prepublish` (DEPRECATED)
-`prepublish` 스크립트는 패키지를 NPM에 배포하는 스크립트인 `npm publish` 스크립트가 실행되기 전에 호출됩니다.
 
 ## `prepublishOnly`
 
