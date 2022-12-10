@@ -73,6 +73,8 @@ summary: package.jon 파일의 scripts 필드는 빌드, 실행 등에 사용되
 # 부록
 
 ## `NPM` 명령어별 라이프 사이클 실행 순서
+스크립트 명령어 별로 라이프 사이클이 어떤 순서로 실행되는지 알면 `NPM` 패키지를 개발할 때 많은 도움이 될 수 있습니다. `NPM` 명령어 별로 실행 되는 라이프 사이클 스크립트를 살펴보겠습니다.
+
 - install
 - publish
 - ci
@@ -85,7 +87,7 @@ summary: package.jon 파일의 scripts 필드는 빌드, 실행 등에 사용되
 - test
 - version
 
-## 'Yarn' 명령어별 라이프 사이클 실행 순서
+## `Yarn` 명령어별 라이프 사이클 실행 순서
 
 #### 참고
 - [https://docs.npmjs.com/cli/v8/using-npm/scripts](https://docs.npmjs.com/cli/v8/using-npm/scripts)
