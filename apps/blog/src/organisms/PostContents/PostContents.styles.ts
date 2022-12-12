@@ -28,10 +28,13 @@ export const Wrapper = styled.div`
     border-spacing: 0;
     border: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
     border-radius: 4px;
-    th,
-    td {
-      padding: 6px 13px;
-      border: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
+    tr {
+      vertical-align: top;
+      th,
+      td {
+        padding: 6px 13px;
+        border: ${({ theme }) => `1px solid ${theme.colors.grey[90]}`};
+      }
     }
   }
   h1 {
