@@ -3,7 +3,7 @@ import { FieldSet } from '@beomy/design-system';
 import type { TableOfContentsProps } from './TableOfContents.types';
 
 export const Wrapper = styled(FieldSet)`
-  max-height: 600px;
+  max-height: 100%;
   overflow: auto;
 `;
 

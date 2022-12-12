@@ -27,71 +27,72 @@ type Context = {
   slug: string;
 };
 
-const StyledPostMain = styled.div`
-  width: calc(100% - 360px);
-  ${({ theme }) => theme.sizes.mediaQueries.sm} {
-    width: 100%;
-  }
-`;
-
-const StyledPostSub = styled.div<{ active: boolean }>`
-  margin-top: 40px;
-  margin-left: 60px;
-  ${({ theme }) => theme.sizes.mediaQueries.sm} {
+const S = {
+  PostMain: styled.div`
+    width: calc(100% - 380px);
+    ${({ theme }) => theme.sizes.mediaQueries.sm} {
+      width: 100%;
+    }
+  `,
+  PostSub: styled.div<{ active: boolean }>`
+    width: 380px;
+    height: 100%;
+    ${({ theme }) => theme.sizes.mediaQueries.sm} {
+      position: fixed;
+      top: 0;
+      right: 0;
+      > * {
+        transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+          opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+          box-shadow 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+      }
+      ${({ active }) =>
+        active &&
+        css`
+          z-index: 9;
+          width: 100%;
+        `}
+    }
+  `,
+  PostSubContents: styled.div<{ active: boolean }>`
     position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    > * {
-      transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
-        opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
-        box-shadow 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
-    }
-    ${({ active }) =>
-      active &&
-      css`
-        z-index: 9;
-        width: 100%;
-      `}
-  }
-`;
-
-export const StyledPostSubContents = styled.div<{ active: boolean }>`
-  position: fixed;
-  width: 320px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  top: 70px;
-  fieldset {
-    + fieldset {
-      margin-top: 10px;
-    }
-  }
-  > ${IconButtonStyles.Wrapper} {
-    display: none;
-  }
-  ${({ theme }) => theme.sizes.mediaQueries.sm} {
-    top: 0;
-    right: 0;
-    height: 100%;
+    width: 320px;
     padding: 10px;
-    background-color: ${({ theme }) => theme.colors.background};
-    transform: ${({ active }) =>
-      active ? 'translateX(0%)' : 'translateX(100%)'};
-    > ${IconButtonStyles.Wrapper} {
-      display: inline-flex;
-      background-color: ${({ theme }) => theme.colors.background};
-      position: absolute;
-      left: -50px;
-      bottom: 20px;
-      transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
-      transform: ${({ active }) => (active ? 'rotate(0deg)' : 'rotate(45deg)')};
+    margin-left: 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    top: 70px;
+    height: calc(100% - 70px);
+    fieldset {
+      + fieldset {
+        margin-top: 10px;
+      }
     }
-  }
-`;
+    > ${IconButtonStyles.Wrapper} {
+      display: none;
+    }
+    ${({ theme }) => theme.sizes.mediaQueries.sm} {
+      top: 0;
+      right: 0;
+      height: 100%;
+      margin: 0;
+      background-color: ${({ theme }) => theme.colors.background};
+      transform: ${({ active }) =>
+        active ? 'translateX(0%)' : 'translateX(100%)'};
+      > ${IconButtonStyles.Wrapper} {
+        display: inline-flex;
+        background-color: ${({ theme }) => theme.colors.background};
+        position: absolute;
+        left: -50px;
+        bottom: 20px;
+        transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+        transform: ${({ active }) =>
+          active ? 'rotate(0deg)' : 'rotate(45deg)'};
+      }
+    }
+  `,
+};
 
 const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
   const [isActive, setActive] = useState<boolean>(false);
@@ -148,15 +149,15 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
         lineHeight={2}
         width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m']}
       >
-        <StyledPostMain>
+        <S.PostMain>
           <PostHeader {...post} />
           <PostContents html={post.html} />
           <PostNavigator previous={previous} next={next} />
           <Disqus config={disqusConfig} />
-        </StyledPostMain>
-        <StyledPostSub active={isActive}>
+        </S.PostMain>
+        <S.PostSub active={isActive}>
           <Dim active={isActive} onClick={handleClickCloseSub} />
-          <StyledPostSubContents active={isActive}>
+          <S.PostSubContents active={isActive}>
             <PostShare url={url} />
             <TableOfContents
               toc={post.tableOfContents}
@@ -168,8 +169,8 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
               border
               onClick={handleClickCloseSub}
             />
-          </StyledPostSubContents>
-        </StyledPostSub>
+          </S.PostSubContents>
+        </S.PostSub>
       </Contents>
       <Footer />
     </Fragment>
