@@ -27,7 +27,7 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 저
 - 개발사: google
 - cra-to-nx로 cra 프로젝트 생성 가능, 다른 생성 방법도 함께
 - 단일 근원 원칙
-- Lerna에서 마이그레이션 방법 (app 당 package.json 가능?)
+- Lerna에서 마이그레이션 방법 (app 당 package.json 가능 확인 필요)
 
 ## Turborepo
 - 개발사: Vercel
