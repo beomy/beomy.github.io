@@ -4,5 +4,5 @@ import { StyledProps } from '@beomy/design-system/models';
 import { ShareButtonProps } from './ShareButton.types';
 
 export const Wrapper = styled(IconButtonStyles.Wrapper)<
-  StyledProps<ShareButtonProps & { resetButtonStyle: boolean }>
+  StyledProps<ShareButtonProps>
 >``;

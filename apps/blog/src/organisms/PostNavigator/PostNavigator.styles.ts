@@ -1,6 +1,5 @@
 import type { SpaceProps, TypographyProps } from 'styled-system';
 import styled from '@emotion/styled';
-import shouldForwardProp from '@styled-system/should-forward-prop';
 import { space, typography } from 'styled-system';
 import { Anchor as BeomyAnchor } from '@beomy/design-system';
 
@@ -32,7 +31,7 @@ export const BtnWrapper = styled.div`
   }
 `;
 
-export const Contents = styled('div', { shouldForwardProp })<SpaceProps>`
+export const Contents = styled.div<SpaceProps>`
   ${space};
   small {
     font-size: ${({ theme }) => theme.fontSizes[0]};

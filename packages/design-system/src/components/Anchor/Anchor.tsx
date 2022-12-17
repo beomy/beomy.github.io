@@ -1,5 +1,5 @@
 import type { AnchorProps } from './Anchor.types';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Link } from 'gatsby';
 import * as S from './Anchor.styles';
 

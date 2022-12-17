@@ -1,5 +1,5 @@
 import type { ComponentMeta } from '@storybook/react';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import styled from '@emotion/styled';
 import { uniqueId } from 'lodash-es';
 import Portal from './Portal';

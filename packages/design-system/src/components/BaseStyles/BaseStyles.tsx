@@ -1,5 +1,4 @@
 import type { Theme } from '@emotion/react';
-import React from 'react';
 import { Global } from '@emotion/react';
 import { GlobalStyles } from './BaseStyles.styles';
 

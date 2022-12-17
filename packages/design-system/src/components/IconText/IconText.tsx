@@ -1,5 +1,4 @@
 import type { IconTextProps } from './IconText.types';
-import React from 'react';
 import Icon from '../Icon';
 import * as S from './IconText.styles';
 

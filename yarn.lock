@@ -2295,7 +2295,6 @@ __metadata:
     "@beomy/utils": "workspace:*"
     "@emotion/react": 11.10.0
     "@emotion/styled": 11.10.0
-    "@styled-system/should-forward-prop": 5.1.5
     "@testing-library/dom": 8.16.0
     "@testing-library/jest-dom": 5.16.4
     "@testing-library/react": 13.3.0
@@ -2307,7 +2306,6 @@ __metadata:
     "@types/react-dom": 18.0.6
     "@types/react-helmet": 6.1.5
     "@types/styled-system": 5.1.15
-    "@types/styled-system__should-forward-prop": 5.1.2
     "@types/testing-library__jest-dom": 5.14.5
     "@typescript-eslint/eslint-plugin": 5.32.0
     "@typescript-eslint/parser": 5.32.0
@@ -8750,13 +8748,6 @@ __metadata:
   dependencies:
     csstype: ^3.0.2
   checksum: ca1bbd4b5f36ac417079a9d0e3cd99893e41a6034197ef6ad6cda972277f8bf44f914dcc2dfb3bfbf7cba708561ae5b648166967f68622dec1eef1bfbc9ce59b
-  languageName: node
-  linkType: hard
-
-"@types/styled-system__should-forward-prop@npm:5.1.2":
-  version: 5.1.2
-  resolution: "@types/styled-system__should-forward-prop@npm:5.1.2"
-  checksum: ba99b5653136058baa9f4a510a6175da5ada14a4f104340979f93bd82c428ef3f733c51101e4f15a934d473d9041887d213516b99209b641ff4e715d2c5b4b60
   languageName: node
   linkType: hard
 
