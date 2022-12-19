@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[ETC] Monorepo Tools - Yarn'
+title: '[ETC] Monorepo - Yarn'
 featured-img: etc/monorepo.png
 category: [tech, etc]
 summary:
