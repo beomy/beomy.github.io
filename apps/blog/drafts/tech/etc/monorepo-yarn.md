@@ -39,7 +39,7 @@ summary:
   - enableScripts는 뭐냐? postInstall 스크립트 실행을 막아 unplugged 폴더를 생성하지 않는다.
 
 ## 오프라인 캐시
-`.yarn/release/yarn-<version>.cjs`
+- `.yarn/release/yarn-<version>.cjs`
 
 ## Yarn Pnp 단점
 - node_modules에 디펜던시가 있는 라이브러리 사용 불가.
