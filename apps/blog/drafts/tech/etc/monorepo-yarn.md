@@ -28,8 +28,7 @@ summary:
   - Zero-Install을 사용하면 프로젝트를 빌드하기 위한 패키지 설치가 필요없이 Git Clone 만으로 프로젝트가 바로 빌드 가능한 상태가 되어 CI에서 의존성을 설치하는 시간을 절약할 수 있습니다.
 
 ## `pnpMode: "loose"`
-- @emotion + storybook 지원 가능? -> pnpMode loose
-  - loose는 fallback pool을 만들어 종속된 패키지가 패키지를 찾지 못할 경우 fallback pool에서 패키지를 찾아 실행하게 한다.
+- loose는 fallback pool을 만들어 종속된 패키지가 패키지를 찾지 못할 경우 fallback pool에서 패키지를 찾아 실행하게 한다.
 
 ## `enableScripts: false`
 - zero-install인데 왜 yarn install을 해야 하느냐 -> pnpMode loose가 아닌 이유는 .yarn/unplugged 폴더 때문입니다.
