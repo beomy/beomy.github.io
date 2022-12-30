@@ -76,6 +76,7 @@ const S = {
       top: 0;
       right: 0;
       height: 100%;
+      max-width: calc(100% - 60px);
       margin: 0;
       background-color: ${({ theme }) => theme.colors.background};
       transform: ${({ active }) =>
@@ -156,12 +157,12 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
           <Disqus config={disqusConfig} />
         </S.PostMain>
         <S.PostSub active={isActive}>
-          <Dim active={isActive} onClick={handleClickCloseSub} />
+          <Dim active={isActive} onClick={() => setActive(false)} />
           <S.PostSubContents active={isActive}>
             <PostShare url={url} />
             <TableOfContents
               toc={post.tableOfContents}
-              onClick={handleClickCloseSub}
+              onClick={() => setActive(false)}
             />
             <IconButton
               icon="BsXLg"

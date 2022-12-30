@@ -52,7 +52,7 @@ const TableOfContents = ({ toc, onClick, ...props }: TableOfContentsProps) => {
       <S.Toc
         ref={tocRef}
         dangerouslySetInnerHTML={{ __html: toc ?? '' }}
-        onClick={handleClickToc as any}
+        onClick={handleClickToc}
       ></S.Toc>
     </S.Wrapper>
   );

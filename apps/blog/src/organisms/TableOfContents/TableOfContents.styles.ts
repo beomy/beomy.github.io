@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 import { FieldSet } from '@beomy/design-system';
-import type { TableOfContentsProps } from './TableOfContents.types';
 
 export const Wrapper = styled(FieldSet)`
   max-height: 100%;
   overflow: auto;
 `;
 
-export const Toc = styled.div<TableOfContentsProps>`
+export const Toc = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[1]};
   a {
     color: ${({ theme }) => theme.colors.caption};
