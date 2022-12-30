@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@beomy/utils": "0.0.0",
+    "@styled-system/should-forward-prop": "5.1.5",
     "color": "4.2.3",
     "lodash-es": "4.17.21",
     "react-icons": "4.4.0",
@@ -71,6 +72,7 @@
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "@types/styled-system": "5.1.15",
+    "@types/styled-system__should-forward-prop": "5.1.2",
     "@typescript-eslint/eslint-plugin": "5.32.0",
     "@typescript-eslint/parser": "5.32.0",
     "babel-loader": "8.2.5",

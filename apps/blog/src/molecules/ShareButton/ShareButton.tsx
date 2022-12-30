@@ -37,6 +37,7 @@ const ShareButton = ({ target, url, size }: ShareButtonProps) => {
     <S.Wrapper
       as={targetShareButton}
       url={url}
+      resetButtonStyle={false}
       border
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}

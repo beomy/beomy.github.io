@@ -2395,12 +2395,14 @@ __metadata:
     "@storybook/manager-webpack5": 6.5.13
     "@storybook/react": 6.5.13
     "@storybook/testing-library": 0.0.13
+    "@styled-system/should-forward-prop": 5.1.5
     "@svgr/cli": 6.5.0
     "@types/color": 3.0.3
     "@types/lodash-es": 4.17.6
     "@types/react": 18.0.15
     "@types/react-dom": 18.0.6
     "@types/styled-system": 5.1.15
+    "@types/styled-system__should-forward-prop": 5.1.2
     "@typescript-eslint/eslint-plugin": 5.32.0
     "@typescript-eslint/parser": 5.32.0
     babel-loader: 8.2.5
@@ -3573,12 +3575,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/is-prop-valid@npm:^0.8.1":
+  version: 0.8.8
+  resolution: "@emotion/is-prop-valid@npm:0.8.8"
+  dependencies:
+    "@emotion/memoize": 0.7.4
+  checksum: bb7ec6d48c572c540e24e47cc94fc2f8dec2d6a342ae97bc9c8b6388d9b8d283862672172a1bb62d335c02662afe6291e10c71e9b8642664a8b43416cdceffac
+  languageName: node
+  linkType: hard
+
 "@emotion/is-prop-valid@npm:^1.2.0":
   version: 1.2.0
   resolution: "@emotion/is-prop-valid@npm:1.2.0"
   dependencies:
     "@emotion/memoize": ^0.8.0
   checksum: cc7a19850a4c5b24f1514665289442c8c641709e6f7711067ad550e05df331da0692a16148e85eda6f47e31b3261b64d74c5e25194d053223be16231f969d633
+  languageName: node
+  linkType: hard
+
+"@emotion/memoize@npm:0.7.4":
+  version: 0.7.4
+  resolution: "@emotion/memoize@npm:0.7.4"
+  checksum: 4e3920d4ec95995657a37beb43d3f4b7d89fed6caa2b173a4c04d10482d089d5c3ea50bbc96618d918b020f26ed6e9c4026bbd45433566576c1f7b056c3271dc
+  languageName: node
+  linkType: hard
+
+"@emotion/memoize@npm:^0.7.1":
+  version: 0.7.5
+  resolution: "@emotion/memoize@npm:0.7.5"
+  checksum: 83da8d4a7649a92c72f960817692bc6be13cc13e107b9f7e878d63766525ed4402881bfeb3cda61145c050281e7e260f114a0a2870515527346f2ef896b915b3
   languageName: node
   linkType: hard
 
@@ -7665,6 +7690,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@styled-system/should-forward-prop@npm:5.1.5":
+  version: 5.1.5
+  resolution: "@styled-system/should-forward-prop@npm:5.1.5"
+  dependencies:
+    "@emotion/is-prop-valid": ^0.8.1
+    "@emotion/memoize": ^0.7.1
+    styled-system: ^5.1.5
+  checksum: 49e383f114a72768a7c69d2986812b88f882cee81c96f7b58a1618162001168fce38f607acc6fd2af91fabe8e475a436f3f36c938dba249eadef631dcd3d26ad
+  languageName: node
+  linkType: hard
+
 "@styled-system/space@npm:^5.1.2":
   version: 5.1.2
   resolution: "@styled-system/space@npm:5.1.2"
@@ -8713,6 +8749,13 @@ __metadata:
   dependencies:
     csstype: ^3.0.2
   checksum: ca1bbd4b5f36ac417079a9d0e3cd99893e41a6034197ef6ad6cda972277f8bf44f914dcc2dfb3bfbf7cba708561ae5b648166967f68622dec1eef1bfbc9ce59b
+  languageName: node
+  linkType: hard
+
+"@types/styled-system__should-forward-prop@npm:5.1.2":
+  version: 5.1.2
+  resolution: "@types/styled-system__should-forward-prop@npm:5.1.2"
+  checksum: ba99b5653136058baa9f4a510a6175da5ada14a4f104340979f93bd82c428ef3f733c51101e4f15a934d473d9041887d213516b99209b641ff4e715d2c5b4b60
   languageName: node
   linkType: hard
 
@@ -28034,7 +28077,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-system@npm:5.1.5":
+"styled-system@npm:5.1.5, styled-system@npm:^5.1.5":
   version: 5.1.5
   resolution: "styled-system@npm:5.1.5"
   dependencies:

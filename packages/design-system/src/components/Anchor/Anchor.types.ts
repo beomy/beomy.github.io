@@ -1,4 +1,5 @@
 import type { HTMLAttributeAnchorTarget, ReactNode } from 'react';
+import type { TypographyProps } from 'styled-system';
 
 export type AnchorProps = {
   children: ReactNode;
@@ -12,4 +13,4 @@ export type AnchorProps = {
   href?: string;
   /** A 태그 옵션: 새창 옵션 */
   target?: HTMLAttributeAnchorTarget;
-};
+} & TypographyProps;

@@ -1,6 +1,6 @@
-import type { SpaceProps, TypographyProps } from 'styled-system';
+import type { SpaceProps } from 'styled-system';
 import styled from '@emotion/styled';
-import { space, typography } from 'styled-system';
+import { space } from 'styled-system';
 import { Anchor as BeomyAnchor } from '@beomy/design-system';
 
 export const BtnWrapper = styled.div`
@@ -54,10 +54,9 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Anchor = styled(BeomyAnchor)<TypographyProps>`
+export const Anchor = styled(BeomyAnchor)`
   display: flex;
   align-items: center;
   height: 70px;
   line-height: 1.4;
-  ${typography};
 `;
