@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[ETC] Monorepo 개념'
+title: '[ETC] Monorepo - 개념'
 featured-img: etc/monorepo.png
 category: [tech, etc]
 summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 저장소(Repository)에서 관리 할 수 있습니다. 이번 포스트에서는 모노레포가 무엇인지 살펴보도록 하겠습니다.
@@ -15,7 +15,13 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 저
 
 ## 멀티레포
 
-# 모노레포를 사용해야 할 경우
+## 모노레포
+
+# 모노레포 장단점
+
+## 장점
+
+## 단점
 
 #### 참고
 - [https://2021.stateofjs.com/en-US/libraries/monorepo-tools](https://2021.stateofjs.com/en-US/libraries/monorepo-tools)
