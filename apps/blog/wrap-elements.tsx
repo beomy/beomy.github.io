@@ -5,7 +5,7 @@ import { BaseStyles } from '@beomy/design-system';
 import * as themes from '@beomy/design-system/tokens';
 import { useMount, useLocalStorage } from '@beomy/utils';
 import { Theme } from '@/models/theme';
-import { useBeomyTheme } from '@/hooks';
+import { useTheme } from '@/hooks';
 import { themeState } from '@/stores/theme';
 import { Notification } from '@/organisms';
 
@@ -14,7 +14,7 @@ type ElementProps = {
 };
 
 export const PageComponent = ({ children }: ElementProps) => {
-  const [theme] = useBeomyTheme();
+  const [theme] = useTheme();
   const [localStorageTheme] = useLocalStorage<Theme>('beomy.theme');
   const [, setRecoilTheme] = useRecoilState(themeState);
 

@@ -3,13 +3,13 @@ import { navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import { TextField, Anchor, Icon, IconButton } from '@beomy/design-system';
 import { useScroll } from '@beomy/utils';
-import { useBeomyTheme } from '@/hooks';
+import { useTheme } from '@/hooks';
 import { Li } from '@/atoms';
 import { Menu } from '@/organisms';
 import * as S from './Header.styles';
 
 const Header = () => {
-  const [theme, setTheme] = useBeomyTheme();
+  const [theme, setTheme] = useTheme();
   const [isSearch, setIsSearch] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const scrollY = useScroll(20);

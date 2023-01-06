@@ -19,7 +19,7 @@ import {
   Footer,
   PostShare,
 } from '@/organisms';
-import { usePost, useBeomyTheme } from '@/hooks';
+import { usePost, useTheme } from '@/hooks';
 
 type Context = {
   previous: MarkdownRemark;
@@ -97,7 +97,7 @@ const S = {
 
 const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
   const [isActive, setActive] = useState<boolean>(false);
-  const [theme] = useBeomyTheme();
+  const [theme] = useTheme();
   const post = usePost(data.markdownRemark);
   const previous = usePost(pageContext.previous);
   const next = usePost(pageContext.next);

@@ -1,12 +1,12 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import { Anchor, IconButton } from '@beomy/design-system';
-import { useMenu, useBeomyTheme } from '@/hooks';
+import { useMenu, useTheme } from '@/hooks';
 import { Li, Ul, Dim } from '@/atoms';
 import type { MenuProps } from './Menu.types';
 import * as S from './Menu.styles';
 
 const Menu = ({ active, onClose }: MenuProps) => {
-  const [theme] = useBeomyTheme();
+  const [theme] = useTheme();
   const menuTree = useMenu();
 
   return (
