@@ -28,13 +28,13 @@ type Context = {
 };
 
 const S = {
-  PostMain: styled.div`
+  PostMain: styled.main`
     width: calc(100% - 380px);
     ${({ theme }) => theme.sizes.mediaQueries.sm} {
       width: 100%;
     }
   `,
-  PostSub: styled.div<{ active: boolean }>`
+  PostSub: styled.aside<{ active: boolean }>`
     width: 380px;
     height: 100%;
     ${({ theme }) => theme.sizes.mediaQueries.sm} {
