@@ -154,7 +154,7 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
           <PostHeader {...post} />
           <PostContents html={post.html} />
           <PostNavigator previous={previous} next={next} />
-          <Disqus config={disqusConfig} />
+          <Disqus key={theme} config={disqusConfig} />
         </S.PostMain>
         <S.PostSub active={isActive}>
           <Dim active={isActive} onClick={() => setActive(false)} />
