@@ -16,14 +16,14 @@ summary:
   - A 함수 내부에서 B 함수를 선언하고 다시 B 함수 내부에서 C 함수를 선언할 경우 함수 C의 `LexicalEnvironment.outerEnvironmentReference`는 함수 B의 `LexicalEnvironment`이고 함수 B의 `LexicalEnvironment.outerEnvironmentReference`는 함수 A의 `LexicalEnvironment`입니다.
   - 이런 이유로 스코프 체인(변수의 유효범위를 안에서부터 바깥으로 차례로 검색해 나가는 것)이 가능합니다.
 
-# LexicalEnvironment
+## LexicalEnvironment
 매겨변수, 함수 등등의 정보를 담음
 
-# VariableEnvironment
+## VariableEnvironment
 LexicalEnvironment의 초기 스냅샷
 
-# LexicalEnvironment
-# ThisBinding
+## LexicalEnvironment
+## ThisBinding
 this를 바인딩
-#### 참고
+##### 참고
 - 코어 자바스크립트

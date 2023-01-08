@@ -8,7 +8,7 @@ summary: Vue 코어 함수에서 호출하는 초기화 동작을 이야기할 �
 
 이번 포스트에서는 Vue 코어 함수에서 호출하는 `_init` 함수의 초기화 동작에 대해 이야기 할 것입니다.
 
-# `_init` 함수 살펴보기
+## `_init` 함수 살펴보기
 ```js
 function Vue (options) {
   if (process.env.NODE_ENV !== 'production' &&
@@ -132,7 +132,7 @@ callHook(vm, 'created')
 
 위의 init 함수들에 대해 이야기 하도록 하겠습니다. `callHook` 함수는 간단하게 Vue의 lifecycle 훅을 호출하는 함수로 이해 할 수 있습니다.
 
-## `initLifecycle` 함수
+### `initLifecycle` 함수
 `initLifecycle` 함수는 `src/core/instance/lifecycle.js`에 정의되어 있습니다.
 
 ```js
@@ -165,7 +165,7 @@ export function initLifecycle (vm: Component) {
 
 `initLifecycle` 함수는 현재 컴포넌트를 부모와 연결 시키는 역할을 합니다. 그리고 lifecycle 메소드에 필요한 몇몇 변수들을 초기화 합니다.
 
-## `initEvents` 함수
+### `initEvents` 함수
 `initEvents` 함수는 `src/core/instance/events.js`에 정의되어 있습니다.
 
 ```js
@@ -182,7 +182,7 @@ export function initEvents (vm: Component) {
 
 `initEvents` 함수는 몇몇의 변수들을 초기화 하고, 부모의 리스너를 초기화 합니다.
 
-## `initRender` 함수
+### `initRender` 함수
 `initRender` 함수는 `src/core/instance/render.js`에 정의되어 있습니다.
 
 ```js
@@ -226,7 +226,7 @@ export function initRender (vm: Component) {
 
 Vue를 사용하면서 VNode라는 말을 들어 보셨을 수도 있습니다. VNode를 사용하여 VDom을 만듭니다. VNode와 VDom은 각각 real Node와 DOM에 매칭됩니다. Vue가 VNode와 VDom을 사용하는 이유는 가상 DOM을 사용하여 성능을 향상 시키기 위해서 입니다.
 
-## `initInjections` 함수
+### `initInjections` 함수
 `initInjections` 함수는 `src/core/instance/inject.js`에 정의되어 있습니다.
 
 ```js
@@ -256,7 +256,7 @@ export function initInjections (vm: Component) {
 
 `initInjections` 함수는 짧고 간단합니다. 이 함수는 option 삽입 문제를 해결하고, 삽입된 option들을 컴포넌트에 세팅합니다. `initInjections` 함수에 `defineReactive` 함수가 사용된 것을 볼 수 있습니다.
 
-### `defineReactive` 함수
+#### `defineReactive` 함수
 Vue는 data가 변경 되면 자동으로 view를 업데이트 합니다. 이 업데이트 동작이 `defineReactive` 함수와 연관되어 있습니다. `defineReactive` 함수는 이곳 저곳에서 많이 사용됩니다.
 
 `defineReactive` 함수는 `src/core/observer/index.js`안에 정의되어 있습니다.
@@ -331,7 +331,7 @@ export function defineReactive (
 
 data가 변경되어 view를 업데이트 해야 할 때, getter와 setter 안에서 이 data와 의존성(dependency)이 있는 것들에게 `notify` 합니다. `defineReactive`는 [5. Reactive - Observer, Dep and Watcher](/tech/vuejs/reactive-observer-dep-watcher/#definereactive-함수)에서 더 자세히 이야기 하도록 하겠습니다.
 
-## `initState` 함수
+### `initState` 함수
 `initState` 함수는 `src/core/instance/state.js`에 정의되어 있습니다.
 
 ```js
@@ -353,7 +353,7 @@ export function initState (vm: Component) {
 ```
 `initState` 함수에서는 Vue을 사용하면서 많이 접하게 되는 `props`, `methods`, `data`, `computed`, `watch`들이 이 함수에서 등장합니다.
 
-### `initProps` 함수
+#### `initProps` 함수
 ```js
 function initProps (vm: Component, propsOptions: Object) {
   const propsData = vm.$options.propsData || {}
@@ -406,7 +406,7 @@ function initProps (vm: Component, propsOptions: Object) {
 
 유효성 검사와, `defineReactive`를 사용하여 props를 get과 set으로 감싸 컴포넌트에 세팅하는 역할을 합니다.
 
-### `initMethods` 함수
+#### `initMethods` 함수
 ```js
 function initMethods (vm: Component, methods: Object) {
   const props = vm.$options.props
@@ -439,7 +439,7 @@ function initMethods (vm: Component, methods: Object) {
 
 컴포넌트에 methods를 세팅하는 역할을 합니다.
 
-### `initData` 함수
+#### `initData` 함수
 ```js
 function initData (vm: Component) {
   let data = vm.$options.data
@@ -533,7 +533,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 
 `observe` 함수는 value에 대한 observe 인스턴스를 리턴하는 함수 입니다. 두 번째 파라미터에 `true`를 전달하면 root data로 사용한다는 의미이고, `ob.vmCount`는 얼마나 많은 컴포넌트가 해당 value를 root data로 사용하는지 카운팅 하는 역할을 합니다.
 
-### `initComputed` 함수
+#### `initComputed` 함수
 ```js
 function initComputed (vm: Component, computed: Object) {
   // $flow-disable-line
@@ -581,7 +581,7 @@ function initComputed (vm: Component, computed: Object) {
 
 `defineComputed` 함수를 사용하여 컴포넌트에 computed 속성을 세팅합니다.
 
-### `initWatch` 함수
+#### `initWatch` 함수
 ```js
 function initWatch (vm: Component, watch: Object) {
   for (const key in watch) {
@@ -619,7 +619,7 @@ function createWatcher (
 
 위의 코드는 `createWatcher` 함수입니다. `createWatcher` 함수는 `vm.$watch`를 호출합니다. `$watch`는 [3. Initialize - Mixin Layer](/tech/vuejs/initialize-mixin-layer/#statemixin-함수)에서 살펴본 `stateMixin` 함수 안에서 정의 됩니다.
 
-## `initProvide` 함수
+### `initProvide` 함수
 `initProvide` 함수는 `src/core/instance/inject.js`에 정의되어 있습니다.
 
 ```js
@@ -635,11 +635,11 @@ export function initProvide (vm: Component) {
 
 `initProvide` 함수는 option 안에 provide를 추출하고 호출하는 역할을 합니다.
 
-# 요약
+## 요약
 ![Vue 초기화](/assets/img/posts/vuejs/vue_initialize.png)
 
-# 다음으로 볼 것
+## 다음으로 볼 것
 다음 포스트에서는 data가 변경 되면 화면이 동기적으로 업데이트 되는 방법, [5. Reactive - Observer, Dep and Watcher](/tech/vuejs/reactive-observer-dep-watcher/)에 대해 이야기 할 것입니다.
 
-#### 참고
+##### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md)

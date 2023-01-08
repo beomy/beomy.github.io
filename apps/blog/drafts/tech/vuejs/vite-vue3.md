@@ -6,30 +6,30 @@ category: [tech, vuejs]
 summary: Vite + Vue + TypeScript + Atomic 패턴 + Eslint + Prettier + Sass + Jest + Cypress + Storybook를 적용한 Vue3 프로젝트를 만들어보겠습니다.
 ---
 
-# Vite + Vue3 + TypeScript
+## Vite + Vue3 + TypeScript
 
-## Vite
+### Vite
 
-## Vue3
+### Vue3
 
-# Atomic 패턴
+## Atomic 패턴
 
-# ESlint + Prettier
+## ESlint + Prettier
 
-## ESLint
+### ESLint
 
-## Prettier
+### Prettier
 
-# Sass + PostCSS
+## Sass + PostCSS
 
-## Sass
+### Sass
 
-## PostCSS
+### PostCSS
 
-# Jest + Cypress
+## Jest + Cypress
 
-## Jest
+### Jest
 
-## Cypress
+### Cypress
 
-# StoryBook
+## StoryBook

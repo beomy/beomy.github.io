@@ -6,5 +6,5 @@ category: [tech, javascript]
 summary:
 ---
 
-#### 참고
+##### 참고
 - [https://ko.javascript.info/weakmap-weakset](https://ko.javascript.info/weakmap-weakset)

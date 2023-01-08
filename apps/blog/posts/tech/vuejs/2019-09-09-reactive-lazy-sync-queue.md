@@ -8,7 +8,7 @@ summary: Vue에서 데이터를 업데이트 하는 3가지 방법을 이야기�
 
 이전 포스트([5. Reactive - Observer, Dep and Watcher](/tech/vuejs/reactive-observer-dep-watcher/))에서는 `Observer`와 `Dep`, `Watcher`의 관계에 대해 이야기하였습니다. 이번 포스트에서는 `Watcher`가 어떻게 값을 업데이트 하는지, View와 data의 업데이트 순서가 어떻게 결정되는지에 대해 야야기 하도록 하겠습니다.
 
-# Watcher가 업데이트 하는 3가지 방법
+## Watcher가 업데이트 하는 3가지 방법
 ```js
 export function defineReactive (
   obj: Object,
@@ -70,7 +70,7 @@ update () {
 
 `update` 함수를 살펴보면, lazy, sync, queue, 3가지 방식으로 업데이트하는 것을 볼 수 있습니다.
 
-## Lazy
+### Lazy
 lazy 옵션은 Watcher 인스턴스를 생성할 때 파라미터로 전달됩니다. `this.lazy`가 `true`일 경우, `this.dirty`가 `true`가 됩니다.(변수명을 해석하면.. 게으르면 더럽습니다. 가 되네요) `dirty`가 사용되는 코드를 보면,
 
 ```js
@@ -114,7 +114,7 @@ function createComputedGetter (key) {
 
 함수 이름에서 알 수 있듯이 `computed` 프로퍼티의 getter 함수를 생성하는 함수입니다. `computedGetter` 함수가 호출되면, `watcher.dirty`가 `true` 일 경우 `watcher.evaluate()`를 호출합니다. lazy 모드일 경우 실제로 값이 필요할 때까지 평가(evaluate)를 미룰 수 있습니다.
 
-## Sync
+### Sync
 `update` 함수를 보면, `this.sync`가 `true`일 경우(기본값은 `false`입니다), `this.run()`을 실행합니다.
 
 ```js
@@ -152,7 +152,7 @@ run () {
 
 `run` 함수는 `this.get()`(`get` 함수는 [5. Reactive - Observer, Dep and Watcher](/tech/vuejs/reactive-observer-dep-watcher/)에서 살펴보았습니다.)을 호출합니다. `value`의 값이 변경 되었거나, `value`가 object이거나, `this.deep`이 `true`일 경우 `value`와 `oldValue`를 세팅한 후 콜백함수(`this.cb.call(this.vm, value, oldValue)`)를 실행합니다.
 
-## Queue
+### Queue
 lazy, sync 모드가 아닐 경우, queue 모드로 동작합니다. queue 모드에서 `update` 함수에서 `queueWatcher(this)`를 실행합니다.
 
 ```js
@@ -200,7 +200,7 @@ Vue를 사용하면서 `nextTick`이라는 함수를 보셨을 것입니다. Vue
 
 즉, `flushing` flag는 queue에 있는 watcher가 동작하고 있는 것을 나타내는 flag이고, `waiting` flag를 한번의 tick에 한번의 `flushSchedulerQueue`를 호출하기 위해 사용됩니다.
 
-# View 업데이트를 트리거하는 방법
+## View 업데이트를 트리거하는 방법
 watcher가 value를 업데이트 하는 것을 살펴 보았습니다. 이제까지 살펴본 watcher는 `computed` 프로퍼티와 `watch`의 콜백함수를 호출하는데 사용되었습니다.
 
 view를 업데이트 하는데 watcher가 사용될 것 같은데, 지금까지 살펴본 코드 어디에서도 view를 업데이트 하는 부분이 등장하지 않았습니다. view를 업데이트 하는 코드를 찾을 수 있는 단서는 [3. Initialize - Mixin Layer](/tech/vuejs/initialize-mixin-layer/#lifecyclemixin-함수)에서 살펴본 `_update` 함수입니다. `_update` 함수는 DOM을 업데이트하는 역할을 합니다. `_update`를 프로젝트 전체 검색으로 어디서 사용되는지 찾아보도록 하겠습니다.
@@ -274,7 +274,7 @@ export function initRender (vm: Component) {
 
 위의 코드를 보면 `$attrs`와 `$listeners`이 변경 되었을 때 view가 업데이트 됩니다.
 
-# 업데이트 순서를 정하는 방법
+## 업데이트 순서를 정하는 방법
 ```html
 <div id="app">
   {{ newName }}
@@ -350,7 +350,7 @@ Vue.prototype._init = function (options?: Object) {
 
 `vm.$mount(vm.$options.el)`가 가장 마지막에 호출되는 것을 볼 수 있습니다. `$mount` 함수는 `mountComponent`([3. Initialize - Mixin Layer](/tech/vuejs/initialize-mixin-layer/#lifecyclemixin-함수)에서 이야기 했습니다.)를 호출하는데 `mountComponent` 함수는 `Watcher` 인스턴스를 생성합니다. 가장 마지막에 호출되기 때문에 가장 큰 id를 할당 받아 가장 마지막에 view가 업데이트 되게 됩니다.
 
-# 요약
+## 요약
 이번 포스트에서는 Watcher가 업데이트하는 lazy, sync, queue 3가지 방법에 대해 이야기 했습니다. 기본값은 queue 모드입니다.
 
 - lazy 모드는 값이 실제로 필요할 때까지 Watcher의 평가를 미루는 모드입니다.
@@ -359,8 +359,8 @@ Vue.prototype._init = function (options?: Object) {
 
 view를 업데이트 할 때도, watcher를 재사용합니다. 모든 값이 업데이트 되고 가장 마지막에 view가 업데이트 되는데 그 이유는 `_init` 함수에서 `$mount` 함수가 가장 마지막에 호출되었기 때문입니다.
 
-# 다음으로 볼 것
+## 다음으로 볼 것
 다음 포스트에서는 브라우저에서 실행 되는 코드로 변환해 주는 컴파일러 함수를 찾아 보고([7. View Render - 컴파일러](/tech/vuejs/view-render-compiler/)) 어떤 과정으로 만들어지는지 살펴 보도록 하겠습니다.
 
-#### 참고
+##### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/05-dynamic-data-lazy-sync-and-queue.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/05-dynamic-data-lazy-sync-and-queue.md)

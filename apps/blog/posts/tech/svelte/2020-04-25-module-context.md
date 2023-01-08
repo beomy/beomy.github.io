@@ -9,7 +9,7 @@ summary: Module context를 사용하면 같은 컴포넌트로 생성한 인스�
 
 이번 포스트에서는 코드를 공유할 수 있는 모듈 컨텍스트를 이야기하도록 하겠습니다.
 
-# 코드 공유
+## 코드 공유
 `<script context="module">`를 사용하면 동일한 컴포넌트로 만들어진 인스턴스 간의 코드를 공유할 수 있습니다.
 
 ```html
@@ -81,7 +81,7 @@ summary: Module context를 사용하면 같은 컴포넌트로 생성한 인스�
 
 `AudioPlayer.svelte`의 `<script context="module">` 내에 작성된 코드는 같은 컴포넌트로 생성된 인스턴스 간에 코드를 공유할 수 있습니다. `let current`는 현재 재생되는 오디오를 저장하고 있습니다. `stopOthers` 함수로 현재 실행되고 있는 오디오가 현재 인스턴스에서 실행되는 오디오가 아니라면 일시정지시킵니다.
 
-# 코드 내보내기
+## 코드 내보내기
 `<script context="module">` 내에 `export` 된 코드는 부모 컴포넌트에서 사용 가능합니다.
 
 ```html
@@ -170,6 +170,6 @@ summary: Module context를 사용하면 같은 컴포넌트로 생성한 인스�
 
 `const elements`에는 이제까지 등록된 오디오들이 저장됩니다. `stopAll` 함수는 `<script context="module">` 내에서 `export` 되었기 때문에, 부모 컴포넌트에서 `stopAll`를 `import`하여 사용할 수 있습니다. `stopAll`는 모든 오디오를 일시정지시킵니다.
 
-### 참고
+#### 참고
 - [https://svelte.dev/tutorial/sharing-code](https://svelte.dev/tutorial/sharing-code)
 - [https://svelte.dev/tutorial/module-exports](https://svelte.dev/tutorial/module-exports)

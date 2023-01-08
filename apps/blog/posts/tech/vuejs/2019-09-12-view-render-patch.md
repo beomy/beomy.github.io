@@ -8,7 +8,7 @@ summary: _render()와 _update()에서 호출하는 render 함수와 __patch__ �
 
 [7. View Render - 컴파일러](/tech/vuejs/view-render-compiler/#랜더링-함수)에서 이야기 한 `mountComponent` 함수에서 view를 랜더링 하는데 사용된 2가지 함수인 `_render()`와 `_update()`에서 호출하는 `render` 함수와 `__patch__` 함수에 대해 이야기 하도록 하겠습니다.
 
-# view를 랜더링 하는 2가지 함수
+## view를 랜더링 하는 2가지 함수
 `mountComponent` 함수에서 view를 랜더링하는데 `_render`, `_update` 두가지 함수가 사용됩니다.
 
 ```js
@@ -31,7 +31,7 @@ export function mountComponent (
 
 `src/core/instance/lifecycle.js`에 `mountComponent` 함수가 정의되어 있습니다. 먼저 `_render` 함수에서 `render` 함수를 호출하는 코드를 살펴보도록 하겠습니다.
 
-## `_render` 함수
+### `_render` 함수
 `render` 함수를 호출하는 `_render` 함수 코드를 살펴보면,
 
 ```js
@@ -111,7 +111,7 @@ Vue.prototype._render = function (): VNode {
 
 `vnode`는 변수명에서 짐작할 수 있듯이 가상노드(virtual node)입니다. `render` 함수의 역할은 VNode를 가져오는 역할을 합니다.
 
-## `_update` 함수
+### `_update` 함수
 이번에는 나머지 랜더링 함수인 `_update` 함수를 살펴보도록 하겠습니다. `_update` 함수의 파라미터로 `_render` 함수에서 생성된 VNode가 전달됩니다.
 
 ```js
@@ -149,7 +149,7 @@ Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
 
 `_update` 함수에서 중요한 점은 `__patch__` 함수를 호출한다는 것입니다. `__patch__` 함수는 VNode를 파라미터로 전달받아 DOM을 초기화 하거나 업데이트 하는 역할을 합니다. `__patch__` 함수를 살펴보도록 하겠습니다.
 
-### `__patch__` 함수
+#### `__patch__` 함수
 ```js
 Vue.prototype.__patch__ = inBrowser ? patch : noop
 ```
@@ -199,7 +199,7 @@ export function appendChild (node: Node, child: Node) {
 
 위의 코드와 같이 실제 DOM을 조작하는 메소드들을 볼 수 있습니다. `const modules = platformModules.concat(baseModules)`를 통해 생성되는 `modules` 역시 실제 DOM을 조작하는 메소드들이 모여 있습니다.
 
-# Vue가 DOM을 빠르게 업데이트 하는 방법
+## Vue가 DOM을 빠르게 업데이트 하는 방법
 지금까지 VNode를 만드는 방법과 DOM을 수정하는 메소드들에 대해 이야기 했습니다. 이번에는 이것들을 사용하여 Vue가 어떻게 DOM을 빠르게 업데이트 하는지에 대해 이야기 하도록 하겠습니다.
 
 `patch` 함수를 만드는 `createPatchFunction`를 살펴보도록 하겠습니다. `src/vdom/patch.js`에 정의되어 있습니다.
@@ -244,7 +244,7 @@ export function createPatchFunction (backend) {
 
 `createPatchFunction` 함수의 코드량이 어마어마 합니다. `src/vdom/patch.js` 파일 최상단에 있는 주석을 보면, [Snabbdom](https://github.com/snabbdom/snabbdom)을 사용하여 가상 DOM을 patch 한다고 이야기합니다.
 
-## `patchVnode` 함수
+### `patchVnode` 함수
 
 DOM을 업데이트 하는 코어 함수인 `patchVNode` 함수에 대해 이야기 하도록 하겠습니다.
 
@@ -288,7 +288,7 @@ function patchVnode (
 5. 이전 노드가 자식을 가지고 새로운 노드가 leaf 노드일 때, `removeVnodes` 함술르 호출하여 이전 노드의 자식 노드를 제거합니다.
 6. 이전 노드와 새로운 노드 모두 자식 노드가 없고 이전 노드의 `text`가 정의 되어 있지 않을 때 `nodeOps.setTextContent(elm, '')`를 호출하여 `text`를 제거합니다.
 
-## `updateChildren` 함수
+### `updateChildren` 함수
 다음으로 `patchVnode` 함수에서 호출했던 `updateChildren` 함수를 살펴보도록 하겠습니다.
 
 ```js
@@ -371,5 +371,5 @@ function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly
 
 위의 그림과 같이 변수들이 업데이트 됩니다. 위의 방법을 `while`문 조건이 `true`일 때 반복하여 동작합니다.
 
-#### 참고
+##### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/08-view-render-patch.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/08-view-render-patch.md)

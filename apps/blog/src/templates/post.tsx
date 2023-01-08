@@ -192,7 +192,7 @@ export const query = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
-      tableOfContents(maxDepth: 2)
+      tableOfContents(maxDepth: 3)
       timeToRead
       excerpt
       frontmatter {

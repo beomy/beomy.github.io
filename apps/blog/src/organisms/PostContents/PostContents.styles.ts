@@ -37,20 +37,34 @@ export const Wrapper = styled.div`
       }
     }
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 2.5rem 0 1rem 0;
+    line-height: 1.5;
+    + h1,
+    + h2,
+    + h3,
+    + h4,
+    + h5 {
+      margin-top: 1rem;
+    }
+  }
   h1 {
-    margin: 45px 0 20px 0;
-    font-size: ${({ theme }) => theme.fontSizes[5]};
+    font-size: ${({ theme }) => theme.fontSizes[6]};
   }
   h2 {
-    margin: 40px 0 20px 0;
-    font-size: ${({ theme }) => theme.fontSizes[4]};
+    font-size: ${({ theme }) => theme.fontSizes[5]};
   }
   h3 {
-    margin: 35px 0 20px 0;
-    font-size: ${({ theme }) => theme.fontSizes[3]};
+    font-size: ${({ theme }) => theme.fontSizes[4]};
   }
   h4 {
-    margin: 30px 0 20px 0;
+    font-size: ${({ theme }) => theme.fontSizes[3]};
+  }
+  h5 {
     font-size: ${({ theme }) => theme.fontSizes[2]};
   }
   blockquote {

@@ -9,7 +9,7 @@ summary: Svelte와 Vue를 사용하면서 느낀 차이점을 이야기해 보�
 
 Svelte와 Vue를 사용하면서 느낀 차이점을 이야기해 보려고 합니다.
 
-# 반응형 동작
+## 반응형 동작
 Svelte와 Vue의 가장 큰 차이는 반응형 동작 방식이라고 생각합니다.
 
 Vue는 array 메서드(`push`, `pop`, `shift`, `unshift`, `splice`, `sort` 등)를 사용하면 반응형으로 화면이 갱신되지만, Svelte는 변수의 데이터 재할당이 일어나야 화면을 갱신합니다. 이런 특징으로 아래와 같이 작성된 Vue 코드는 아래와 같습니다. [CodePen](https://codepen.io/beomy/pen/XWmaMeW?editors=1010)에서 확인할 수 있습니다.
@@ -99,7 +99,7 @@ Vue는 array 메서드(`push`, `pop`, `shift`, `unshift`, `splice`, `sort` 등)�
 
 Svelte는 변수의 데이터가 재할당 되어야 반응형이 동작하기 때문에 위에 코드와 같이 불필요한 코드를 추가해야 하는 불편함이 있습니다. Svelte를 처음 접한 사람이라면 `acc = acc`를 불필요한 코드로 보고 코드를 지울 수도 있어 보입니다.
 
-# `$`와 `computed` 차이
+## `$`와 `computed` 차이
 `$` 문법은 Svelte의 독특한 문법입니다. `$` 문법은 Vue의 `computed`와 `watch`를 합쳐놓은 기능과 유사한데, `computed`보다는 `watch`에 가깝다고 생각이 듭니다. 아래 코드는 Vue의 `computed`를 사용한 예제입니다. [CodePen](https://codepen.io/beomy/pen/JjYJZbp)에서 확인할 수 있습니다.
 
 ```html
@@ -162,7 +162,7 @@ Svelte는 변수의 데이터가 재할당 되어야 반응형이 동작하기 �
 
 Svelte에서 `numbers`가 변경되면 `$:` 부분의 코드인 `multiple` 변수에 `numbers`의 변경 값을 반영하는 코드가 실행됩니다. Svelte는 `numbers`가 변경되면 즉시 `multiple`에 반영되지 않습니다. 위의 실행 결과와 같이 HTML의 출력 결과와 Console 창의 출력 결과가 다르게 됩니다.
 
-# 사용되지 않은 CSS
+## 사용되지 않은 CSS
 Svelte의 특징 중에 또 다른 하나는 `.svelte` 내에 사용하지 않는 스타일 있다면 컴파일 시 warning을 출력합니다. 그뿐만 아니라 사용되지 않는 스타일은 컴파일된 CSS 파일에 추가되지 않습니다. Svelte 문법을 사용하지 않고 순수 자바스크립트로 추가된 스타일을 사용하지 않은 스타일로 인식합니다. 예를 하나 살펴보겠습니다. ([CodePen](https://codepen.io/beomy/pen/mdewKGN)에서 확인할 수 있습니다.)
 
 ```html
@@ -229,7 +229,7 @@ Svelte의 특징 중에 또 다른 하나는 `.svelte` 내에 사용하지 않�
 
 `bundle.css`에서 `.active` 스타일이 존재하지 않는 것을 볼 수 있습니다. 이런 기능은 사용하지 않는 스타일이 제거되어 최적화에 도움이 됩니다. 위의 예제와 같이 사용될 수 있는 스타일의 경우 `public` 디렉터리 안에 `global.css`와 같은 별도의 CSS 파일에 정의해 주는 것이 좋습니다.
 
-# 여러 개의 최상위 요소
+## 여러 개의 최상위 요소
 Vue는 아래와 같이 `<template>` 안에 하나의 최상위 요소만 가질 수 있습니다.
 
 ```html
@@ -248,7 +248,7 @@ Vue는 아래와 같이 `<template>` 안에 하나의 최상위 요소만 가질
 <div>가질 수 있습니다.</div>
 ```
 
-# 컴포넌트에 디렉티브, class 적용
+## 컴포넌트에 디렉티브, class 적용
 Vue는 아래와 같이 컴포넌트에 디렉티브 사용이 자유롭습니다.
 
 ```html

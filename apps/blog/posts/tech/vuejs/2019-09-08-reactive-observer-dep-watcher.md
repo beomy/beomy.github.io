@@ -10,10 +10,10 @@ summary: Vue에서 데이터 변화를 감지하는 방법을 이야기할 것�
 
 이전 포스트([4. Initialize - _init 함수](/tech/vuejs/initialize-_init-function/))에서는 Vue 인스턴스 생성시 초기화 하는 것에 대해 이야기 했습니다. 이번 포스트에서 이전 포스트에 관련된 이야기가 많이 등장하기 때문에, Vue 초기화 포스팅을 본 후 이번 포스팅을 보시는 것을 추천합니다.
 
-# Observer
+## Observer
 `src/core/observer/index.js` 파일을 살펴보도록 하겠습니다. 이 파일에서 하는 주된 역할은 프로퍼티를 반응형 프로퍼티로 만드는 역할을 합니다.
 
-## `defineReactive` 함수
+### `defineReactive` 함수
 이전 포스트에서 `defineReactive` 함수를 많이 보셨을 것입니다. `defineReactive` 함수는 프로퍼티를 `dep`과 `childOb`(`observe(val)`의 리턴 값)를 가지는 반응형 프로퍼티로 만들어 줍니다.
 
 
@@ -60,7 +60,7 @@ export function defineReactive (
 `defineReactive` 함수 코드입니다. 중요한 코드만 남기도 나머지 코드는 생략하였습니다.<br />
 위의 코드에서 `new Dep()`, `observe()`, `dependArray()`, `depend()` `notify()`가 호출됩니다. 먼저 `observe` 함수를 살펴보도록 하겠습니다.
 
-## `observe` 함수
+### `observe` 함수
 간단히 말하면 `observe` 함수는 `Observer` 인스턴스를 리턴하는 함수입니다.
 
 ```js
@@ -98,7 +98,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 
 `value`가 root data 일 경우 `ob.vmCount++`로 vmCount를 증가시켜 `value`를 root data로 하는 컴포넌트 갯수를 체크합니다.
 
-## `dependArray` 함수
+### `dependArray` 함수
 `dependArray` 함수는 `defineReactive` 함수에서 정의한 get 함수에서 호출 되는 함수 입니다. `dependArray` 함수는 모든 배열 요소들에 `depend()` 호출 하도록 하는 함수입니다.
 
 ```js
@@ -119,7 +119,7 @@ function dependArray (value: Array<any>) {
 
 배열을 반복하면서 `e.__ob__.dep.depend()`를 호출합니다.
 
-## `Observer` 클래스
+### `Observer` 클래스
 `observe` 함수에서 리턴하는 `Observer` 인스턴스를 만드는 `Observe` 클래스를 살펴보도록 하겠습니다.
 
 `Observer` 클래스는 객체를 반복문을 사용하여 각 요소에 `defineReactive` 함수를 호출하여 각각의 요소를 반응형 프로퍼티로 만드는 역할을 하는 클래스입니다.
@@ -208,10 +208,10 @@ data: {
 
 재귀적으로 `defineReactive` 함수를 호출하면, 모든 하위 요소를 반응형 프로퍼티로 변환되어 `data.name`이나 `data.parents.mom`의 값이 변경 되어도 자동으로 view를 업데이트 할 수 있게 됩니다.
 
-# Dep
+## Dep
 `src/core/observer/dep.js` 파일을 살펴보도록 하겠습니다. 이 파일에서 하는 주된 역할은 `Watcher`를 관리하는 역할을 합니다.
 
-## `Dep` 클래스
+### `Dep` 클래스
 `Dep` 클래스의 상단 주석을 보면
 
 > A dep is an observable that can have multiple directives subscribing to it.
@@ -267,18 +267,18 @@ export default class Dep {
 
 `addSub`, `removeSub`, `notify`는 `this.subs`(`Watcher` 배열)을 다루는 메소드입니다. `Dep` 인스턴스는 `Watcher`들을 저장하고 있는 배열을 가지고 있습니다.
 
-### `addSub`, `removeSub` 함수
+#### `addSub`, `removeSub` 함수
 `this.subs` 배열에 `Watcher`를 추가/제거하는 함수입니다.
 
-### `notify` 함수
+#### `notify` 함수
 `notify`가 호출되면 배열에 있는 모든 `Watcher`의 `update` 함수가 실행됩니다. `notify` 함수는 `defineReactive` 함수에서 정의한 setter 함수에서 호출됩니다. 즉 반응형 프로퍼티가 변경이 되면 그 프로퍼티를 감시하고 있는 모든 `Watcher`들의 `update` 함수가 호출됩니다.
 
-### `depend` 함수
+#### `depend` 함수
 `depend` 함수는 `Dep.target`을 확인하고 없다면 `Dep.target.addDep(this)`를 실행합니다.
 
 `addDep` 함수는 `Watcher` 클래스에 정의되어 있습니다. `addDep`라는 함수 이름에서 `Watcher` 클래스가 `Dep` 배열을 가지고 있다는 것을 추측해 볼 수 있겠죠?
 
-## `Dep.target` 객체
+### `Dep.target` 객체
 ```js
 // The current target watcher being evaluated.
 // This is globally unique because only one watcher
@@ -288,7 +288,7 @@ Dep.target = null
 
 주석을 보면 `Dep.target` 객체는 현재 평가되고 있는 Watcher라고 기록되어 있습니다. 평가된다 라는 말은 새로운 값을 가져온다라고 이해하시면 될 것 같습니다. `Dep.target`은 Watcher는 동시에 하나만 평가할 수 있기 때문에 전역으로 유니크하다고 합니다.
 
-## `pushTarget`, `popTarget` 함수
+### `pushTarget`, `popTarget` 함수
 ```js
 const targetStack = []
 
@@ -307,10 +307,10 @@ export function popTarget () {
 
 두 함수를 쉽게 이해하자면, 한 Watcher가 평가 도중에 다른 Watcher의 값을 가져와야 할 때 사용되거나, 다시 원래의 Watcher로 돌아갈 때 사용됩니다.
 
-# Watcher
+## Watcher
 `src/core/observer/watcher.js` 파일을 살펴보도록 하겠습니다.
 
-## `Watcher` 클래스
+### `Watcher` 클래스
 `Watcher` 클래스의 코드는 좀 양이 많습니다. 클래스 상단의 주석을 통해 `Watcher` 클래스의 역할을 살펴볼 수 있습니다.
 
 > A watcher parses an expression, collects dependencies, and fires callback when the expression value changes. This is used for both the $watch() api and directives.
@@ -319,7 +319,7 @@ export function popTarget () {
 
 `$watch()`([3. Initialize - Mixin Layer](/tech/vuejs/initialize-mixin-layer/#statemixin-함수)에서 살펴본 `stateMixin` 함수에서 정의합니다.)와 `initComputed`([4. Initialize - _init 함수](/tech/vuejs/initialize-_init-function/#initcomputed-함수)에서 살펴보았습니다.)에서 `Watcher` 인스턴스를 생성합니다.
 
-### `constructor` 함수
+#### `constructor` 함수
 ```js
 constructor (
   vm: Component,
@@ -379,7 +379,7 @@ constructor (
 
 `this.lazy`는 [6. Reactive - Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)](/tech/vuejs/reactive-lazy-sync-queue/)에서 자세히 살펴보도록 하겠습니다.
 
-### `get` 함수
+#### `get` 함수
 ```js
 /**
   * Evaluate the getter, and re-collect dependencies.
@@ -411,7 +411,7 @@ get () {
 
 `get` 함수에서 `pushTarget`와 `popTarget` 함수를 볼 수 있습니다. 이 두 함수는 `src/core/observer/dep.js`에 정의되어 있는 함수 입니다. 현재 평가 중인 Watcher를 설정하는 함수 입니다.
 
-### `Watcher` 동작 순서
+#### `Watcher` 동작 순서
 ```js
 {
   data: {
@@ -474,13 +474,13 @@ get () {
 
 반응형 프로퍼티들이 새로운 값으로 변경되면, `Dep`의 `notify` 함수가 호출되어 구독자들의 `get` 함수가 호출되고, 값과 관계(`Watcher`와 `Dep`과 `Observer`의 관계)들이 업데이트 됩니다.
 
-# 요약
+## 요약
 ![Vue 반응형 동작 순서](/assets/img/posts/vuejs/vue_reactive.png)
 
 위의 그림은 이번 포스트에서 이야기한 `Dep`와 `Watcher`, `Observer` 간의 관계를 이해하는데 도움이 될 수 있는 순서도 입니다. 반응형 프로퍼티가 수정이 되면, 위의 그림의 순서를 따라 동작하고, `computed` 속성과 관계를 업데이트 합니다.
 
-# 다음으로 볼 것
+## 다음으로 볼 것
 다음 포스트에서는 [6. Reactive - Watcher가 업데이트 하는 3가지 방법(Lazy, Sync, Queue)](/tech/vuejs/reactive-lazy-sync-queue/)에 대해 이야기 하도록 하겠습니다.
 
-#### 참고
+##### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/04-dynamic-data-observer-dep-and-watcher.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/04-dynamic-data-observer-dep-and-watcher.md)

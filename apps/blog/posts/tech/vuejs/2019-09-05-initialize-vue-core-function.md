@@ -8,11 +8,11 @@ summary: Vue의 큰 구조와 Vue의 코어 함수를 살펴볼 것입니다.
 
 이번 포스트에서는 Vue의 코어 함수를 찾고, Vue의 큰 구조에 대해 이야기 할 것입니다. Vue의 큰 구조를 이해하면, 코드를 분석 할 때, 자세히 봐야할 파일과 그렇지 않아도 되는 파일들을 구분 하는데 도움이 될 수 있습니다.
 
-# Vue 코어 살펴보기
+## Vue 코어 살펴보기
 [1. Introduction - Vue Code 분석](/tech/vuejs/introduction-vue-code-analysis/)에
 서 `src/platforms/web/entry-runtime-with-compiler.js` 파일이 `import Vue from './runtime/index'`로 Vue를 import 하는 것을 확인 했습니다. 이 것을 힌트로 `src/platforms/web/runtime/index.js` 파일을 시작으로 Vue 코어 코드를 살펴보도록 하겠습니다.
 
-## `src/platforms/web/runtime/index.js` 파일
+### `src/platforms/web/runtime/index.js` 파일
 `src/platforms/web/runtime/index.js` 파일에서 하는 일들을 살펴보도록 하겠습니다.
 
 ```js
@@ -114,7 +114,7 @@ export default Vue
 
 `import Vue from 'core/index'`에서 Vue 파일라고 정의 되어 있는 `src/core/index.js` 파일을 따라가 보도록 하겠습니다.
 
-## `src/core/index.js` 파일
+### `src/core/index.js` 파일
 ```js
 import Vue from './instance/index'
 import { initGlobalAPI } from './global-api/index'
@@ -146,7 +146,7 @@ export default Vue
 
 이 파일에서는 전역 api들을 설정합니다. `import Vue from './instance/index'`를 보고 `src/core/instance/index.js` 파일을 따라가 보도록 하겠습니다.
 
-## `src/core/instance/index.js` 파일
+### `src/core/instance/index.js` 파일
 ```js
 import { initMixin } from './init'
 import { stateMixin } from './state'
@@ -179,7 +179,7 @@ export default Vue
 - Vue 인스턴스를 생성하는 함수를 정의 합니다.
 - Vue에 5개의 mixin을 install 합니다.
 
-# Vue의 Layer
+## Vue의 Layer
 Vue는 큰 프로젝트입니다. 그래서 Vue는 많은 Layer와 part들로 나누어져 있습니다. Vue는 크게 4가지로 Layer로 구성됩니다.
 
 ![Vue layer](/assets/img/posts/vuejs/vue_layer.png)
@@ -195,11 +195,11 @@ Vue는 큰 프로젝트입니다. 그래서 Vue는 많은 Layer와 part들로 �
 2. 캡슐화 할 수 있습니다. 각각의 layer는 각자의 일에만 집중하면 됩니다.
 3. 재사용 할 수 있습니다. 코어에 가까울수록 일반적(generic)을 코드가 됩니다. 이로 인해 다른 플랫폼에 쉽게 호환이 되고, 다른 환경에서 쉽게 구축할 수 있습니다.
 
-# 요약
+## 요약
 `src/platforms/web/runtime/index.js`를 시작으로 `src/core/instance/index.js`에 도달하여 Vue 코어 함수를 찾았습니다. `src/core/instance/index.js` 파일은 Vue 함수를 `export` 하게 되는데, `export`되는 Vue 함수는 5개의 mixin가 추가된 Vue 함수입니다. Vue 함수는 `this_init` 함수를 호출하여 초기화 합니다.
 
-# 다음으로 볼 것
+## 다음으로 볼 것
 다음 포스트에서는 Core 함수에서 호출한 하는 5개의 mixin를 [3. Initialize - Mixin Layer](/tech/vuejs/initialize-mixin-layer/)에서 좀 더 자세히 살펴 볼 것입니다.
 
-#### 참고
+##### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/02-dig-into-the-core.md)

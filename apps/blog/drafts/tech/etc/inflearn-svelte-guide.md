@@ -5,11 +5,11 @@ featured-img: javascript/js.png
 category: [tech, etc]
 ---
 
-# 입문 (Beginner)
-## JSON.parser 만들기
+## 입문 (Beginner)
+### JSON.parser 만들기
 
-# 실습 (Practice)
-## 커리큘럼
+## 실습 (Practice)
+### 커리큘럼
 - 오리엔테이션
   - 프로젝트 구조
   - BackEnd 사용 라이브러리: `express`, `axios`, `cors`, `jsonwebtoken`, `mongoose`
@@ -43,39 +43,39 @@ category: [tech, etc]
   - Sudoku 컴포넌트
   - Home 컴포넌트
 
-## 자료
-### Express
-### Mongo DB
+### 자료
+#### Express
+#### Mongo DB
 - [https://mongoosejs.com/docs/](https://mongoosejs.com/docs/)
 - [https://velopert.com/594](https://velopert.com/594)
-### JWT
+#### JWT
 - [https://velopert.com/2448](https://velopert.com/2448)
 - [https://jwt.io/](https://jwt.io/)
 - [https://www.npmjs.com/package/jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 
 
-# 고급 (Advanced)
-## 자료
+## 고급 (Advanced)
+### 자료
+#### AWS
+#### TS
+#### SASS
+
 ### AWS
-### TS
-### SASS
 
-## AWS
-
-### S3 && CodeBuild(or Github Action)
+#### S3 && CodeBuild(or Github Action)
 - [https://devhaks.github.io/2019/02/16/code-build/](https://devhaks.github.io/2019/02/16/code-build/)
 - [https://bin-e.tistory.com/44](https://bin-e.tistory.com/44)
 - [https://velog.io/@bluestragglr/Github-Action으로-배포-자동화하기](https://velog.io/@bluestragglr/Github-Action으로-배포-자동화하기)
 
-### EC2
+#### EC2
 
-## Back-End
+### Back-End
 
-### Express
+#### Express
 
-### Mongo DB 
+#### Mongo DB 
 - [https://www.mongodb.com/cloud](https://www.mongodb.com/cloud)
 
-## Front-End
+### Front-End
 
-### Svelte
+#### Svelte

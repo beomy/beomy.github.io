@@ -36,7 +36,7 @@ export default Vue
 
 `src/core/instance/index.js` 파일부터 코드를 따라가도록 하겠습니다.
 
-# `initMixin` 함수
+## `initMixin` 함수
 `initMixin` 함수는 `src/core/instance/init.js`에 정의되어 있습니다.
 
 ```js
@@ -114,7 +114,7 @@ function resolveModifiedOptions (Ctor: Class<Component>): ?Object {
 - `resolveConstructorOptions` 함수를 정의 합니다. option들을 모으는 함수 입니다.
 - `resolveModifiedOptions` 함수를 정의 합니다. 이 함수는 `resolveConstructorOptions` 함수에서 사용되고, `resolveConstructorOptions` 함수에 적힌 주석에 따르면, [#4976 hot-reload](https://github.com/vuejs/vue/issues/4976) 버그와 연관 되어 있다고 합니다.
 
-# `stateMixin` 함수
+## `stateMixin` 함수
 `stateMixin` 함수는 `src/core/instance/state.js`에 정의되어 있습니다.
 
 ```js
@@ -184,7 +184,7 @@ export function stateMixin (Vue: Class<Component>) {
 `$data`, `$props`, `$set`, `$delete`, `$watch`는 Vue를 사용하면서 한번쯤 보았던 이름들입니다.<br />
 `Watcher`가 사용되는 것을 볼 수 있습니다. `Watcher`는 data와 view의 동기를 맞춰주는 역할을 합니다.
 
-# `eventsMixin` 함수
+## `eventsMixin` 함수
 `eventsMixin` 함수는 `src/core/instance/events.js`에 정의되어 있습니다.
 
 ```js
@@ -217,7 +217,7 @@ export function eventsMixin (Vue: Class<Component>) {
 
 Vue를 사용하면서 익숙하게 보아온 이벤트 함수들의 정의가 이 곳에서 일어납니다.
 
-# `lifecycleMixin` 함수
+## `lifecycleMixin` 함수
 `lifecycleMixin` 함수는 `src/core/instance/lifecycle.js`에 정의되어 있습니다.
 
 ```js
@@ -260,7 +260,7 @@ export function mountComponent (
 
 `src/core/instance/lifecycle.js` 파일에는 이외의 몇개의 함수가 존재합니다. 이 함수들은 DOM을 업데이트 하는데 사용됩니다.
 
-# `renderMixin` 함수
+## `renderMixin` 함수
 `renderMixin` 함수는 `src/core/instance/render.js`에 정의되어 있습니다.
 
 ```js
@@ -283,7 +283,7 @@ export function renderMixin (Vue: Class<Component>) {
 - `Vue.prototype.$nextTick` 함수를 정의합니다.
 - `Vue.prototype._render` 함수를 정의합니다.
 
-# 요약
+## 요약
 Mixin 레이어에서는 `Vue.prototype`안에 몇가지 함수와 객체들을 정의합니다.<br />
 아래 그림은 Mixin들이 정의하는 함수, 객체들의 목록을 나타낸 그림입니다.
 
@@ -295,8 +295,8 @@ Mixin 레이어에서는 `Vue.prototype`안에 몇가지 함수와 객체들을 
 - **lifecycleMixin**: `_update()`, `$forceUpdate()`, `$destroy()`를 정의합니다.
 - **renderMixin**: `_render()`를 정의합니다.
 
-# 다음으로 볼 것
+## 다음으로 볼 것
 `src/core/instance/index.js`의 코어 함수에서 호출하는 `this._init(options)`를 살펴보도록 하겠습니다. [4. Initialize - _init 함수](/tech/vuejs/initialize-_init-function/)에서 확인 할 수 있습니다.
 
-#### 참고
+##### 참고
 - [https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md](https://github.com/numbbbbb/read-vue-source-code/blob/master/03-init-introduction.md)

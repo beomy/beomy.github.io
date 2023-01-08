@@ -10,5 +10,5 @@ summary:
 - 부모는 변경되지 않는다.
 - O(n^3) -> O(n)
 
-#### 참고
+##### 참고
 - [https://yeoulcoding.me/147](https://yeoulcoding.me/147)

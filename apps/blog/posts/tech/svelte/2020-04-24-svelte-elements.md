@@ -9,7 +9,7 @@ summary: Svelte는 유용한 몇가지 내장 요소(element)를 제공합니다
 
 Svelte는 유용한 몇 가지 내장 요소(element)를 제공합니다.
 
-# `<svelte:self>`
+## `<svelte:self>`
 `<svelte:self>`는 컴포넌트가 재귀적으로 자신을 포함할 수 있게 하는 요소입니다. 이 요소는 폴더 트리 구조와 같은 형태를 표현해야 할 때 유용합니다.
 
 ```html
@@ -154,7 +154,7 @@ Svelte는 유용한 몇 가지 내장 요소(element)를 제공합니다.
 {/if}
 ```
 
-# `<svelte:component>`
+## `<svelte:component>`
 `<svelte:component>`를 사용하면 아래와 같은 if 블록 대신,
 
 ```html
@@ -215,7 +215,7 @@ Svelte는 유용한 몇 가지 내장 요소(element)를 제공합니다.
 
 위의 코드에서 사용된 `this`는 컴포넌트나 falsy 값이 올 수 있습니다. falsy가 올 경우 컴포넌트는 렌더링 되지 않습니다.
 
-# `<svelte:window>`
+## `<svelte:window>`
 DOM 요소에 이벤트를 등록하는 것처럼 `<svelte:window>`를 사용하여 `window` 객체에 이벤트를 등록할 수 있습니다.
 
 ```html
@@ -243,7 +243,7 @@ DOM 요소에 이벤트를 등록하는 것처럼 `<svelte:window>`를 사용하
 
 DOM 요소와 동일하게 `preventDefault`와 같은 이벤트 수식어를 사용할 수 있습니다.
 
-## binding
+### binding
 `window` 객체의 `scrolY` 등의 값을 바인딩 할 수 있습니다.
 
 ```html
@@ -262,7 +262,7 @@ DOM 요소와 동일하게 `preventDefault`와 같은 이벤트 수식어를 사
 
 `scrollX`와 `scrollY`를 제외한 모든 값은 readonly입니다.
 
-# `<svelte:body>`
+## `<svelte:body>`
 `<svelte:body>`와 `<svelte:window>`는 사용법이 비슷합니다. `window` 객체에 이벤트를 등록할 수 있듯이, `document.body`에 이벤트를 등록할 수 있습니다.
 
 `window` 객체에는 `mouseenter`, `mouseleave` 이벤트를 등록할 수 없지만, `<svelte:body>`를 사용하면 등록이 가능합니다.
@@ -274,7 +274,7 @@ DOM 요소와 동일하게 `preventDefault`와 같은 이벤트 수식어를 사
 />
 ```
 
-# `<svelte:head>`
+## `<svelte:head>`
 `<svelte:head>`를 사용하면 `<head>`에 요소를 추가할 수 있습니다.
 
 ```html
@@ -283,7 +283,7 @@ DOM 요소와 동일하게 `preventDefault`와 같은 이벤트 수식어를 사
 </svelte:head>
 ```
 
-# `<svelte:options>`
+## `<svelte:options>`
 `<svelte:options>`를 사용하면 컴파일 옵션을 지정할 수 있습니다.
 
 ```html
@@ -417,7 +417,7 @@ export default function flash(element) {
 
 간단한 검사만 실행하기 때문에 실제 변경된 요소만 변경되는 것으로 인식하게 됩니다.
 
-#### 참고
+##### 참고
 - [https://svelte.dev/tutorial/svelte-self](https://svelte.dev/tutorial/svelte-self)
 - [https://svelte.dev/tutorial/svelte-component](https://svelte.dev/tutorial/svelte-component)
 - [https://svelte.dev/tutorial/svelte-window](https://svelte.dev/tutorial/svelte-window)

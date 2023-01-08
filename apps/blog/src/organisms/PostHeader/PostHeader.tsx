@@ -19,7 +19,7 @@ const PostHeader = ({
 
   return (
     <S.Wrapper>
-      <H1 m={0} fontSize={6}>
+      <H1 m={0} fontSize={7}>
         {title}
       </H1>
       <div>

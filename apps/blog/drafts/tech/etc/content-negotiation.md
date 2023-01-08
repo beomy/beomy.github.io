@@ -5,5 +5,5 @@ featured-img: etc/HTTP_logo.png
 category: [tech, etc]
 ---
 
-#### 참고
+##### 참고
 - [https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation)
