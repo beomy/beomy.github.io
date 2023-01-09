@@ -6,7 +6,7 @@ export const Wrapper = styled(FieldSet)`
   overflow: auto;
 `;
 
-export const Toc = styled.div`
+export const Toc = styled.nav`
   font-size: ${({ theme }) => theme.fontSizes[1]};
   a {
     color: ${({ theme }) => theme.colors.caption};

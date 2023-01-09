@@ -28,7 +28,7 @@ const shareIconMap: {
   line: 'BsLine',
 };
 
-const ShareButton = ({ target, url, size }: ShareButtonProps) => {
+const ShareButton = ({ target, url, size, ...props }: ShareButtonProps) => {
   const [isHover, setHover] = useState<boolean>(false);
   const targetShareButton = useMemo(() => shareButtonMap[target], [target]);
   const iconType = useMemo(() => shareIconMap[target], [target]);
@@ -43,6 +43,7 @@ const ShareButton = ({ target, url, size }: ShareButtonProps) => {
       onMouseLeave={() => setHover(false)}
       onFocus={() => setHover(true)}
       onBlur={() => setHover(false)}
+      {...props}
     >
       <Icon type={isHover ? 'BsLink45Deg' : iconType} size={size} />
     </S.Wrapper>
