@@ -3,10 +3,10 @@ layout: post
 title: '[ETC] package.json의 scripts'
 featured-img: etc/package_json.png
 category: [tech, etc]
-summary: package.json 파일의 scripts 필드는 빌드, 실행 등에 사용되는 명령어를 선언하거나 패키지의 install, publish 전/후에 실행되는 스크립트 명령어를 선언할 때 사용됩니다.
+summary: package.jon 파일의 scripts 필드는 빌드, 실행 등에 사용되는 명령어를 선언하거나 패키지의 install, publish 전/후에 실행되는 스크립트 명령어를 선언할 때 사용됩니다.
 ---
 
-`package.json` 파일의 `scripts` 필드는 빌드, 실행 등에 사용되는 명령어를 선언하거나 패키지의 `install`, `publish` 전/후에 실행되는 스크립트 명령어를 선언할 때 사용됩니다.
+`package.jon` 파일의 `scripts` 필드는 빌드, 실행 등에 사용되는 명령어를 선언하거나 패키지의 `install`, `publish` 전/후에 실행되는 스크립트 명령어를 선언할 때 사용됩니다.
 
 ## 라이프 사이클 스크립트란
 `scripts` 필드에는 개발자가 임의로 정의한 스크립트 뿐만 아니라, 정해진 몇가지 스크립트 명령어가 있습니다. 이런 스크립트를 라이프 사이클 스크립트라고 하는데, 패키지의 `install` 혹은 `publish` 명령어가 실행되기 전/후에 호출됩니다.
