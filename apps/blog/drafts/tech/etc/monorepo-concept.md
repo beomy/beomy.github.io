@@ -27,13 +27,16 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 저
 
 #### 단점
 - 각 프로젝트의 코드 컨벤션 통일이 어려움
+- 코드 재사용이 어려워 중복 코드가 만들어질 가능성이 높음
 
 ### 모노레포 (Mono repo)
 - 독립된 여러 프로젝트를 하나의 저장소
 
 #### 장점
+- 코드 재사용이 용이함
 
 #### 단점
+- CI 속도 저하 가능성이 있음
 
 ## 모노레포 디펜던시 관리
 - 각각의 패키지 별로 package.json -> nx는?
@@ -49,7 +52,7 @@ summary: 모노레포를 사용하면 여러개의 프로젝트를 하나의 저
 - [https://blog.mathpresso.com/팀워크-향상을-위한-모노레포-monorepo-시스템-구축-3ae1b0112f1b](https://blog.mathpresso.com/팀워크-향상을-위한-모노레포-monorepo-시스템-구축-3ae1b0112f1b)
 - [https://medium.com/hcleedev/dev-monorepo-개념-알아보기-33fd3ce2b767](https://medium.com/hcleedev/dev-monorepo-개념-알아보기-33fd3ce2b767)
 - [https://levelup.gitconnected.com/moving-from-multiple-repositories-to-a-lerna-js-mono-repo-faa97aeee35b](https://levelup.gitconnected.com/moving-from-multiple-repositories-to-a-lerna-js-mono-repo-faa97aeee35b)
-
+- [https://tech.buzzvil.com/handbook/multirepo-vs-monorepo/](https://tech.buzzvil.com/handbook/multirepo-vs-monorepo/)
 - [https://2021.stateofjs.com/en-US/libraries/monorepo-tools](https://2021.stateofjs.com/en-US/libraries/monorepo-tools)
 - [https://velog.io/@sms8377/DevOps-MonoRepo린](https://velog.io/@sms8377/DevOps-MonoRepo린)
 - [https://medium.com/myrealtrip-product/monorepo로-대규모-react-프로젝트-관리하기-d12b65340306](https://medium.com/myrealtrip-product/monorepo로-대규모-react-프로젝트-관리하기-d12b65340306)
