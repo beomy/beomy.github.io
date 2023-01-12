@@ -133,7 +133,7 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
         description={post.summary}
         path={pageContext.slug}
         type="article"
-        image={getSrc(data.file.childImageSharp.gatsbyImageData)}
+        image={getSrc(data.file?.childImageSharp.gatsbyImageData)}
         meta={[
           {
             property: 'article:published_time',
