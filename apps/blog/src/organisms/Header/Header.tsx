@@ -5,7 +5,6 @@ import { TextField, Anchor, Icon, IconButton } from '@beomy/design-system';
 import { useScroll } from '@beomy/utils';
 import { useTheme } from '@/hooks';
 import { Li } from '@/atoms';
-import { Menu } from '@/organisms';
 import * as S from './Header.styles';
 
 const Header = () => {
@@ -95,7 +94,7 @@ const Header = () => {
           onSearch={handleSearch}
         />
       </S.Search>
-      <Menu active={isMenu} onClose={() => setIsMenu(false)} />
+      <S.SNB active={isMenu} onClose={() => setIsMenu(false)} />
     </S.Wrapper>
   );
 };

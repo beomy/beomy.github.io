@@ -5,12 +5,12 @@ import { Li, Ul, Dim } from '@/atoms';
 import type { MenuProps } from './Menu.types';
 import * as S from './Menu.styles';
 
-const Menu = ({ active, onClose }: MenuProps) => {
+const Menu = ({ active, onClose, ...props }: MenuProps) => {
   const [theme] = useTheme();
   const menuTree = useMenu();
 
   return (
-    <S.Wrapper active={active}>
+    <S.Wrapper active={active} {...props}>
       <Dim active={active} onClick={onClose} />
       <S.Container active={active}>
         <S.Header>

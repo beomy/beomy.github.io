@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import Color from 'color';
 import { TextFieldStyles, AnchorStyles } from '@beomy/design-system';
 import { Ul } from '@/atoms';
+import Menu from '@/organisms/Menu';
 
 export const MenuBtn = styled.button`
   display: none;
@@ -20,6 +21,13 @@ export const GNB = styled(Ul)`
   }
   ${AnchorStyles.Wrapper} {
     padding: 5px 10px;
+  }
+`;
+
+export const SNB = styled(Menu)`
+  display: none;
+  ${({ theme }) => `${theme.sizes.mediaQueries.sm}`} {
+    display: block;
   }
 `;
 
