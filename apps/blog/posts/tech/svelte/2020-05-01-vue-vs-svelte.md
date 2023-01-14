@@ -48,7 +48,7 @@ Vue는 array 메서드(`push`, `pop`, `shift`, `unshift`, `splice`, `sort` 등)�
 </script>
 ```
 
-아래와 같은 Svelte 코드로 작성될 수 있습니다. [data-assign](/assets/example/svelte/vue-vs-svelte/data-assign)에서 결과를 확인할 수 있습니다.
+아래와 같은 Svelte 코드로 작성될 수 있습니다. [Svelte REPL](https://svelte.dev/repl/e22314ca09624ce8bbdab46561f14005?version=3.55.1)에서 결과를 확인할 수 있습니다.
 
 ```html
 <script>
@@ -136,7 +136,7 @@ Svelte는 변수의 데이터가 재할당 되어야 반응형이 동작하기 �
 
 ![Vue computed](/assets/img/posts/svelte/vue_computed.gif)
 
-위의 실행 결과 그림을 보면 HTML의 출력 결과와 Console 창의 출력 결과가 동일한 것을 볼 수 있습니다. 위의 코드의 `numbers`가 변경되면 즉시 `multiple`에도 반영됩니다. Svelte 코드로 아래와 같이 작성될 수 있습니다. [svelte-$](/assets/example/svelte/vue-vs-svelte/svelte-$)에서 결과를 확인할 수 있습니다.
+위의 실행 결과 그림을 보면 HTML의 출력 결과와 Console 창의 출력 결과가 동일한 것을 볼 수 있습니다. 위의 코드의 `numbers`가 변경되면 즉시 `multiple`에도 반영됩니다. Svelte 코드로 아래와 같이 작성될 수 있습니다. [Svelte REPL](https://svelte.dev/repl/aa8079cf26bc459880529f074c12f40a?version=3.55.1)에서 결과를 확인할 수 있습니다.
 
 ```html
 <script>
@@ -193,7 +193,7 @@ Svelte의 특징 중에 또 다른 하나는 `.svelte` 내에 사용하지 않�
 
 ![CSS 차이](/assets/img/posts/svelte/css_diff.gif)
 
-자바스크립트를 사용하여 `active` 클래스가 토글 되는 예제입니다. Svelte 코드로 아래와 같이 작성할 수 있습니다. [css-diff](/assets/example/svelte/vue-vs-svelte/css-diff)에서 결과를 확인할 수 있습니다.
+자바스크립트를 사용하여 `active` 클래스가 토글 되는 예제입니다. Svelte 코드로 아래와 같이 작성할 수 있습니다. [Svelte REPL](https://svelte.dev/repl/f50a3a0e9ca446f895c06c017164bc39?version=3.55.1)에서 결과를 확인할 수 있습니다.
 
 ```html
 <script>
