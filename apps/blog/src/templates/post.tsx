@@ -28,7 +28,7 @@ type Context = {
 };
 
 const S = {
-  PostMain: styled.main`
+  PostMain: styled.div`
     width: calc(100% - 380px);
     ${({ theme }) => theme.sizes.mediaQueries.sm} {
       width: 100%;
@@ -41,6 +41,8 @@ const S = {
       position: fixed;
       top: 0;
       right: 0;
+      width: 0;
+      z-index: ${({ theme }) => theme.zIndices.overlay};
       > * {
         transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
           opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
@@ -49,7 +51,6 @@ const S = {
       ${({ active }) =>
         active &&
         css`
-          z-index: 9;
           width: 100%;
         `}
     }
@@ -147,15 +148,10 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
       <Header />
       <Contents
         display="flex"
+        flexDirection="row-reverse"
         lineHeight={2}
         width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m']}
       >
-        <S.PostMain>
-          <PostHeader {...post} />
-          <PostContents html={post.html} />
-          <PostNavigator previous={previous} next={next} />
-          <Disqus key={theme} config={disqusConfig} />
-        </S.PostMain>
         <S.PostSub active={isActive}>
           <Dim active={isActive} onClick={() => setActive(false)} />
           <S.PostSubContents active={isActive}>
@@ -172,6 +168,12 @@ const Post = ({ data, pageContext }: PageProps<Data, Context>) => {
             />
           </S.PostSubContents>
         </S.PostSub>
+        <S.PostMain>
+          <PostHeader {...post} />
+          <PostContents html={post.html} />
+          <PostNavigator previous={previous} next={next} />
+          <Disqus key={theme} config={disqusConfig} />
+        </S.PostMain>
       </Contents>
       <Footer />
     </Fragment>
