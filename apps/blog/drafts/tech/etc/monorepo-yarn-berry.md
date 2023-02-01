@@ -9,7 +9,9 @@ summary: Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn은 패키�
 `Yarn`은 `NPM`과 동일한 Node Package Manager입니다. `Yarn`은 패키지 관리 뿐만 아니라 모노레포를 구성할 수 있도록 돕습니다. `Yarn`의 1 버전을 `Yarn Classic`이라고 하고 `Yarn`의 2 버전 이상을 `Yarn Berry`라고 합니다. 이번 포스트에서는 `Yarn Berry`를 사용하여 모노레포를 구성해 보도록 하겠습니다. 먼저 `Yarn Classic`과 `Yarn Berry`가 무엇인기 간단하게 살펴보도록 하겠습니다.
 
 ## `Yarn Classic`
-`Yarn`의 1 버전을 `Yarn Classic` 이라고 합니다.
+`Yarn`의 1 버전을 `Yarn Classic` 이라고 합니다. [Yarn Classic 저장소](https://github.com/yarnpkg/yarn)에 프로젝트 설명을 보면, 1.x 버전은 동결 되었고, 새로운 기능이나 버그 픽스는 `Yarn Berry`에서 이루어 진다고 명시되어 있습니다.
+
+![동결된 Yarn Classic](/assets/img/posts/etc/yarn_classic_frozen.png)
 
 ### `Yarn Classic`의 문제점
 `Yarn Classic`은 `NPM`과 동일하게 `node_modules` 디렉토리를 이용하여 종속성 관리를 합니다. `node_modules`를 이용한 종속성 관리는 몇가지 문제점이 있습니다.
@@ -32,9 +34,13 @@ summary: Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn은 패키�
 호이스팅이 되면서 `Package-1`에서는 설치하지 않았던 `B (1.0)` 종속성이 설치되어 `B (1.0)`를 `import`하여 사용할 수 있는 유령 의존성이 생기게 됩니다. 이런 유령 의존성은 `A (1.0)`와 `C (1.0)` 종속성이 제거 되면 함께 제거되고, 또 `A (1.0)`이 업데이트 되어 `B (1.0)`를 사용하지 않게 된다면 소리 소문 없이 제거되기 때문에 어떤 사이드 이팩트가 발생 할 지 예상하기 어렵게 합니다.
 
 ## `Yarn Berry`
-`Yarn`의 2 버전 이상을 `Yarn Berry` 이라고 합니다.
+`Yarn`의 2 버전 이상을 `Yarn Berryy` 이라고 합니다. `Yarn Berry`에는 Pnp와 Zero Install 두가지 중요한 개념이 있습니다.
 
 ### PnP(Plug'n'Play)
+PnP는 Plug And Play의 줄임말로 해석하면 '꼽기만 하면 사용할 수 있다.'로 해석할 수 있습니다. `Yarn Berry`는 `node_modules`를 읽는 메모리 I/O를 통해 종속성을 알 수 있는 방식을 바꿔 성능을 개선하였습니다. 어떠한 방법을 채택하여 성능을 개선하였는지 살펴보겠습니다.
+
+`Yarn Berry`는 `node_modules`를 사용하지 않고 `.yarn/cache`에 종속 패키지들이 zip 형태로 저장되고, `.pnp.cjs` 파일에 종속 패키지의 의존성 정보를 저장하여 종속성 정보를 알기 위해 `node_modules`를 읽는 메모리 I/O 없이 `.pnp.cjs` 파일만 사용하여 어떤 종속성을 가지고 있는지 알 수 있게 하였습니다.
+
 - PnP(Plug'n'Play): node_modules를 사용하지 않고 `.yarn/cache`에 패키지들이 zip 형태로 저장되고, `.pnp.cjs`에 패키지의 의존성 정보를 저장하여 디스트 I/O 없이 `.pnp.cjs`를 사용하여 패키지가 어떤 라이브러리에 의존성을 가지는지 알 수 있습니다.
 - 의존성이 .yarn/cache에 수평적으로 존재하므로 모든 패키지에 대한 접근 시간이 O(1)이 된다. 따라서 require()에 소요되는 시간이 크게 단축된다.
 - 압축 파일 단위로 설치되기 때문에 의존성을 구성하는 파일의 수가 절대적으로 감소한다. 여기에 zero-install 전략을 사용하면 아예 설치 과정을 생략할 수 있다.
@@ -44,7 +50,6 @@ summary: Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn은 패키�
 - `.yarn/cache`에 저장되어 있는 패키지와 `.pnp.cjs`에 저장되어 있는 패키지의 의존성 정보를 Git으로 관리하면 Zero-Install을 사용할 수 있습니다.
   - 패키지와 패키지의 의존성 정보를 Git을 통해 관리하면 패키지를 설치하지 않아고 프로젝트를 실행/빌드 할 수 있게 됩니다. 또한 브랜치를 바꾸더라도 `yarn install`을 통해 패키지를 새로 설치하지 않아도 됩니다.
   - Zero-Install을 사용하면 프로젝트를 빌드하기 위한 패키지 설치가 필요없이 Git Clone 만으로 프로젝트가 바로 빌드 가능한 상태가 되어 CI에서 의존성을 설치하는 시간을 절약할 수 있습니다.
-
 
 ## `Yarn Berry`로 모노레포 만들기
 
@@ -79,3 +84,4 @@ summary: Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn은 패키�
 ##### 참고
 - [https://d2.naver.com/helloworld/7553804](https://d2.naver.com/helloworld/7553804)
 - [https://toss.tech/article/node-modules-and-yarn-berry](https://toss.tech/article/node-modules-and-yarn-berry)
+- [https://velog.io/@oimne/yarn-berry](https://velog.io/@oimne/yarn-berry)
