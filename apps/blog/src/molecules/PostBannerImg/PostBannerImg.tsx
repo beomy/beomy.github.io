@@ -63,6 +63,12 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
         alt="포스트 배너"
       />
     ),
+    'etc/yarn_berry.png': (
+      <StaticImage
+        src="../../assets/images/etc/yarn_berry.png"
+        alt="포스트 배너"
+      />
+    ),
   };
   return (
     imgComponents[img as keyof typeof imgComponents] ?? (
