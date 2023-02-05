@@ -120,7 +120,7 @@ NPM은 Pre/Post 스크립트 뿐만 아니라, `prepare`, `prepublish`, `prepubl
 
 `restart` 스크립트가 정의되어 있다면 위의 목록에 있는 스크립트가 순서대로 호출됩니다. `restart` 스크립트가 정의되어 있지 않다면 `stop`, `start` 스크립트가 순서대로 호출됩니다.
 
-#### `npm un <user defined>`
+#### `npm run <user defined>`
 - `pre<user-defined>`
 - `<user-defined>`
 - `post<user-defined>`
