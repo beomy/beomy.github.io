@@ -97,11 +97,21 @@ Zero Install을 사용할 경우 의존성을 설치할 필요가 없기 때문�
 Git을 통해 의존성 패키지가 관리되기 때문에 브랜치를 변경할 경우 해당 브랜치에 필요한 의존성 패키지가 이미 존재하기 때문에 브랜치 변경시에 별도의 패키지 설치 없이 바로 프로젝트를 실행할 수 있습니다.
 
 ## `.yarnrc.yml` 설정
-`.yarnrc.yml` 파일에 `Yarn Berry` 설정을 추가할 수 있습니다. `.yarnrc.yml` 파일에 작성하는 몇가지 `Yarn Berry` 설정을 살펴도록 하겠습니다.
+`.yarnrc.yml` 파일에 `Yarn Berry` 설정을 추가할 수 있습니다. `.yarnrc.yml` 파일에 작성하는 몇가지 `Yarn Berry` 설정을 살펴도록 하겠습니다. 자세한 `.yarnrc.yml` 설정 방법은 [공식 문서](https://yarnpkg.com/configuration/yarnrc)를 참고 부탁드립니다.
 
 ### `nodeLinker`
+```
+nodeLinker: "pnp" | "pnpm" | "node-modules"
+```
 
-### `pnpMode: "loose"`
+패키지를 설치하는데 사용하는 링커 선택할 수 있는 옵션입니다. 기본 값은 `pnp`입니다. `node-modules`로 설정할 경우 `Yarn Classic`이나 `NPM`처럼 `node_modules` 디렉토리에서 의존성 관리를하게 됩니다.
+
+### `pnpMode`
+```
+pnpMode: "strict" | "loose"
+```
+
+
 - loose는 fallback pool을 만들어 종속된 패키지가 패키지를 찾지 못할 경우 fallback pool에서 패키지를 찾아 실행하게 한다.
 
 ### `enableScripts: false`
@@ -115,13 +125,6 @@ Git을 통해 의존성 패키지가 관리되기 때문에 브랜치를 변경�
 
 ## 부록
 
-### 오프라인 캐시
-- `.yarn/release/yarn-<version>.cjs`
-
-### Yarn Pnp 단점
-- node_modules에 디펜던시가 있는 라이브러리 사용 불가.
-- peerDependency가 있는 경우 핫리로딩 이슈.
-
 ### Yarn의 Unplugged
 - [https://imch.dev/posts/commitizen-with-yarn-pnp/](https://imch.dev/posts/commitizen-with-yarn-pnp/)
 - [https://yarnpkg.com/getting-started/qa](https://yarnpkg.com/getting-started/qa)
@@ -133,3 +136,4 @@ Git을 통해 의존성 패키지가 관리되기 때문에 브랜치를 변경�
 - [https://d2.naver.com/helloworld/7553804](https://d2.naver.com/helloworld/7553804)
 - [https://toss.tech/article/node-modules-and-yarn-berry](https://toss.tech/article/node-modules-and-yarn-berry)
 - [https://velog.io/@oimne/yarn-berry](https://velog.io/@oimne/yarn-berry)
+- [https://yarnpkg.com/features/pnp](https://yarnpkg.com/features/pnp)
