@@ -70,10 +70,10 @@ summary: 하나의 저장소(Repository)에서 여러개의 프로젝트를 관�
 
 - `Yarn`: [React](https://github.com/facebook/react/blob/main/package.json#L3-L5), [React-router](https://github.com/remix-run/react-router/blob/main/package.json#L4-L12), [Babel 7.20](https://github.com/babel/babel/blob/main/package.json#L78-L85)
 - `Lerna` + `Yarn`: [Next 12](https://github.com/vercel/next.js/blob/21994ce591be70b03176a2512c7304381d52e629/lerna.json#L2), [Babel 7.12](https://github.com/babel/babel/blob/v7.12.12/lerna.json), [Jest](https://github.com/facebook/jest/blob/main/lerna.json#L5), [Create React App](https://github.com/facebook/create-react-app/blob/main/lerna.json#L3), [Vue-cli](https://github.com/vuejs/vue-cli/blob/dev/lerna.json#L2), [Webpack-cli](https://github.com/webpack/webpack-cli/blob/master/lerna.json#L5), [Storybook](https://github.com/storybookjs/storybook/blob/next/code/lerna.json#L2)
-- `Turborepo`: [Next 13](https://github.com/vercel/next.js/blob/canary/turbo.json)(+ `Pnpm`), [모든 레포](https://github.com/vercel/turbo/discussions/103)
+- `Turborepo`: [Next 13](https://github.com/vercel/next.js/blob/canary/turbo.json)(+ `Pnpm`), [그 외 모든 레포 링크](https://github.com/vercel/turbo/discussions/103)
 - `Nx`: [FluentUI](https://github.com/microsoft/fluentui/blob/master/nx.json), [NgRx](https://github.com/ngrx/platform/blob/master/nx.json)
 - `Npm`: [Apollo-server](https://github.com/apollographql/apollo-server/blob/main/package.json#L32-L38)
-- `Pnpm`: [Nuxt](https://github.com/nuxt/nuxt/blob/main/pnpm-workspace.yaml), [Vue 3](https://github.com/vuejs/core/blob/main/pnpm-workspace.yaml), [Vue 2.7](https://github.com/vuejs/vue/blob/main/pnpm-workspace.yaml), [모든 레포](https://pnpm.io/users)
+- `Pnpm`: [Nuxt](https://github.com/nuxt/nuxt/blob/main/pnpm-workspace.yaml), [Vue 3](https://github.com/vuejs/core/blob/main/pnpm-workspace.yaml), [Vue 2.7](https://github.com/vuejs/vue/blob/main/pnpm-workspace.yaml), [그 외 모든 레포 링크](https://pnpm.io/users)
 
 ##### 참고
 - [https://d2.naver.com/helloworld/0923884](https://d2.naver.com/helloworld/0923884)
