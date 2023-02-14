@@ -122,8 +122,14 @@ export const Wrapper = styled.div`
   [data-language='js']:before {
     content: 'JS';
   }
+  [data-language='jsx']:before {
+    content: 'JSX';
+  }
   [data-language='ts']:before {
     content: 'TS';
+  }
+  [data-language='tsx']:before {
+    content: 'TSX';
   }
   [data-language='bash']:before {
     content: 'BASH';
