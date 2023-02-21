@@ -7,3 +7,4 @@ summary:
 ---
 
 - [https://turbo.build/repo](https://turbo.build/repo)
+- [https://pnpm.io/ko/](https://pnpm.io/ko/)
