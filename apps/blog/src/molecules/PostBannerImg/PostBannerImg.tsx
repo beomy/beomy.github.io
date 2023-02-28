@@ -2,6 +2,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import type { PostBannerImgProps } from './PostBannerImg.types';
 
 const PostBannerImg = ({ img }: PostBannerImgProps) => {
+  console.log(img);
   const imgComponents = {
     'etc/xss_xsrf_banner.png': (
       <StaticImage
@@ -66,6 +67,12 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
     'etc/yarn_berry.png': (
       <StaticImage
         src="../../assets/images/etc/yarn_berry.png"
+        alt="포스트 배너"
+      />
+    ),
+    'react/react.png': (
+      <StaticImage
+        src="../../assets/images/react/react.png"
         alt="포스트 배너"
       />
     ),
