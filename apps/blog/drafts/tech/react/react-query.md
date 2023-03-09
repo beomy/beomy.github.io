@@ -21,6 +21,8 @@ pnpm add @tanstack/react-query
 yarn add @tanstack/react-query
 ```
 
+## 기본 설정 값
+
 ## 부록
 
 ### DevTools
