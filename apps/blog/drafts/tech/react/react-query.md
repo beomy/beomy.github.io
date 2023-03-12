@@ -21,7 +21,25 @@ pnpm add @tanstack/react-query
 yarn add @tanstack/react-query
 ```
 
-## 기본 설정 값
+## 기본 옵션
+
+### 오래된 값으로 인지
+- 즉시 오래된 값(stale data)로 인지
+- `staleTime`
+
+### 자동 refetch
+- New instances of the query mount
+- The window is refocused
+- The network is reconnected
+- The query is optionally configured with a refetch interval
+
+### 캐시
+- 쿼리를 통해 응답 받은 데이터는 즉시 비활성(inactive) 상태가 되며, 재사용되는 경우를 대비하여 5분 간 캐시에 남아 있음
+- `cacheTime`
+
+### 재요청
+- UI에 에러를 표시하기 전 3번 재요청
+- `retry`, `retryDelay`
 
 ## 부록
 
