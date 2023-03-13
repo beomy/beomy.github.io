@@ -41,6 +41,8 @@ yarn add @tanstack/react-query
 - UI에 에러를 표시하기 전 3번 재요청
 - `retry`, `retryDelay`
 
+## 기본 사용법
+
 ## 부록
 
 ### DevTools
