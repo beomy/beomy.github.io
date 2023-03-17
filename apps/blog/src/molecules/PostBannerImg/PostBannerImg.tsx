@@ -2,7 +2,6 @@ import { StaticImage } from 'gatsby-plugin-image';
 import type { PostBannerImgProps } from './PostBannerImg.types';
 
 const PostBannerImg = ({ img }: PostBannerImgProps) => {
-  console.log(img);
   const imgComponents = {
     'etc/xss_xsrf_banner.png': (
       <StaticImage
