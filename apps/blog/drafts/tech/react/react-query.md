@@ -23,23 +23,30 @@ yarn add @tanstack/react-query
 
 ## 기본 옵션
 
-### 오래된 값으로 인지
+### Stale Data
 - 즉시 오래된 값(stale data)로 인지
 - `staleTime`
 
-### 자동 refetch
+### Auto Refetch
 - New instances of the query mount
 - The window is refocused
 - The network is reconnected
 - The query is optionally configured with a refetch interval
 
-### 캐시
+### Cache
 - 쿼리를 통해 응답 받은 데이터는 즉시 비활성(inactive) 상태가 되며, 재사용되는 경우를 대비하여 5분 간 캐시에 남아 있음
 - `cacheTime`
 
-### 재요청
+### Retry
 - UI에 에러를 표시하기 전 3번 재요청
 - `retry`, `retryDelay`
+
+## Query
+`useQuery` 훅을 사용하여 비동기 데이터를 가져옴
+- 유니크 키가 전달 되어야 함: 유니크 키는 데이터를 다시 가져오거나, 캐시, 프로젝트 내에서 데이터를 공유하기 위해 필요한 값
+- 서버로 부터 전달 받은 데이터나 에러를 리턴
+
+## Mutation
 
 ## 부록
 
