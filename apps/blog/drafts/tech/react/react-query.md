@@ -46,6 +46,15 @@ yarn add @tanstack/react-query
 - 유니크 키가 전달 되어야 함: 유니크 키는 데이터를 다시 가져오거나, 캐시, 프로젝트 내에서 데이터를 공유하기 위해 필요한 값
 - 서버로 부터 전달 받은 데이터나 에러를 리턴
 
+### `useQuery`
+```js
+import { useQuery } from '@tanstack/react-query'
+
+function App() {
+  const info = useQuery({ queryKey: ['todos'], queryFn: fetchTodoList })
+}
+```
+
 ## Mutation
 
 ## 부록
