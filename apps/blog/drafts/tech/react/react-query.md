@@ -55,6 +55,54 @@ function App() {
 }
 ```
 
+#### Query Keys
+```js
+// A list of todos
+useQuery({ queryKey: ['todos'], ... })
+
+// Something else, whatever!
+useQuery({ queryKey: ['something', 'special'], ... })
+```
+
+아래와 같은 다양한 형태의 배열도 가능
+
+```js
+// An individual todo
+useQuery({ queryKey: ['todo', 5], ... })
+
+// An individual todo in a "preview" format
+useQuery({ queryKey: ['todo', 5, { preview: true }], ...})
+
+// A list of todos that are "done"
+useQuery({ queryKey: ['todos', { type: 'done' }], ... })
+```
+
+아래 쿼리 키는 모두 동일한 것으로 간주됩니다.
+
+```js
+useQuery({ queryKey: ['todos', { status, page }], ... })
+useQuery({ queryKey: ['todos', { page, status }], ...})
+useQuery({ queryKey: ['todos', { page, status, other: undefined }], ... })
+```
+
+반면 아래 쿼리 키는 모두 다르기 때문에 순서에 주의해야 합니다.
+
+```js
+useQuery({ queryKey: ['todos', status, page], ... })
+useQuery({ queryKey: ['todos', page, status], ...})
+useQuery({ queryKey: ['todos', undefined, page, status], ...})
+```
+
+쿼리 키는 유니크하게 관리되어야 하기 때문에 아래 코드와 같이 API를 호출할 때 사용되는 값을 쿼리 키에 전달하는 것이 좋습니다.
+
+```js
+useQuery({ queryKey: ['todos', status, page], ... })
+useQuery({ queryKey: ['todos', page, status], ...})
+useQuery({ queryKey: ['todos', undefined, page, status], ...})
+```
+
+#### Query Functions
+
 ## Mutation
 
 ## 부록
