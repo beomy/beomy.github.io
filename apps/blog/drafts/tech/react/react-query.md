@@ -104,6 +104,7 @@ useQuery({ queryKey: ['todos', undefined, page, status], ...})
 #### Query Functions
 
 ## Mutation
+`useMutaion`
 
 ## 부록
 
