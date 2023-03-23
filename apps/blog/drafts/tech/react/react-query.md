@@ -103,6 +103,69 @@ useQuery({ queryKey: ['todos', undefined, page, status], ...})
 
 #### Query Functions
 
+##### 기본 사용
+쿼리 함수는 `Promise`를 반환하는 함수
+
+```js
+useQuery({ queryKey: ['todos'], queryFn: fetchAllTodos })
+useQuery({ queryKey: ['todos', todoId], queryFn: () => fetchTodoById(todoId) })
+useQuery({
+  queryKey: ['todos', todoId],
+  queryFn: async () => {
+    const data = await fetchTodoById(todoId)
+    return data
+  },
+})
+useQuery({
+  queryKey: ['todos', todoId],
+  queryFn: ({ queryKey }) => fetchTodoById(queryKey[1]),
+})
+```
+
+##### 에러 처리
+`useQuery`의 결과가 에러이려면, 쿼리 함수에서 `Promise.reject`을 반환하거나 `throw new Error`로 에러를 던져줘야 한다.
+
+```js
+const { error } = useQuery({
+  queryKey: ['todos', todoId],
+  queryFn: async () => {
+    if (somethingGoesWrong) {
+      throw new Error('Oh no!')
+    }
+    if (somethingElseGoesWrong) {
+      return Promise.reject(new Error('Oh no!'))
+    }
+
+    return data
+  },
+})
+```
+
+##### QueryFunctionContext
+쿼리 함수는 아래 코드와 같이 코드를 분리할 수 있다.
+
+```js
+function Todos({ status, page }) {
+  const result = useQuery({
+    queryKey: ['todos', { status, page }],
+    queryFn: fetchTodoList,
+  })
+}
+
+// Access the key, status and page variables in your query function!
+function fetchTodoList({ queryKey }) {
+  const [_key, { status, page }] = queryKey
+  return new Promise()
+}
+```
+
+쿼리 함수의 파라미터를 QueryFunctionContext라고 하는데 QueryFunctionContext 객체는 아래와 같은 필드를 가진다.
+
+- `queryKEy: QueryKey`: 쿼리 키
+- `pageParam?: unknown`: 무한 쿼리에서 사용되며, 현재 페이지의 파라미터 정보
+- `signal?: AbortSignal`: ??
+- `meta: Record<string, unknown> | undefined`: 쿼리의 추가 점보를 담는 필드
+
 ## Mutation
 `useMutaion`
 
