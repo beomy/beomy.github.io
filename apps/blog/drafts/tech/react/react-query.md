@@ -8,17 +8,80 @@ summary:
 
 이번 포스트에서는 서버 API 호출 등의 비동기 작업을 도와주는 라이브러리인 React Query를 살펴보도록 하겠습니다.
 
-## 개요
+## React Query 란
 - React Query는 서버 상태를 관리하기 위한 라이브러리입니다.
 - 서버에 데이터를 요청하거나 업데이트 하는 등의 비동기 작업의 캐싱을 지원합니다.
 
-## 설치
+## 퀵 스타트
 ```bash
 npm i @tanstack/react-query
 # or
 pnpm add @tanstack/react-query
 # or
 yarn add @tanstack/react-query
+```
+
+```js
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import { getTodos, postTodo } from '../my-api'
+
+// Create a client
+const queryClient = new QueryClient()
+
+function App() {
+  return (
+    // Provide the client to your App
+    <QueryClientProvider client={queryClient}>
+      <Todos />
+    </QueryClientProvider>
+  )
+}
+
+function Todos() {
+  // Access the client
+  const queryClient = useQueryClient()
+
+  // Queries
+  const query = useQuery({ queryKey: ['todos'], queryFn: getTodos })
+
+  // Mutations
+  const mutation = useMutation({
+    mutationFn: postTodo,
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
+    },
+  })
+
+  return (
+    <div>
+      <ul>
+        {query.data?.map((todo) => (
+          <li key={todo.id}>{todo.title}</li>
+        ))}
+      </ul>
+
+      <button
+        onClick={() => {
+          mutation.mutate({
+            id: Date.now(),
+            title: 'Do Laundry',
+          })
+        }}
+      >
+        Add Todo
+      </button>
+    </div>
+  )
+}
+
+render(<App />, document.getElementById('root'))
 ```
 
 ## 기본 옵션
@@ -41,21 +104,7 @@ yarn add @tanstack/react-query
 - UI에 에러를 표시하기 전 3번 재요청
 - `retry`, `retryDelay`
 
-## Query
-`useQuery` 훅을 사용하여 비동기 데이터를 가져옴
-- 유니크 키가 전달 되어야 함: 유니크 키는 데이터를 다시 가져오거나, 캐시, 프로젝트 내에서 데이터를 공유하기 위해 필요한 값
-- 서버로 부터 전달 받은 데이터나 에러를 리턴
-
-### `useQuery`
-```js
-import { useQuery } from '@tanstack/react-query'
-
-function App() {
-  const info = useQuery({ queryKey: ['todos'], queryFn: fetchTodoList })
-}
-```
-
-#### Query Keys
+## Query Keys
 ```js
 // A list of todos
 useQuery({ queryKey: ['todos'], ... })
@@ -101,9 +150,8 @@ useQuery({ queryKey: ['todos', page, status], ...})
 useQuery({ queryKey: ['todos', undefined, page, status], ...})
 ```
 
-#### Query Functions
+## Query Functions
 
-##### 기본 사용
 쿼리 함수는 `Promise`를 반환하는 함수
 
 ```js
@@ -122,7 +170,6 @@ useQuery({
 })
 ```
 
-##### 에러 처리
 `useQuery`의 결과가 에러이려면, 쿼리 함수에서 `Promise.reject`을 반환하거나 `throw new Error`로 에러를 던져줘야 한다.
 
 ```js
@@ -141,7 +188,6 @@ const { error } = useQuery({
 })
 ```
 
-##### QueryFunctionContext
 쿼리 함수는 아래 코드와 같이 코드를 분리할 수 있다.
 
 ```js
@@ -159,12 +205,16 @@ function fetchTodoList({ queryKey }) {
 }
 ```
 
-쿼리 함수의 파라미터를 QueryFunctionContext라고 하는데 QueryFunctionContext 객체는 아래와 같은 필드를 가진다.
+> **QueryFunctionContext**
+>
+> 쿼리 함수의 파라미터를 QueryFunctionContext라고 하는데 QueryFunctionContext 객체는 아래와 같은 필드를 가진다.
+>
+> - `queryKey: QueryKey`: 쿼리 키
+> - `pageParam?: unknown`: 무한 쿼리에서 사용되며, 현재 페이지의 파라미터 정보
+> - `signal?: AbortSignal`: 쿼리를 취소하기 위해 사용하는 AbortSignal 인스턴스
+> - `meta: Record<string, unknown> | undefined`: 쿼리의 추가 점보를 담는 필드
 
-- `queryKEy: QueryKey`: 쿼리 키
-- `pageParam?: unknown`: 무한 쿼리에서 사용되며, 현재 페이지의 파라미터 정보
-- `signal?: AbortSignal`: ??
-- `meta: Record<string, unknown> | undefined`: 쿼리의 추가 점보를 담는 필드
+## 네트워크 모드
 
 ## Mutation
 `useMutaion`
