@@ -216,6 +216,12 @@ function fetchTodoList({ queryKey }) {
 
 ## 네트워크 모드
 
+### online
+
+### always
+
+### offlineFirst
+
 ## Mutation
 `useMutaion`
 
