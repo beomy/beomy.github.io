@@ -8,6 +8,8 @@ summary:
 
 이번 포스트에서는 서버 API 호출 등의 비동기 작업을 도와주는 라이브러리인 React Query를 살펴보도록 하겠습니다.
 
+V4 기준으로 작성
+
 ## React Query 란
 - React Query는 서버 상태를 관리하기 위한 라이브러리입니다.
 - 서버에 데이터를 요청하거나 업데이트 하는 등의 비동기 작업의 캐싱을 지원합니다.
@@ -214,13 +216,9 @@ function fetchTodoList({ queryKey }) {
 > - `signal?: AbortSignal`: 쿼리를 취소하기 위해 사용하는 AbortSignal 인스턴스
 > - `meta: Record<string, unknown> | undefined`: 쿼리의 추가 점보를 담는 필드
 
-## 네트워크 모드
-
-### online
-
-### always
-
-### offlineFirst
+## Parallel Queries
+- 수동 병렬 쿼리
+- 동적 병렬 쿼리
 
 ## Mutation
 `useMutaion`
