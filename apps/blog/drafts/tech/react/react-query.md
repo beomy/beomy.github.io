@@ -274,4 +274,4 @@ function App() {
 
 
 ##### 참고
-- [https://tanstack.com/query/latest](https://tanstack.com/query/latest)
+- [https://tanstack.com/query/v4/](https://tanstack.com/query/v4/)
