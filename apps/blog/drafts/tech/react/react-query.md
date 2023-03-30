@@ -220,6 +220,10 @@ function fetchTodoList({ queryKey }) {
 - 수동 병렬 쿼리
 - 동적 병렬 쿼리
 
+## Background Fetching
+- isFetching
+- useIsFetching
+
 ## Mutation
 `useMutaion`
 
