@@ -224,6 +224,8 @@ function fetchTodoList({ queryKey }) {
 - isFetching
 - useIsFetching
 
+## 쿼리 비활성화
+
 ## Mutation
 `useMutaion`
 
