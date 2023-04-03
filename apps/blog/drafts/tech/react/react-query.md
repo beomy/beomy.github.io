@@ -226,6 +226,16 @@ function fetchTodoList({ queryKey }) {
 
 ## 쿼리 비활성화
 
+## 쿼리 재시도
+- retry
+- retryDelay
+
+## 페이징를 위한 쿼리
+- keepPreviousData
+
+## 무한 쿼리
+- useInfiniteQuery
+
 ## Mutation
 `useMutaion`
 
