@@ -49,7 +49,7 @@ ECMAScript의 제안 프로세스은 0단계(Stage0)부터 제안되어 각 단�
 ### Stage4 - Finished(완료)
 ECMAScript 표준에 포함될 준비를 마친 상태입니다.
 
-ECMA-262의 단위 테스트인 Test262에 테스트가 작성되고 병합이 완료가 되어있는 상태여야 합니다. 승인 테스트를 통과한 2개 이상의 구현체가 있어야 합니다. 스팩 문서와 함께 [tc39/ecma262](https://github.com/tc39/ecma262https://github.com/tc39/ecma262)에 PR(pull request)이 요청된 상태이며, 모든 ECMAScript 에디더들이 PR을 승인이 완료된 상태입니다.
+ECMA-262의 단위 테스트인 Test262에 테스트가 작성되고 병합이 완료가 되어있는 상태여야 합니다. 승인 테스트를 통과한 2개 이상의 구현체가 있어야 합니다. 스팩 문서와 함께 [tc39/ecma262](https://github.com/tc39/ecma262)에 PR(pull request)이 요청된 상태이며, 모든 ECMAScript 에디더들이 PR을 승인이 완료된 상태입니다.
 
 4단계의 제안은 가장 빠른 새 표준에 포함되어 발표됩니다.
 
