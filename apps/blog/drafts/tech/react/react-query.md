@@ -236,6 +236,8 @@ function fetchTodoList({ queryKey }) {
 ## 무한 쿼리
 - useInfiniteQuery
 
+## 초기값
+
 ## Mutation
 `useMutaion`
 
