@@ -237,6 +237,11 @@ function fetchTodoList({ queryKey }) {
 - useInfiniteQuery
 
 ## 초기값
+- initialData
+- initialDataUpdatedAt
+
+## Placeholder
+- placeholderData: 가짜 데이터
 
 ## Mutation
 `useMutaion`
