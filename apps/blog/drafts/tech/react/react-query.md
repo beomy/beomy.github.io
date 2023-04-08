@@ -243,8 +243,12 @@ function fetchTodoList({ queryKey }) {
 ## Placeholder
 - placeholderData: 가짜 데이터
 
+## Prefetching
+
 ## Mutation
 `useMutaion`
+
+## 쿼리 무효화
 
 ## 부록
 
