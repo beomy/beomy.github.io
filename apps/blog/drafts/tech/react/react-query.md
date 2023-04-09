@@ -6,6 +6,14 @@ category: [tech, react]
 summary:
 ---
 
+## uesQuery
+
+## useQueries
+
+## useMutation
+
+## useQueryClient
+
 이번 포스트에서는 서버 API 호출 등의 비동기 작업을 도와주는 라이브러리인 React Query를 살펴보도록 하겠습니다.
 
 V4 기준으로 작성
@@ -246,9 +254,14 @@ function fetchTodoList({ queryKey }) {
 ## Prefetching
 
 ## Mutation
-`useMutaion`
+- `useMutaion`
 
 ## 쿼리 무효화
+- invalidateQueries: `exact`
+- useMuation에서 쿼리 무효화
+
+## 쿼리 업데이트
+- setQueryData
 
 ## 부록
 
