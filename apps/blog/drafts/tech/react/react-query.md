@@ -1,27 +1,33 @@
 ---
 layout: post
-title: '[React] React Query'
+title: '[React] React Query 톺아보기'
 featured-img: react/react.png
 category: [tech, react]
 summary:
 ---
 
+이번 포스트에서는 비동기 작업을 도와주는 라이브러리인 React Query를 살펴보도록 하겠습니다.
+
 ## React Query 기본 개념
 
 ## React Query 세팅하기
 
-## uesQuery
+## API
 
-## useQueries
+### uesQuery
 
-## useInfiniteQuery
+### useQueries
 
-## useMutation
+### useInfiniteQuery
 
-## useIsFetching, useIsMutating
+### useMutation
 
-## useQueryClient
+### useIsFetching, useIsMutating
+
+### useQueryClient
 - 쿼리 필터링
+
+### 그 밖에..
 
 ## 부록
 
