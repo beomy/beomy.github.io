@@ -19,8 +19,8 @@ React Query의 중요한 개념들과 설정들을 먼저 살펴보도록 하겠
 ### query와 mutation
 React Query를 사용하다 보면 `useQuery`와 `useMutation` 두 개의 훅을 가장 많이 사용하게 됩니다. 상황에 따라 두 개의 훅 중 하나를 선택해 사용해야 합니다.
 
-query는
-mutation은
+query는 get
+mutation은 post put delete
 
 ### `staleTime`
 
