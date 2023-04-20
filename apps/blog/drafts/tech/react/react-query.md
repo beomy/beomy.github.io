@@ -33,7 +33,7 @@ mutation은 post put delete
 ### `queryFn`와 `MutateFn`
 
 ## 쿽 스타트
-TanStack Query를 React 프로젝트에서 사용하기 위해서 먼저 아래 코드와 같이 `@tanstack/react-query`를 설치해야 합니다.
+React Query를 React 프로젝트에서 사용하기 위해서 먼저 아래 코드와 같이 `@tanstack/react-query`를 설치해야 합니다.
 
 ```bash
 $ npm i @tanstack/react-query
