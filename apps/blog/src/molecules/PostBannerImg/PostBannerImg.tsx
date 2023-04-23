@@ -75,6 +75,12 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
         alt="포스트 배너"
       />
     ),
+    'react/tanstack-query.png': (
+      <StaticImage
+        src="../../assets/images/react/tanstack-query.png"
+        alt="포스트 배너"
+      />
+    ),
   };
   return (
     imgComponents[img as keyof typeof imgComponents] ?? (

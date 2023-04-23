@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[React] TanStack Query (aka. React Query)'
-featured-img: react/react.png
+featured-img: react/tanstack-query.png
 category: [tech, react]
 summary: TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다.
 ---
@@ -14,17 +14,40 @@ TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3
 웹 서비스를 개발할 때 백엔드 API를 호출해서 데이터를 가져오는데, 이 과정은 비동기로 동작합니다. React Query는 가져온 데이터를 캐시하여 최적화 하거나, 에러 처리, 데이터를 가져오는 중임을 나타내는 등의 유틸 기능을 제공합니다. React Query에서 제공하는 기능들을 사용하면, 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다.
 
 ## 기본 개념
-React Query의 중요한 개념들과 설정들을 먼저 살펴보도록 하겠습니다.
+React Query를 사용할 때 자주 접하게 되는 React Query의 중요한 개념들과 설정들을 살펴보도록 하겠습니다.
 
-### query와 mutation
-React Query를 사용하다 보면 `useQuery`와 `useMutation` 두 개의 훅을 가장 많이 사용하게 됩니다. 상황에 따라 두 개의 훅 중 하나를 선택해 사용해야 합니다.
+### Query와 Mutation
+React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 접하게 되는데, Query는 서버에서 데이터를 가져오는 작업을 Mutation은 서버의 데이터를 변경하는 부수효과가 있는 작업을 이야기합니다. Query를 위해서 `useQuery` 훅을 많이 사용하게 되고, Mutation을 위해서 `useMutation` 훅을 많이 사용하게 됩니다.
 
-query는 서버에서 데이터를 가져올 때
-mutation은 서버의 데이터를 변경하는 등의 부수효과를 발생시킬 때
+`useQueries`와 `useInfiniteQuery` 훅은 `useQuery`와 동일하게 서버에서 데이터를 가져올 때 사용되는 훅입니다. 여러 데이터를 병렬로 가져와야 할 때는 `useQueries` 훅을 무한 스크롤과 같이 계속해서 데이터를 가져와야 할 경우 `useInfiniteQuery` 훅을 사용할 수 있습니다.
+
+> **Query의 refetch**
+>
+> `useQuery`, `useQueries`, `useInfiniteQuery`는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 아래와 같은 경우에 자동으로 데이터를 가져옵니다.
+>
+> - `useQuery`를 사용한 컴포넌트가 마운트 되었을 때
+> - 윈도우가 다시 포커스 되었을 때
+> - 네트워크가 다시 연결되었을 때
+> - `refetchInterval` 설정 하여 반복적으로 refetch 되도록 설정 했을 때
 
 ### `staleTime`
+`staleTime`은 React Query를 통해 가져온 데이터가 오래된 것으로 인식하게 되는 시간입니다. ms 단위로 저장되는데 기본 값은 0입니다. React Query는 오래된 데이터라고 판단되면 다시 데이터를 가져옵니다. `staleTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
+
+- 0으로 설정할 경우: 데이터를 가져온 즉시 오래된 데이터로 인식하기 때문에 캐시 된 데이터를 우선 사용한 후 API를 다시 호출하여 새로운 데이터를 응답 받은 후 데이터를 교체합니다.
+- 5000으로 설정할 경우
+  - 5초 이전에 데이터를 요청한 경우: 최신 데이터로 판단하여 API를 다시 호출하지 않고 캐시된 데이터를 사용합니다.
+  - 5초 이후에 데이터를 요청한 경우: 캐시 된 데이터를 오래된 데이터로 판단하여 캐시 된 데이터를 우선 사용한 후, API를 호출하여 새로운 데이터를 응답 받으면 데이터를 교체하고 응답 받은 데이터를 캐시합니다.
+
+`staleTime`은 데이터를 다시 가져올지 판단하는 설정입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-staletime-n12m0e)에서 테스트하실 수 있습니다.
 
 ### `cacheTime`
+`cacheTime`은 데이터를 얼마나 오랫동안 보관 할 것인지 나타내는 시간입니다. ms 단위로 저장되는데 기본 값은 5분(5 * 60 * 1000)입니다. 비활성화 된 데이터는 `cacheTime`에 설정된 시간이 지난 후 가비지 컬렉션 됩니다. `cacheTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
+
+- 5000으로 설정할 경우
+  - 비활성화 된 데이터를 5초 이전에 요청한 경우: 캐시 된 데이터를 우선 사용한 후 API를 호출하여 새로운 데이터를 응답 받으면 응답 받은 데이터를 다시 캐시합니다.
+  - 비활성화 된 데이터를 5초 이후에 요청한 경우: 데이터가 이미 가비지 컬렉션 되었기 때문에, 캐시 데이터를 사용하지 못하고 API 응답 데이터를 기다린 후 데이터를 응답 받으면 응답 받은 데이터를 사용하고 캐시합니다.
+
+`cacheTime`은 캐시된 값을 사용할지 판단하는 설정입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-cachetime-cr7be7)에서 테스트하실 수 있습니다.
 
 ### `retry`
 
@@ -44,6 +67,8 @@ $ yarn add @tanstack/react-query
 ```
 
 React Query 설치가 끝나면 아래 코드와 같이 사용할 수 있습니다.
+
+### 기본 값 설정하기
 
 ## API
 
