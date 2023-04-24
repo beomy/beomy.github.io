@@ -21,14 +21,16 @@ React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 �
 
 `useQueries`와 `useInfiniteQuery` 훅은 `useQuery`와 동일하게 서버에서 데이터를 가져올 때 사용되는 훅입니다. 여러 데이터를 병렬로 가져와야 할 때는 `useQueries` 훅을 무한 스크롤과 같이 계속해서 데이터를 가져와야 할 경우 `useInfiniteQuery` 훅을 사용할 수 있습니다.
 
-> **Query의 refetch**
->
-> `useQuery`, `useQueries`, `useInfiniteQuery`는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 아래와 같은 경우에 자동으로 데이터를 가져옵니다.
->
-> - `useQuery`를 사용한 컴포넌트가 마운트 되었을 때
-> - 윈도우가 다시 포커스 되었을 때
-> - 네트워크가 다시 연결되었을 때
-> - `refetchInterval` 설정 하여 반복적으로 refetch 되도록 설정 했을 때
+### refetch
+`useQuery`, `useQueries`, `useInfiniteQuery`는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 아래와 같은 경우에 자동으로 데이터를 가져옵니다.
+
+- `useQuery`를 사용한 컴포넌트가 마운트 되었을 때
+- 윈도우가 다시 포커스 되었을 때
+- 네트워크가 다시 연결되었을 때
+- `refetchInterval` 설정 하여 반복적으로 refetch 되도록 설정 했을 때
+
+### retry
+`retry` 설정에 따라 Query 혹은 Mutation 작업이 실패하면 React Query는 자동으로 재시도를 합니다. `retry` 설정의 기본 값은 3으로 3번 재시도를 하게 됩니다. `retryDelay` 설정을 통해 얼마 간의 간격으로 재시도를 할 것인지 설정할 수 있습니다.
 
 ### `staleTime`
 `staleTime`은 React Query를 통해 가져온 데이터가 오래된 것으로 인식하게 되는 시간입니다. ms 단위로 저장되는데 기본 값은 0입니다. React Query는 오래된 데이터라고 판단되면 다시 데이터를 가져옵니다. `staleTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
@@ -49,11 +51,10 @@ React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 �
 
 `cacheTime`은 캐시된 값을 사용할지 판단하는 설정입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-cachetime-cr7be7)에서 테스트하실 수 있습니다.
 
-### `retry`
+### `queryKey`와 `mutationKey`
+React Query는  유니크한 키 값을 사용하여 캐시합니다.
 
-### `queryKey`와 `mutateKey`
-
-### `queryFn`와 `MutateFn`
+### `queryFn`와 `mutationFn`
 
 ## 쿽 스타트
 React Query를 React 프로젝트에서 사용하기 위해서 먼저 아래 코드와 같이 `@tanstack/react-query`를 설치해야 합니다.
