@@ -52,7 +52,7 @@ React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 �
 `cacheTime`은 캐시된 값을 사용할지 판단하는 설정입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-cachetime-cr7be7)에서 테스트하실 수 있습니다.
 
 ### `queryKey`와 `mutationKey`
-React Query는  유니크한 키 값을 사용하여 캐시합니다.
+React Query는  유니크한 키를 사용하여 캐시합니다.
 
 ### `queryFn`와 `mutationFn`
 
