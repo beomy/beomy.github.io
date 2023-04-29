@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[React] TanStack Query (aka. React Query)'
+title: '[React] TanStack Query (React Query)'
 featured-img: react/tanstack-query.png
 category: [tech, react]
 summary: TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다.
@@ -11,7 +11,7 @@ TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3
 이번 포스트에서는 React에서 TanStack Query를 사용하는 방법을 살펴보도록 하겠습니다. TanStack의 `react-query`를 가져와 사용하기 때문에 이번 포스트에서는 React Query라는 명칭을 사용하도록 하겠습니다.
 
 ## 역할
-웹 서비스를 개발할 때 백엔드 API를 호출해서 데이터를 가져오는데, 이 과정은 비동기로 동작합니다. React Query는 가져온 데이터를 캐시하여 최적화 하거나, 에러 처리, 데이터를 가져오는 중임을 나타내는 등의 유틸 기능을 제공합니다. React Query에서 제공하는 기능들을 사용하면, 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다.
+React Query는 서버의 데이터 가져오기/업데이트, 캐싱, 에러 처리 등을 쉽게 처리할 수 있도록 돕는 라이브러리입니다. 캐시 기능을 제공하고, 동시에 동일한 요청을 여러번 하게 되도 한번만 요청을 보내는 등 알아서 최적화를 해주기 때문에 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다. 뿐만 아니라 서버에서 가져온 데이터 객체, 에러가 발생했다면 에러 정보를 담는 객체, 데이터 가져오기/엡데이트 중임을 나타내는 등 각종 유틸 기능을 제공합니다.
 
 ## 기본 개념
 React Query를 사용할 때 자주 접하게 되는 React Query의 중요한 개념들과 설정들을 살펴보도록 하겠습니다.
@@ -69,7 +69,12 @@ $ yarn add @tanstack/react-query
 
 React Query 설치가 끝나면 아래 코드와 같이 사용할 수 있습니다.
 
-### 기본 값 설정하기
+## 기본 값 설정하기
+- QueryClient
+
+## 쿼리 취소
+
+## 쿼리 무효화
 
 ## API
 
@@ -92,6 +97,25 @@ React Query 설치가 끝나면 아래 코드와 같이 사용할 수 있습니�
 ## 부록
 
 ### TypeScript
+```ts
+export function useQuery<
+  TQueryFnData = unknown,
+  TError = unknown,
+  TData = TQueryFnData,
+  TQueryKey extends QueryKey = QueryKey
+>
+```
+
+```ts
+export function useMutaion<
+  TData = unknown,
+  TError = unknown,
+  TVariables = void,
+  TContext = unknown
+>
+```
+
+### ErrorBoundary
 
 ### React Suspense
 
@@ -413,3 +437,6 @@ function App() {
 
 ##### 참고
 - [https://tanstack.com/query/v4/](https://tanstack.com/query/v4/)
+- [https://github.com/ssi02014/react-query-tutorial](https://github.com/ssi02014/react-query-tutorial)
+- [https://github.com/ssi02014/react-query-tutorial/blob/master/document/queryClient.md](https://github.com/ssi02014/react-query-tutorial/blob/master/document/queryClient.md)
+- [https://github.com/ssi02014/react-query-tutorial/blob/master/document/errorBoundary.md](https://github.com/ssi02014/react-query-tutorial/blob/master/document/errorBoundary.md)
