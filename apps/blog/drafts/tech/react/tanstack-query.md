@@ -13,6 +13,82 @@ TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3
 ## 역할
 React Query는 서버의 데이터 가져오기/업데이트, 캐싱, 에러 처리 등을 쉽게 처리할 수 있도록 돕는 라이브러리입니다. 캐시 기능을 제공하고, 동시에 동일한 요청을 여러번 하게 되도 한번만 요청을 보내는 등 알아서 최적화를 해주기 때문에 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다. 뿐만 아니라 서버에서 가져온 데이터 객체, 에러가 발생했다면 에러 정보를 담는 객체, 데이터 가져오기/엡데이트 중임을 나타내는 등 각종 유틸 기능을 제공합니다.
 
+## 쿽 스타트
+React Query를 사용하기 위해서 먼저 아래 코드와 같이 `@tanstack/react-query`를 설치해야 합니다.
+
+```bash
+$ npm i @tanstack/react-query
+# or
+$ pnpm add @tanstack/react-query
+# or
+$ yarn add @tanstack/react-query
+```
+
+React Query 설치가 끝나면 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import { getTodos, postTodo } from '../my-api'
+
+// Create a client
+const queryClient = new QueryClient()
+
+function App() {
+  return (
+    // Provide the client to your App
+    <QueryClientProvider client={queryClient}>
+      <Todos />
+    </QueryClientProvider>
+  )
+}
+
+function Todos() {
+  // Access the client
+  const queryClient = useQueryClient()
+
+  // Queries
+  const query = useQuery({ queryKey: ['todos'], queryFn: getTodos })
+
+  // Mutations
+  const mutation = useMutation({
+    mutationFn: postTodo,
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
+    },
+  })
+
+  return (
+    <div>
+      <ul>
+        {query.data?.map((todo) => (
+          <li key={todo.id}>{todo.title}</li>
+        ))}
+      </ul>
+
+      <button
+        onClick={() => {
+          mutation.mutate({
+            id: Date.now(),
+            title: 'Do Laundry',
+          })
+        }}
+      >
+        Add Todo
+      </button>
+    </div>
+  )
+}
+
+render(<App />, document.getElementById('root'))
+```
+
 ## 기본 개념
 React Query를 사용할 때 자주 접하게 되는 React Query의 중요한 개념들과 설정들을 살펴보도록 하겠습니다.
 
@@ -43,7 +119,7 @@ React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 �
 `staleTime`은 데이터를 다시 가져올지 판단하는 설정입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-staletime-n12m0e)에서 테스트하실 수 있습니다.
 
 ### `cacheTime`
-`cacheTime`은 데이터를 얼마나 오랫동안 보관 할 것인지 나타내는 시간입니다. ms 단위로 저장되는데 기본 값은 5분(5 * 60 * 1000)입니다. 비활성화 된 데이터는 `cacheTime`에 설정된 시간이 지난 후 가비지 컬렉션 됩니다. `cacheTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
+`cacheTime`은 데이터를 얼마나 오랫동안 보관 할 것인지 나타내는 시간입니다. ms 단위로 저장되는데 기본 값은 5분(5 * 60 * 1000)입니다. 쿼리 인스턴스가 unmount 되면 데이터는 비활성화(inactive) 상태가 되는데, 비활성화 된 데이터는 `cacheTime`에 설정된 시간이 지난 후 가비지 컬렉션 됩니다. `cacheTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
 
 - 5000으로 설정할 경우
   - 비활성화 된 데이터를 5초 이전에 요청한 경우: 캐시 된 데이터를 우선 사용한 후 API를 호출하여 새로운 데이터를 응답 받으면 응답 받은 데이터를 다시 캐시합니다.
@@ -51,25 +127,41 @@ React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 �
 
 `cacheTime`은 캐시된 값을 사용할지 판단하는 설정입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-cachetime-cr7be7)에서 테스트하실 수 있습니다.
 
-### `queryKey`와 `mutationKey`
-React Query는  유니크한 키를 사용하여 캐시합니다.
+### `queryKey`
+React Query는 `queryKey`를 기반으로 쿼리 캐싱을 관리합니다. 아래 코드와 같이 `queryKey`는 단순 문자열 배열이나, 복잡한 형태의 배열 모두 가능합니다.
+
+```tsx
+useQuery({ queryKey: ['todos'], ... })
+useQuery({ queryKey: ['something', 'special'], ... })
+useQuery({ queryKey: ['todo', 5], ... })
+useQuery({ queryKey: ['todo', 5, { preview: true }], ...})
+useQuery({ queryKey: ['todos', { type: 'done' }], ... })
+```
+
+#### `queryKey` 배열 순서
+`queryKey` 배열의 순서는 동일한 쿼리인지 판단하는 값으로 사용되기 때문에 배열 순서를 신경써 줘야 합니다. 아래 코드와 같이 중첩된 객체의 순서는 동일한 쿼리로 판단합니다.
+
+```tsx
+useQuery({ queryKey: ['todos', { status, page }], ... })
+useQuery({ queryKey: ['todos', { page, status }], ...})
+useQuery({ queryKey: ['todos', { page, status, other: undefined }], ... })
+```
+
+하지만 아래 코드와 같이 `queryKey` 배열의 순서가 다르다면 다른 쿼리로 판단합니다.
+
+```tsx
+useQuery({ queryKey: ['todos', status, page], ... })
+useQuery({ queryKey: ['todos', page, status], ...})
+useQuery({ queryKey: ['todos', undefined, page, status], ...})
+```
+
+> **`mutationKey`**
 
 ### `queryFn`와 `mutationFn`
 
-## 쿽 스타트
-React Query를 React 프로젝트에서 사용하기 위해서 먼저 아래 코드와 같이 `@tanstack/react-query`를 설치해야 합니다.
+## 라이프 사이클
 
-```bash
-$ npm i @tanstack/react-query
-# or
-$ pnpm add @tanstack/react-query
-# or
-$ yarn add @tanstack/react-query
-```
-
-React Query 설치가 끝나면 아래 코드와 같이 사용할 수 있습니다.
-
-## 기본 값 설정하기
+## 기본 값 설정
 - QueryClient
 
 ## 쿼리 취소
@@ -122,6 +214,11 @@ export function useMutaion<
 ### DevTools
 
 ### ESLint
+
+#### `queryKey`와 `queryFn`
+데이터를 가져오는 `queryFn`에서
+
+### Mutation의 캐싱
 
 ---
 
