@@ -155,9 +155,37 @@ useQuery({ queryKey: ['todos', page, status], ...})
 useQuery({ queryKey: ['todos', undefined, page, status], ...})
 ```
 
-> **`mutationKey`**
-
 ### `queryFn`와 `mutationFn`
+`queryFn`은 `Promise` 객체를 반환하는 비동기 작업을 수행하는 함수입니다. React Query는 `queryFn`을 실행하여 서버 데이터를 가져오거나 업데이트 합니다. `useQuery` 훅에서는 `queryFn` 필드에 비동기 함수를 정의하고, `useMutation` 훅에서는 `mutationFn` 필드에 비동기 함수를 정의합니다.
+
+#### 에러 처리 방법
+`queryFn`, `mutationFn`에서 에러가 발행하면 `Promise.reject(new Error(message))` 혹은 `trow new Error(message)`로 에러를 처리해 줘야 합니다.
+
+
+#### `QueryFunctionContext`
+쿼리 함수(`queryFn`와 `mutationFn`)의 파라미터를 QueryFunctionContext라고 하는데 QueryFunctionContext 객체는 아래와 같은 필드를 가진다.
+
+- `queryKey: QueryKey`: 쿼리 키
+- `pageParam?: unknown`: 무한 쿼리에서 사용되며, 현재 페이지의 파라미터 정보
+- `signal?: AbortSignal`: 쿼리를 취소하기 위해 사용하는 AbortSignal 인스턴스
+- `meta: Record<string, unknown> | undefined`: 쿼리의 추가 점보를 담는 필드
+
+`QueryFunctionContext`를 사용하여 아래 코드와 같이 `queryKey`를 참고하는 `queryFn`을 선언할 수 있습니다.
+
+```tsx
+function Todos({ status, page }) {
+  const result = useQuery({
+    queryKey: ['todos', { status, page }],
+    queryFn: fetchTodoList,
+  })
+}
+
+// Access the key, status and page variables in your query function!
+function fetchTodoList({ queryKey }) {
+  const [_key, { status, page }] = queryKey
+  return new Promise()
+}
+```
 
 ## 라이프 사이클
 
