@@ -188,6 +188,7 @@ function fetchTodoList({ queryKey }) {
 ```
 
 ## 라이프 사이클
+React Query의 동작 과정을 이해하면 React Query의 핵심을 이해하는데 많은 도움을 줄 수 있습니다. React Query는 아래 과정을 거치면서 동작합니다.
 
 ## 기본 값 설정
 - QueryClient
