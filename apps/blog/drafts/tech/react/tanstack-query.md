@@ -218,7 +218,7 @@ React Query의 동작 과정을 이해하면 React Query의 핵심을 이해하�
 ## 부록
 
 ### TypeScript
-```ts
+```tsx
 export function useQuery<
   TQueryFnData = unknown,
   TError = unknown,
@@ -227,7 +227,7 @@ export function useQuery<
 >
 ```
 
-```ts
+```tsx
 export function useMutaion<
   TData = unknown,
   TError = unknown,
@@ -237,6 +237,7 @@ export function useMutaion<
 ```
 
 ### ErrorBoundary
+- useErrorBoundary
 
 ### React Suspense
 
