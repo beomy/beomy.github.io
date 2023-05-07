@@ -89,6 +89,8 @@ function Todos() {
 render(<App />, document.getElementById('root'))
 ```
 
+React Query를 사용하기 위해서는 `QueryClientProvider` 컴포넌트를 최상단에서 감싸주고 `QueryClient` 인스턴스를 `client` props에 넣어줘야 합니다.
+
 ## 기본 개념
 React Query를 사용할 때 자주 접하게 되는 React Query의 중요한 개념들과 설정들을 살펴보도록 하겠습니다.
 
@@ -187,17 +189,32 @@ function fetchTodoList({ queryKey }) {
 }
 ```
 
-## 라이프 사이클
-React Query의 동작 과정을 이해하면 React Query의 핵심을 이해하는데 많은 도움을 줄 수 있습니다. React Query는 아래 과정을 거치면서 동작합니다.
+## 캐싱 라이프 사이클
+캐싱 라이프 사이클 과정을 이해하면 React Query를 이해하는데 많은 도움을 줄 수 있습니다.
+
+1. `A`라는 `queryKey`를 가진 `A` 쿼리 인스턴스가 `mount` 됨
+2. 네트워크를 통해 데이터를 가져오고(`fetch`), 가져오는 데이터는 `A`라는 `queryKey`로 캐싱 함
+3. 이 데이터는 신선한(`fresh`) 상태에서 `staleTime`(기본 값 0) 이후 오래된(`stale`) 상태로 변경됨
+4. `A` 쿼리 인스턴스가 `unmount` 됨
+5. 캐시는 `cacheTime`(기본 값 5분) 만큰 유지하다가 가비지 컬렉션 됨
+6. 만약 `cacheTime`이 지나기 전, A 쿼리 인스턴스가 신선한(`fresh`) 상태라면 새롭게 `mount`되면 캐시된 데이터를 보여줌
 
 ## 기본 값 설정
-- QueryClient
+`QueryClient`를 사용하여 React Query의 기본 값을 설정할 수 있습니다.
 
-## 쿼리 취소
+## 유용한 기능들
 
-## 쿼리 무효화
+### 병렬 Query
 
-## API
+### 무한 스크롤
+
+### `select`
+
+### 쿼리 취소
+
+### 쿼리 무효화
+
+## API Reference
 
 ### uesQuery
 
