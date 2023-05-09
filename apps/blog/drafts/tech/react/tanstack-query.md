@@ -200,7 +200,22 @@ function fetchTodoList({ queryKey }) {
 6. 만약 `cacheTime`이 지나기 전, A 쿼리 인스턴스가 신선한(`fresh`) 상태라면 새롭게 `mount`되면 캐시된 데이터를 보여줌
 
 ## 기본 값 설정
-`QueryClient`를 사용하여 React Query의 기본 값을 설정할 수 있습니다.
+React Query를 사용할 때 `QueryClientProvider` 컴포넌트를 최상단에서 감싸주고 `QueryClient` 인스턴스를 `client` props에 넣어줘야 하는데, `QueryClient` 인스턴스를 생성할 때 아래 코드와 같이 기본 값을 설정할 수 있습니다.
+
+```tsx
+import { QueryClient } from '@tanstack/react-query'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+    mutations: {
+      retry: 3,
+    },
+  },
+})
+```
 
 ## 유용한 기능들
 
