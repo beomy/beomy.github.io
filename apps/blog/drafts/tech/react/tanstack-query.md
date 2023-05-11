@@ -221,7 +221,7 @@ const queryClient = new QueryClient({
 
 ### 병렬 Query
 
-### 무한 스크롤
+### 무한 쿼리
 
 ### `select`
 
