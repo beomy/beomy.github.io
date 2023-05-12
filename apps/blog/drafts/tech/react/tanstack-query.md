@@ -219,11 +219,11 @@ const queryClient = new QueryClient({
 
 ## 유용한 기능들
 
-### 병렬 Query
+### 병렬 쿼리
 
 ### 무한 쿼리
 
-### `select`
+### 쿼리의 `select`
 
 ### 쿼리 취소
 
