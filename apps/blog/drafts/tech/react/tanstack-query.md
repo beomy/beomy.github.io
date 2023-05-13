@@ -243,9 +243,9 @@ const queryClient = new QueryClient({
 - QueryClient
 - 쿼리 필터링
 
-### useIsFetching, useIsMutating
+### useIsFetching
 
-### 그 밖에..
+### useIsMutating
 
 ## 부록
 
