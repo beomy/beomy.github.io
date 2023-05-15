@@ -11,7 +11,7 @@ TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3
 이번 포스트에서는 React에서 TanStack Query를 사용하는 방법을 살펴보도록 하겠습니다. TanStack의 `react-query`를 가져와 사용하기 때문에 이번 포스트에서는 React Query라는 명칭을 사용하도록 하겠습니다.
 
 ## 역할
-React Query는 서버의 데이터 가져오기/업데이트, 캐싱, 에러 처리 등을 쉽게 처리할 수 있도록 돕는 라이브러리입니다. 캐시 기능을 제공하고, 동시에 동일한 요청을 여러번 하게 되도 한번만 요청을 보내는 등 알아서 최적화를 해주기 때문에 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다. 뿐만 아니라 서버에서 가져온 데이터 객체, 에러가 발생했다면 에러 정보를 담는 객체, 데이터 가져오기/엡데이트 중임을 나타내는 등 각종 유틸 기능을 제공합니다.
+React Query는 서버의 데이터 가져오기/업데이트, 캐싱, 에러 처리 등을 쉽게 처리할 수 있도록 돕는 라이브러리입니다. 서버에서 가져온 데이터 객체, 에러가 발생했다면 에러 정보를 담는 객체, 데이터 가져오기/엡데이트 중임을 나타내는 등 각종 유틸 기능을 제공합니다. 또한 동시에 동일한 요청을 여러번 해도 한번만 요청을 보내어 최적화 해주기 때문에 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다.
 
 ## 쿽 스타트
 React Query를 사용하기 위해서 먼저 아래 코드와 같이 `@tanstack/react-query`를 설치해야 합니다.
@@ -95,25 +95,25 @@ React Query를 사용하기 위해서는 `QueryClientProvider` 컴포넌트를 �
 React Query를 사용할 때 자주 접하게 되는 React Query의 중요한 개념들과 설정들을 살펴보도록 하겠습니다.
 
 ### Query와 Mutation
-React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 접하게 되는데, Query는 서버에서 데이터를 가져오는 작업을 Mutation은 서버의 데이터를 변경하는 부수효과가 있는 작업을 이야기합니다. Query를 위해서 `useQuery` 훅을 많이 사용하게 되고, Mutation을 위해서 `useMutation` 훅을 많이 사용하게 됩니다.
+React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 접하게 됩니다. Query는 서버에서 데이터를 가져오는 작업으로 `useQuery` 훅을 많이 사용하게 됩니다. Mutation은 서버의 데이터를 변경하는 부수효과가 있는 작업으로 `useMutation` 훅을 많이 사용하게 됩니다. 이런 특징으로 HTTP 메소드의 GET 요청의 경우 `useQuery`를 POST, PUT, PATCH, DELETE 요청의 경우 `useMutation`을 대부분의 경우 사용하게 됩니다.
 
-`useQueries`와 `useInfiniteQuery` 훅은 `useQuery`와 동일하게 서버에서 데이터를 가져올 때 사용되는 훅입니다. 여러 데이터를 병렬로 가져와야 할 때는 `useQueries` 훅을 무한 스크롤과 같이 계속해서 데이터를 가져와야 할 경우 `useInfiniteQuery` 훅을 사용할 수 있습니다.
+`useQueries`와 `useInfiniteQuery` 훅은 `useQuery`와 동일하게 서버에서 데이터를 가져올 때 사용되는 훅입니다. 여러 데이터를 병렬로 가져와야 할 때는 `useQueries` 훅을 사용 할 수 있고, 무한 스크롤과 같이 계속해서 데이터를 가져와야 할 경우 `useInfiniteQuery` 훅을 사용할 수 있습니다.
 
 ### refetch
 `useQuery`, `useQueries`, `useInfiniteQuery`는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 아래와 같은 경우에 자동으로 데이터를 가져옵니다.
 
-- `useQuery`를 사용한 컴포넌트가 마운트 되었을 때
+- 쿼리를 사용한 컴포넌트가 마운트 되었을 때
 - 윈도우가 다시 포커스 되었을 때
 - 네트워크가 다시 연결되었을 때
 - `refetchInterval` 설정 하여 반복적으로 refetch 되도록 설정 했을 때
 
-### retry
-`retry` 설정에 따라 Query 혹은 Mutation 작업이 실패하면 React Query는 자동으로 재시도를 합니다. `retry` 설정의 기본 값은 3으로 3번 재시도를 하게 됩니다. `retryDelay` 설정을 통해 얼마 간의 간격으로 재시도를 할 것인지 설정할 수 있습니다.
+### `retry`
+`retry` 설정에 따라 Query/Mutation 작업이 실패하면 React Query는 자동으로 재시도를 합니다. Query의 `retry` 기본 값은 3, Mutation의 `retry` 기본 값은 0입니다. `retryDelay` 설정을 통해 얼마 간의 간격으로 재시도를 할 것인지 설정할 수 있습니다.
 
 ### `staleTime`
 `staleTime`은 React Query를 통해 가져온 데이터가 오래된 것으로 인식하게 되는 시간입니다. ms 단위로 저장되는데 기본 값은 0입니다. React Query는 오래된 데이터라고 판단되면 다시 데이터를 가져옵니다. `staleTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
 
-- 0으로 설정할 경우: 데이터를 가져온 즉시 오래된 데이터로 인식하기 때문에 캐시 된 데이터를 우선 사용한 후 API를 다시 호출하여 새로운 데이터를 응답 받은 후 데이터를 교체합니다.
+- 0으로 설정할 경우: 데이터를 가져온 즉시 오래된 데이터로 인식하기 때문에 캐시 된 데이터를 우선 사용한 후 API를 다시 호출하여 새로운 데이터를 응답 받으면 데이터를 교체합니다.
 - 5000으로 설정할 경우
   - 5초 이전에 데이터를 요청한 경우: 최신 데이터로 판단하여 API를 다시 호출하지 않고 캐시된 데이터를 사용합니다.
   - 5초 이후에 데이터를 요청한 경우: 캐시 된 데이터를 오래된 데이터로 판단하여 캐시 된 데이터를 우선 사용한 후, API를 호출하여 새로운 데이터를 응답 받으면 데이터를 교체하고 응답 받은 데이터를 캐시합니다.
@@ -165,7 +165,7 @@ useQuery({ queryKey: ['todos', undefined, page, status], ...})
 
 
 #### `QueryFunctionContext`
-쿼리 함수(`queryFn`와 `mutationFn`)의 파라미터를 QueryFunctionContext라고 하는데 QueryFunctionContext 객체는 아래와 같은 필드를 가진다.
+쿼리 함수(`queryFn`와 `mutationFn`)의 파라미터를 `QueryFunctionContext`라고 하는데 `QueryFunctionContext` 객체는 아래와 같은 필드를 가집니다.
 
 - `queryKey: QueryKey`: 쿼리 키
 - `pageParam?: unknown`: 무한 쿼리에서 사용되며, 현재 페이지의 파라미터 정보
@@ -218,8 +218,64 @@ const queryClient = new QueryClient({
 ```
 
 ## 유용한 기능들
+React Query를 사용하면 `useQuery`와 `useMutation` 두 훅을 가장 많이 사용하는데, 그 밖에도 사용하면 유용한 기능이 많이 있습니다. 이번에는 React Query에서 자주, 유용하게 사용되는 기능들을 살펴보겠습니다.
 
-### 병렬 쿼리
+### `useQuery`
+`useQuery`는 서버의 데이터를 가져오기 위해 사용되는 훅으로 보통 HTTP의 GET 요청시에 사용되는 훅입니다. `useQuery`는 아래 코드와 같은 형태로 사용됩니다. 좀 더 자세한 내용은 [useQuery API Reference](/tech/react/tanstack-query/#uesquery)에서 이야기 하도록 하겠습니다.
+
+```tsx
+const {
+  data,
+  error,
+  status,
+  ...returns
+} = useQuery({
+  queryKey,
+  queryFn,
+  ...options,
+})
+```
+
+`useQuery`는 `queryKey`와 `queryFn`을 필수로 선언해 줘야 합니다. `queryFn`의 경우 기본 값으로 설정해 둔 함수가 있다면 생략할 수 있습니다. 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 좀 더 간편하게 만들 수 있게 돕습니다.
+
+### `useMutation`
+`useMutation`은 서버의 데이터를 변경하기 위해 사용되는 훅으로 보통 HTTP의 POST, PUT, DELETE, PATCH 요청과 같이 부수 효과를 발생하는 요청에서 사용되는 훅입니다. `useMutation`은 아래 코드와 같은 형태로 사용됩니다. 좀 더 자세한 내용은 [useMutation API Reference](/tech/react/tanstack-query/#usemutation)에서 이야기 하도록 하겠습니다.
+
+```tsx
+const {
+  data,
+  error,
+  status,
+  mutate,
+  mutateAsync,
+  ...returns
+} = useMutation({
+  mutationFn,
+  ...options,
+})
+```
+
+`useMutation`은 `mutationFn`을 필수로 선언해 주어야 하지만, 기본 값으로 설정해 둔 `mutationFn`이 있다면 생략할 수 있습니다. `useQuery`와 동일하게 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 좀 더 간편하게 만들 수 있게 돕습니다.
+
+`useMutation`의 반환 값으로 `mutation`과 `mutationAsync` 함수가 있는데, 이 함수를 호출하여 Mutation 요청을 할 수 있습니다. `mutation`와 `mutationAsync` 함수의 차이점은 `mutation` 함수는 요청에 응답 받은 후 결과를 `onSuccess`, `onSettled`, `onError`와 같은 콜백 함수 처리할 수 있고, `mutationAsync` 함수는 `Promise`를 반환하기 때문에 `Promise`의 `then` 혹은 `Async await` 형태로 처리할 수 있습니다.
+
+### 병렬 쿼리 (Parallel Queries)
+병렬 쿼리란 동시에 여러 쿼리를 요청하는 방법입니다. 정적으로 정해진 쿼리들을 요청하는 Manual 방법과 동적으로 결정되는 쿼리를 요청하는 Dynamic 방법 2가지 방법을 살펴보도록 하겠습니다.
+
+#### Manual Parallel Queries
+병렬 쿼리의 수가 변경되지 않는다면 `useQuery` 훅을 병렬 쿼리 수 만큼 사용하여 병렬 요청을 할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+function App () {
+  // The following queries will execute in parallel
+  const usersQuery = useQuery({ queryKey: ['users'], queryFn: fetchUsers })
+  const teamsQuery = useQuery({ queryKey: ['teams'], queryFn: fetchTeams })
+  const projectsQuery = useQuery({ queryKey: ['projects'], queryFn: fetchProjects })
+  ...
+}
+```
+
+#### Dynamic Parallel Queries
 
 ### 무한 쿼리
 
@@ -229,23 +285,25 @@ const queryClient = new QueryClient({
 
 ### 쿼리 무효화
 
+### 쿼리 이전 값 유지
+
 ## API Reference
 
-### uesQuery
+### `uesQuery`
 
-### useQueries
+### `useQueries`
 
-### useInfiniteQuery
+### `useInfiniteQuery`
 
-### useMutation
+### `useMutation`
 
-### useQueryClient
+### `useQueryClient`
 - QueryClient
 - 쿼리 필터링
 
-### useIsFetching
+### `useIsFetching`
 
-### useIsMutating
+### `useIsMutating`
 
 ## 부록
 
@@ -278,7 +336,8 @@ export function useMutaion<
 ### ESLint
 
 #### `queryKey`와 `queryFn`
-데이터를 가져오는 `queryFn`에서
+
+### Tanstack Query V4와 V5
 
 ### Mutation의 캐싱
 
