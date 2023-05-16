@@ -279,7 +279,7 @@ function App () {
 
 ### 무한 쿼리
 
-### 쿼리의 `select`
+### 쿼리 `select`
 
 ### 쿼리 취소
 
