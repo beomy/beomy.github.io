@@ -276,6 +276,7 @@ function App () {
 ```
 
 #### Dynamic Parallel Queries
+병렬 쿼리의수가 변경된다면
 
 ### 무한 쿼리
 
