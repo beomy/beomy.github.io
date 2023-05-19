@@ -276,7 +276,10 @@ function App () {
 ```
 
 #### Dynamic Parallel Queries
-병렬 쿼리의수가 변경된다면
+병렬 쿼리의수가 변경된다면 `useQueries` 훅을 사용하여 병렬 요청을 할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+```
 
 ### 무한 쿼리
 
