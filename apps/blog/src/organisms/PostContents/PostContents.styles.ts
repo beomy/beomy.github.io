@@ -18,6 +18,11 @@ export const Wrapper = styled.div`
       word-break: break-word;
     }
   }
+  code {
+    .token {
+      background: transparent;
+    }
+  }
 
   table {
     display: table;

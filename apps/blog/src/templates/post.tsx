@@ -57,9 +57,9 @@ const S = {
   `,
   PostSubContents: styled.div<{ active: boolean }>`
     position: fixed;
-    width: 320px;
+    width: 340px;
     padding: 10px;
-    margin-left: 60px;
+    margin-left: 40px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
