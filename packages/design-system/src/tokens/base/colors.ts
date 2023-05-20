@@ -1,42 +1,5 @@
 import Color from 'color';
-
-export type ColorToken = string;
-
-export type ColorLevels = {
-  98: ColorToken;
-  90: ColorToken;
-  80: ColorToken;
-  50: ColorToken;
-};
-
-export type GreyColorLevel = ColorLevels & {
-  100: ColorToken;
-  70: ColorToken;
-  60: ColorToken;
-  40: ColorToken;
-  30: ColorToken;
-  20: ColorToken;
-  10: ColorToken;
-  0: ColorToken;
-};
-
-export type Palette = {
-  grey: GreyColorLevel;
-  primary: ColorLevels;
-  blue: ColorLevels;
-  green: ColorLevels;
-  orange: ColorLevels;
-  red: ColorLevels;
-  purple: ColorLevels;
-  yellow: ColorLevels;
-  white: ColorToken;
-  black: ColorToken;
-  dimmed: ColorToken;
-  background: ColorToken;
-  title: ColorToken;
-  body: ColorToken;
-  caption: ColorToken;
-};
+import type { GreyColorLevel, ColorLevels } from '../index';
 
 export const greyBase = Color.hsl(0, 0, 50);
 export const grey: GreyColorLevel = {

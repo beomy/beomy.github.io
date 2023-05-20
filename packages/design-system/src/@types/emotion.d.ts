@@ -1,10 +1,6 @@
 import '@emotion/react';
-import light from '../tokens/light';
-import dark from '../tokens/dark';
-
-type LightTheme = typeof light;
-type DarkTheme = typeof dark;
+import type { Theme as BeomyTheme } from '../tokens';
 
 declare module '@emotion/react' {
-  export interface Theme extends LightTheme, DarkTheme {}
+  export interface Theme extends BeomyTheme {}
 }

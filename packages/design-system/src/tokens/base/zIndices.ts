@@ -1,4 +1,6 @@
-export const zIndices = {
+import type { ZIndices } from '../index';
+
+export const zIndices: ZIndices = {
   toaster: 200,
   bottomSheet: 100,
   modal: 50,

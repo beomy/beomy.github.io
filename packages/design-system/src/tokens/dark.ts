@@ -1,3 +1,4 @@
+import type { Palette, StateOpacity } from './index';
 import {
   black,
   blue,
@@ -5,7 +6,6 @@ import {
   green,
   reverseGrey,
   orange,
-  Palette,
   primary,
   purple,
   red,
@@ -16,7 +16,7 @@ import { fontSizes } from './base/fontSizes';
 import { zIndices } from './base/zIndices';
 import { breakpoints } from './base/breakpoints';
 import { fontWeights } from './base/fontWeights';
-import * as sizes from './base/sizes';
+import sizes from './base/sizes';
 
 const colors: Palette = {
   grey: reverseGrey,
@@ -36,16 +36,14 @@ const colors: Palette = {
   caption: reverseGrey[50],
 };
 
-const stateOpacity = {
+const stateOpacity: StateOpacity = {
   pressed: 0.4,
   disabled: 0.2,
 };
 
 const theme = {
   name: 'dark',
-  colors: {
-    ...colors,
-  },
+  colors,
   fontSizes,
   fontWeights,
   zIndices,
