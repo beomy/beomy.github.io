@@ -293,7 +293,7 @@ function App({ users }) {
 
 ### 무한 쿼리
 
-### 쿼리의 유용한 기능
+### 쿼리의 옵션/반환 값
 
 #### `select`
 
@@ -303,11 +303,11 @@ function App({ users }) {
 
 #### `keepPreviousData`
 
-### 쿼리 취소
+### QueryClient의 유용한 기능
 
-### 쿼리 무효화
+#### 쿼리 취소
 
-### 쿼리 이전 값 유지
+#### 쿼리 무효화
 
 ## API Reference
 
