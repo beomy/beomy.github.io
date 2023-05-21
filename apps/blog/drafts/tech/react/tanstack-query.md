@@ -271,7 +271,7 @@ function App () {
   const usersQuery = useQuery({ queryKey: ['users'], queryFn: fetchUsers })
   const teamsQuery = useQuery({ queryKey: ['teams'], queryFn: fetchTeams })
   const projectsQuery = useQuery({ queryKey: ['projects'], queryFn: fetchProjects })
-  ...
+  // ...
 }
 ```
 
@@ -279,11 +279,29 @@ function App () {
 병렬 쿼리의수가 변경된다면 `useQueries` 훅을 사용하여 병렬 요청을 할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
+function App({ users }) {
+  const userQueries = useQueries({
+    queries: users.map((user) => {
+      return {
+        queryKey: ['user', user.id],
+        queryFn: () => fetchUserById(user.id),
+      }
+    }),
+  })
+}
 ```
 
 ### 무한 쿼리
 
-### 쿼리 `select` 옵션
+### 쿼리의 유용한 기능
+
+#### `select`
+
+#### `enable`
+
+#### `refetch`
+
+#### `keepPreviousData`
 
 ### 쿼리 취소
 
@@ -660,5 +678,3 @@ function App() {
 ##### 참고
 - [https://tanstack.com/query/v4/](https://tanstack.com/query/v4/)
 - [https://github.com/ssi02014/react-query-tutorial](https://github.com/ssi02014/react-query-tutorial)
-- [https://github.com/ssi02014/react-query-tutorial/blob/master/document/queryClient.md](https://github.com/ssi02014/react-query-tutorial/blob/master/document/queryClient.md)
-- [https://github.com/ssi02014/react-query-tutorial/blob/master/document/errorBoundary.md](https://github.com/ssi02014/react-query-tutorial/blob/master/document/errorBoundary.md)
