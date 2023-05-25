@@ -295,13 +295,13 @@ function App({ users }) {
 
 ### 쿼리의 옵션 값과 반환 값
 
-#### `select`
+#### `select` 옵션
 
-#### `enable`
+#### `enable` 옵션
 
-#### `refetch`
+#### `keepPreviousData` 옵션
 
-#### `keepPreviousData`
+#### `refetch` 반환
 
 ### QueryClient의 유용한 기능
 
