@@ -259,7 +259,7 @@ const {
 
 `useMutation`의 반환 값으로 `mutation`과 `mutationAsync` 함수가 있는데, 이 함수를 호출하여 Mutation 요청을 할 수 있습니다. `mutation`와 `mutationAsync` 함수의 차이점은 `mutation` 함수는 요청에 응답 받은 후 결과를 `onSuccess`, `onSettled`, `onError`와 같은 콜백 함수 처리할 수 있고, `mutationAsync` 함수는 `Promise`를 반환하기 때문에 `Promise`의 `then` 혹은 `Async await` 형태로 처리할 수 있습니다.
 
-### 병렬 쿼리 (Parallel Queries)
+### `useQueries` - 병렬 쿼리 (Parallel Queries)
 병렬 쿼리란 동시에 여러 쿼리를 요청하는 방법입니다. 정적으로 정해진 쿼리들을 요청하는 Manual 방법과 동적으로 결정되는 쿼리를 요청하는 Dynamic 방법 2가지 방법을 살펴보도록 하겠습니다.
 
 #### Manual Parallel Queries
@@ -291,7 +291,7 @@ function App({ users }) {
 }
 ```
 
-### 무한 쿼리
+### `useInfiniteQuery` - 무한 쿼리 (Infinite Queries)
 `useInfiniteQuery` 훅은 무한 스크롤이나 더 보기 버튼을 제공해야 할 때 사용하기 좋은 기능입니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
@@ -350,7 +350,17 @@ function Projects() {
 
 `useInfiniteQuery`은 `useQuery`와 사용성이 유사하지만 아래와 같이 차이가 있습니다.
 
+#### `data`
 - `data.pages`
+- `data.pageParams`
+
+#### `refetch`, `fetchNextPage`, `fetchPreviousPage`
+
+#### `getNextPageParam`, `getPreviousPageParam`
+
+#### `hasNextPage`, `hasPreviousPage`
+
+#### `isFetchingNextPage`, `isFetchingPreviousPage`
 
 ### 쿼리의 옵션 값과 반환 값
 
@@ -362,7 +372,7 @@ function Projects() {
 
 #### `refetch`
 
-### QueryClient의 유용한 기능
+### `QueryClient`
 
 #### 쿼리 취소
 
