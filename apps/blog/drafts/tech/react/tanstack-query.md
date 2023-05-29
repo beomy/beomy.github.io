@@ -295,62 +295,81 @@ function App({ users }) {
 `useInfiniteQuery` 훅은 무한 스크롤이나 더 보기 버튼을 제공해야 할 때 사용하기 좋은 기능입니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query';
 
-function Projects() {
-  const fetchProjects = async ({ pageParam = 0 }) => {
-    const res = await fetch('/api/projects?cursor=' + pageParam)
-    return res.json()
-  }
-
+const InfiniteQuery = () => {
   const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
     status,
+    data,
+    fetchNextPage,
+    fetchPreviousPage,
+    isFetchingNextPage,
+    isFetchingPreviousPage,
+    hasNextPage,
+    hasPreviousPage
   } = useInfiniteQuery({
     queryKey: ['projects'],
-    queryFn: fetchProjects,
-    getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
-  })
+    queryFn: ({ pageParam }) => {
+      return new Promise((resolve) => {
+        const { page = 3, size = 30 } = pageParam ?? {};
+        const list: number[] = [];
+        for (let i = 1; i <= size; i++) {
+          list.push((page - 1) * 30 + i);
+        }
+        setTimeout(() => resolve({ list, page, size }), 2000);
+      });
+    },
+    getNextPageParam: (lastPage: any) => {
+      const { page, size } = lastPage;
+      if (page === 5) return;
+      return { page: page + 1, size };
+    },
+    getPreviousPageParam: (lastPage: any) => {
+      const { page, size } = lastPage;
+      if (page === 1) return;
+      return { page: page - 1, size };
+    }
+  });
 
   return status === 'loading' ? (
     <p>Loading...</p>
-  ) : status === 'error' ? (
-    <p>Error: {error.message}</p>
   ) : (
     <>
-      {data.pages.map((group, i) => (
-        <React.Fragment key={i}>
-          {group.data.map((project) => (
-            <p key={project.id}>{project.name}</p>
-          ))}
-        </React.Fragment>
-      ))}
       <div>
         <button
-          onClick={() => fetchNextPage()}
-          disabled={!hasNextPage || isFetchingNextPage}
+          disabled={!hasPreviousPage || isFetchingPreviousPage}
+          onClick={() => fetchPreviousPage()}
         >
-          {isFetchingNextPage
-            ? 'Loading more...'
-            : hasNextPage
-            ? 'Load More'
-            : 'Nothing more to load'}
+          이전 데이터
         </button>
       </div>
-      <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
+      <div>
+        <div>{isFetchingPreviousPage ? 'Fetching...' : null}</div>
+        {data?.pages.map((group: any, i) => (
+          <div key={i}>{group.list.join(',')}</div>
+        ))}
+        <div>{isFetchingNextPage ? 'Fetching...' : null}</div>
+      </div>
+      <div>
+        <button
+          disabled={!hasNextPage || isFetchingNextPage}
+          onClick={() => fetchNextPage()}
+        >
+          다음 데이터
+        </button>
+      </div>
     </>
-  )
-}
+  );
+};
+
+export default InfiniteQuery;
 ```
 
-`useInfiniteQuery`은 `useQuery`와 사용성이 유사하지만 아래와 같이 차이가 있습니다.
+[CodeSandBox](https://codesandbox.io/s/tanstack-query-useinfinitequery-k13bvw?file=/src/InfiniteQuery.tsx)에서 테스트하실 수 있습니다. `useInfiniteQuery`은 `useQuery`와 사용성이 유사하지만 아래와 같이 차이가 있습니다.
 
 #### `data`
+`useQuery`의 리턴 값 중 `data` 필드는
+
 - `data.pages`
 - `data.pageParams`
 
