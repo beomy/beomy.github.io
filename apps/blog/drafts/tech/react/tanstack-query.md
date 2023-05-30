@@ -324,8 +324,8 @@ const InfiniteQuery = () => {
       if (page === 5) return;
       return { page: page + 1, size };
     },
-    getPreviousPageParam: (lastPage: any) => {
-      const { page, size } = lastPage;
+    getPreviousPageParam: (firstPage: any) => {
+      const { page, size } = firstPage;
       if (page === 1) return;
       return { page: page - 1, size };
     }
@@ -368,34 +368,119 @@ export default InfiniteQuery;
 [CodeSandBox](https://codesandbox.io/s/tanstack-query-useinfinitequery-k13bvw?file=/src/InfiniteQuery.tsx)에서 테스트하실 수 있습니다. `useInfiniteQuery`은 `useQuery`와 사용성이 유사하지만 아래와 같이 차이가 있습니다.
 
 #### `data`
-`useQuery`의 리턴 값 중 `data` 필드는
+`useQuery`의 리턴 값 중 `data` 필드는 비동기 데이터를 저장하는 객체이지만 `useInfiniteQuery`의 `data`필드는 `pages`와 `pageParams` 필드를 포함하는 객체입니다.
 
-- `data.pages`
-- `data.pageParams`
+- `data.pages`: 무한 쿼리를 통해 가져온 비동기 데이터를 배열의 형태로 저장하고 있는 필드입니다.
+- `data.pageParams`: 무한 쿼리를 통해 비동기 데이터를 가져오기 사용한 파라미터를 배열의 형태로 저장하고 있는 필드입니다.
 
-#### `refetch`, `fetchNextPage`, `fetchPreviousPage`
+#### `refetch`
+`useQuery`의 리턴 값 중 `refetch` 필드를 사용하면 비동기 데이터를 다시 가져올 수 있습니다. 사용성은 다르지만 `useInfiniteQuery`도 마찬가지로 `refetch` 필드를 사용하여 데이터를 다시 가져올 수 있습니다. 아래 코드와 같이 `refetch`를 사용할 수 있습니다.
+
+```tsx
+const { refetch } = useInfiniteQuery({
+  queryKey: ['projects'],
+  queryFn: fetchProjects,
+  getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
+})
+
+// only refetch the first page
+refetch({ refetchPage: (page, index) => index === 0 })
+```
+
+#### `fetchNextPage`, `fetchPreviousPage`
+`useInfiniteQuery`의 리턴 값 중 `fetchNextPage`, `fetchPreviousPage` 필드를 사용하여 이전/다음 데이터를 가져올 수 있습니다.
+
+- `fetchNextPage`: 다음 페이지 데이터를 가져올 수 있습니다.
+- `fetchPreviousPage`: 이전 페이지 데이터를 가져올 수 있습니다.
 
 #### `getNextPageParam`, `getPreviousPageParam`
+`fetchNextPage`, `fetchPreviousPage` 필드를 사용하여 이전/다음 데이터를 가져올 때, `getNextPageParam`, `getPreviousPageParam` 옵션을 사용하여 이전/다음 데이터를 가져오기 위한 파라미터를 설정할 수 있습니다.
+
+- `getNextPageParam`: `getNextPageParam` 함수에서 리턴하는 값은 `fetchNextPage` 필드로 다음 데이터를 가져올 때 사용됩니다.
+- `getPreviousPageParam`: `getPreviousPageParam` 함수에서 리턴하는 값은 `fetchPreviousPage` 필드로 이전 데이터를 가져올 때 사용됩니다.
 
 #### `hasNextPage`, `hasPreviousPage`
+`hasNextPage`, `hasPreviousPage` 필드를 통해 이전/다음 데이터가 있는지 확인 할 수 있습니다.
+
+- `hasNextPage`: 다음 데이터가 존재하면 `true`, 존재하지 않는다면 `false`가 됩니다. `getNextPageParam` 함수의 반환 값이 `undefined` 이외의 값일 경우 `hasNextPage`의 값은 `true`가 됩니다.
+- `hasPreviousPage`: 이전 데이터가 존재하면 `true`, 존재하지 않는다면 `false`가 됩니다. `getPreviousPageParam` 함수의 반환 값이 `undefined` 이외의 값일 경우 `hasNextPage`의 값은 `true`가 됩니다.
 
 #### `isFetchingNextPage`, `isFetchingPreviousPage`
+`isFetchingNextPage`, `isFetchingPreviousPage` 필드를 통해 이전/다음 데이터를 가져오는 중인지 확인 할 수 있습니다.
+
+- `isFetchingNextPage`: 다음 페이지 데이터를 가져오는 중인지 표시하는 플레그입니다.
+- `isFetchingPreviousPage`: 이전 페이지 데이터를 가져오는 중인지 표시하는 플레그입니다.
 
 ### 쿼리의 옵션 값과 반환 값
+`useQuery`, `useQueries`, `useInfiniteQuery` 등의 쿼리를 사용할 때 함께 사용하면 유용한 옵션 값과 반환 값 몇가지를 살펴보도록 하겠습니다.
 
-#### `select`
+#### `select` 옵션
+`select` 옵션을 사용하여 쿼리 함수에서 반환된 데이터를 변환하거나 선택할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
 
-#### `enable`
+```tsx
+import { useQuery } from "@tanstack/react-query";
+
+const QuerySelect = () => {
+  const { data } = useQuery({
+    queryKey: ["project"],
+    queryFn: () => {
+      return new Promise((resolve) => {
+        setTimeout(() => resolve([1, 2, 3, 4, 5, 6]), 2000);
+      });
+    },
+    select: (value: any) => value.filter((x: any) => x % 2 === 0)
+  });
+
+  return <div>{data?.join(",")}</div>;
+};
+
+export default QuerySelect;
+```
+
+위의 코드는 쿼리 함수는 1부터 6까지 숫자의 배열을 반환하지만, `select` 옵션을 사용하여 짝수 배열 값만 얻는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-select-3qkbeb?file=/src/QuerySelect.tsx)에서 확인할 수 있습니다.
+
+#### `enabled` 옵션
+쿼리는 보통 마운트 되면서 자동으로 쿼리 함수를 실행해 비동기 데이터를 가져오는데, `enabled` 옵션을 `false`로 설정하여 마운트 되었을 때 자동으로 비동기 데이터를 가져오지 않도록 할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+
+const QueryEnable = () => {
+  const [isEnable, setEnable] = useState(false);
+  const { data } = useQuery({
+    queryKey: ["project"],
+    queryFn: () => {
+      return new Promise((resolve) => {
+        setTimeout(() => resolve([1, 2, 3, 4, 5, 6]), 2000);
+      });
+    },
+    enabled: isEnable
+  });
+
+  useEffect(() => {
+    setTimeout(() => setEnable(true), 2000);
+  }, []);
+
+  return <div>{data?.join(",")}</div>;
+};
+
+export default QueryEnable;
+```
+
+위의 코드는 2초 후 `enabled` 속성을 `true`로 변경하여 비동기 데이터를 가져오는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-fjum7j?file=/src/QueryEnable.tsx)에서 확인할 수 있습니다.
 
 #### `keepPreviousData`
 
-#### `refetch`
+#### `refetch` 반환
 
 ### `QueryClient`
 
 #### 쿼리 취소
 
 #### 쿼리 무효화
+
+#### Prefetching
 
 ## API Reference
 
