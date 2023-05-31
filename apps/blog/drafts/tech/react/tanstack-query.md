@@ -470,7 +470,11 @@ export default QueryEnable;
 
 위의 코드는 2초 후 `enabled` 속성을 `true`로 변경하여 비동기 데이터를 가져오는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-fjum7j?file=/src/QueryEnable.tsx)에서 확인할 수 있습니다.
 
-#### `keepPreviousData`
+#### `keepPreviousData` 옵션
+`keepPreviousData` 옵션은 페이징 처리를 할 때 사용하기 유용한 옵션으로 쿼리가 새로운 데이터를 가져오기 전까지 이전 데이터를 유지시키는 옵션입니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+```
 
 #### `refetch` 반환
 
