@@ -474,7 +474,49 @@ export default QueryEnable;
 `keepPreviousData` 옵션은 페이징 처리를 할 때 사용하기 유용한 옵션으로 쿼리가 새로운 데이터를 가져오기 전까지 이전 데이터를 유지시키는 옵션입니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+
+type PostRequest = {
+  page: number;
+  size: number;
+};
+
+const usePosts = ({ page, size }: PostRequest) => {
+  return useQuery<number[]>({
+    queryKey: ["post", page, size],
+    queryFn: () => {
+      return new Promise((resolve) => {
+        const list: number[] = [];
+        for (let i = 1; i <= size; i++) {
+          list.push(page * size + i);
+        }
+        setTimeout(() => resolve(list), 2000);
+      });
+    },
+    keepPreviousData: true
+  });
+};
+
+const QueryKeepPreviousData = () => {
+  const [page, setPage] = useState(0);
+  const { data } = usePosts({ page, size: 10 });
+  return (
+    <div>
+      <div>{data?.join(",")}</div>
+      <button onClick={() => setPage((value) => value + 1)}>다음</button>
+    </div>
+  );
+};
+
+export default QueryKeepPreviousData;
 ```
+
+위의 코드는 2초 후 새로운 데이터를 가져오게 되는데, 새로운 데이터를 가져오는 2초 동안 기존의 데이터를 유지하는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-fjum7j?file=/src/QueryKeepPreviousData.tsx)에서 확인할 수 있습니다. 아래 그림과 같이 `keepPreviousData: true`, `keepPreviousData: false`가 차이를 보입니다.
+
+|                                 `keepPreviousData: true`                                  |                                  `keepPreviousData: false`                                  |
+|:-----------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|
+| ![keyPreviousData: true](/assets/img/posts/react/react_query_keep_previous_data_true.gif) | ![keyPreviousData: false](/assets/img/posts/react/react_query_keep_previous_data_false.gif) |
 
 #### `refetch` 반환
 
