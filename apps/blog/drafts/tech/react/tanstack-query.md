@@ -519,6 +519,26 @@ export default QueryKeepPreviousData;
 | ![keyPreviousData: true](/assets/img/posts/react/react_query_keep_previous_data_true.gif) | ![keyPreviousData: false](/assets/img/posts/react/react_query_keep_previous_data_false.gif) |
 
 #### `refetch` 반환
+쿼리의 반환 값 중 `refetch`를 사용하면 비동기 데이터를 다시 가져올 수 있습니다. `useQuery`, `useQueries` 모두 `refetch` 필드를 반환 합니다. 사용 방법은 다르지만 `useInfiniteQuery` 역시 `refetch`을 반환합니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+const App = () => {
+  const { data, refetch } = useQuery({
+    queryKey: ['projects'],
+    queryFn: fetchProjects,
+    enabled: true,
+  })
+
+  return (
+    <div>
+      <p>{data}</p>
+      <button onClick={() => refetch()}>refetch</button>
+    </div>
+  )
+}
+```
+
+`enabled: true`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 비동기 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
 
 ### `QueryClient`
 
