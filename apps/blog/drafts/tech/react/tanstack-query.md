@@ -548,6 +548,8 @@ const App = () => {
 
 #### Prefetching
 
+#### `setQueryData`
+
 ## API Reference
 
 ### `uesQuery`
