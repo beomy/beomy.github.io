@@ -592,7 +592,7 @@ export function useMutaion<
 ### ErrorBoundary
 - useErrorBoundary
 
-### React Suspense
+### Suspense
 
 ### DevTools
 
