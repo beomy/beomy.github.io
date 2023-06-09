@@ -571,12 +571,89 @@ const mutation = useMutation({
 
 위의 코드는 `addTodo`라는 Mutation 함수를 실행하여 Todo를 추가한 후, Mutation 성공시 쿼리를 무효화하여 새로운 Todo 목록을 가져오게 하는 코드입니다.
 
-#### 쿼리 업데이트
-`queryClient.setQueryData`
-
 #### 쿼리 취소
+쿼리 취소는 요청 중인 쿼리를 취소하는 방법입니다. `axios` v0.22.0+ 버전을 사용하신다면 아래 코드와 같이 작성하시면 쿼리가 비활성화(마운트 해제 등) 되면 자동으로 쿼리를 취소합니다.
 
-#### Prefetching
+```tsx
+import axios from 'axios'
+
+const query = useQuery({
+  queryKey: ['todos'],
+  queryFn: ({ signal }) =>
+    axios.get('/todos', {
+      // Pass the signal to `axios`
+      signal,
+    }),
+})
+```
+
+> **`fetch`, `axios` v0.22.0 아래의 버전, `XMLHttpRequest`, `graphql-request`에서 쿼리 취소**
+>
+> `fetch`, `axios` v0.22.0 아래의 버전, `XMLHttpRequest`, `graphql-request` 등을 사용하신다면, [공식 문서](https://tanstack.com/query/v4/docs/react/guides/query-cancellation)에서 쿼리가 비활성화 될 때 자동으로 쿼리를 취소하는 방법을 참고바랍니다.
+>
+
+`queryClient.cancelQueries({ queryKey })`를 사용하면 수동으로 쿼리를 취소할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+const query = useQuery({
+  queryKey: ['todos'],
+  queryFn: async ({ signal }) => {
+    const resp = await fetch('/todos', { signal })
+    return resp.json()
+  },
+})
+
+const queryClient = useQueryClient()
+
+return (
+  <button
+    onClick={(e) => {
+      e.preventDefault()
+      queryClient.cancelQueries({ queryKey: ['todos'] })
+    }}
+  >
+    Cancel
+  </button>
+)
+```
+
+#### 쿼리 업데이트
+대부분의 경우 수동으로 쿼리를 업데이트하지 않고, `refetch`나 `queryClient.invalidateQueries`를 사용하여 최신 쿼리를 가져오는 방법을 사용합니다. 하지만 때때로 수동으로 쿼리를 업데이트해 주는 것이 더 좋은 사용성을 제공할 수 있습니다. 수동 쿼리 업데이트는 `queryClient.setQueryData`를 사용하면 됩니다.
+
+예를 들어, Mutation으로 데이터를 변경 후 Query하여 데이터 사용자에게 변경 후의 데이터를 제공해야 할 때, 변경된 결과를 예상할 수 있지만 Mutation이나 Query가 오래 걸려 사용자에게 늦게 새로운 데이터를 노출하게 된다면, 수동으로 먼저 쿼리를 업데이트 하여 사용자에게 빠르게 변경된 데이터를 제공할 수 있습니다. 이런 방식을 Optimistic Updates(낙관적인 업데이트)라고 하는데 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+const queryClient = useQueryClient()
+
+useMutation({
+  mutationFn: updateTodo,
+  // mutate가 호출되면 실행됩니다.
+  onMutate: async (newTodo) => {
+    // optimistic update 한 것이 덮어써지지 않도록 호출한 쿼리를 취소합니다.
+    await queryClient.cancelQueries({ queryKey: ['todos'] })
+
+    // 에러 발생시 복원을 위해 기존 데이터를 저장합니다.
+    const previousTodos = queryClient.getQueryData(['todos'])
+
+    // 예상되는 변경 값으로 쿼리를 업데이트 합니다.
+    queryClient.setQueryData(['todos'], (old) => [...old, newTodo])
+
+    // 복원을 위한 기존 데이터를 반환합니다.
+    return { previousTodos }
+  },
+  // mutate에 에러가 발생하면 실행됩니다.
+  onError: (err, newTodo, context) => {
+    // context를 통해 기존 값으로 쿼리를 업데이트 합니다.
+    queryClient.setQueryData(['todos'], context.previousTodos)
+  },
+  // mutate가 끝나면(성공, 실패 모두) 호출됩니다.
+  onSettled: () => {
+    queryClient.invalidateQueries({ queryKey: ['todos'] })
+  },
+})
+```
+
+#### 쿼리 미리 가져오기
 
 ## API Reference
 
