@@ -89,7 +89,7 @@ function Todos() {
 render(<App />, document.getElementById('root'))
 ```
 
-React Query를 사용하기 위해서는 `QueryClientProvider` 컴포넌트를 최상단에서 감싸주고 `QueryClient` 인스턴스를 `client` props에 넣어줘야 합니다.
+React Query를 사용하기 위해서는 `QueryClientProvider` 컴포넌트를 최상단에서 감싸주고 `QueryClient` 인스턴스를 `client` 속성에 넣어줘야 합니다.
 
 ## 기본 개념
 React Query를 사용할 때 자주 접하게 되는 React Query의 중요한 개념들과 설정들을 살펴보도록 하겠습니다.
@@ -200,7 +200,7 @@ function fetchTodoList({ queryKey }) {
 6. 만약 `cacheTime`이 지나기 전, A 쿼리 인스턴스가 신선한(`fresh`) 상태라면 새롭게 `mount`되면 캐시된 데이터를 보여줌
 
 ## 기본 값 설정
-React Query를 사용할 때 `QueryClientProvider` 컴포넌트를 최상단에서 감싸주고 `QueryClient` 인스턴스를 `client` props에 넣어줘야 하는데, `QueryClient` 인스턴스를 생성할 때 아래 코드와 같이 기본 값을 설정할 수 있습니다.
+React Query를 사용할 때 `QueryClientProvider` 컴포넌트를 최상단에서 감싸주고 `QueryClient` 인스턴스를 `client` 속성에 넣어줘야 하는데, `QueryClient` 인스턴스를 생성할 때 아래 코드와 같이 기본 값을 설정할 수 있습니다.
 
 ```tsx
 import { QueryClient } from '@tanstack/react-query'
@@ -259,7 +259,7 @@ const {
 
 `useMutation`의 반환 값으로 `mutation`과 `mutationAsync` 함수가 있는데, 이 함수를 호출하여 Mutation 요청을 할 수 있습니다. `mutation`와 `mutationAsync` 함수의 차이점은 `mutation` 함수는 요청에 응답 받은 후 결과를 `onSuccess`, `onSettled`, `onError`와 같은 콜백 함수 처리할 수 있고, `mutationAsync` 함수는 `Promise`를 반환하기 때문에 `Promise`의 `then` 혹은 `Async await` 형태로 처리할 수 있습니다.
 
-### `useQueries` - 병렬 쿼리 (Parallel Queries)
+### `useQueries` - 병렬 쿼리
 병렬 쿼리란 동시에 여러 쿼리를 요청하는 방법입니다. 정적으로 정해진 쿼리들을 요청하는 Manual 방법과 동적으로 결정되는 쿼리를 요청하는 Dynamic 방법 2가지 방법을 살펴보도록 하겠습니다.
 
 #### Manual Parallel Queries
@@ -291,7 +291,7 @@ function App({ users }) {
 }
 ```
 
-### `useInfiniteQuery` - 무한 쿼리 (Infinite Queries)
+### `useInfiniteQuery` - 무한 쿼리
 `useInfiniteQuery` 훅은 무한 스크롤이나 더 보기 버튼을 제공해야 할 때 사용하기 좋은 기능입니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
@@ -541,14 +541,42 @@ const App = () => {
 `enabled: true`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 비동기 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
 
 ### `QueryClient`
+React Query를 사용하려면 최상단에 `QueryClientProvider` 컴포넌트를 감싸주고 `QueryClientProvider` 컴포넌트의 `client` 속성에 `QueryClient` 인스턴스를 넘겨줘야 합니다. 이 `QueryClient` 인스턴스는 React Query에 유용한 기능들을 담고 있습니다. 하위 컴포넌트에서 `QueryClient` 인스턴스를 가져오기 위해서는 아래 코드와 같이 `useQueryClient`를 통해 `QueryClient` 인스턴스를 가져올 수 있습니다.
+
+```tsx
+import { useQueryClient } from '@tanstack/react-query'
+
+const Todos = () => {
+  const queryClient = useQueryClient()
+  // ...
+}
+```
+
+#### 쿼리 무효화
+`queryClient.invalidateQueries`를 사용해서 쿼리를 무효화 하여 데이터를 다시 가져오게 할 수 있습니다. 쿼리 무효화는 Mutation과 함께 사용되는 경우가 많습니다. 아래 코드와 같이 Mutation으로 Todo를 추가한 후 새로운 Todo 목록을 가져와야 할 때 쿼리 무효화를 사용하기 좋습니다.
+
+```tsx
+tsx
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+
+const queryClient = useQueryClient()
+
+const mutation = useMutation({
+  mutationFn: addTodo,
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['todos'] })
+  },
+})
+```
+
+위의 코드는 `addTodo`라는 Mutation 함수를 실행하여 Todo를 추가한 후, Mutation 성공시 쿼리를 무효화하여 새로운 Todo 목록을 가져오게 하는 코드입니다.
+
+#### 쿼리 업데이트
+`queryClient.setQueryData`
 
 #### 쿼리 취소
 
-#### 쿼리 무효화
-
 #### Prefetching
-
-#### `setQueryData`
 
 ## API Reference
 
