@@ -468,7 +468,7 @@ const QueryEnable = () => {
 export default QueryEnable;
 ```
 
-위의 코드는 2초 후 `enabled` 속성을 `true`로 변경하여 비동기 데이터를 가져오는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-fjum7j?file=/src/QueryEnable.tsx)에서 확인할 수 있습니다.
+위의 코드는 2초 후 `enabled` 속성을 `true`로 변경하여 비동기 데이터를 가져오는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-jy3fjx?file=/src/QueryEnable.tsx)에서 확인할 수 있습니다.
 
 #### `keepPreviousData` 옵션
 `keepPreviousData` 옵션은 페이징 처리를 할 때 사용하기 유용한 옵션으로 쿼리가 새로운 데이터를 가져오기 전까지 이전 데이터를 유지시키는 옵션입니다. 아래 코드와 같이 사용할 수 있습니다.
@@ -539,6 +539,16 @@ const App = () => {
 ```
 
 `enabled: true`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 비동기 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
+
+#### `stauts` 반환
+React Query는 요청한 Query 혹은 Mutation의 상태를 알 수 있도록 `status` 필드를 반환합니다. `status`는 `idle`, `loading`, `error`, `success` 값 중 하나를 가지고 `idle`은 Mutation에서만 사용됩니다.
+
+- `idle`(Mutation 전용): Mutation 함수가 실행되지 않은 초기 상태
+- `loading`: 캐시된 데이터도 없고, Query(혹은 Mutation)이 끝나지 않은 상태
+- `error`: Query(혹은 Mutation)에 에러가 발생한 상태, 이 때 `error` 객체에는 에러 정보들이 담겨 있게 됩니다.
+- `success`: Query(혹은 Mutation)가 성공한 상태, 이 때 `data` 객체에는 성공한 결과 데이터들이 담겨 있게 됩니다.
+
+`status` 이외에 React Query는 요청한 Query, Mutation의 상태를 알 수 있는 `is`로 시작하는 플래그 값들을 많이 가지고 있습니다.
 
 ### `QueryClient`
 React Query를 사용하려면 최상단에 `QueryClientProvider` 컴포넌트를 감싸주고 `QueryClientProvider` 컴포넌트의 `client` 속성에 `QueryClient` 인스턴스를 넘겨줘야 합니다. 이 `QueryClient` 인스턴스는 React Query에 유용한 기능들을 담고 있습니다. 하위 컴포넌트에서 `QueryClient` 인스턴스를 가져오기 위해서는 아래 코드와 같이 `useQueryClient`를 통해 `QueryClient` 인스턴스를 가져올 수 있습니다.
@@ -654,6 +664,19 @@ useMutation({
 ```
 
 #### 쿼리 미리 가져오기
+`queryClient.prefetchQuery`를 사용하여 미래에 사용 될 수 있는 쿼리를 미리 가져올 수 있습니다. `queryClient.prefetchQuery`로 가져오는 데이터가 이미 캐싱되어 있다면 데이터를 가져오지 않습니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+const prefetchTodos = async () => {
+  // The results of this query will be cached like a normal query
+  await queryClient.prefetchQuery({
+    queryKey: ['todos'],
+    queryFn: fetchTodos,
+  })
+}
+```
+
+미리 가져온 쿼리를 캐시를 해두기 때문에 Query를 통해 데이터를 가져올 때 캐시된 데이터를 사용하여 빠른 결과를 얻을 수 있습니다. 예를 들어 1페이지에서 2페이지로 이동했을 때 3페이지의 데이터를 `queryClient.prefetchQuery`로 미리 캐시해 둔다면 3페이지로 전환할 때 빠른 결과 값을 가져올 수 있습니다.
 
 ## API Reference
 
@@ -675,307 +698,94 @@ useMutation({
 
 ## 부록
 
-### TypeScript
-```tsx
-export function useQuery<
-  TQueryFnData = unknown,
-  TError = unknown,
-  TData = TQueryFnData,
-  TQueryKey extends QueryKey = QueryKey
->
-```
-
-```tsx
-export function useMutaion<
-  TData = unknown,
-  TError = unknown,
-  TVariables = void,
-  TContext = unknown
->
-```
-
 ### ErrorBoundary
-- useErrorBoundary
+`react-error-boundary` 라이브러리와 함께 사용하면 에러 처리를 좀 더 간단하게 처리할 수 있습니다. 아래 코드와 같이 `QueryErrorResetBoundary` 컴포넌트 또는 `useQueryErrorResetBoundary` 훅을 `react-error-boundary` 라이브러리의 `ErrorBoundary` 컴포넌트와 함께 사용하면 됩니다.
+
+```tsx
+import { QueryErrorResetBoundary } from '@tanstack/react-query'
+import { ErrorBoundary } from 'react-error-boundary'
+
+const App = () => (
+  <QueryErrorResetBoundary>
+    {({ reset }) => (
+      <ErrorBoundary
+        onReset={reset}
+        fallbackRender={({ resetErrorBoundary }) => (
+          <div>
+            There was an error!
+            <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+          </div>
+        )}
+      >
+        <Page />
+      </ErrorBoundary>
+    )}
+  </QueryErrorResetBoundary>
+)
+```
+
+```tsx
+import { useQueryErrorResetBoundary } from '@tanstack/react-query'
+import { ErrorBoundary } from 'react-error-boundary'
+
+const App = () => {
+  const { reset } = useQueryErrorResetBoundary()
+  return (
+    <ErrorBoundary
+      onReset={reset}
+      fallbackRender={({ resetErrorBoundary }) => (
+        <div>
+          There was an error!
+          <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+        </div>
+      )}
+    >
+      <Page />
+    </ErrorBoundary>
+  )
+}
+```
+
+위의 코드는 하위 컴포넌트에서 Query, Mutation 중에 에러가 발생하면 `ErrorBoundary` 컴포넌트에서 정의한 `fallbackRender`가 화면서 노출됩니다. Query, Mutation을 위해 `useQuery`, `useMutation` 등의 훅을 사용하는데 훅의 옵션값으로 `useErrorBoundary` 필드를 아래 코드와 같이 전달 할 수 있습니다.
+
+```tsx
+useQuery({
+  queryKey: ['todo'],
+  queryFn: addTodo,
+  useErrorBoundary: true,
+})
+```
+
+`useErrorBoundary`의 값으로 `boolean`이나 `(error, query) => boolean` 형태의 함수를 전달할 수 있는데, `true`(혹은 리턴이 `true`) 값을 전달하면 가장 가까운 `ErrorBoundary` 컴포넌트에서 정의한 `fallbackRender`(혹은 `FallbackComponent`)가 화면에 노출되고, `false`(혹은 리턴이 `false`) 값을 전달하면 해당 에러는 `ErrorBoundary`에서 처리되지 않습니다.
 
 ### Suspense
+React의 Suspens와 함께 사용할 수도 있습니다. React Suspense와 함께 사용하면 Query나 Mutation 중이라면 `Suspense` 컴포넌트의 `fallback`이 화면에 노출됩니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+import { Suspense } from 'react'
+
+const App = () => (
+  <Suspense fallback={<div>Loading</div>}>
+    <Page />
+  </Suspense>
+)
+```
+
+Query, Mutation을 위해 `useQuery`, `useMutation` 등의 훅을 사용하는데 훅의 옵션값으로 `suspense` 필드를 아래 코드와 같이 전달 할 수 있습니다.
+
+```tsx
+useQuery({
+  queryKey: ['todo'],
+  queryFn: addTodo,
+  suspense: true,
+})
+```
+
+`suspense`의 값으로 `boolean` 값을 전달 할 수 있습니다. `true` 값을 전달하면 `status === 'loading'`, `status === 'error'`일 때 `Suspense` 컴포넌트의 `fallback`이 화면에 노출됩니다. `false` 값을 전달하면 `Suspense` 컴포넌트에서 처리되지 않습니다.
 
 ### DevTools
+쿼리에 어떤 값들이 캐시되어 있는지 등, React Query의 상태를 개발하면서 간단하게 알 수 있도록 DevTools을 제공합니다. React Query의 DevTools를 사용하기 위해서는 먼저 아래 코드로 패키지를 설치해야 합니다. React Query의 DevTools는 `process.env.NODE_ENV === 'development'` 일 때만 코드에 포함되기 때문에 production build를 하면 DevTools 코드는 제거되어 코드에 포함되지 않습니다.
 
-### ESLint
-
-#### `queryKey`와 `queryFn`
-
-### Tanstack Query V4와 V5
-
-### Mutation의 캐싱
-
----
-
-이번 포스트에서는 서버 API 호출 등의 비동기 작업을 도와주는 라이브러리인 React Query를 살펴보도록 하겠습니다.
-
-V4 기준으로 작성
-
-## React Query 란
-- React Query는 서버 상태를 관리하기 위한 라이브러리입니다.
-- 서버에 데이터를 요청하거나 업데이트 하는 등의 비동기 작업의 캐싱을 지원합니다.
-
-## 퀵 스타트
-```bash
-npm i @tanstack/react-query
-# or
-pnpm add @tanstack/react-query
-# or
-yarn add @tanstack/react-query
-```
-
-```js
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-import { getTodos, postTodo } from '../my-api'
-
-// Create a client
-const queryClient = new QueryClient()
-
-function App() {
-  return (
-    // Provide the client to your App
-    <QueryClientProvider client={queryClient}>
-      <Todos />
-    </QueryClientProvider>
-  )
-}
-
-function Todos() {
-  // Access the client
-  const queryClient = useQueryClient()
-
-  // Queries
-  const query = useQuery({ queryKey: ['todos'], queryFn: getTodos })
-
-  // Mutations
-  const mutation = useMutation({
-    mutationFn: postTodo,
-    onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ['todos'] })
-    },
-  })
-
-  return (
-    <div>
-      <ul>
-        {query.data?.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
-
-      <button
-        onClick={() => {
-          mutation.mutate({
-            id: Date.now(),
-            title: 'Do Laundry',
-          })
-        }}
-      >
-        Add Todo
-      </button>
-    </div>
-  )
-}
-
-render(<App />, document.getElementById('root'))
-```
-
-## 기본 옵션
-
-### Stale Data
-- 즉시 오래된 값(stale data)로 인지
-- `staleTime`
-
-### Auto Refetch
-- New instances of the query mount
-- The window is refocused
-- The network is reconnected
-- The query is optionally configured with a refetch interval
-
-### Cache
-- 쿼리를 통해 응답 받은 데이터는 즉시 비활성(inactive) 상태가 되며, 재사용되는 경우를 대비하여 5분 간 캐시에 남아 있음
-- `cacheTime`
-
-### Retry
-- UI에 에러를 표시하기 전 3번 재요청
-- `retry`, `retryDelay`
-
-## Query Keys
-```js
-// A list of todos
-useQuery({ queryKey: ['todos'], ... })
-
-// Something else, whatever!
-useQuery({ queryKey: ['something', 'special'], ... })
-```
-
-아래와 같은 다양한 형태의 배열도 가능
-
-```js
-// An individual todo
-useQuery({ queryKey: ['todo', 5], ... })
-
-// An individual todo in a "preview" format
-useQuery({ queryKey: ['todo', 5, { preview: true }], ...})
-
-// A list of todos that are "done"
-useQuery({ queryKey: ['todos', { type: 'done' }], ... })
-```
-
-아래 쿼리 키는 모두 동일한 것으로 간주됩니다.
-
-```js
-useQuery({ queryKey: ['todos', { status, page }], ... })
-useQuery({ queryKey: ['todos', { page, status }], ...})
-useQuery({ queryKey: ['todos', { page, status, other: undefined }], ... })
-```
-
-반면 아래 쿼리 키는 모두 다르기 때문에 순서에 주의해야 합니다.
-
-```js
-useQuery({ queryKey: ['todos', status, page], ... })
-useQuery({ queryKey: ['todos', page, status], ...})
-useQuery({ queryKey: ['todos', undefined, page, status], ...})
-```
-
-쿼리 키는 유니크하게 관리되어야 하기 때문에 아래 코드와 같이 API를 호출할 때 사용되는 값을 쿼리 키에 전달하는 것이 좋습니다.
-
-```js
-useQuery({ queryKey: ['todos', status, page], ... })
-useQuery({ queryKey: ['todos', page, status], ...})
-useQuery({ queryKey: ['todos', undefined, page, status], ...})
-```
-
-## Query Functions
-
-쿼리 함수는 `Promise`를 반환하는 함수
-
-```js
-useQuery({ queryKey: ['todos'], queryFn: fetchAllTodos })
-useQuery({ queryKey: ['todos', todoId], queryFn: () => fetchTodoById(todoId) })
-useQuery({
-  queryKey: ['todos', todoId],
-  queryFn: async () => {
-    const data = await fetchTodoById(todoId)
-    return data
-  },
-})
-useQuery({
-  queryKey: ['todos', todoId],
-  queryFn: ({ queryKey }) => fetchTodoById(queryKey[1]),
-})
-```
-
-`useQuery`의 결과가 에러이려면, 쿼리 함수에서 `Promise.reject`을 반환하거나 `throw new Error`로 에러를 던져줘야 한다.
-
-```js
-const { error } = useQuery({
-  queryKey: ['todos', todoId],
-  queryFn: async () => {
-    if (somethingGoesWrong) {
-      throw new Error('Oh no!')
-    }
-    if (somethingElseGoesWrong) {
-      return Promise.reject(new Error('Oh no!'))
-    }
-
-    return data
-  },
-})
-```
-
-쿼리 함수는 아래 코드와 같이 코드를 분리할 수 있다.
-
-```js
-function Todos({ status, page }) {
-  const result = useQuery({
-    queryKey: ['todos', { status, page }],
-    queryFn: fetchTodoList,
-  })
-}
-
-// Access the key, status and page variables in your query function!
-function fetchTodoList({ queryKey }) {
-  const [_key, { status, page }] = queryKey
-  return new Promise()
-}
-```
-
-> **QueryFunctionContext**
->
-> 쿼리 함수의 파라미터를 QueryFunctionContext라고 하는데 QueryFunctionContext 객체는 아래와 같은 필드를 가진다.
->
-> - `queryKey: QueryKey`: 쿼리 키
-> - `pageParam?: unknown`: 무한 쿼리에서 사용되며, 현재 페이지의 파라미터 정보
-> - `signal?: AbortSignal`: 쿼리를 취소하기 위해 사용하는 AbortSignal 인스턴스
-> - `meta: Record<string, unknown> | undefined`: 쿼리의 추가 점보를 담는 필드
-
-## Parallel Queries
-- 수동 병렬 쿼리
-- 동적 병렬 쿼리
-
-## Background Fetching
-- isFetching
-- useIsFetching
-
-## 쿼리 비활성화
-
-## 쿼리 재시도
-- retry
-- retryDelay
-
-## 페이징를 위한 쿼리
-- keepPreviousData
-
-## 무한 쿼리
-- useInfiniteQuery
-
-## 초기값
-- initialData
-- initialDataUpdatedAt
-
-## Placeholder
-- placeholderData: 가짜 데이터
-
-## Prefetching
-
-## Mutation
-- `useMutaion`
-
-## 쿼리 무효화
-- invalidateQueries: `exact`
-- useMuation에서 쿼리 무효화
-
-## 쿼리 업데이트
-- setQueryData
-
-## 쿼리 취소 ??
-
-## 쿼리 필터링
-
-## 쿼리 기본 함수
-
-## Suspense
-- React Suspense
-
-## ESLint
-
-## 부록
-
-### DevTools
-
-#### 설치
 ```bash
 npm i @tanstack/react-query-devtools
 # or
@@ -984,7 +794,8 @@ pnpm add @tanstack/react-query-devtools
 yarn add @tanstack/react-query-devtools
 ```
 
-#### Floating Mode
+DevTools는 아래 코드와 같이 정의하여 사용할 수 있습니다.
+
 ```tsx
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
@@ -992,34 +803,60 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* The rest of your application */}
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   )
 }
 ```
 
-- `process.env.NODE_ENV === 'development'` 일 경우에만 번들에 포함되기 때문에 별도의 제외 조건을 넣지 않아도 됩니다.
+기본적으로 devTools 패널이 열려 있도록 설정하는 `initialIsOpen` 속성과 devTools 패널을 열고 닫는 버튼의 위치를 설정하는 `position` 속성, 2가지 속성을 자주 사용하게 됩니다.
 
-##### 옵션
+### ESLint
+React Query는 ESLint 플러그인을 제공합니다. ESLint 플러그인을 사용하면 React Query를 작성 실수를 예방할 수 있습니다. 아래 코드와 같이 ESLint 플러그인을 설치할 수 있습니다.
 
-#### Embedded Mode
-```tsx
-import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools'
+```bash
+npm i -D @tanstack/eslint-plugin-query
+# or
+pnpm add -D @tanstack/eslint-plugin-query
+# or
+yarn add -D @tanstack/eslint-plugin-query
+```
 
-function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* The rest of your application */}
-      <ReactQueryDevtoolsPanel style={styles} className={className} />
-    </QueryClientProvider>
-  )
+`.eslintrc` 설정 파일에 아래 코드와 같이 플러그인을 추가해 주면 React Query ESLint를 사용할 수 있습니다.
+
+```json
+{
+  "plugins": ["@tanstack/query"]
 }
 ```
 
-##### 옵션
+React Query의 ESLint 규칙은 아래 코드와 같이 `exhaustive-deps`, `prefer-query-object-syntax` 두가지가 있습니다.
 
-#### Production에서 사용하기
+```json
+{
+  "rules": {
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/prefer-query-object-syntax": "error"
+  }
+}
+```
 
+아래 코드를 추가하여 React Query의 모든 권장 린트 규칙을 설정할 수도 있습니다.
+
+```json
+{
+  "extends": ["plugin:@tanstack/eslint-plugin-query/recommended"]
+}
+```
+
+#### `exhaustive-deps`
+
+#### `prefer-query-object-syntax`
+
+### Tanstack Query V4와 V5
+`v5.0.0-alpha.58`
+
+### Mutation의 캐싱
 
 ##### 참고
 - [https://tanstack.com/query/v4/](https://tanstack.com/query/v4/)
