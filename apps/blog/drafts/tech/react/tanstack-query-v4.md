@@ -6,12 +6,10 @@ category: [tech, react]
 summary: TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다.
 ---
 
-TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다.
-
-이번 포스트에서는 React에서 TanStack Query를 사용하는 방법을 살펴보도록 하겠습니다. TanStack의 `react-query`를 가져와 사용하기 때문에 이번 포스트에서는 React Query라는 명칭을 사용하도록 하겠습니다.
+TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다. 이번 포스트에서는 React에서 TanStack Query를 사용하는 방법을 살펴보도록 하겠습니다. TanStack의 `react-query`를 가져와 사용하는데, React Query라는 명칭을 사용하도록 하겠습니다.
 
 ## 역할
-React Query는 서버의 데이터 가져오기/업데이트, 캐싱, 에러 처리 등을 쉽게 처리할 수 있도록 돕는 라이브러리입니다. 서버에서 가져온 데이터 객체, 에러가 발생했다면 에러 정보를 담는 객체, 데이터 가져오기/엡데이트 중임을 나타내는 등 각종 유틸 기능을 제공합니다. 또한 동시에 동일한 요청을 여러번 해도 한번만 요청을 보내어 최적화 해주기 때문에 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다.
+React Query는 서버의 데이터 가져오기/업데이트, 캐싱, 에러 처리 등을 쉽게 처리할 수 있도록 돕는 라이브러리입니다. 서버에서 가져온 값을 담는 객체, 에러가 발생했다면 에러 정보를 담는 객체, 데이터 가져오기/엡데이트 중임을 나타내는 등 각종 유틸 기능을 제공합니다. 동시에 동일한 요청을 여러번 해도 한번만 요청을 보내어 최적화 하기 때문에 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다.
 
 ## 쿽 스타트
 React Query를 사용하기 위해서 먼저 아래 코드와 같이 `@tanstack/react-query`를 설치해야 합니다.
@@ -95,12 +93,12 @@ React Query를 사용하기 위해서는 `QueryClientProvider` 컴포넌트를 �
 React Query를 사용할 때 자주 접하게 되는 React Query의 중요한 개념들과 설정들을 살펴보도록 하겠습니다.
 
 ### Query와 Mutation
-React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 접하게 됩니다. Query는 서버에서 데이터를 가져오는 작업으로 `useQuery` 훅을 많이 사용하게 됩니다. Mutation은 서버의 데이터를 변경하는 부수효과가 있는 작업으로 `useMutation` 훅을 많이 사용하게 됩니다. 이런 특징으로 HTTP 메소드의 GET 요청의 경우 `useQuery`를 POST, PUT, PATCH, DELETE 요청의 경우 `useMutation`을 대부분의 경우 사용하게 됩니다.
+React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 접하게 됩니다. Query는 서버에서 데이터를 가져오는 작업으로 `useQuery` 훅을 많이 사용합니다. Mutation은 서버의 데이터를 변경하는 부수효과가 있는 작업으로 `useMutation` 훅을 많이 사용힙니다. HTTP 메소드의 GET 요청의 경우 `useQuery`를 POST, PUT, PATCH, DELETE 요청의 경우 `useMutation`을 대부분의 경우 사용하게 됩니다.
 
 `useQueries`와 `useInfiniteQuery` 훅은 `useQuery`와 동일하게 서버에서 데이터를 가져올 때 사용되는 훅입니다. 여러 데이터를 병렬로 가져와야 할 때는 `useQueries` 훅을 사용 할 수 있고, 무한 스크롤과 같이 계속해서 데이터를 가져와야 할 경우 `useInfiniteQuery` 훅을 사용할 수 있습니다.
 
 ### refetch
-Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 아래와 같은 경우에 자동으로 데이터를 가져옵니다.
+Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 오래된 쿼리는 아래와 같은 경우에 자동으로 데이터를 다시 가져옵니다.
 
 - 쿼리를 사용한 컴포넌트가 마운트 되었을 때
 - 윈도우가 다시 포커스 되었을 때
@@ -108,7 +106,7 @@ Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다�
 - `refetchInterval` 설정 하여 반복적으로 refetch 되도록 설정 했을 때
 
 ### `retry`
-`retry` 설정에 따라 Query/Mutation 작업이 실패하면 React Query는 자동으로 재시도를 합니다. Query의 `retry` 기본 값은 3, Mutation의 `retry` 기본 값은 0입니다. `retryDelay` 설정을 통해 얼마 간의 간격으로 재시도를 할 것인지 설정할 수 있습니다.
+`retry` 설정에 따라 Query/Mutation 작업이 실패하면 React Query는 자동으로 재시도를 합니다. Query의 `retry` 기본 값은 3, Mutation의 `retry` 기본 값은 0입니다. `retryDelay` 설정을 통해 얼마 간의 간격으로 재시도를 할 것인지 설정할 수 있습니다. `retry`와 `retryDelay`는 Query, Mutation 훅(`useQuery`, `useMutation`, `useQueries`, `useInfiniteQuery` 훅)의 옵션으로 전달하여 설정할 수 있습니다.
 
 ### `staleTime`
 `staleTime`은 React Query를 통해 가져온 데이터가 오래된 것으로 인식하게 되는 시간입니다. ms 단위로 저장되는데 기본 값은 0입니다. React Query는 오래된 데이터라고 판단되면 다시 데이터를 가져옵니다. `staleTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
@@ -118,7 +116,7 @@ Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다�
   - 5초 이전에 데이터를 요청한 경우: 최신 데이터로 판단하여 API를 다시 호출하지 않고 캐시된 데이터를 사용합니다.
   - 5초 이후에 데이터를 요청한 경우: 캐시 된 데이터를 오래된 데이터로 판단하여 캐시 된 데이터를 우선 사용한 후, API를 호출하여 새로운 데이터를 응답 받으면 데이터를 교체하고 응답 받은 데이터를 캐시합니다.
 
-`staleTime`은 데이터를 다시 가져올지 판단하는 설정입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-staletime-n12m0e)에서 테스트하실 수 있습니다.
+`staleTime`은 데이터를 다시 가져올지 판단하는 설정입니다. Query 훅(`useQuery`, `useMutation`, `useQueries` 훅)의 옵션으로 전달하여 설정할 수 있습니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-staletime-n12m0e)에서 테스트하실 수 있습니다.
 
 ### `cacheTime`
 `cacheTime`은 데이터를 얼마나 오랫동안 보관 할 것인지 나타내는 시간입니다. ms 단위로 저장되는데 기본 값은 5분(5 * 60 * 1000)입니다. 쿼리 인스턴스가 unmount 되면 데이터는 비활성화(inactive) 상태가 되는데, 비활성화 된 데이터는 `cacheTime`에 설정된 시간이 지난 후 가비지 컬렉션 됩니다. `cacheTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
@@ -127,10 +125,10 @@ Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다�
   - 비활성화 된 데이터를 5초 이전에 요청한 경우: 캐시 된 데이터를 우선 사용한 후 API를 호출하여 새로운 데이터를 응답 받으면 응답 받은 데이터를 다시 캐시합니다.
   - 비활성화 된 데이터를 5초 이후에 요청한 경우: 데이터가 이미 가비지 컬렉션 되었기 때문에, 캐시 데이터를 사용하지 못하고 API 응답 데이터를 기다린 후 데이터를 응답 받으면 응답 받은 데이터를 사용하고 캐시합니다.
 
-`cacheTime`은 캐시된 값을 사용할지 판단하는 설정입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-cachetime-cr7be7)에서 테스트하실 수 있습니다.
+`cacheTime`은 캐시된 값을 사용할지 판단하는 설정입니다. Query, Mutation 훅(`useQuery`, `useMutation`, `useQueries`, `useInfiniteQuery` 훅)의 옵션으로 전달하여 설정할 수 있습니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-cachetime-cr7be7)에서 테스트하실 수 있습니다.
 
 ### `queryKey`
-React Query는 `queryKey`를 기반으로 쿼리 캐싱을 관리합니다. 아래 코드와 같이 `queryKey`는 단순 문자열 배열이나, 복잡한 형태의 배열 모두 가능합니다.
+React Query는 `queryKey`를 기반으로 쿼리 캐싱을 관리합니다. 아래 코드와 같이 `queryKey`는 단순 문자열 배열이나, 복잡한 형태의 배열 모두 가능합니다. Query 훅(`useQuery`, `useMutation`, `useQueries` 훅)의 옵션으로 전달하여 설정할 수 있습니다.
 
 ```tsx
 useQuery({ queryKey: ['todos'], ... })
@@ -221,7 +219,7 @@ const queryClient = new QueryClient({
 React Query를 사용하면 `useQuery`와 `useMutation` 두 훅을 가장 많이 사용하는데, 그 밖에도 사용하면 유용한 기능이 많이 있습니다. 이번에는 React Query에서 자주, 유용하게 사용되는 기능들을 살펴보겠습니다.
 
 ### `useQuery`
-`useQuery`는 서버의 데이터를 가져오기 위해 사용되는 훅으로 보통 HTTP의 GET 요청시에 사용되는 훅입니다. `useQuery`는 아래 코드와 같은 형태로 사용됩니다. 좀 더 자세한 내용은 [useQuery API Reference](/tech/react/tanstack-query/#uesquery)에서 이야기 하도록 하겠습니다.
+`useQuery`는 서버의 데이터를 가져오기 위해 사용되는 훅으로 보통 HTTP의 GET 요청시에 사용되는 훅입니다. `useQuery`는 아래 코드와 같은 형태로 사용됩니다.
 
 ```tsx
 const {
@@ -236,7 +234,7 @@ const {
 })
 ```
 
-`useQuery`는 `queryKey`와 `queryFn`을 필수로 선언해 줘야 합니다. `queryFn`의 경우 기본 값으로 설정해 둔 함수가 있다면 생략할 수 있습니다. 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 좀 더 간편하게 만들 수 있게 돕습니다. 유용한 옵션과 반환 값들을 몇가지 살펴보도록 하겠습니다.
+`useQuery`는 `queryKey`와 `queryFn`을 필수로 선언해 줘야 합니다. `queryFn`의 경우 기본 값으로 설정해 둔 함수가 있다면 생략할 수 있습니다. 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 간단하게 만들 수 있게 돕습니다. 유용한 옵션과 반환 값들을 몇가지 살펴보도록 하겠습니다.
 
 #### `select` 옵션
 `select` 옵션을 사용하여 쿼리 함수에서 반환된 데이터를 변환하거나 선택할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
@@ -264,7 +262,7 @@ export default QuerySelect;
 위의 코드는 쿼리 함수는 1부터 6까지 숫자의 배열을 반환하지만, `select` 옵션을 사용하여 짝수 배열 값만 얻는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-select-3qkbeb?file=/src/QuerySelect.tsx)에서 확인할 수 있습니다.
 
 #### `enabled` 옵션
-쿼리는 보통 마운트 되면서 자동으로 쿼리 함수를 실행해 비동기 데이터를 가져오는데, `enabled` 옵션을 `false`로 설정하여 마운트 되었을 때 자동으로 비동기 데이터를 가져오지 않도록 할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
+쿼리는 마운트 되면서 자동으로 쿼리 함수를 실행해 비동기 데이터를 가져오는데, `enabled` 옵션을 `false`로 설정하여 마운트 되었을 때 자동으로 비동기 데이터를 가져오지 않도록 할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
 import { useQuery } from "@tanstack/react-query";
@@ -336,7 +334,7 @@ const QueryKeepPreviousData = () => {
 export default QueryKeepPreviousData;
 ```
 
-위의 코드는 2초 후 새로운 데이터를 가져오게 되는데, 새로운 데이터를 가져오는 2초 동안 기존의 데이터를 유지하는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-fjum7j?file=/src/QueryKeepPreviousData.tsx)에서 확인할 수 있습니다. 아래 그림과 같이 `keepPreviousData: true`, `keepPreviousData: false`가 차이를 보입니다.
+위의 코드는 2초 후 새로운 데이터를 가져오게 되는데, 새로운 데이터를 가져오는 2초 동안 기존의 데이터를 유지하는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-fjum7j?file=/src/QueryKeepPreviousData.tsx)에서 확인할 수 있습니다. 아래 그림은 `keepPreviousData: true`와 `keepPreviousData: false` 차이를 나타내는 그림입니다.
 
 |                                 `keepPreviousData: true`                                  |                                  `keepPreviousData: false`                                  |
 |:-----------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|
@@ -362,20 +360,20 @@ const App = () => {
 }
 ```
 
-`enabled: true`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 비동기 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
+`enabled: true`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
 
 #### `stauts` 반환
-React Query는 요청한 Query 혹은 Mutation의 상태를 알 수 있도록 `status` 필드를 반환합니다. `status`는 `idle`, `loading`, `error`, `success` 값 중 하나를 가지고 `idle`은 Mutation에서만 사용됩니다.
+React Query는 요청한 Query 혹은 Mutation의 상태를 알 수 있도록 `status` 필드를 반환합니다. `status`는 `idle`, `loading`, `error`, `success` 값 중 하나를 가집니다. 단, `idle`은 Mutation에서만 사용됩니다.
 
 - `idle`(Mutation 전용): Mutation 함수가 실행되지 않은 초기 상태
 - `loading`: 캐시된 데이터도 없고, Query(혹은 Mutation)이 끝나지 않은 상태
 - `error`: Query(혹은 Mutation)에 에러가 발생한 상태, 이 때 `error` 객체에는 에러 정보들이 담겨 있게 됩니다.
 - `success`: Query(혹은 Mutation)가 성공한 상태, 이 때 `data` 객체에는 성공한 결과 데이터들이 담겨 있게 됩니다.
 
-`status` 이외에 React Query는 요청한 Query, Mutation의 상태를 알 수 있는 `is`로 시작하는 플래그 값들을 많이 가지고 있습니다.
+`status` 이외에 React Query는 요청한 Query, Mutation의 상태를 알 수 있는 `is`로 시작하는 플래그 값들을 반환합니다.
 
 ### `useMutation`
-`useMutation`은 서버의 데이터를 변경하기 위해 사용되는 훅으로 보통 HTTP의 POST, PUT, DELETE, PATCH 요청과 같이 부수 효과를 발생하는 요청에서 사용되는 훅입니다. `useMutation`은 아래 코드와 같은 형태로 사용됩니다. 좀 더 자세한 내용은 [useMutation API Reference](/tech/react/tanstack-query/#usemutation)에서 이야기 하도록 하겠습니다.
+`useMutation`은 서버의 데이터를 변경하기 위해 사용되는 훅으로 보통 HTTP의 POST, PUT, DELETE, PATCH 요청과 같이 부수 효과를 발생하는 요청에서 사용되는 훅입니다. `useMutation`은 아래 코드와 같은 형태로 사용됩니다.
 
 ```tsx
 const {
@@ -391,9 +389,9 @@ const {
 })
 ```
 
-`useMutation`은 `mutationFn`을 필수로 선언해 주어야 하지만, 기본 값으로 설정해 둔 `mutationFn`이 있다면 생략할 수 있습니다. `useQuery`와 동일하게 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 좀 더 간편하게 만들 수 있게 돕습니다.
+`useMutation`은 `mutationFn`을 필수로 선언해 주어야 하지만, 기본 값으로 설정해 둔 `mutationFn`이 있다면 생략할 수 있습니다. `useQuery`와 동일하게 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 간단하게 만들 수 있게 돕습니다.
 
-`useMutation`의 반환 값으로 `mutation`과 `mutationAsync` 함수가 있는데, 이 함수를 호출하여 Mutation 요청을 할 수 있습니다. `mutation`와 `mutationAsync` 함수의 차이점은 `mutation` 함수는 요청에 응답 받은 후 결과를 `onSuccess`, `onSettled`, `onError`와 같은 콜백 함수 처리할 수 있고, `mutationAsync` 함수는 `Promise`를 반환하기 때문에 `Promise`의 `then` 혹은 `Async await` 형태로 처리할 수 있습니다.
+`useMutation`의 반환 값으로 `mutation`과 `mutationAsync` 함수가 있는데, 이 함수를 호출하여 Mutation 요청을 할 수 있습니다. `mutation`와 `mutationAsync` 함수의 차이점은 `mutation` 함수는 요청에 응답 받은 후 결과를 `onSuccess`, `onSettled`, `onError`와 같은 콜백 함수로 처리할 수 있고, `mutationAsync` 함수는 `Promise`를 반환하기 때문에 `Promise`의 `then` 혹은 `Async await` 형태로 처리할 수 있습니다.
 
 ### `useQueries` - 병렬 쿼리
 병렬 쿼리란 동시에 여러 쿼리를 요청하는 방법입니다. 정적으로 정해진 쿼리들을 요청하는 Manual 방법과 동적으로 결정되는 쿼리를 요청하는 Dynamic 방법 2가지 방법을 살펴보도록 하겠습니다.
@@ -570,7 +568,7 @@ const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
 ```
 
 ### `QueryClient`
-React Query를 사용하려면 최상단에 `QueryClientProvider` 컴포넌트를 감싸주고 `QueryClientProvider` 컴포넌트의 `client` 속성에 `QueryClient` 인스턴스를 넘겨줘야 합니다. 이 `QueryClient` 인스턴스는 React Query에 유용한 기능들을 담고 있습니다. 하위 컴포넌트에서 `QueryClient` 인스턴스를 가져오기 위해서는 아래 코드와 같이 `useQueryClient`를 통해 `QueryClient` 인스턴스를 가져올 수 있습니다.
+React Query를 사용하려면 최상단에 `QueryClientProvider` 컴포넌트를 감싸주고 `QueryClientProvider` 컴포넌트의 `client` 속성에 `QueryClient` 인스턴스를 넘겨줘야 합니다. 이 `QueryClient` 인스턴스는 React Query에 유용한 기능들을 담고 있습니다. 하위 컴포넌트에서 `QueryClient` 인스턴스를 가져오기 위해서는 아래 코드와 같이 `useQueryClient` 훅을 사용하여 `QueryClient` 인스턴스를 가져올 수 있습니다.
 
 ```tsx
 import { useQueryClient } from '@tanstack/react-query'
@@ -585,7 +583,6 @@ const Todos = () => {
 `queryClient.invalidateQueries`를 사용해서 쿼리를 무효화 하여 데이터를 다시 가져오게 할 수 있습니다. 쿼리 무효화는 Mutation과 함께 사용되는 경우가 많습니다. 아래 코드와 같이 Mutation으로 Todo를 추가한 후 새로운 Todo 목록을 가져와야 할 때 쿼리 무효화를 사용하기 좋습니다.
 
 ```tsx
-tsx
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const queryClient = useQueryClient()
@@ -601,7 +598,7 @@ const mutation = useMutation({
 위의 코드는 `addTodo`라는 Mutation 함수를 실행하여 Todo를 추가한 후, Mutation 성공시 쿼리를 무효화하여 새로운 Todo 목록을 가져오게 하는 코드입니다.
 
 #### 쿼리 취소
-쿼리 취소는 요청 중인 쿼리를 취소하는 방법입니다. `axios` v0.22.0+ 버전을 사용하신다면 아래 코드와 같이 작성하시면 쿼리가 비활성화(마운트 해제 등) 되면 자동으로 쿼리를 취소합니다.
+쿼리 취소는 요청 중인 쿼리를 취소하는 방법입니다. `axios` v0.22.0+ 버전을 사용하신다면 아래 코드와 같이 작성하시면 쿼리가 비활성화(언마운트 등) 되면 자동으로 쿼리를 취소합니다.
 
 ```tsx
 import axios from 'axios'
@@ -649,7 +646,7 @@ return (
 #### 쿼리 업데이트
 대부분의 경우 수동으로 쿼리를 업데이트하지 않고, `refetch`나 `queryClient.invalidateQueries`를 사용하여 최신 쿼리를 가져오는 방법을 사용합니다. 하지만 때때로 수동으로 쿼리를 업데이트해 주는 것이 더 좋은 사용성을 제공할 수 있습니다. 수동 쿼리 업데이트는 `queryClient.setQueryData`를 사용하면 됩니다.
 
-예를 들어, Mutation으로 데이터를 변경 후 Query하여 데이터 사용자에게 변경 후의 데이터를 제공해야 할 때, 변경된 결과를 예상할 수 있지만 Mutation이나 Query가 오래 걸려 사용자에게 늦게 새로운 데이터를 노출하게 된다면, 수동으로 먼저 쿼리를 업데이트 하여 사용자에게 빠르게 변경된 데이터를 제공할 수 있습니다. 이런 방식을 Optimistic Updates(낙관적인 업데이트)라고 하는데 아래 코드와 같이 사용할 수 있습니다.
+예를 들어, Mutation으로 데이터를 변경 후 Query하여 데이터 사용자에게 변경 후의 데이터를 제공해야 할 때, 변경된 결과를 예상할 수 있지만 Mutation이나 Query가 오래 걸려 사용자에게 늦게 새로운 데이터를 노출하게 된다면, 수동으로 먼저 쿼리를 업데이트 하여 사용자에게 빠르게 변경된 결과를 제공할 수 있습니다. 이런 방식을 Optimistic Updates(낙관적인 업데이트)라고 하는데 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
 const queryClient = useQueryClient()
@@ -757,10 +754,10 @@ useQuery({
 })
 ```
 
-`useErrorBoundary`의 값으로 `boolean`이나 `(error, query) => boolean` 형태의 함수를 전달할 수 있는데, `true`(혹은 리턴이 `true`) 값을 전달하면 가장 가까운 `ErrorBoundary` 컴포넌트에서 정의한 `fallbackRender`(혹은 `FallbackComponent`)가 화면에 노출되고, `false`(혹은 리턴이 `false`) 값을 전달하면 해당 에러는 `ErrorBoundary`에서 처리되지 않습니다.
+`useErrorBoundary`의 값으로 `boolean`이나 `(error, query) => boolean` 형태의 함수를 전달할 수 있습니다. `true`(혹은 리턴이 `true`) 값을 전달하면 가장 가까운 `ErrorBoundary` 컴포넌트에서 정의한 `fallbackRender`(혹은 `FallbackComponent`)가 화면에 노출되고, `false`(혹은 리턴이 `false`) 값을 전달하면 해당 에러는 `ErrorBoundary`에서 처리되지 않습니다.
 
 ### Suspense
-React의 Suspens와 함께 사용할 수도 있습니다. React Suspense와 함께 사용하면 Query나 Mutation 중이라면 `Suspense` 컴포넌트의 `fallback`이 화면에 노출됩니다. 아래 코드와 같이 사용할 수 있습니다.
+React Suspens와 함께 사용할 수도 있습니다. React Suspense와 함께 사용하면 Query나 Mutation 중이라면 `Suspense` 컴포넌트의 `fallback`이 화면에 노출됩니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
 import { Suspense } from 'react'
@@ -785,7 +782,7 @@ useQuery({
 `suspense`의 값으로 `boolean` 값을 전달 할 수 있습니다. `true` 값을 전달하면 `status === 'loading'`, `status === 'error'`일 때 `Suspense` 컴포넌트의 `fallback`이 화면에 노출됩니다. `false` 값을 전달하면 `Suspense` 컴포넌트에서 처리되지 않습니다.
 
 ### DevTools
-쿼리에 어떤 값들이 캐시되어 있는지 등, React Query의 상태를 개발하면서 간단하게 알 수 있도록 DevTools을 제공합니다. React Query의 DevTools를 사용하기 위해서는 먼저 아래 코드로 패키지를 설치해야 합니다. React Query의 DevTools는 `process.env.NODE_ENV === 'development'` 일 때만 코드에 포함되기 때문에 production build를 하면 DevTools 코드는 제거되어 코드에 포함되지 않습니다.
+쿼리에 어떤 값들이 캐시되어 있는지 등, React Query의 상태를 개발하면서 간단하게 알 수 있도록 DevTools을 제공합니다. React Query의 DevTools는 `process.env.NODE_ENV === 'development'` 일 때만 코드에 포함되기 때문에 production build를 하면 DevTools 코드는 제거되어 코드에 포함되지 않습니다. React Query의 DevTools를 사용하기 위해서는 먼저 아래 코드로 패키지를 설치해야 합니다.
 
 ```bash
 npm i @tanstack/react-query-devtools
@@ -813,7 +810,7 @@ function App() {
 기본적으로 devTools 패널이 열려 있도록 설정하는 `initialIsOpen` 속성과 devTools 패널을 열고 닫는 버튼의 위치를 설정하는 `position` 속성, 2가지 속성을 자주 사용하게 됩니다.
 
 ### ESLint
-React Query는 ESLint 플러그인을 제공합니다. ESLint 플러그인을 사용하면 React Query를 작성 실수를 예방할 수 있습니다. 아래 코드와 같이 ESLint 플러그인을 설치할 수 있습니다.
+React Query는 ESLint 플러그인을 제공합니다. ESLint 플러그인을 사용하면 React Query 작성 실수를 예방할 수 있습니다. 아래 코드와 같이 ESLint 플러그인을 설치할 수 있습니다.
 
 ```bash
 npm i -D @tanstack/eslint-plugin-query
@@ -842,7 +839,7 @@ React Query의 ESLint 규칙은 아래 코드와 같이 `exhaustive-deps`, `pref
 }
 ```
 
-아래 코드를 추가하여 React Query의 모든 권장 린트 규칙을 설정할 수도 있습니다.
+아래 코드를 추가하여 React Query의 권장 린트 규칙을 모두 설정할 수도 있습니다.
 
 ```json
 {
@@ -854,6 +851,7 @@ React Query의 ESLint 규칙은 아래 코드와 같이 `exhaustive-deps`, `pref
 쿼리 키는 쿼리 함수에 대한 종속성 배열이여야 합니다. `queryFn` 함수 안에서 사용하는 변수는 `queryKey` 배열에 포함되어야 합니다.
 
 잘못된 예제:
+
 ```ts
 /* eslint "@tanstack/query/exhaustive-deps": "error" */
 useQuery({
@@ -867,6 +865,7 @@ const todoQueries = {
 ```
 
 옳바른 예제:
+
 ```ts
 useQuery({
   queryKey: ["todo", todoId],
@@ -882,6 +881,7 @@ const todoQueries = {
 `useQuery`는 `useQuery(queryKey, queryFn?, options?)`, `useQuery(options)` 두가지 형태로 사용할 수 있지만, React Query는 다른 훅들과의 일관성을 위해 `useQuery(options)` 형태로 사용하는 것을 추천합니다.
 
 잘못된 예제:
+
 ```ts
 /* eslint "@tanstack/query/prefer-query-object-syntax": "error" */
 import { useQuery } from '@tanstack/react-query';
@@ -897,6 +897,7 @@ useQuery(queryKey, {
 ```
 
 옳바른 예제:
+
 ```ts
 import { useQuery } from '@tanstack/react-query';
 
