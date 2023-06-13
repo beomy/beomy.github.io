@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[React] TanStack Query (React Query)'
+title: '[React] TanStack Query v4 (React Query)'
 featured-img: react/tanstack-query.png
 category: [tech, react]
 summary: TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다.
@@ -100,7 +100,7 @@ React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 �
 `useQueries`와 `useInfiniteQuery` 훅은 `useQuery`와 동일하게 서버에서 데이터를 가져올 때 사용되는 훅입니다. 여러 데이터를 병렬로 가져와야 할 때는 `useQueries` 훅을 사용 할 수 있고, 무한 스크롤과 같이 계속해서 데이터를 가져와야 할 경우 `useInfiniteQuery` 훅을 사용할 수 있습니다.
 
 ### refetch
-`useQuery`, `useQueries`, `useInfiniteQuery`는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 아래와 같은 경우에 자동으로 데이터를 가져옵니다.
+Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 아래와 같은 경우에 자동으로 데이터를 가져옵니다.
 
 - 쿼리를 사용한 컴포넌트가 마운트 되었을 때
 - 윈도우가 다시 포커스 되었을 때
@@ -236,7 +236,143 @@ const {
 })
 ```
 
-`useQuery`는 `queryKey`와 `queryFn`을 필수로 선언해 줘야 합니다. `queryFn`의 경우 기본 값으로 설정해 둔 함수가 있다면 생략할 수 있습니다. 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 좀 더 간편하게 만들 수 있게 돕습니다.
+`useQuery`는 `queryKey`와 `queryFn`을 필수로 선언해 줘야 합니다. `queryFn`의 경우 기본 값으로 설정해 둔 함수가 있다면 생략할 수 있습니다. 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 좀 더 간편하게 만들 수 있게 돕습니다. 유용한 옵션과 반환 값들을 몇가지 살펴보도록 하겠습니다.
+
+#### `select` 옵션
+`select` 옵션을 사용하여 쿼리 함수에서 반환된 데이터를 변환하거나 선택할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+
+const QuerySelect = () => {
+  const { data } = useQuery({
+    queryKey: ["project"],
+    queryFn: () => {
+      return new Promise((resolve) => {
+        setTimeout(() => resolve([1, 2, 3, 4, 5, 6]), 2000);
+      });
+    },
+    select: (value: any) => value.filter((x: any) => x % 2 === 0)
+  });
+
+  return <div>{data?.join(",")}</div>;
+};
+
+export default QuerySelect;
+```
+
+위의 코드는 쿼리 함수는 1부터 6까지 숫자의 배열을 반환하지만, `select` 옵션을 사용하여 짝수 배열 값만 얻는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-select-3qkbeb?file=/src/QuerySelect.tsx)에서 확인할 수 있습니다.
+
+#### `enabled` 옵션
+쿼리는 보통 마운트 되면서 자동으로 쿼리 함수를 실행해 비동기 데이터를 가져오는데, `enabled` 옵션을 `false`로 설정하여 마운트 되었을 때 자동으로 비동기 데이터를 가져오지 않도록 할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+
+const QueryEnable = () => {
+  const [isEnable, setEnable] = useState(false);
+  const { data } = useQuery({
+    queryKey: ["project"],
+    queryFn: () => {
+      return new Promise((resolve) => {
+        setTimeout(() => resolve([1, 2, 3, 4, 5, 6]), 2000);
+      });
+    },
+    enabled: isEnable
+  });
+
+  useEffect(() => {
+    setTimeout(() => setEnable(true), 2000);
+  }, []);
+
+  return <div>{data?.join(",")}</div>;
+};
+
+export default QueryEnable;
+```
+
+위의 코드는 2초 후 `enabled` 속성을 `true`로 변경하여 비동기 데이터를 가져오는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-jy3fjx?file=/src/QueryEnable.tsx)에서 확인할 수 있습니다.
+
+#### `keepPreviousData` 옵션
+`keepPreviousData` 옵션은 페이징 처리를 할 때 사용하기 유용한 옵션으로 쿼리가 새로운 데이터를 가져오기 전까지 이전 데이터를 유지시키는 옵션입니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+
+type PostRequest = {
+  page: number;
+  size: number;
+};
+
+const usePosts = ({ page, size }: PostRequest) => {
+  return useQuery<number[]>({
+    queryKey: ["post", page, size],
+    queryFn: () => {
+      return new Promise((resolve) => {
+        const list: number[] = [];
+        for (let i = 1; i <= size; i++) {
+          list.push(page * size + i);
+        }
+        setTimeout(() => resolve(list), 2000);
+      });
+    },
+    keepPreviousData: true
+  });
+};
+
+const QueryKeepPreviousData = () => {
+  const [page, setPage] = useState(0);
+  const { data } = usePosts({ page, size: 10 });
+  return (
+    <div>
+      <div>{data?.join(",")}</div>
+      <button onClick={() => setPage((value) => value + 1)}>다음</button>
+    </div>
+  );
+};
+
+export default QueryKeepPreviousData;
+```
+
+위의 코드는 2초 후 새로운 데이터를 가져오게 되는데, 새로운 데이터를 가져오는 2초 동안 기존의 데이터를 유지하는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-fjum7j?file=/src/QueryKeepPreviousData.tsx)에서 확인할 수 있습니다. 아래 그림과 같이 `keepPreviousData: true`, `keepPreviousData: false`가 차이를 보입니다.
+
+|                                 `keepPreviousData: true`                                  |                                  `keepPreviousData: false`                                  |
+|:-----------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|
+| ![keyPreviousData: true](/assets/img/posts/react/react_query_keep_previous_data_true.gif) | ![keyPreviousData: false](/assets/img/posts/react/react_query_keep_previous_data_false.gif) |
+
+#### `refetch` 반환
+쿼리의 반환 값 중 `refetch`를 사용하면 비동기 데이터를 다시 가져올 수 있습니다. `useQuery`, `useQueries` 모두 `refetch` 필드를 반환 합니다. 사용 방법은 다르지만 `useInfiniteQuery` 역시 `refetch`을 반환합니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+const App = () => {
+  const { data, refetch } = useQuery({
+    queryKey: ['projects'],
+    queryFn: fetchProjects,
+    enabled: true,
+  })
+
+  return (
+    <div>
+      <p>{data}</p>
+      <button onClick={() => refetch()}>refetch</button>
+    </div>
+  )
+}
+```
+
+`enabled: true`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 비동기 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
+
+#### `stauts` 반환
+React Query는 요청한 Query 혹은 Mutation의 상태를 알 수 있도록 `status` 필드를 반환합니다. `status`는 `idle`, `loading`, `error`, `success` 값 중 하나를 가지고 `idle`은 Mutation에서만 사용됩니다.
+
+- `idle`(Mutation 전용): Mutation 함수가 실행되지 않은 초기 상태
+- `loading`: 캐시된 데이터도 없고, Query(혹은 Mutation)이 끝나지 않은 상태
+- `error`: Query(혹은 Mutation)에 에러가 발생한 상태, 이 때 `error` 객체에는 에러 정보들이 담겨 있게 됩니다.
+- `success`: Query(혹은 Mutation)가 성공한 상태, 이 때 `data` 객체에는 성공한 결과 데이터들이 담겨 있게 됩니다.
+
+`status` 이외에 React Query는 요청한 Query, Mutation의 상태를 알 수 있는 `is`로 시작하는 플래그 값들을 많이 가지고 있습니다.
 
 ### `useMutation`
 `useMutation`은 서버의 데이터를 변경하기 위해 사용되는 훅으로 보통 HTTP의 POST, PUT, DELETE, PATCH 요청과 같이 부수 효과를 발생하는 요청에서 사용되는 훅입니다. `useMutation`은 아래 코드와 같은 형태로 사용됩니다. 좀 더 자세한 내용은 [useMutation API Reference](/tech/react/tanstack-query/#usemutation)에서 이야기 하도록 하겠습니다.
@@ -411,144 +547,27 @@ refetch({ refetchPage: (page, index) => index === 0 })
 - `isFetchingNextPage`: 다음 페이지 데이터를 가져오는 중인지 표시하는 플레그입니다.
 - `isFetchingPreviousPage`: 이전 페이지 데이터를 가져오는 중인지 표시하는 플레그입니다.
 
-### 쿼리의 옵션 값과 반환 값
-`useQuery`, `useQueries`, `useInfiniteQuery` 등의 쿼리를 사용할 때 함께 사용하면 유용한 옵션 값과 반환 값 몇가지를 살펴보도록 하겠습니다.
+### `useIsFetching`
+`useIsFetching` 훅은 현재 Fetching(가져오는) 중인 쿼리가 있는지 확인 할 때 사용하는 훅으로 매칭되는 쿼리 갯수를 반환합니다. 아래 코드와 같이 사용할 수 있습니다.
 
-#### `select` 옵션
-`select` 옵션을 사용하여 쿼리 함수에서 반환된 데이터를 변환하거나 선택할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
-
-```tsx
-import { useQuery } from "@tanstack/react-query";
-
-const QuerySelect = () => {
-  const { data } = useQuery({
-    queryKey: ["project"],
-    queryFn: () => {
-      return new Promise((resolve) => {
-        setTimeout(() => resolve([1, 2, 3, 4, 5, 6]), 2000);
-      });
-    },
-    select: (value: any) => value.filter((x: any) => x % 2 === 0)
-  });
-
-  return <div>{data?.join(",")}</div>;
-};
-
-export default QuerySelect;
+```ts
+import { useIsFetching } from '@tanstack/react-query'
+// How many queries are fetching?
+const isFetching = useIsFetching()
+// How many queries matching the posts prefix are fetching?
+const isFetchingPosts = useIsFetching({ queryKey: ['posts'] })
 ```
 
-위의 코드는 쿼리 함수는 1부터 6까지 숫자의 배열을 반환하지만, `select` 옵션을 사용하여 짝수 배열 값만 얻는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-select-3qkbeb?file=/src/QuerySelect.tsx)에서 확인할 수 있습니다.
+### `useIsMutating`
+`useIsMutating` 훅은 현재 Mutation 중인지 확인 할 때 사용하는 훅으로 매칭되는 Mutation의 갯수를 반환합니다. 아래 코드와 같이 사용할 수 있습니다.
 
-#### `enabled` 옵션
-쿼리는 보통 마운트 되면서 자동으로 쿼리 함수를 실행해 비동기 데이터를 가져오는데, `enabled` 옵션을 `false`로 설정하여 마운트 되었을 때 자동으로 비동기 데이터를 가져오지 않도록 할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
-
-```tsx
-import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-
-const QueryEnable = () => {
-  const [isEnable, setEnable] = useState(false);
-  const { data } = useQuery({
-    queryKey: ["project"],
-    queryFn: () => {
-      return new Promise((resolve) => {
-        setTimeout(() => resolve([1, 2, 3, 4, 5, 6]), 2000);
-      });
-    },
-    enabled: isEnable
-  });
-
-  useEffect(() => {
-    setTimeout(() => setEnable(true), 2000);
-  }, []);
-
-  return <div>{data?.join(",")}</div>;
-};
-
-export default QueryEnable;
+```ts
+import { useIsMutating } from '@tanstack/react-query'
+// How many mutations are fetching?
+const isMutating = useIsMutating()
+// How many mutations matching the posts prefix are fetching?
+const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
 ```
-
-위의 코드는 2초 후 `enabled` 속성을 `true`로 변경하여 비동기 데이터를 가져오는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-jy3fjx?file=/src/QueryEnable.tsx)에서 확인할 수 있습니다.
-
-#### `keepPreviousData` 옵션
-`keepPreviousData` 옵션은 페이징 처리를 할 때 사용하기 유용한 옵션으로 쿼리가 새로운 데이터를 가져오기 전까지 이전 데이터를 유지시키는 옵션입니다. 아래 코드와 같이 사용할 수 있습니다.
-
-```tsx
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-
-type PostRequest = {
-  page: number;
-  size: number;
-};
-
-const usePosts = ({ page, size }: PostRequest) => {
-  return useQuery<number[]>({
-    queryKey: ["post", page, size],
-    queryFn: () => {
-      return new Promise((resolve) => {
-        const list: number[] = [];
-        for (let i = 1; i <= size; i++) {
-          list.push(page * size + i);
-        }
-        setTimeout(() => resolve(list), 2000);
-      });
-    },
-    keepPreviousData: true
-  });
-};
-
-const QueryKeepPreviousData = () => {
-  const [page, setPage] = useState(0);
-  const { data } = usePosts({ page, size: 10 });
-  return (
-    <div>
-      <div>{data?.join(",")}</div>
-      <button onClick={() => setPage((value) => value + 1)}>다음</button>
-    </div>
-  );
-};
-
-export default QueryKeepPreviousData;
-```
-
-위의 코드는 2초 후 새로운 데이터를 가져오게 되는데, 새로운 데이터를 가져오는 2초 동안 기존의 데이터를 유지하는 예제입니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-query-enable-fjum7j?file=/src/QueryKeepPreviousData.tsx)에서 확인할 수 있습니다. 아래 그림과 같이 `keepPreviousData: true`, `keepPreviousData: false`가 차이를 보입니다.
-
-|                                 `keepPreviousData: true`                                  |                                  `keepPreviousData: false`                                  |
-|:-----------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|
-| ![keyPreviousData: true](/assets/img/posts/react/react_query_keep_previous_data_true.gif) | ![keyPreviousData: false](/assets/img/posts/react/react_query_keep_previous_data_false.gif) |
-
-#### `refetch` 반환
-쿼리의 반환 값 중 `refetch`를 사용하면 비동기 데이터를 다시 가져올 수 있습니다. `useQuery`, `useQueries` 모두 `refetch` 필드를 반환 합니다. 사용 방법은 다르지만 `useInfiniteQuery` 역시 `refetch`을 반환합니다. 아래 코드와 같이 사용할 수 있습니다.
-
-```tsx
-const App = () => {
-  const { data, refetch } = useQuery({
-    queryKey: ['projects'],
-    queryFn: fetchProjects,
-    enabled: true,
-  })
-
-  return (
-    <div>
-      <p>{data}</p>
-      <button onClick={() => refetch()}>refetch</button>
-    </div>
-  )
-}
-```
-
-`enabled: true`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 비동기 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
-
-#### `stauts` 반환
-React Query는 요청한 Query 혹은 Mutation의 상태를 알 수 있도록 `status` 필드를 반환합니다. `status`는 `idle`, `loading`, `error`, `success` 값 중 하나를 가지고 `idle`은 Mutation에서만 사용됩니다.
-
-- `idle`(Mutation 전용): Mutation 함수가 실행되지 않은 초기 상태
-- `loading`: 캐시된 데이터도 없고, Query(혹은 Mutation)이 끝나지 않은 상태
-- `error`: Query(혹은 Mutation)에 에러가 발생한 상태, 이 때 `error` 객체에는 에러 정보들이 담겨 있게 됩니다.
-- `success`: Query(혹은 Mutation)가 성공한 상태, 이 때 `data` 객체에는 성공한 결과 데이터들이 담겨 있게 됩니다.
-
-`status` 이외에 React Query는 요청한 Query, Mutation의 상태를 알 수 있는 `is`로 시작하는 플래그 값들을 많이 가지고 있습니다.
 
 ### `QueryClient`
 React Query를 사용하려면 최상단에 `QueryClientProvider` 컴포넌트를 감싸주고 `QueryClientProvider` 컴포넌트의 `client` 속성에 `QueryClient` 인스턴스를 넘겨줘야 합니다. 이 `QueryClient` 인스턴스는 React Query에 유용한 기능들을 담고 있습니다. 하위 컴포넌트에서 `QueryClient` 인스턴스를 가져오기 위해서는 아래 코드와 같이 `useQueryClient`를 통해 `QueryClient` 인스턴스를 가져올 수 있습니다.
