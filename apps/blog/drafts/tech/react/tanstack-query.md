@@ -678,24 +678,6 @@ const prefetchTodos = async () => {
 
 미리 가져온 쿼리를 캐시를 해두기 때문에 Query를 통해 데이터를 가져올 때 캐시된 데이터를 사용하여 빠른 결과를 얻을 수 있습니다. 예를 들어 1페이지에서 2페이지로 이동했을 때 3페이지의 데이터를 `queryClient.prefetchQuery`로 미리 캐시해 둔다면 3페이지로 전환할 때 빠른 결과 값을 가져올 수 있습니다.
 
-## API Reference
-
-### `uesQuery`
-
-### `useQueries`
-
-### `useInfiniteQuery`
-
-### `useMutation`
-
-### `useQueryClient`
-- QueryClient
-- 쿼리 필터링
-
-### `useIsFetching`
-
-### `useIsMutating`
-
 ## 부록
 
 ### ErrorBoundary
@@ -849,14 +831,62 @@ React Query의 ESLint 규칙은 아래 코드와 같이 `exhaustive-deps`, `pref
 }
 ```
 
-#### `exhaustive-deps`
+#### `@tanstack/query/exhaustive-deps`
+쿼리 키는 쿼리 함수에 대한 종속성 배열이여야 합니다. `queryFn` 함수 안에서 사용하는 변수는 `queryKey` 배열에 포함되어야 합니다.
 
-#### `prefer-query-object-syntax`
+잘못된 예제:
+```ts
+/* eslint "@tanstack/query/exhaustive-deps": "error" */
+useQuery({
+  queryKey: ["todo"],
+  queryFn: () => api.getTodo(todoId)
+})
 
-### Tanstack Query V4와 V5
-`v5.0.0-alpha.58`
+const todoQueries = {
+  detail: (id) => ({ queryKey: ["todo"], queryFn: () => api.getTodo(id) })
+}
+```
 
-### Mutation의 캐싱
+옳바른 예제:
+```ts
+useQuery({
+  queryKey: ["todo", todoId],
+  queryFn: () => api.getTodo(todoId)
+})
+
+const todoQueries = {
+  detail: (id) => ({ queryKey: ["todo", id], queryFn: () => api.getTodo(id) })
+}
+```
+
+#### `@tanstack/query/prefer-query-object-syntax`
+`useQuery`는 `useQuery(queryKey, queryFn?, options?)`, `useQuery(options)` 두가지 형태로 사용할 수 있지만, React Query는 다른 훅들과의 일관성을 위해 `useQuery(options)` 형태로 사용하는 것을 추천합니다.
+
+잘못된 예제:
+```ts
+/* eslint "@tanstack/query/prefer-query-object-syntax": "error" */
+import { useQuery } from '@tanstack/react-query';
+
+useQuery(queryKey, queryFn, {
+  onSuccess,
+});
+
+useQuery(queryKey, {
+  queryFn,
+  onSuccess,
+});
+```
+
+옳바른 예제:
+```ts
+import { useQuery } from '@tanstack/react-query';
+
+useQuery({
+  queryKey,
+  queryFn,
+  onSuccess,
+});
+```
 
 ##### 참고
 - [https://tanstack.com/query/v4/](https://tanstack.com/query/v4/)
