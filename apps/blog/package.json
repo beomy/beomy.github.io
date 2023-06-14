@@ -30,7 +30,7 @@
     "@emotion/styled": "11.10.0",
     "color": "4.2.3",
     "date-fns": "2.29.1",
-    "gatsby": "4.20.0",
+    "gatsby": "4.25.7",
     "gatsby-plugin-compile-es6-packages": "2.1.1",
     "gatsby-plugin-disqus": "1.2.4",
     "gatsby-plugin-emotion": "7.20.0",
