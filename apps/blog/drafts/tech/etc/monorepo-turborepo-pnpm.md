@@ -6,9 +6,10 @@ category: [tech, etc]
 summary:
 ---
 
-## turborepo
-
 ## pnpm
+`yarn dlx` == `npx` == `pnpm dlx`
+
+## turborepo
 
 ## turbopack
 
