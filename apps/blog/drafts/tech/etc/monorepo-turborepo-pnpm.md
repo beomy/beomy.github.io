@@ -7,7 +7,7 @@ summary:
 ---
 
 ## pnpm
-`yarn dlx` == `npx` == `pnpm dlx`
+`yarn dlx` = `npx` = `pnpm dlx`
 
 ## turborepo
 
