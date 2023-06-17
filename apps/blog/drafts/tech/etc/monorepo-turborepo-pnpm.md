@@ -6,12 +6,12 @@ category: [tech, etc]
 summary:
 ---
 
-## pnpm
-`yarn dlx` = `npx` = `pnpm dlx`
+## PNPM 설치
+- turborepo에서는 pnpm을 사용할 것을 추천한다. https://turbo.build/repo/docs/getting-started/create-new
+- `npm install -g pnpm`
 
-## turborepo
-
-## turbopack
+## 퀵스타트
+- `yarn dlx` = `npx` = `pnpm dlx`
 
 - [https://turbo.build/repo](https://turbo.build/repo)
 - [https://pnpm.io/ko/](https://pnpm.io/ko/)
