@@ -11,7 +11,14 @@ summary:
 - `npm install -g pnpm`
 
 ## 퀵스타트
-- `yarn dlx` = `npx` = `pnpm dlx`
+- `pnpm dlx create-turbo@latest`: 여러가지 예제가 있음
 
+> `yarn dlx` = `npx` = `pnpm dlx`
+
+## 주요 컨샙
+
+### 캐싱 Task
+
+##### 참고
 - [https://turbo.build/repo](https://turbo.build/repo)
 - [https://pnpm.io/ko/](https://pnpm.io/ko/)
