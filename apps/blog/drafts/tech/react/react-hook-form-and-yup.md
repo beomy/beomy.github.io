@@ -18,6 +18,14 @@ pnpm add react-hook-form
 yarn add react-hook-form
 ```
 
+```tsx
+// 간단한 예제
+```
+
+### `register`와 `Control`
+
+### 에러 핸들링
+
 ## Yup
 
 ## @hookform/resolvers
