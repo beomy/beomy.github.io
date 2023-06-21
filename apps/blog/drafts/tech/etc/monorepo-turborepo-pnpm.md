@@ -17,7 +17,12 @@ summary:
 
 ## 주요 컨샙
 
-### 캐싱 Task
+### Task 캐싱
+- input 값을 평가하여 hash해 둔다
+- 캐시를 사용하지 않으려면: `--no-cache`, `--force`, `pipeline.<task>.cache`
+- cache hit/miss:
+
+### Remote 캐싱
 
 ##### 참고
 - [https://turbo.build/repo](https://turbo.build/repo)
