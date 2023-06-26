@@ -6,10 +6,10 @@ category: [tech, react]
 summary: TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다.
 ---
 
-TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다. 이번 포스트에서는 React에서 TanStack Query를 사용하는 방법을 살펴보도록 하겠습니다. TanStack의 `react-query`를 가져와 사용하는데, React Query라는 명칭을 사용하도록 하겠습니다.
+TanStack Query는 비동기 작업 처리를 돕는 라이브러리입니다. v3까지는 React Query라는 이름으로 React만 지원했는데, v4 부터 React 이외의 프레임워크(Vue, Svelte, Solid)에서 사용할 수 있도록 업데이트 되며 TanStack Query로 이름이 변경되었습니다. 이번 포스트에서는 React에서 TanStack Query를 사용하는 방법을 살펴보도록 하겠습니다. TanStack의 `react-query`를 가져와 사용하는데, 이번 포스트에서는 React Query라는 명칭을 사용하도록 하겠습니다.
 
 ## 역할
-React Query는 서버의 데이터 가져오기/업데이트, 캐싱, 에러 처리 등을 쉽게 처리할 수 있도록 돕는 라이브러리입니다. 서버에서 가져온 값을 담는 객체, 에러가 발생했다면 에러 정보를 담는 객체, 데이터 가져오기/엡데이트 중임을 나타내는 등 각종 유틸 기능을 제공합니다. 동시에 동일한 요청을 여러번 해도 한번만 요청을 보내어 최적화 하기 때문에 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 됩니다.
+React Query는 서버의 데이터 가져오기/업데이트, 캐싱, 에러 처리 등을 쉽게 할 수 있도록 돕는 라이브러리입니다. 서버에서 가져온 값을 담는 객체, 에러가 발생했을 때 에러 정보를 담는 객체, 데이터 가져오기/엡데이트 중임을 나타내는 등 각종 유틸 기능을 제공합니다. 동일한 요청을 동시에 여러번 해도 한번만 요청을 보내어 최적화 하기 때문에 비동기 작업(API 호출하는 등...)을 좀 더 효율적이고 간단하게 처리할 수 있게 합니다.
 
 ## 쿽 스타트
 React Query를 사용하기 위해서 먼저 아래 코드와 같이 `@tanstack/react-query`를 설치해야 합니다.
@@ -93,11 +93,11 @@ React Query를 사용하기 위해서는 `QueryClientProvider` 컴포넌트를 �
 React Query를 사용할 때 자주 접하게 되는 React Query의 중요한 개념들과 설정들을 살펴보도록 하겠습니다.
 
 ### Query와 Mutation
-React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 접하게 됩니다. Query는 서버에서 데이터를 가져오는 작업으로 `useQuery` 훅을 많이 사용합니다. Mutation은 서버의 데이터를 변경하는 부수효과가 있는 작업으로 `useMutation` 훅을 많이 사용힙니다. HTTP 메소드의 GET 요청의 경우 `useQuery`를 POST, PUT, PATCH, DELETE 요청의 경우 `useMutation`을 대부분의 경우 사용하게 됩니다.
+React Query를 사용하다 보면 Query와 Mutation이라는 단어를 많이 접하게 됩니다. Query는 서버에서 데이터를 가져오는 작업으로 `useQuery` 훅을 많이 사용합니다. Mutation은 서버의 데이터를 변경하는 부수효과가 있는 작업으로 `useMutation` 훅을 많이 사용힙니다. 보통은 HTTP 메소드의 GET 요청의 경우 `useQuery`를 POST, PUT, PATCH, DELETE 요청의 경우 `useMutation`을 사용하게 됩니다.
 
 `useQueries`와 `useInfiniteQuery` 훅은 `useQuery`와 동일하게 서버에서 데이터를 가져올 때 사용되는 훅입니다. 여러 데이터를 병렬로 가져와야 할 때는 `useQueries` 훅을 사용 할 수 있고, 무한 스크롤과 같이 계속해서 데이터를 가져와야 할 경우 `useInfiniteQuery` 훅을 사용할 수 있습니다.
 
-### refetch
+### 다시 가져오기
 Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다르지만 기본 값으로 설정된 경우 오래된 쿼리는 아래와 같은 경우에 자동으로 데이터를 다시 가져옵니다.
 
 - 쿼리를 사용한 컴포넌트가 마운트 되었을 때
@@ -109,7 +109,7 @@ Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다�
 `retry` 설정에 따라 Query/Mutation 작업이 실패하면 React Query는 자동으로 재시도를 합니다. Query의 `retry` 기본 값은 3, Mutation의 `retry` 기본 값은 0입니다. `retryDelay` 설정을 통해 얼마 간의 간격으로 재시도를 할 것인지 설정할 수 있습니다. `retry`와 `retryDelay`는 Query, Mutation 훅(`useQuery`, `useMutation`, `useQueries`, `useInfiniteQuery` 훅)의 옵션으로 전달하여 설정할 수 있습니다.
 
 ### `staleTime`
-`staleTime`은 React Query를 통해 가져온 데이터가 오래된 것으로 인식하게 되는 시간입니다. ms 단위로 저장되는데 기본 값은 0입니다. React Query는 오래된 데이터라고 판단되면 다시 데이터를 가져옵니다. `staleTime`에 설정된 시간 따라 React Query가 동작 하는 방식은 아래와 같습니다.
+`staleTime`은 Query를 통해 가져온 데이터가 오래된 것으로 인식하게 되는 시간입니다. ms 단위로 저장되는데 기본 값은 0입니다. Query는 오래된 데이터라고 판단되면 다시 데이터를 가져옵니다. `staleTime`에 설정된 시간 따라 Query가 동작 하는 방식은 아래와 같습니다.
 
 - 0으로 설정할 경우: 데이터를 가져온 즉시 오래된 데이터로 인식하기 때문에 캐시 된 데이터를 우선 사용한 후 API를 다시 호출하여 새로운 데이터를 응답 받으면 데이터를 교체합니다.
 - 5000으로 설정할 경우
@@ -128,7 +128,7 @@ Query(`useQuery`, `useQueries`, `useInfiniteQuery`)는 설정 값에 따라 다�
 `cacheTime`은 캐시된 값을 사용할지 판단하는 설정입니다. Query, Mutation 훅(`useQuery`, `useMutation`, `useQueries`, `useInfiniteQuery` 훅)의 옵션으로 전달하여 설정할 수 있습니다. [CodeSandBox](https://codesandbox.io/s/tanstack-query-cachetime-cr7be7)에서 테스트하실 수 있습니다.
 
 ### `queryKey`
-React Query는 `queryKey`를 기반으로 쿼리 캐싱을 관리합니다. 아래 코드와 같이 `queryKey`는 단순 문자열 배열이나, 복잡한 형태의 배열 모두 가능합니다. Query 훅(`useQuery`, `useMutation`, `useQueries` 훅)의 옵션으로 전달하여 설정할 수 있습니다.
+Query는 `queryKey`를 기반으로 쿼리 캐싱을 관리합니다. 아래 코드와 같이 `queryKey`는 단순 문자열 배열이나, 복잡한 형태의 배열 모두 가능합니다. Query 훅(`useQuery`, `useMutation`, `useQueries` 훅)의 옵션으로 전달하여 설정할 수 있습니다.
 
 ```tsx
 useQuery({ queryKey: ['todos'], ... })
@@ -156,7 +156,7 @@ useQuery({ queryKey: ['todos', undefined, page, status], ...})
 ```
 
 ### `queryFn`와 `mutationFn`
-`queryFn`은 `Promise` 객체를 반환하는 비동기 작업을 수행하는 함수입니다. React Query는 `queryFn`을 실행하여 서버 데이터를 가져오거나 업데이트 합니다. `useQuery` 훅에서는 `queryFn` 필드에 비동기 함수를 정의하고, `useMutation` 훅에서는 `mutationFn` 필드에 비동기 함수를 정의합니다.
+`queryFn`와 `mutationFn`은 `Promise` 객체를 반환하는 비동기 작업을 수행하는 함수입니다. React Query는 `queryFn`혹은 `mutationFn`을 실행하여 서버 데이터를 가져오거나 업데이트 합니다. `useQuery` 훅에서는 `queryFn` 필드에 비동기 함수를 정의하고, `useMutation` 훅에서는 `mutationFn` 필드에 비동기 함수를 정의합니다.
 
 #### 에러 처리 방법
 `queryFn`, `mutationFn`에서 에러가 발행하면 `Promise.reject(new Error(message))` 혹은 `trow new Error(message)`로 에러를 처리해 줘야 합니다.
@@ -234,10 +234,10 @@ const {
 })
 ```
 
-`useQuery`는 `queryKey`와 `queryFn`을 필수로 선언해 줘야 합니다. `queryFn`의 경우 기본 값으로 설정해 둔 함수가 있다면 생략할 수 있습니다. 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 간단하게 만들 수 있게 돕습니다. 유용한 옵션과 반환 값들을 몇가지 살펴보도록 하겠습니다.
+`useQuery`는 `queryKey`와 `queryFn`을 필수로 선언해 줘야 합니다. `queryFn`의 경우 기본 값으로 설정해 둔 함수가 있다면 생략할 수 있습니다. 반환 값으로 응답 데이터를 저장하는 `data`, 에러 정보를 담고 있는 `error`, 쿼리 상태를 담고 있는 `status` 등을 반환하는데, 이 값들은 비동기 처리를 간단하게 만들 수 있게 돕습니다. `useQuery`의 유용한 옵션과 반환 값들을 몇가지 살펴보도록 하겠습니다.
 
 #### `select` 옵션
-`select` 옵션을 사용하여 쿼리 함수에서 반환된 데이터를 변환하거나 선택할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
+`select` 옵션을 사용하여 쿼리 함수에서 반환된 데이터를 변경하거나 선택할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
 import { useQuery } from "@tanstack/react-query";
@@ -348,7 +348,7 @@ const App = () => {
   const { data, refetch } = useQuery({
     queryKey: ['projects'],
     queryFn: fetchProjects,
-    enabled: true,
+    enabled: false,
   })
 
   return (
@@ -360,15 +360,15 @@ const App = () => {
 }
 ```
 
-`enabled: true`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
+`enabled: false`로 설정되어 마운트 될 때 비동기 데이터를 가져오지 않고 버튼이 클릭되는 등의 특정 액션이 발생할 때 비동기 데이터를 가져와야 하거나, 데이터가 업데이트 되어 새롭게 데이터를 가져와야 할 때 `refetch` 함수를 사용하여 비동기 데이터를 다시 가져올 수 있습니다.
 
 #### `stauts` 반환
-React Query는 요청한 Query 혹은 Mutation의 상태를 알 수 있도록 `status` 필드를 반환합니다. `status`는 `idle`, `loading`, `error`, `success` 값 중 하나를 가집니다. 단, `idle`은 Mutation에서만 사용됩니다.
+React Query는 요청한 Query 혹은 Mutation의 상태를 알 수 있도록 `status` 필드를 반환합니다. `status`는 `idle`(Mutation 전용), `loading`, `error`, `success` 값 중 하나를 가집니다.
 
 - `idle`(Mutation 전용): Mutation 함수가 실행되지 않은 초기 상태
 - `loading`: 캐시된 데이터도 없고, Query(혹은 Mutation)이 끝나지 않은 상태
-- `error`: Query(혹은 Mutation)에 에러가 발생한 상태, 이 때 `error` 객체에는 에러 정보들이 담겨 있게 됩니다.
-- `success`: Query(혹은 Mutation)가 성공한 상태, 이 때 `data` 객체에는 성공한 결과 데이터들이 담겨 있게 됩니다.
+- `error`: Query(혹은 Mutation)에 에러가 발생한 상태, 이 때 `error` 객체에는 에러 정보들이 담김
+- `success`: Query(혹은 Mutation)가 성공한 상태, 이 때 `data` 객체에는 성공한 결과 데이터들이 담김
 
 `status` 이외에 React Query는 요청한 Query, Mutation의 상태를 알 수 있는 `is`로 시작하는 플래그 값들을 반환합니다.
 
@@ -393,7 +393,7 @@ const {
 
 `useMutation`의 반환 값으로 `mutation`과 `mutationAsync` 함수가 있는데, 이 함수를 호출하여 Mutation 요청을 할 수 있습니다. `mutation`와 `mutationAsync` 함수의 차이점은 `mutation` 함수는 요청에 응답 받은 후 결과를 `onSuccess`, `onSettled`, `onError`와 같은 콜백 함수로 처리할 수 있고, `mutationAsync` 함수는 `Promise`를 반환하기 때문에 `Promise`의 `then` 혹은 `Async await` 형태로 처리할 수 있습니다.
 
-### `useQueries` - 병렬 쿼리
+### `useQueries`
 병렬 쿼리란 동시에 여러 쿼리를 요청하는 방법입니다. 정적으로 정해진 쿼리들을 요청하는 Manual 방법과 동적으로 결정되는 쿼리를 요청하는 Dynamic 방법 2가지 방법을 살펴보도록 하겠습니다.
 
 #### Manual Parallel Queries
@@ -425,7 +425,7 @@ function App({ users }) {
 }
 ```
 
-### `useInfiniteQuery` - 무한 쿼리
+### `useInfiniteQuery`
 `useInfiniteQuery` 훅은 무한 스크롤이나 더 보기 버튼을 제공해야 할 때 사용하기 좋은 기능입니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
@@ -505,7 +505,7 @@ export default InfiniteQuery;
 `useQuery`의 리턴 값 중 `data` 필드는 비동기 데이터를 저장하는 객체이지만 `useInfiniteQuery`의 `data`필드는 `pages`와 `pageParams` 필드를 포함하는 객체입니다.
 
 - `data.pages`: 무한 쿼리를 통해 가져온 비동기 데이터를 배열의 형태로 저장하고 있는 필드입니다.
-- `data.pageParams`: 무한 쿼리를 통해 비동기 데이터를 가져오기 사용한 파라미터를 배열의 형태로 저장하고 있는 필드입니다.
+- `data.pageParams`: 무한 쿼리를 통해 비동기 데이터를 가져오기 위해 사용된 파라미터를 배열의 형태로 저장하고 있는 필드입니다.
 
 #### `refetch`
 `useQuery`의 리턴 값 중 `refetch` 필드를 사용하면 비동기 데이터를 다시 가져올 수 있습니다. 사용성은 다르지만 `useInfiniteQuery`도 마찬가지로 `refetch` 필드를 사용하여 데이터를 다시 가져올 수 있습니다. 아래 코드와 같이 `refetch`를 사용할 수 있습니다.
@@ -530,8 +530,8 @@ refetch({ refetchPage: (page, index) => index === 0 })
 #### `getNextPageParam`, `getPreviousPageParam`
 `fetchNextPage`, `fetchPreviousPage` 필드를 사용하여 이전/다음 데이터를 가져올 때, `getNextPageParam`, `getPreviousPageParam` 옵션을 사용하여 이전/다음 데이터를 가져오기 위한 파라미터를 설정할 수 있습니다.
 
-- `getNextPageParam`: `getNextPageParam` 함수에서 리턴하는 값은 `fetchNextPage` 필드로 다음 데이터를 가져올 때 사용됩니다.
-- `getPreviousPageParam`: `getPreviousPageParam` 함수에서 리턴하는 값은 `fetchPreviousPage` 필드로 이전 데이터를 가져올 때 사용됩니다.
+- `getNextPageParam`: `getNextPageParam` 함수에서 리턴 된 값은 `fetchNextPage` 함수에서 다음 데이터를 가져올 때 사용됩니다.
+- `getPreviousPageParam`: `getPreviousPageParam` 함수에서 리턴 된 값은 `fetchPreviousPage` 함수에서 이전 데이터를 가져올 때 사용됩니다.
 
 #### `hasNextPage`, `hasPreviousPage`
 `hasNextPage`, `hasPreviousPage` 필드를 통해 이전/다음 데이터가 있는지 확인 할 수 있습니다.
@@ -744,7 +744,7 @@ const App = () => {
 }
 ```
 
-위의 코드는 하위 컴포넌트에서 Query, Mutation 중에 에러가 발생하면 `ErrorBoundary` 컴포넌트에서 정의한 `fallbackRender`가 화면서 노출됩니다. Query, Mutation을 위해 `useQuery`, `useMutation` 등의 훅을 사용하는데 훅의 옵션값으로 `useErrorBoundary` 필드를 아래 코드와 같이 전달 할 수 있습니다.
+위의 코드는 하위 컴포넌트에서 Query, Mutation 중에 에러가 발생하면 `ErrorBoundary` 컴포넌트에서 정의한 `fallbackRender`가 화면서 노출됩니다. Query, Mutation을 위해 `useQuery`, `useMutation` 등의 훅을 사용할 때 훅의 옵션값으로 `useErrorBoundary` 필드를 아래 코드와 같이 전달 할 수 있습니다.
 
 ```tsx
 useQuery({
