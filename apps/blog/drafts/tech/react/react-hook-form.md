@@ -41,15 +41,74 @@ yarn add react-hook-form
 ## 유효성 검증
 - @hookform/resolvers
 
-## Api Reference
+## API Reference
 
 ### useForm
+~~간단한 예제~~
+
+#### props
+- mode
+- reValidateMode
+- defaultValues
+- resolver
+- context
+- shouldFocusError
+- shouldUnregister
+- criteriaMode
+
+#### returns
+- watch
+- getValues
+- getFieldState
+- setError
+- clearErrors
+- setValue
+- trigger
+- formState
+- resetField
+- reset
+- handleSubmit
+- unregister
+- control
+- register
+- setFocus
 
 ### useController
+~~간단한 예제~~
+
+#### props
+- name
+- control
+- defaultValue
+- rules
+- shouldUnregister
+
+#### returns
+- `field.onChange`
+- `field.onBlur`
+- `field.value`
+- `field.name`
+- `field.ref`
+- `fieldState.invalid`
+- `fieldState.isTouched`
+- `fieldState.isDirty`
+- `fieldState.error`
+- `formState`
 
 ### useFormContext
+- FormProvider
 
 ### useWatch
+~~간단한 예제~~
+
+#### props
+- name
+- control
+- defaultValue
+- disabled
+- exact
+
+#### returns
 
 ### useFormState
 
