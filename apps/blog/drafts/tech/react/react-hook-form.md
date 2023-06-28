@@ -112,6 +112,15 @@ yarn add react-hook-form
 
 ### useFormState
 
+#### props
+- control
+- name
+- disabled
+- exact
+
+#### returns
+- `formState`
+
 ### useFieldArray
 
 ## 부록
