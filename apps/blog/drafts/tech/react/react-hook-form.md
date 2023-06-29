@@ -3,10 +3,19 @@ layout: post
 title: '[React] react-hook-form으로 폼 관리하기'
 featured-img: react/react.png
 category: [tech, react]
-summary:
+summary: FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 검증하는데에 많은 시간을 쓰게 됩니다. React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 React Hook Form을 사용하면 사용자에게 입력을 받고 검증하는데 드는 비용을 줄일 뿐만 아니라 더불어 성능까지 챙겨 갈 수 있습니다.
 ---
 
-## 컨샙
+FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 검증하는데에 많은 시간을 쓰게 됩니다. React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 React Hook Form을 사용하면 사용자에게 입력을 받고 검증하는데 드는 비용을 줄일 뿐만 아니라 더불어 성능까지 챙겨 갈 수 있습니다. 이번 포스트에서는 React Hook Form에 대해서 살펴보도록 하겠습니다.
+
+## React Hook Form의 콘셉트
+- DX: Less code
+- HTML standard
+- Super Light
+- Performance: uncontrolled 성능, Isolate Re-renders, Subscriptions
+- Adoptable
+- UX
+
 - uncontrolled: 성능
 - 다른 종속성이 필요없는 작고 가벼움
 
@@ -28,17 +37,19 @@ yarn add react-hook-form
 // 간단한 예제
 ```
 
-## `register`
+## 사용자 입력 다루기
 
-### 컴포넌트의 `ref`
+### `register`
 
-## `Controller`
+#### 컴포넌트의 `ref`
 
-### Controlled Component
+### `Controller`
 
-## 에러 핸들링
+#### Controlled Component
 
-## 유효성 검증
+### 에러 핸들링
+
+### 유효성 검증
 - @hookform/resolvers
 
 ## API Reference
@@ -121,7 +132,10 @@ yarn add react-hook-form
 #### returns
 - `formState`
 
+### ErrorMessage
+
 ### useFieldArray
+- dynamic input
 
 ## 부록
 
