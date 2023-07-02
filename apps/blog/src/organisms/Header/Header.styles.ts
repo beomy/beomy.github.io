@@ -21,6 +21,7 @@ export const GNB = styled(Ul)`
   }
   ${AnchorStyles.Wrapper} {
     padding: 5px 10px;
+    text-transform: capitalize;
   }
 `;
 

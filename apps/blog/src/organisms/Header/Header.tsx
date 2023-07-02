@@ -1,17 +1,41 @@
-import { useState, useCallback } from 'react';
-import { navigate } from 'gatsby';
+import { useState, useCallback, useMemo } from 'react';
+import { navigate, useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import { TextField, Anchor, Icon, IconButton } from '@beomy/design-system';
 import { useScroll } from '@beomy/utils';
 import { useTheme } from '@/hooks';
 import { Li } from '@/atoms';
 import * as S from './Header.styles';
+import { Data } from '@/models/graphQL';
 
 const Header = () => {
+  const { allMarkdownRemark } = useStaticQuery<Data>(graphql`
+    query HeaderQuery {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              category
+            }
+          }
+        }
+      }
+    }
+  `);
   const [theme, setTheme] = useTheme();
   const [isSearch, setIsSearch] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const scrollY = useScroll(20);
+
+  const categoryList = useMemo(() => {
+    return [
+      ...new Set(
+        allMarkdownRemark.edges.map(
+          ({ node }) => node.frontmatter.category?.[0],
+        ),
+      ),
+    ].filter((x) => !!x);
+  }, [allMarkdownRemark.edges]);
 
   const handleClickSearchBtn = useCallback(
     () => setIsSearch(!isSearch),
@@ -51,19 +75,21 @@ const Header = () => {
           )}
         </Anchor>
         <S.GNB>
-          <Li m="0 20px">
+          <Li m="0 10px">
             <Anchor to="/about/" partiallyActive>
-              About
+              about
             </Anchor>
           </Li>
-          <Li m="0 20px">
-            <Anchor to="/tech/" partiallyActive>
-              Tech
-            </Anchor>
-          </Li>
-          <Li m="0 20px">
+          {categoryList.map((category) => (
+            <Li m="0 10px" key={category}>
+              <Anchor to={`/${category}`} partiallyActive>
+                {category}
+              </Anchor>
+            </Li>
+          ))}
+          <Li m="0 10px">
             <Anchor href="/games" target="_blank">
-              Games
+              games
             </Anchor>
           </Li>
         </S.GNB>

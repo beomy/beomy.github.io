@@ -4,7 +4,7 @@ export type Fields = {
 };
 
 export type Frontmatter = {
-  category: string[];
+  category?: string[];
   thumbnail: string;
   layout: string;
   summary: string;
