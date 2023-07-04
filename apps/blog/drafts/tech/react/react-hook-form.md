@@ -12,7 +12,7 @@ FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 
 React Hook Form의 공식 문서를 보면 아래와 같이 6가지의 특징을 이야기 하고 있습니다.
 
 - DX: 직관적인 형태를 제공하고, 코드를 조금만 작성하면 되기 때문에 좋은 개발 경험을 제공합니다.
-- HTML standard: 기존의 HTML
+- HTML standard: 기존의 HTML을 활용하여 유효성 검사를 합니다.
 - Super Light:
 - Performance: uncontrolled 성능, Isolate Re-renders, Subscriptions
 - Adoptable
