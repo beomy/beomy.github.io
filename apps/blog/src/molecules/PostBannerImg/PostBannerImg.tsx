@@ -81,6 +81,12 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
         alt="포스트 배너"
       />
     ),
+    'react/react-hook-form.png': (
+      <StaticImage
+        src="../../assets/images/react/react-hook-form.png"
+        alt="포스트 배너"
+      />
+    ),
     'review/start-up-blog-writing.png': (
       <StaticImage
         src="../../assets/images/review/start-up-blog-writing.png"
