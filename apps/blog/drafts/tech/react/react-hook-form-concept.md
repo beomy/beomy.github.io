@@ -29,17 +29,96 @@ FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 
 ## DX: 코드 비교
 공식 문서에서는 React Hook Form이 직관적이고 완전한 형태의 API를 제공하여 개발자에게 좋은 개발 경험을 제공해 준다고 이야기합니다. 개발자는 코드로 말하는 법, 말이 어려우니 다른 라이브러리들과 코드를 비교하며 살펴보도록 하겠습니다.
 
-```js
+### 코드 양
+```jsx
+// react-hook-form
+import { useForm } from 'react-hook-form';
+
+export default function App() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors }
+  } = useForm();
+
+  const onSubmit = (values) => console.log(values);
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        {...register('email', {
+          required: 'Required',
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+            message: 'invalid email address'
+          }
+        })}
+      />
+      {errors.email && <span>{errors.email.message}</span>}
+
+      <input
+        {...register('username', {
+          validate: (value) => value !== 'admin' || 'Nice try!'
+        })}
+      />
+      {errors.username && <span>{errors.username.message}</span>}
+
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+[CodeSandBox](https://codesandbox.io/s/react-hook-from-simple-example-vcxdtc)
+- 줄: 35
+- 공백 제외 글자수: 589
+
+```jsx
+// formik
+import { Formik, Form, Field } from 'formik';
+
+const validateEmail = (value) => {
+  if (!value) {
+    return 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+    return 'invalid email address';
+  }
+};
+
+const validateUsername = (value) => value !== 'admin' || 'Nice try!';
+
+export default function App() {
+  const onSubmit = (values) => console.log(values);
+
+  return (
+    <Formik initialValues={{ email: '', usename: '' }} onSubmit={onSubmit}>
+      {({ errors }) => (
+        <Form>
+          <Field name="email" validate={validateEmail} />
+          {errors.email && <span>{errors.email}</span>}
+
+          <Field name="username" validate={validateUsername} />
+          {errors.username && <span>{errors.username}</span>}
+
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
+  );
+}
 ```
 
-```js
+[CodeSandBox](https://codesandbox.io/s/formik-simple-example-k9m8dr)
+- 줄: 31
+- 공백 제외 글자수: 656
+
+```jsx
 ```
 
-```js
-```
+[CodeSandBox](https://codesandbox.io/s/field-form-simple-example-x9p78r)
+
+### NPM 다운로드 수
 
 - DX: 직관적이고 완전한 형태의 API를 제공하여 개발자에게 좋은 개발 경험을 제공합니다.
-- 코드 양도 중요
 
 ## HTML standard: 기존 HTML 사용
 - HTML standard: 기존의 HTML을 사용하며, 유효성 검사를 위한 API를 통해 유효성 검사를 진행합니다.
@@ -71,13 +150,14 @@ FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 
 - 퍼포먼스 뿐만 아니라 일관된 UI 제공은 중요
 - yup 등등 사용
 
+## 기타
+- formik도 괜찮은 듯 훅 형태는 react-hook-form과 유사
+
 ##### 참고
 - [https://www.react-hook-form.com/](https://www.react-hook-form.com/)
 - [https://www.npmjs.com/package/react-hook-form](https://www.npmjs.com/package/react-hook-form)
 - [https://react-hook-form-website-git-jeromedeleon-patch-1.bluebill1049.vercel.app/](https://react-hook-form-website-git-jeromedeleon-patch-1.bluebill1049.vercel.app/)
 - [https://formik.org/](https://formik.org/)
-- [https://redux-form.com/8.3.0/](https://redux-form.com/8.3.0/)
-- [https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components)
-- [https://www.npmjs.com/package/react-hook-form](https://www.npmjs.com/package/react-hook-form)
 - [https://www.npmjs.com/package/formik](https://www.npmjs.com/package/formik)
 - [https://www.npmjs.com/package/rc-field-form](https://www.npmjs.com/package/rc-field-form)
+- [https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components)
