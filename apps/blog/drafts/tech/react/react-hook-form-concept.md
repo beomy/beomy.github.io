@@ -18,18 +18,28 @@ FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 
 ## NPM 문서에서의 React Hook Form 특징
 [NPM 문서](https://www.npmjs.com/package/react-hook-form)와 [공식 문서](https://www.react-hook-form.com/)는 동일한 내용으로 React Hook Form의 특징을 이야기하고 있지만, React Hook Form을 이해하는데 도움이 될 것 같아 NPM 문서의 내용을 아래와 같이 가져왔습니다. NPM 문서에서는 아래와 같이 React Hook Form의 특징을 이야기 합니다.
 
-- **Built with performance, UX and DX in mind**: 성능, UX, DX를 고려하여 만들어짐
-- **Embraces native HTML form validation**: 기존의 HTML을 사용하여 유효성 검사함
-- **Out of the box integration with UI libraries**: UI 라이브러리와 통합이 가능함
-- **Small size and no dependencies**: 작은 크기와 다른 종속성이 없음
-- **Support Yup, Zod, AJV, Superstruct, Joi and others**: Yup, Zod, AJV, Superstruct, Joi 등을 지원함
+- **Built with performance, UX and DX in mind**: 성능, UX, DX를 고려하여 만들어졌습니다.
+- **Embraces native HTML form validation**: 기존의 HTML을 사용하여 유효성 검사합니다.
+- **Out of the box integration with UI libraries**: UI 라이브러리와 통합이 가능합니다.
+- **Small size and no dependencies**: 작은 크기와 종속성이 필요 없습니다.
+- **Support Yup, Zod, AJV, Superstruct, Joi and others**: Yup, Zod, AJV, Superstruct, Joi 등을 지원합니다.
 
-이런 특징들을 공식 문서에서 이야기하는 6가지 특징에 맞춰 다른 라이브러리와 비교하며 살펴보도록 하겠습니다.
+이런 특징들을 공식 문서에서 이야기하는 6가지 특징에 맞춰 다른 라이브러리(formik, rc-field-form)와 비교하며 살펴보도록 하겠습니다.
 
 ## DX: 코드 비교
-공식 문서에서는 React Hook Form이 직관적이고 완전한 형태의 API를 제공하여 개발자에게 좋은 개발 경험을 제공해 준다고 이야기합니다. 개발자는 코드로 말하는 법, 말이 어려우니 다른 라이브러리들과 코드를 비교하며 살펴보도록 하겠습니다.
+공식 문서에서는 React Hook Form이 직관적이고 완전한 형태의 API를 제공하여 개발자에게 좋은 개발 경험을 제공해 준다고 이야기합니다. React Hook Form의 사용성이 좋다 정도로 이해가 되는데, 사용성이 개발자 경험에서 가장 중요한 부분이지만 얼마나 간단하게 작성할 수 있는지 그 라이브러리의 생태계는 얼마나 큰지도 개발자 경험에서 무시하지 못할 영역입니다. react-hook-form, formik, rc-field-form 라이브러리를 코드양과 생태계 크기로 비교해 살펴보겠습니다.
 
-### 코드 양
+### 코드양 비교
+동일한 역할을 하는 코드를 react-hook-form, formik, rc-field-form으로 만들어보도록 하겠습니다.
+
+> **요약**
+>
+> - react-hook-form: 35라인, 글자수 589자
+> - formik: 31라인, 글자수 656자
+> - rc-field-form: 58라인, 글자수 823자
+
+먼저 아래 코드는 react-hook-form으로 작성된 코드입니다.
+
 ```jsx
 // react-hook-form
 import { useForm } from 'react-hook-form';
@@ -68,9 +78,10 @@ export default function App() {
   );
 }
 ```
-[CodeSandBox](https://codesandbox.io/s/react-hook-from-simple-example-vcxdtc)
-- 줄: 35
-- 공백 제외 글자수: 589
+
+위의 코드는 [CodeSandBox](https://codesandbox.io/s/react-hook-from-simple-example-vcxdtc)에서 확인할 수 있습니다. react-hook-form으로 작성된 코드의 라인 수는 35라인, 공백을 제외한 글자수는 589자입니다.
+
+아래 코드는 formik로 작성된 코드입니다.
 
 ```jsx
 // formik
@@ -107,28 +118,98 @@ export default function App() {
 }
 ```
 
-[CodeSandBox](https://codesandbox.io/s/formik-simple-example-k9m8dr)
-- 줄: 31
-- 공백 제외 글자수: 656
+위의 코드는 [CodeSandBox](https://codesandbox.io/s/formik-simple-example-k9m8dr)에서 확인할 수 있습니다. formik로 작성된 코드의 라인 수는 31라인, 공백을 제외한 글자수는 656자입니다.
+
+아래 코드는 rc-field-form으로 작성된 코드입니다.
 
 ```jsx
+import Form, { Field } from "rc-field-form";
+
+const Input = ({ value = "", ...props }) => <input value={value} {...props} />;
+
+const ErrorMessage = ({ errors }) =>
+  errors.map((err) => <span key={err}>{err}</span>);
+
+export default function App() {
+  const onSubmit = (values) => console.log(values);
+  const [form] = Form.useForm();
+
+  return (
+    <Form form={form} onFinish={onSubmit}>
+      {() => (
+        <>
+          <Field
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Required"
+              },
+              {
+                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "invalid email address"
+              }
+            ]}
+          >
+            <Input />
+          </Field>
+          <ErrorMessage errors={form.getFieldError("email")} />
+
+          <Field
+            name="username"
+            rules={[
+              {
+                validator: (rule, value) => {
+                  return new Promise((resolve, reject) => {
+                    if (value === "admin") {
+                      reject();
+                    }
+                    resolve();
+                  });
+                },
+                message: "Nice try!"
+              }
+            ]}
+          >
+            <Input />
+          </Field>
+          <ErrorMessage errors={form.getFieldError("username")} />
+
+          <button type="submit">Submit</button>
+        </>
+      )}
+    </Form>
+  );
+}
 ```
 
-[CodeSandBox](https://codesandbox.io/s/field-form-simple-example-x9p78r)
+위의 코드는 [CodeSandBox](https://codesandbox.io/s/field-form-simple-example-x9p78r)에서 확인할 수 있습니다. rc-field-form으로 작성된 코드의 라인 수는 58라인, 공백을 제외한 글자수는 823자입니다.
 
-### NPM 다운로드 수
+작성된 코드의 라인수를 비교하면 formik < react-hook-form < rc-field-form이지만 글자수로 비교하면 react-hook-form < formik < rc-field-form으로 react-hook-form이 실제 작성하는 코드양이 가장 적은 것을 확인 할 수 있습니다.
 
-- DX: 직관적이고 완전한 형태의 API를 제공하여 개발자에게 좋은 개발 경험을 제공합니다.
+### 생태계 크기 비교
+생태계 크기를 좀더 객관적으로 판단하기 위해 NPM에서 라이브러리 다운로드 수와 GitHub의 스타 갯수로 비교해 보도록 하겠습니다.
+
+|         |                                  react-hook-form                                  |                             formik                              |                               rc-field-form                               |
+|:-------:|:---------------------------------------------------------------------------------:|:---------------------------------------------------------------:|:-------------------------------------------------------------------------:|
+|   NPM   |  ![react-hook-from npm 다운로드 수](/assets/img/posts/react/react_hook_form_npm.png)   |  ![formik npm 다운로드 수](/assets/img/posts/react/formik_npm.png)   |  ![rc-field-form 다운로드 수](/assets/img/posts/react/rc_field_form_npm.png)   |
+| GitHub  | ![react-hook-from npm 다운로드 수](/assets/img/posts/react/react_hook_form_github.png) | ![formik npm 다운로드 수](/assets/img/posts/react/formik_github.png) | ![rc-field-form 다운로드 수](/assets/img/posts/react/rc_field_form_github.png) |
+
+NPM 다운로드 수와 GitHub의 스타 갯수 모두 react-hook-form > formik > rc-field-form 순으로 많이 받았습니다.
 
 ## HTML standard: 기존 HTML 사용
-- HTML standard: 기존의 HTML을 사용하며, 유효성 검사를 위한 API를 통해 유효성 검사를 진행합니다.
-- 웹 접근성에 용이함
+React Hook Form은 기존의 HTML을 사용하며, 유효성 검사를 위한 API를 통해 유효성 검사를 진행합니다. 기존의 HTML을 사용한다는 점은 개발자들에게 폼 관리를 위한 컴포넌트를 공부하는 러닝 커브를 줄일 수 있습니다. 또한 HTML을 그대로 사용하기 때문에 `aria-*` HTML 속성을 사용하는 웹 접근성(a11y)을 어렵지 않게 지킬 수 있습니다.
 
-## Super Light: 크기 비교
+## Super Light: 크기와 종속성 비교
+
 - Super Light: 패키지 크기가 작은 종속성이 없는 라이브러리입니다.
 - https://bundlephobia.com/package/react-hook-form@7.45.1
 - https://bundlephobia.com/package/formik@2.4.2
 - https://bundlephobia.com/package/rc-field-form@1.34.1
+
+### 크기 비교
+
+### 종속성 비교
 
 ## Performance: 성능 비교
 - Performance: 리렌더링 횟수와 검증 계산을 최소화하였으며 빠른 마운팅 속도를 제공합니다.
