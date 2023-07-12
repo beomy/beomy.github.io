@@ -226,7 +226,28 @@ react-hook-form은 self 100%로 종속성이 없는 것을 확인 할 수 있습
 >
 > - https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components
 
-### 마운팅 속도 비교
+### 속도 비교
+크롬 개발자 도구의 Performace 탭과 Network 탭을 이용하여 react-hook-form, formik, rc-field-form 라이브러리의 속도를 비교했습니다.
+
+#### Performance 비교
+아래 그림은 CPU 6x slowdown, Network Slow 3G에서 자바스크립트가 실행되는데 걸리는 시간을 테스트한 그림입니다.
+
+|                                    react-hook-form                                    |                             formik                              |                               rc-field-form                               |
+|:-------------------------------------------------------------------------------------:|:---------------------------------------------------------------:|:-------------------------------------------------------------------------:|
+| ![react-hook-from bundle 크기](/assets/img/posts/react/react_hook_form_performance.png) | ![formik bundle 크기](/assets/img/posts/react/formik_performance.png) | ![rc-field-form bundle 크기](/assets/img/posts/react/rc_field_form_performance.png) |
+
+세 라이브러리 모두 아주 작은 단위를 결과로 보여주긴 하지만 react-hook-form < rc-field-form < formik 순서로 react-hook-form이 가장 빠른 속도를 보이는 것을 볼 수 있습니다.
+
+#### Network 비교
+아래 그림은 Slow 3G에서 테스트에서 DOM이 그려지는데 걸리는 시간을 테스트한 그림입니다.
+
+|                                                네트워크                                                |
+|:--------------------------------------------------------------------------------------------------:|
+| ![react-hook-from npm 다운로드 수](/assets/img/posts/react/react_hook_form_network.png) react-hook-form |
+|        ![react-hook-from npm 다운로드 수](/assets/img/posts/react/formik_network.png) formik         |
+| ![react-hook-from npm 다운로드 수](/assets/img/posts/react/rc_field_form_network.png) rc-field-form  |
+
+큰 차이는 없지만 `DOMContentLoaded`로 DOM이 로드되는게 걸리는 시간을 보면, react-hook-form < rc-field-form < formik 순서로 react-hook-form이 가장 빠르게 DOM을 그리는 것을 볼 수 있습니다.
 
 ### 리렌더링 횟수
 - uncontrolled: 성능
