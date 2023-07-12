@@ -201,15 +201,23 @@ NPM 다운로드 수와 GitHub의 스타 갯수 모두 react-hook-form > formik 
 React Hook Form은 기존의 HTML을 사용하며, 유효성 검사를 위한 API를 통해 유효성 검사를 진행합니다. 기존의 HTML을 사용한다는 점은 개발자들에게 폼 관리를 위한 컴포넌트를 공부하는 러닝 커브를 줄일 수 있습니다. 또한 HTML을 그대로 사용하기 때문에 `aria-*` HTML 속성을 사용하는 웹 접근성(a11y)을 어렵지 않게 지킬 수 있습니다.
 
 ## Super Light: 크기와 종속성 비교
-
-- Super Light: 패키지 크기가 작은 종속성이 없는 라이브러리입니다.
-- https://bundlephobia.com/package/react-hook-form@7.45.1
-- https://bundlephobia.com/package/formik@2.4.2
-- https://bundlephobia.com/package/rc-field-form@1.34.1
+React Hook Form은 크기가 작고, 종속성이 없는 라이브러리입니다. [Bundle Phobia](https://bundlephobia.com/)에서 패키지의 크기와 종속성을 확인할 수 있는데, [react-hook-horm](https://bundlephobia.com/package/react-hook-form@7.45.1), [formik](https://bundlephobia.com/package/formik@2.4.2), [rc-field-form](https://bundlephobia.com/package/rc-field-form@1.34.1) 3개의 라이브러리를 비교해 살펴보도록 하겠습니다.
 
 ### 크기 비교
+|                                 react-hook-form                                  |                             formik                              |                               rc-field-form                               |
+|:--------------------------------------------------------------------------------:|:---------------------------------------------------------------:|:-------------------------------------------------------------------------:|
+| ![react-hook-from bundle 크기](/assets/img/posts/react/react_hook_form_bundle.png) | ![formik bundle 크기](/assets/img/posts/react/formik_bundle.png) | ![rc-field-form bundle 크기](/assets/img/posts/react/rc_field_form_bundle.png) |
+
+번들된 패키지의 크기는 react-hook-form < formik < rc-field-form 순으로 react-hook-form이 가장 작은 것을 확인할 수 있습니다.
 
 ### 종속성 비교
+|                                                  종속성                                                  |
+|:-----------------------------------------------------------------------------------------------------:|
+| ![react-hook-from npm 다운로드 수](/assets/img/posts/react/react_hook_form_dependency.png) react-hook-form |
+|          ![react-hook-from npm 다운로드 수](/assets/img/posts/react/formik_dependency.png) formik          |
+|   ![react-hook-from npm 다운로드 수](/assets/img/posts/react/rc_field_form_dependency.png) rc-field-form   |
+
+react-hook-form은 self 100%로 종속성이 없는 것을 확인 할 수 있습니다.
 
 ## Performance: 성능 비교
 - Performance: 리렌더링 횟수와 검증 계산을 최소화하였으며 빠른 마운팅 속도를 제공합니다.
@@ -218,11 +226,11 @@ React Hook Form은 기존의 HTML을 사용하며, 유효성 검사를 위한 AP
 >
 > - https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components
 
-### 리렌더링 횟수 비교
+### 마운팅 속도 비교
+
+### 리렌더링 횟수
 - uncontrolled: 성능
 - Isolate Re-renders, Subscriptions
-
-### 마운팅 속도 비교
 
 ## Adoptable: UI 라이브러리와 함께하기
 - 다른 UI 라이브러리를 함께 사용하기 용이함
