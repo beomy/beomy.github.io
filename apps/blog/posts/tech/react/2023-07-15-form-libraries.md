@@ -30,7 +30,7 @@ FrontEnd 개발을 하다 보면 사용자 입력을 받고 입력받은 값을 
 
 ```jsx
 // react-hook-form
-import { useForm } from 'react-hook-form';
+import { useForm } from '@beomy/blog/drafts/tech/react/react-hook-form';
 
 export default function App() {
   const {
