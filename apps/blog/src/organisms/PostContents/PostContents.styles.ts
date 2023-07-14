@@ -75,7 +75,7 @@ export const Wrapper = styled.div`
   blockquote {
     margin: 2rem 0;
     border: 1px solid ${({ theme }) => theme.colors.grey[90]};
-    border-left: 4px solid ${({ theme }) => theme.colors.green[50]};
+    border-left: 4px solid ${({ theme }) => theme.colors.grey[50]};
     background: ${({ theme }) => theme.colors.grey[98]};
     border-radius: 4px;
     padding: 1rem 1rem 1rem 2rem;
@@ -98,12 +98,14 @@ export const Wrapper = styled.div`
       margin: 2rem auto;
     }
   }
+  ul {
+    margin: 0;
+  }
 
   #참고 {
     margin-top: 50px;
     margin-bottom: 0;
     + ul {
-      margin: 0;
       line-height: 1.5;
     }
   }
