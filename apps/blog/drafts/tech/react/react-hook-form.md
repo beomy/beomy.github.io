@@ -52,22 +52,28 @@ yarn add react-hook-form
 
 React Hook Form이 설치가 되면 아래 코드와 같이 사용이 가능합니다.
 
-<iframe src="https://codesandbox.io/embed/field-form-simple-example-x9p78r?fontsize=14&hidenavigation=1&theme=dark"
+<div>
+<iframe src="https://codesandbox.io/embed/lingering-wave-tpcc4q?fontsize=14&hidenavigation=1&theme=dark"
 style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-title="Field Form - Simple Example"
+title="lingering-wave-tpcc4q"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-/>
+></iframe>
+</div>
 
-## 사용자 입력 다루기
+## 사용자 입력 처리하기
+React Hook Form에서 사용자의 입력 값을 처리하는 2가지 방법을 살펴보도록 하겠습니다.
 
 ### `register`
+`register`은 기본적인 React Hook Form 사용 방법입니다. 아래와 같이 사용할 수 있습니다.
 
 #### 컴포넌트의 `ref`
 
 ### `Controller`
 
 #### Controlled Component
+
+## 유효성 검증
 
 ### 에러 핸들링
 
