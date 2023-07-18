@@ -65,9 +65,67 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 React Hook Form에서 사용자의 입력 값을 처리하는 2가지 방법을 살펴보도록 하겠습니다.
 
 ### `register`
-`register`은 기본적인 React Hook Form 사용 방법입니다. 아래와 같이 사용할 수 있습니다.
+React Hook Form은 Uncontrolled 방식을 사용하는데 `register` 함수는 Uncontrolled 방식으로 React Hook Form을 사용하기 위한 기본적인 방식입니다. `register` 함수의 형태는 아래와 같습니다.
+
+```tsx
+register: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref })
+```
+
+`RegisterOptions` 타입은 아래와 같습니다.
+
+```ts
+type RegisterOptions<TFieldValues extends FieldValues = FieldValues, TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = Partial<{
+    required: boolean | string | { value: boolean; message: string; };
+    min: number | { value: number; message: string };
+    max: number | { value: number; message: string };
+    maxLength: number | { value: number; message: string };
+    minLength: number | { value: number; message: string };
+    pattern: RegExp | { value: RegExp; message: string };
+    validate: Validate<FieldPathValue<TFieldValues, TFieldName>> | Record<string, Validate<FieldPathValue<TFieldValues, TFieldName>>>;
+    valueAsNumber: boolean;
+    valueAsDate: boolean;
+    value: FieldPathValue<TFieldValues, TFieldName>;
+    setValueAs: (value: any) => any;
+    shouldUnregister?: boolean;
+    onChange?: (event: any) => void;
+    onBlur?: (event: any) => void;
+    disabled: boolean;
+    deps: InternalFieldName | InternalFieldName[];
+}>;
+```
+
+`register` 함수는 아래와 같이 사용할 수 있습니다.
+
+```tsx
+import { useForm } from 'react-hook-form';
+
+export default function App() {
+  const { register } = useForm();
+  return <input {...register('firstName')} />;
+}
+```
+
+`register` 함수의 반환 값은 `{ onChange, onBlur, name, ref }`이기 때문에 위의 코드는 아래 코드와 동일합니다.
+
+```tsx
+import { useForm } from 'react-hook-form';
+
+export default function App() {
+  const { register } = useForm();
+  const { onChange, onBlur, name, ref } = register('firstName');
+  return (
+    <input
+      onChange={onChange}
+      onBlur={onBlur}
+      name={name}
+      ref={ref}
+    />
+  )
+}
+```
 
 #### 컴포넌트의 `ref`
+커스텀 컴포넌트를 만드
 
 ### `Controller`
 
