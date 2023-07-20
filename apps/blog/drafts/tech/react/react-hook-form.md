@@ -65,15 +65,11 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 React Hook Form에서 사용자의 입력 값을 처리하는 2가지 방법을 살펴보도록 하겠습니다.
 
 ### `register`
-React Hook Form은 Uncontrolled 방식을 사용하는데 `register` 함수는 Uncontrolled 방식으로 React Hook Form을 사용하기 위한 기본적인 방식입니다. `register` 함수의 형태는 아래와 같습니다.
-
-```tsx
-register: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref })
-```
-
-`RegisterOptions` 타입은 아래와 같습니다.
+React Hook Form은 Uncontrolled 방식을 사용하는데, `register` 함수는 Uncontrolled 방식으로 React Hook Form을 사용하기 위한 기본적인 방식입니다. `register` 함수의 형태는 아래와 같습니다.
 
 ```ts
+register: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref })
+
 type RegisterOptions<TFieldValues extends FieldValues = FieldValues, TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = Partial<{
     required: boolean | string | { value: boolean; message: string; };
     min: number | { value: number; message: string };
