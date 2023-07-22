@@ -64,30 +64,30 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 ## 사용자 입력 처리하기
 React Hook Form에서 사용자의 입력 값을 처리하는 2가지 방법을 살펴보도록 하겠습니다.
 
-### `register`
+### Uncontrolled의 경우
 React Hook Form은 Uncontrolled 방식을 사용하는데, `register` 함수는 Uncontrolled 방식으로 React Hook Form을 사용하기 위한 기본적인 방식입니다. `register` 함수의 형태는 아래와 같습니다.
 
 ```ts
-register: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref })
+register: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref });
 
-type RegisterOptions<TFieldValues extends FieldValues = FieldValues, TFieldName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = Partial<{
-    required: boolean | string | { value: boolean; message: string; };
-    min: number | { value: number; message: string };
-    max: number | { value: number; message: string };
-    maxLength: number | { value: number; message: string };
-    minLength: number | { value: number; message: string };
-    pattern: RegExp | { value: RegExp; message: string };
-    validate: Validate<FieldPathValue<TFieldValues, TFieldName>> | Record<string, Validate<FieldPathValue<TFieldValues, TFieldName>>>;
-    valueAsNumber: boolean;
-    valueAsDate: boolean;
-    value: FieldPathValue<TFieldValues, TFieldName>;
-    setValueAs: (value: any) => any;
-    shouldUnregister?: boolean;
-    onChange?: (event: any) => void;
-    onBlur?: (event: any) => void;
-    disabled: boolean;
-    deps: InternalFieldName | InternalFieldName[];
+type RegisterOptions = Partial<{
+  required: Message | ValidationRule<boolean>;
+  min: ValidationRule<number | string>;
+  max: ValidationRule<number | string>;
+  maxLength: ValidationRule<number | string>;
+  minLength: ValidationRule<number | string>;
+  pattern: ValidationRule<RegExp>;
+  validate: Validate | Record<string, Validate>;
 }>;
+
+type Message = string;
+type ValidationRule<TValidationValue> = TValidationValue | ValidationValueMessage<TValidationValue>;
+type ValidationValueMessage<TValidationValue> = {
+  value: TValidationValue;
+  message: Message;
+};
+type Validate<TFieldValue, TFormValues> = (value: TFieldValue, formValues: TFormValues) => ValidateResult | Promise<ValidateResult>;
+type ValidateResult = Message | Message[] | boolean | undefined;
 ```
 
 `register` 함수는 아래와 같이 사용할 수 있습니다.
@@ -99,13 +99,7 @@ export default function App() {
   const { register } = useForm();
   return <input {...register('firstName')} />;
 }
-```
-
-`register` 함수의 반환 값은 `{ onChange, onBlur, name, ref }`이기 때문에 위의 코드는 아래 코드와 동일합니다.
-
-```tsx
-import { useForm } from 'react-hook-form';
-
+// or
 export default function App() {
   const { register } = useForm();
   const { onChange, onBlur, name, ref } = register('firstName');
@@ -120,12 +114,25 @@ export default function App() {
 }
 ```
 
-#### 컴포넌트의 `ref`
-커스텀 컴포넌트를 만드
+#### 커스텀 컴포넌트 대처하기
+개발을 하다보면 HTML의 `<input />` 등을 매핑하는 커스텀 컴포넌트를 만든 후 커스텀 컴포넌트에 React Hook Form을 사용해야 할 때가 종종 있습니다. 이런 상황를 대처하는 2가지 방법을 살펴보도록 하겠습니다.
 
-### `Controller`
+##### `register`를 props로 전달
+커스텀 컴포넌트에서 `register` 함수를 사용하기 위해 `register` 함수와 `register` 함수에서 필요한 값을 props로 전달하는 방법입니다.
 
-#### Controlled Component
+~~codesendbox~~
+
+##### `forwardRef` 사용
+`forwardRef`를 사용해서 커스텀 컴포넌트에서 사용하는 HTML의 `<input />`의 `ref`를 부모 컴포넌트로 전달하여 `register` 함수를 사용할 수 있게 하는 방법입니다. props로 `register`를 전달하는 것보다 props 관리가 편해, 추천하는 방법입니다.
+
+~~codesendbox~~
+
+### Controlled의 경우
+- `Controller`
+
+#### UI 라이브러리 대처하기
+
+#### Controlled 컴포넌트 대처하기
 
 ## 유효성 검증
 
