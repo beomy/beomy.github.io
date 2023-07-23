@@ -53,9 +53,9 @@ yarn add react-hook-form
 React Hook Form이 설치가 되면 아래 코드와 같이 사용이 가능합니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/lingering-wave-tpcc4q?fontsize=14&hidenavigation=1&theme=dark"
+<iframe src="https://codesandbox.io/embed/react-hook-form-quick-start-tpcc4q?fontsize=14&hidenavigation=1&theme=dark&view=editor"
 style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-title="lingering-wave-tpcc4q"
+title="React Hook Form - Quick Start"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
@@ -114,25 +114,39 @@ export default function App() {
 }
 ```
 
-#### 커스텀 컴포넌트 대처하기
+#### Uncontrolled 컴포넌트의 경우
 개발을 하다보면 HTML의 `<input />` 등을 매핑하는 커스텀 컴포넌트를 만든 후 커스텀 컴포넌트에 React Hook Form을 사용해야 할 때가 종종 있습니다. 이런 상황를 대처하는 2가지 방법을 살펴보도록 하겠습니다.
 
 ##### `register`를 props로 전달
 커스텀 컴포넌트에서 `register` 함수를 사용하기 위해 `register` 함수와 `register` 함수에서 필요한 값을 props로 전달하는 방법입니다.
 
-~~codesendbox~~
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-register-props-g4f4wq?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+title="React Hook Form - register props"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ##### `forwardRef` 사용
-`forwardRef`를 사용해서 커스텀 컴포넌트에서 사용하는 HTML의 `<input />`의 `ref`를 부모 컴포넌트로 전달하여 `register` 함수를 사용할 수 있게 하는 방법입니다. props로 `register`를 전달하는 것보다 props 관리가 편해, 추천하는 방법입니다.
+`forwardRef`를 사용해서 커스텀 컴포넌트에서 사용하는 HTML의 `<input />`의 `ref`를 부모 컴포넌트로 전달하여 `register` 함수를 사용할 수 있게 하는 방법입니다. props로 `register`를 전달하는 것보다 props를 간결하게 관리할 수 있습니다.
 
-~~codesendbox~~
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-forwardref-7vhv62?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+title="React Hook Form - forwardRef"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ### Controlled의 경우
-- `Controller`
+React Hook Form은 기본적으로 Uncontrolled 방식으로 동작하기 때문에 `register` 함수를 사용해야 하지만, 개발을 하다보면 항상 Uncontrolled 방식으로 개발할 순 없습니다. `Controller` 컴포넌트를 사용하면 Contrelled 방식에도 React Hook Form을 사용할 수 있습니다.
 
-#### UI 라이브러리 대처하기
+#### UI 라이브러리의 경우
 
-#### Controlled 컴포넌트 대처하기
+#### Controlled 컴포넌트의 경우
 
 ## 유효성 검증
 
