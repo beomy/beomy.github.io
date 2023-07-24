@@ -114,7 +114,7 @@ export default function App() {
 }
 ```
 
-#### Uncontrolled 컴포넌트의 경우
+#### Uncontrolled 컴포넌트에서 `register`
 개발을 하다보면 HTML의 `<input />` 등을 매핑하는 커스텀 컴포넌트를 만든 후 커스텀 컴포넌트에 React Hook Form을 사용해야 할 때가 종종 있습니다. 이런 상황를 대처하는 2가지 방법을 살펴보도록 하겠습니다.
 
 ##### `register`를 props로 전달
@@ -144,13 +144,33 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 ### Controlled의 경우
 React Hook Form은 기본적으로 Uncontrolled 방식으로 동작하기 때문에 `register` 함수를 사용해야 하지만, 개발을 하다보면 항상 Uncontrolled 방식으로 개발할 순 없습니다. `Controller` 컴포넌트를 사용하면 Contrelled 방식에도 React Hook Form을 사용할 수 있습니다.
 
-#### UI 라이브러리의 경우
+Controlled 방식의 Input 컴포넌트를 만들었다면, 아래 코드와 같이 React Hook Form을 사용할 수 있습니다.
 
-#### Controlled 컴포넌트의 경우
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-controlled-5cslkl?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+title="React Hook Form - Controlled"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
+
+#### UI 라이브러리의 경우
+MUI와 같은 많은 UI 라이브러리의 컴포넌트는 Controlled 방식으로 동작합니다. Controlled 방식을 사용하면 UI 라이브러리 컴포넌트에서 React Hook Form은 아래 코드와 같이 사용할 수 있습니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-ui-library-f4glc3?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+title="React Hook Form - UI Library"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ## 유효성 검증
 
 ### 에러 핸들링
+- ErrorMessage
 
 ### 유효성 검증
 - @hookform/resolvers
