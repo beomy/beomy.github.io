@@ -6,6 +6,15 @@ category: [tech, react]
 summary: FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 검증하는데에 많은 시간을 쓰게 됩니다. React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다.
 ---
 
+> **TL;DR**
+>
+> - Uncontrolled 방식은 `register` 함수를 사용합니다.
+>   - `register` 함수의 두번째 파라미터를 사용하여 유효성 검증이 가능합니다.
+> - Controlled 방식은 `Controller` 컴포넌트를 사용합니다.
+>   - `Controller` 컴포넌트를 사용하여 MUI 등의 UI 라이브러리와 함께 사용이 가능합니다.
+>   - `Controller` 컴포넌트의 `rules` prop을 사용하여 유효성 검증이 가능합니다.
+> - `useForm` 훅의 `resolver` 필드를 사용하여 다른 유효성 검증 라이브러리를 사용할 수 있습니다.
+
 React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다. React Hook Form은 React에서 폼을 관리하는 가장 유명한 라이브러리 중 하나입니다.
 
 React Hook Form의 장점 중 하나가 빠른 성능인데 다른 폼 관리 라이브러리와 비교하고 싶다면, [[React] react-hook-form, formik, rc-field-form 폼 관리 어떤걸로 해야 할까](/tech/react/form-libraries/)를 참고 부탁드립니다.
@@ -53,7 +62,7 @@ yarn add react-hook-form
 React Hook Form이 설치가 되면 아래 코드와 같이 사용이 가능합니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-quick-start-tpcc4q?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+<iframe src="https://codesandbox.io/embed/react-hook-form-quick-start-tpcc4q?fontsize=14&hidenavigation=1&theme=dark"
 style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
 title="React Hook Form - Quick Start"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -71,13 +80,13 @@ React Hook Form은 Uncontrolled 방식을 사용하는데, `register` 함수는 
 register: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref });
 
 type RegisterOptions = Partial<{
-  required: Message | ValidationRule<boolean>;
-  min: ValidationRule<number | string>;
-  max: ValidationRule<number | string>;
-  maxLength: ValidationRule<number | string>;
-  minLength: ValidationRule<number | string>;
-  pattern: ValidationRule<RegExp>;
-  validate: Validate | Record<string, Validate>;
+  required: Message | ValidationRule<boolean>; // 필수값 여부 체크
+  min: ValidationRule<number | string>; // 입력 값의 최소값 체크
+  max: ValidationRule<number | string>; // 입력 값의 최대값 체크
+  maxLength: ValidationRule<number | string>; // 입력 값의 최대 길이 체크
+  minLength: ValidationRule<number | string>; // 입력 값의 최소 길이 체크
+  pattern: ValidationRule<RegExp>; // 정규식을 사용한 입력 값 체크
+  validate: Validate | Record<string, Validate>; // 커스텀 유효성 체크를 만들때 사용됨
 }>;
 
 type Message = string;
@@ -90,7 +99,7 @@ type Validate<TFieldValue, TFormValues> = (value: TFieldValue, formValues: TForm
 type ValidateResult = Message | Message[] | boolean | undefined;
 ```
 
-`register` 함수는 아래와 같이 사용할 수 있습니다.
+`register` 함수의 두번째 파라미터는 유효성 검증에 사용되는 값입니다. `register` 함수는 아래와 같이 사용할 수 있습니다.
 
 ```tsx
 import { useForm } from 'react-hook-form';
@@ -168,12 +177,53 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 </div>
 
 ## 유효성 검증
+폼 관리 라이브러리는 사용자 입력 값을 처리하는 것 못지않게 유효성 검증 또한 중요합니다. React Hook Form에서는 아래와 같이 사용자 입력을 검증할 수 있습니다.
 
-### 에러 핸들링
-- ErrorMessage
+### `register` 함수의 경우
+`register` 함수의 두번째 파라미터는 유효성 검증에 사용되는 옵션입니다. 자세한 옵션 정보는 [RegisterOptions](/tech/react/react-hook-form/#uncontrolled의-경우)을 참고 바랍니다. `register` 함수와 함께 유효성 검증은 아래 코드와 같이 사용할 수 있습니다.
 
-### 유효성 검증
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-register-validation-jz2kyn?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+title="React Hook Form - register validation"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
+
+첫번째 `<input />`은 필수이면서 최대 길이가 20자여야 합니다. 두번째 `<input />`은 알파벳만 입력해야 합니다. 세번째 `<input />`은 18 ~ 99사이의 숫자를 입력해야 합니다.
+
+### `Controller` 컴포넌트의 경우
+`Controller` 컴포넌트와 함께 유효성 검증을 사용하려면 `Controller` 컴포넌트의 `rules` props를 사용하면 됩니다. 아래 코드와 같이 `Controller` 컴포넌트에서 유효성 검증을 사용할 수 있습니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-controller-validation-8qm4cc?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+title="React Hook Form - Controller validation"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
+
+`register` 함수 예제와 동일하게, 첫번째 `<input />`은 필수이면서 최대 길이가 20자여야 합니다. 두번째 `<input />`은 알파벳만 입력해야 합니다. 세번째 `<input />`은 18 ~ 99사이의 숫자를 입력해야 합니다.
+
+### 다른 유효성 검증 라이브러리와 함께
+React Hook Form에서 제공하는 `@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 라이브러리와 함께 React Hook Form을 사용할 수 있습니다.
+
+`useForm` 훅의 `resolver` 필드를 사용하여 다른 유효성 라이브러리와 함께 사용할 수 있습니다.
+
 - @hookform/resolvers
+
+## 에러 메시지
+유효성 검증이 있다면 빼놓을 수 없는 부분은 유효성 검증에서 잡아낸 에러를 화면에 노출하는 것입니다. 아래 코드와 같이 에러 메시지를 화면에 노출할 수 있습니다.
+
+~~codesendbox~~
+
+### `register` 함수의 경우
+
+### `Controller` 컴포넌트의 경우
+
+### `ErrorMessage` 컴포넌트
 
 ## API Reference
 
@@ -261,6 +311,8 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 - dynamic input
 
 ## 부록
+
+### `Form` 컴포넌트
 
 ### DevTools
 
