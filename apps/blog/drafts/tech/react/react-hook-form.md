@@ -8,16 +8,22 @@ summary: FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받�
 
 > **TL;DR**
 >
-> - Uncontrolled 방식은 `register` 함수를 사용합니다.
->   - `register` 함수의 두번째 파라미터를 사용하여 유효성 검증이 가능합니다.
-> - Controlled 방식은 `Controller` 컴포넌트를 사용합니다.
->   - `Controller` 컴포넌트를 사용하여 MUI 등의 UI 라이브러리와 함께 사용이 가능합니다.
->   - `Controller` 컴포넌트의 `rules` prop을 사용하여 유효성 검증이 가능합니다.
-> - `useForm` 훅의 `resolver` 필드를 사용하여 다른 유효성 검증 라이브러리를 사용할 수 있습니다.
+> - React Hook Form은 Uncontrolled 방식의 빠른 성능이 장점인 폼 관리 라이브러리입니다. 물론 Controlled 방식도 지원합니다.
+>   - Uncontrolled 방식은 `register` 함수를 사용합니다.
+>     - `register` 함수의 두번째 파라미터를 사용하여 유효성 검증이 가능합니다.
+>   - Controlled 방식은 `Controller` 컴포넌트를 사용합니다.
+>     - `Controller` 컴포넌트를 사용하여 MUI 등의 UI 라이브러리와 함께 사용이 가능합니다.
+>     - `Controller` 컴포넌트의 `rules` 속성을 사용하여 유효성 검증이 가능합니다.
+> - `useForm` 훅 하나면 대부분의 폼 관리를 할 수 있습니다. 아래는 `useForm`의 주요한 반환 값입니다.
+>   - `register`:
+>   - `handleSubmit`:
+>   - `watch`:
+>   - `formState`:
+> - `@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 검증 라이브러리를 사용할 수 있습니다.
 
 React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다. React Hook Form은 React에서 폼을 관리하는 가장 유명한 라이브러리 중 하나입니다.
 
-React Hook Form의 장점 중 하나가 빠른 성능인데 다른 폼 관리 라이브러리와 비교하고 싶다면, [[React] react-hook-form, formik, rc-field-form 폼 관리 어떤걸로 해야 할까](/tech/react/form-libraries/)를 참고 부탁드립니다.
+React Hook Form은 Uncontrolled 방식을 사용하는 폼 관리 라이브러리로 빠른 성능이 장점 중 하나입니다. 다른 폼 관리 라이브러리와 비교하고 싶다면, [[React] react-hook-form, formik, rc-field-form 폼 관리 어떤걸로 해야 할까](/tech/react/form-libraries/)를 참고 부탁드립니다.
 
 ## React Hook Form 특징
 [NPM 문서](https://www.npmjs.com/package/react-hook-form)와 [공식 문서](https://www.react-hook-form.com/)는 동일한 내용으로 React Hook Form의 특징을 이야기하고 있지만, 공식 문서와 NPM 문서를 함께 보면 React Hook Form을 이해하는데 도움이 될 것 같아 함께 살펴보도록 하겠습니다.
@@ -63,7 +69,7 @@ React Hook Form이 설치가 되면 아래 코드와 같이 사용이 가능합�
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-quick-start-tpcc4q?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - Quick Start"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
@@ -131,7 +137,7 @@ export default function App() {
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-register-props-g4f4wq?fontsize=14&hidenavigation=1&theme=dark&view=editor"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - register props"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
@@ -143,7 +149,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-forwardref-7vhv62?fontsize=14&hidenavigation=1&theme=dark&view=editor"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - forwardRef"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
@@ -157,7 +163,7 @@ Controlled 방식의 Input 컴포넌트를 만들었다면, 아래 코드와 같
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-controlled-5cslkl?fontsize=14&hidenavigation=1&theme=dark&view=editor"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - Controlled"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
@@ -169,7 +175,7 @@ MUI와 같은 많은 UI 라이브러리의 컴포넌트는 Controlled 방식으�
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-ui-library-f4glc3?fontsize=14&hidenavigation=1&theme=dark&view=editor"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - UI Library"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
@@ -184,7 +190,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-register-validation-jz2kyn?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - register validation"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
@@ -198,7 +204,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-controller-validation-8qm4cc?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - Controller validation"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
@@ -208,11 +214,33 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 `register` 함수 예제와 동일하게, 첫번째 `<input />`은 필수이면서 최대 길이가 20자여야 합니다. 두번째 `<input />`은 알파벳만 입력해야 합니다. 세번째 `<input />`은 18 ~ 99사이의 숫자를 입력해야 합니다.
 
 ### 다른 유효성 검증 라이브러리와 함께
-React Hook Form에서 제공하는 `@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 라이브러리와 함께 React Hook Form을 사용할 수 있습니다.
+React Hook Form에서 제공하는 `@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 검증 라이브러리와 함께 React Hook Form을 사용할 수 있습니다. `@hookform/resolvers`애서 지원하는 유효성 검증 라이브러리 목록은 아래와 같습니다.
 
-`useForm` 훅의 `resolver` 필드를 사용하여 다른 유효성 라이브러리와 함께 사용할 수 있습니다.
+- [Yup](https://github.com/react-hook-form/resolvers#yup)
+- [Zod](https://github.com/react-hook-form/resolvers#zod)
+- [Superstruct](https://github.com/react-hook-form/resolvers#superstruct)
+- [Joi](https://github.com/react-hook-form/resolvers#joi)
+- [Class Validator](https://github.com/react-hook-form/resolvers#class-validator)
+- [io-ts](https://github.com/react-hook-form/resolvers#io-ts)
+- [Nope](https://github.com/react-hook-form/resolvers#nope)
+- [computed-types](https://github.com/react-hook-form/resolvers#computed-types)
+- [typanion](https://github.com/react-hook-form/resolvers#typanion)
+- [Ajv](https://github.com/react-hook-form/resolvers#ajv)
+- [TypeBox](https://github.com/react-hook-form/resolvers#typebox)
+- [ArkType](https://github.com/react-hook-form/resolvers#arktype)
 
-- @hookform/resolvers
+아래 코드와 같이 `@hookform/resolvers`와 `useForm` 훅의 `resolver` 필드를 사용하여 다른 유효성 검증 라이브러리를 사용할 수 있습니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-resolvers-fvv224?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - resolvers"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
+
+위의 코드는 yup을 사용하여 유효성 검증을 한 예제입니다. `register` 함수 예제와 동일하게, 첫번째 `<input />`은 필수이면서 최대 길이가 20자여야 합니다. 두번째 `<input />`은 알파벳만 입력해야 합니다. 세번째 `<input />`은 18 ~ 99사이의 숫자를 입력해야 합니다.
 
 ## 에러 메시지
 유효성 검증이 있다면 빼놓을 수 없는 부분은 유효성 검증에서 잡아낸 에러를 화면에 노출하는 것입니다. 아래 코드와 같이 에러 메시지를 화면에 노출할 수 있습니다.
