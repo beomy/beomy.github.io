@@ -297,7 +297,8 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 ## API Reference
 
-### useForm
+### `useForm`
+`useForm`은 React Hook Form을 사용할 때 항상 사용해야 하는 훅입니다.
 
 ```tsx
 // 간단한 예제
