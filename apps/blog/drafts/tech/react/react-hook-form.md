@@ -6,19 +6,23 @@ category: [tech, react]
 summary: FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 검증하는데에 많은 시간을 쓰게 됩니다. React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다.
 ---
 
-> **TL;DR**
->
+> ##### TL;DR
 > - React Hook Form은 Uncontrolled 방식의 빠른 성능이 장점인 폼 관리 라이브러리입니다. 물론 Controlled 방식도 지원합니다.
 >   - Uncontrolled 방식은 `register` 함수를 사용합니다.
 >     - `register` 함수의 두번째 파라미터를 사용하여 유효성 검증이 가능합니다.
 >   - Controlled 방식은 `Controller` 컴포넌트를 사용합니다.
 >     - `Controller` 컴포넌트를 사용하여 MUI 등의 UI 라이브러리와 함께 사용이 가능합니다.
 >     - `Controller` 컴포넌트의 `rules` 속성을 사용하여 유효성 검증이 가능합니다.
-> - `useForm` 훅 하나면 대부분의 폼 관리를 할 수 있습니다. 아래는 `useForm`의 주요한 반환 값입니다.
->   - `register`:
->   - `handleSubmit`:
->   - `watch`:
->   - `formState`:
+> - `useForm` 훅 하나면 대부분의 폼 관리를 할 수 있습니다. 아래는 중요한 반환 값입니다.
+>   - `register`: Uncontrolled 방식으로 사용하기 위해 사용됩니다.
+>   - `control`: Controlled 방식으로 사용하기 위해 사용됩니다. UI 라이브러리와 함께 사용할 자주 사용됩니다.
+>   - `handleSubmit`: 유효성 검증을 통과한 사용자 입력 값을 전달받기 위한 함수입니다.
+>   - `watch`: 사용자 입력 값의 변화를 감시하기 위한 함수입니다.
+>   - `formState`: 폼의 상태를 저장하는 객체로, 대표적으로 `errors` 객체를 통해 에러 정보를 가져올 수 있습니다.
+> - `Controller` 컴포넌트를 사용하면 UI 라이브러리와 React Hook Form을 함께 사용할 수 있습니다. 아래는 중요한 속성입니다.
+>   - `name`: 요소를 구분하기 위한 값으로 같은 폼으로 묶여 있는 요소끼리 유니크 해야 합니다.
+>   - `control`: `useForm` 훅의 반환 값을 그대로 전달하면 됩니다.
+>   - `render`: 화면에 노출될 요소를 반환하는 함수입니다.
 > - `@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 검증 라이브러리를 사용할 수 있습니다.
 
 React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다. React Hook Form은 React에서 폼을 관리하는 가장 유명한 라이브러리 중 하나입니다.
@@ -79,7 +83,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 ## 사용자 입력 처리하기
 React Hook Form에서 사용자의 입력 값을 처리하는 2가지 방법을 살펴보도록 하겠습니다.
 
-### Uncontrolled의 경우
+### Uncontrolled의 경우: `register` 함수
 React Hook Form은 Uncontrolled 방식을 사용하는데, `register` 함수는 Uncontrolled 방식으로 React Hook Form을 사용하기 위한 기본적인 방식입니다. `register` 함수의 형태는 아래와 같습니다.
 
 ```ts
@@ -156,7 +160,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 ></iframe>
 </div>
 
-### Controlled의 경우
+### Controlled의 경우: `Controller` 컴포넌트
 React Hook Form은 기본적으로 Uncontrolled 방식으로 동작하기 때문에 `register` 함수를 사용해야 하지만, 개발을 하다보면 항상 Uncontrolled 방식으로 개발할 순 없습니다. `Controller` 컴포넌트를 사용하면 Contrelled 방식에도 React Hook Form을 사용할 수 있습니다.
 
 Controlled 방식의 Input 컴포넌트를 만들었다면, 아래 코드와 같이 React Hook Form을 사용할 수 있습니다.
@@ -169,6 +173,12 @@ allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation
 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 </div>
+
+`Controller` 컴포넌트를 사용할 때, `name`, `control`, `render` 3개의 속성은 필수로 전달해야 합니다. 3개의 필수 속성은 아래와 같은 값을 전달하면 됩니다. 자세한 정보는 [Controller Reference](/tech/react/react-hook-form/#controller)를 참고 바랍니다.
+
+- `name`: 요소를 구분하기 위한 값으로 같은 폼으로 묶여 있는 요소끼리 유니크 해야 합니다.
+- `control`: `useForm` 훅의 반환 값을 그대로 전달하면 됩니다.
+- `render`: 화면에 노출될 요소를 반환하는 함수입니다.
 
 #### UI 라이브러리의 경우
 MUI와 같은 많은 UI 라이브러리의 컴포넌트는 Controlled 방식으로 동작합니다. Controlled 방식을 사용하면 UI 라이브러리 컴포넌트에서 React Hook Form은 아래 코드와 같이 사용할 수 있습니다.
@@ -186,7 +196,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 폼 관리 라이브러리는 사용자 입력 값을 처리하는 것 못지않게 유효성 검증 또한 중요합니다. React Hook Form에서는 아래와 같이 사용자 입력을 검증할 수 있습니다.
 
 ### `register` 함수의 경우
-`register` 함수의 두번째 파라미터는 유효성 검증에 사용되는 옵션입니다. 자세한 옵션 정보는 [RegisterOptions](/tech/react/react-hook-form/#uncontrolled의-경우)을 참고 바랍니다. `register` 함수와 함께 유효성 검증은 아래 코드와 같이 사용할 수 있습니다.
+`register` 함수의 두번째 파라미터는 유효성 검증에 사용되는 옵션입니다. 자세한 옵션 정보는 [RegisterOptions 타입](/tech/react/react-hook-form/#uncontrolled의-경우)을 참고 바랍니다. `register` 함수와 함께 유효성 검증은 아래 코드와 같이 사용할 수 있습니다.
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-register-validation-jz2kyn?fontsize=14&hidenavigation=1&theme=dark"
@@ -200,7 +210,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 첫번째 `<input />`은 필수이면서 최대 길이가 20자여야 합니다. 두번째 `<input />`은 알파벳만 입력해야 합니다. 세번째 `<input />`은 18 ~ 99사이의 숫자를 입력해야 합니다.
 
 ### `Controller` 컴포넌트의 경우
-`Controller` 컴포넌트와 함께 유효성 검증을 사용하려면 `Controller` 컴포넌트의 `rules` props를 사용하면 됩니다. 아래 코드와 같이 `Controller` 컴포넌트에서 유효성 검증을 사용할 수 있습니다.
+`Controller` 컴포넌트와 함께 유효성 검증을 사용하려면 `register` 함수의 두번째 파라미터에 전달했던 값과 동일한 값을 `Controller` 컴포넌트의 `rules` 속성에 전달하면 됩니다. 아래 코드와 같이 `Controller` 컴포넌트에서 유효성 검증을 사용할 수 있습니다.
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-controller-validation-8qm4cc?fontsize=14&hidenavigation=1&theme=dark"
@@ -243,22 +253,61 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 위의 코드는 yup을 사용하여 유효성 검증을 한 예제입니다. `register` 함수 예제와 동일하게, 첫번째 `<input />`은 필수이면서 최대 길이가 20자여야 합니다. 두번째 `<input />`은 알파벳만 입력해야 합니다. 세번째 `<input />`은 18 ~ 99사이의 숫자를 입력해야 합니다.
 
 ## 에러 메시지
-유효성 검증이 있다면 빼놓을 수 없는 부분은 유효성 검증에서 잡아낸 에러를 화면에 노출하는 것입니다. 아래 코드와 같이 에러 메시지를 화면에 노출할 수 있습니다.
-
-~~codesendbox~~
+유효성 검증이 있다면 빼놓을 수 없는 부분은 유효성 검증에서 잡아낸 에러를 화면에 노출하는 것입니다. `register` 함수를 사용할 때, `Controller` 컴포넌트를 사용할 때 에러 메시지를 노출하는 방법을 살펴보도록 하겠습니다.
 
 ### `register` 함수의 경우
+`register` 함수를 사용한 경우 `useForm` 훅의 `formState.errors` 필드를 사용하면 아래 코드와 같이 에러 메시지를 화면에 노출할 수 있습니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-register-error-message-3x7pjx?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - register error message"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
+
+`register` 함수의 유효성 검증을 위한 두번째 파라미터에 유효성 체크를 위한 `value` 필드와 메시지 출력을 위한 `message` 필드를 포함한 객체(`{ value: string | number | boolean | RegExp, message: string }`)를 전달하면 메시지 출력이 가능합니다. `required` 체크만 `string` 타입을 전달하면 전달한 문자열이 에러 메시지로 노출됩니다. 유효성 검증을 위한 자세한 옵션 정보는 [RegisterOptions 타입](/tech/react/react-hook-form/#uncontrolled의-경우)을 참고 바랍니다.
 
 ### `Controller` 컴포넌트의 경우
+`Controller` 컴포넌트를 사용한 경우 `render` 함수의 `fieldState.error` 필드를 사용하면 아래 코드와 같이 에러 메시지를 화면에 노출할 수 있습니다. `register` 함수의 두번째 파라미터에 전달했던 값과 동일한 값을 `Controller` 컴포넌트의 `rules` 속성에 전달하면 됩니다.
 
-### `ErrorMessage` 컴포넌트
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-controller-error-message-kqyx5t?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - Controller error message"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
+
+`formState.errors`에는 React Hook Form을 사용한 모든 요소의 에러 값이 담겨오지만, `Controller` 컴포넌트의 `render` 함수의 `fieldState.error`에는 `Controller` 컴포넌트의 `name` 속성에 정의한 하나의 요소의 에러 값만 담겨오게 됩니다.
+
+### 다른 유효성 검증 라이브러리와 함께
+`@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 검증 라이브러리와 함께 React Hook Form을 사용할 수 있는데, 이 때 에러 메시지를 설정하는 방법은 사용한느 유효성 검증 라이브러리의 스팩을 동일하게 따라가면 됩니다. 아래 코드는 `Yup`을 사용하여 유효성 검증한 에러 메시지를 노출하는 예제입니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-resolvers-error-message-5ljymh?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - resolvers error message"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ## API Reference
 
 ### useForm
-~~간단한 예제~~
+
+```tsx
+// 간단한 예제
+```
 
 #### props
+```tsx
+// 타입
+```
+
 - mode
 - reValidateMode
 - defaultValues
@@ -269,6 +318,10 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 - criteriaMode
 
 #### returns
+```tsx
+// 타입
+```
+
 - watch
 - getValues
 - getFieldState
@@ -285,7 +338,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 - register
 - setFocus
 
-### useController
+### Controller
 ~~간단한 예제~~
 
 #### props
@@ -306,6 +359,8 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 - `fieldState.isDirty`
 - `fieldState.error`
 - `formState`
+
+### useController
 
 ### useFormContext
 - FormProvider
@@ -342,180 +397,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 ### `Form` 컴포넌트
 
-### DevTools
-
-##### 참고
-- [https://www.react-hook-form.com/](https://www.react-hook-form.com/)
-- [https://www.npmjs.com/package/react-hook-form](https://www.npmjs.com/package/react-hook-form)
-- [https://react-hook-form-website-git-jeromedeleon-patch-1.bluebill1049.vercel.app/](https://react-hook-form-website-git-jeromedeleon-patch-1.bluebill1049.vercel.app/)
-- [https://formik.org/](https://formik.org/)
-- [https://redux-form.com/8.3.0/](https://redux-form.com/8.3.0/)
-- [https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components)
-- [https://www.npmjs.com/package/react-hook-form](https://www.npmjs.com/package/react-hook-form)
-- [https://www.npmjs.com/package/formik](https://www.npmjs.com/package/formik)
-- [https://www.npmjs.com/package/rc-field-form](https://www.npmjs.com/package/rc-field-form)
-
----
-
-FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 검증하는데에 많은 시간을 쓰게 됩니다. React Hook Form은 사용자 입력을 받고 검증하는 것을 도와주는 라이브러리로 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다. 이번 포스트에서는 React Hook Form에 대해서 살펴보도록 하겠습니다.
-
-## React Hook Form 특징
-React Hook Form의 공식 문서를 보면 아래와 같이 6가지의 장점을 이야기 하고 있습니다.
-
-- Built with performance, UX and DX in mind
-- Embraces native HTML form validation
-- Out of the box integration with UI libraries
-- Small size and no dependencies
-- Support Yup, Zod, AJV, Superstruct, Joi and others
-
-## DX: 코드 비교
-- DX: 직관적이고 완전한 형태의 API를 제공하여 개발자에게 좋은 개발 경험을 제공합니다.
-
-## HTML standard: 기존 HTML 사용
-- HTML standard: 기존의 HTML을 사용하며, 유효성 검사를 위한 API를 통해 유효성 검사를 진행합니다.
-- 웹 접근성에 용이함
-
-## Super Light: 크기 비교
-- Super Light: 패키지 크기가 작은 종속성이 없는 라이브러리입니다.
-- https://bundlephobia.com/package/react-hook-form@7.45.1
-- https://bundlephobia.com/package/formik@2.4.2
-- https://bundlephobia.com/package/rc-field-form@1.34.1
-
-## Performance: 성능 비교
-- Performance: 리렌더링 횟수와 검증 계산을 최소화하였으며 빠른 마운팅 속도를 제공합니다.
-
-> Uncontrolled와 Controlled
->
-> - https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components
-
-### 리렌더링 횟수 비교
-- uncontrolled: 성능
-- Isolate Re-renders, Subscriptions
-
-### 마운팅 속도 비교
-
-## Adoptable: ???
-- 다른 UI 라이브러리를 함께 사용하기 용이함
-
-## UX: 일관된 유효성 검사
-- 퍼포먼스 뿐만 아니라 일관된 UI 제공은 중요
-- yup 등등 사용
-
-## 퀵스타트
-
-```bash
-npm i react-hook-form
-# or
-pnpm add react-hook-form
-# or
-yarn add react-hook-form
-```
-
-```tsx
-// 간단한 예제
-```
-
-## 사용자 입력 다루기
-
-### `register`
-
-#### 컴포넌트의 `ref`
-
-### `Controller`
-
-#### Controlled Component
-
-### 에러 핸들링
-
-### 유효성 검증
-- @hookform/resolvers
-
-## API Reference
-
-### useForm
-~~간단한 예제~~
-
-#### props
-- mode
-- reValidateMode
-- defaultValues
-- resolver
-- context
-- shouldFocusError
-- shouldUnregister
-- criteriaMode
-
-#### returns
-- watch
-- getValues
-- getFieldState
-- setError
-- clearErrors
-- setValue
-- trigger
-- formState
-- resetField
-- reset
-- handleSubmit
-- unregister
-- control
-- register
-- setFocus
-
-### useController
-~~간단한 예제~~
-
-#### props
-- name
-- control
-- defaultValue
-- rules
-- shouldUnregister
-
-#### returns
-- `field.onChange`
-- `field.onBlur`
-- `field.value`
-- `field.name`
-- `field.ref`
-- `fieldState.invalid`
-- `fieldState.isTouched`
-- `fieldState.isDirty`
-- `fieldState.error`
-- `formState`
-
-### useFormContext
-- FormProvider
-
-### useWatch
-~~간단한 예제~~
-
-#### props
-- name
-- control
-- defaultValue
-- disabled
-- exact
-
-#### returns
-
-### useFormState
-
-#### props
-- control
-- name
-- disabled
-- exact
-
-#### returns
-- `formState`
-
-### ErrorMessage
-
-### useFieldArray
-- dynamic input
-
-## 부록
+### `ErrorMessage` 컴포넌트
 
 ### DevTools
 
