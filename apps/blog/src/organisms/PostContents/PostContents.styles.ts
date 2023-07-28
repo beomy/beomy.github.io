@@ -82,7 +82,8 @@ export const Wrapper = styled.div`
     h1,
     h2,
     h3,
-    h4 {
+    h4,
+    h5 {
       margin-top: 1.25rem;
     }
     p:first-of-type {
