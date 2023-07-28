@@ -613,10 +613,8 @@ const query = useQuery({
 })
 ```
 
-> **`fetch`, `axios` v0.22.0 아래의 버전, `XMLHttpRequest`, `graphql-request`에서 쿼리 취소**
->
+> ##### `fetch`, `axios` v0.22.0 아래의 버전, `XMLHttpRequest`, `graphql-request`에서 쿼리 취소
 > `fetch`, `axios` v0.22.0 아래의 버전, `XMLHttpRequest`, `graphql-request` 등을 사용하신다면, [공식 문서](https://tanstack.com/query/v4/docs/react/guides/query-cancellation)에서 쿼리가 비활성화 될 때 자동으로 쿼리를 취소하는 방법을 참고바랍니다.
->
 
 `queryClient.cancelQueries({ queryKey })`를 사용하면 수동으로 쿼리를 취소할 수 있습니다. 아래 코드와 같이 사용할 수 있습니다.
 

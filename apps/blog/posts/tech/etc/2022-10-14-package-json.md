@@ -34,12 +34,10 @@ eslint나 prettier 등의 라이브러리 설정(eslint의 경우 `eslintConfig`
 }
 ```
 
-> **NPM 패키지에서 `name`과 `version`**
->
+> ##### NPM 패키지에서 `name`과 `version`
 > 프로젝트가 NPM에 배포(Publish) 될 때 `name`와 `version` 필드는 필수 값입니다. `name`와 `version` 필드는 NPM 패키지의 식별자이기 때문에 `name`와 `version` 필드를 합친 값(예를 들어, `@beomy/blog@1.2.3`)은 유니크 한 값이여야 합니다.
 
-> **오픈소스의 버전 구분**
->
+> ##### 오픈소스의 버전 구분
 > 버전은 아래 그림과 같이 Major, Minor, Patch로 구성되어 있습니다. 이런 형태의 버전 표시방법은 오픈소스 프로젝트에 일반적으로 사용됩니다.
 >
 > ![package.json version](/assets/img/posts/etc/package_version.png)
@@ -331,8 +329,7 @@ NPM의 경우 `npm run test`와 같이 `npm run <scripts 필드에 작성한 명
 
 NPM을 사용할 경우 `npm install <종속 패키지 이름>`, Yarn을 사용할 경우 `yarn add <종속 패키지 이름>`, PNPM을 사용할 경우 `pnpm install <종속 패키지 이름>` 명령어를 사용하면 패키지를 설치하고 `dependencies` 필드에 설치 된 종속 패키지가 버전 정보와 함께 저장됩니다.
 
-> **패키지 버전 표시 방법**
->
+> ##### 패키지 버전 표시 방법
 > 패키지에 종속 패키지를 추가할 경우 `dependencies` 필드에 `<패키지 이름>: "<패키지 버전 정보>"` 형태로 저장됩니다. 패키지를 설치할 때 `<패키지 버전 정보>`와 매칭되는 패키지가 설치됩니다. `<패키지 버전 정보>`의 형태는 아래와 같습니다.
 >
 > - `version`: 정확한 `version`의 패키지와 매칭됩니다.

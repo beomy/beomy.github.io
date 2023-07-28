@@ -37,8 +37,7 @@ summary: Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn의 1 버�
 ### PnP(Plug'n'Play)
 PnP는 Plug And Play의 줄임말로 해석하면 '꼽기만 하면 사용할 수 있다.'로 해석할 수 있습니다. `Yarn Berry`는 성능 개선을 위해 `node_modules`를 읽는 느린 메모리 I/O 대신 `.yarn/cache`에 종속 패키지들을 zip 형태로 저장하고, `.pnp.cjs` 파일에 의존성 패키지의 의존성 정보를 저장하여 의존성 정보를 알 수 있게 만들었습니다.
 
-> **`.yarn/cache`와 `.pnp.cjs`**
->
+> ##### `.yarn/cache`와 `.pnp.cjs`
 > - `.yarn/cache`: 디렉토리 하위에 의존성 패키지들을 zip 형태로 저장하고 있습니다.
 > - `.pnp.cjs`: 어떠한 패키지가 어떠한 패키지에 의존성이 있는지 저장하고 있는 파일입니다. 예를 들어 A 패키지를 실행해야 한다면, `.pnp.cjs` 파일에서 A 패키지의 의존성 정보를 읽어와서 A 패키지의 의존성 패키지를 `.yarn/cache`에서 찾아 A 패키지를 실행합니다.
 
@@ -142,7 +141,7 @@ enableScripts: true | false
 
 `Yarn Berry`는 의존성 패키지를 모두 zip으로 관리하기 때문에 의존성 패키지는 모두 읽기 전용으로 동작할 수 밖에 없습니다. 하지만 의존성 패키지가 쓰여지거나(파일 쓰기) 실행(쉘 스크립트 실행 등..) 되어야 한다면, zip 파일은 압축 해제되어 `.yarn/unplugged` 디렉토리에 저장됩니다.
 
-`yarn install` 과정 중에 의존성 패키지에 사후 설치(postinstall) 스크립트가 있다면 해당 패키지는 압축 해제 되어 `.yarn/unplugged` 디렉토리에 저장됩니다. 이런 이유로 Zero Install 설정을 했지만 `yarn install`을 해야 프로젝트가 실행되는 경우가 발생하게 됩니다. 
+`yarn install` 과정 중에 의존성 패키지에 사후 설치(postinstall) 스크립트가 있다면 해당 패키지는 압축 해제 되어 `.yarn/unplugged` 디렉토리에 저장됩니다. 이런 이유로 Zero Install 설정을 했지만 `yarn install`을 해야 프로젝트가 실행되는 경우가 발생하게 됩니다.
 
 `yarn install` 없이 바로 프로젝트를 실행하기 위해서는 `enableScripts: false`로 설정해야 합니다. `enableScripts: false`는 사후 설치 스크립트를 막아 `.yarn/unplugged` 디렉토리를 생성하지 않도록 만듭니다.
 

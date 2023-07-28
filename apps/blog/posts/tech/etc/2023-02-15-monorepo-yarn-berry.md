@@ -31,8 +31,7 @@ yarn init -2
 
 명령어를 실행하면 위의 그림과 같이 `Yarn Berry` 프로젝트가 생성됩니다.
 
-> **`Yarn Classic`에서 `Yarn Berry`로 마이그레이션 하기**
->
+> ##### `Yarn Classic`에서 `Yarn Berry`로 마이그레이션 하기
 > `Yarn Classic`으로 만들어진 프로젝트를 `Yarn Berry`로 업데이트 하고 싶다면, `Yarn Classic` 프로젝트에서 아래 명령어를 실행하면 `Yarn Berry` stable 버전으로 업데이트 됩니다.
 >
 > ```bash
@@ -54,7 +53,7 @@ yarn init -2
 1. **[ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) VSCode 확장 프로그램 설치하기**: `Yarn Berry`는 Zip 형태로 의존성을 관리하기 때문에 Zip 파일을 읽기 위한 확장 프로그램이 필요합니다.
 2. **TypeScript 설치하기**: TypeScript를 사용하기 위해 모노레포 프로젝트 루트에 `yarn add -D typescript` 명령어를 사용하여 TypeScript를 설치 해 줍니다.
 3. **yarn sdk 설치**: VSCode에서 `Yarn Berry`를 사용하기 위해서는 yarn의 vscode sdk가 필요한데, `yarn dlx @yarnpkg/sdks vscode` 명령어를 사용하여 설치합니다.
-4. **TypeScript 허용**  
+4. **TypeScript 허용**
     yarn sdk 설치가 끝나면, 아래 그림과 같은 팝업이 뜨는데, `Allow`를 클릭하여 TypeScript 사용을 허용해 줍니다.
     ![TypeScript 허용](/assets/img/posts/etc/typescript_allow_1.png)
     만약 위의 팝업이 뜨지 않거나 `Dismiss` 클릭하는 등으로 TypeScript 사용 허용을 해주지 못했다면, 아래 그림과 같이 `Command Pallette`(Cmd(Crtl) + Shift + P) -> `TypeScript: Select TypeScript Version...` -> `Use Workspace Version`를 클릭해 줍니다.
@@ -83,8 +82,7 @@ Emotion과 React, TypeScript를 사용하는 디자인 시스템 프로젝트와
 yarn workspace @monorepo/design-system add -D typescript react react-dom @emotion/react @emotion/styled @types/react @types/react-dom
 ```
 
-> **`yarn workspace` 명령어**
->
+> ##### `yarn workspace` 명령어
 > `yarn workspace <workspaceName> <commandName>` 형태로 특정 워크스페이스의 스크립트를 실행할 수 있습니다.
 >
 > - `yarn workspace @monorepo/design-system add -D typescript`: `@monorepo/design-system` 프로젝트에 개발자 의존성을 가진 TypeScript를 설치하는 명령어입니다.
@@ -138,7 +136,7 @@ export default Button
 export { default as Button } from './Button'
 ```
 
-그 다음 `package.json`에 아래 코드와 같이 `main`과 `exports`를 작성하여 외부 프로젝트에서 사용할 수 있도록 내보내줍니다. 
+그 다음 `package.json`에 아래 코드와 같이 `main`과 `exports`를 작성하여 외부 프로젝트에서 사용할 수 있도록 내보내줍니다.
 
 ```json
 "main": "./src/index.ts",

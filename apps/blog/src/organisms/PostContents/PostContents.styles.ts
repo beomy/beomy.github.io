@@ -84,13 +84,19 @@ export const Wrapper = styled.div`
     h3,
     h4,
     h5 {
-      margin-top: 1.25rem;
+      line-height: 2;
+      margin: 1rem 0;
+      &:first-child {
+        margin-top: 0;
+      }
     }
-    p:first-of-type {
-      margin-top: 0;
-    }
-    p:last-child {
-      margin-bottom: 0;
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
   p {
