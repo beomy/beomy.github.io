@@ -21,9 +21,9 @@ summary: FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받�
 >   - `formState`: 폼의 상태를 저장하는 객체로, 대표적으로 `errors` 객체를 통해 에러 정보를 가져올 수 있습니다.
 > - `Controller` 컴포넌트를 사용하면 UI 라이브러리와 React Hook Form을 함께 사용할 수 있습니다. 아래는 중요한 속성입니다.
 >   - `name`: 요소를 구분하기 위한 값으로 같은 폼으로 묶여 있는 요소끼리 유니크 해야 합니다.
->   - `control`: `useForm` 훅의 반환 값을 그대로 전달하면 됩니다.
+>   - `control`: `useForm` 훅의 반환 값인 `control`을 그대로 전달하면 됩니다.
 >   - `render`: 화면에 노출될 요소를 반환하는 함수입니다.
-> - `@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 검증 라이브러리를 사용할 수 있습니다.
+> - `@hookform/resolvers` 라이브러리를 사용하면 외부 유효성 검증 라이브러리를 사용할 수 있습니다.
 
 React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다. React Hook Form은 React에서 폼을 관리하는 가장 유명한 라이브러리 중 하나입니다.
 
@@ -55,7 +55,7 @@ NPM 문서에서는 아래와 같이 5가지 특징을 이야기합니다.
 NPM 문서와 공식 문서에서 이야기하는 중요한 특징은 아래 3가지로 요약해 볼 수 있습니다.
 
 - 기존의 HTML을 사용하는 크기가 작고 빠른 라이브러리입니다.
-- UI 라이브러리와 함께 사용하기 쉬워 채택하기 쉬운 라이브러리입니다.
+- UI 라이브러리와 함께 사용할 수 있는 라이브러리입니다.
 - Yup, Zod 등의 유효성 검사 라이브러리와 함께 사용가능하며 일관된 유효성 검사를 제공합니다.
 
 ## 퀵스타트
@@ -109,6 +109,15 @@ type Validate<TFieldValue, TFormValues> = (value: TFieldValue, formValues: TForm
 type ValidateResult = Message | Message[] | boolean | undefined;
 ```
 
+> ##### `RegisterOptions` 타입 살펴보기
+> - `required: string | `
+> - min
+> - max
+> - maxLength
+> - minLength
+> - pattern
+> - validate
+
 `register` 함수의 두번째 파라미터는 유효성 검증에 사용되는 값입니다. `register` 함수는 아래와 같이 사용할 수 있습니다.
 
 ```tsx
@@ -140,7 +149,7 @@ export default function App() {
 커스텀 컴포넌트에서 `register` 함수를 사용하기 위해 `register` 함수와 `register` 함수에서 필요한 값을 props로 전달하는 방법입니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-register-props-g4f4wq?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+<iframe src="https://codesandbox.io/embed/react-hook-form-register-props-g4f4wq?fontsize=14&hidenavigation=1&theme=dark"
 style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - register props"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -152,7 +161,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 `forwardRef`를 사용해서 커스텀 컴포넌트에서 사용하는 HTML의 `<input />`의 `ref`를 부모 컴포넌트로 전달하여 `register` 함수를 사용할 수 있게 하는 방법입니다. props로 `register`를 전달하는 것보다 props를 간결하게 관리할 수 있습니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-forwardref-7vhv62?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+<iframe src="https://codesandbox.io/embed/react-hook-form-forwardref-7vhv62?fontsize=14&hidenavigation=1&theme=dark"
 style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - forwardRef"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -166,7 +175,7 @@ React Hook Form은 기본적으로 Uncontrolled 방식으로 동작하기 때문
 Controlled 방식의 Input 컴포넌트를 만들었다면, 아래 코드와 같이 React Hook Form을 사용할 수 있습니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-controlled-5cslkl?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+<iframe src="https://codesandbox.io/embed/react-hook-form-controlled-5cslkl?fontsize=14&hidenavigation=1&theme=dark"
 style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - Controlled"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -184,7 +193,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 MUI와 같은 많은 UI 라이브러리의 컴포넌트는 Controlled 방식으로 동작합니다. Controlled 방식을 사용하면 UI 라이브러리 컴포넌트에서 React Hook Form은 아래 코드와 같이 사용할 수 있습니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-ui-library-f4glc3?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+<iframe src="https://codesandbox.io/embed/react-hook-form-ui-library-f4glc3?fontsize=14&hidenavigation=1&theme=dark"
 style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
 title="React Hook Form - UI Library"
 allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -223,23 +232,10 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 `register` 함수 예제와 동일하게, 첫번째 `<input />`은 필수이면서 최대 길이가 20자여야 합니다. 두번째 `<input />`은 알파벳만 입력해야 합니다. 세번째 `<input />`은 18 ~ 99사이의 숫자를 입력해야 합니다.
 
-### 다른 유효성 검증 라이브러리와 함께
-React Hook Form에서 제공하는 `@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 검증 라이브러리와 함께 React Hook Form을 사용할 수 있습니다. `@hookform/resolvers`애서 지원하는 유효성 검증 라이브러리 목록은 아래와 같습니다.
+### 외부 유효성 검증 라이브러리와 함께
+React Hook Form에서 제공하는 `@hookform/resolvers` 라이브러리를 사용하면 외부 유효성 검증 라이브러리와 함께 React Hook Form을 사용할 수 있습니다. `@hookform/resolvers`은 [Yup](https://github.com/react-hook-form/resolvers#yup), [Zod](https://github.com/react-hook-form/resolvers#zod), [Superstruct](https://github.com/react-hook-form/resolvers#superstruct), [Joi](https://github.com/react-hook-form/resolvers#joi), [Class Validator](https://github.com/react-hook-form/resolvers#class-validator), [io-ts](https://github.com/react-hook-form/resolvers#io-ts), [Nope](https://github.com/react-hook-form/resolvers#nope), [computed-types](https://github.com/react-hook-form/resolvers#computed-types), [typanion](https://github.com/react-hook-form/resolvers#typanion), [Ajv](https://github.com/react-hook-form/resolvers#ajv), [TypeBox](https://github.com/react-hook-form/resolvers#typebox), [ArkType](https://github.com/react-hook-form/resolvers#arktype)의 유효성 검증 라이브러리 목록은 아래와 같습니다.
 
-- [Yup](https://github.com/react-hook-form/resolvers#yup)
-- [Zod](https://github.com/react-hook-form/resolvers#zod)
-- [Superstruct](https://github.com/react-hook-form/resolvers#superstruct)
-- [Joi](https://github.com/react-hook-form/resolvers#joi)
-- [Class Validator](https://github.com/react-hook-form/resolvers#class-validator)
-- [io-ts](https://github.com/react-hook-form/resolvers#io-ts)
-- [Nope](https://github.com/react-hook-form/resolvers#nope)
-- [computed-types](https://github.com/react-hook-form/resolvers#computed-types)
-- [typanion](https://github.com/react-hook-form/resolvers#typanion)
-- [Ajv](https://github.com/react-hook-form/resolvers#ajv)
-- [TypeBox](https://github.com/react-hook-form/resolvers#typebox)
-- [ArkType](https://github.com/react-hook-form/resolvers#arktype)
-
-아래 코드와 같이 `@hookform/resolvers`와 `useForm` 훅의 `resolver` 필드를 사용하여 다른 유효성 검증 라이브러리를 사용할 수 있습니다.
+아래 코드와 같이 `@hookform/resolvers`와 `useForm` 훅의 `resolver` 필드를 사용하여 외부 유효성 검증 라이브러리를 사용할 수 있습니다.
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-resolvers-fvv224?fontsize=14&hidenavigation=1&theme=dark"
@@ -283,8 +279,8 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 `formState.errors`에는 React Hook Form을 사용한 모든 요소의 에러 값이 담겨오지만, `Controller` 컴포넌트의 `render` 함수의 `fieldState.error`에는 `Controller` 컴포넌트의 `name` 속성에 정의한 하나의 요소의 에러 값만 담겨오게 됩니다.
 
-### 다른 유효성 검증 라이브러리와 함께
-`@hookform/resolvers` 라이브러리를 사용하면 다른 유효성 검증 라이브러리와 함께 React Hook Form을 사용할 수 있는데, 이 때 에러 메시지를 설정하는 방법은 사용한느 유효성 검증 라이브러리의 스팩을 동일하게 따라가면 됩니다. 아래 코드는 `Yup`을 사용하여 유효성 검증한 에러 메시지를 노출하는 예제입니다.
+### 외부 유효성 검증 라이브러리와 함께
+`@hookform/resolvers` 라이브러리를 사용하면 외부 유효성 검증 라이브러리와 함께 React Hook Form을 사용할 수 있는데, 이 때 에러 메시지를 설정하는 방법은 사용한느 유효성 검증 라이브러리의 스팩을 동일하게 따라가면 됩니다. 아래 코드는 `Yup`을 사용하여 유효성 검증한 에러 메시지를 노출하는 예제입니다.
 
 <div>
 <iframe src="https://codesandbox.io/embed/react-hook-form-resolvers-error-message-5ljymh?fontsize=14&hidenavigation=1&theme=dark"
@@ -300,46 +296,122 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 ### `useForm`
 `useForm`은 React Hook Form을 사용할 때 항상 사용해야 하는 훅입니다.
 
-```tsx
-// 간단한 예제
+```ts
+declare function useForm<TFieldValues extends FieldValues = FieldValues, TContext = any, TTransformedValues extends FieldValues | undefined = undefined>(props?: UseFormProps<TFieldValues, TContext>): UseFormReturn<TFieldValues, TContext, TTransformedValues>;
 ```
 
 #### props
-```tsx
-// 타입
+```ts
+type UseFormProps<TFieldValues extends FieldValues = FieldValues, TContext = any> = Partial<{
+  mode: Mode;
+  reValidateMode: Exclude<Mode, 'onTouched' | 'all'>;
+  defaultValues: DefaultValues<TFieldValues> | AsyncDefaultValues<TFieldValues>;
+  values: TFieldValues;
+  resetOptions: Parameters<UseFormReset<TFieldValues>>[1];
+  resolver: Resolver<TFieldValues, TContext>;
+  context: TContext;
+  shouldFocusError: boolean;
+  shouldUnregister: boolean;
+  shouldUseNativeValidation: boolean;
+  progressive: boolean;
+  criteriaMode: CriteriaMode;
+  delayError: number;
+}>;
 ```
 
-- mode
-- reValidateMode
-- defaultValues
-- resolver
-- context
-- shouldFocusError
-- shouldUnregister
-- criteriaMode
+- `mode: 'onChange' | 'onBlur' | 'onSubmit' | 'onTouched' | 'all' = 'onSubmit'`
+  - 제출(submit)되기 전의 검증이 실행되는 이벤트를 정의합니다.
+- `reValidateMode: onChange | onBlur | onSubmit = 'onChange'`
+  - 제출(submit)된 후의 검증이 실행되는 이벤트를 정의합니다.
+- `defaultValues: Record<string, any> | (payload?: unknown) => Promise<Record<string, any>>`
+  - 폼의 기본 값을 할당할 때 사용되는 필드입니다. 동기, 비동기 정의 모두 가능합니다.
+    ```ts
+    // set default value sync
+    useForm({
+      defaultValues: {
+        firstName: '',
+        lastName: ''
+      }
+    })
+
+    // set default value async
+    useForm({
+      defaultValues: async () => fetch('/api-endpoint');
+    })
+    ```
+  - `undefined`로 기본 값을 정의하는 것은 피해야 합니다.
+  - `reset` 함수로 초기화 할 경우, `defaultValues`에 설정한 값으로 초기화 됩니다.
+  - `defaultValues`에 설정된 값은 제출(submit)에 포함됩니다.
+  - `Moment`, `Luxon`과 같은 커스텀 프로토타입 메소드가 포함된 객체를 정의하는 것은 피해야 합니다.
+- `values: Record<string, any>`
+  - `defaultValues`와 유사한 목적으로 사용되지만 `defaultValues`와 다르게 `values`는 반응형으로 동작하여 `values` 값이 변경 되면 폼에 반영됩니다. 아래 예제에서 확인할 수 있습니다.
+    <div>
+    <iframe src="https://codesandbox.io/embed/react-hook-form-defaultvalues-values-vn55nf?fontsize=14&hidenavigation=1&theme=dark"
+    style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+    title="React Hook Form - defaultValues &amp; values"
+    allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+    ></iframe>
+    </div>
+  - `defaultValues`와 `values`가 모두 적용되어 있다면, `values` 값이 폼에 적용됩니다.
+- `resetOptions: KeepStateOptions`
+  - `defaultValues`나 `values`가 업데이트 될 때 내부적으로 `reset` API가 호출되는데, 이 때 호출되는 `reset` API의 옵션을 설정해 주는 필드입니다. 자세한 내용은 [reset API](~~)를 참고 바랍니다.
+- `resolver: Resolver`
+  - 대부분의 경우 외부 유효성 검증 라이브러리를 사용하기 위해 사용되는 필드입니다([유효성 검증 - 외부 유효성 검증 라이브러리와 함께](/tech/react/react-hook-form/#외부-유효성-검증-라이브러리와-함께) 참고). 하지만 아래 코드와 같이 유효성 검증 로직을 직접 작성할 수도 있습니다.
+    <div>
+      <iframe src="https://codesandbox.io/embed/react-hook-form-custom-resolver-hnhs5d?fontsize=14&hidenavigation=1&theme=dark"
+      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+      title="React Hook Form - custom resolver"
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
+    </div>
+- `context: object`
+  - `context` 필드를 사용하면 `resolver` 함수의 두번째 파라미터로 전달되거나, `@hookform/resolvers/yup`을 사용한다면 Yup의 context 객체에 주입됩니다.
+    <div>
+      <iframe src="https://codesandbox.io/embed/react-hook-form-context-crs6cz?fontsize=14&hidenavigation=1&theme=dark"
+      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+      title="React Hook Form - context"
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
+    </div>
+- `shouldFocusError: boolean = true`
+  - `true`가 기본 값으로 `ture`로 설정한 경우, 유효성 검사에 실패한 첫번째 요소가 포커스 됩니다.
+  - 이 옵션을 사용하기 위해서는 `register` 함수의 반환 값인 `ref`(`Controller` 컴포넌트의 경우 `render` 함수의 `field.ref` 파라미터)가 요소의 `ref`에 전달 되어야 합니다.
+- `shouldUnregister: boolean = false`
+- `shouldUseNativeValidation: boolean = false`
+- `criteriaMode: 'firstError' | 'all'`
+- `delayError: number`
 
 #### returns
-```tsx
-// 타입
+```ts
+type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = any, TTransformedValues extends FieldValues | undefined = undefined> = {
+  watch: UseFormWatch<TFieldValues>;
+  getValues: UseFormGetValues<TFieldValues>;
+  getFieldState: UseFormGetFieldState<TFieldValues>;
+  setError: UseFormSetError<TFieldValues>;
+  clearErrors: UseFormClearErrors<TFieldValues>;
+  setValue: UseFormSetValue<TFieldValues>;
+  trigger: UseFormTrigger<TFieldValues>;
+  formState: FormState<TFieldValues>;
+  resetField: UseFormResetField<TFieldValues>;
+  reset: UseFormReset<TFieldValues>;
+  handleSubmit: UseFormHandleSubmit<TFieldValues, TTransformedValues>;
+  unregister: UseFormUnregister<TFieldValues>;
+  control: Control<TFieldValues, TContext>;
+  register: UseFormRegister<TFieldValues>;
+  setFocus: UseFormSetFocus<TFieldValues>;
+};
 ```
 
-- watch
-- getValues
-- getFieldState
-- setError
-- clearErrors
-- setValue
-- trigger
-- formState
-- resetField
-- reset
-- handleSubmit
-- unregister
-- control
-- register
-- setFocus
+`useForm`의 반환 값은 중요한 것들이 많이 있기 때문에 밑에서 하나씩 따로 살펴보도록 하겠습니다.
 
-### Controller
+### `useForm`  반환 값 - register
+
+### `useForm`  반환 값 - unregister
+
+### Controller와 useController
 ~~간단한 예제~~
 
 #### props
@@ -360,8 +432,6 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 - `fieldState.isDirty`
 - `fieldState.error`
 - `formState`
-
-### useController
 
 ### useFormContext
 - FormProvider
@@ -396,7 +466,8 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 ## 부록
 
-### `Form` 컴포넌트
+### `Form` 컴포넌트 (BETA)
+- progressive
 
 ### `ErrorMessage` 컴포넌트
 
