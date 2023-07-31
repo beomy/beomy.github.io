@@ -15,7 +15,7 @@ summary: React Hook Form은 사용자 입력을 받고 검증하는 것을 도�
 >     - `Controller` 컴포넌트의 `rules` 속성을 사용하여 유효성 검증이 가능합니다.
 > - `useForm` 훅 하나면 대부분의 폼 관리를 할 수 있습니다. 아래는 중요한 반환 값입니다.
 >   - `register`: Uncontrolled 방식으로 사용하기 위해 사용됩니다. 요소의 속성으로 전달되어야 하는 값들을 반환하는 함수입니다.
->   - `control`: Controlled 방식으로 사용하기 위해 사용됩니다. UI 라이브러리와 함께 사용할 자주 사용됩니다.
+>   - `control`: Controlled 방식으로 사용하기 위해 사용됩니다. UI 라이브러리와 함께 사용할 때 자주 사용됩니다.
 >   - `handleSubmit`: 유효성 검증을 통과한 사용자 입력 값을 전달받기 위한 함수입니다.
 >   - `watch`: 사용자 입력 값의 변화를 감시하기 위한 함수입니다.
 >   - `formState`: 폼의 상태를 저장하는 객체로, 대표적으로 `errors` 객체를 통해 에러 정보를 가져올 수 있습니다.
@@ -62,7 +62,7 @@ NPM 문서와 공식 문서에서 이야기하는 중요한 특징은 아래 3�
 React Hook Form을 사용하기 위해서 아래 코드와 같이 패키지를 설치해 줍니다.
 
 ```bash
-npm i react-hook-form
+npm install react-hook-form
 # or
 pnpm add react-hook-form
 # or
@@ -112,7 +112,7 @@ type Validate<TFieldValue, TFormValues> = (value: TFieldValue, formValues: TForm
 type ValidateResult = Message | Message[] | boolean | undefined;
 ```
 
-`register` 함수의 두 번째 파라미터 옵션인 `RegisterOptions`을 사용하면 유효성 검증을 할 수 있습니다. `register` 함수는 아래와 같이 사용할 수 있습니다.
+`register` 함수는 아래와 같이 사용할 수 있습니다.
 
 ```tsx
 import { useForm } from 'react-hook-form';
@@ -308,7 +308,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 ></iframe>
 </div>
 
-`watch`를 사용하면 값이 업데이트된 것을 감시할 수 있는데, `watch`는 종속성 있는 유효성 검증 등 여러 상황에서 유용하게 사용됩니다.
+`watch`를 사용하면 값이 업데이트된 것을 감시할 수 있는데, `watch`는 종속성 있는 유효성 검증 등 여러 상황에서 유용하게 사용할 수 있습니다.
 
 ### `Controller` 컴포넌트의 경우
 `Controller` 컴포넌트의 `rules` prop에는 `RegisterOptions`가 동일하게 사용되기 때문에 아래 코드와 같이 `rules` 속성에 `RegisterOptions`의 `deps`를 사용하면 종속성 있는 유효성 검증을 할 수 있습니다.
@@ -354,7 +354,7 @@ yarn add @hookform/error-message
 - `message: string | React.ReactElement`: 에러 메시지가 설정되어 있지 않을 때 노출 되는 기본 에러 메시지입니다.
 - `as: React.ElementType | string`: 어떤 요소로 랜더링 할지 선택하는 값입니다. `as="span"`, `as={<Text />}`와 같이 컴포넌트나 HTML 태그 모두 가능합니다.
 - `render: ({ message: string | React.ReactElement, messages?: Object}) => any`: 에러 메시지를 랜더링 하기 위한 랜더링 함수입니다. `render` 함수를 사용하여 에러 메시지를 좀 더 유연하게 커스텀할 수 있습니다.
-- `messages`의 경우 `useForm` 훅의 `criteriaMode` 옵션을 `all`로 설정할 경우 사용할 수 있습니다.
+  - `messages`의 경우 `useForm` 훅의 `criteriaMode` 옵션을 `all`로 설정할 경우 사용할 수 있습니다.
 
 `ErrorMessage` 컴포넌트는 아래 코드와 같이 사용할 수 있습니다.
 
