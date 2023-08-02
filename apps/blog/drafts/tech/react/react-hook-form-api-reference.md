@@ -3,16 +3,21 @@ layout: post
 title: '[React] react-hook-form API 레퍼런스'
 featured-img: react/react-hook-form.png
 category: [tech, react]
-summary: FrontEnd 개발을 하다보면 사용자 입력을 받고 입력 받은 값을 검증하는데에 많은 시간을 쓰게 됩니다. React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다.
+summary: 사용하고 있는 외부 라이브러리 API를 자세히 알면 그 라이브러리에서 제공하는 다양한 기능들을 인지하고 사용할 수 있기 때문에 라이브러리를 더 멋있게 사용할 수 있습니다. 이번 포스트에서는 React Hook Form을 좀 더 멋있게 사용하기 위해 React Hook Form에서 제공하는 API들을 살펴보도록 하겠습니다.
 ---
 
-## API Reference
+사용하고 있는 외부 라이브러리 API를 자세히 알면 그 라이브러리에서 제공하는 다양한 기능들을 인지하고 사용할 수 있기 때문에 라이브러리를 더 멋있게 사용할 수 있습니다. 이번 포스트에서는 React Hook Form을 좀 더 멋있게 사용하기 위해 React Hook Form에서 제공하는 API들을 살펴보도록 하겠습니다.
 
-### `useForm`
-`useForm`은 React Hook Form을 사용할 때 항상 사용해야 하는 훅입니다.
+## `useForm`
+`useForm`은 React Hook Form을 사용할 때 항상 사용해야 하는 가장 기본적인 훅입니다. `useForm`의 형태는 아래 코드와 같습니다.
 
 ```ts
-declare function useForm<TFieldValues extends FieldValues = FieldValues, TContext = any, TTransformedValues extends FieldValues | undefined = undefined>(props?: UseFormProps<TFieldValues, TContext>): UseFormReturn<TFieldValues, TContext, TTransformedValues>;
+declare function useForm<
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = any,
+  TTransformedValues extends FieldValues | undefined = undefined
+>(props?: UseFormProps<TFieldValues, TContext>)
+  : UseFormReturn<TFieldValues, TContext, TTransformedValues>;
 ```
 
 #### props
@@ -132,11 +137,11 @@ type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = an
 
 `useForm`의 반환 값은 중요한 것들이 많이 있기 때문에 밑에서 하나씩 따로 살펴보도록 하겠습니다.
 
-### `useForm`  반환 값 - register
+### `register`
 
-### `useForm`  반환 값 - unregister
+### `unregister`
 
-### Controller
+## Controller
 ~~간단한 예제~~
 
 #### props
@@ -158,12 +163,12 @@ type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = an
 - `fieldState.error`
 - `formState`
 
-### useController
+## useController
 
-### useFormContext
+## useFormContext
 - FormProvider
 
-### useWatch
+## useWatch
 ~~간단한 예제~~
 
 #### props
@@ -175,7 +180,7 @@ type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = an
 
 #### returns
 
-### useFormState
+## useFormState
 
 #### props
 - control
@@ -186,9 +191,9 @@ type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = an
 #### returns
 - `formState`
 
-### ErrorMessage
+## ErrorMessage
 
-### useFieldArray
+## useFieldArray
 - dynamic input
 
 ##### 참고
