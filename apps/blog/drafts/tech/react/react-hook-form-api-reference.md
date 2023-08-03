@@ -77,7 +77,7 @@ type UseFormProps<TFieldValues extends FieldValues = FieldValues, TContext = any
 - `resetOptions: KeepStateOptions`
   - `defaultValues`나 `values`가 업데이트 될 때 내부적으로 `reset` API가 호출되는데, 이 때 호출되는 `reset` API의 옵션을 설정해 주는 필드입니다. 자세한 내용은 [reset API](~~)를 참고 바랍니다.
 - `resolver: Resolver`
-  - 대부분의 경우 외부 유효성 검증 라이브러리를 사용하기 위해 사용되는 필드입니다([유효성 검증 - 외부 유효성 검증 라이브러리와 함께](/tech/react/react-hook-form/#외부-유효성-검증-라이브러리와-함께) 참고). 하지만 아래 코드와 같이 유효성 검증 로직을 직접 작성할 수도 있습니다.
+  - 외부 유효성 검증 라이브러리를 사용하기 위해 사용되는 필드입니다([유효성 검증 - 외부 유효성 검증 라이브러리와 함께](/tech/react/react-hook-form/#외부-유효성-검증-라이브러리와-함께) 참고). 하지만 아래 코드와 같이 유효성 검증 로직을 직접 작성할 수도 있습니다.
     <div>
       <iframe src="https://codesandbox.io/embed/react-hook-form-custom-resolver-hnhs5d?fontsize=14&hidenavigation=1&theme=dark"
       style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -112,6 +112,8 @@ type UseFormProps<TFieldValues extends FieldValues = FieldValues, TContext = any
 - `shouldUseNativeValidation: boolean = false`
   - `false`가 기본 값으로 `true`로 설정한 경우 [브라우저 네이티브 검증](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)이 동작하게 됩니다.
 - `criteriaMode: 'firstError' | 'all'`
+  - `firstError`가 기본 값으로 첫번째 유효성 에러만 `formState.errors` 객체에 담김니다.
+  - `all`로 설정한 경우 모든 유효성 에러가 `formState.errors.types` 객체에 담김니다.
 - `delayError: number`
 
 #### returns
