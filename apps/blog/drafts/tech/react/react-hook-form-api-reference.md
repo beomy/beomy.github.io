@@ -192,10 +192,22 @@ watch: (names?: string | string[] | (data, options) => void, defaultValue?) => u
 `watch` 함수는 두번째 파라미터로 `defaultValue`를 전달할 수 있는데, `defaultValues`로 감시하는 요소의 값이 정의되어 있지 않을 경우 `defaultValue` 값을 반환합니다. `defaultValue` 마저도 정의되어 있지 않다면 초기값으로 `undfined`를 반환합니다. `defaultValues`와 `defaultValue`가 모두 정의되어 있다면 `defaultValue` 값을 반환합니다.
 
 ### `getValues`
+`getValues`는 폼의 값을 가져오기 위해 사용되는 함수입니다. `watch` 함수와 유사한 기능을 제공하지만 차이점은 `getValues`는 입력을 감시하지 않기 때문에 입력 값이 변경되어도 반환 값이 업데이트 되지 않습니다. 형태는 아래 코드와 같습니다.
 
 ```ts
 getValues: (payload?: string | string[]) => Object
 ```
+
+`getValues` 함수는 아래 코드와 같이사용할 수 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-getvalues-2s33zj?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - getValues"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ### `getFieldState`
 
