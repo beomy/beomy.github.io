@@ -312,7 +312,7 @@ label:hover button {
   - `send`: 내보내는 트랜지션입니다. `out:send="{{key: todo.id}}"` 형태로 사용해야 합니다. 유니크한 key를 가진 객체를 파라미터로 전달해야 합니다.
   - `receive` 받는 트랜지션입니다. `in:receive="{{key: todo.id}}"` 형태로 사용해야 합니다. `send` 트랜지션과 동일하게 유니크한 key를 가진 객체를 파라미터로 전달해야 합니다.
 
-받는 대상, 보내는 대상이 없는 경우 `fallback`에 정의한 트랜지션이 동작하게 되는데, `fallback`에 트랜지션을 정의하는 방법은 [/tech/svelte/transitions/#커스텀-트랜지션-만들기](/tech/svelte/transitions/#커스텀-트랜지션-만들기)에서 자세히 이야기하도록 하고 지금은 넘어가도록 하겠습니다.
+받는 대상, 보내는 대상이 없는 경우 `fallback`에 정의한 트랜지션이 동작하게 되는데, `fallback`에 트랜지션을 정의하는 방법은 [/tech/svelte/transition/#커스텀-트랜지션-만들기](/tech/svelte/transition/#커스텀-트랜지션-만들기)에서 자세히 이야기하도록 하고 지금은 넘어가도록 하겠습니다.
 
 `send`와 `receive` 트랜지션을 사용할 때, 받을 때 사용한 `in`과 내보낼 때 사용한 `out`에 대해 살펴보겠습니다.
 
