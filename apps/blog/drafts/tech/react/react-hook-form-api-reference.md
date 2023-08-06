@@ -198,7 +198,7 @@ watch: (names?: string | string[] | (data, options) => void, defaultValue?) => u
 getValues: (payload?: string | string[]) => Object
 ```
 
-`getValues` 함수는 아래 코드와 같이사용할 수 있습니다.
+`getValues` 함수는 아래 코드와 같이 사용할 수 있습니다.
 
 <div>
   <iframe src="https://codesandbox.io/embed/react-hook-form-getvalues-2s33zj?fontsize=14&hidenavigation=1&theme=dark"
@@ -210,6 +210,22 @@ getValues: (payload?: string | string[]) => Object
 </div>
 
 ### `getFieldState`
+`getFieldState`는 `react-hook-form@7.25.0`에서 추가된 함수로 각각의 폼 요소의 상태를 반환하는 함수입니다. 형태는 아래 코드와 같습니다.
+
+```ts
+getFieldState: (name: string, formState?: Object) => ({isDirty, isTouched, invalid, error})
+```
+
+`getFieldState`의 반환 값이 반응형으로 동작하지 않는다면 두번째 파라미터에 `useForm`의 반환값인 `formState`를 넘겨주면 반환 값이 반응형으로 동작하게 됩니다. `getFieldState` 함수는 아래 코드와 같이 사용할 수 있습니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-getfieldstate-2qjmxf?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - getFieldState"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ### `setError`
 
