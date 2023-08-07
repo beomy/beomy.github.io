@@ -179,9 +179,13 @@ type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = an
 `watch` 함수는 특정 요소를 감시하여 그 요소의 값을 반환합니다. 해당 요소의 값을 가져와서 사용해야 할 때 유용하게 사용되는 함수입니다. 형태는 아래 코드와 같습니다.
 
 ```ts
-watch: (names?: string | string[] | (data, options) => void, defaultValue?) => unknown
+watch: (
+  names?: string | string[] | (data, options) => void,
+  defaultValue?: Object | unknown
+) => unknown
 ```
 
+~~필요 없을듯~~
 | Example                                 | Return                       | Description                                              |
 |-----------------------------------------|------------------------------|----------------------------------------------------------|
 | `watch('inputName')`                    | `unknown`                    | 특정 요소의 값을 반환합니다.                                         |
@@ -189,7 +193,18 @@ watch: (names?: string | string[] | (data, options) => void, defaultValue?) => u
 | `watch()`                               | `{[key: string]: unknown}`   | 모든 요소의 값을 객체로 반환합니다.                                     |
 | `watch((data, { name, type }) => void)` | `{ unsubscribe: () => void }` | 모든 요소의 값을 구독하고 값이 업데이트 되면 콜백이 실행됩니다. 구독 해제를 위한 함수 반환합니다. |
 
-`watch` 함수는 두번째 파라미터로 `defaultValue`를 전달할 수 있는데, `defaultValues`로 감시하는 요소의 값이 정의되어 있지 않을 경우 `defaultValue` 값을 반환합니다. `defaultValue` 마저도 정의되어 있지 않다면 초기값으로 `undfined`를 반환합니다. `defaultValues`와 `defaultValue`가 모두 정의되어 있다면 `defaultValue` 값을 반환합니다.
+#### props
+- `name?: string | string[] | (data, options) => void`
+  - `string`
+  - `string[]`
+  - `(data, options) => void`
+- `defaultValue: Object | unknown`: `watch` 함수는 두번째 파라미터로 `defaultValue`를 전달할 수 있는데, `defaultValues`로 감시하는 요소의 값이 정의되어 있지 않을 경우 `defaultValue` 값을 반환합니다. `defaultValue` 마저도 정의되어 있지 않다면 초기값으로 `undfined`를 반환합니다. `defaultValues`와 `defaultValue`가 모두 정의되어 있다면 `defaultValue` 값을 반환합니다.
+  - `Object`
+  - `unknown`
+
+`watch` 함수는 아래 코드와 같이 사용할 수 있습니다.
+
+~~codesandbox~~
 
 ### `getValues`
 `getValues`는 폼의 값을 가져오기 위해 사용되는 함수입니다. `watch` 함수와 유사한 기능을 제공하지만 차이점은 `getValues`는 입력을 감시하지 않기 때문에 입력 값이 변경되어도 반환 값이 업데이트 되지 않습니다. 형태는 아래 코드와 같습니다.
@@ -228,6 +243,17 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 </div>
 
 ### `setError`
+`setError` 함수는 수동으로 에러를 설정할 때 사용되는 함수 입니다. 형태는 아래 코드와 같습니다.
+
+```ts
+setError:(name: string, error: FieldError, { shouldFocus?: boolean }) => void
+```
+
+#### props
+- `name: string`
+- `error: { type: string, message?: string, types: MultipleFieldErrors }`
+- `config: 	{ shouldFocus?: boolean }`
+
 
 ### `clearErrors`
 
