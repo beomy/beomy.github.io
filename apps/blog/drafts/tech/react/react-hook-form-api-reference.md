@@ -198,7 +198,8 @@ watch: (
   - `string`
   - `string[]`
   - `(data, options) => void`
-- `defaultValue: Object | unknown`: `watch` 함수는 두번째 파라미터로 `defaultValue`를 전달할 수 있는데, `defaultValues`로 감시하는 요소의 값이 정의되어 있지 않을 경우 `defaultValue` 값을 반환합니다. `defaultValue` 마저도 정의되어 있지 않다면 초기값으로 `undfined`를 반환합니다. `defaultValues`와 `defaultValue`가 모두 정의되어 있다면 `defaultValue` 값을 반환합니다.
+- `defaultValue: Object | unknown`
+  - `watch` 함수는 두번째 파라미터로 `defaultValue`를 전달할 수 있는데, `defaultValues`로 감시하는 요소의 값이 정의되어 있지 않을 경우 `defaultValue` 값을 반환합니다. `defaultValue` 마저도 정의되어 있지 않다면 초기값으로 `undfined`를 반환합니다. `defaultValues`와 `defaultValue`가 모두 정의되어 있다면 `defaultValue` 값을 반환합니다.
   - `Object`
   - `unknown`
 
