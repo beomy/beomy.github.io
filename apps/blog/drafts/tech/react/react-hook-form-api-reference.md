@@ -252,11 +252,48 @@ setError:(name: string, error: FieldError, { shouldFocus?: boolean }) => void
 
 #### props
 - `name: string`
+  - 에러를 발생시킬 특정 요소의 이름을 지정합니다.
 - `error: { type: string, message?: string, types: MultipleFieldErrors }`
+  - 에러 정보를 담는 객체입니다.
+  - `type`에는 에러 타입, `message`는 에러 문구, `types`에는 여러개의 에러를 설정해야 할 경우 `{ [key: string]: string | string[] | boolean | undefined }` 형태로 여러개의 에러 정보를 담을 수 있습니다.
 - `config: 	{ shouldFocus?: boolean }`
+  - `shouldFocus`를 `true`로 설정할 경우 에러가 발생한 요소에 `ref`가 지정되어 있다면, 에러가 발생한 요소에 포커스 됩니다.
 
+아래 코드와 같이 `setError` 함수를 사용할 수 있습니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-v7-seterror-forked-5zfxy4?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - setError"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ### `clearErrors`
+`clearErrors` 함수는 수동으로 에러를 초기화 하는 함수입니다. 형태는 아래 코드와 같습니다.
+
+```ts
+clearErrors: (name?: string | string[]) => void
+```
+
+#### props
+- `name?: string | string[]`
+  - 에러를 초기화할 요소의 이름을 지정합니다.
+  - `clearErrors()`와 같이 첫번째 파라미터에 아무값도 전달하지 않는다면 모든 에러가 초기화 됩니다.
+  - `clearErrors('yourDetails.firstName')`와 같이 첫번째 파라미터에 문자열을 넘기면 문자열 이름을 가진 요소의 에러가 초기화 됩니다.
+  - `clearErrors(['yourDetails.firstName', 'yourDetails.lastName'])`와 같이 첫번째 파라미터에 문자열 배열을 넘기면 문자열 배열에 있는 요소의 에러가 초기화 됩니다.
+
+아래 코드와 같이 `clearErrors` 함수를 사용할 수 있습니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-v7-clearerrors-forked-fpsl34?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - clearErrors"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ### `setValue`
 
