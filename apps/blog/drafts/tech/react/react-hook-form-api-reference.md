@@ -173,7 +173,7 @@ type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = an
 };
 ```
 
-`useForm`의 반환 값은 밑에서 하나씩 따로 살펴보도록 하겠습니다.
+`useForm`의 반환 값들은 모두 함수인데, 밑에서 `useForm`의 반환 함수들을 하나씩 살펴보도록 하겠습니다.
 
 ### `watch`
 `watch` 함수는 특정 요소를 감시하여 그 요소의 값을 반환합니다. 해당 요소의 값을 가져와서 사용해야 할 때 유용하게 사용되는 함수입니다. 형태는 아래 코드와 같습니다.
@@ -296,6 +296,33 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 </div>
 
 ### `setValue`
+`setValue` 함수는 특정 요소의 값을 동적으로 할당하기 위해 사용되는 함수입니다. 형태는 아래 코드와 같습니다.
+
+```ts
+setValue: (name: string, value: unknown, config?: Object) => void
+```
+
+#### props
+- `name: string`
+  - 값을 업데이트할 요소의 이름을 지정합니다.
+- `value: unknown`
+  - 요소의 업데이트할 값을 지정합니다.
+- `config?: { shouldValidate: boolean; shouldDirty: boolean; shouldTouch: boolean; }`
+  - `setValue` 함수를 실행 후에, 폼 상태를 업데이트 하기 위한 플래그 설정을 지정합니다.
+  - `shouldValidate`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 유효성 검사를 진행합니다.
+  - `shouldDirty`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 `defaultValues`에서 설정 한 값과 비교하여 변경 되었다면 `formState.isDirty` 플래그는 `true`가 됩니다.
+  - `shouldTouch`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 요소가 touch 된 것으로 판단하고 `formState.touchedFields.{name}` 플래그는 `ture`가 됩니다.
+
+아래 코드와 같이 `setValue` 함수를 사용할 수 있습니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-getfieldstate-forked-k5qvv3?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - setValue"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ### `trigger`
 
@@ -315,7 +342,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 
 ### `setFocus`
 
-## Controller
+## useController
 ~~간단한 예제~~
 
 #### props
@@ -337,7 +364,7 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 - `fieldState.error`
 - `formState`
 
-## useController
+## Controller
 
 ## useFormContext
 - FormProvider
