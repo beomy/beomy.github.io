@@ -310,6 +310,7 @@ setValue: (name: string, value: unknown, config?: Object) => void
 - `config?: { shouldValidate: boolean; shouldDirty: boolean; shouldTouch: boolean; }`
   - `setValue` 함수를 실행 후에, 폼 상태를 업데이트 하기 위한 플래그 설정을 지정합니다.
   - `shouldValidate`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 유효성 검사를 진행합니다.
+    - `setValue` 함수로 변경된 요소만 유효성 검사를 진행하고, `deps`로 정의된 종속성이 있는 요소의 유효성 검사는 하지 않습니다.
   - `shouldDirty`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 `defaultValues`에서 설정 한 값과 비교하여 변경 되었다면 `formState.isDirty` 플래그는 `true`가 됩니다.
   - `shouldTouch`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 요소가 touch 된 것으로 판단하고 `formState.touchedFields.{name}` 플래그는 `ture`가 됩니다.
 
@@ -325,6 +326,29 @@ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-ori
 </div>
 
 ### `trigger`
+`trigger` 함수는 수동으로 유효성 검사를 하기 위해 사용되는 함수입니다. 종속성 있는 유효성을 검사해야 할 때 유용하게 사용됩니다. 형태는 아래 코드와 같습니다.
+
+```ts
+trigger: (name?: string | string[], config?: { shouldFocus: boolean }) => Promise<boolean>
+```
+
+#### props
+- `name?: string | string[]`
+  - 유효성 검사를 할 요소의 이름을 지정합니다.
+  - `trigger()`와 같이 파라미터를 전달하지 않는다면 모든 필드의 유효성 검사를 합니다.
+  - `trigger('details.firstName')`와 같이 파라미터에 문자열을 전달하면 문자열에 해당하는 이름을 가진 필드의 유효성 검사를 합니다.
+  - `trigger(['details.lastName'])`와 같이 파라미터에 문자열 배열을 전달하면 배열 안에 있는 문자열의 이름을 가진 필드의 유효성 검사를 합니다.
+- `config?: { shouldFocus: boolean }`
+  - `shouldFocus`를 `true`로 설정할 경우 유효성을 통과하지 못한 요소에 포커스를 주게 됩니다.
+
+#### returns
+- `Promise<boolean>`
+  - 유효성 결과를 비동기 데이터(`Promise<boolean>` 형태)로 반환합니다.
+  - `const result = await trigger()`에서 `result`의 값이 `true`이면 유효성을 통과 한 상태이고, `false`이면 유효성을 통과하지 못한 상태입니다.
+
+아래 코드와 같이 `trigger` 함수를 사용할 수 있습니다.
+
+~~codesandbox~~
 
 ### `formState`
 
