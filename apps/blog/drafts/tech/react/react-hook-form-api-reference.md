@@ -173,7 +173,7 @@ type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = an
 };
 ```
 
-`useForm`의 반환 값들은 모두 함수인데, 밑에서 `useForm`의 반환 함수들을 하나씩 살펴보도록 하겠습니다.
+`useForm`의 반환 값들은 대부분 함수인데, 밑에서 `useForm`의 반환 값들을 하나씩 살펴보도록 하겠습니다.
 
 ### `watch`
 `watch` 함수는 특정 요소를 감시하여 그 요소의 값을 반환합니다. 해당 요소의 값을 가져와서 사용해야 할 때 유용하게 사용되는 함수입니다. 형태는 아래 코드와 같습니다.
@@ -348,9 +348,95 @@ trigger: (name?: string | string[], config?: { shouldFocus: boolean }) => Promis
 
 아래 코드와 같이 `trigger` 함수를 사용할 수 있습니다.
 
-~~codesandbox~~
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-trigger-rmsxgt?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - trigger"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ### `formState`
+`formState`는 폼 전체 상태 정보를 담고 있는 객체입니다. 폼의 상태를 알고 싶을 때 유용하게 사용할 수 있는 값입니다. 형태는 아래 코드와 같습니다.
+
+```ts
+type FormState<TFieldValues extends FieldValues> = {
+  isDirty: boolean;
+  isLoading: boolean;
+  isSubmitted: boolean;
+  isSubmitSuccessful: boolean;
+  isSubmitting: boolean;
+  isValidating: boolean;
+  isValid: boolean;
+  submitCount: number;
+  defaultValues?: undefined | Readonly<DeepPartial<TFieldValues>>;
+  dirtyFields: Partial<Readonly<FieldNamesMarkedBoolean<TFieldValues>>>;
+  touchedFields: Partial<Readonly<FieldNamesMarkedBoolean<TFieldValues>>>;
+  errors: FieldErrors<TFieldValues>;
+};
+```
+
+#### fields
+- `isDirty: boolean`
+  - 사용자가 폼을 수정하여 `getValues() !== defaultValues`라면 `true`로 설정됩니다.
+    <div>
+      <iframe src="https://codesandbox.io/embed/react-hook-form-trigger-forked-vl5jzh?fontsize=14&hidenavigation=1&theme=dark"
+      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+      title="React Hook Form - isDirty"
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
+    </div>
+- `isLoading: boolean`
+  - 아래 코드와 같이 비동기로 `defaultValues`를 설정 중이라면 `true`로 설정됩니다.
+    ```tsx
+    const {
+      formState: { isLoading }
+    } = useForm({
+      defaultValues: async () => await fetch('/api')
+    });
+    ```
+- `isSubmitted: boolean`
+  - 폼이 submit 된 적이 있다면 `true`로 설정됩니다. `reset` 함수를 호출하면 다시 `false`로 설정됩니다.
+    <div>
+      <iframe src="https://codesandbox.io/embed/react-hook-form-issubmitted-7lxqjs?fontsize=14&hidenavigation=1&theme=dark"
+      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+      title="React Hook Form - isSubmitted"
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
+    </div>
+- `isSubmitSuccessful: boolean`
+  - 유효성 에러 없이 정상적으로 submit이 호출되었다면, `true`로 설정됩니다.
+    <div>
+      <iframe src="https://codesandbox.io/embed/react-hook-form-issubmitsuccessful-rj7why?fontsize=14&hidenavigation=1&theme=dark"
+      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+      title="React Hook Form - isSubmitSuccessful"
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
+    </div>
+- `isSubmitting: boolean`
+  - 폼이 submit 중인 경우 `true`로 설정됩니다.
+- `isValidating: boolean`
+  - 폼이 유효성 검사 중인 경우 `true`로 설정됩니다.
+- `isValid: boolean`
+  - 유효성 검사를 통과하지 못한 경우 `true`로 설정됩니다.
+  - `setValue` 함수로 에러를 설정했더라도 `isValid`은 변경되지 않고, 유효성 검사를 통과 여부의 따라 `isValid`의 값이 변경됩니다.
+    <div>
+      <iframe src="https://codesandbox.io/embed/react-hook-form-isvalid-gyh5ms?fontsize=14&hidenavigation=1&theme=dark"
+      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+      title="React Hook Form - isValid"
+      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
+    </div>
+- submitCount
+- defaultValues
+- dirtyFields
+- touchedFields
+- errors
 
 ### `resetField`
 
