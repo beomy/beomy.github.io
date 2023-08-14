@@ -423,7 +423,6 @@ type FormState<TFieldValues extends FieldValues> = {
   - 폼이 유효성 검사 중인 경우 `true`로 설정됩니다.
 - `isValid: boolean`
   - 유효성 검사를 통과하지 못한 경우 `true`로 설정됩니다.
-  - `setValue` 함수로 에러를 설정했더라도 `isValid`은 변경되지 않고, 유효성 검사를 통과 여부의 따라 `isValid`의 값이 변경됩니다.
     <div>
       <iframe src="https://codesandbox.io/embed/react-hook-form-isvalid-gyh5ms?fontsize=14&hidenavigation=1&theme=dark"
       style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
