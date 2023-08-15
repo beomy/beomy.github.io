@@ -309,10 +309,10 @@ setValue: (name: string, value: unknown, config?: Object) => void
   - 요소의 업데이트할 값을 지정합니다.
 - `config?: { shouldValidate: boolean; shouldDirty: boolean; shouldTouch: boolean; }`
   - `setValue` 함수를 실행 후에, 폼 상태를 업데이트 하기 위한 플래그 설정을 지정합니다.
-  - `shouldValidate`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 유효성 검사를 진행합니다.
+  - `config.shouldValidate`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 유효성 검사를 진행합니다.
     - `setValue` 함수로 변경된 요소만 유효성 검사를 진행하고, `deps`로 정의된 종속성이 있는 요소의 유효성 검사는 하지 않습니다.
-  - `shouldDirty`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 `defaultValues`에서 설정 한 값과 비교하여 변경 되었다면 `formState.isDirty` 플래그는 `true`가 됩니다.
-  - `shouldTouch`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 요소가 touch 된 것으로 판단하고 `formState.touchedFields.{name}` 플래그는 `ture`가 됩니다.
+  - `config.shouldDirty`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 `defaultValues`에서 설정 한 값과 비교하여 변경 되었다면 `formState.isDirty` 플래그는 `true`가 됩니다.
+  - `config.shouldTouch`를 `true`로 설정하면, `setValue` 함수로 값이 업데이트 된 후 요소가 touch 된 것으로 판단하고 `formState.touchedFields.{name}` 플래그는 `ture`가 됩니다.
 
 아래 코드와 같이 `setValue` 함수를 사용할 수 있습니다.
 
@@ -380,66 +380,62 @@ type FormState<TFieldValues extends FieldValues> = {
 #### fields
 - `isDirty: boolean`
   - 사용자가 폼을 수정하여 `getValues() !== defaultValues`라면 `true`로 설정됩니다.
-    <div>
-      <iframe src="https://codesandbox.io/embed/react-hook-form-trigger-forked-vl5jzh?fontsize=14&hidenavigation=1&theme=dark"
-      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-      title="React Hook Form - isDirty"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
 - `isLoading: boolean`
   - 아래 코드와 같이 비동기로 `defaultValues`를 설정 중이라면 `true`로 설정됩니다.
-    ```tsx
-    const {
-      formState: { isLoading }
-    } = useForm({
-      defaultValues: async () => await fetch('/api')
-    });
-    ```
 - `isSubmitted: boolean`
   - 폼이 submit 된 적이 있다면 `true`로 설정됩니다. `reset` 함수를 호출하면 다시 `false`로 설정됩니다.
-    <div>
-      <iframe src="https://codesandbox.io/embed/react-hook-form-issubmitted-7lxqjs?fontsize=14&hidenavigation=1&theme=dark"
-      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-      title="React Hook Form - isSubmitted"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
 - `isSubmitSuccessful: boolean`
   - 유효성 에러 없이 정상적으로 submit이 호출되었다면, `true`로 설정됩니다.
-    <div>
-      <iframe src="https://codesandbox.io/embed/react-hook-form-issubmitsuccessful-rj7why?fontsize=14&hidenavigation=1&theme=dark"
-      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-      title="React Hook Form - isSubmitSuccessful"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
 - `isSubmitting: boolean`
   - 폼이 submit 중인 경우 `true`로 설정됩니다.
 - `isValidating: boolean`
   - 폼이 유효성 검사 중인 경우 `true`로 설정됩니다.
 - `isValid: boolean`
   - 유효성 검사를 통과하지 못한 경우 `true`로 설정됩니다.
-    <div>
-      <iframe src="https://codesandbox.io/embed/react-hook-form-isvalid-gyh5ms?fontsize=14&hidenavigation=1&theme=dark"
-      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-      title="React Hook Form - isValid"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
-- submitCount
-- defaultValues
-- dirtyFields
-- touchedFields
-- errors
+- `submitCount: number`
+  - submit이 호출된 횟수를 저장합니다. 유효성 검사가 통과하지 못했더라도 submit이 호출되면 1씩 증가합니다.
+- `defaultValues: object`
+  - `useForm` 훅의 `defaultValues`로 전달된 값이나 `reset` 함수로 업데이트 된 `defaultValues` 값을 저장합니다.
+- `dirtyFields: object`
+  - 사용자가 수정하여 값이 변경된 요소의 이름을 저장합니다.
+  - `defaultValues`와 비교하여 변경되었는지 판단하기 때문에 `useForm` 훅을 사용할 때 `defaultValues`를 정의해 줘야 합니다.
+- `touchedFields: object`
+  - 사용자와 인터렉션이 있었던 요소의 이름을 저장합니다.
+- `errors: object`
+  - 유효성 검증이 실패한 요소의 에러 정보를 저장합니다.
 
-### `resetField`
+`formState`의 사용 방법은 아래 코드를 참고 바랍니다.
+
+<div>
+<iframe src="https://codesandbox.io/embed/react-hook-form-formstate-pcmjjp?fontsize=14&hidenavigation=1&theme=dark"
+style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+title="React Hook Form - formState"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ### `reset`
+`reset` 함수는 폼의 상태나 값을 초기화 할 때 사용하는 함수 입니다. 특정 상태는 유지할 수 있도록 옵션을 제공합니다. 형태는 아래 코드와 같습니다.
+
+```ts
+reset: <T>(values?: T | ResetAction<T>, options?: Record<string, boolean>) => void
+```
+
+#### props
+- `values: object`
+- `options: object`
+  - `options.keepErrors: boolean`
+  - `options.keepDirty: boolean`
+  - `options.keepDirtyValues: boolean`
+  - `options.keepValues: boolean`
+  - `options.keepDefaultValues: boolean`
+  - `options.keepIsSubmitted: boolean`
+  - `options.keepTouched: boolean`
+  - `options.keepIsValid: boolean`
+  - `options.keepSubmitCount: boolean`
+
+### `resetField`
 
 ### `handleSubmit`
 
