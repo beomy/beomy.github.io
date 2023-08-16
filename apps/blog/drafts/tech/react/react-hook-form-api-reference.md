@@ -67,19 +67,12 @@ type UseFormProps<TFieldValues extends FieldValues = FieldValues, TContext = any
   - `Moment`, `Luxon`과 같은 커스텀 프로토타입 메소드가 포함된 객체를 정의하는 것은 피해야 합니다.
 - `values: Record<string, any>`
   - `defaultValues`와 유사한 목적으로 사용되지만 `defaultValues`와 다르게 `values`는 반응형으로 동작하여 `values` 값이 변경 되면 폼에 반영됩니다. 아래 예제에서 확인할 수 있습니다.
-    <div>
-    <iframe src="https://codesandbox.io/embed/react-hook-form-defaultvalues-values-vn55nf?fontsize=14&hidenavigation=1&theme=dark"
-    style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-    title="React Hook Form - defaultValues &amp; values"
-    allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-    ></iframe>
-    </div>
   - `defaultValues`와 `values`가 모두 적용되어 있다면, `values` 값이 폼에 적용됩니다.
 - `resetOptions: KeepStateOptions`
   - `defaultValues`나 `values`가 업데이트 될 때 내부적으로 `reset` API가 호출되는데, 이 때 호출되는 `reset` API의 옵션을 설정해 주는 필드입니다. 자세한 내용은 [reset API](~~)를 참고 바랍니다.
 - `resolver: Resolver`
-  - ```ts
+  - `resolver`는 아래 코드와 같은 형태를 가집니다.
+    ```ts
     export type Resolver<
       TFieldValues extends FieldValues = FieldValues,
       TContext = any
@@ -103,54 +96,44 @@ type UseFormProps<TFieldValues extends FieldValues = FieldValues, TContext = any
       errors: FieldErrors<TFieldValues>;
     };
     ```
-  - 외부 유효성 검증 라이브러리를 사용하기 위해 사용되는 필드입니다([유효성 검증 - 외부 유효성 검증 라이브러리와 함께](/tech/react/react-hook-form/#외부-유효성-검증-라이브러리와-함께) 참고). 하지만 아래 코드와 같이 유효성 검증 로직을 직접 작성할 수도 있습니다.
-    <div>
-      <iframe src="https://codesandbox.io/embed/react-hook-form-custom-resolver-hnhs5d?fontsize=14&hidenavigation=1&theme=dark"
-      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-      title="React Hook Form - custom resolver"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
+  - 외부 유효성 검증 라이브러리를 사용하기 위해 사용되는 필드이지만([유효성 검증 - 외부 유효성 검증 라이브러리와 함께](/tech/react/react-hook-form/#외부-유효성-검증-라이브러리와-함께) 참고), 유효성 검증 로직을 직접 작성할 수도 있습니다. 직접 작성한 `resolver`는 아래 예제에서 살펴보도록 하겠습니다.
 - `context: object`
   - `context` 필드를 사용하면 `resolver` 함수의 두번째 파라미터로 전달되거나, `@hookform/resolvers/yup`을 사용한다면 Yup의 context 객체에 주입됩니다.
-    <div>
-      <iframe src="https://codesandbox.io/embed/react-hook-form-context-crs6cz?fontsize=14&hidenavigation=1&theme=dark"
-      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-      title="React Hook Form - context"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
 - `shouldFocusError: boolean = true`
   - `true`가 기본 값으로 `ture`로 설정한 경우, 유효성 검사에 실패한 첫번째 요소가 포커스 됩니다.
   - 이 옵션을 사용하기 위해서는 `register` 함수의 반환 값인 `ref`(`Controller` 컴포넌트의 경우 `render` 함수의 `field.ref` 파라미터)가 요소의 `ref`에 전달 되어야 합니다.
 - `shouldUnregister: boolean = false`
   - `false`가 기본으로 요소가 언마운트 되어도 입력 값이 유지됩니다. `true`로 지정할 경우 요소가 언마운트 되면 입력값이 제거됩니다.
-    <div>
-      <iframe src="https://codesandbox.io/embed/react-hook-form-shouldunregister-8lzyr8?fontsize=14&hidenavigation=1&theme=dark"
-      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-      title="React Hook Form - shouldUnregister"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
 - `shouldUseNativeValidation: boolean = false`
   - `false`가 기본 값으로 `true`로 설정한 경우 [브라우저 네이티브 검증](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)이 동작하게 됩니다.
 - `criteriaMode: 'firstError' | 'all'`
   - `firstError`가 기본 값으로 첫번째 유효성 에러만 `formState.errors` 객체에 담김니다.
   - `all`로 설정한 경우 모든 유효성 에러가 `formState.errors.types` 객체에 담김니다.
-    <div>
-      <iframe src="https://codesandbox.io/embed/react-hook-form-criteriamode-all-zz4rgp?fontsize=14&hidenavigation=1&theme=dark"
-      style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-      title="React Hook Form - criteriaMode all"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
 - `delayError: number`
   - 입력된 ms초 만큼 사용자에게 에러 표시를 지연시킵니다.
   - 유효성 검사가 통과될 경우에는 즉각 적용됩니다.
+
+아래 코드와 같이 `useForm` 훅을 사용할 수 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-useform-cggp2g?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - useForm"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+아래 예제는 `resolver`와 `context`를 사용한 예제입니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-context-crs6cz?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - context"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 #### returns
 ```ts
@@ -235,12 +218,12 @@ getFieldState: (name: string, formState?: Object) => ({isDirty, isTouched, inval
 `getFieldState`의 반환 값이 반응형으로 동작하지 않는다면 두번째 파라미터에 `useForm`의 반환값인 `formState`를 넘겨주면 반환 값이 반응형으로 동작하게 됩니다. `getFieldState` 함수는 아래 코드와 같이 사용할 수 있습니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-getfieldstate-2qjmxf?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-title="React Hook Form - getFieldState"
-allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-getfieldstate-2qjmxf?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - getFieldState"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
 </div>
 
 ### `setError`
@@ -262,12 +245,12 @@ setError:(name: string, error: FieldError, { shouldFocus?: boolean }) => void
 아래 코드와 같이 `setError` 함수를 사용할 수 있습니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-v7-seterror-forked-5zfxy4?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-title="React Hook Form - setError"
-allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-v7-seterror-forked-5zfxy4?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - setError"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
 </div>
 
 ### `clearErrors`
@@ -287,12 +270,12 @@ clearErrors: (name?: string | string[]) => void
 아래 코드와 같이 `clearErrors` 함수를 사용할 수 있습니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-v7-clearerrors-forked-fpsl34?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-title="React Hook Form - clearErrors"
-allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-v7-clearerrors-forked-fpsl34?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - clearErrors"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
 </div>
 
 ### `setValue`
@@ -317,12 +300,12 @@ setValue: (name: string, value: unknown, config?: Object) => void
 아래 코드와 같이 `setValue` 함수를 사용할 수 있습니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-getfieldstate-forked-k5qvv3?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-title="React Hook Form - setValue"
-allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-getfieldstate-forked-k5qvv3?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - setValue"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
 </div>
 
 ### `trigger`
@@ -349,12 +332,12 @@ trigger: (name?: string | string[], config?: { shouldFocus: boolean }) => Promis
 아래 코드와 같이 `trigger` 함수를 사용할 수 있습니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-trigger-rmsxgt?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-title="React Hook Form - trigger"
-allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-trigger-rmsxgt?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - trigger"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
 </div>
 
 ### `formState`
@@ -400,19 +383,19 @@ type FormState<TFieldValues extends FieldValues> = {
   - 사용자가 수정하여 값이 변경된 요소의 이름을 저장합니다.
   - `defaultValues`와 비교하여 변경되었는지 판단하기 때문에 `useForm` 훅을 사용할 때 `defaultValues`를 정의해 줘야 합니다.
 - `touchedFields: object`
-  - 사용자와 인터렉션이 있었던 요소의 이름을 저장합니다.
+  - 사용자 액션이 있었던 요소의 이름을 저장합니다.
 - `errors: object`
   - 유효성 검증이 실패한 요소의 에러 정보를 저장합니다.
 
 `formState`의 사용 방법은 아래 코드를 참고 바랍니다.
 
 <div>
-<iframe src="https://codesandbox.io/embed/react-hook-form-formstate-pcmjjp?fontsize=14&hidenavigation=1&theme=dark"
-style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
-title="React Hook Form - formState"
-allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-formstate-pcmjjp?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - formState"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
 </div>
 
 ### `reset`
@@ -423,19 +406,59 @@ reset: <T>(values?: T | ResetAction<T>, options?: Record<string, boolean>) => vo
 ```
 
 #### props
-- `values: object`
-- `options: object`
-  - `options.keepErrors: boolean`
-  - `options.keepDirty: boolean`
-  - `options.keepDirtyValues: boolean`
-  - `options.keepValues: boolean`
-  - `options.keepDefaultValues: boolean`
-  - `options.keepIsSubmitted: boolean`
-  - `options.keepTouched: boolean`
-  - `options.keepIsValid: boolean`
-  - `options.keepSubmitCount: boolean`
+- `values?: object`
+  - 폼의 값을 재설정하기 위한 파라미터입니다. `values` 파라미터를 전달하지 않아도 되는 옵셔널한 값이지만 전달하게 되면, `defaultValues` 전체를 전달하는 것이 좋습니다.
+- `options?: Record<string, boolean>`
+  - 폼의 상태를 유지할 수 있도록 제공하는 옵션들입니다.
+  - `options.keepErrors: boolean`는 에러를 유지하도록 하는 플래그입니다.
+  - `options.keepDirty: boolean`는 `formState.isDirty` 값을 유지하도록 하는 플래그입니다.
+  - `options.keepDirtyValues: boolean`는 `formState.dirtyFields` 값을 유지하도록 하는 플래그입니다.
+  - `options.keepValues: boolean`는 폼의 값을 변경하지 않고 유지하도록 하는 플래그입니다.
+  - `options.keepDefaultValues: boolean`는 `formState.defaultValues` 값을 유지하도록 하는 플래그입니다. `reset` 함수의 첫번째 파라미터를 전달하여 실행하면 `defaultValues`가 변경되지만, `true`로 설정할 경우에는 변경되지 않습니다.
+  - `options.keepIsSubmitted: boolean`는 `formState.isSubmitted` 값을 유지하도록 하는 플래그입니다.
+  - `options.keepTouched: boolean`는 필드의 `isTouched` 값을 유지하도록 하는 플래그입니다.
+  - `options.keepSubmitCount: boolean`는 `formState.submitCount` 값을 유지하도록 하는 플래그입니다.
+
+`reset` 함수의 예제 코드는 아래 코드를 참고 바랍니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-formstate-forked-r8xtyk?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - reset"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ### `resetField`
+`reset` 함수는 폼 전체를 초기화할 때 사용하는 함수라면, `resetField` 함수는 특정 필드를 초기화 할 때 사용하는 함수입니다. 형태는 아래 코드와 같습니다.
+
+```ts
+resetField: (name: string, options?: Record<string, boolean | any>) => void
+```
+
+#### props
+- `name: string`
+  - 값을 재설정하기 위한 필드의 이름입니다.
+- `options?: Record<string, boolean | any>`
+  - `reset` 함수와 동일하게 상태를 유지할 수 있도록 옵션을 제공합니다.
+  - `options.keepError: boolean`는 에러를 유지하도록 하는 플래그입니다.
+  - `options.keepDirty: boolean`는 `isDirty`와 `dirtyFields`를 유지하도록 하는 플래그입니다.
+  - `options.keepTouched: boolean`는 필드의 `isTouched` 값을 유지하도록 하는 플래그입니다.
+  - `options.defaultValue: boolean`
+    - 해당 값을 전달하지 않는다면 `defaultValues`의 값으로 초기화 됩니다.
+    - 해당 값을 전달하면 전달 된 값으로 초기화 되고, `defaultValues` 값이 변경됩니다. `undefined` 값은 지원하지 않습니다.
+
+`resetField` 함수의 예제 코드는 아래 코드를 참고 바랍니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-resetfield-8hstfg?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - resetField"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ### `handleSubmit`
 
@@ -448,7 +471,6 @@ reset: <T>(values?: T | ResetAction<T>, options?: Record<string, boolean>) => vo
 ### `setFocus`
 
 ## useController
-~~간단한 예제~~
 
 #### props
 - name
