@@ -168,27 +168,27 @@ watch: (
 ) => unknown
 ```
 
-~~필요 없을듯~~
-| Example                                 | Return                       | Description                                              |
-|-----------------------------------------|------------------------------|----------------------------------------------------------|
-| `watch('inputName')`                    | `unknown`                    | 특정 요소의 값을 반환합니다.                                         |
-| `watch(['inputName'])`                  | `unknown[]`                  | 배열 안의 요소의 값들을 배열로 반환합니다.                                 |
-| `watch()`                               | `{[key: string]: unknown}`   | 모든 요소의 값을 객체로 반환합니다.                                     |
-| `watch((data, { name, type }) => void)` | `{ unsubscribe: () => void }` | 모든 요소의 값을 구독하고 값이 업데이트 되면 콜백이 실행됩니다. 구독 해제를 위한 함수 반환합니다. |
-
 #### props
 - `name?: string | string[] | (data, options) => void`
-  - `string`
-  - `string[]`
-  - `(data, options) => void`
+  - `watch('inputName')`와 같은 형태로 사용한 경우 특정 필드의 값(`unknown`)을 반환합니다.
+  - `watch(['inputName'])`와 같은 형태로 사용한 경우 배열 안에 필드의 값들을 배열 형태(`unknown[]`)로 반환합니다.
+  - `watch()`와 같은 형태로 사용한 경우 모든 요소의 값을 객체 형태(`{[key: string]: unknown}`)로 반환합니다.
+  - `watch((data, { name, type }) => void)`와 같은 형태로 사용한 경우 모든 요소의 값을 구독하며, 값이 업데이트 되면 콜백이 실행됩니다. 구독 해제를 위한 함수를 포함한 객체(`{ unsubscribe: () => void }`)를 반환합니다.
 - `defaultValue: Object | unknown`
   - `watch` 함수는 두번째 파라미터로 `defaultValue`를 전달할 수 있는데, `defaultValues`로 감시하는 요소의 값이 정의되어 있지 않을 경우 `defaultValue` 값을 반환합니다. `defaultValue` 마저도 정의되어 있지 않다면 초기값으로 `undfined`를 반환합니다. `defaultValues`와 `defaultValue`가 모두 정의되어 있다면 `defaultValue` 값을 반환합니다.
-  - `Object`
-  - `unknown`
+  - `watch('inputName')`와 같이 `name`에 문자열을 사용한 경우 `watch('inputName', 'one')`와 같이 `defaultValue`를 전달 할 수 있습니다.
+  - `watch(['first', 'second'])`와 같이 `name`에 배열 형태를 사용한 경우 `watch(['first', 'second'], { first: 'one', second: 'two' })`와 같이 `defaultValue`를 전달 할 수 있습니다.
 
 `watch` 함수는 아래 코드와 같이 사용할 수 있습니다.
 
-~~codesandbox~~
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-watch-ftp6ry?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - watch"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ### `getValues`
 `getValues`는 폼의 값을 가져오기 위해 사용되는 함수입니다. `watch` 함수와 유사한 기능을 제공하지만 차이점은 `getValues`는 입력을 감시하지 않기 때문에 입력 값이 변경되어도 반환 값이 업데이트 되지 않습니다. 형태는 아래 코드와 같습니다.
