@@ -461,7 +461,6 @@ resetField: (name: string, options?: Record<string, boolean | any>) => void
 </div>
 
 ### `handleSubmit`
-
 ```ts
 ((data: Object, e?: Event) => Promise<void>, (errors: Object, e?: Event) => void) => Promise<void>
 ```
