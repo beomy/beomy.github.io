@@ -461,6 +461,8 @@ resetField: (name: string, options?: Record<string, boolean | any>) => void
 </div>
 
 ### `handleSubmit`
+`handleSubmit` 함수는 유효성 검사가 통과되면 폼 데이터를 받을 수 있는 콜백 함수를 제공하는 함수입니다. 첫번째 파라미터는 유효성을 통과한 폼 데이터를 받을 수 있는 콜백 함수이고 두번째 파라미터는 유효성을 통과하지 못할 경우 유효성 에러를 받을 수 있는 콜백함수입니다. 형태는 아래 코드와 같습니다.
+
 ```ts
 ((data: Object, e?: Event) => Promise<void>, (errors: Object, e?: Event) => void) => Promise<void>
 ```
