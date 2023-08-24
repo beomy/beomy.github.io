@@ -467,6 +467,8 @@ resetField: (name: string, options?: Record<string, boolean | any>) => void
 ((data: Object, e?: Event) => Promise<void>, (errors: Object, e?: Event) => void) => Promise<void>
 ```
 
+#### props
+
 ### `unregister`
 
 ### `control`
