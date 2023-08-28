@@ -473,6 +473,7 @@ resetField: (name: string, options?: Record<string, boolean | any>) => void
   - `data: Object` 유효성 검사를 통과한 폼 데이터입니다.
   - `e?: Event` 이벤트 객체입니다.
 - `(errors: Object, e?: Event) => void`
+  -
 
 ### `unregister`
 
