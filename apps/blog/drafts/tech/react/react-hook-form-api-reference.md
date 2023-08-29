@@ -469,11 +469,11 @@ resetField: (name: string, options?: Record<string, boolean | any>) => void
 
 #### props
 - `(data: Object, e?: Event) => Promise<void>`
-  - 유효성 검사가 통과된 폼 데이터를 파라미터로 전달하는 콜백함수 입니다.
+  - 유효성 검사가 통과된 폼 데이터를 파라미터로 전달하는 콜백함수입니다.
   - `data: Object` 유효성 검사를 통과한 폼 데이터입니다.
   - `e?: Event` 이벤트 객체입니다.
 - `(errors: Object, e?: Event) => void`
-  -
+  - 유효성 검사가 실패했을 때 에러 데이터를 전달하는 콜백함수입니다.
 
 ### `unregister`
 
