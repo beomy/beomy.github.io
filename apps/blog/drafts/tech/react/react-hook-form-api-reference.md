@@ -474,6 +474,7 @@ resetField: (name: string, options?: Record<string, boolean | any>) => void
   - `e?: Event` 이벤트 객체입니다.
 - `(errors: Object, e?: Event) => void`
   - 유효성 검사가 실패했을 때 에러 데이터를 전달하는 콜백함수입니다.
+  - `errors: Object` 유효성 검사 실패시 실패 정보가 에러 데이터입니다.
 
 ### `unregister`
 
