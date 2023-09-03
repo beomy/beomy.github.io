@@ -477,8 +477,18 @@ resetField: (name: string, options?: Record<string, boolean | any>) => void
   - `errors: Object` 유효성 검사 실패시 실패 정보가 에러 데이터입니다.
   - `e?: Event` 이벤트 객체입니다.
 
-### `unregister`
+`handleSubmit` 함수의 예제 코드는 아래 코드를 참고 바랍니다.
 
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-handlesubmit-w4wmft?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - handleSubmit"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+### `unregister`
 
 ### `control`
 
