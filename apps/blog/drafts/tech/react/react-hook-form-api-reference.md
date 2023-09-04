@@ -489,6 +489,7 @@ resetField: (name: string, options?: Record<string, boolean | any>) => void
 </div>
 
 ### `unregister`
+`unregister` 함수는
 
 ### `control`
 
