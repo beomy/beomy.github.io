@@ -492,7 +492,7 @@ handleSubmit: ((data: Object, e?: Event) => Promise<void>, (errors: Object, e?: 
 `unregister` 함수는 폼 관리를 위해 `register` 함수로 등록한 것을 취소할 수 있게 만드는 함수입니다. 첫번째 파라미터는 등록 취소할 필드명이고 두번째 파라미터는 등록 휘소한 후에 상태를 유지하기 위한 옵션입니다. 형태는 아래 코드와 같습니다.
 
 ```ts
-unregister: (name: string | string[], options) => void
+unregister: (name: string | string[], options?: Record<string, boolean>) => void
 ```
 
 #### porps
