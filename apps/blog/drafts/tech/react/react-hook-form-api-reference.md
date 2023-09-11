@@ -498,6 +498,7 @@ unregister: (name: string | string[], options?: Record<string, boolean>) => void
 #### porps
 - `name: string | string[]`
 - `options?: Record<string, boolean>`
+  - 상태를 유지할 수 있도록 옵션을 제공합니다.
   - `options.keepDirty`
   - `options.keepTouched`
   - `options.keepIsValid`
