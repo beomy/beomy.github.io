@@ -495,16 +495,16 @@ handleSubmit: ((data: Object, e?: Event) => Promise<void>, (errors: Object, e?: 
 unregister: (name: string | string[], options?: Record<string, boolean>) => void
 ```
 
-#### porps
+#### props
 - `name: string | string[]`
 - `options?: Record<string, boolean>`
   - 상태를 유지할 수 있도록 옵션을 제공합니다.
   - `options.keepDirty: boolean`는 `isDirty`와 `dirtyFields`를 유지하도록 하는 플래그입니다.
   - `options.keepTouched: boolean`는 필드의 `isTouched` 값을 유지하도록 하는 플래그입니다.
-  - `options.keepIsValid: boolean`
+  - `options.keepIsValid: boolean`는 `isValid` 값을 유지하도록 하는 플래그입니다.
   - `options.keepTouched: boolean`는 필드의 `isTouched` 값을 유지하도록 하는 플래그입니다.
-  - `options.keepValue: boolean`
-  - `options.keepDefaultValue: boolean`
+  - `options.keepValue: boolean`는 폼의 값을 변경하지 않고 유지하도록 하는 플래그입니다.
+  - `options.keepDefaultValue: boolean`는 `defaultValues` 값을 유지하도록 하는 플래그입니다.
 
 ### `control`
 
