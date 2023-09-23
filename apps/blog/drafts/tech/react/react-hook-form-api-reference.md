@@ -506,6 +506,8 @@ unregister: (name: string | string[], options?: Record<string, boolean>) => void
   - `options.keepValue: boolean`는 폼의 값을 변경하지 않고 유지하도록 하는 플래그입니다.
   - `options.keepDefaultValue: boolean`는 `defaultValues` 값을 유지하도록 하는 플래그입니다.
 
+`unregister` 함수의 예제 코드는 아래 코드를 참고 바랍니다.
+
 ### `control`
 
 ### `register`
