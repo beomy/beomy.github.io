@@ -245,7 +245,7 @@ setError:(name: string, error: FieldError, { shouldFocus?: boolean }) => void
 아래 코드와 같이 `setError` 함수를 사용할 수 있습니다.
 
 <div>
-  <iframe src="https://codesandbox.io/embed/react-hook-form-v7-seterror-forked-5zfxy4?fontsize=14&hidenavigation=1&theme=dark"
+  <iframe src="https://codesandbox.io/embed/react-hook-form-seterror-k8jc28?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
   title="React Hook Form - setError"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -270,7 +270,7 @@ clearErrors: (name?: string | string[]) => void
 아래 코드와 같이 `clearErrors` 함수를 사용할 수 있습니다.
 
 <div>
-  <iframe src="https://codesandbox.io/embed/react-hook-form-v7-clearerrors-forked-fpsl34?fontsize=14&hidenavigation=1&theme=dark"
+  <iframe src="https://codesandbox.io/embed/react-hook-form-clearerrors-63qt55?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
   title="React Hook Form - clearErrors"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
