@@ -506,7 +506,16 @@ unregister: (name: string | string[], options?: Record<string, boolean>) => void
   - `options.keepValue: boolean`는 폼의 값을 변경하지 않고 유지하도록 하는 플래그입니다.
   - `options.keepDefaultValue: boolean`는 `defaultValues` 값을 유지하도록 하는 플래그입니다.
 
-`unregister` 함수의 예제 코드는 아래 코드를 참고 바랍니다.
+`unregister` 함수의 첫번째 파라미터에 전달된 필드들이 화면에서 제거 되면 `handleSubmit` 함수의 콜백 함수 파라미터에 포함되지 않습니다. `unregister` 함수의 예제 코드는 아래 코드를 참고 바랍니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-unregister-5yj35v?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - unregister"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ### `control`
 
