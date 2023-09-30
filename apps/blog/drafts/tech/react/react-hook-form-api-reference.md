@@ -518,6 +518,24 @@ unregister: (name: string | string[], options?: Record<string, boolean>) => void
 </div>
 
 ### `control`
+`control` 객체는 Controlled 방식의 `Controller` 컴포넌트나 `useController` 훅을 사용할 때 함께 사용되는 값입니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+import { useForm, Controller } from "react-hook-form";
+
+function App() {
+  const { control } = useForm();
+
+  return (
+    <Controller
+      render={({ field }) => <input {...field} />}
+      name="firstName"
+      control={control}
+      defaultValue=""
+    />
+  );
+}
+```
 
 ### `register`
 
