@@ -538,6 +538,33 @@ function App() {
 ```
 
 ### `register`
+`register` 함수는 Uncontrolled 함식으로 폼을 관리할 때 사용되는 함수입니다. 아래 코드와 같은 형태를 가지고 있습니다.
+
+```ts
+register: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref });
+
+type RegisterOptions = Partial<{
+  required: boolean | string | { value: boolean; message: string; }; // 필수값 여부 체크합니다.
+  min: number | string | { value: number | string; message: string }; // 입력 값의 최솟값 체크합니다.
+  max: number | string | { value: number | string; message: string }; // 입력 값의 최댓값 체크합니다.
+  maxLength: number | string | { value: number | string; message: string }; // 입력 값의 최대 길이 체크합니다.
+  minLength: number | string | { value: number | string; message: string }; // 입력 값의 최소 길이 체크합니다.
+  pattern: RegExp | { value: RegExp; message: string }; // 정규식을 사용한 입력 값 체크합니다.
+  validate: Validate | Record<string, Validate>; // 커스텀 유효성 체크를 만들 때 사용됩니다.
+  valueAsNumber: boolean // Number로 형변환 합니다.
+  valueAsDate: boolean // Date로 형변환 합니다.
+  setValueAs: (value: any) => any // value를 가공합니다.
+  disabled: boolean // true로 설정 시, value가 undefined 되며 요소가 disabled 됩니다.
+  onChange: (event: any) => void // change 이벤트 발생 시 실행되는 콜백입니다.
+  onBlur: (event: any) => void // blur 이벤트 발생 시 실행되는 콜백입니다.
+  value: unknown // 요소가 가지고 있는 값입니다.
+  shouldUnregister: boolean // true로 지정할 경우 요소가 언마운트 되면 입력값이 제거됩니다.
+  deps: string | string[] // 나열된 요소가 함께 유효성 검증이 실행됩니다.
+}>;
+
+type Validate<TFieldValue, TFormValues> = (value: TFieldValue, formValues: TFormValues) => ValidateResult | Promise<ValidateResult>;
+type ValidateResult = Message | Message[] | boolean | undefined;
+```
 
 ### `setFocus`
 
