@@ -566,6 +566,10 @@ type Validate<TFieldValue, TFormValues> = (value: TFieldValue, formValues: TForm
 type ValidateResult = Message | Message[] | boolean | undefined;
 ```
 
+#### props
+
+#### returns
+
 ### `setFocus`
 
 ## useController
