@@ -497,6 +497,7 @@ unregister: (name: string | string[], options?: Record<string, boolean>) => void
 
 #### props
 - `name: string | string[]`
+  - unregister 할 요소의 이름입니다.
 - `options?: Record<string, boolean>`
   - 상태를 유지할 수 있도록 옵션을 제공합니다.
   - `options.keepDirty: boolean`는 `isDirty`와 `dirtyFields`를 유지하도록 하는 플래그입니다.
@@ -541,7 +542,7 @@ function App() {
 `register` 함수는 Uncontrolled 함식으로 폼을 관리할 때 사용되는 함수입니다. 아래 코드와 같은 형태를 가지고 있습니다.
 
 ```ts
-register: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref });
+register: (name: string, options?: RegisterOptions) => ({ onChange, onBlur, name, ref });
 
 type RegisterOptions = Partial<{
   required: boolean | string | { value: boolean; message: string; }; // 필수값 여부 체크합니다.
@@ -567,12 +568,49 @@ type ValidateResult = Message | Message[] | boolean | undefined;
 ```
 
 #### props
+- `name: string`
+  - 설정한 값에 따라 폼 데이터에 구조를 결정됩니다.
+  - `register('firstName')`: `{firstName: 'value'}`이 폼의 결과 값이 됩니다.
+  - `register('name.firstName')`: `{name: { firstName: 'value' }}`이 폼의 결과 값이 됩니다.
+  - `register('name.firstName.0')`: `{name: { firstName: [ 'value' ] }}`이 폼의 결과 값이 됩니다.
+- `options?: RegisterOptions`
+  - 폼 요소의 유효성 조건 등 폼 요소를 관리하기 위해 사용되는 옵션입니다. 옵션 별 타입 정보와 옵션 정보는 위의 코드를 참고 바랍니다.
 
 #### returns
+`register` 함수의 반환 값은 보통 객체 구조 분해(`...`)를 사용하여 폼 요소의 속성으로 전달됩니다.
+
+- `onChange`: 요소의 `onChange`입니다.
+- `onBlur`: 요소의 `onBlur`입니다.
+- `name`: 요소의 `name` 속성입니다.
+- `ref`: 요소의 `ref`에 할당할 경우, 유효성 검사에 실패할 경우 요소가 포커스 됩니다.
 
 ### `setFocus`
+`setFocus` 함수를 실행하면 첫번째 파라미터로 설정한 요소가 포커스됩니다. 아래 코드와 같은 형태를 가지고 있습니다.
 
-## useController
+```ts
+setFocus:(name: string, options?: SetFocusOptions) => void
+```
+
+#### props
+- `name: string`
+  - 포커스 할 특정 요소의 이름을 지정합니다.
+- `options?: SetFocusOptions`
+  - `options.shouldSelect: boolean`: `true`로 설정할 경우 문자열이 selection 된 상태로 포커스됩니다.
+
+아래 코드와 같이 사용할 수 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-setfocus-sc7pxq?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - setFocus"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+## `Controller`
+
+## `useController`
 
 #### props
 - name
@@ -592,8 +630,6 @@ type ValidateResult = Message | Message[] | boolean | undefined;
 - `fieldState.isDirty`
 - `fieldState.error`
 - `formState`
-
-## Controller
 
 ## useFormContext
 - FormProvider
