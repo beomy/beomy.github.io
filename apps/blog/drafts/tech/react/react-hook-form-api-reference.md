@@ -209,7 +209,7 @@ getValues: (payload?: string | string[]) => Object
 </div>
 
 ### `getFieldState`
-`getFieldState`는 `react-hook-form@7.25.0`에서 추가된 함수로 각각의 폼 요소의 상태를 반환하는 함수입니다. 형태는 아래 코드와 같습니다.
+`getFieldState` 함수는 각각의 폼 요소의 상태를 반환하는 함수입니다. 형태는 아래 코드와 같습니다.
 
 ```ts
 getFieldState: (name: string, formState?: Object) => ({isDirty, isTouched, invalid, error})
@@ -609,58 +609,134 @@ setFocus:(name: string, options?: SetFocusOptions) => void
 </div>
 
 ## `Controller`
-
-## `useController`
-
-#### props
-- name
-- control
-- defaultValue
-- rules
-- shouldUnregister
-
-#### returns
-- `field.onChange`
-- `field.onBlur`
-- `field.value`
-- `field.name`
-- `field.ref`
-- `fieldState.invalid`
-- `fieldState.isTouched`
-- `fieldState.isDirty`
-- `fieldState.error`
-- `formState`
-
-## useFormContext
-- FormProvider
-
-## useWatch
-~~간단한 예제~~
+React Hook Form은 기본적으로 Uncontrolled 방식을 사용하지만 `Controller` 컴포넌트를 사용하는 Controlled 방식을 사용하여 [Ant Design](https://ant.design/)이나 [Mui](https://mui.com/) 등의 UI 라이브러리와 함께 사용할 수 있습니다.
 
 #### props
-- name
-- control
-- defaultValue
-- disabled
-- exact
+`Controller` 컴포넌트의 속성은 아래와 같습니다.
 
-#### returns
+- `name: FieldValues`: `register` 함수의 첫번째 파라미터와 동일한 역할을 합니다. 요소를 구별할 수 있는 유니크한 값을 지정해야 합니다.
+- `control: Control`: `useForm` 함수의 반환 값인 `control`을 그대로 전달해야 합니다. `FormProvider`를 사용했을 경우 생략 가능합니다.
+- `render: Function`: 화면에 그려질 컴포넌트를 반환하는 함수입니다.
+- `defaultValue: unknown`: 요소의 기본값을 정의합니다. 해당 필드에 값이 정의되거나, `useForm`의 `defaultValues`에 값이 정의되어야 합니다. `undefined`는 사용할수 없기 때문에 `null` 혹은 `''`를 사용하여 정의되지 않을 값을 대신해야 합니다.
+- `rules: RegisterOptions`: `register` 함수의 `RegisterOptions` 옵션과 동일한 값을 설정할 수 있습니다.
+- `shouldUnregister: boolean`: `true`로 지정할 경우 요소가 언마운트 되면 입력값이 제거됩니다.
 
-## useFormState
+#### `render` 함수의 props
+`render` 함수의 반환 값이 화면에 그려지게 되는데, `render` 함수의 파라미터는 아래와 같습니다.
+
+- `field`: 요소의 속성으로 전달되어야 하는 값들을 담고 있는 객체입니다.
+  - `field.onChange: (value: any) => void`: 요소의 값이 변경될 경우 호출되어야 하는 함수입니다. `undefined`가 `value`로 전달되면 안됩니다.
+  - `field.onBlur: () => void`: 요소의 blur 이벤트가 발생할 경우 호출되어야 하는 함수입니다.
+  - `field.value: unknown`: 요소의 값을 저장하고 있는 변수입니다.
+  - `field.name: string`: 요소의 name 속성에 지정되어야 할 값입니다.
+  - `field.ref: React.Ref`: 요소의 `Ref`에 지정되어야 할 값입니다. 해당 값을 지정하면 유효성 검사에 실패될 때 포커스됩니다.
+- `fieldState`: 요소의 상태를 저장하고 있는 객체입니다.
+  - `fieldState.invalid: boolean`: 요소가 유효성 검사를 통과한 경우 `true`입니다.
+  - `fieldState.isTouched: boolean`: 요소에 Touch 이벤트가 발생했을 경우 `true`입니다.
+  - `fieldState.isDirty: boolean`: 요소에 지정된 기본값에서 변경이 있을 경우 `true`입니다.
+  - `fieldState.error: object`: 요소가 유효성 검사를 통과하지 못했을 때 유효성 에러 정보를 담고 있는 객체입니다.
+- `formState`: `useForm`의 `formState` 반환 값과 동일한 값을 가집니다. [formState](/tech/react/react-hook-form-api-reference/#formstate)를 참고 바랍니다.
+
+`Controller` 컴포넌트의 사용 방법은 아래 코드와 같습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-controller-xrm6p3?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - Controller"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+### `useController`
+`useController` 훅은 `Controller` 컴포넌트를 훅 형태로 사용할 수 있도록 기능을 제공하는 훅입니다. `useController` 훅의 파라미터로 [`Controller` 컴포넌트의 props](/tech/react/react-hook-form-api-reference/#props-12)와 동일한 값을 사용하면 되고, `useController` 훅의 반환 값은 [`render` 함수의 props](/tech/react/react-hook-form-api-reference/#render-함수의-props)와 동일합니다.
+
+`useController` 컴포넌트의 사용방법은 아래 코드와 같습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-usecontroller-jv4rm7?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - useController"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+## `FormProvider`와 `useFormContext`
+`useForm` 훅의 반환 값을 하위 컴포넌트로 전달해야 할 때 컴포넌트의 트리 구조가 복잡해지면 Prop Drilling 문제가 발생할 수 있습니다. 이런 Prop Drilling 문제를 해결하기 위해 하위 컴포넌트로 콘텍스트를 전달할 수 있는 `FormProvider` 컴포넌트와 `useFormContext` 훅을 제공합니다. 아래 코드와 같이 `FormProvider` 컴포넌트와 `useFormContext` 훅을 사용할 수 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-formprovider-useformcontext-p6cf2p?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - FormProvider &amp; useFormContext"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+## `useWatch`
+`useWatch` 훅은 `useForm` 훅의 반환 값인 `watch` 함수와 동일한 기능을 합니다. 아래 코드와 같은 형태를 가집니다.
+
+```ts
+useWatch: ({ control?: Control, name?: string, defaultValue?: unknown, disabled?: boolean }) => object
+```
 
 #### props
-- control
-- name
-- disabled
-- exact
+- `name: string | string[] | undefined`: 구독할 대상의 이름을 지정합니다.
+  - `string` 형태일 경우 특정 요소를 구독합니다. `useWatch`의 반환 값음 `unknown` 형태가 됩니다.
+  - `string[]` 형태일 경우 배열안의 요소들을 구독합니다. `useWatch`의 반환 값은 `unknown[]` 형태가 됩니다.
+  - `undefined`으로 `name`을 정의하지 않을 경우 모든 요소를 구독합니다. `useWatch`의 반환 값은 `{[key:string]: unknown}` 형태가 됩니다.
+- `control: Control`: `useForm` 함수의 반환 값인 `control`을 그대로 전달해야 합니다. `FormProvider`를 사용했을 경우 생략 가능합니다.
+- `defaultValue: unknown`: `useWatch`이 반환할 초기 값입니다.
+- `disabled: boolean = false`: 구독을 비활성화 하는 옵션입니다.
+- `exact: boolean = false`: 요소의 이름과 정확히 일치 할 때 구독을 하는 옵션입니다.
 
-#### returns
-- `formState`
+`useWatch`의 사용 방법은 아래 코드와 같습니다.
 
-## ErrorMessage
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-usewatch-9vp6p3?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - useWatch"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
-## useFieldArray
-- dynamic input
+`watch` 함수는 `useForm` 훅의 반환 값으로 루트에서 `watch` 함수를 사용하면 루트에서 리렌더링이 발생하지만 `useWatch` 훅은 하위 컴포넌트에서 사용하여 특정 하위 컴포넌트만 리렌더링이 발생하게 됩니다.
+
+## `useFormState`
+`useFormState` 훅은 `useForm` 훅의 반환 값인 `formState`와 동일한 값을 반환합니다. 아래 코드와 같은 형태를 가집니다.
+
+```ts
+useFormState: ({ control: Control }) => FormState
+```
+
+#### props
+- `name: string | string[] | undefined`: 상태 정보를 가져올 대상의 이름을 지정합니다.
+  - `string` 형태일 경우 특정 요소의 상태를 가져옵니다.
+  - `string[]` 형태일 경우 배열안의 요소들의 상태를 가져옵니다.
+  - `undefined`으로 `name`을 정의하지 않을 경우 모든 요소를 구독합니다.
+- `control: Control`: `useForm` 함수의 반환 값인 `control`을 그대로 전달해야 합니다. `FormProvider`를 사용했을 경우 생략 가능합니다.
+- `disabled: boolean = false`: 구독을 비활성화 하는 옵션입니다.
+- `exact: boolean = false`: 요소의 이름과 정확히 일치 할 때 구독을 하는 옵션입니다.
+
+반환 값은 [FormState](/tech/react/react-hook-form-api-reference/#formstate)와 동일한 형태를 가집니다. 아래 코드와 같이 `useFormState` 훅을 사용할 수 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-useformstate-md88vr?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - useFormState"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+## `useFieldArray`
+`useFieldArray` 훅은 동적으로 폼 배열에 추가하거나 삭제해야 할 때 사용하는 훅입니다.
+
+## 부록
+
+### `ErrorMessage`
 
 ##### 참고
 - [https://www.react-hook-form.com/](https://www.react-hook-form.com/)
