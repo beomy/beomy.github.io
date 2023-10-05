@@ -732,7 +732,28 @@ useFormState: ({ control: Control }) => FormState
 </div>
 
 ## `useFieldArray`
-`useFieldArray` 훅은 동적으로 폼 배열에 추가하거나 삭제해야 할 때 사용하는 훅입니다.
+`useFieldArray` 훅은 동적으로 폼 배열에 추가하거나 삭제해야 할 때 사용하는 훅입니다. `useFieldArray` 훅의 형태는 아래 코드와 같습니다.
+
+```ts
+useFieldArray: UseFieldArrayProps
+
+export type UseFieldArrayProps<
+  TKeyName extends string = 'id',
+  TControl extends Control = Control
+> = {
+  name: string;
+  keyName?: TKeyName;
+  control?: TControl;
+  rules?: Pick<
+    RegisterOptions<TFieldValues>,
+    'maxLength' | 'minLength' | 'validate' | 'required'
+  >;
+};
+```
+
+#### props
+
+#### returns
 
 ## 부록
 
