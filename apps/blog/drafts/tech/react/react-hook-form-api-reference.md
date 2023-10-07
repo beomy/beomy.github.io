@@ -752,8 +752,22 @@ export type UseFieldArrayProps<
 ```
 
 #### props
+- name
+- control
+- shouldUnregister
+- keyName
+- rules
 
 #### returns
+- fields
+- append
+- prepend
+- insert
+- swap
+- move
+- update
+- replace
+- remove
 
 ## 부록
 
