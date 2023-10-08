@@ -752,22 +752,30 @@ export type UseFieldArrayProps<
 ```
 
 #### props
-- name
-- control
-- shouldUnregister
-- keyName
-- rules
+- `name: string`: 동적 폼 배열 요소의 이름입니다.
+- `control: Control`: `useForm` 함수의 반환 값인 `control`을 그대로 전달해야 합니다. `FormProvider`를 사용했을 경우 생략 가능합니다.
+- `shouldUnregister: boolean`
+  - `false`가 기본으로 요소가 언마운트 되어도 입력 값이 유지됩니다.
+  - `true`로 지정할 경우 요소가 언마운트 되면 입력값이 제거됩니다.
+- `keyName: string = "id"`: key prop으로 사용할 필드의 이름입니다. 다음 메이저 버전에서 제거 예정입니다.
+- `rules: object`: `RegisterOptions` 타입의 `maxLength`, `minLength`, `required`를 제공합니다.
+  - `maxLength`: 최대 길이에 대한 유효성을 설정합니다.
+  - `minLength`: 최소 길이에 대한 유효성을 설정합니다.
+  - `validate`: `validate`을 사용하면 커스텀한 유효성 검증 로직을 생성할 수 있습니다.
+  - `required`: 필수 값에 대한 유효성을 설정합니다.
 
 #### returns
-- fields
-- append
-- prepend
+- `fields: (object & { id: string })[]`: `useForm`의 `defaultValues` 중 `useFieldArray`의 `name`에 명시한 필드를 반환합니다. 이 반환 값에는 key prop에 사용할 `keyName`에 명시된 이름으로 유니크한 값이 포함됩니다.
+- `append: (obj: object | object[], focusOptions) => void`
+- `prepend: (obj: object | object[], focusOptions) => void`
 - insert
 - swap
 - move
 - update
 - replace
 - remove
+
+아래 코드와 같이 `useFieldArray` 훅을 사용할 수 있습니다.
 
 ## 부록
 
