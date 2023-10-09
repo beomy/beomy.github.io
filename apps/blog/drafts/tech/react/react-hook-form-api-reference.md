@@ -766,9 +766,25 @@ export type UseFieldArrayProps<
 
 #### returns
 - `fields: (object & { id: string })[]`: `useForm`의 `defaultValues` 중 `useFieldArray`의 `name`에 명시한 필드를 반환합니다. 이 반환 값에는 key prop에 사용할 `keyName`에 명시된 이름으로 유니크한 값이 포함됩니다.
-- `append: (obj: object | object[], focusOptions) => void`
-- `prepend: (obj: object | object[], focusOptions) => void`
-- insert
+- `append: (obj: object | object[], focusOptions: { shouldFocus?: boolean; focusIndex?: number; focusName?: string; }) => void`: 폼 배열 끝에 요소를 추가하는 함수입니다.
+  - `obj: object | object[]`: `object` 형태일 경우 폼 배열 끝에 요소를 추가합니다. `object[]` 형태일 경우 폼 배열 끝에 요소들을 추가합니다.
+  - `focusOptions`: 추가된 요소에 포커스를 주기 위한 옵션입니다.
+    - `focusOptions.shouldFocus?: boolean`: 포커스 할지 결정하는 값입니다.
+    - `focusOptions.focusIndex?: number`: 포커스할 요소의 위치를 지정합니다.
+    - `focusOptions.focusName?: string`: 포커스할 요소의 이름을 지정합니다.
+- `prepend: (obj: object | object[], focusOptions) => void`: 폼 배열 앞에 요소를 추가하는 함수입니다.
+  - `obj: object | object[]`: `object` 형태일 경우 폼 배열 앞에 요소를 추가합니다. `object[]` 형태일 경우 폼 배열 앞에 요소들을 추가합니다.
+  - `focusOptions`: 추가된 요소에 포커스를 주기 위한 옵션입니다.
+    - `focusOptions.shouldFocus?: boolean`: 포커스 할지 결정하는 값입니다.
+    - `focusOptions.focusIndex?: number`: 포커스할 요소의 위치를 지정합니다.
+    - `focusOptions.focusName?: string`: 포커스할 요소의 이름을 지정합니다.
+- `insert: (index: number, value: object | object[], focusOptions) => void`: 특정 위치에 요소를 추가하는 함수입니다.
+  - `index: number`: 추가될 위치를 지정합니다.
+  - `value: object | object[]`: `value`가 지정된 위치에 추가됩니다.
+  - `focusOptions`: 추가된 요소에 포커스를 주기 위한 옵션입니다.
+    - `focusOptions.shouldFocus?: boolean`: 포커스 할지 결정하는 값입니다.
+    - `focusOptions.focusIndex?: number`: 포커스할 요소의 위치를 지정합니다.
+    - `focusOptions.focusName?: string`: 포커스할 요소의 이름을 지정합니다.
 - swap
 - move
 - update
