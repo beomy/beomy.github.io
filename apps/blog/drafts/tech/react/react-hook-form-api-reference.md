@@ -648,7 +648,7 @@ React Hook Form은 기본적으로 Uncontrolled 방식을 사용하지만 `Contr
   ></iframe>
 </div>
 
-### `useController`
+## `useController`
 `useController` 훅은 `Controller` 컴포넌트를 훅 형태로 사용할 수 있도록 기능을 제공하는 훅입니다. `useController` 훅의 파라미터로 [`Controller` 컴포넌트의 props](/tech/react/react-hook-form-api-reference/#props-12)와 동일한 값을 사용하면 되고, `useController` 훅의 반환 값은 [`render` 함수의 props](/tech/react/react-hook-form-api-reference/#render-함수의-props)와 동일합니다.
 
 `useController` 컴포넌트의 사용방법은 아래 코드와 같습니다.
@@ -785,17 +785,55 @@ export type UseFieldArrayProps<
     - `focusOptions.shouldFocus?: boolean`: 포커스 할지 결정하는 값입니다.
     - `focusOptions.focusIndex?: number`: 포커스할 요소의 위치를 지정합니다.
     - `focusOptions.focusName?: string`: 포커스할 요소의 이름을 지정합니다.
-- swap
-- move
-- update
-- replace
-- remove
+- `swap: (from: number, to: number) => void`: `from`과 `to`의 위치가 서로 바뀝니다.
+- `move: (from: number, to: number) => void`: `from` 위치에 있는 요소가 `to`로 이동합니다.
+- `update: (index: number, obj: object) => void`: `index` 위치에 있는 요소가 `obj`로 업데이트 됩니다.
+- `replace: (obj: object[]) => void`: 폼 배열 전체가 `obj`로 교체됩니다.
+- `remove: (index?: number | number[]) => void`: `index` 위치에 있는 요소들이 제거됩니다.
 
 아래 코드와 같이 `useFieldArray` 훅을 사용할 수 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-usefieldarray-6kgzv5?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - useFieldArray"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## 부록
 
 ### `ErrorMessage`
+`ErrorMessage` 컴포넌트는 에러 메시지를 좀 더 간편하게 사용할 수 있도록 돕는 컴포넌트입니다. 아래 코드와 같이 패키지를 설치 한 후 사용할 수 있습니다.
+
+```bash
+npm install @hookform/error-message
+# or
+pnpm add @hookform/error-message
+# or
+yarn add @hookform/error-message
+```
+
+`ErrorMessage` 컴포넌트는 아래 코드와 같은 props를 전달 할 수 있습니다.
+
+#### props
+- `name: string`: 어떤 필드의 에러 메시지를 표시할지 지정합니다.
+- `errors: object`: `useForm` 훅의 반환 값인 `formState.errors`를 그대로 전달해야 합니다. `FormProvider`를 사용했을 경우 생략 가능합니다.
+- `message: string | React.ReactElement`: 유효성 검증 실패 메시지가 없을 경우 `message`에 정의된 값이 화면에 노출됩니다.
+- `as: React.ElementType | string`: 어떠한 태그, 컴포넌트로 에러메시지를 표시할지 지정합니다. `as="span"`, `as={<Text />}` 와 같이 사용할 수 있습니다.
+- `render: ({ message: string | React.ReactElement, messages?: Object}) => any`: 에러 메시지를 커스텀 할 수 있도록 제공하는 prop 함수 입니다.
+
+아래 코드와 같이 `ErrorMessage` 컴포넌트를 사용할 수 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-usefieldarray-forked-ncmpdj?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="React Hook Form - ErrorMessage"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ##### 참고
 - [https://www.react-hook-form.com/](https://www.react-hook-form.com/)
