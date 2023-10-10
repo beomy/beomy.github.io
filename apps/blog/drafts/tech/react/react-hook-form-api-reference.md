@@ -461,17 +461,15 @@ handleSubmit: (
 </div>
 
 ### `unregister`
-`unregister` 함수는 폼 관리를 위해 `register` 함수로 등록한 것을 취소할 수 있게 만드는 함수입니다. 첫 번째 파라미터는 등록 취소할 필드명이고 두 번째 파라미터는 등록 휘소한 후에 상태를 유지하기 위한 옵션입니다. 형태는 아래 코드와 같습니다.
+`unregister` 함수는 폼 관리를 위해 `register` 함수로 등록한 것을 취소할 수 있게 만드는 함수입니다. 첫 번째 파라미터는 등록 취소할 필드명이고 두 번째 파라미터는 등록 취소한 후에 상태를 유지하기 위한 옵션입니다. 형태는 아래 코드와 같습니다.
 
 ```ts
 unregister: (name: string | string[], options?: Record<string, boolean>) => void
 ```
 
 #### props
-- `name: string | string[]`
-  - unregister 할 요소의 이름입니다.
-- `options?: Record<string, boolean>`
-  - 상태를 유지할 수 있도록 옵션을 제공합니다.
+- `name: string | string[]`: unregister 할 요소의 이름입니다.
+- `options?: Record<string, boolean>`: 상태를 유지할 수 있도록 옵션을 제공합니다.
   - `options.keepDirty: boolean`는 `isDirty`와 `dirtyFields`를 유지하도록 하는 플래그입니다.
   - `options.keepTouched: boolean`는 필드의 `isTouched` 값을 유지하도록 하는 플래그입니다.
   - `options.keepIsValid: boolean`는 `isValid` 값을 유지하도록 하는 플래그입니다.
@@ -540,13 +538,11 @@ type ValidateResult = Message | Message[] | boolean | undefined;
 ```
 
 #### props
-- `name: string`
-  - 설정한 값에 따라 폼 데이터에 구조를 결정됩니다.
+- `name: string`: 설정한 값에 따라 폼 데이터에 구조를 결정됩니다.
   - `register('firstName')`: `{firstName: 'value'}`이 폼의 결과 값이 됩니다.
   - `register('name.firstName')`: `{name: { firstName: 'value' }}`이 폼의 결과 값이 됩니다.
   - `register('name.firstName.0')`: `{name: { firstName: [ 'value' ] }}`이 폼의 결과 값이 됩니다.
-- `options?: RegisterOptions`
-  - 폼 요소의 유효성 조건 등 폼 요소를 관리하기 위해 사용되는 옵션입니다. 옵션 별 타입 정보와 옵션 정보는 위의 코드를 참고 바랍니다.
+- `options?: RegisterOptions`: 폼 요소의 유효성 조건 등 폼 요소를 관리하기 위해 사용되는 옵션입니다. 옵션 별 타입 정보와 옵션 정보는 위의 코드를 참고 바랍니다.
 
 #### returns
 `register` 함수의 반환 값은 보통 객체 구조 분해(`...`)를 사용하여 폼 요소의 속성으로 전달됩니다.
@@ -564,8 +560,7 @@ setFocus:(name: string, options?: SetFocusOptions) => void
 ```
 
 #### props
-- `name: string`
-  - 포커스 할 특정 요소의 이름을 지정합니다.
+- `name: string`: 포커스 할 특정 요소의 이름을 지정합니다.
 - `options?: SetFocusOptions`
   - `options.shouldSelect: boolean`: `true`로 설정할 경우 문자열이 selection 된 상태로 포커스 됩니다.
 
@@ -659,7 +654,7 @@ useWatch: ({ control?: Control, name?: string, defaultValue?: unknown, disabled?
   - `string[]` 형태일 경우 배열 안의 요소들을 구독합니다. `useWatch`의 반환 값은 `unknown[]` 형태가 됩니다.
   - `undefined`으로 `name`을 정의하지 않을 경우 모든 요소를 구독합니다. `useWatch`의 반환 값은 `{[key:string]: unknown}` 형태가 됩니다.
 - `control: Control`: `useForm` 함수의 반환 값인 `control`을 그대로 전달해야 합니다. `FormProvider`를 사용했을 경우 생략 가능합니다.
-- `defaultValue: unknown`: `useWatch`이 반환할 초기 값입니다.
+- `defaultValue: unknown`: `useWatch` 훅이 반환할 초기 값입니다.
 - `disabled: boolean = false`: 구독을 비활성화하는 옵션입니다.
 - `exact: boolean = false`: 요소의 이름과 정확히 일치할 때 구독을 하는 옵션입니다.
 
@@ -737,22 +732,26 @@ export type UseFieldArrayProps<
   - `required`: 필수 값에 대한 유효성을 설정합니다.
 
 #### returns
-- `fields: (object & { id: string })[]`: `useForm`의 `defaultValues` 중 `useFieldArray`의 `name`에 명시한 필드를 반환합니다. 이 반환 값에는 key prop에 사용할 `keyName`에 명시된 이름으로 유니크한 값이 포함됩니다.
+- `fields: (object & { id: string })[]`: `useForm`의 `defaultValues` 중 `useFieldArray`의 `name`에 명시한 필드를 반환합니다. 이 반환 값은 key prop으로 사용할 `keyName`에 명시된 이름으로 유니크한 값이 포함된 객체입니다.
 - `append: (obj: object | object[], focusOptions: { shouldFocus?: boolean; focusIndex?: number; focusName?: string; }) => void`: 폼 배열 끝에 요소를 추가하는 함수입니다.
-  - `obj: object | object[]`: `object` 형태일 경우 폼 배열 끝에 요소를 추가합니다. `object[]` 형태일 경우 폼 배열 끝에 요소들을 추가합니다.
+  - `obj: object | object[]`: 추가될 요소입니다.
+    - `object` 형태일 경우 폼 배열 끝에 요소를 추가합니다.
+    - `object[]` 형태일 경우 폼 배열 끝에 요소들을 추가합니다.
   - `focusOptions`: 추가된 요소에 포커스를 주기 위한 옵션입니다.
     - `focusOptions.shouldFocus?: boolean`: 포커스 할지 결정하는 값입니다.
     - `focusOptions.focusIndex?: number`: 포커스 할 요소의 위치를 지정합니다.
     - `focusOptions.focusName?: string`: 포커스 할 요소의 이름을 지정합니다.
 - `prepend: (obj: object | object[], focusOptions) => void`: 폼 배열 앞에 요소를 추가하는 함수입니다.
-  - `obj: object | object[]`: `object` 형태일 경우 폼 배열 앞에 요소를 추가합니다. `object[]` 형태일 경우 폼 배열 앞에 요소들을 추가합니다.
+  - `obj: object | object[]`: 추가될 요소입니다.
+    - `object` 형태일 경우 폼 배열 앞에 요소를 추가합니다.
+    - `object[]` 형태일 경우 폼 배열 앞에 요소들을 추가합니다.
   - `focusOptions`: 추가된 요소에 포커스를 주기 위한 옵션입니다.
     - `focusOptions.shouldFocus?: boolean`: 포커스 할지 결정하는 값입니다.
     - `focusOptions.focusIndex?: number`: 포커스 할 요소의 위치를 지정합니다.
     - `focusOptions.focusName?: string`: 포커스 할 요소의 이름을 지정합니다.
 - `insert: (index: number, value: object | object[], focusOptions) => void`: 특정 위치에 요소를 추가하는 함수입니다.
   - `index: number`: 추가될 위치를 지정합니다.
-  - `value: object | object[]`: `value`가 지정된 위치에 추가됩니다.
+  - `value: object | object[]`: 추가될 요소입니다.
   - `focusOptions`: 추가된 요소에 포커스를 주기 위한 옵션입니다.
     - `focusOptions.shouldFocus?: boolean`: 포커스 할지 결정하는 값입니다.
     - `focusOptions.focusIndex?: number`: 포커스 할 요소의 위치를 지정합니다.
