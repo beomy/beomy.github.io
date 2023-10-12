@@ -9,7 +9,7 @@ summary: 사용하고 있는 외부 라이브러리 API를 자세히 알면 그 
 사용하고 있는 외부 라이브러리 API를 자세히 알면 그 라이브러리에서 제공하는 다양한 기능을 사용할 수 있기 때문에 라이브러리를 더 멋있게 사용할 수 있습니다. 이번 포스트에서는 React Hook Form을 좀 더 멋있게 사용하기 위해 React Hook Form에서 제공하는 API를 살펴보도록 하겠습니다.
 
 ## `useForm`
-`useForm`은 React Hook Form을 사용할 때 항상 사용해야 하는 가장 기본적인 훅입니다. `useForm`의 형태는 아래 코드와 같습니다.
+`useForm`은 React Hook Form을 사용할 때 항상 사용해야 하는 기본적인 훅입니다. `useForm`의 형태는 아래 코드와 같습니다.
 
 ```ts
 export declare function useForm<
