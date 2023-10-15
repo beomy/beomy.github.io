@@ -6,6 +6,8 @@ category: [tech, react]
 summary:
 ---
 
+React18d에서 추가된 `useTransition` 훅과 `useDeferredValue` 훅을 살펴보겠습니다.
+
 ## debounce
 
 ## throttle
