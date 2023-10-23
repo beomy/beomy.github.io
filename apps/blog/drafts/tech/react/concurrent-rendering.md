@@ -6,6 +6,14 @@ category: [tech, react]
 summary: React 18에서 추가된 기능 중 가장 중요한 것이 동시성입니다. 동시성은 렌더링 성능을 개선하고 사용자 경험을 향상시켰습니다. 이번 포스트에서는 동시성이 무엇인지 그리고 동시성을 위해 추가된 useTransition와 useDeferredValue 훅과 startTransition 함수를 살펴보도록 하겠습니다.
 ---
 
+> ##### TL;DR
+>
+> - 동시성 렌더링:
+> - 계산양을 줄이거나 계산속도 빠르게 하는 것은 아니다:
+> - `startTransition` 함수:
+> - `useTransition` 훅:
+> - `useDeferredValue` 훅:
+
 React 18에서 추가된 기능 중 가장 중요한 것이 동시성입니다. 동시성은 렌더링 성능을 개선하고 사용자 경험을 향상시켰습니다. 이번 포스트에서는 동시성이 무엇인지 그리고 동시성을 위해 추가된 `useTransition`와 `useDeferredValue` 훅과 `startTransition` 함수를 살펴보도록 하겠습니다.
 
 ## 동시성(Concurrency)과 병렬성(Parallelism)
@@ -29,7 +37,7 @@ React 18 이전에서는 렌더링을 쪼갤 수 없는 하나의 작업이였�
 아래 코드는 동시성 렌더링을 사용하지 않은 코드입니다. 검색어를 입력하면 많은 검색 결과를 화면에 노출하기 때문에 화면이 버벅이는 것을 확인할 수 있습니다.
 
 <div>
-  <iframe src="https://codesandbox.io/embed/no-concurrent-rendering-xzd8dj?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  <iframe src="https://codesandbox.io/embed/no-concurrent-rendering-xzd8dj?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
   title="no concurrent rendering"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -64,7 +72,7 @@ startTransition(() => {
 `startTransition` 함수를 사용하면 위의 예제에서 버벅이던 화면을 아래 예제와 같이 개선할 수 있습니다.
 
 <div>
-  <iframe src="https://codesandbox.io/embed/starttransition-wg55nq?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  <iframe src="https://codesandbox.io/embed/starttransition-wg55nq?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
   title="startTransition"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -73,14 +81,31 @@ startTransition(() => {
 </div>
 
 ### `useTransition` 훅
+```ts
+const [isPending, startTransition] = useTransition()
+```
+
+- `isPending: boolean`: 보류 중인 전환이 있는지 여부를 알려주는 플래그입니다.
+- `startTransition`: 상태 업데이트를 전환 업데이트로 처리하는 함수입니다. 위에서 살펴본 `startTransition` 함수와 동일합니다.
+
+`useTransition` 훅은 보류 중인지 확인할 수 있는 `isPending` 플레그가 있다는 점을 제외하고 위에서 살펴본 `startTransition` 함수와 동일한 사용성을 가집니다. 아래 코드와 같이 `isPending`를 사용하여 보류 상태를 표시할 수 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/usetransition-nzngqk?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useTransition"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ### `useDeferredValue` 훅
+```ts
+const deferredValue = useDeferredValue(value)
+```
 
-## 부록
-
-### debounce
-
-### throttle
+- `value: any`:
+- `deferredValue: any`:
 
 ##### 참고
 - [https://yeonyeon.tistory.com/270](https://yeonyeon.tistory.com/270)
@@ -91,5 +116,6 @@ startTransition(() => {
 - [https://kyledev.tistory.com/161](https://kyledev.tistory.com/161)
 - [https://tecoble.techcourse.co.kr/post/2023-07-09-concurrent_rendering/](https://tecoble.techcourse.co.kr/post/2023-07-09-concurrent_rendering/)
 - [https://deview.kr/data/deview/session/attach/1_Inside%20React%20(동시성을%20구현하는%20기술).pdf](https://deview.kr/data/deview/session/attach/1_Inside%20React%20(동시성을%20구현하는%20기술).pdf)
-- [https://react.dev/reference/react/startTransition](https://react.dev/reference/react/startTransition)
 - [https://yrnana.dev/post/2022-04-12-react-18/](https://yrnana.dev/post/2022-04-12-react-18/)
+- [https://react.dev/reference/react/startTransition](https://react.dev/reference/react/startTransition)
+- [https://react.dev/reference/react/useTransition](https://react.dev/reference/react/useTransition)
