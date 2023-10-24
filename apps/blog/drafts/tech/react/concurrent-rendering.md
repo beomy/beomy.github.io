@@ -7,12 +7,11 @@ summary: React 18에서 추가된 기능 중 가장 중요한 것이 동시성�
 ---
 
 > ##### TL;DR
->
-> - 동시성 렌더링:
-> - 계산양을 줄이거나 계산속도 빠르게 하는 것은 아니다:
-> - `startTransition` 함수:
-> - `useTransition` 훅:
-> - `useDeferredValue` 훅:
+> - 동시성 렌더링: 렌더링을 긴급한 업데이트, 전환 업데이트로 나눠 긴급합 업데이트부터 진행, 전환 업데이트 중 긴급한 업데이트가 들어오면 전환 업데이트를 중단하고 긴급한 업데이트 우선 진행함
+>   - 동시성 렌더링은 계산속도를 개선한 것이 아니라 우선 순위를 지정하여 긴급한 업데이트를 우선 진행해 UI 블럭을 최소화 시킨 것
+> - `startTransition` 함수: `startTransition`로 감싸진 set 함수는 전환 업데이트로 처리 됨
+> - `useTransition` 훅: `startTransition` 함수와 `isPending`을 반환 하는 훅으로, 지연 중일 경우 `isPending`는 `true`가 됨
+> - `useDeferredValue` 훅: set 함수에 접근할 수 없거나 props를 지연하고 싶을 경우 사용되는 훅으로, 반환 값으로 화면이 업데이트 되는 경우에 지연처리 됨
 
 React 18에서 추가된 기능 중 가장 중요한 것이 동시성입니다. 동시성은 렌더링 성능을 개선하고 사용자 경험을 향상시켰습니다. 이번 포스트에서는 동시성이 무엇인지 그리고 동시성을 위해 추가된 `useTransition`와 `useDeferredValue` 훅과 `startTransition` 함수를 살펴보도록 하겠습니다.
 
@@ -100,12 +99,36 @@ const [isPending, startTransition] = useTransition()
 </div>
 
 ### `useDeferredValue` 훅
+`useDeferredValue` 훅은 `startTransition` 함수와 동일하게 전환 업데이트 처리를 합니다. `useDeferredValue` 훅의 반환 값(`deferredValue`)으로 화면이 업데이트 되는 경우에 지연처리 됩니다.
+
 ```ts
 const deferredValue = useDeferredValue(value)
 ```
 
-- `value: any`:
-- `deferredValue: any`:
+- `value: any`: 지연하려는 값입니다. 모든 타입이 올 수 있습니다.
+- `deferredValue: any`: 지연된 값입니다.
+
+`startTransition` 함수를 사용하기 위해서는 set 함수를 사용해야 하는데, set 함수를 사용하지 못하는 상황이 발생할 수 있습니다. set 함수에 접근할 수 없거나 컴포넌트가 전달 받은 props를 지연하고 싶을 경우 `useDeferredValue` 훅을 사용할 수 있습니다.
+
+`Object.is` 비교를 통해 현재 화면에 그리고 있는 값과 다른 값을 전달 받으면 백그라운드에서 리렌더링을 진행합니다. 백그라운드에서 진행 중인 렌더링은 취소 될 수 있습니다. 백그라운드에서 리렌더링 중에 새로운 값을 전달받으면 처음부터 다시 리렌더링합니다.
+
+`useTransition` 훅과 다르게 지연 중임을 나타내는 값을 반환하지 않는데, 아래 코드와 같은 방법을 사용하여 지연 중임을 알 수 있습니다.
+
+```tsx
+const deferredQuery = useDeferredValue(query);
+const isStale = query !== deferredQuery; // query와 deferredQuery 값이 다를 경우 지연중
+```
+
+`useDeferredValue` 훅의 사용 방법은 아래 코드와 같습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/usedeferredvalue-krfnwm?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useDeferredValue"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ##### 참고
 - [https://yeonyeon.tistory.com/270](https://yeonyeon.tistory.com/270)
@@ -119,3 +142,4 @@ const deferredValue = useDeferredValue(value)
 - [https://yrnana.dev/post/2022-04-12-react-18/](https://yrnana.dev/post/2022-04-12-react-18/)
 - [https://react.dev/reference/react/startTransition](https://react.dev/reference/react/startTransition)
 - [https://react.dev/reference/react/useTransition](https://react.dev/reference/react/useTransition)
+- [https://react.dev/reference/react/useDeferredValue](https://react.dev/reference/react/useDeferredValue)
