@@ -5,3 +5,6 @@ featured-img: react/tanstack-query.png
 category: [tech, react]
 summary:
 ---
+
+##### 부록
+- v4에서 v5로 마이그레이션
