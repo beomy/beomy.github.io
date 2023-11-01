@@ -6,6 +6,8 @@ category: [tech, react]
 summary:
 ---
 
+## Suspense 란
+
 - tanstack suspense 사용시 주의 사항
 - concurrent rendering시 동작 안함
 
