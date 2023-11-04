@@ -6,8 +6,13 @@ category: [tech, react]
 summary:
 ---
 
-## Suspense 란
+## Suspense란
 - 컴포넌트에서 필요한 데이터가 아직 준비가 되지 않았다고 리액트에게 알려주는 기능
+
+## Suspense를 사용하는 경우
+- React.lazy
+  - 무조건?
+- Data Fetching
 
 ## Suspense 사용시 주의사항
 - tanstack query suspense
