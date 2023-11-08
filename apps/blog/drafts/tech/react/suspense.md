@@ -29,3 +29,4 @@ summary:
 - [https://velog.io/@rkio/React-Suspense에-대하여](https://velog.io/@rkio/React-Suspense에-대하여)
 - [https://byseop.com/post/@b6b6d8b1-e3ed-4b5c-84ee-43defc1875b3](https://byseop.com/post/@b6b6d8b1-e3ed-4b5c-84ee-43defc1875b3)
 - [https://github.com/reactwg/react-18/discussions/37?source=post_page-----557a7d3ecd45--------------------------------](https://github.com/reactwg/react-18/discussions/37?source=post_page-----557a7d3ecd45--------------------------------)
+- [https://maxkim-j.github.io/posts/suspense-argibraic-effect/](https://maxkim-j.github.io/posts/suspense-argibraic-effect/)
