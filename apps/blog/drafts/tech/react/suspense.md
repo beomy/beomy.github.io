@@ -3,24 +3,24 @@ layout: post
 title: '[React] Suspense'
 featured-img: react/react.png
 category: [tech, react]
-summary:
+summary: Suspense는 컴포넌트가 화면에 노출하기 위해 필요한 데이터가 아직 준비되지 않았다고 알려주는 기능으로 16.6 버전에서 실험적 기능으로 등장해서 18버전에서 정식 지원을 시작한 기능입니다.
 ---
 
-## Suspense란
-- 컴포넌트에서 필요한 데이터가 아직 준비가 되지 않았다고 리액트에게 알려주는 기능
+Suspense는 컴포넌트가 화면에 노출하기 위해 필요한 데이터가 아직 준비되지 않았다고 알려주는 기능으로 16.6 버전에서 실험적 기능으로 등장해서 18버전에서 정식 지원을 시작한 기능입니다. 이번 포스트에서는 Suspense의 동작 원리와 적용 방법, 주의 사항을 살펴보도록 하겠습니다.
 
 ## Suspnse 동작 원리
-- Suspense도 동시성 렌더링과 결을 같이 한다.
+Suspense도 [[React] Concurrent Rendering - 동시성 렌더링](/tech/react/concurrent-rendering/)에서 이야기한 동시성 렌더링과 결을 같이합니다. 동시성 렌더링은 긴급한 렌더링과 덜 긴급한 렌더링으로 나누어 긴급한 렌더링을 우선 렌더링하고 긴급한 렌더링이 없을 경우 덜 긴급한 렌더링을 진행합니다. Suspense도 동일하게 데이터가 준비되지 않은 컴포넌트의 렌더링을 덜 긴급한 렌더링으로 판단하고 그 외의 렌더링 작업을 우선 진행합니다.
 
-## Suspense를 사용하기
-- React.lazy
-  - 무조건?
-- Data Fetching
+- `throw promise`
+
+## Suspense 적용하기
+- React.lazy: 무조건 Suspense 도는 듯
+- tanstack query
 - 커스텀 사용법
 
 ## Suspense 사용시 주의사항
-- tanstack query suspense
-- concurrent rendering
+- tanstack query suspense: waterfall로 동작함
+- concurrent rendering: useTransition, useDeferedValue에는 Suspense가 안돔
 
 ##### 참고
 - [https://react.dev/reference/react/Suspense](https://react.dev/reference/react/Suspense)
