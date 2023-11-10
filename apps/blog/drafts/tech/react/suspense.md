@@ -11,6 +11,7 @@ Suspense는 컴포넌트가 화면에 노출하기 위해 필요한 데이터가
 ## Suspnse 동작 원리
 Suspense도 [[React] Concurrent Rendering - 동시성 렌더링](/tech/react/concurrent-rendering/)에서 이야기한 동시성 렌더링과 결을 같이합니다. 동시성 렌더링은 긴급한 렌더링과 덜 긴급한 렌더링으로 나누어 긴급한 렌더링을 우선 렌더링하고 긴급한 렌더링이 없을 경우 덜 긴급한 렌더링을 진행합니다. Suspense도 동일하게 데이터가 준비되지 않은 컴포넌트의 렌더링을 덜 긴급한 렌더링으로 판단하고 그 외의 렌더링 작업을 우선 진행합니다.
 
+아래 코드와 같이 Suspense를 사용하게 되는데,
 - `throw promise`
 
 ## Suspense 적용하기
