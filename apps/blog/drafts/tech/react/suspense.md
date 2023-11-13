@@ -70,7 +70,7 @@ const App = () => {
 
 Suspense 컴포넌트를 사용하는 방법을 조금 더 구체적으로 살펴보도록 하겠습니다.
 
-### 여러 컴포넌트 사용하기
+### 동시 여러 컴포넌트에 사용하기
 Suspense 컴포넌트는 아래 코드와 같이 자식 컴포넌트로 여러 컴포넌트를 전달 받을 수 있습니다.
 
 ```tsx
@@ -177,12 +177,21 @@ const App = () => {
 >
 > 추가로 네트워크 비용이 발생하지 않기 때문에 `LazyAComponent` 컴포넌트를 그린 후에 `LazyBComponent` 컴포넌트를 그린다면 Suspense의 `fallback`이 화면에 나타나지 않을 것으로 생각할 수 있는데, 네트워크 비용 발생과 무관하게 항상 Suspense의 `fallback`이 동작하는 것을 확인할 수 있습니다.
 
-### TanStack Query (React Query)
-TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니다. TanStack Query은 비동기 작업을 돕는 라이브러리인데 API를 호출하여 서버에서 데이터를 가져오는 비동기 작업을 할 때 많이 사용됩니다.
+### TanStack Query V5 (React Query)
+TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니다. TanStack Query은 비동기 작업을 돕는 라이브러리인데 API를 호출하여 서버에서 데이터를 가져오는 비동기 작업을 할 때 많이 사용됩니다. TanStack Query에서 Suspense를 사용하려면 아래 코드와 같이 `useSuspenseQuery` 훅을 사용하면 됩니다. (TanStack Query 4버전에서는 `suspense` 옵션을 `true`로 설정하면 됩니다.)
 
-아래 코드와 같이 `useQuery` 훅의 `suspense`
+<div>
+  <iframe src="https://codesandbox.io/embed/tanstack-query-suspense-76nh3r?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="tanstack query suspense"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ### 커스텀 사용법
+[Suspense 동작 원리](/tech/react/suspense/#suspnse-동작-원리)에서 잠깐 이야기 했던 것 처럼 컴포넌트가 `Promise`를 `throw`하게 되면 Suspense의 `fallback`이 화면에 노출됩니다. 이런 특징을 활용하여 아래 코드와 같이 임의로 `Suspense`의 `fallback` 화면에 노출시킬 수 있습니다.
+
 <div>
   <iframe src="https://codesandbox.io/embed/custom-suspense-hnjqvs?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -193,7 +202,11 @@ TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니�
 </div>
 
 ## Suspense 사용시 주의사항
+
+### TanStack Query에서 warterfall로 동작
 - tanstack query suspense: waterfall로 동작함
+
+### `useTransition`, `useDeferedValue`가 원인이라면 Suspense의 `fallback`은 노출되지 않음
 - concurrent rendering: useTransition, useDeferedValue에는 Suspense가 안돔
 
 ## 부록
