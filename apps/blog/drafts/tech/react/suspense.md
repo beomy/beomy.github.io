@@ -123,7 +123,7 @@ const App = () => {
 </div>
 
 ### 데이터를 가져오는 동안 이전 데이터 보여주기
-게시판에서 다음 페이지를 클릭 할 때마다 로딩 컴포넌트를 노출 시킨다면 사용자들이 어색하게 느낄 수 있습니다. 다음 페이지의 데이터를 가져오는 동안 이전 페이지의 데이터를 유지한다면 이런 어색함을 해결할 수 있습니다. 아래 코드와 같이 `useTransition`나 `useDeferedValue`를 사용하면 이전 데이터를 유지할 수 있습니다.
+게시판에서 다음 페이지를 클릭 할 때마다 로딩 컴포넌트를 노출 시킨다면 사용자들이 어색하게 느낄 수 있습니다. 다음 페이지의 데이터를 가져오는 동안 이전 페이지의 데이터를 유지한다면 이런 어색함을 해결할 수 있습니다. 아래 코드와 같이 `useTransition`나 `useDeferredValue`를 사용하면 이전 데이터를 유지할 수 있습니다.
 
 ```tsx
 const deferredQuery = useDeferredValue(query);
@@ -189,7 +189,7 @@ TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니�
   ></iframe>
 </div>
 
-### 커스텀 사용법
+### `throw new Promise()`
 [Suspense 동작 원리](/tech/react/suspense/#suspnse-동작-원리)에서 잠깐 이야기 했던 것 처럼 컴포넌트가 `Promise`를 `throw`하게 되면 Suspense의 `fallback`이 화면에 노출됩니다. 이런 특징을 활용하여 아래 코드와 같이 임의로 `Suspense`의 `fallback` 화면에 노출시킬 수 있습니다.
 
 <div>
@@ -202,18 +202,35 @@ TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니�
 </div>
 
 ## Suspense 사용시 주의사항
+Suspense를 사용할 때 주의해야 할 내용들을 살펴보도록 하겠습니다.
 
-### TanStack Query에서 warterfall로 동작
-- tanstack query suspense: waterfall로 동작함
+### 하나의 컴포넌트에서 다수의 Suspense는 Warterfall로 동작함
+Suspense는 `throw` 된 `Promise`를 `catch` 하는 방법으로 동작하기 때문에 Suspense를 동작시킨, `throw new Promise()` 이후의 코드는 실행되지 않습니다. 하나의 컴포넌트에서 Suspense를 동작시키는 여러개의 코드가 존재하게 되면 아래 그림처럼 Waterfall 방식으로 비동기 동작하기 때문에 서비스의 성능을 저하 시킬 수 있습니다.
 
-### `useTransition`, `useDeferedValue`가 원인이라면 Suspense의 `fallback`은 노출되지 않음
-- concurrent rendering: useTransition, useDeferedValue에는 Suspense가 안돔
+![Waterfall로 동작하는 Suspense](/assets/img/posts/react/suspense_waterfall.png)
 
-## 부록
+아래 코드는 TanStack Query에서 Waterfall로 데이터를 가져오게 되는 코드입니다. 하나의 컴포넌트에 있는 Suspense를 동작시키는 코드는 Waterfall로 동작하지만 여러 컴포넌트에 분산된 Suspense를 동작시키는 코드는 동시에 처리됩니다.
 
-### ErrorBoundary
-- `throw new Error()`: ErrorBoundary로
-- `throw new Promise()`: Suspense로
+<div>
+  <iframe src="https://codesandbox.io/embed/tanstack-query-suspense-waterfall-6fv5lj?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="tanstack query suspense waterfall"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+### `useTransition`, `useDeferredValue`의 의한 Suspense는 동작 안함
+위에서도 잠깐 이야기 했던 것 처럼 `useTransition`이나 `useDeferredValue`로 덜 긴급한 업데이트로 처리 된 값에 의한 Suspense는 동작하지 않습니다. 이러한 특징을 활용하여 아래 코드와 같이 `useTransition`이나 `useDeferredValue`으로 데이터를 가져오는 동안 이전 값을 화면에 노출시키는 방법으로 좀 더 부드러운 UI를 사용자에게 재공할 수도 있습니다.
+
+<div>
+  <iframe src="https://codesandbox.io/embed/tanstack-query-suspense-usedeferredvalue-25fr5m?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="tanstack query suspense useDeferredValue"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ##### 참고
 - [https://react.dev/reference/react/Suspense](https://react.dev/reference/react/Suspense)
@@ -225,3 +242,4 @@ TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니�
 - [https://maxkim-j.github.io/posts/suspense-argibraic-effect/](https://maxkim-j.github.io/posts/suspense-argibraic-effect/)
 - [https://syjn99.medium.com/react-suspense란-557a7d3ecd45](https://syjn99.medium.com/react-suspense란-557a7d3ecd45)
 - [https://react.dev/reference/react/lazy](https://react.dev/reference/react/lazy)
+- [https://happysisyphe.tistory.com/54](https://happysisyphe.tistory.com/54)
