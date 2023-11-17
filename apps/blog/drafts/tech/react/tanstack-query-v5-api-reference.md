@@ -6,5 +6,8 @@ category: [tech, react]
 summary:
 ---
 
+- isLoading -> isPending
+- React 18이상 버전에서 사용 가능
+
 ##### 부록
 - v4에서 v5로 마이그레이션
