@@ -32,13 +32,12 @@ Suspense도 [[React] Concurrent Rendering - 동시성 렌더링](/tech/react/con
 Suspense를 적절한 곳에 잘 사용한다면 사용자 경험 향상뿐만 아니라 개발자 경험도 향상할 수 있습니다. Suspense가 주는 몇 가지 이점을 살펴보도록 하겠습니다.
 
 ### 데이터 로딩 처리
-CSR(Client Side Rendering)로 개발하다 보면 네트워크를 통해 데이터를 가져올 때 데이터를 응답받을 때까지 걸리는 시간 때문에 아래 그림과 같이 화면이 덜그럭 거리는 현상을 종종 접하게 됩니다.
+CSR(Client Side Rendering)로 개발하다 보면 네트워크를 통해 데이터를 가져올 때 데이터를 응답받을 때까지 걸리는 시간 때문에 화면이 덜그럭 거리는 현상을 종종 접하게 됩니다. Suspense를 사용하면 데이터를 가져오는 동안에 스켈레톤 UI와 같은 로딩 컴포넌트를 사용자에게 노출하여 아래 그림과 같이 화면이 덜그럭 거리는 어색함을 줄일 수 있습니다.
 
-~~Suspense 전~~
+|스켈레톤 UI 적용 전|Suspense를 사용하여 스켈레톤 UI 적용|
+|:--:|:--:|
+|![Skeleton 미적용](/assets/img/posts/react/suspense_no_skeleton.gif)|![Skeleton 적용](/assets/img/posts/react/suspense_skeleton.gif)|
 
-Suspense를 사용하면 데이터를 가져오는 동안에 스켈레톤 UI와 같은 로딩 컴포넌트를 사용자에게 노출하여 아래 그림과 같이 화면이 덜그럭 거리는 어색함을 줄일 수 있습니다.
-
-~~Suspense 후~~
 
 ### 선언형 UI의 간결함
 Suspense를 사용하지 않아도 아래 코드와 같이 로딩처리가 가능한데, 그럼에도 불구하고 Suspense를 사용하는 이유는 선언형 UI가 주는 간결함 때문입니다.
