@@ -3,7 +3,7 @@ layout: post
 title: '[React] Suspense'
 featured-img: react/react.png
 category: [tech, react]
-summary: Suspense는 컴포넌트가 화면에 노출하기 위해 필요한 데이터가 아직 준비되지 않았다고 알려주는 기능으로 React 16.6 버전에서 실험적 기능으로 등장해 18버전에서 정식 지원을 시작한 기능입니다.
+summary: Suspense는 컴포넌트가 화면에 노출하기 위해 필요한 데이터가 아직 준비되지 않았다고 알려주는 기능으로 React 16.6 버전에서 실험적 기능으로 등장해 18 버전에서 정식 지원을 시작한 기능입니다.
 ---
 
 > ##### TL;DR
@@ -11,11 +11,11 @@ summary: Suspense는 컴포넌트가 화면에 노출하기 위해 필요한 데
 > - Suspense는 아래의 3가지 장점이 있습니다.
 >   - 데이터 로딩 처리할 수 있습니다.
 >   - 선언형 UI의 간결함을 가질 수 있습니다.
->   - 데이터가 없을 경우와 같은 예외 처리에 대한 고민 없이 본연에 기능에만 충실할 수 있습니다.
-> - `React.lazy`, TanStack Query에서 Suspense를 사용할 수 있습니다. 뿐만 아니라 컴포넌트가 `throw new Promise()`를 하게 되면 Suspense가 동작하기 때문에 이 원리로 다양한 사용 방법을 만들 수 있습니다.
+>   - 데이터가 없을 경우와 같은 예외 처리에 대한 고민 없이 본연의 역할에만 충실할 수 있습니다.
+> - `React.lazy`, TanStack Query에서 Suspense를 사용할 수 있습니다. 뿐만 아니라 컴포넌트가 `throw new Promise()`를 하게 되면 Suspense가 동작하기 때문에 이 원리로 다양하게 활용할 수 있습니다.
 > - 하나의 컴포넌트에서 여러 개의 Suspense를 발생시키는 코드는 Waterfall로 동작하여 성능을 저하시킵니다.
 
-Suspense는 컴포넌트가 화면에 노출하기 위해 필요한 데이터가 아직 준비되지 않았다고 알려주는 기능으로 React 16.6 버전에서 실험적 기능으로 등장해 18 버전에서 정식 지원을 시작한 기능입니다. 이번 포스트에서는 Suspense의 동작 원리와 적용 방법, 주의 사항을 살펴보도록 하겠습니다.
+Suspense는 컴포넌트가 화면에 노출하기 위해 필요한 데이터가 아직 준비되지 않았다고 알려주는 기능으로 React 16.6 버전에서 실험적 기능으로 등장해 18 버전에서 정식 지원을 시작한 기능입니다.
 
 ## Suspnse 동작 원리
 Suspense도 [[React] Concurrent Rendering - 동시성 렌더링](/tech/react/concurrent-rendering/)에서 이야기한 동시성 렌더링과 결을 같이합니다. 동시성 렌더링은 긴급한 렌더링과 덜 긴급한 렌더링으로 나누어 긴급한 렌더링을 우선 렌더링 하고 긴급한 렌더링이 없을 경우 덜 긴급한 렌더링을 진행합니다. Suspense도 동일하게 데이터가 준비되지 않은 컴포넌트의 렌더링을 덜 긴급한 렌더링으로 판단하고 그 외의 렌더링 작업을 우선 진행합니다.
@@ -180,7 +180,7 @@ React의 기능들과 React 라이브러리에서 Suspense를 사용하기 적�
 ### `React.lazy`
 `React.lazy` 함수를 사용하면 컴포넌트가 필요할 때 코드를 가져오고 실행하게 됩니다. 컴포넌트 코드를 가져오고 실행하는 딜레이가 발생하기 때문에 이 시간 동안 Suspense를 사용한다면 사용자에게 좀 더 자연스러운 UI를 제공할 수 있습니다.
 
-아래 코드와 같이 `React.lazy` 함수를 사용하여 가져온 컴포넌트 상위에 Suspense를 사용하면 간단하게 컴포넌트 코드를 가져오고 실행하는 딜레이에 대한 로딩 처리가 가능합니다.
+아래 코드와 같이 `React.lazy` 함수를 사용하여 가져온 컴포넌트 상위에 Suspense를 사용하면 간단하게 컴포넌트 코드를 가져오고 실행하는 걸리는 시간에 대한 로딩 처리가 가능합니다.
 
 ```tsx
 const LazyComponent = React.lazy(() => import('./LazyComponent'));
@@ -204,12 +204,12 @@ const App = () => {
 >     import(/* webpackChunkName: "LazyComponent" */ './LazyBComponent');
 > ```
 >
-> `LazyAComponent`와 `LazyBComponent` 두 개의 컴포넌트를 `LazyComponent`라는 이름을 가진 하나의 청크 파일에 묶을 수 있습니다. 네트워크를 통해 `LazyComponent` 파일만 가져오게 되면 `LazyAComponent`와 `LazyBComponent`를 화면에 나타내기 위해 추가로 네트워크 비용은 발생하지 않습니다.
+> `LazyAComponent`와 `LazyBComponent` 두 개의 컴포넌트는 `LazyComponent`라는 이름을 가진 하나의 청크 파일에 묶입니다. 네트워크를 통해 `LazyComponent` 파일만 가져오게 되면 `LazyAComponent`와 `LazyBComponent`를 화면에 나타내기 위해 추가로 네트워크 비용은 발생하지 않습니다.
 >
-> 추가로 네트워크 비용이 발생하지 않기 때문에 `LazyAComponent` 컴포넌트를 그린 후에 `LazyBComponent` 컴포넌트를 그린다면 Suspense의 `fallback`이 화면에 나타나지 않을 것으로 생각할 수 있는데, 네트워크 비용 발생과 무관하게 항상 Suspense의 `fallback`이 동작하는 것을 확인할 수 있습니다.
+> 추가로 네트워크 비용이 발생하지 않기 때문에 `LazyAComponent` 컴포넌트를 그린 후에 `LazyBComponent` 컴포넌트를 그린다면 Suspense의 `fallback`이 화면에 나타나지 않을 것으로 생각할 수 있는데, 네트워크 비용 발생과 무관하게 항상 Suspense의 `fallback`이 동작하게 됩니다.
 
 ### TanStack Query V5 (React Query)
-TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니다. TanStack Query은 비동기 작업을 돕는 라이브러리로 API를 호출하여 서버에서 데이터를 가져오는 비동기 작업을 할 때 많이 사용됩니다. TanStack Query에서 Suspense를 사용하려면 아래 코드와 같이 `useSuspenseQuery` 훅을 사용하면 됩니다. (TanStack Query V4에서는 `useQuery` 훅의 `suspense` 옵션을 `true`로 설정하면 됩니다.)
+TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니다. TanStack Query은 비동기 작업을 돕는 라이브러리로 API를 호출하여 서버에서 데이터를 가져오는 작업을 할 때 많이 사용됩니다. TanStack Query에서 Suspense를 사용하려면 아래 코드와 같이 `useSuspenseQuery` 훅을 사용하면 됩니다. (TanStack Query V4에서는 `useQuery` 훅의 `suspense` 옵션을 `true`로 설정하면 됩니다.)
 
 <div>
   <iframe src="https://codesandbox.io/embed/tanstack-query-suspense-76nh3r?fontsize=14&hidenavigation=1&theme=dark"
@@ -236,7 +236,7 @@ TanStack Query는 React Query로 더 잘 알려져 있는 라이브러리입니�
 Suspense를 사용할 때 주의해야 할 내용들을 살펴보도록 하겠습니다.
 
 ### 단일 컴포넌트에서 다수의 Suspense는 Warterfall로 동작
-Suspense는 `throw` 된 `Promise`를 `catch` 하는 방법으로 동작하기 때문에 Suspense를 동작시킨, `throw new Promise()` 이후의 코드는 실행되지 않습니다. 하나의 컴포넌트에서 Suspense를 동작시키는 여러 개의 코드가 존재하게 되면 아래 그림처럼 Waterfall 방식으로 비동기 동작하기 때문에 서비스의 성능을 저하시킬 수 있습니다.
+Suspense는 `throw` 된 `Promise`를 `catch` 하는 방법으로 동작하기 때문에 Suspense를 동작시킨, `throw new Promise()` 이후의 코드는 실행되지 않습니다. 하나의 컴포넌트에서 Suspense를 동작시키는 여러 개의 코드가 존재하게 되면 아래 그림처럼 Waterfall 방식으로 동작하기 때문에 서비스의 성능을 저하시킬 수 있습니다.
 
 ![Waterfall로 동작하는 Suspense](/assets/img/posts/react/suspense_waterfall.png)
 
