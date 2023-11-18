@@ -54,5 +54,5 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "packageManager": "yarn@4.0.0"
+  "packageManager": "yarn@4.0.2"
 }
