@@ -81,6 +81,12 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
         alt="포스트 배너"
       />
     ),
+    'react/tanstack-query-v5.png': (
+      <StaticImage
+        src="../../assets/images/react/tanstack-query-v5.png"
+        alt="포스트 배너"
+      />
+    ),
     'react/react-hook-form.png': (
       <StaticImage
         src="../../assets/images/react/react-hook-form.png"
