@@ -13,6 +13,7 @@ summary:
 - cacheTime -> gcTime
 - isInitialLoading -> isLoading
 - keepPreviousData는 placeholderData로 지원 가능
+- useMutaion의 Optimistic Update가 변경됨
 
 
 ##### 부록
