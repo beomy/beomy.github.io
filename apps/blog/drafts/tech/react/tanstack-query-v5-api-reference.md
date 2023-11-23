@@ -9,15 +9,6 @@ summary:
 ## `useQuery`
 ~~설명~~
 
-~~형태~~
-
-### Options
-
-### Returns
-
-### 사용 예제
-
-## `useQuery`
 ```tsx
 const {
   data, dataUpdatedAt, error, errorUpdatedAt,
@@ -45,6 +36,8 @@ const {
 ### Options
 
 ### Returns
+
+## 사용 예제
 
 ##### 참고
 - [https://tanstack.com/query/v5/docs/react/overview](https://tanstack.com/query/v5/docs/react/overview)
