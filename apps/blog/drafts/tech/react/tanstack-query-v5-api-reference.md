@@ -37,7 +37,15 @@ const {
 
 ### Returns
 
-## 사용 예제
+### 사용 예제
+
+## `useQueries`
+
+### Options
+
+### Returns
+
+### 사용 예제
 
 ##### 참고
 - [https://tanstack.com/query/v5/docs/react/overview](https://tanstack.com/query/v5/docs/react/overview)
