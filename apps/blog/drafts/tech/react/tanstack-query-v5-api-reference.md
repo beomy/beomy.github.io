@@ -41,11 +41,7 @@ const {
 
 ## `useQueries`
 
-### Options
-
-### Returns
-
-### 사용 예제
+## `useInfiniteQuery`
 
 ##### 참고
 - [https://tanstack.com/query/v5/docs/react/overview](https://tanstack.com/query/v5/docs/react/overview)
