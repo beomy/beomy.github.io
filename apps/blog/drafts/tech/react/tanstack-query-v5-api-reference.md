@@ -43,5 +43,7 @@ const {
 
 ## `useInfiniteQuery`
 
+## `useMutation`
+
 ##### 참고
 - [https://tanstack.com/query/v5/docs/react/overview](https://tanstack.com/query/v5/docs/react/overview)
