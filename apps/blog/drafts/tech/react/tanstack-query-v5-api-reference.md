@@ -74,7 +74,7 @@ const {
 
 ### 예제
 
-## `MutationCahte`
+## `useIsMutating`
 
 ### 타입 정보
 
@@ -84,7 +84,67 @@ const {
 
 ### 예제
 
-## `useIsMutating`
+## `MutationCache`
+
+### 타입 정보
+
+#### Options
+
+#### Returns
+
+### 예제
+
+## `useMutationState`
+
+### 타입 정보
+
+#### Options
+
+#### Returns
+
+### 예제
+
+## `useSuspenseQuery`
+
+### 타입 정보
+
+#### Options
+
+#### Returns
+
+### 예제
+
+## `useSuspenseInfiniteQuery`
+
+### 타입 정보
+
+#### Options
+
+#### Returns
+
+### 예제
+
+## `useSuspenseQueries`
+
+### 타입 정보
+
+#### Options
+
+#### Returns
+
+### 예제
+
+## `QueryClient`
+
+### 타입 정보
+
+#### Options
+
+#### Returns
+
+### 예제
+
+## `useQueryClient`
 
 ### 타입 정보
 
