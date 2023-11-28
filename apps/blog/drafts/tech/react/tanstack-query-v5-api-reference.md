@@ -154,5 +154,25 @@ const {
 
 ### 예제
 
+## `QueryClientProvider`
+
+### 타입 정보
+
+#### Options
+
+#### Returns
+
+### 예제
+
+## `QueryCache`
+
+### 타입 정보
+
+#### Options
+
+#### Returns
+
+### 예제
+
 ##### 참고
 - [https://tanstack.com/query/v5/docs/react/overview](https://tanstack.com/query/v5/docs/react/overview)
