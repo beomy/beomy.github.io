@@ -3,13 +3,13 @@ layout: post
 title: '[React] TanStack Query v5 (React Query) API 레퍼런스'
 featured-img: react/tanstack-query-v5.png
 category: [tech, react]
-summary: 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서 TanStack Query v5에서 사용할 수 있는 API를 살펴보도록 하겠습니다.
+summary: 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query에서 사용할 수 있는 API를 살펴보도록 하겠습니다.
 ---
 
-2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서 TanStack Query v5에서 사용할 수 있는 API를 살펴보도록 하겠습니다.
+2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query에서 사용할 수 있는 API를 살펴보도록 하겠습니다.
 
 ## `useQuery`
-~~설명~~
+`useQuery`는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useQuery`를 통해 가져온 데이터는 캐시됩니다. 또한 동일한 데이터를 가져오는 `useQuery`가 동시에 여러개 마운트되면 한 번만 데이터를 요청하는 최적화 작업을 합니다.
 
 ### 타입 정보
 ```tsx
