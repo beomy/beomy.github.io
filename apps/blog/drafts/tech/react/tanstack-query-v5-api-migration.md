@@ -6,6 +6,8 @@ category: [tech, react]
 summary:
 ---
 
+TanStack Query v5은 v4에 비해 20% 더 작고, 개발자 경험 향상을 위해 사용성을 통일하였습니다.
+
 - isLoading -> isPending
 - React 18이상 버전에서 사용 가능
 - Typescript 4.7 이상에서 사용가능
