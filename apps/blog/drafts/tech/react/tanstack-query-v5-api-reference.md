@@ -9,7 +9,7 @@ summary: 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었
 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query에서 사용할 수 있는 API를 살펴보도록 하겠습니다.
 
 ## `useQuery`
-`useQuery`는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useQuery`를 통해 가져온 데이터는 캐시됩니다. 또한 동일한 데이터를 가져오는 `useQuery`가 동시에 여러개 마운트되면 한 번만 데이터를 요청하는 최적화 작업을 합니다.
+`useQuery`는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useQuery`를 통해 가져온 데이터는 캐시됩니다. 또한 동일한 데이터를 가져오는 `useQuery`가 동시에 여러개 마운트되면 최적화 되어 한 번만 데이터를 요청합니다. `useQuery`는 API 서버에서 HTTP의 GET 메소드로 데이터를 가져오는 작업을 할 때 주로 사용됩니다.
 
 ### 타입 정보
 ```tsx
@@ -37,6 +37,25 @@ const {
 ```
 
 #### Options
+- `queryKey: unknown[]` (**필수**)
+  - 다른 쿼리와 구분될 수 있는 유니크한 키입니다.
+  - 이 값이 변경되면 자동 업데이트 되어 데이터를 가져옵니다.
+- `queryFn: (context: QueryFunctionContext) => Promise<TData>` (**필수**, 단 `defaultOptions`에 정의된 경우에는 생략 가능)
+  - 데이터를 요청하는데 사용되는 함수입니다.
+  - 파라미터로 `QueryFunctionContext`를 받습니다.
+    - `context.queryKey: QueryKey`
+      - `queryKey`로 전달한 값과 동일한 값입니다.
+    - `context.signal?: AbortSignal`
+      - 네트워크 요청을 취소하기 위해 사용되는 [AbortSignal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) 객체입니다.
+    - `meta: Recode<string, unknown> | undefined`
+      - 쿼리에 대한 추가 정보를 담을 수 있는 객체입니다.
+  - `Promise`를 반환해야 합니다. `undefined`를 반환해서는 안됩니다.
+- `enabled: boolean`
+  - `false`으로 설정할 경우 쿼리는 자동으로 데이터를 가져오지 않습니다.
+- `networkMode: 'online' | 'always' | 'offlineFirst` (default: `online`)
+  - `online`으로 설정할 경우
+  - `always`으로 설정할 경우
+  - `offlineFirst`으로 설정할 경우
 
 #### Returns
 
