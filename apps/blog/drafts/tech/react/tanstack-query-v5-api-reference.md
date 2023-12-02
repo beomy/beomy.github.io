@@ -85,7 +85,12 @@ const {
   - 함수 형태로 설정할 경우 함수의 반환 값에 따라 데이터를 다시 가져옵니다.
 - `refetchIntervalInBackground: boolean`
   - `true`로 설정할 경우 `refetchInterval`를 사용하여 계속 데이터를 다시 가져오게 설정된 쿼리라면 브라우저의 탭이나 창이 백그라운드에 있는 동안에도 계속 데이터를 다시 가져옵니다.
-- `refetchOnMount: boolean | "always" | ((query: Query) => boolean | "always")`
+- `refetchOnMount: boolean | "always" | ((query: Query) => boolean | "always")` (default: `true`)
+  - `true`로 설정할 경우 데이터가 오래되었다면 쿼리가 마운트 되면 데이터를 다시 가져옵니다.
+  - `false`로 설정할 경우 쿼리가 마운트 될 때 데이터를 다시 가져오지 않습니다.
+  - `always`로 설정할 경우 쿼리가 마운트 될 때 항상 데이터를 다시 가져옵니다.
+  - 함수 형태로 설정할 경우 함수의 반호나 값에 따라 데이터를 다시 가져옵니다.
+- `refetchOnReconnect: boolean | "always" | ((query: Query) => boolean | "always")` (default: `true`)
 
 #### Returns
 
