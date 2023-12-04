@@ -40,7 +40,7 @@ const {
 - `queryKey: unknown[]` (**필수**)
   - 다른 쿼리와 구분될 수 있는 유니크한 키입니다. 이 값은 쿼리의 해시 키로 사용됩니다.
   - 이 값이 변경되면 자동 업데이트 되어 데이터를 가져옵니다.
-- `queryFn: (context: QueryFunctionContext) => Promise<TData>` (**필수**, 단 `defaultOptions`에 정의된 경우에는 생략 가능)
+- `queryFn: (context: QueryFunctionContext) => Promise<TData>` (**필수**, 단 `defaultOptions`에서 정의된 경우 생략 가능)
   - 데이터를 요청하는데 사용되는 함수입니다.
   - 파라미터로 `QueryFunctionContext`를 받습니다.
     - `context.queryKey: QueryKey`
@@ -103,6 +103,21 @@ const {
 - `select: (data: TData) => unknown`
   - `queryFn` 함수에서 반환한 값을 가공할 때 사용되는 옵션입니다. 반환 된 값이 `data`에 담기지만 쿼리 캐시에는 영향을 주지 않습니다.
 - `initialData: TData | () => TData`
+  - 쿼리가 생성되거나 캐시되지 않은 경우 이 값은 캐시 되어, 쿼리의 초기 데이터로 사용됩니다.
+- `initialDataUpdatedAt: number | (() => number | undefined)`
+  - `initialData`가 마지막으로 업데이트된 시간(ms)으로 사용됩니다.
+- `placeholderData: TData | (previousValue: TData | undefined; previousQuery: Query | undefined,) => TData`
+  - 이 값은 쿼리가 `pending` 상태일 때 placeholder로 사용할 수 있는 데이터로 사용됩니다. 이 값은 쿼리 캐시에 영향을 주지 않습니다.
+  - 함수로 설정할 경우 함수의 첫번째 파라미터는 이전에 가져운 쿼리 데이터이고 두번째 파라미터는 이전에 완료된 쿼리 인스턴스입니다. 함수의 반환 값이 placeholder 데이터로 사용됩니다.
+  - `initialData`와 함께 설정되어 있다면, `initialData`가 더 높은 우선 순위를 가집니다.
+- `structuralSharing: boolean | (<T>(oldData: T | undefined, newData: T) => T)` (default: `true`)
+  - `false`로 설정할 경우 쿼리가 가져온 데이터를 공유하지 않습니다.
+
+> ##### `placeholderData` 활용
+> `keepPreviousData`
+
+> ##### Structural Sharing를 통한 최적화
+> TEST
 
 #### Returns
 
@@ -314,3 +329,4 @@ const {
 - [https://velog.io/@hyunjine/Inside-React-Query](https://velog.io/@hyunjine/Inside-React-Query)
 - [https://leego.tistory.com/entry/react-query는-어떻게-작동할까](https://leego.tistory.com/entry/react-query는-어떻게-작동할까)
 - [https://fe-developers.kakaoent.com/2023/230720-react-query/](https://fe-developers.kakaoent.com/2023/230720-react-query/)
+- [https://velog.io/@dev_jazziron/React-Query-Render-Optimizations](https://velog.io/@dev_jazziron/React-Query-Render-Optimizations)
