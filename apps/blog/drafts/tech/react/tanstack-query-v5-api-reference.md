@@ -108,10 +108,12 @@ const {
   - `initialData`가 마지막으로 업데이트된 시간(ms)으로 사용됩니다.
 - `placeholderData: TData | (previousValue: TData | undefined; previousQuery: Query | undefined,) => TData`
   - 이 값은 쿼리가 `pending` 상태일 때 placeholder로 사용할 수 있는 데이터로 사용됩니다. 이 값은 쿼리 캐시에 영향을 주지 않습니다.
-  - 함수로 설정할 경우 함수의 첫번째 파라미터는 이전에 가져운 쿼리 데이터이고 두번째 파라미터는 이전에 완료된 쿼리 인스턴스입니다. 함수의 반환 값이 placeholder 데이터로 사용됩니다.
+  - 함수로 설정할 경우 함수의 첫번째 파라미터는 이전에 가져온 쿼리 데이터이고 두번째 파라미터는 이전에 완료된 쿼리 인스턴스입니다. 함수의 반환 값이 placeholder 데이터로 사용됩니다.
   - `initialData`와 함께 설정되어 있다면, `initialData`가 더 높은 우선 순위를 가집니다.
 - `structuralSharing: boolean | (<T>(oldData: T | undefined, newData: T) => T)` (default: `true`)
   - `false`로 설정할 경우 쿼리가 가져온 데이터를 공유하지 않습니다.
+  - 함수로 설정할 경우 함수의 첫번째 파라미터는 이전에 가져온 쿼리 데이터 이고 두번째 파라미터는 새 쿼리 데이터입니다. 이 함수는 이전 데이터의 참조를 최대한 유지하면서 새로운 데이터를 반환하는 것이 좋습니다. 함수에서 반환한 데이터가 `data`로 사용됩니다.
+- `throwOnError: undefined | boolean | (error: TError, query: Query) => boolean`
 
 > ##### `placeholderData` 활용
 > `keepPreviousData`
