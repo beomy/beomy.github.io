@@ -119,6 +119,8 @@ const {
   - 함수로 설정할 경우 첫번째 파라미터로 에러 정보 두번째 파라미터로 쿼리 정보가 담기고 이 값들로 에러 바운더리로 보낼지(`true`) 말지(`false`)를 결정하여 반환해야 합니다.
 - `meta: Record<string, unknown>`
   - 필요에 따라 쿼리 캐시에 저장할 수 있는 추가정보입니다. `queryFn`의 `QueryFunctionContext`에도 `meta` 정보가 담겨 있습니다.
+- `queryClient?: QueryClient`
+  - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
 > ##### `placeholderData` 활용
 > `keepPreviousData`
