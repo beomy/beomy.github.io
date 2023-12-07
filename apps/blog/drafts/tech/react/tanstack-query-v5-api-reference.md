@@ -47,7 +47,7 @@ const {
       - `queryKey`로 전달한 값과 동일한 값입니다.
     - `context.signal?: AbortSignal`
       - 네트워크 요청을 취소하기 위해 사용되는 [AbortSignal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) 객체입니다.
-    - `meta: Recode<string, unknown> | undefined`
+    - `context.meta: Recode<string, unknown> | undefined`
       - 쿼리에 대한 추가 정보를 담을 수 있는 객체입니다.
   - `Promise`를 반환해야 합니다. `undefined`를 반환해서는 안됩니다.
 - `enabled: boolean`
@@ -112,8 +112,13 @@ const {
   - `initialData`와 함께 설정되어 있다면, `initialData`가 더 높은 우선 순위를 가집니다.
 - `structuralSharing: boolean | (<T>(oldData: T | undefined, newData: T) => T)` (default: `true`)
   - `false`로 설정할 경우 쿼리가 가져온 데이터를 공유하지 않습니다.
-  - 함수로 설정할 경우 함수의 첫번째 파라미터는 이전에 가져온 쿼리 데이터 이고 두번째 파라미터는 새 쿼리 데이터입니다. 이 함수는 이전 데이터의 참조를 최대한 유지하면서 새로운 데이터를 반환하는 것이 좋습니다. 함수에서 반환한 데이터가 `data`로 사용됩니다.
+  - 함수로 설정할 경우 함수의 첫번째 파라미터는 이전에 가져온 쿼리 데이터이고 두번째 파라미터는 새 쿼리 데이터입니다. 이 함수는 이전 데이터의 참조를 최대한 유지하면서 새로운 데이터를 반환하는 것이 좋습니다. 함수에서 반환한 데이터가 `data`로 사용됩니다.
 - `throwOnError: undefined | boolean | (error: TError, query: Query) => boolean`
+  - `true`로 설정할 경우 쿼리에서 에러가 발생할 경우 가장 가까운 에러 바운더리(Error Boundary)로 에러를 전파합니다.
+  - `false`로 설정할 경우 쿼리에서 에러가 발생해도 에러 바운더리로 에러를 전파하지 않습니다.
+  - 함수로 설정할 경우 첫번째 파라미터로 에러 정보 두번째 파라미터로 쿼리 정보가 담기고 이 값들로 에러 바운더리로 보낼지(`true`) 말지(`false`)를 결정하여 반환해야 합니다.
+- `meta: Record<string, unknown>`
+  - 필요에 따라 쿼리 캐시에 저장할 수 있는 추가정보입니다. `queryFn`의 `QueryFunctionContext`에도 `meta` 정보가 담겨 있습니다.
 
 > ##### `placeholderData` 활용
 > `keepPreviousData`
