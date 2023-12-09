@@ -123,7 +123,7 @@ const {
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
 > ##### `placeholderData` 활용
-> `keepPreviousData`
+> React Query V4에서는 `keepPreviousData` 옵션으로 쿼리 키가 변경되어 새로운 데이터를 가져오는 동안에 이전 데이터를 유지하여 화면에 노출 시킬 수 있었습니다.
 
 > ##### Structural Sharing를 통한 최적화
 > TEST
