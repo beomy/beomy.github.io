@@ -123,12 +123,75 @@ const {
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
 > ##### `placeholderData` 활용
-> React Query V4에서는 `keepPreviousData` 옵션으로 쿼리 키가 변경되어 새로운 데이터를 가져오는 동안에 이전 데이터를 유지하여 화면에 노출 시킬 수 있었습니다.
+> React Query V4에서는 `keepPreviousData` 옵션으로 쿼리 키가 변경되어 새로운 데이터를 가져오는 동안에 이전 데이터를 유지하여 화면에 노출 시킬 수 있었습니다. V5부터는 `keepPreviousData` 옵션이 없어지고 아래 코드와 같이 `placeholderData` 옵션이 그 기능을 커버해 주게 되었습니다.
+>
+> ```tsx
+> import { keepPreviousData, useQuery } from '@tanstack/react-query';
+> import React from "react";
+>
+> function Todos() {
+>   const [page, setPage] = React.useState(0)
+>
+>   const fetchProjects = (page = 0) => fetch('/api/projects?page=' + page).then((res) => res.json())
+>
+>   const {
+>     isPending,
+>     isError,
+>     error,
+>     data,
+>     isFetching,
+>     isPlaceholderData,
+>   } = useQuery({
+>     queryKey: ['projects', page],
+>     queryFn: () => fetchProjects(page),
+>     placeholderData: keepPreviousData,
+>   })
+> }
+> ```
 
 > ##### Structural Sharing를 통한 최적화
-> TEST
+> React Query는 새로운 데이터를 만들 때 가능한 한 기존의 데이터를 유지하려고 합니다. 아래 코드와 같이 응답 받은 데이터가 있을 때,
+>
+> ```json
+> [
+>   { "id": 1, "name": "Learn React", "status": "active" },
+>   { "id": 2, "name": "Learn React Query", "status": "todo" }
+> ]
+> ```
+>
+> 서버에서 `id` 1에 대한 값이 업데이트 되었다면, React Query는 아래 코드와 같이 모든 데이터를 교체하지 않고 변경된 값만 교체하여 기존의 데이터는 유지합니다.
+>
+> ```json
+> [
+>   - { "id": 1, "name": "Learn React", "status": "active" },
+>   + { "id": 1, "name": "Learn React", "status": "done" },
+>   { "id": 2, "name": "Learn React Query", "status": "todo" }
+> ]
+> ```
+>
+> React Query는 이전 데이터를 유지함으로 변경되지 않은 데이터를 사용하는 컴포넌트에서는 리렌더링이 발생하지 않도록 최적화합니다. 기존의 데이터를 유지하지 않고 항상 새로운 데이터로 사용하기 위해서는 `structuralSharing` 옵션을 `false`로 설정하면 됩니다.
+
 
 #### Returns
+- `status: String`
+  - `pending`일 경우, 캐시된 데이터가 없고 쿼리 시도가 아직 완료되지 않은 상태입니다.
+  - `error`일 경우, 데이터를 가져올 때 에러가 발생한 상태입니다.
+  - `success`일 경우,데이터를 성공적으로 가져오거나, `enabled`가 `false`이면서 `initialData`가 설정된 상태입니다.
+- `isPending: boolean`
+  - `status`가 `pending`일 경우 `true`입니다.
+- `isSuccess: boolean`
+  - `status`가 `success`일 경우 `true`입니다.
+- `isError: boolean`
+  - `status`가 `error`일 경우 `true`입니다.
+- `isLoadingError: boolean`
+  - 처음 데이터를 가져올 때 에러가 발생한 경우 `true`입니다.
+- `isRefetchError: boolean`
+  - 데이터 다시 가져오기가 실패한 경우 `true`입니다.
+- `data: TData` (default: `undefined`)
+  - 쿼리가 마지막으로 성공적으로 가져온 데이터입니다.
+- `dataUpdatedAt: number`
+  - 데이터를 성공적으로 가져온 경우, 즉 `status`가 `success`일 때 타임스탬프입니다.
+- `error: null | TError` (default: `null`)
 
 ### 예제
 <div>
