@@ -192,6 +192,46 @@ const {
 - `dataUpdatedAt: number`
   - 데이터를 성공적으로 가져온 경우, 즉 `status`가 `success`일 때 타임스탬프입니다.
 - `error: null | TError` (default: `null`)
+  - 쿼리에 에러가 발생한 경우 에러 정보를 담는 객체입니다.
+- `errorUpdatedAt: number`
+  - 가장 최근에 에러가 발생했을 경우, 즉 `status`가 `error`일 때 타임스탬프입니다.
+- `isStale: boolean`
+  - 캐시가 무효화 됬거나 `staleTime`이 지나 데이터가 오래된 것으로 판단될 때 `true`가 됩니다.
+- `isPlaceholderData: boolean`
+  - `data` 값이 `placeholderData`일 경우 `true`입니다.
+- `isFetched: boolean`
+  - 쿼리가 데이터를 가져온 경우 `true`입니다.
+- `isFetchedAfterMount: boolean`
+  - 컴포넌트가 마운트 된 후 쿼리가 데이터를 가져온 경우 `true`입니다.
+  - 이전에 캐시된 데이터를 사용하고 싶지 않을 때 사용될 수 있습니다.
+- `fetchStatus: FetchStatus`
+  - `fetching`일 경우, `queryFn`이 실행 중이거나, 초기 `status`가 `pending` 상태이거나, 백그라운드에서 데이터를 가져오는 상태입니다.
+  - `paused`일 경우, 쿼리가 데이터를 가져오려고 했지만 중지된 상태입니다. 대표적으로 네트워크가 끊겨 쿼리가 중지됬을 때 `paused` 상태입니다.
+  - `idle`일 경우, `fetching` 상태도 `paused` 상태도 아닌 상태입니다.
+- `isFetching: boolean`
+  - `fetchStatus`가 `fetching`일 경우 `true`입니다.
+- `isPaused: boolean`
+  - `fetchStatus`가 `paused`일 경우 `true`입니다.
+- `isRefetching: boolean`
+  - 초기 `pending` 상태가 아니며 백그라운드에서 데이터를 가져오는 중일 때 `true`입니다.
+  - `isFetching && !isPending`와 동일한 값입니다.
+- `isLoading: boolean`
+  - 쿼리가 처음으로 데이터를 가져오는 중일 때 `true`입니다.
+  - `isFetching && isPending`와 동일한 값입니다.
+- `failureCount: number`
+  - 쿼리가 데이터 가져오기를 실패한 횟수입니다. 쿼리가 성공적으로 데이터를 가져온 경우 `0`으로 초기화 됩니다.
+- `failureReason: null | TError`
+  - 쿼리가 데이터를 가져오기 재시도를 실패 했을 경우 에러 정보가 담깁니다. 쿼리가 성공적으로 데이터를 가져온 경우 `null`로 초기화 됩니다.
+  - 예를 들어 `retry`가 `5`로 설정되어 있을 경우 쿼리가 데이터 가져오기 재시도를 실패하면 `failureReason`에 에러 정보가 담깁니다. 5번의 재시도가 모두 실패할 경우 `error` 객체에 에러 정보가 담기게 됩니다.
+- `errorUpdateCount: number`
+  - 쿼리가 데이터 가져오기를 실패한 총 횟수입니다.
+- `refetch: (options: { throwOnError: boolean, cancelRefetch: boolean }) => Promise<UseQueryResult>`
+  - 수동으로 쿼리가 데이터를 다시 가져올 수 있게 하는 함수입니다.
+  - `options.throwOnError: boolean`
+    - `true`로 설정할 경우 다시 가져오기가 실패하면 가장 가까운 에러 바운더리로 에러를 전파합니다.
+  - `options.cancelRefetch: boolean` (default: `true`)
+    - `true`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행중이던 요청을 취소하고 재요청합니다.
+    - `false`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.
 
 ### 예제
 <div>
@@ -204,8 +244,22 @@ const {
 </div>
 
 ## `useQueries`
+`useQuery`와 동일하게 데이터를 가져오기 위해 사용되는 쿼리입니다. 여러개의 `useQuery`를 사용하고 싶을 경우 다수의 `useQuery` 선언 대신 `useQueries`을 사용할 수 있습니다.
 
 ### 타입 정보
+```tsx
+const ids = [1,2,3]
+const results = useQueries({
+  queries: ids.map(id => (
+    { queryKey: ['post', id], queryFn: () => fetchPost(id), staleTime: Infinity },
+  )),
+})
+```
+
+#### Options
+- `queries`
+- `queryClient?: QueryClient`
+- `combine?: (result: UseQueriesResults) => TCombinedResult`
 
 ### 예제
 
