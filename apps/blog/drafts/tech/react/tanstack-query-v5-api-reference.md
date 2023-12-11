@@ -244,7 +244,7 @@ const {
 </div>
 
 ## `useQueries`
-`useQuery`와 동일하게 데이터를 가져오기 위해 사용되는 쿼리입니다. 여러개의 `useQuery`를 사용하고 싶을 경우 다수의 `useQuery` 선언 대신 `useQueries`을 사용할 수 있습니다.
+`useQuery`와 동일하게 데이터를 가져오기 위해 사용되는 쿼리입니다. 여러개의 `useQuery`를 사용하고 싶을 경우 `useQuery`를 여러번 선언할 필요 없이 `useQueries`로 대신할 수 있습니다.
 
 ### 타입 정보
 ```tsx
@@ -258,10 +258,23 @@ const results = useQueries({
 
 #### Options
 - `queries`
+  - `useQuery` 훅에서 사용했던 옵션 중 `queryClient`를 제외한 옵션을 사용할 쿼리 수만큼 배열에 담어 전달하면됩니다.
 - `queryClient?: QueryClient`
+  - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 - `combine?: (result: UseQueriesResults) => TCombinedResult`
+  - 이 옵션을 사용하면 여러 쿼리의 결과 값을 단인 값으로 합칠 수 있습니다.
+
+#### Returns
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/gmvk2m?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useQueries"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `useInfiniteQuery`
 
