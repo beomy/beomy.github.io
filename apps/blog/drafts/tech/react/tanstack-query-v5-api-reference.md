@@ -258,13 +258,14 @@ const results = useQueries({
 
 #### Options
 - `queries`
-  - `useQuery` 훅에서 사용했던 옵션 중 `queryClient`를 제외한 옵션을 사용할 쿼리 수만큼 배열에 담어 전달하면됩니다.
+  - `useQuery` 훅에서 사용했던 옵션 중 `queryClient`를 제외한 옵션을 사용할 쿼리 수만큼 배열에 담어 전달하면됩니다. 또한 렌더링 할 때마다 호출해야 하는 쿼리의 수가 달라 질 수 있기 때문에 `placeholderData` 함수는 이전 데이터를 파라미터로 전달하지 않습니다.
 - `queryClient?: QueryClient`
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 - `combine?: (result: UseQueriesResults) => TCombinedResult`
   - 이 옵션을 사용하면 여러 쿼리의 결과 값을 단인 값으로 합칠 수 있습니다.
 
 #### Returns
+`useQueries` 훅의 반환 값은 [`useQuery` 훅의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns)과 동일한 값을 `queries`에 선언한 쿼리 순서대로 배열 형태로 반환합니다.
 
 ### 예제
 <div>
