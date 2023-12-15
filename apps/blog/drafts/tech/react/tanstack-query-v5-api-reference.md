@@ -278,8 +278,29 @@ const results = useQueries({
 </div>
 
 ## `useInfiniteQuery`
+`useInfiniteQuery` 훅 역시 `useQuery`나 `useQueries` 훅과 같이 데이터를 가져오기 위해 사용되는 쿼리입니다. 무한 스크롤을 통한 데이터 무한 로딩 등을 구현할 때 종종 사용되는 훅입니다.
 
 ### 타입 정보
+```tsx
+const {
+  fetchNextPage,
+  fetchPreviousPage,
+  hasNextPage,
+  hasPreviousPage,
+  isFetchingNextPage,
+  isFetchingPreviousPage,
+  ...result
+} = useInfiniteQuery({
+  queryKey,
+  queryFn: ({ pageParam }) => fetchPage(pageParam),
+  initialPageParam: 1,
+  ...options,
+  getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) =>
+    lastPage.nextCursor,
+  getPreviousPageParam: (firstPage, allPages, firstPageParam, allPageParams) =>
+    firstPage.prevCursor,
+})
+```
 
 #### Options
 
