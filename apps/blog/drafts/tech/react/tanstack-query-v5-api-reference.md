@@ -303,7 +303,6 @@ const {
 ```
 
 #### Options
-- TEST
 
 #### Returns
 
