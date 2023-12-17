@@ -9,7 +9,7 @@ summary: 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었
 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query를 멋있게 사용할 수 있도록 React Query의 API를 살펴보도록 하겠습니다.
 
 ## `useQuery`
-`useQuery`는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useQuery`를 통해 가져온 데이터는 캐시됩니다. 또한 동일한 데이터를 가져오는 `useQuery`가 동시에 여러개 마운트되면 최적화 되어 한 번만 데이터를 요청합니다. `useQuery`는 API 서버에서 HTTP의 GET 메소드로 데이터를 가져오는 작업을 할 때 주로 사용됩니다.
+`useQuery`는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useQuery`를 통해 가져온 데이터는 캐시됩니다. 또한 동일한 `queryKey`를 사용하는 `useQuery`가 동시에 여러개 마운트되면 최적화 되어 한 번만 데이터를 요청합니다. `useQuery`는 API 서버에서 HTTP의 GET 메소드로 데이터를 가져오는 작업을 할 때 주로 사용됩니다.
 
 ### 타입 정보
 ```tsx
@@ -303,16 +303,141 @@ const {
 ```
 
 #### Options
+`useInfiniteQuery` 훅의 옵션은 `useQuery` 훅의 옵션에 아래 목록의 옵션이 추가됩니다.
+
+- `queryFn: (context: QueryFunctionContext) => Promise<TData>` (**필수**, 단 `defaultOptions`에서 정의된 경우 생략 가능)
+  - `useQuery`에서 사용하는 `queryFn`와 동일하지만 `context.pageParam: TPageParam`와 `context.direction: 'forward' | 'backward'`를 추가로 사용할 수 있습니다.
+    - `context.pageParam: TPageParam`
+      - 현재 페이지(현재 `data`)를 가져오기 위해 사용된 파라미터입니다.
+    - `context.direction: 'forward' | 'backward'`
+      - 현재 패이지를 가져온 방향입니다.
+- `initialPageParam: TPageParam` (**필수**)
+  - 첫 페이지를 가져오늘 때 사용할 파라미터입니다.
+- `getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) => TPageParam | undefined | null` (**필수**)
+  - 최근 페이지, 모든 페이지, 최근 파마리터, 모든 파라미터 이 데이터를 사용하여 다음 페이지를 가져오는데 사용되는 파라미터를 반환해야 하는 함수 입니다.
+  - `undefined`나 `null`을 반환할 경우 다음 페이지가 없는 것으로 판단합니다.
+- `getPreviousPageParam: (firstPage, allPages, firstPageParam, allPageParams) => TPageParam | undefined | null`
+  - 최근 페이지, 모든 페이지, 최근 파마리터, 모든 파라미터 이 데이터를 사용하여 이전 페이지를 가져오는데 사용되는 파라미터를 반환해야 하는 함수 입니다.
+  - `undefined`나 `null`을 반환할 경우 이전 페이지가 없는 것으로 판단합니다.
+- `maxPages: number | undefined` (default: `undefined`)
+  - `data` 반환 값에 저장할 최대 페이지 수입니다.
+  - 최대 페이지 수에 도달하면 방향에 따라 첫번째 또는 마지막 페이지가 제거됩니다.
+  - `undefined`나 `0`이 설정된 경우 저장할 수 있는 페이지 수의 제한이 없게 됩니다.
 
 #### Returns
+`useInfiniteQuery` 훅의 반환 값은 아래 목록을 제외하고 `useQuery`의 반환 값과 동일합니다.
+
+- `data.pages: TData[]`
+  - 모든 페이지의 데이터가 배열 형태로 저장됩니다.
+- `data.pageParams: unknown[]`
+  - 페이지를 가져오기 위해 사용된 모든 파라미터 데이터가 배열 형태로 저장됩니다.
+- `isFetchingNextPage: boolean`
+  - `fetchNextPage` 함수로 다음 페이지를 가져오는 동안 `true`입니다.
+- `isFetchingPreviousPage: boolean`
+  - `fetchPreviousPage` 함수로 이전 페이지를 가져오는 동안 `true`입니다.
+- `fetchNextPage: (options?: FetchNextPageOptions) => Promise<UseInfiniteQueryResult>`
+  - 다음 페이지 데이터를 가져오는 함수입니다.
+  - `options.cancelRefetch: boolean` (default: `true`)
+    - `true`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행중이던 요청을 취소하고 재요청합니다.
+    - `false`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.
+- `fetchPreviousPage: (options?: FetchPreviousPageOptions) => Promise<UseInfiniteQueryResult>`
+  - 이번 페이지 데이터를 가져오는 함수입니다.
+  - `options.cancelRefetch: boolean` (default: `true`)
+    - `fetchNextPage`의 `options.cancelRefetch: boolean`와 동일합니다.
+- `hasNextPage: boolean`
+  - 다음 페이지가 있는 경우 `true`입니다.
+  - 다음 페이지가 없는 경우, 즉 `getNextPageParam` 함수가 `undefined`나 `null`을 반환할 경우 `false`입니다.
+- `hasPreviousPage: boolean`
+  - 이전 페이지가 있는 경우 `true`입니다.
+  - 이전 페이지가 없는 경우, 즉 `getPreviousPageParam` 함수가 `undefined`나 `null`을 반환할 경우 `false`입니다.
+- `isRefetching: boolean`
+  - 초기 `pending`, 다음/이전 데이터를 가져오는 중을 제외하고 백그라운드에서 데이터를 가져오는 중일 경우 `true`입니다.
+  - `isFetching && !isPending && !isFetchingNextPage && !isFetchingPreviousPage`와 동일한 값입니다.
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/m9sfx3?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useInfiniteQuery"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `useMutation`
+`useMutation` 역시 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useMutation`은 API 서버에 데이터를 저장하거나 업데이트, 삭제 하는 등의 데이터에 영향을 주는 HTTP의 POST, PUT, DELETE 메소드에 주로 사용됩니다.
 
 ### 타입 정보
+```tsx
+const {
+  data, error, isError, isIdle,
+  isPending, isPaused, isSuccess,
+  failureCount, failureReason,
+  mutate, mutateAsync, reset,
+  status, submittedAt, variables,
+} = useMutation({
+  mutationFn, gcTime,
+  mutationKey, networkMode,
+  onError, onMutate, onSettled,
+  onSuccess, retry, retryDelay,
+  throwOnError, meta,
+})
+
+mutate(variables, {
+  onError,
+  onSettled,
+  onSuccess,
+})
+```
 
 #### Options
+- `mutationFn: (variables: TVariables) => Promise<TData>` (**필수**, 단 `defaultOptions`에서 정의된 경우 생략 가능)
+  - 비동기 작업을 수행하고 `Promise`를 반환하는 함수입니다.
+  - `variables: TVariables`
+    - 반환 값인 `mutate` 함수를 호출할 때 함께 전달되는 파라미터가 전달됩니다.
+- `gcTime: number | Infinity`
+  - `useQuery`의 `gcTime`과 동일합니다.
+- `mutationKey: unknown[]`
+- `networkMode: 'online' | 'always' | 'offlineFirst` (default: `online`)
+  - `useQuery`의 `networkMode`과 동일합니다.
+- `onMutate: (variables: TVariables) => Promise<TContext | void> | TContext | void`
+  - `mutationFn`이 실행되기 전에 실행됩니다.
+  - `variables: TVariables`
+    - `mutationFn` 함수의 파라미터와 동일한 값을 파라미터로 전달받습니다.
+  - `onMutate` 함수는 낙관적 업데이트(optimistic updates)에 사용하기 유용합니다. 반환 값은 `onError`와 `onSettled` 함수에 전달되어 mutation 실패 시 낙관적 업데이트를 롤백할 때 사용할 수 있습니다.
+    - 낙관적 업데이트란 mutation이 성공할 것이라 판단하여 수정된 결과를 응답 받기 전, 요청한 데이터를 사용하여 업데이트 하는 것을 이야기 합니다.
+- `onSuccess: (data: TData, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
+  - `mutaionFn`이 성공할 경우 실행됩니다.
+  - If a promise is returned, it will be awaited and resolved before proceeding ...?
+  - `data: TData`
+    - `mutaionFn`의 반환 값이 `data`에 담깁니다.
+  - `variables: TVariables`
+    - `mutation` 함수에 전달된 파라미터는 `variables`에 담깁니다.
+  - `context?: TContext`
+    - `onMutate` 함수의 반환 값이 `context`에 담깁니다.
+- `onError: (err: TError, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
+  - `mutationFn`에서 에러가 발생할 경우 실행됩니다.
+  - If a promise is returned, it will be awaited and resolved before proceeding ...?
+  - `err: TError`
+    - 발생한 에러 정보는 `err`에 담깁니다.
+  - `variables: TVariables`
+    - `mutation` 함수에 전달된 파라미터는 `variables`에 담깁니다.
+  - `context?: TContext`
+    - `onMutate` 함수의 반환 값이 `context`에 담깁니다.
+- `onSettled: (data: TData, error: TError, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
+  - `mutationFn`이 성공하거나 실패할 경우 실행됩니다.
+  - If a promise is returned, it will be awaited and resolved before proceeding ...?
+  - `data: TData`
+    - `mutaionFn`이 성공할 경우 `mutaionFn`의 반환 값이 `data`에 담깁니다.
+  - `err: TError`
+    - `mutaionFn`이 실해할 경우 발생한 에러 정보는 `err`에 담깁니다.
+  - `variables: TVariables`
+    - `mutation` 함수에 전달된 파라미터는 `variables`에 담깁니다.
+  - `context?: TContext`
+    - `onMutate` 함수의 반환 값이 `context`에 담깁니다.
+- `retry: boolean | number | (failureCount: number, error: TError) => boolean` (default: `0`)
+  - `useQuery`의 `retry`와 동일합니다.
+- `retryDelay: number | (retryAttempt: number, error: TError) => number`
 
 #### Returns
 
