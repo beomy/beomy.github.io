@@ -398,6 +398,7 @@ mutate(variables, {
 - `gcTime: number | Infinity`
   - `useQuery`의 `gcTime`과 동일합니다.
 - `mutationKey: unknown[]`
+  - `useMutationState`와의 연관성 ?????
 - `networkMode: 'online' | 'always' | 'offlineFirst` (default: `online`)
   - `useQuery`의 `networkMode`과 동일합니다.
 - `onMutate: (variables: TVariables) => Promise<TContext | void> | TContext | void`
@@ -408,7 +409,7 @@ mutate(variables, {
     - 낙관적 업데이트란 mutation이 성공할 것이라 판단하여 수정된 결과를 응답 받기 전, 요청한 데이터를 사용하여 업데이트 하는 것을 이야기 합니다.
 - `onSuccess: (data: TData, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutaionFn`이 성공할 경우 실행됩니다.
-  - If a promise is returned, it will be awaited and resolved before proceeding ...?
+  - If a promise is returned, it will be awaited and resolved before proceeding ?????
   - `data: TData`
     - `mutaionFn`의 반환 값이 `data`에 담깁니다.
   - `variables: TVariables`
@@ -417,7 +418,7 @@ mutate(variables, {
     - `onMutate` 함수의 반환 값이 `context`에 담깁니다.
 - `onError: (err: TError, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutationFn`에서 에러가 발생할 경우 실행됩니다.
-  - If a promise is returned, it will be awaited and resolved before proceeding ...?
+  - If a promise is returned, it will be awaited and resolved before proceeding ?????
   - `err: TError`
     - 발생한 에러 정보는 `err`에 담깁니다.
   - `variables: TVariables`
@@ -426,7 +427,7 @@ mutate(variables, {
     - `onMutate` 함수의 반환 값이 `context`에 담깁니다.
 - `onSettled: (data: TData, error: TError, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutationFn`이 성공하거나 실패할 경우 실행됩니다.
-  - If a promise is returned, it will be awaited and resolved before proceeding ...?
+  - If a promise is returned, it will be awaited and resolved before proceeding ?????
   - `data: TData`
     - `mutaionFn`이 성공할 경우 `mutaionFn`의 반환 값이 `data`에 담깁니다.
   - `err: TError`
@@ -438,10 +439,31 @@ mutate(variables, {
 - `retry: boolean | number | (failureCount: number, error: TError) => boolean` (default: `0`)
   - `useQuery`의 `retry`와 동일합니다.
 - `retryDelay: number | (retryAttempt: number, error: TError) => number`
+  - `useQuery`의 `retryDelay`와 동일합니다.
+- `throwOnError: undefined | boolean | (error: TError) => boolean`
+  - `useQuery`의 `throwOnError`와 동일합니다.
+- `meta: Record<string, unknown>`
+  - 필요에 따라 Mutation 캐시에 저장할 수 있는 추가정보입니다. `MutationCache`의 `onError`, `onSuccess`와 같이 `mutation`을 사용할 수 있다면 `meta`를 사용할 수 있습니다.
+- `queryClient?: QueryClient`
+  - `useQuery`의 `queryClient`와 동일합니다.
 
 #### Returns
+- `mutate: (variables: TVariables, { onSuccess, onSettled, onError }) => void`
+  - 변경할 데이터를 파라미터로 전달하여 데이터 변경을 수행하는 함수입니다. 두번째 파라미터로 콜백 함수를 정의할 수 있습니다.
+  - `variables: TVariables`
+  - `onSuccess: (data: TData, variables: TVariables, context: TContext) => void`
+  - `onError: (err: TError, variables: TVariables, context: TContext | undefined) => void`
+  - `onSettled: (data: TData | undefined, error: TError | null, variables: TVariables, context: TContext | undefined) => void`
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/7cjzgh?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useMutation"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 #### Optimistic Updates
 
