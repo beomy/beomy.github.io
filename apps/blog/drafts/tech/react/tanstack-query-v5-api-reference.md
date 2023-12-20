@@ -449,7 +449,7 @@ mutate(variables, {
 
 #### Returns
 - `mutate: (variables: TVariables, { onSuccess, onSettled, onError }) => void`
-  - 변경할 데이터를 파라미터로 전달하여 데이터 변경을 수행하는 함수입니다. 두번째 파라미터로 콜백 함수를 정의할 수 있습니다.
+  - 변경할 데이터를 파라미터로 전달하여 데이터 변경을 수행하는 함수입니다. 두번째 파라미터는 옵션 정보로, 콜백 함수를 정의할 수 있습니다.
   - `variables: TVariables`
   - `onSuccess: (data: TData, variables: TVariables, context: TContext) => void`
   - `onError: (err: TError, variables: TVariables, context: TContext | undefined) => void`
