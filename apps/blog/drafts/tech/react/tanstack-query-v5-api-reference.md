@@ -409,33 +409,33 @@ mutate(variables, {
     - 낙관적 업데이트란 mutation이 성공할 것이라 판단하여 수정된 결과를 응답 받기 전, 요청한 데이터를 사용하여 업데이트 하는 것을 이야기 합니다.
 - `onSuccess: (data: TData, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutaionFn`이 성공할 경우 실행됩니다.
-  - If a promise is returned, it will be awaited and resolved before proceeding ?????
+  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`onSettled`, `mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수등)들이 진행되지 않습니다.
   - `data: TData`
-    - `mutaionFn`의 반환 값이 `data`에 담깁니다.
+    - `mutationFn` 함수의 반환 값입니다.
   - `variables: TVariables`
-    - `mutation` 함수에 전달된 파라미터는 `variables`에 담깁니다.
+    - `mutate` 함수에 전달한 `variables` 값입니다.
   - `context?: TContext`
-    - `onMutate` 함수의 반환 값이 `context`에 담깁니다.
+    - `onMutate` 함수의 반환 값입니다.
 - `onError: (err: TError, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutationFn`에서 에러가 발생할 경우 실행됩니다.
-  - If a promise is returned, it will be awaited and resolved before proceeding ?????
+  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`onSettled`, `mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수등)들이 진행되지 않습니다.
   - `err: TError`
-    - 발생한 에러 정보는 `err`에 담깁니다.
+    - 발생한 에러 정보입니다.
   - `variables: TVariables`
-    - `mutation` 함수에 전달된 파라미터는 `variables`에 담깁니다.
+    - `mutate` 함수에 전달한 `variables` 값입니다.
   - `context?: TContext`
-    - `onMutate` 함수의 반환 값이 `context`에 담깁니다.
+    - `onMutate` 함수의 반환 값입니다.
 - `onSettled: (data: TData, error: TError, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutationFn`이 성공하거나 실패할 경우 실행됩니다.
-  - If a promise is returned, it will be awaited and resolved before proceeding ?????
+  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수등)들이 진행되지 않습니다.
   - `data: TData`
-    - `mutaionFn`이 성공할 경우 `mutaionFn`의 반환 값이 `data`에 담깁니다.
+    - `mutaionFn`이 성공할 경우 `mutaionFn`의 반환 값입니다.
   - `err: TError`
-    - `mutaionFn`이 실해할 경우 발생한 에러 정보는 `err`에 담깁니다.
+    - `mutaionFn`이 실해할 경우 발생한 에러 정보입니다.
   - `variables: TVariables`
-    - `mutation` 함수에 전달된 파라미터는 `variables`에 담깁니다.
+    - `mutate` 함수에 전달한 `variables` 값입니다.
   - `context?: TContext`
-    - `onMutate` 함수의 반환 값이 `context`에 담깁니다.
+    - `onMutate` 함수의 반환 값입니다.
 - `retry: boolean | number | (failureCount: number, error: TError) => boolean` (default: `0`)
   - `useQuery`의 `retry`와 동일합니다.
 - `retryDelay: number | (retryAttempt: number, error: TError) => number`
@@ -451,9 +451,36 @@ mutate(variables, {
 - `mutate: (variables: TVariables, { onSuccess, onSettled, onError }) => void`
   - 변경할 데이터를 파라미터로 전달하여 데이터 변경을 수행하는 함수입니다. 두번째 파라미터는 옵션 정보로, 콜백 함수를 정의할 수 있습니다.
   - `variables: TVariables`
+    - `mutationFn`의 `variables` 파라미터로 전달됩니다.
   - `onSuccess: (data: TData, variables: TVariables, context: TContext) => void`
+    - Mutation이 성공 했을 때 호출되는 콜백함수입니다.
+    - `data: TData`
+      - `mutationFn` 함수의 반환 값입니다.
+    - `variables: TVariables`
+      - `mutate` 함수에 전달한 `variables` 값입니다.
+    - `context: TContext`
+      - `onMutate` 함수의 반환 값입니다.
   - `onError: (err: TError, variables: TVariables, context: TContext | undefined) => void`
+    - Mutation이 실패 했을 때 호출되는 콜백함수입니다.
+    - `err: TError`
+      - `mutaionFn`이 실해할 경우 발생한 에러 정보입니다.
+    - `variables: TVariables`
+      - `mutate` 함수에 전달한 `variables` 값입니다.
+    - `context: TContext | undefined`
+      - `onMutate` 함수의 반환 값입니다.
   - `onSettled: (data: TData | undefined, error: TError | null, variables: TVariables, context: TContext | undefined) => void`
+    - Mutation이 성공하거나 실패할 경우 실행됩니다.
+    - `data: TData | undefined`
+      - `mutaionFn`이 성공할 경우 `mutaionFn`의 반환 값입니다.
+    - `error: TError | null`
+      - `mutaionFn`이 실해할 경우 발생한 에러 정보입니다.
+    - `variables: TVariables`
+      - `mutate` 함수에 전달한 `variables` 값입니다.
+    - `context: TContext | undefined`
+      - `onMutate` 함수의 반환 값입니다.
+- `mutateAsync: (variables: TVariables, { onSuccess, onSettled, onError }) => Promise<TData>`
+  - `mutate` 함수와 동일한 기능을하는 async 함수 입니다.
+- `status: string`
 
 ### 예제
 <div>
@@ -466,6 +493,7 @@ mutate(variables, {
 </div>
 
 #### Optimistic Updates
+Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데이트하고 업데이트 된 값을 가져오고 화면을 갱신하는 과정을 거쳐야 하는데 이 과정에서 사용자에게 업데이트 된 값을 노출하기까지 딜레이가 발생할 수 있습니다. 업데이트 된 값을 좀 더 빠르게 사용자에게 노출하여 사용자 경험을 향상 시킬 수 있는 방법 중 하나가 Optimistic Update, 낙관적 업데이트입니다.
 
 ## `useIsFetching`
 
