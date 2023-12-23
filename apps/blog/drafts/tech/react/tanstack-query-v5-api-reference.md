@@ -481,6 +481,32 @@ mutate(variables, {
 - `mutateAsync: (variables: TVariables, { onSuccess, onSettled, onError }) => Promise<TData>`
   - `mutate` 함수와 동일한 기능을하는 async 함수 입니다.
 - `status: string`
+  - `idle`인 경우, Mutation 함수가 실행되기 전 상태입니다.
+  - `pending`인 경우, Mutation 함수가 실행중인 상태입니다.
+  - `error` 인 경우, Mutation 함수에서 에러가 발생한 상태입니다.
+  - `success`인 경우, Mutation 함수가 성공한 상태입니다.
+- `isIdle: boolean`
+  - `status`가 `idle`인 경우 `true`입니다.
+- `isPending: boolean`
+  - `status`가 `pending`인 경우 `true`입니다.
+- `isError: boolean`
+  - `status`가 `error`인 경우 `true`입니다.
+- `isSuccess: boolean`
+  - `status`가 `success`인 경우 `true`입니다.
+- `isPaused: boolean`
+  - Mutationd이 중지된 상태입니다. 대표적으로 네트워크가 끊겨 Mutation이 중지됬을 때 `paused` 상태입니다.
+- `data: undefined | unknown` (default: `undefined`)
+  - 가장 최근에 성공한 Mutation의 반환 값을 담습니다.
+- `error: null | TError`
+  - Mutation이 실패했을 경우 에러 정보가 담긴 객체입니다.
+- `reset: () => void`
+  - Mutation의 상태를 초기화 하는 함수입니다.
+- `failureReason: null | TError`
+  - Mutation 재시도를 실패 했을 경우 에러 정보가 담깁니다. Mutation이 성공한 경우 `null`로 초기화 됩니다.
+- `submittedAt: number` (default: `0`)
+  - Mutation이 실행된 시점의 타입스탬프입니다.
+- `variables: undefined | TVariables` (default: `undefined`)
+  - `mutationFn` 함수의 파라미터로 전달된 `variables` 값입니다.
 
 ### 예제
 <div>
@@ -492,10 +518,8 @@ mutate(variables, {
   ></iframe>
 </div>
 
-#### Optimistic Updates
-Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데이트하고 업데이트 된 값을 가져오고 화면을 갱신하는 과정을 거쳐야 하는데 이 과정에서 사용자에게 업데이트 된 값을 노출하기까지 딜레이가 발생할 수 있습니다. 업데이트 된 값을 좀 더 빠르게 사용자에게 노출하여 사용자 경험을 향상 시킬 수 있는 방법 중 하나가 Optimistic Update, 낙관적 업데이트입니다.
-
 ## `useIsFetching`
+`useIsFetching` 훅은
 
 ### 타입 정보
 
@@ -660,6 +684,13 @@ Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데�
 ### 예제
 
 ## 부록
+
+### Optimistic Updates
+Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데이트하고 업데이트 된 값을 가져오고 화면을 갱신하는 과정을 거쳐야 하는데 이 과정에서 사용자에게 업데이트 된 값을 노출하기까지 딜레이가 발생할 수 있습니다. 업데이트 된 값을 좀 더 빠르게 사용자에게 노출하여 사용자 경험을 향상 시킬 수 있는 방법 중 하나가 Optimistic Update, 낙관적 업데이트입니다.
+
+#### UI
+
+#### Cache
 
 ### React Query 구조
 
