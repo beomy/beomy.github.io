@@ -398,7 +398,7 @@ mutate(variables, {
 - `gcTime: number | Infinity`
   - `useQuery`의 `gcTime`과 동일합니다.
 - `mutationKey: unknown[]`
-  - `useMutationState`와의 연관성 ?????
+  - 다른 Mutation과 구분될 수 있는 유니크한 키입니다. 쿼리의 `queryKey`와는 다르게 필수값이 아닙니다.
 - `networkMode: 'online' | 'always' | 'offlineFirst` (default: `online`)
   - `useQuery`의 `networkMode`과 동일합니다.
 - `onMutate: (variables: TVariables) => Promise<TContext | void> | TContext | void`
@@ -519,27 +519,99 @@ mutate(variables, {
 </div>
 
 ## `useIsFetching`
-`useIsFetching` 훅은
+`useIsFetching` 훅은 데이터를 가져오는 중인 쿼리의 수를 반환합니다.
 
 ### 타입 정보
+```tsx
+import { useIsFetching } from '@tanstack/react-query'
+// How many queries are fetching?
+const isFetching = useIsFetching()
+// How many queries matching the posts prefix are fetching?
+const isFetchingPosts = useIsFetching({ queryKey: ['posts'] })
+```
 
 #### Options
+- `filters?: QueryFilters`
+  - `filters.queryKey?: QueryKey`
+    - 찾으려고 하는 쿼리의 쿼리 키입니다.
+  - `filters.exact?: boolean`
+    - `true`로 설정할 경우 정확히 일치하는 쿼리를 찾습니다.
+    - `false`로 설정할 경우 설정한 `filters.queryKey`가 포함되는 쿼리를 찾습니다.
+  - `filters.type?: 'active' | 'inactive' | 'all'` (default: `all`)
+    - `active`로 설정할 경우 활성화 된 쿼리 중에 찾습니다.
+    - `inactive`로 설정할 경우 비활성화 된 쿼리 중에 찾습니다.
+    - `all`로 설정할 경우 모든 쿼리 중에 찾습니다.
+  - `filters.stale?: boolean`
+    - `true`로 설정할 경우 오래된(stale) 쿼리 중에 찾습니다.
+    - `false`로 설정할 경우 신선한(fresh) 쿼리 중에 찾습니다.
+  - `filters.fetchStatus?: FetchStatus`
+    - `fetching`으로 설정할 경우 가져오는 중인 쿼리 중에 찾습니다.
+    - `paused`로 설정할 경우 데이터를 가져오려고 했지만 일시 중단된 쿼리 중에 찾습니다.
+    - `idle`로 설정할 경우 데이터를 가져온 적이 없는 쿼리 중에 찾습니다.
+  - `filters.predicate?: (query: Query) => boolean`
+    - 최종 필터로 사용되는 함수입니다. 다른 필터를 정의하지 않으면 모든 쿼리 중에 찾습니다.
+- `queryClient?: QueryClient`
+  - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
 #### Returns
+- `isFetching: number`
+  - 데이터를 가져오는 중인 쿼리의 수입니다.
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/cq2gkp?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useIsFetching"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `useIsMutating`
+`useIsMutating` 훅은 Mutation 중인 수를 반환합니다.
 
 ### 타입 정보
+```tsx
+import { useIsMutating } from '@tanstack/react-query'
+// How many mutations are fetching?
+const isMutating = useIsMutating()
+// How many mutations matching the posts prefix are fetching?
+const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
+```
 
 #### Options
+- `filters?: MutationFilters`
+  - `filters.mutationKey?: MutationKey`
+    - 찾으려고 하는 Mutation의 키입니다.
+  - `filters.exact?: boolean`
+    - `true`로 설정할 경우 정확히 일치하는 Mutation을 찾습니다.
+    - `false`로 설정할 경우 설정한 `filters.queryKey`가 포함되는 Mutation을 찾습니다.
+  - `filters.status?: MutationStatus`
+    - `idle`인 경우 실행되기 전인 Mutation 중에 찾습니다.
+    - `pending`인 경우 실행 중인 Mutation 중에 찾습니다.
+    - `error` 인 경우 에러가 발생한 Mutation 중에 찾습니다.
+    - `success`인 경우 성공한 Mutation 중에 찾습니다.
+  - `filters.predicate?: (mutation: Mutation) => boolean`
+    - 최종 필터로 사용되는 함수입니다. 다른 필터를 정의하지 않으면 모든 Mutation 중에 찾습니다.
+- `queryClient?: QueryClient`
+  - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
 #### Returns
+- `isMutating: number`
+  - Mutation 중인 숫자입니다.
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/rzm4tc?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useIsMutating"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `MutationCache`
+`MutationCache`는 Mutation을 저장하는 저장소입니다. 보통 아래 코드와 같이 `QueryClient`에 정의하고, `useQueryClient`의 `getMutationCache`를 통해 가져와 사용합니다.
 
 ### 타입 정보
 
@@ -548,6 +620,14 @@ mutate(variables, {
 #### Returns
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/9m9p9l?view=Editor+%2B+Preview&module=%2Fsrc%2Findex.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="MutationCache"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `useMutationState`
 
