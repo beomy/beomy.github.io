@@ -613,11 +613,49 @@ const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
 ## `MutationCache`
 `MutationCache`는 Mutation을 저장하는 저장소입니다. 보통 아래 코드와 같이 `QueryClient`에 정의하고, `useQueryClient`의 `getMutationCache`를 통해 가져와 사용합니다.
 
+```tsx
+const queryClient = new QueryClient({
+  mutationCache: new MutationCache({
+    // 옵션 설정
+  }),
+});
+
+const App = () => {
+  const queryClient = useQueryClient()
+  // ...
+}
+
+root.render(
+  <QueryClientProvider client={queryClient}>
+    <App />
+  </QueryClientProvider>
+);
+```
+
 ### 타입 정보
+```tsx
+import { MutationCache } from '@tanstack/react-query'
+
+const mutationCache = new MutationCache({
+  onError: error => {
+    console.log(error)
+  },
+  onSuccess: data => {
+    console.log(data)
+  },
+})
+```
 
 #### Options
+- `onError?: (error: unknown, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
+- `onSuccess?: (data: unknown, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
+- `onSettled?: (data: unknown | undefined, error: unknown | null, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
+- `onMutate?: (variables: unknown, mutation: Mutation) => Promise<unknown> | unknown`
 
 #### Returns
+- `mutationCache.getAll`
+- `mutationCache.subscribe`
+- `mutationCache.clear`
 
 ### 예제
 <div>
