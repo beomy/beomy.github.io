@@ -647,15 +647,65 @@ const mutationCache = new MutationCache({
 ```
 
 #### Options
+`MutationCache`의 옵션들은 모두 콜백함수입니다. 전역에서 처리해야 할 적업을 할 때 사용할 수 있습니다.
+
 - `onError?: (error: unknown, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
+  - 실행한 Mutation에 에러가 발생할 경우 호출되는 콜백함수입니다. `Promise`를 반환할 경우 `resolved` 될 때까지 이후 작업들이 진행되지 않습니다.
+  - `error: unknown`
+    - 발생한 에러 정보가 담긴 객체입니다.
+  - `variables: unknown`
+    - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+  - `context: unknown`
+    - `useMutation` 훅의 옵션 중 `onMutate` 함수의 반환 값입니다.
+  - `mutation: Mutation`
+    - 실행한 Mutation 객체입니다.
 - `onSuccess?: (data: unknown, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
+  - 실행한 Mutation이 성공하면 호출되는 콜백함수입니다. `Promise`를 반환할 경우 `resolved` 될 때까지 이후 작업들이 진행되지 않습니다.
+    - `data: unknown`
+      - `mutationFn` 함수의 반환 값입니다.
+    - `variables: unknown`
+      - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+    - `context: unknown`
+      - `useMutation` 훅의 옵션 중 `onMutate` 함수의 반환 값입니다.
+    - `mutation: Mutation`
+      - 실행한 Mutation 객체입니다.
 - `onSettled?: (data: unknown | undefined, error: unknown | null, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
+  - 실행한 Mutation이 성공 혹은 실패하여 종료되면 호출되는 콜백함수입니다. `Promise`를 반환할 경우 `resolved` 될 때까지 이후 작업들이 진행되지 않습니다.
+  - `data: unknown | undefined`
+    - Mutation이 성공한 경우 `mutationFn` 함수의 반환 값입니다.
+  - `error: unknown | null`
+    - Mutation이 실패한 경우 발생한 에러 정보가 담긴 객체입니다.
+  - `variables: unknown`
+    - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+  - `context: unknown`
+    - `useMutation` 훅의 옵션 중 `onMutate` 함수의 반환 값입니다.
+  - `mutation: Mutation`
+    - 실행한 Mutation 객체입니다.
 - `onMutate?: (variables: unknown, mutation: Mutation) => Promise<unknown> | unknown`
+  - Mutation이 실행되기 전에 호출되는 콜백합수입니다.
+  - `variables: unknown`
+    - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+  - `mutation: Mutation`
+    - 실행한 Mutation 객체입니다.
+
+> ##### `QueryClient`의 `defaultOptions`와 `MutationCache`의 옵션의 차이
+> - `defaultOpions`에 정의한 콜백함수들은 각각의 Mutation을 호출할 때 오버라이드될 수 있습니다. `MutationCache`에 정의한 전역 콜백함수들은 항상 호출됩니다.
+> - `MutationCache`의 옵션 중 `onMutate` 함수의 반환 값은 `context`에 담기지 않습니다.
 
 #### Returns
-- `mutationCache.getAll`
-- `mutationCache.subscribe`
-- `mutationCache.clear`
+- `getAll: () => Mutation[]`
+  - 캐시된 모든 Mutation을 반환합니다.
+- `subscribe: (callback: (mutation?: MutationCacheNotifyEvent) => void) => unsubscribe: Function => void`
+  - Mutation 캐시 전체를 구독합니다. Mutation 추가/삭제/수정되면 `callback` 함수가 실행됩니다.
+  - 구독을 취소하는 함수인 `unsubscribe`를 반환합니다.
+  - ```tsx
+    const callback = event => {
+      console.log(event.type, event.mutation)
+    }
+    const unsubscribe = mutationCache.subscribe(callback)
+    ```
+- `clear: () => void`
+  - Mutation 캐시를 모두 지우는데 사용되는 함수입니다.
 
 ### 예제
 <div>
@@ -668,12 +718,41 @@ const mutationCache = new MutationCache({
 </div>
 
 ## `useMutationState`
+`useMutationState` 훅은 `MutationCache`에 있는 Mutation에 접근할 수 있는 훅입니다. `filter`을 사용하여 원하는 Mutation을 찾을 수 있고 `select`를 사용하여 필요한 Mutation의 상태를 알 수 있습니다.
 
 ### 타입 정보
+```tsx
+import { useMutation, useMutationState } from '@tanstack/react-query'
+
+const mutationKey = ['posts']
+
+// Some mutation that we want to get the state for
+const mutation = useMutation({
+  mutationKey,
+  mutationFn: (newPost) => {
+    return axios.post('/posts', newPost)
+  },
+})
+
+const data = useMutationState({
+  // this mutation key needs to match the mutation key of the given mutation (see above)
+  filters: { mutationKey },
+  select: (mutation) => mutation.state.data,
+})
+```
 
 #### Options
+- `options`
+  - `filters?: MutationFilters`
+    - `filters.mutationKey?: MutationKey`
+    - `filters.exact?: boolean`
+    - `filters.status?: MutationStatus`
+    - `filters.predicate?: (mutation: Mutation) => boolean`
+  - `select?: (mutation: Mutation) => TResult`
+- `queryClient?: QueryClient`
 
 #### Returns
+- `Array<TResult>`
 
 ### 예제
 
