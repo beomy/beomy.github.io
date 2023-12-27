@@ -745,16 +745,35 @@ const data = useMutationState({
 - `options`
   - `filters?: MutationFilters`
     - `filters.mutationKey?: MutationKey`
+      - 찾으려고 하는 Mutation의 키입니다.
     - `filters.exact?: boolean`
+      - `true`로 설정할 경우 정확히 일치하는 Mutation을 찾습니다.
+      - `false`로 설정할 경우 설정한 `filters.queryKey`가 포함되는 Mutation을 찾습니다.
     - `filters.status?: MutationStatus`
+      - `idle`인 경우 실행되기 전인 Mutation 중에 찾습니다.
+      - `pending`인 경우 실행 중인 Mutation 중에 찾습니다.
+      - `error` 인 경우 에러가 발생한 Mutation 중에 찾습니다.
+      - `success`인 경우 성공한 Mutation 중에 찾습니다.
     - `filters.predicate?: (mutation: Mutation) => boolean`
+      - 최종 필터로 사용되는 함수입니다. 다른 필터를 정의하지 않으면 모든 Mutation 중에 찾습니다.
   - `select?: (mutation: Mutation) => TResult`
+    - 이 옵션을 사용하여 Mutation의 정보를 선택해 가져올 수 있습니다.
 - `queryClient?: QueryClient`
+  - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
 #### Returns
 - `Array<TResult>`
+  - `select` 옵션에서 반환한 Mutation 배열입니다.
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/wft346?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useMutationState"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `useSuspenseQuery`
 
