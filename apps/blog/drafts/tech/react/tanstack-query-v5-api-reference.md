@@ -776,14 +776,32 @@ const data = useMutationState({
 </div>
 
 ## `useSuspenseQuery`
+`useSuspenseQuery` 훅은 `useQuery` 와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행 시킵니다.
 
 ### 타입 정보
+```tsx
+const result = useSuspenseQuery(options)
+```
 
 #### Options
+`useQuery` 훅의 옵션에서 `throwOnError`, `enabled`, `placeholderData`가 빠진 형태입니다.
 
 #### Returns
+`useQuery` 훅의 반환 값과 대부분 동일하지만, 아래 목록만 차이가 있습니다.
+
+- `data`
+- `isPlaceholderData`
+- `status`
 
 ### 예제
+<div>
+<iframe src="https://codesandbox.io/embed/ghm5tk?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+title="useSuspenseQuery"
+allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+</div>
 
 ## `useSuspenseInfiniteQuery`
 
