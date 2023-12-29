@@ -784,34 +784,58 @@ const result = useSuspenseQuery(options)
 ```
 
 #### Options
-`useQuery` 훅의 옵션에서 `throwOnError`, `enabled`, `placeholderData`가 빠진 형태입니다.
+[`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)에서 `throwOnError`, `enabled`, `placeholderData`가 빠진 형태입니다.
 
 #### Returns
-`useQuery` 훅의 반환 값과 대부분 동일하지만, 아래 목록만 차이가 있습니다.
+[`useQuery` 훅의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns)과 대부분 동일하지만, 아래 목록만 차이가 있습니다.
 
-- `data`
-- `isPlaceholderData`
-- `status`
+- `data`는 항상 `undefined`가 아닙니다.
+  - 데이터를 가져오는 동안에는 Suspense가 동작하기 때문에 `data`는 항상 `undefined`가 아니게 됩니다.
+- `isPlaceholderData`이 제거되었습니다.
+  - `placeholderData`로 화면에 노출되는 것이 아니라 Suspense가 화면에 노출되기 때문에 `isPlaceholderData`가 제거되었습니다.
+- `status`는 항상 `success`입니다.
+  - `useQuery` 훅의 `status` 반환 값 중 `pending`일 경우 Suspense가 동작하고, `error`일 경우 Error Boundary가 화면에 노출되기 때문에 항상 `success`가 됩니다.
 
 ### 예제
 <div>
-<iframe src="https://codesandbox.io/embed/ghm5tk?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
-style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
-title="useSuspenseQuery"
-allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+  <iframe src="https://codesandbox.io/embed/ghm5tk?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useSuspenseQuery"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
 </div>
 
 ## `useSuspenseInfiniteQuery`
+`useSuspenseInfiniteQuery` 훅은 `useInfiniteQuery` 와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행 시킵니다.
 
 ### 타입 정보
+```tsx
+const result = useSuspenseInfiniteQuery(options)
+```
 
 #### Options
+[`useInfiniteQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-2)에서 `throwOnError`, `enabled`, `placeholderData`가 빠진 형태입니다.
 
 #### Returns
+[`useInfiniteQuery` 훅의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns-2)과 대부분 동일하지만, 아래 목록만 차이가 있습니다.
+
+- `data`는 항상 `undefined`가 아닙니다.
+  - 데이터를 가져오는 동안에는 Suspense가 동작하기 때문에 `data`는 항상 `undefined`가 아니게 됩니다.
+- `isPlaceholderData`이 제거되었습니다.
+  - `placeholderData`로 화면에 노출되는 것이 아니라 Suspense가 화면에 노출되기 때문에 `isPlaceholderData`가 제거되었습니다.
+- `status`는 항상 `success`입니다.
+  - `useInfiniteQuery` 훅의 `status` 반환 값 중 `pending`일 경우 Suspense가 동작하고, `error`일 경우 Error Boundary가 화면에 노출되기 때문에 항상 `success`가 됩니다.
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/3z7s5v?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useSuspenseInfiniteQuery"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `useSuspenseQueries`
 
