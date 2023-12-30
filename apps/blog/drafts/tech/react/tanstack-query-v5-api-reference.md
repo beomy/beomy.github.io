@@ -1009,9 +1009,47 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `queryCache?: QueryCache`
   - 쿼리 클라이언트에서 사용할 쿼리 캐시입니다.
 - `mutationCache?: MutationCache`
+  - 쿼리 클라이언트에서 사용할 Mutation 캐시입니다.
 - `defaultOptions?: DefaultOptions`
+  - 쿼리와 Mutation에서 사용할 기본 옵션입니다.
+  - `defaultOptions.queries`
+    - [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
+  - `defaultOptions.mutations`
+    - [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 
 #### Returns
+- `fetchQuery: (options) => Promise<TData>`
+  - 쿼리로 데이터를 가져와 캐시하는데 사용하는 비동기 메소드입니다. 가져온 데이터를 `Promise` 형태로 반환하거나 에러가 발생했을 경우 에러를 `throw` 합니다.
+  - 캐시 된 데이터가 `staleTime`이 지나지 않았다면 캐시된 데이터를 반환합니다. `staleTime`이 지났다면 데이터를 새로 가져옵니다.
+  - `options`는 `enabled`, `refetchInterval`, `refetchIntervalInBackground`, `refetchOnWindowFocus`, `refetchOnReconnect`, `refetchOnMount`, `notifyOnChangeProps`, `throwOnError`, `select`, `suspense`, `placeholderData`를 제외한 `useQuery` 훅의 옵션과 동일합니다.
+- `fetchInfiniteQuery: (options) => Promise<InfiniteData<TData, TPageParam>>`
+  - 무한 쿼리로 데이터를 가져와 캐시하는데 사용되는 비동기 메소드입니다.
+  - `options`는 `fetchQuery`와 동일합니다.
+- `prefetchQuery`
+- `prefetchInfiniteQuery`
+- `getQueryData`
+- `ensureQueryData`
+- `getQueriesData`
+- `setQueryData`
+- `getQueryState`
+- `setQueriesData`
+- `invalidateQueries`
+- `refetchQueries`
+- `cancelQueries`
+- `removeQueries`
+- `resetQueries`
+- `isFetching`
+- `isMutating`
+- `getDefaultOptions`
+- `setDefaultOptions`
+- `getQueryDefaults`
+- `setQueryDefaults`
+- `getMutationDefaults`
+- `setMutationDefaults`
+- `getQueryCache`
+- `getMutationCache`
+- `clear`
+- `resumePausedMutations`
 
 ### 예제
 
