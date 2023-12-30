@@ -585,7 +585,7 @@ const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
     - 찾으려고 하는 Mutation의 키입니다.
   - `filters.exact?: boolean`
     - `true`로 설정할 경우 정확히 일치하는 Mutation을 찾습니다.
-    - `false`로 설정할 경우 설정한 `filters.queryKey`가 포함되는 Mutation을 찾습니다.
+    - `false`로 설정할 경우 설정한 `filters.mutationKey`가 포함되는 Mutation을 찾습니다.
   - `filters.status?: MutationStatus`
     - `idle`인 경우 실행되기 전인 Mutation 중에 찾습니다.
     - `pending`인 경우 실행 중인 Mutation 중에 찾습니다.
@@ -610,6 +610,122 @@ const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
   ></iframe>
 </div>
 
+## `QueryCache`
+`QueryCache`는 쿼리를 저장하는 저장소입니다. 쿼리에 포함된 데이터, 메타 정보 쿼리의 상태가 저장됩니다. 보통 아래 코드와 같이 QueryClient에 정의하고, `useQueryClient`의 `getQueryCache`를 통해 가져와 사용합니다.
+
+```tsx
+const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    // 옵션 설정
+  }),
+});
+
+const App = () => {
+  const queryClient = useQueryClient()
+  const queryCache = queryClient.getQueryCache()
+  // ...
+}
+
+root.render(
+  <QueryClientProvider client={queryClient}>
+    <App />
+  </QueryClientProvider>
+);
+```
+
+### 타입 정보
+```tsx
+import { QueryCache } from '@tanstack/react-query'
+
+const queryCache = new QueryCache({
+  onError: (error) => {
+    console.log(error)
+  },
+  onSuccess: (data) => {
+    console.log(data)
+  },
+  onSettled: (data, error) => {
+    console.log(data, error)
+  },
+})
+```
+
+#### Options
+`QueryCache`의 옵션들은 모두 콜백함수입니다. 전역에서 처리해야 할 적업을 할 때 사용할 수 있습니다.
+
+- `onError?: (error: unknown, query: Query) => void`
+  - 실행한 쿼리에 에러가 발생할 경우 호출되는 콜백함수입니다.
+  - `error: unknown`
+    - 발생한 에러 정보가 담긴 객체입니다.
+  - `query: Query`
+    - 실행한 쿼리 객체입니다.
+- `onSuccess?: (data: unknown, query: Query) => void`
+  - 실행한 쿼리가 성공하면 호출되는 콜백함수입니다.
+  - `data: unknown`
+    - `queryFn` 함수의 반환 값입니다.
+  - `query: Query`
+    - 실행한 쿼리 객체입니다.
+- `onSettled?: (data: unknown | undefined, error: unknown | null, query: Query) => void`
+  - 실행한 쿼리가 성공 혹은 실패하여 종료되면 호출되는 콜백함수입니다.
+  - `data: unknown | undefined`
+    - 쿼리가 성공한 경우 `queryFn` 함수의 반환 값입니다.
+  - `error: unknown | null`
+    - 쿼리가 실패한 경우 발생한 에러 정보가 담긴 객체입니다.
+  - `query: Query`
+    - 실행한 쿼리 객체입니다.
+
+> ##### `QueryClient`의 `defaultOptions`와 `QueryCache`의 옵션의 차이
+> - `defaultOpions`의 콜백함수들은 각각의 쿼리를 호출할 때 오버라이드될 수 있습니다. `QueryCache`의 전역 콜백함수들은 항상 호출됩니다.
+> - `defaultOpions`의 콜백함수들은 각각의 옵저버에서 한번씩 호출되지만, `QueryCache`의 전역 콜백함수들은 한번만 호출됩니다.
+>   - 예를 들어 `useQuery({ queryKey: ['posts'] })`와 같이 동일한 쿼리가 부모, 자식 컴포넌트 각각에 2번 선언되었다면 `defaultOpions`의 콜백함수는 2번 호출되지만, `QueryCache`의 전역 콜백함수는 한번만 호출됩니다.
+
+#### Returns
+- `find: (filters: QueryFilters) => Query | undefined`
+  - `filters`에 해당하는 쿼리를 반환하는 함수입니다. 해당하는 쿼리가 없을 경우 `undefined`를 반환합니다.
+  - `filters?: QueryFilters`
+    - `filters.queryKey?: QueryKey`
+      - 찾으려고 하는 쿼리의 쿼리 키입니다.
+    - `filters.exact?: boolean`
+      - `true`로 설정할 경우 정확히 일치하는 쿼리를 찾습니다.
+      - `false`로 설정할 경우 설정한 `filters.queryKey`가 포함되는 쿼리를 찾습니다.
+    - `filters.type?: 'active' | 'inactive' | 'all'` (default: `all`)
+      - `active`로 설정할 경우 활성화 된 쿼리 중에 찾습니다.
+      - `inactive`로 설정할 경우 비활성화 된 쿼리 중에 찾습니다.
+      - `all`로 설정할 경우 모든 쿼리 중에 찾습니다.
+    - `filters.stale?: boolean`
+      - `true`로 설정할 경우 오래된(stale) 쿼리 중에 찾습니다.
+      - `false`로 설정할 경우 신선한(fresh) 쿼리 중에 찾습니다.
+    - `filters.fetchStatus?: FetchStatus`
+      - `fetching`으로 설정할 경우 가져오는 중인 쿼리 중에 찾습니다.
+      - `paused`로 설정할 경우 데이터를 가져오려고 했지만 일시 중단된 쿼리 중에 찾습니다.
+      - `idle`로 설정할 경우 데이터를 가져온 적이 없는 쿼리 중에 찾습니다.
+    - `filters.predicate?: (query: Query) => boolean`
+      - 최종 필터로 사용되는 함수입니다. 다른 필터를 정의하지 않으면 모든 쿼리 중에 찾습니다.
+- `findAll: (filters: QueryFilters) => Query[]1`
+  - `filters`에 해당하는 쿼리를 배열 형태로 반환하는 함수입니다. 해당하는 쿼리가 없을 경우 `빈 배열을 반환합니다.
+  - `find` 함수의 `filters`와 동일한 값을 파라미터로 전달 받습니다.
+- `subscribe: (callback: (event: QueryCacheNotifyEvent) => void) => unsubscribe: Function => void`
+  - 쿼리 캐시를 구독합니다. `query.setState`나 `queryClient.removeQueries` 등 쿼리가 업데이트 될 때 마다 업데이트 된 쿼리를 파라미터로 하여 `callback` 함수가 호출됩니다.
+  - 구독을 취소하는 함수인 `unsubscribe`를 반환합니다.
+  - ```tsx
+    const callback = (event) => {
+      console.log(event.type, event.query)
+    }
+    const unsubscribe = queryCache.subscribe(callback)
+    ```
+- `clear: () => void`
+  - 쿼리 캐시를 모두 지우는데 사용되는 함수입니다.
+
+### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/5vcsmr?view=Editor+%2B+Preview&module=%2Fsrc%2Findex.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="QueryCache"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
 ## `MutationCache`
 `MutationCache`는 Mutation을 저장하는 저장소입니다. 보통 아래 코드와 같이 `QueryClient`에 정의하고, `useQueryClient`의 `getMutationCache`를 통해 가져와 사용합니다.
 
@@ -622,6 +738,7 @@ const queryClient = new QueryClient({
 
 const App = () => {
   const queryClient = useQueryClient()
+  const mutationCache = queryClient.getMutationCache()
   // ...
 }
 
@@ -661,14 +778,14 @@ const mutationCache = new MutationCache({
     - 실행한 Mutation 객체입니다.
 - `onSuccess?: (data: unknown, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
   - 실행한 Mutation이 성공하면 호출되는 콜백함수입니다. `Promise`를 반환할 경우 `resolved` 될 때까지 이후 작업들이 진행되지 않습니다.
-    - `data: unknown`
-      - `mutationFn` 함수의 반환 값입니다.
-    - `variables: unknown`
-      - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
-    - `context: unknown`
-      - `useMutation` 훅의 옵션 중 `onMutate` 함수의 반환 값입니다.
-    - `mutation: Mutation`
-      - 실행한 Mutation 객체입니다.
+  - `data: unknown`
+    - `mutationFn` 함수의 반환 값입니다.
+  - `variables: unknown`
+    - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+  - `context: unknown`
+    - `useMutation` 훅의 옵션 중 `onMutate` 함수의 반환 값입니다.
+  - `mutation: Mutation`
+    - 실행한 Mutation 객체입니다.
 - `onSettled?: (data: unknown | undefined, error: unknown | null, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
   - 실행한 Mutation이 성공 혹은 실패하여 종료되면 호출되는 콜백함수입니다. `Promise`를 반환할 경우 `resolved` 될 때까지 이후 작업들이 진행되지 않습니다.
   - `data: unknown | undefined`
@@ -696,7 +813,7 @@ const mutationCache = new MutationCache({
 - `getAll: () => Mutation[]`
   - 캐시된 모든 Mutation을 반환합니다.
 - `subscribe: (callback: (mutation?: MutationCacheNotifyEvent) => void) => unsubscribe: Function => void`
-  - Mutation 캐시 전체를 구독합니다. Mutation 추가/삭제/수정되면 `callback` 함수가 실행됩니다.
+  - Mutation 캐시를 구독합니다. Mutation 추가/삭제/수정되면 `callback` 함수가 실행됩니다.
   - 구독을 취소하는 함수인 `unsubscribe`를 반환합니다.
   - ```tsx
     const callback = event => {
@@ -748,7 +865,7 @@ const data = useMutationState({
       - 찾으려고 하는 Mutation의 키입니다.
     - `filters.exact?: boolean`
       - `true`로 설정할 경우 정확히 일치하는 Mutation을 찾습니다.
-      - `false`로 설정할 경우 설정한 `filters.queryKey`가 포함되는 Mutation을 찾습니다.
+      - `false`로 설정할 경우 설정한 `filters.mutationKey`가 포함되는 Mutation을 찾습니다.
     - `filters.status?: MutationStatus`
       - `idle`인 경우 실행되기 전인 Mutation 중에 찾습니다.
       - `pending`인 경우 실행 중인 Mutation 중에 찾습니다.
@@ -776,7 +893,7 @@ const data = useMutationState({
 </div>
 
 ## `useSuspenseQuery`
-`useSuspenseQuery` 훅은 `useQuery` 와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행 시킵니다.
+`useSuspenseQuery` 훅은 `useQuery`와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행시킵니다.
 
 ### 타입 정보
 ```tsx
@@ -838,20 +955,61 @@ const result = useSuspenseInfiniteQuery(options)
 </div>
 
 ## `useSuspenseQueries`
+`useSuspenseQueries` 훅은 `useQueries`와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행시킵니다.
 
 ### 타입 정보
+```tsx
+const result = useSuspenseQueries(options)
+```
 
 #### Options
+[`useQueries` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-1)에서 `throwOnError`, `enabled`, `placeholderData`가 빠진 형태입니다.
 
 #### Returns
+[`useQueries` 훅의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns-1)과 대부분 동일하지만, 아래 목록만 차이가 있습니다.
+
+- `data`는 항상 `undefined`가 아닙니다.
+  - 데이터를 가져오는 동안에는 Suspense가 동작하기 때문에 `data`는 항상 `undefined`가 아니게 됩니다.
+- `isPlaceholderData`이 제거되었습니다.
+  - `placeholderData`로 화면에 노출되는 것이 아니라 Suspense가 화면에 노출되기 때문에 `isPlaceholderData`가 제거되었습니다.
+- `status`는 항상 `success`입니다.
+  - `useQuery` 훅의 `status` 반환 값 중 `pending`일 경우 Suspense가 동작하고, `error`일 경우 Error Boundary가 화면에 노출되기 때문에 항상 `success`가 됩니다.
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/4jzy9s?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="useSuspenseQueries"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `QueryClient`
+`QueryClient`는 캐시와 상호 작용할 수 있는 기능을 제공합니다. React Query를 사용하기 위해서 루트 위치에서 `QueryClient` 인스턴스를 생성하여 `QueryClientProvider` 컴포넌트의 prop으로 전달해야 합니다.
+
+하위 컴포넌트에서는 `useQueryClient` 훅을 사용하여 `QueryClient` 인스턴스를 접근할 수 있고 `QueryClient` 인스턴스를 통해 대부분의 React Query 기능을 사용할 수 있습니다.
 
 ### 타입 정보
+```tsx
+import { QueryClient } from '@tanstack/react-query'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+})
+
+await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
+```
 
 #### Options
+- `queryCache?: QueryCache`
+  - 쿼리 클라이언트에서 사용할 쿼리 캐시입니다.
+- `mutationCache?: MutationCache`
+- `defaultOptions?: DefaultOptions`
 
 #### Returns
 
@@ -868,16 +1026,6 @@ const result = useSuspenseInfiniteQuery(options)
 ### 예제
 
 ## `QueryClientProvider`
-
-### 타입 정보
-
-#### Options
-
-#### Returns
-
-### 예제
-
-## `QueryCache`
 
 ### 타입 정보
 
