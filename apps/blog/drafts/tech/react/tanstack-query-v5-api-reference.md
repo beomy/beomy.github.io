@@ -1025,8 +1025,12 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `fetchInfiniteQuery: (options) => Promise<InfiniteData<TData, TPageParam>>`
   - 무한 쿼리로 데이터를 가져와 캐시하는데 사용되는 비동기 메소드입니다.
   - `options`는 `fetchQuery`와 동일합니다.
-- `prefetchQuery`
-- `prefetchInfiniteQuery`
+- `prefetchQuery: (opitons) => Promise<void>`
+  - 쿼리 데이터를 사용하기 전에 데이터를 미리 가져와 캐시하는데 사용하는 비동기 메소드입니다. 가져온 데이터를 반환하지 않는다는 점을 제외하면 `fetchQuery`와 동일합니다.
+  - `options`는 `fetchQuery`와 동일합니다.
+- `prefetchInfiniteQuery: (options) => Promise<void>`
+  - 무한 쿼리 데이터를 사용하기 전에 데이터를 미리 가져와 캐시하는데 사용하는 비동기 메소드입니다.
+  - `options`는 `fetchQuery`와 동일합니다.
 - `getQueryData`
 - `ensureQueryData`
 - `getQueriesData`
