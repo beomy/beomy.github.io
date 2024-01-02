@@ -187,7 +187,7 @@ const {
   - 처음 데이터를 가져올 때 에러가 발생한 경우 `true`입니다.
 - `isRefetchError: boolean`
   - 데이터 다시 가져오기가 실패한 경우 `true`입니다.
-- `data: TData` (default: `undefined`)
+- `data: TData | undefined` (default: `undefined`)
   - 쿼리가 마지막으로 성공적으로 가져온 데이터입니다.
 - `dataUpdatedAt: number`
   - 데이터를 성공적으로 가져온 경우, 즉 `status`가 `success`일 때 타임스탬프입니다.
@@ -1055,18 +1055,33 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `QueryState`
     - 쿼리 상태를 담고 있는 객체입니다.
     - `data: TData | undefined`
+      - 쿼리가 마지막으로 성공적으로 가져온 데이터입니다.
     - `dataUpdateCount: number`
+      - 쿼리가 데이터를 업데이트 한 횟수 입니다.
     - `dataUpdatedAt: number`
+      - 데이터를 성공적으로 가져온 경우, 즉 `status`가 `success`일 때 타임스탬프입니다.
     - `error: TError | null`
+      - 쿼리에 에러가 발생한 경우 에러 정보를 담는 객체입니다.
     - `errorUpdateCount: number`
+      - 쿼리가 데이터 가져오기를 실패한 총 횟수입니다.
     - `errorUpdatedAt: number`
+      - 가장 최근에 에러가 발생했을 경우, 즉 `status`가 `error`일 때 타임스탬프입니다.
     - `fetchFailureCount: number`
+      - 쿼리가 데이터 가져오기를 실패한 횟수입니다. 쿼리가 성공적으로 데이터를 가져온 경우 `0`으로 초기화 됩니다.
     - `fetchFailureReason: TError | null`
+      - 쿼리가 데이터를 가져오기 재시도를 실패 했을 경우 에러 정보가 담깁니다. 쿼리가 성공적으로 데이터를 가져온 경우 `null`로 초기화 됩니다.
     - `fetchMeta: FetchMeta | null`
+      - 쿼리에서 사용한 메타 정보입니다.
     - `isInvalidated: boolean`
+      - 유효한 쿼리인지 나타내는 플래그입니다.
     - `status: QueryStatus`
-    - `dataUpdatedAt: number`
+      - `pending`일 경우, 캐시된 데이터가 없고 쿼리 시도가 아직 완료되지 않은 상태입니다.
+      - `error`일 경우, 데이터를 가져올 때 에러가 발생한 상태입니다.
+      - `success`일 경우,데이터를 성공적으로 가져오거나, `enabled`가 `false`이면서 `initialData`가 설정된 상태입니다.
     - `fetchStatus: FetchStatus`
+      - `fetching`일 경우, `queryFn`이 실행 중이거나, 초기 `status`가 `pending` 상태이거나, 백그라운드에서 데이터를 가져오는 상태입니다.
+      - `paused`일 경우, 쿼리가 데이터를 가져오려고 했지만 중지된 상태입니다. 대표적으로 네트워크가 끊겨 쿼리가 중지됬을 때 `paused` 상태입니다.
+      - `idle`일 경우, `fetching` 상태도 `paused` 상태도 아닌 상태입니다.
 - `setQueriesData`
 - `invalidateQueries`
 - `refetchQueries`
