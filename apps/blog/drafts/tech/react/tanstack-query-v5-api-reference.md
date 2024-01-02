@@ -1031,11 +1031,42 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `prefetchInfiniteQuery: (options) => Promise<void>`
   - 무한 쿼리 데이터를 사용하기 전에 데이터를 미리 가져와 캐시하는데 사용하는 비동기 메소드입니다.
   - `options`는 `fetchQuery`와 동일합니다.
-- `getQueryData`
-- `ensureQueryData`
-- `getQueriesData`
-- `setQueryData`
-- `getQueryState`
+- `getQueryData: (queryKey: QueryKey) => TQueryFnData | undefined`
+  - 쿼리의 캐시된 데이터를 가져오는 함수입니다. 쿼리의 캐시된 데이터가 없다면 `undefined`를 반환합니다.
+- `ensureQueryData: (options) => Promise<TData>`
+  - 쿼리의 캐시된 데이터를 가져오는 비동기 함수입니다. 쿼리의 캐시된 데이터가 없다면 `fetchQuery`가 호출되고 그 응답 값을 반환합니다.
+  - `options`는 `fetchQuery`와 동일하지만, `queryKey`가 필수 값입니다.
+- `getQueriesData: (filters: QueryFilters) => [queryKey: QueryKey, data: TQueryFnData | undefined][]`
+  - 여러 쿼리의 캐시된 데이터를 가져오는 함수입니다. 파라미터로 전달한 `filters`에 일치되는 쿼리의 데이터를 `[queryKey, data]` 튜플의 배열 형태로 반환합니다. 일치되는 쿼리가 없으면 빈 배열을 반환합니다.
+  - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
+- `setQueryData: (queryKey: QueryKey, updater: TQueryFnData | undefined | ((oldData: TQueryFnData | undefined) => TQueryFnData | undefined))`
+  - 쿼리의 캐시된 데이터를 업데이트 하는 함수입니다. 쿼리가 존재하지 않으면 쿼리가 생성됩니다.
+  - `queryKey: QueryKey`
+    - 데이터를 업데이트할 쿼리 키입니다.
+  - `updater: TQueryFnData | undefined | ((oldData: TQueryFnData | undefined) => TQueryFnData | undefined)`
+    - 함수가 아닌 값을 전달할 경우 전달 된 값으로 쿼리의 데이터가 업데이트 됩니다.
+    - 함수를 전달할 경우 함수는 현재 데이터를 파라미터로 하여 업데이트할 값을 반환해야 합니다. 함수가 반환된 값으로 쿼리의 데이터가 업데이트 됩니다.
+    - `undefined`를 전달하거나 함수의 반환 값이 `undefined`일 경우 쿼리의 데이터는 업데이트 되지 않습니다.
+    - `oldData`나 `getQueryData` 통해 가져온 캐시된 데이터를 직접 수정하면 안됩니다.
+- `getQueryState: (querykey: QueryKey) => QueryState`
+  - 쿼리의 상태를 가져오는 함수입니다. 쿼리가 존재하지 않으면 `undefined`를 반환합니다.
+  - `queryKey: QueryKey`
+    - 쿼리 상태를 가져올 쿼리 키입니다.
+  - `QueryState`
+    - 쿼리 상태를 담고 있는 객체입니다.
+    - `data: TData | undefined`
+    - `dataUpdateCount: number`
+    - `dataUpdatedAt: number`
+    - `error: TError | null`
+    - `errorUpdateCount: number`
+    - `errorUpdatedAt: number`
+    - `fetchFailureCount: number`
+    - `fetchFailureReason: TError | null`
+    - `fetchMeta: FetchMeta | null`
+    - `isInvalidated: boolean`
+    - `status: QueryStatus`
+    - `dataUpdatedAt: number`
+    - `fetchStatus: FetchStatus`
 - `setQueriesData`
 - `invalidateQueries`
 - `refetchQueries`
