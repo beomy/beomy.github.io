@@ -1082,7 +1082,7 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
       - `fetching`일 경우, `queryFn`이 실행 중이거나, 초기 `status`가 `pending` 상태이거나, 백그라운드에서 데이터를 가져오는 상태입니다.
       - `paused`일 경우, 쿼리가 데이터를 가져오려고 했지만 중지된 상태입니다. 대표적으로 네트워크가 끊겨 쿼리가 중지됬을 때 `paused` 상태입니다.
       - `idle`일 경우, `fetching` 상태도 `paused` 상태도 아닌 상태입니다.
-- `setQueriesData`
+- `setQueriesData: `
 - `invalidateQueries`
 - `refetchQueries`
 - `cancelQueries`
