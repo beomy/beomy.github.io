@@ -1086,7 +1086,7 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `filters`에 해당하는 여러 쿼리의 캐시된 데이터를 업데이트 하는 함수입니다. 내부적으로 각각의 쿼리는 `setQueryData` 함수가 호출됩니다.
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
   - `updater` 정보는 `setQueryData` 함수의 `updater` 파라미터와 동일합니다.
-- `invalidateQueries`
+- `invalidateQueries: (filters?: InvalidateQueryFilters, options?: InvalidateOptions) => void`
 - `refetchQueries`
 - `cancelQueries`
 - `removeQueries`
