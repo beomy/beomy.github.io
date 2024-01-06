@@ -1087,6 +1087,10 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
   - `updater` 정보는 `setQueryData` 함수의 `updater` 파라미터와 동일합니다.
 - `invalidateQueries: (filters?: InvalidateQueryFilters, options?: InvalidateOptions) => void`
+  - `filters`에 해당하는 쿼리를 무효화하고 데이터를 다시 가져오는 함수입니다.
+  - `filters?: InvalidateQueryFilters`
+    - `QueryFilter`에 `refetchType?: 'active' | 'inactive' | 'all' | 'none'`가 추가된 형태입니다.
+    - `refetchType?: 'active' | 'inactive' | 'all' | 'none'` (default: `'active'`)
 - `refetchQueries`
 - `cancelQueries`
 - `removeQueries`
