@@ -1039,7 +1039,7 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `getQueriesData: (filters: QueryFilters) => [queryKey: QueryKey, data: TQueryFnData | undefined][]`
   - 여러 쿼리의 캐시된 데이터를 가져오는 함수입니다. 파라미터로 전달한 `filters`에 일치되는 쿼리의 데이터를 `[queryKey, data]` 튜플의 배열 형태로 반환합니다. 일치되는 쿼리가 없으면 빈 배열을 반환합니다.
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
-- `setQueryData: (queryKey: QueryKey, updater: TQueryFnData | undefined | ((oldData: TQueryFnData | undefined) => TQueryFnData | undefined))`
+- `setQueryData: (queryKey: QueryKey, updater: TQueryFnData | undefined | ((oldData: TQueryFnData | undefined) => TQueryFnData | undefined)) => TInferredQueryFnData | undefined`
   - 쿼리의 캐시된 데이터를 업데이트 하는 함수입니다. 쿼리가 존재하지 않으면 쿼리가 생성됩니다.
   - `queryKey: QueryKey`
     - 데이터를 업데이트할 쿼리 키입니다.
@@ -1082,16 +1082,27 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
       - `fetching`일 경우, `queryFn`이 실행 중이거나, 초기 `status`가 `pending` 상태이거나, 백그라운드에서 데이터를 가져오는 상태입니다.
       - `paused`일 경우, 쿼리가 데이터를 가져오려고 했지만 중지된 상태입니다. 대표적으로 네트워크가 끊겨 쿼리가 중지됬을 때 `paused` 상태입니다.
       - `idle`일 경우, `fetching` 상태도 `paused` 상태도 아닌 상태입니다.
-- `setQueriesData: (filters: QueryFilters, updater: TQueryFnData | (oldData: TQueryFnData | undefined) => TQueryFnData)`
+- `setQueriesData: (filters: QueryFilters, updater: TQueryFnData | (oldData: TQueryFnData | undefined) => TQueryFnData) => [QueryKey, TQueryFnData | undefined][]`
   - `filters`에 해당하는 여러 쿼리의 캐시된 데이터를 업데이트 하는 함수입니다. 내부적으로 각각의 쿼리는 `setQueryData` 함수가 호출됩니다.
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
   - `updater` 정보는 `setQueryData` 함수의 `updater` 파라미터와 동일합니다.
-- `invalidateQueries: (filters?: InvalidateQueryFilters, options?: InvalidateOptions) => void`
+- `invalidateQueries: (filters?: InvalidateQueryFilters, options?: InvalidateOptions) => Promise<void>`
   - `filters`에 해당하는 쿼리를 무효화하고 데이터를 다시 가져오는 함수입니다.
   - `filters?: InvalidateQueryFilters`
     - `QueryFilter`에 `refetchType?: 'active' | 'inactive' | 'all' | 'none'`가 추가된 형태입니다.
     - `refetchType?: 'active' | 'inactive' | 'all' | 'none'` (default: `'active'`)
-- `refetchQueries`
+      - `active`로 설정할 경우, 활성화 된 쿼리의 데이터를 무효화 후 다시 가져옵니다.
+      - `inactive`로 설정할 경우, 비활성화 된 쿼리의 데이터를 무효화 후 다시 가져옵니다.
+      - `all`로 설정할 경우, 활성화/비활성화 된 쿼리의 데이터를 무효화 후 다시 가져옵니다.
+      - `none`으로 설정할 경우, 쿼리의 데이터를 무효화 하지만 다시 가져오지는 않습니다.
+  - `options?: InvalidateOptions`
+    - `throwOnError?: boolean`
+      - `true`로 설정할 경우 쿼리에서 에러가 발생할 경우 가장 가까운 에러 바운더리(Error Boundary)로 에러를 전파합니다.
+      - `false`로 설정할 경우 쿼리에서 에러가 발생해도 에러 바운더리로 에러를 전파하지 않습니다.
+    - `cancelRefetch?: boolean` (default `true`)
+      - `true`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행중이던 요청을 취소하고 재요청합니다.
+      - `false`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.
+- `refetchQueries: (filters?: QueryFilters, options?: RefetchOptions) => Promise<void>`
 - `cancelQueries`
 - `removeQueries`
 - `resetQueries`
