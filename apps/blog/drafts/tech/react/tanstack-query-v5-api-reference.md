@@ -1087,7 +1087,7 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
   - `updater` 정보는 `setQueryData` 함수의 `updater` 파라미터와 동일합니다.
 - `invalidateQueries: (filters?: InvalidateQueryFilters, options?: InvalidateOptions) => Promise<void>`
-  - `filters`에 해당하는 쿼리를 무효화하고 데이터를 다시 가져오는 함수입니다.
+  - `filters`에 해당하는 쿼리를 무효화하고 데이터를 다시 가져오는 비동기 함수입니다.
   - `filters?: InvalidateQueryFilters`
     - `QueryFilter`에 `refetchType?: 'active' | 'inactive' | 'all' | 'none'`가 추가된 형태입니다.
     - `refetchType?: 'active' | 'inactive' | 'all' | 'none'` (default: `'active'`)
@@ -1103,11 +1103,26 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
       - `true`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행중이던 요청을 취소하고 재요청합니다.
       - `false`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.
 - `refetchQueries: (filters?: QueryFilters, options?: RefetchOptions) => Promise<void>`
-- `cancelQueries`
-- `removeQueries`
-- `resetQueries`
-- `isFetching`
-- `isMutating`
+  - `filters`에 해당하는 쿼리의 데이터를 다시 가져오는 비동기 함수입니다.
+  - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
+  - `options` 정보는 `invalidateQueries` 함수의 `options`와 동일합니다.
+- `cancelQueries: (filters?: QueryFilters) => Promise<void>`
+  - `filters`에 해당하는 쿼리의 요청을 취소하는 비동기 함수입니다.
+  - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
+- `removeQueries: (filters?: QueryFilters) => void`
+  - `filters`에 해당하는 쿼리의 캐시를 삭제하는 함수입니다.
+  - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
+- `resetQueries: (filters?: QueryFilters, options?: ResetOptions) => Promise<void>`
+  - `filters`에 해당하는 쿼리를 초기 상태로 재성정 하는 비동기 함수입니다.
+  - `invalidateQueries` 함수와 달리 쿼리는 데이터를 preload 한 상태가 됩니다. `initialData`가 정의된 쿼리라면 해당 데이터로 초기화 되고, 활성화된 쿼리는 데이터를 다시 가져옵니다.
+  - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
+  - `options` 정보는 `invalidateQueries` 함수의 `options`와 동일합니다.
+- `isFetching: (filters?: QueryFilters) => number`
+  - `filters`에 해당하는 쿼리 중 데이터를 가져오는 중인 쿼리의 수를 반환하는 함수입니다. `useIsFetching` 훅과 동일한 역할을 합니다.
+  - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
+- `isMutating: (filters?: QueryFilters) => number`
+  - `filters`에 해당하는 Mutation 중인 수를 반환하는 함수입니다. `useIsMutating` 훅과 동일한 역할을 합니다.
+  - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
 - `getDefaultOptions`
 - `setDefaultOptions`
 - `getQueryDefaults`
@@ -1120,6 +1135,14 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `resumePausedMutations`
 
 ### 예제
+<div>
+  <iframe src="https://codesandbox.io/embed/fkck7y?view=Editor+%2B+Preview&module=%2Fsrc%2Findex.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
+  title="QueryClient"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+  ></iframe>
+</div>
 
 ## `useQueryClient`
 
