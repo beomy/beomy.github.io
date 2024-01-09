@@ -1123,7 +1123,7 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `isMutating: (filters?: QueryFilters) => number`
   - `filters`에 해당하는 Mutation 중인 수를 반환하는 함수입니다. `useIsMutating` 훅과 동일한 역할을 합니다.
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
-- `getDefaultOptions`
+- `getDefaultOptions: `
 - `setDefaultOptions`
 - `getQueryDefaults`
 - `setQueryDefaults`
