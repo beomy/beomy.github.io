@@ -1130,7 +1130,7 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `getQueryDefaults: (queryKey: QueryKey) => QueryObserverOptions`
   - `queryKey`에 해당되는 쿼리의 기본 옵션을 반환합니다.
   - `queryKey`에 일치하는 쿼리가 여러개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 반환합니다.
-- `setQueryDefaults`
+- `setQueryDefaults: (queryKey: QueryKey, options: QueryOptions) => void`
 - `getMutationDefaults`
 - `setMutationDefaults`
 - `getQueryCache`
