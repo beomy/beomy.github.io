@@ -1145,8 +1145,8 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `setQueryDefaults: (queryKey: QueryKey, options: QueryOptions) => void`
   - `queryKey`에 해당되는 쿼리의 기본 옵션을 `options`로 변경합니다. `queryKey`에 일치하는 쿼리가 여러개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 변경합니다.
   - `QueryOptions`은 [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)에서 `queryKey`를 제외한 값의 옵셔널한 형태입니다. 즉 `Partial<Omit<QueryObserverOptions, 'queryKey''>>`와 동일합니다.
-- `getMutationDefaults`
-- `setMutationDefaults`
+- `getMutationDefaults: (mutationKey: MutationKey) => MutationObserverOptions`
+- `setMutationDefaults: (mutationKey: MutationKey, options: MutationOptions) => void`
 - `getQueryCache`
 - `getMutationCache`
 - `clear`
