@@ -1125,12 +1125,26 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
 - `getDefaultOptions: () => DefaultOptions`
   - `QueryClient` 인스턴스를 생성할 때 전달할 `defaultOptions` 혹은 `setDefaultOptions` 함수에 전달한 파라미터를 반환합니다.
+  - `DefaultOptions`
+    - 쿼리와 Mutation에서 사용할 기본 옵션입니다.
+    - `queries?: QueryObserverOptions`
+      - [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
+    - `mutations?: MutationObserverOptions`
+      - [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 - `setDefaultOptions: (options: DefaultOptions) => void`
   - `QueryClient`의 기본 옵션을 동적으로 변경하기 위해 사용되는 함수입니다.
+  - `DefaultOptions`
+    - 쿼리와 Mutation에서 사용할 기본 옵션입니다.
+    - `queries?: QueryObserverOptions`
+      - [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
+    - `mutations?: MutationObserverOptions`
+      - [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 - `getQueryDefaults: (queryKey: QueryKey) => QueryObserverOptions`
-  - `queryKey`에 해당되는 쿼리의 기본 옵션을 반환합니다.
-  - `queryKey`에 일치하는 쿼리가 여러개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 반환합니다.
+  - `queryKey`에 해당되는 쿼리의 기본 옵션을 반환합니다. `queryKey`에 일치하는 쿼리가 여러개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 반환합니다.
+  - `QueryObserverOptions`는 [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
 - `setQueryDefaults: (queryKey: QueryKey, options: QueryOptions) => void`
+  - `queryKey`에 해당되는 쿼리의 기본 옵션을 `options`로 변경합니다. `queryKey`에 일치하는 쿼리가 여러개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 변경합니다.
+  - `QueryOptions`은 [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)에서 `queryKey`를 제외한 값의 옵셔널한 형태입니다. 즉 `Partial<Omit<QueryObserverOptions, 'queryKey''>>`와 동일합니다.
 - `getMutationDefaults`
 - `setMutationDefaults`
 - `getQueryCache`
