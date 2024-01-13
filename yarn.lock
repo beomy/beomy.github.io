@@ -5198,44 +5198,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@msgpackr-extract/msgpackr-extract-darwin-arm64@npm:2.1.2":
-  version: 2.1.2
-  resolution: "@msgpackr-extract/msgpackr-extract-darwin-arm64@npm:2.1.2"
+"@msgpackr-extract/msgpackr-extract-darwin-arm64@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@msgpackr-extract/msgpackr-extract-darwin-arm64@npm:3.0.2"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@msgpackr-extract/msgpackr-extract-darwin-x64@npm:2.1.2":
-  version: 2.1.2
-  resolution: "@msgpackr-extract/msgpackr-extract-darwin-x64@npm:2.1.2"
+"@msgpackr-extract/msgpackr-extract-darwin-x64@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@msgpackr-extract/msgpackr-extract-darwin-x64@npm:3.0.2"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@msgpackr-extract/msgpackr-extract-linux-arm64@npm:2.1.2":
-  version: 2.1.2
-  resolution: "@msgpackr-extract/msgpackr-extract-linux-arm64@npm:2.1.2"
+"@msgpackr-extract/msgpackr-extract-linux-arm64@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@msgpackr-extract/msgpackr-extract-linux-arm64@npm:3.0.2"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@msgpackr-extract/msgpackr-extract-linux-arm@npm:2.1.2":
-  version: 2.1.2
-  resolution: "@msgpackr-extract/msgpackr-extract-linux-arm@npm:2.1.2"
+"@msgpackr-extract/msgpackr-extract-linux-arm@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@msgpackr-extract/msgpackr-extract-linux-arm@npm:3.0.2"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@msgpackr-extract/msgpackr-extract-linux-x64@npm:2.1.2":
-  version: 2.1.2
-  resolution: "@msgpackr-extract/msgpackr-extract-linux-x64@npm:2.1.2"
+"@msgpackr-extract/msgpackr-extract-linux-x64@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@msgpackr-extract/msgpackr-extract-linux-x64@npm:3.0.2"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@msgpackr-extract/msgpackr-extract-win32-x64@npm:2.1.2":
-  version: 2.1.2
-  resolution: "@msgpackr-extract/msgpackr-extract-win32-x64@npm:2.1.2"
+"@msgpackr-extract/msgpackr-extract-win32-x64@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@msgpackr-extract/msgpackr-extract-win32-x64@npm:3.0.2"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -16074,12 +16074,12 @@ __metadata:
   linkType: hard
 
 "follow-redirects@npm:^1.14.0":
-  version: 1.15.1
-  resolution: "follow-redirects@npm:1.15.1"
+  version: 1.15.4
+  resolution: "follow-redirects@npm:1.15.4"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: a57f93ce566d4602fe7b2f6cef8f8d3d053891b3d8f2feae7e97eec18aa0003d23aeec8e857801d93887eee27e1617276a16f6a3d5c9d78e45882346612462d5
+  checksum: 2e8f5f259a6b02dfa8dc199e08431848a7c3beed32eb4c19945966164a52c89f07b86c3afcc32ebe4279cf0a960520e45a63013d6350309c5ec90133c5d9351a
   languageName: node
   linkType: hard
 
@@ -22500,18 +22500,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msgpackr-extract@npm:^2.0.2":
-  version: 2.1.2
-  resolution: "msgpackr-extract@npm:2.1.2"
+"msgpackr-extract@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "msgpackr-extract@npm:3.0.2"
   dependencies:
-    "@msgpackr-extract/msgpackr-extract-darwin-arm64": "npm:2.1.2"
-    "@msgpackr-extract/msgpackr-extract-darwin-x64": "npm:2.1.2"
-    "@msgpackr-extract/msgpackr-extract-linux-arm": "npm:2.1.2"
-    "@msgpackr-extract/msgpackr-extract-linux-arm64": "npm:2.1.2"
-    "@msgpackr-extract/msgpackr-extract-linux-x64": "npm:2.1.2"
-    "@msgpackr-extract/msgpackr-extract-win32-x64": "npm:2.1.2"
+    "@msgpackr-extract/msgpackr-extract-darwin-arm64": "npm:3.0.2"
+    "@msgpackr-extract/msgpackr-extract-darwin-x64": "npm:3.0.2"
+    "@msgpackr-extract/msgpackr-extract-linux-arm": "npm:3.0.2"
+    "@msgpackr-extract/msgpackr-extract-linux-arm64": "npm:3.0.2"
+    "@msgpackr-extract/msgpackr-extract-linux-x64": "npm:3.0.2"
+    "@msgpackr-extract/msgpackr-extract-win32-x64": "npm:3.0.2"
     node-gyp: "npm:latest"
-    node-gyp-build-optional-packages: "npm:5.0.3"
+    node-gyp-build-optional-packages: "npm:5.0.7"
   dependenciesMeta:
     "@msgpackr-extract/msgpackr-extract-darwin-arm64":
       optional: true
@@ -22527,19 +22527,19 @@ __metadata:
       optional: true
   bin:
     download-msgpackr-prebuilds: bin/download-prebuilds.js
-  checksum: 75236fb3bb1273ee247e370bd4cdcebb7d973d53dff84acde84dcc5ea485744c248430c3512dee28352901f7f9999a52250d67a6493a444ddbaaa1a15fe2f3b2
+  checksum: c37ff5f098aea43ad441df32b810c603d84f2c775132e5919a20dacdbd003995cbead794c80e8d2f1d673539fac9b90c621842391a868d5055be857ae30763b9
   languageName: node
   linkType: hard
 
 "msgpackr@npm:^1.5.4":
-  version: 1.6.2
-  resolution: "msgpackr@npm:1.6.2"
+  version: 1.10.1
+  resolution: "msgpackr@npm:1.10.1"
   dependencies:
-    msgpackr-extract: "npm:^2.0.2"
+    msgpackr-extract: "npm:^3.0.2"
   dependenciesMeta:
     msgpackr-extract:
       optional: true
-  checksum: 8cad102e355875946343c9f0465b7a065a3204e87399fcf6333b3ac094545ba352d308d340084f5bb81552f20049707b13196929aa90f839c7c73bcbcb79ed49
+  checksum: 9fc78c78435a773ed919720ab4f276f6781c6feac0e88233783d00deb64ef1c1caf75781f4a5c675bb535292bb9a67f2262ffc15b64cdc16b176b5220997d564
   languageName: node
   linkType: hard
 
@@ -22783,6 +22783,17 @@ __metadata:
     node-gyp-build-optional-packages-optional: optional.js
     node-gyp-build-optional-packages-test: build-test.js
   checksum: b407da0d3de637869a3c6920826e4033b78daba3db4c28459469f3a3f09b41d99d745c4318d09c7fdc1d147d875b440642dc043697bc932bed6beaa6bb1729ec
+  languageName: node
+  linkType: hard
+
+"node-gyp-build-optional-packages@npm:5.0.7":
+  version: 5.0.7
+  resolution: "node-gyp-build-optional-packages@npm:5.0.7"
+  bin:
+    node-gyp-build-optional-packages: bin.js
+    node-gyp-build-optional-packages-optional: optional.js
+    node-gyp-build-optional-packages-test: build-test.js
+  checksum: f61780b83ee665d88a1b2d0f5375d3455fabed1af4a009fd4396ed0b19ed6ad2215d4adbc76bd6eea0aafde0c72990e2cee9c888eeb28d6da2c8e5f8bce3ca0f
   languageName: node
   linkType: hard
 
