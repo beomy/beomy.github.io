@@ -1008,8 +1008,10 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 #### Options
 - `queryCache?: QueryCache`
   - 쿼리 클라이언트에서 사용할 쿼리 캐시입니다.
+  - `QueryCache`는 [`QueryCache`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-6)와 동일한 값입니다.
 - `mutationCache?: MutationCache`
   - 쿼리 클라이언트에서 사용할 Mutation 캐시입니다.
+  - `MutationCache`는 [`MutationCache`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-7)와 동일한 값입니다.
 - `defaultOptions?: DefaultOptions`
   - 쿼리와 Mutation에서 사용할 기본 옵션입니다.
   - `defaultOptions.queries`
@@ -1146,11 +1148,38 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `queryKey`에 해당되는 쿼리의 기본 옵션을 `options`로 변경합니다. `queryKey`에 일치하는 쿼리가 여러개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 변경합니다.
   - `QueryOptions`은 [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)에서 `queryKey`를 제외한 값의 옵셔널한 형태입니다. 즉 `Partial<Omit<QueryObserverOptions, 'queryKey''>>`와 동일합니다.
 - `getMutationDefaults: (mutationKey: MutationKey) => MutationObserverOptions`
+  - `mutationKey`에 해당되는 Mutation의 기본 옵션을 반환합니다.
+  - `MutationObserverOptions`은 [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 - `setMutationDefaults: (mutationKey: MutationKey, options: MutationOptions) => void`
-- `getQueryCache: () => void`
-- `getMutationCache`
-- `clear`
-- `resumePausedMutations`
+  - `mutationKey`에 해당되는 Mutation의 기본 옵션을 `options`로 변경합니다.
+  - `MutationOptions`은 [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)에서 `mutationKey`를 제외한 값의 옵셔녈한 형태입니다. 즉 `Partial<Omit<MutationObserverOptions, 'mutationKey''>>`와 동일합니다.
+- `getQueryCache: () => QueryCache`
+  - `QueryClient`에 연결된 `QueryCache`를 반환합니다.
+  - `QueryCache`는 [`QueryCache`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-6)와 동일한 값입니다.
+- `getMutationCache: () => MutationCache`
+  - `QueryClient`에 연결된 `MutationCache`를 반환합니다.
+  - `MutationCache`는 [`MutationCache`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-7)와 동일한 값입니다.
+- `clear: () => void`
+  - 모든 캐시를 삭제하는 함수입니다.
+- `resumePausedMutations: () => Promise<unknown>`
+  - 네트워크 연결이 되지 않아 일시 중지된 Mutation을 다시 시작하는 데 사용하는 함수입니다.
+
+## `useQueryClient`
+현재 사용하는 `QueryClient`의 인스턴스를 반환하는 훅입니다.
+
+### 타입 정보
+```tsx
+import { useQueryClient } from '@tanstack/react-query'
+
+const queryClient = useQueryClient(queryClient?: QueryClient)
+```
+
+#### Options
+- `queryClient?: QueryClient`
+  - 커스텀한 `QueryClient`를 사용하려면 이 파라미터를 전달해야 합니다. 전달하지 않을 경우 가장 가까운 컨텍스트의 `QueryClient`를 사용합니다.
+
+#### Returns
+`useQueryClient` 훅의 반환 값은 [`QueryClient`의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns-12)과 동일합니다.
 
 ### 예제
 <div>
@@ -1162,19 +1191,18 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   ></iframe>
 </div>
 
-## `useQueryClient`
-
-### 타입 정보
-
-#### Options
-
-#### Returns
-
-### 예제
-
 ## `QueryClientProvider`
 
 ### 타입 정보
+```tsx
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
+function App() {
+  return <QueryClientProvider client={queryClient}>...</QueryClientProvider>
+}
+```
 
 #### Options
 
