@@ -1015,9 +1015,9 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `defaultOptions?: DefaultOptions`
   - 쿼리와 Mutation에서 사용할 기본 옵션입니다.
   - `defaultOptions.queries`
-    - [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
+    - [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
   - `defaultOptions.mutations`
-    - [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
+    - [`useMutation` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 
 #### Returns
 - `fetchQuery: (options) => Promise<TData>`
@@ -1130,29 +1130,29 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `DefaultOptions`
     - 쿼리와 Mutation에서 사용할 기본 옵션입니다.
     - `queries?: QueryObserverOptions`
-      - [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
+      - [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
     - `mutations?: MutationObserverOptions`
-      - [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
+      - [`useMutation` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 - `setDefaultOptions: (options: DefaultOptions) => void`
   - `QueryClient`의 기본 옵션을 동적으로 변경하기 위해 사용되는 함수입니다.
   - `DefaultOptions`
     - 쿼리와 Mutation에서 사용할 기본 옵션입니다.
     - `queries?: QueryObserverOptions`
-      - [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
+      - [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
     - `mutations?: MutationObserverOptions`
-      - [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
+      - [`useMutation` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 - `getQueryDefaults: (queryKey: QueryKey) => QueryObserverOptions`
   - `queryKey`에 해당되는 쿼리의 기본 옵션을 반환합니다. `queryKey`에 일치하는 쿼리가 여러개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 반환합니다.
-  - `QueryObserverOptions`는 [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
+  - `QueryObserverOptions`는 [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
 - `setQueryDefaults: (queryKey: QueryKey, options: QueryOptions) => void`
   - `queryKey`에 해당되는 쿼리의 기본 옵션을 `options`로 변경합니다. `queryKey`에 일치하는 쿼리가 여러개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 변경합니다.
-  - `QueryOptions`은 [`useQuery`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)에서 `queryKey`를 제외한 값의 옵셔널한 형태입니다. 즉 `Partial<Omit<QueryObserverOptions, 'queryKey''>>`와 동일합니다.
+  - `QueryOptions`은 [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)에서 `queryKey`를 제외한 값의 옵셔널한 형태입니다. 즉 `Partial<Omit<QueryObserverOptions, 'queryKey''>>`와 동일합니다.
 - `getMutationDefaults: (mutationKey: MutationKey) => MutationObserverOptions`
   - `mutationKey`에 해당되는 Mutation의 기본 옵션을 반환합니다.
-  - `MutationObserverOptions`은 [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
+  - `MutationObserverOptions`은 [`useMutation` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 - `setMutationDefaults: (mutationKey: MutationKey, options: MutationOptions) => void`
   - `mutationKey`에 해당되는 Mutation의 기본 옵션을 `options`로 변경합니다.
-  - `MutationOptions`은 [`useMutation`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)에서 `mutationKey`를 제외한 값의 옵셔녈한 형태입니다. 즉 `Partial<Omit<MutationObserverOptions, 'mutationKey''>>`와 동일합니다.
+  - `MutationOptions`은 [`useMutation` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)에서 `mutationKey`를 제외한 값의 옵셔녈한 형태입니다. 즉 `Partial<Omit<MutationObserverOptions, 'mutationKey''>>`와 동일합니다.
 - `getQueryCache: () => QueryCache`
   - `QueryClient`에 연결된 `QueryCache`를 반환합니다.
   - `QueryCache`는 [`QueryCache`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-6)와 동일한 값입니다.
@@ -1192,6 +1192,7 @@ const queryClient = useQueryClient(queryClient?: QueryClient)
 </div>
 
 ## `QueryClientProvider`
+`QueryClientProvider` 컴포넌트는 React Query를 사용하기 위해서 루트 위치에서 선언되어야 합니다. `QueryClientProvider`의 `client` 속성으로 `QueryClient`를 전달해야 하며, 전달된 `QueryClient`는 하위 컴포넌트에서 `useQuery` 등, React Query를 사용할 때 사용됩니다.
 
 ### 타입 정보
 ```tsx
@@ -1204,41 +1205,74 @@ function App() {
 }
 ```
 
-#### Options
-
-#### Returns
-
-### 예제
+#### Props
+- `client: QueryClient`
+  - 하위 컴포넌트에서 React Query를 사용할 때 사용되는 `QueryClient`입니다.
 
 ## `QueryObserver`
+`QueryObserver`는 쿼리를 관찰 할 때 사용됩니다. `useQuery`는 내부적으로 `QueryObserver` 인스턴스를 만들어 사용하는데, `useQuery` 훅을 사용하면 되기 때문에 직접 `QueryObserver` 인스턴스를 생성하는 경우는 많지 않습니다.
 
 ### 타입 정보
+```tsx
+const observer = new QueryObserver(queryClient, { queryKey: ['posts'] })
+
+const unsubscribe = observer.subscribe((result) => {
+  console.log(result)
+  unsubscribe()
+})
+```
 
 #### Options
-
-#### Returns
-
-### 예제
+- `queryClient: QueryClient`
+  - 관찰 할 쿼리가 있는 `QueryClient` 인스턴스입니다.
+- `options: QueryObserverOptions`
+  - 쿼리 데이터를 가져오기 위해 사용되는 옵션입니다. [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
 
 ## `InfiniteQueryObserver`
+`InfiniteQueryObserver`는 무한 쿼리를 관찰합니다. `useInfiniteQuery`는 내부적으로 `InfiniteQueryObserver` 인스턴스를 만들어 사용하는데, `useInfiniteQuery` 혹을 사용하면 되기 때문에 직접 `InfiniteQueryObserver` 인스턴스를 생성하는 경우는 많지 않습니다.
 
 ### 타입 정보
+```tsx
+const observer = new InfiniteQueryObserver(queryClient, {
+  queryKey: ['posts'],
+  queryFn: fetchPosts,
+  getNextPageParam: (lastPage, allPages) => lastPage.nextCursor,
+  getPreviousPageParam: (firstPage, allPages) => firstPage.prevCursor,
+})
+
+const unsubscribe = observer.subscribe((result) => {
+  console.log(result)
+  unsubscribe()
+})
+```
 
 #### Options
-
-#### Returns
-
-### 예제
+- `queryClient: QueryClient`
+  - 관찰 할 무한 쿼리가 있는 `QueryClient` 인스턴스입니다.
+- `options: InfiniteQueryObserverOptions`
+  - 무한 쿼리 데이터를 가져오기 위해 사용되는 옵션입니다. [`useInfiniteQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-2)과 동일한 값입니다.
 
 ## `QueriesObserver`
+`QueriesObserver`는 쿼리들(queries)을 관찰합니다. `useQueries`의 내부적으로 `QueriesObserver` 인스턴스를 만들어 사용하는데, `useQueries` 훅을 사용하면 되기 때문에 직접 `QueriesObserver` 인스턴스를 생성하는 경우는 많지 않습니다.
 
 ### 타입 정보
+```tsx
+const observer = new QueriesObserver(queryClient, [
+  { queryKey: ['post', 1], queryFn: fetchPost },
+  { queryKey: ['post', 2], queryFn: fetchPost },
+])
+
+const unsubscribe = observer.subscribe((result) => {
+  console.log(result)
+  unsubscribe()
+})
+```
 
 #### Options
-
-#### Returns
-
-### 예제
+- `queryClient: QueryClient`
+  - 관찰 할 무한 쿼리가 있는 `QueryClient` 인스턴스입니다.
+- `options: QueryObserverOptions[]`
+  - queries의 데이터를 가져오기 위해 사용되는 옵션입니다. [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값의 배열입니다.
 
 ## `QueryErrorResetBoundary`
 
@@ -1281,4 +1315,5 @@ Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데�
 - [https://velog.io/@hyunjine/Inside-React-Query](https://velog.io/@hyunjine/Inside-React-Query)
 - [https://leego.tistory.com/entry/react-query는-어떻게-작동할까](https://leego.tistory.com/entry/react-query는-어떻게-작동할까)
 - [https://fe-developers.kakaoent.com/2023/230720-react-query/](https://fe-developers.kakaoent.com/2023/230720-react-query/)
+- [https://velog.io/@hyunjine/Inside-React-Query](https://velog.io/@hyunjine/Inside-React-Query)
 - [https://velog.io/@dev_jazziron/React-Query-Render-Optimizations](https://velog.io/@dev_jazziron/React-Query-Render-Optimizations)
