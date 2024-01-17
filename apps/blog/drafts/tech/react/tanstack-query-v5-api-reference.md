@@ -1339,3 +1339,5 @@ Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데�
 - [https://fe-developers.kakaoent.com/2023/230720-react-query/](https://fe-developers.kakaoent.com/2023/230720-react-query/)
 - [https://velog.io/@hyunjine/Inside-React-Query](https://velog.io/@hyunjine/Inside-React-Query)
 - [https://velog.io/@dev_jazziron/React-Query-Render-Optimizations](https://velog.io/@dev_jazziron/React-Query-Render-Optimizations)
+- [https://yiyb-blog.vercel.app/posts/error-boundary-with-react-query](https://yiyb-blog.vercel.app/posts/error-boundary-with-react-query)
+- [https://velog.io/@suyeon9456/React-Query-Error-Boundary-적용하기](https://velog.io/@suyeon9456/React-Query-Error-Boundary-적용하기)
