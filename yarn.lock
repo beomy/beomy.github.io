@@ -2519,7 +2519,7 @@ __metadata:
     svelte-spa-router: "npm:3.3.0"
     tslib: "npm:2.4.0"
     typescript: "npm:4.7.4"
-    vite: "npm:3.2.7"
+    vite: "npm:3.2.8"
   languageName: unknown
   linkType: soft
 
@@ -29847,9 +29847,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:3.2.7":
-  version: 3.2.7
-  resolution: "vite@npm:3.2.7"
+"vite@npm:3.2.8":
+  version: 3.2.8
+  resolution: "vite@npm:3.2.8"
   dependencies:
     esbuild: "npm:^0.15.9"
     fsevents: "npm:~2.3.2"
@@ -29881,7 +29881,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 932b700db206708e2d8161db32c36a4754a5d686cbbefcdf102933a480f03dc6fe3c44f058cc1c29ca5a0b601494fe33c55e33a16b80571e6fc913bd97b6ce1b
+  checksum: fb4e175b7e48bbda63c996efc0a027e1af7dcab22c166becbfde8c333dd417123ff272a77c6f8bcd947f4962498c5ff3ec80c24d490a8d1ca294b0480e05f3ba
   languageName: node
   linkType: hard
 
