@@ -1275,6 +1275,7 @@ const unsubscribe = observer.subscribe((result) => {
   - queries의 데이터를 가져오기 위해 사용되는 옵션입니다. [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값의 배열입니다.
 
 ## `QueryErrorResetBoundary`
+
 ```tsx
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
 import { ErrorBoundary } from 'react-error-boundary'
