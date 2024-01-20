@@ -1275,6 +1275,7 @@ const unsubscribe = observer.subscribe((result) => {
   - queries의 데이터를 가져오기 위해 사용되는 옵션입니다. [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값의 배열입니다.
 
 ## `QueryErrorResetBoundary`
+`suspense`나 `throwOnError`를 사용하면 컴포넌트에서 에러가 발생할 때 에러 화면으로 전환할 수 있습니다. 전환된 에러 화면에서 쿼리의 에러를 초기화 하고 데이터를 다시 요청해야 할 때 사용하는 것이 `QueryErrorResetBoundary` 컴포넌트입니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
@@ -1300,16 +1301,79 @@ const App: React.FC = () => (
 ```
 
 ## `useQueryErrorResetBoundary`
+`useQueryErrorResetBoundary` 훅은 `QueryErrorResetBoundary` 컴포넌트를 훅 형태로 사용할 수 있게 합니다. 아래 코드와 같이 사용할 수 있습니다.
+
+```tsx
+import { useQueryErrorResetBoundary } from '@tanstack/react-query'
+import { ErrorBoundary } from 'react-error-boundary'
+
+const App: React.FC = () => {
+  const { reset } = useQueryErrorResetBoundary()
+  return (
+    <ErrorBoundary
+      onReset={reset}
+      fallbackRender={({ resetErrorBoundary }) => (
+        <div>
+          There was an error!
+          <Button onClick={() => resetErrorBoundary()}>Try again</Button>
+        </div>
+      )}
+    >
+      <Page />
+    </ErrorBoundary>
+  )
+}
+```
 
 ## `focusManager`
+`focusManager`은 React Query가 포커스 될 때 발생하는 이벤트 리스너를 변경하거나, 수동으로 포커스할 때 사용됩니다.
 
 ### 타입 정보
+- `focusManager.setEventListener`
+  - 이벤트 리스너를 변경할 때 사용되는 함수 입니다.
+  - ```tsx
+    import { focusManager } from '@tanstack/react-query'
 
-#### Options
+    focusManager.setEventListener((handleFocus) => {
+      // Listen to visibilitychange
+      if (typeof window !== 'undefined' && window.addEventListener) {
+        window.addEventListener('visibilitychange', handleFocus, false)
+      }
 
-#### Returns
+      return () => {
+        // Be sure to unsubscribe if a new handler is set
+        window.removeEventListener('visibilitychange', handleFocus)
+      }
+    })
+    ```
+- `focusManager.subscribe`
+  - 포커스 상태가 변경되는 것을 구독하는 함수입니다. 구독을 취소하는 함수를 반환합니다.
+  - ```tsx
+    import { focusManager } from '@tanstack/react-query'
 
-### 예제
+    const unsubscribe = focusManager.subscribe((isVisible) => {
+      console.log('isVisible', isVisible)
+    })
+    ```
+- `focusManager.setFocused`
+  - 포커스 상태를 수동으로 설정할 수 있는 함수입니다.
+  - ```tsx
+    import { focusManager } from '@tanstack/react-query'
+
+    // Set focused
+    focusManager.setFocused(true)
+
+    // Set unfocused
+    focusManager.setFocused(false)
+
+    // Fallback to the default focus check
+    focusManager.setFocused(undefined)
+    ```
+- `focusManager.isFocused`
+  - 현재 포커스 상태를 가져오는 함수입니다.
+  - ```tsx
+    const isFocused = focusManager.isFocused()
+    ```
 
 ## `onlineManager`
 
@@ -1320,6 +1384,8 @@ const App: React.FC = () => (
 #### Returns
 
 ### 예제
+
+## `notifyManager`
 
 ## 부록
 
