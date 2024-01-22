@@ -1379,12 +1379,10 @@ const App: React.FC = () => {
 `onlineManager`은 온라인 상태를 감지하는 이벤트 리스터를 변경하거나, 수동으로 온라인 상태로 변경할 때 사용됩니다.
 
 ### 타입 정보
-
-#### Options
-
-#### Returns
-
-### 예제
+- `onlineManager.setEventListener`
+- `onlineManager.subscribe`
+- `onlineManager.setOnline`
+- `onlineManager.isOnline`
 
 ## `notifyManager`
 
