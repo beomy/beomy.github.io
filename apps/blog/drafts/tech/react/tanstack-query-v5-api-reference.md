@@ -8,6 +8,8 @@ summary: 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었
 
 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query를 멋있게 사용할 수 있도록 React Query의 API를 살펴보도록 하겠습니다.
 
+## React Query 구조
+
 ## `useQuery`
 `useQuery`는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useQuery`를 통해 가져온 데이터는 캐시됩니다. 또한 동일한 `queryKey`를 사용하는 `useQuery`가 동시에 여러개 마운트되면 최적화 되어 한 번만 데이터를 요청합니다. `useQuery`는 API 서버에서 HTTP의 GET 메소드로 데이터를 가져오는 작업을 할 때 주로 사용됩니다.
 
@@ -1380,9 +1382,42 @@ const App: React.FC = () => {
 
 ### 타입 정보
 - `onlineManager.setEventListener`
+  - 이벤트 리스너를 변경할 때 사용되는 함수 입니다.
+  - ```tsx
+    import NetInfo from '@react-native-community/netinfo'
+    import { onlineManager } from '@tanstack/react-query'
+
+    onlineManager.setEventListener((setOnline) => {
+      return NetInfo.addEventListener((state) => {
+        setOnline(!!state.isConnected)
+      })
+    })
+    ```
 - `onlineManager.subscribe`
+  - 온라인 상태가 변경되는 것을 구독하는 함수입니다. 구독을 취소하는 함수를 반환합니다.
+  - ```tsx
+    import { onlineManager } from '@tanstack/react-query'
+
+    const unsubscribe = onlineManager.subscribe((isOnline) => {
+      console.log('isOnline', isOnline)
+    })
+    ```
 - `onlineManager.setOnline`
+  - 온라인 상태를 수동으로 설정할 수 있는 함수입니다.
+  - ```tsx
+    import { onlineManager } from '@tanstack/react-query'
+
+    // Set to online
+    onlineManager.setOnline(true)
+
+    // Set to offline
+    onlineManager.setOnline(false)
+    ```
 - `onlineManager.isOnline`
+  - 현재 온라인 상태를 가져오는 함수입니다.
+  - ```tsx
+    const isOnline = onlineManager.isOnline()
+    ```
 
 ## `notifyManager`
 
@@ -1395,8 +1430,6 @@ Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데�
 
 #### Cache
 
-### React Query 구조
-
 ##### 참고
 - [https://tanstack.com/query/v5/docs/react/overview](https://tanstack.com/query/v5/docs/react/overview)
 - [https://tanstack.com/blog/announcing-tanstack-query-v5](https://tanstack.com/blog/announcing-tanstack-query-v5)
@@ -1407,3 +1440,4 @@ Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데�
 - [https://velog.io/@dev_jazziron/React-Query-Render-Optimizations](https://velog.io/@dev_jazziron/React-Query-Render-Optimizations)
 - [https://yiyb-blog.vercel.app/posts/error-boundary-with-react-query](https://yiyb-blog.vercel.app/posts/error-boundary-with-react-query)
 - [https://velog.io/@suyeon9456/React-Query-Error-Boundary-적용하기](https://velog.io/@suyeon9456/React-Query-Error-Boundary-적용하기)
+- [https://www.timegambit.com/blog/digging/react-query/01](https://www.timegambit.com/blog/digging/react-query/01)
