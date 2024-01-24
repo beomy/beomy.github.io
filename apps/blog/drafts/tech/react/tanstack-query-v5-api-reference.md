@@ -9,11 +9,17 @@ summary: 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었
 2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query를 멋있게 사용할 수 있도록 React Query의 API를 살펴보도록 하겠습니다.
 
 ## React Query 구조
+React Query의 API는 서로 연관이 있는 부분들이 많아, React Query의 구조를 이해하면 API의 역할을 이해하는데 많은 도움을 줄 수 있습니다. 아래 그림은 React Query의 구조를 간단하게 나타낸 그림입니다.
 
-## `useQuery`
-`useQuery`는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useQuery`를 통해 가져온 데이터는 캐시됩니다. 또한 동일한 `queryKey`를 사용하는 `useQuery`가 동시에 여러개 마운트되면 최적화 되어 한 번만 데이터를 요청합니다. `useQuery`는 API 서버에서 HTTP의 GET 메소드로 데이터를 가져오는 작업을 할 때 주로 사용됩니다.
+![React Query 구조](/assets/img/posts/react/react_query_structure.png)
 
-### 타입 정보
+## React Query API 레퍼런스
+React Query는 다양한 API를 제공해줍니다. 그중 `useQuery`, `useMutation`, `useQueryClient` 이 3개 훅은 자주 사용되기 때문에, 이 3개의 API는 자세히 살펴보는 것이 좋습니다.
+
+### `useQuery`
+`useQuery`는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useQuery`를 통해 가져온 데이터는 캐시됩니다. 또한 동일한 `queryKey`를 사용하는 `useQuery`가 동시에 여러번 마운트되면 최적화 되어 한 번만 데이터를 요청합니다. `useQuery`는 API 서버에서 HTTP의 GET 메소드로 데이터를 가져오는 작업을 할 때 주로 사용됩니다.
+
+#### 타입 정보
 ```tsx
 const {
   data, dataUpdatedAt, error, errorUpdatedAt,
@@ -38,7 +44,7 @@ const {
 })
 ```
 
-#### Options
+##### Options
 - `queryKey: unknown[]` (**필수**)
   - 다른 쿼리와 구분될 수 있는 유니크한 키입니다. 이 값은 쿼리의 해시 키로 사용됩니다.
   - 이 값이 변경되면 자동 업데이트 되어 데이터를 가져옵니다.
@@ -174,7 +180,7 @@ const {
 > React Query는 이전 데이터를 유지함으로 변경되지 않은 데이터를 사용하는 컴포넌트에서는 리렌더링이 발생하지 않도록 최적화합니다. 기존의 데이터를 유지하지 않고 항상 새로운 데이터로 사용하기 위해서는 `structuralSharing` 옵션을 `false`로 설정하면 됩니다.
 
 
-#### Returns
+##### Returns
 - `status: String`
   - `pending`일 경우, 캐시된 데이터가 없고 쿼리 시도가 아직 완료되지 않은 상태입니다.
   - `error`일 경우, 데이터를 가져올 때 에러가 발생한 상태입니다.
@@ -235,7 +241,7 @@ const {
     - `true`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행중이던 요청을 취소하고 재요청합니다.
     - `false`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/zjfrnf?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -245,10 +251,10 @@ const {
   ></iframe>
 </div>
 
-## `useQueries`
+### `useQueries`
 `useQuery`와 동일하게 데이터를 가져오기 위해 사용되는 쿼리입니다. 여러개의 `useQuery`를 사용하고 싶을 경우 `useQuery`를 여러번 선언할 필요 없이 `useQueries`로 대신할 수 있습니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const ids = [1,2,3]
 const results = useQueries({
@@ -258,7 +264,7 @@ const results = useQueries({
 })
 ```
 
-#### Options
+##### Options
 - `queries`
   - `useQuery` 훅에서 사용했던 옵션 중 `queryClient`를 제외한 옵션을 사용할 쿼리 수만큼 배열에 담어 전달하면됩니다. 또한 렌더링 할 때마다 호출해야 하는 쿼리의 수가 달라 질 수 있기 때문에 `placeholderData` 함수는 이전 데이터를 파라미터로 전달하지 않습니다.
 - `queryClient?: QueryClient`
@@ -266,10 +272,10 @@ const results = useQueries({
 - `combine?: (result: UseQueriesResults) => TCombinedResult`
   - 이 옵션을 사용하면 여러 쿼리의 결과 값을 단인 값으로 합칠 수 있습니다.
 
-#### Returns
+##### Returns
 `useQueries` 훅의 반환 값은 [`useQuery` 훅의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns)과 동일한 값을 `queries`에 선언한 쿼리 순서대로 배열 형태로 반환합니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/gmvk2m?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -279,10 +285,10 @@ const results = useQueries({
   ></iframe>
 </div>
 
-## `useInfiniteQuery`
+### `useInfiniteQuery`
 `useInfiniteQuery` 훅 역시 `useQuery`나 `useQueries` 훅과 같이 데이터를 가져오기 위해 사용되는 쿼리입니다. 무한 스크롤을 통한 데이터 무한 로딩 등을 구현할 때 종종 사용되는 훅입니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const {
   fetchNextPage,
@@ -304,7 +310,7 @@ const {
 })
 ```
 
-#### Options
+##### Options
 `useInfiniteQuery` 훅의 옵션은 `useQuery` 훅의 옵션에 아래 목록의 옵션이 추가됩니다.
 
 - `queryFn: (context: QueryFunctionContext) => Promise<TData>` (**필수**, 단 `defaultOptions`에서 정의된 경우 생략 가능)
@@ -326,7 +332,7 @@ const {
   - 최대 페이지 수에 도달하면 방향에 따라 첫번째 또는 마지막 페이지가 제거됩니다.
   - `undefined`나 `0`이 설정된 경우 저장할 수 있는 페이지 수의 제한이 없게 됩니다.
 
-#### Returns
+##### Returns
 `useInfiniteQuery` 훅의 반환 값은 아래 목록을 제외하고 `useQuery`의 반환 값과 동일합니다.
 
 - `data.pages: TData[]`
@@ -356,7 +362,7 @@ const {
   - 초기 `pending`, 다음/이전 데이터를 가져오는 중을 제외하고 백그라운드에서 데이터를 가져오는 중일 경우 `true`입니다.
   - `isFetching && !isPending && !isFetchingNextPage && !isFetchingPreviousPage`와 동일한 값입니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/m9sfx3?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -366,10 +372,10 @@ const {
   ></iframe>
 </div>
 
-## `useMutation`
+### `useMutation`
 `useMutation` 역시 React Query에서 가장 많이 사용되는 훅 중 하나입니다. `useMutation`은 API 서버에 데이터를 저장하거나 업데이트, 삭제 하는 등의 데이터에 영향을 주는 HTTP의 POST, PUT, DELETE 메소드에 주로 사용됩니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const {
   data, error, isError, isIdle,
@@ -392,7 +398,7 @@ mutate(variables, {
 })
 ```
 
-#### Options
+##### Options
 - `mutationFn: (variables: TVariables) => Promise<TData>` (**필수**, 단 `defaultOptions`에서 정의된 경우 생략 가능)
   - 비동기 작업을 수행하고 `Promise`를 반환하는 함수입니다.
   - `variables: TVariables`
@@ -407,7 +413,7 @@ mutate(variables, {
   - `mutationFn`이 실행되기 전에 실행됩니다.
   - `variables: TVariables`
     - `mutationFn` 함수의 파라미터와 동일한 값을 파라미터로 전달받습니다.
-  - `onMutate` 함수는 낙관적 업데이트(optimistic updates)에 사용하기 유용합니다. 반환 값은 `onError`와 `onSettled` 함수에 전달되어 mutation 실패 시 낙관적 업데이트를 롤백할 때 사용할 수 있습니다.
+  - `onMutate` 함수는 [낙관적 업데이트(optimistic updates)](/tech/react/tanstack-query-v4/#쿼리-업데이트)에 사용하기 유용합니다. 반환 값은 `onError`와 `onSettled` 함수에 전달되어 mutation 실패 시 낙관적 업데이트를 롤백할 때 사용할 수 있습니다.
     - 낙관적 업데이트란 mutation이 성공할 것이라 판단하여 수정된 결과를 응답 받기 전, 요청한 데이터를 사용하여 업데이트 하는 것을 이야기 합니다.
 - `onSuccess: (data: TData, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutaionFn`이 성공할 경우 실행됩니다.
@@ -449,7 +455,7 @@ mutate(variables, {
 - `queryClient?: QueryClient`
   - `useQuery`의 `queryClient`와 동일합니다.
 
-#### Returns
+##### Returns
 - `mutate: (variables: TVariables, { onSuccess, onSettled, onError }) => void`
   - 변경할 데이터를 파라미터로 전달하여 데이터 변경을 수행하는 함수입니다. 두번째 파라미터는 옵션 정보로, 콜백 함수를 정의할 수 있습니다.
   - `variables: TVariables`
@@ -510,7 +516,7 @@ mutate(variables, {
 - `variables: undefined | TVariables` (default: `undefined`)
   - `mutationFn` 함수의 파라미터로 전달된 `variables` 값입니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/7cjzgh?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -520,10 +526,10 @@ mutate(variables, {
   ></iframe>
 </div>
 
-## `useIsFetching`
+### `useIsFetching`
 `useIsFetching` 훅은 데이터를 가져오는 중인 쿼리의 수를 반환합니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 import { useIsFetching } from '@tanstack/react-query'
 // How many queries are fetching?
@@ -532,7 +538,7 @@ const isFetching = useIsFetching()
 const isFetchingPosts = useIsFetching({ queryKey: ['posts'] })
 ```
 
-#### Options
+##### Options
 - `filters?: QueryFilters`
   - `filters.queryKey?: QueryKey`
     - 찾으려고 하는 쿼리의 쿼리 키입니다.
@@ -555,11 +561,11 @@ const isFetchingPosts = useIsFetching({ queryKey: ['posts'] })
 - `queryClient?: QueryClient`
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
-#### Returns
+##### Returns
 - `isFetching: number`
   - 데이터를 가져오는 중인 쿼리의 수입니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/cq2gkp?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -569,10 +575,10 @@ const isFetchingPosts = useIsFetching({ queryKey: ['posts'] })
   ></iframe>
 </div>
 
-## `useIsMutating`
+### `useIsMutating`
 `useIsMutating` 훅은 Mutation 중인 수를 반환합니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 import { useIsMutating } from '@tanstack/react-query'
 // How many mutations are fetching?
@@ -581,7 +587,7 @@ const isMutating = useIsMutating()
 const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
 ```
 
-#### Options
+##### Options
 - `filters?: MutationFilters`
   - `filters.mutationKey?: MutationKey`
     - 찾으려고 하는 Mutation의 키입니다.
@@ -598,11 +604,11 @@ const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
 - `queryClient?: QueryClient`
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
-#### Returns
+##### Returns
 - `isMutating: number`
   - Mutation 중인 숫자입니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/rzm4tc?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -612,7 +618,7 @@ const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
   ></iframe>
 </div>
 
-## `QueryCache`
+### `QueryCache`
 `QueryCache`는 쿼리를 저장하는 저장소입니다. 쿼리에 포함된 데이터, 메타 정보 쿼리의 상태가 저장됩니다. 보통 아래 코드와 같이 QueryClient에 정의하고, `useQueryClient`의 `getQueryCache`를 통해 가져와 사용합니다.
 
 ```tsx
@@ -635,7 +641,7 @@ root.render(
 );
 ```
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 import { QueryCache } from '@tanstack/react-query'
 
@@ -652,7 +658,7 @@ const queryCache = new QueryCache({
 })
 ```
 
-#### Options
+##### Options
 `QueryCache`의 옵션들은 모두 콜백함수입니다. 전역에서 처리해야 할 적업을 할 때 사용할 수 있습니다.
 
 - `onError?: (error: unknown, query: Query) => void`
@@ -681,7 +687,7 @@ const queryCache = new QueryCache({
 > - `defaultOpions`의 콜백함수들은 각각의 옵저버에서 한번씩 호출되지만, `QueryCache`의 전역 콜백함수들은 한번만 호출됩니다.
 >   - 예를 들어 `useQuery({ queryKey: ['posts'] })`와 같이 동일한 쿼리가 부모, 자식 컴포넌트 각각에 2번 선언되었다면 `defaultOpions`의 콜백함수는 2번 호출되지만, `QueryCache`의 전역 콜백함수는 한번만 호출됩니다.
 
-#### Returns
+##### Returns
 - `find: (filters: QueryFilters) => Query | undefined`
   - `filters`에 해당하는 쿼리를 반환하는 함수입니다. 해당하는 쿼리가 없을 경우 `undefined`를 반환합니다.
   - `filters?: QueryFilters`
@@ -718,7 +724,7 @@ const queryCache = new QueryCache({
 - `clear: () => void`
   - 쿼리 캐시를 모두 지우는데 사용되는 함수입니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/5vcsmr?view=Editor+%2B+Preview&module=%2Fsrc%2Findex.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -728,7 +734,7 @@ const queryCache = new QueryCache({
   ></iframe>
 </div>
 
-## `MutationCache`
+### `MutationCache`
 `MutationCache`는 Mutation을 저장하는 저장소입니다. 보통 아래 코드와 같이 `QueryClient`에 정의하고, `useQueryClient`의 `getMutationCache`를 통해 가져와 사용합니다.
 
 ```tsx
@@ -751,7 +757,7 @@ root.render(
 );
 ```
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 import { MutationCache } from '@tanstack/react-query'
 
@@ -765,7 +771,7 @@ const mutationCache = new MutationCache({
 })
 ```
 
-#### Options
+##### Options
 `MutationCache`의 옵션들은 모두 콜백함수입니다. 전역에서 처리해야 할 적업을 할 때 사용할 수 있습니다.
 
 - `onError?: (error: unknown, variables: unknown, context: unknown, mutation: Mutation) => Promise<unknown> | unknown`
@@ -811,7 +817,7 @@ const mutationCache = new MutationCache({
 > - `defaultOpions`에 정의한 콜백함수들은 각각의 Mutation을 호출할 때 오버라이드될 수 있습니다. `MutationCache`에 정의한 전역 콜백함수들은 항상 호출됩니다.
 > - `MutationCache`의 옵션 중 `onMutate` 함수의 반환 값은 `context`에 담기지 않습니다.
 
-#### Returns
+##### Returns
 - `getAll: () => Mutation[]`
   - 캐시된 모든 Mutation을 반환합니다.
 - `subscribe: (callback: (mutation?: MutationCacheNotifyEvent) => void) => unsubscribe: Function => void`
@@ -826,7 +832,7 @@ const mutationCache = new MutationCache({
 - `clear: () => void`
   - Mutation 캐시를 모두 지우는데 사용되는 함수입니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/9m9p9l?view=Editor+%2B+Preview&module=%2Fsrc%2Findex.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -836,10 +842,10 @@ const mutationCache = new MutationCache({
   ></iframe>
 </div>
 
-## `useMutationState`
+### `useMutationState`
 `useMutationState` 훅은 `MutationCache`에 있는 Mutation에 접근할 수 있는 훅입니다. `filter`을 사용하여 원하는 Mutation을 찾을 수 있고 `select`를 사용하여 필요한 Mutation의 상태를 알 수 있습니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 import { useMutation, useMutationState } from '@tanstack/react-query'
 
@@ -860,7 +866,7 @@ const data = useMutationState({
 })
 ```
 
-#### Options
+##### Options
 - `options`
   - `filters?: MutationFilters`
     - `filters.mutationKey?: MutationKey`
@@ -880,11 +886,11 @@ const data = useMutationState({
 - `queryClient?: QueryClient`
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
-#### Returns
+##### Returns
 - `Array<TResult>`
   - `select` 옵션에서 반환한 Mutation 배열입니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/wft346?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -894,18 +900,18 @@ const data = useMutationState({
   ></iframe>
 </div>
 
-## `useSuspenseQuery`
+### `useSuspenseQuery`
 `useSuspenseQuery` 훅은 `useQuery`와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행시킵니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const result = useSuspenseQuery(options)
 ```
 
-#### Options
+##### Options
 [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)에서 `throwOnError`, `enabled`, `placeholderData`가 빠진 형태입니다.
 
-#### Returns
+##### Returns
 [`useQuery` 훅의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns)과 대부분 동일하지만, 아래 목록만 차이가 있습니다.
 
 - `data`는 항상 `undefined`가 아닙니다.
@@ -915,7 +921,7 @@ const result = useSuspenseQuery(options)
 - `status`는 항상 `success`입니다.
   - `useQuery` 훅의 `status` 반환 값 중 `pending`일 경우 Suspense가 동작하고, `error`일 경우 Error Boundary가 화면에 노출되기 때문에 항상 `success`가 됩니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/ghm5tk?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -925,18 +931,18 @@ const result = useSuspenseQuery(options)
   ></iframe>
 </div>
 
-## `useSuspenseInfiniteQuery`
+### `useSuspenseInfiniteQuery`
 `useSuspenseInfiniteQuery` 훅은 `useInfiniteQuery` 와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행 시킵니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const result = useSuspenseInfiniteQuery(options)
 ```
 
-#### Options
+##### Options
 [`useInfiniteQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-2)에서 `throwOnError`, `enabled`, `placeholderData`가 빠진 형태입니다.
 
-#### Returns
+##### Returns
 [`useInfiniteQuery` 훅의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns-2)과 대부분 동일하지만, 아래 목록만 차이가 있습니다.
 
 - `data`는 항상 `undefined`가 아닙니다.
@@ -946,7 +952,7 @@ const result = useSuspenseInfiniteQuery(options)
 - `status`는 항상 `success`입니다.
   - `useInfiniteQuery` 훅의 `status` 반환 값 중 `pending`일 경우 Suspense가 동작하고, `error`일 경우 Error Boundary가 화면에 노출되기 때문에 항상 `success`가 됩니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/3z7s5v?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -956,18 +962,18 @@ const result = useSuspenseInfiniteQuery(options)
   ></iframe>
 </div>
 
-## `useSuspenseQueries`
+### `useSuspenseQueries`
 `useSuspenseQueries` 훅은 `useQueries`와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행시킵니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const result = useSuspenseQueries(options)
 ```
 
-#### Options
+##### Options
 [`useQueries` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-1)에서 `throwOnError`, `enabled`, `placeholderData`가 빠진 형태입니다.
 
-#### Returns
+##### Returns
 [`useQueries` 훅의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns-1)과 대부분 동일하지만, 아래 목록만 차이가 있습니다.
 
 - `data`는 항상 `undefined`가 아닙니다.
@@ -977,7 +983,7 @@ const result = useSuspenseQueries(options)
 - `status`는 항상 `success`입니다.
   - `useQuery` 훅의 `status` 반환 값 중 `pending`일 경우 Suspense가 동작하고, `error`일 경우 Error Boundary가 화면에 노출되기 때문에 항상 `success`가 됩니다.
 
-### 예제
+#### 예제
 <div>
   <iframe src="https://codesandbox.io/embed/4jzy9s?view=Editor+%2B+Preview&module=%2Fsrc%2FApp.tsx"
   style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
@@ -987,12 +993,12 @@ const result = useSuspenseQueries(options)
   ></iframe>
 </div>
 
-## `QueryClient`
+### `QueryClient`
 `QueryClient`는 캐시와 상호 작용할 수 있는 기능을 제공합니다. React Query를 사용하기 위해서 루트 위치에서 `QueryClient` 인스턴스를 생성하여 `QueryClientProvider` 컴포넌트의 prop으로 전달해야 합니다.
 
 하위 컴포넌트에서는 `useQueryClient` 훅을 사용하여 `QueryClient` 인스턴스를 접근할 수 있고 `QueryClient` 인스턴스를 통해 대부분의 React Query 기능을 사용할 수 있습니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 import { QueryClient } from '@tanstack/react-query'
 
@@ -1007,7 +1013,7 @@ const queryClient = new QueryClient({
 await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 ```
 
-#### Options
+##### Options
 - `queryCache?: QueryCache`
   - 쿼리 클라이언트에서 사용할 쿼리 캐시입니다.
   - `QueryCache`는 [`QueryCache`의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-6)와 동일한 값입니다.
@@ -1021,7 +1027,7 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `defaultOptions.mutations`
     - [`useMutation` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-3)과 동일한 값입니다.
 
-#### Returns
+##### Returns
 - `fetchQuery: (options) => Promise<TData>`
   - 쿼리로 데이터를 가져와 캐시하는데 사용하는 비동기 메소드입니다. 가져온 데이터를 `Promise` 형태로 반환하거나 에러가 발생했을 경우 에러를 `throw` 합니다.
   - 캐시 된 데이터가 `staleTime`이 지나지 않았다면 캐시된 데이터를 반환합니다. `staleTime`이 지났다면 데이터를 새로 가져옵니다.
@@ -1166,37 +1172,27 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
 - `resumePausedMutations: () => Promise<unknown>`
   - 네트워크 연결이 되지 않아 일시 중지된 Mutation을 다시 시작하는 데 사용하는 함수입니다.
 
-## `useQueryClient`
+### `useQueryClient`
 현재 사용하는 `QueryClient`의 인스턴스를 반환하는 훅입니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 import { useQueryClient } from '@tanstack/react-query'
 
 const queryClient = useQueryClient(queryClient?: QueryClient)
 ```
 
-#### Options
+##### Options
 - `queryClient?: QueryClient`
   - 커스텀한 `QueryClient`를 사용하려면 이 파라미터를 전달해야 합니다. 전달하지 않을 경우 가장 가까운 컨텍스트의 `QueryClient`를 사용합니다.
 
-#### Returns
+##### Returns
 `useQueryClient` 훅의 반환 값은 [`QueryClient`의 반환 값](/tech/react/tanstack-query-v5-api-reference/#returns-12)과 동일합니다.
 
-### 예제
-<div>
-  <iframe src="https://codesandbox.io/embed/fkck7y?view=Editor+%2B+Preview&module=%2Fsrc%2Findex.tsx"
-  style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;"
-  title="QueryClient"
-  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-  ></iframe>
-</div>
-
-## `QueryClientProvider`
+### `QueryClientProvider`
 `QueryClientProvider` 컴포넌트는 React Query를 사용하기 위해서 루트 위치에서 선언되어야 합니다. `QueryClientProvider`의 `client` 속성으로 `QueryClient`를 전달해야 하며, 전달된 `QueryClient`는 하위 컴포넌트에서 `useQuery` 등, React Query를 사용할 때 사용됩니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
@@ -1207,14 +1203,14 @@ function App() {
 }
 ```
 
-#### Props
+##### Props
 - `client: QueryClient`
   - 하위 컴포넌트에서 React Query를 사용할 때 사용되는 `QueryClient`입니다.
 
-## `QueryObserver`
+### `QueryObserver`
 `QueryObserver`는 쿼리를 관찰 할 때 사용됩니다. `useQuery`는 내부적으로 `QueryObserver` 인스턴스를 만들어 사용하는데, `useQuery` 훅을 사용하면 되기 때문에 직접 `QueryObserver` 인스턴스를 생성하는 경우는 많지 않습니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const observer = new QueryObserver(queryClient, { queryKey: ['posts'] })
 
@@ -1224,16 +1220,16 @@ const unsubscribe = observer.subscribe((result) => {
 })
 ```
 
-#### Options
+##### Options
 - `queryClient: QueryClient`
   - 관찰 할 쿼리가 있는 `QueryClient` 인스턴스입니다.
 - `options: QueryObserverOptions`
   - 쿼리 데이터를 가져오기 위해 사용되는 옵션입니다. [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값입니다.
 
-## `InfiniteQueryObserver`
+### `InfiniteQueryObserver`
 `InfiniteQueryObserver`는 무한 쿼리를 관찰합니다. `useInfiniteQuery`는 내부적으로 `InfiniteQueryObserver` 인스턴스를 만들어 사용하는데, `useInfiniteQuery` 혹을 사용하면 되기 때문에 직접 `InfiniteQueryObserver` 인스턴스를 생성하는 경우는 많지 않습니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const observer = new InfiniteQueryObserver(queryClient, {
   queryKey: ['posts'],
@@ -1248,16 +1244,16 @@ const unsubscribe = observer.subscribe((result) => {
 })
 ```
 
-#### Options
+##### Options
 - `queryClient: QueryClient`
   - 관찰 할 무한 쿼리가 있는 `QueryClient` 인스턴스입니다.
 - `options: InfiniteQueryObserverOptions`
   - 무한 쿼리 데이터를 가져오기 위해 사용되는 옵션입니다. [`useInfiniteQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-2)과 동일한 값입니다.
 
-## `QueriesObserver`
+### `QueriesObserver`
 `QueriesObserver`는 쿼리들(queries)을 관찰합니다. `useQueries`의 내부적으로 `QueriesObserver` 인스턴스를 만들어 사용하는데, `useQueries` 훅을 사용하면 되기 때문에 직접 `QueriesObserver` 인스턴스를 생성하는 경우는 많지 않습니다.
 
-### 타입 정보
+#### 타입 정보
 ```tsx
 const observer = new QueriesObserver(queryClient, [
   { queryKey: ['post', 1], queryFn: fetchPost },
@@ -1270,13 +1266,13 @@ const unsubscribe = observer.subscribe((result) => {
 })
 ```
 
-#### Options
+##### Options
 - `queryClient: QueryClient`
   - 관찰 할 무한 쿼리가 있는 `QueryClient` 인스턴스입니다.
 - `options: QueryObserverOptions[]`
   - queries의 데이터를 가져오기 위해 사용되는 옵션입니다. [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)과 동일한 값의 배열입니다.
 
-## `QueryErrorResetBoundary`
+### `QueryErrorResetBoundary`
 `suspense`나 `throwOnError`를 사용하면 컴포넌트에서 에러가 발생할 때 에러 화면으로 전환할 수 있습니다. 전환된 에러 화면에서 쿼리의 에러를 초기화 하고 데이터를 다시 요청해야 할 때 사용하는 것이 `QueryErrorResetBoundary` 컴포넌트입니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
@@ -1302,7 +1298,7 @@ const App: React.FC = () => (
 )
 ```
 
-## `useQueryErrorResetBoundary`
+### `useQueryErrorResetBoundary`
 `useQueryErrorResetBoundary` 훅은 `QueryErrorResetBoundary` 컴포넌트를 훅 형태로 사용할 수 있게 합니다. 아래 코드와 같이 사용할 수 있습니다.
 
 ```tsx
@@ -1327,10 +1323,10 @@ const App: React.FC = () => {
 }
 ```
 
-## `focusManager`
+### `focusManager`
 `focusManager`은 React Query가 포커스 될 때 발생하는 이벤트 리스너를 변경하거나, 수동으로 포커스할 때 사용됩니다.
 
-### 타입 정보
+#### 타입 정보
 - `focusManager.setEventListener`
   - 이벤트 리스너를 변경할 때 사용되는 함수 입니다.
   - ```tsx
@@ -1377,10 +1373,10 @@ const App: React.FC = () => {
     const isFocused = focusManager.isFocused()
     ```
 
-## `onlineManager`
+### `onlineManager`
 `onlineManager`은 온라인 상태를 감지하는 이벤트 리스터를 변경하거나, 수동으로 온라인 상태로 변경할 때 사용됩니다.
 
-### 타입 정보
+#### 타입 정보
 - `onlineManager.setEventListener`
   - 이벤트 리스너를 변경할 때 사용되는 함수 입니다.
   - ```tsx
@@ -1419,26 +1415,6 @@ const App: React.FC = () => {
     const isOnline = onlineManager.isOnline()
     ```
 
-## `notifyManager`
-`notifyManager`는 `QueryCache`, `QueryObserver`가 `notifyManager`를 이용해 상태변경, 옵저버 추가 등의 이벤트를 서로에게 알려주는 역할을 합니다.
-
-### 타입 정보
-- `notifyManager.batch`
-- `notifyManager.batchCalls`
-- `notifyManager.schedule`
-- `notifyManager.setNotifyFunction`
-- `notifyManager.setBatchNotifyFunction`
-- `notifyManager.setScheduler`
-
-## 부록
-
-### Optimistic Updates
-Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데이트하고 업데이트 된 값을 가져오고 화면을 갱신하는 과정을 거쳐야 하는데 이 과정에서 사용자에게 업데이트 된 값을 노출하기까지 딜레이가 발생할 수 있습니다. 업데이트 된 값을 좀 더 빠르게 사용자에게 노출하여 사용자 경험을 향상 시킬 수 있는 방법 중 하나가 Optimistic Update, 낙관적 업데이트입니다.
-
-#### UI
-
-#### Cache
-
 ##### 참고
 - [https://tanstack.com/query/v5/docs/react/overview](https://tanstack.com/query/v5/docs/react/overview)
 - [https://tanstack.com/blog/announcing-tanstack-query-v5](https://tanstack.com/blog/announcing-tanstack-query-v5)
@@ -1450,3 +1426,5 @@ Mutation을 사용하여 데이터를 업데이트 할 때, 데이터를 업데�
 - [https://yiyb-blog.vercel.app/posts/error-boundary-with-react-query](https://yiyb-blog.vercel.app/posts/error-boundary-with-react-query)
 - [https://velog.io/@suyeon9456/React-Query-Error-Boundary-적용하기](https://velog.io/@suyeon9456/React-Query-Error-Boundary-적용하기)
 - [https://www.timegambit.com/blog/digging/react-query/01](https://www.timegambit.com/blog/digging/react-query/01)
+- [https://www.timegambit.com/blog/digging/react-query/02](https://www.timegambit.com/blog/digging/react-query/02)
+- [https://www.timegambit.com/blog/digging/react-query/03](https://www.timegambit.com/blog/digging/react-query/03)
