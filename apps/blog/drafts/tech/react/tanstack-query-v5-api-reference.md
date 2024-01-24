@@ -1420,6 +1420,15 @@ const App: React.FC = () => {
     ```
 
 ## `notifyManager`
+`notifyManager`는 `QueryCache`, `QueryObserver`가 `notifyManager`를 이용해 상태변경, 옵저버 추가 등의 이벤트를 서로에게 알려주는 역할을 합니다.
+
+### 타입 정보
+- `notifyManager.batch`
+- `notifyManager.batchCalls`
+- `notifyManager.schedule`
+- `notifyManager.setNotifyFunction`
+- `notifyManager.setBatchNotifyFunction`
+- `notifyManager.setScheduler`
 
 ## 부록
 
