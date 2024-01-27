@@ -47,16 +47,16 @@ const {
 ##### Options
 - `queryKey: unknown[]` (**필수**)
   - 다른 쿼리와 구분될 수 있는 유니크한 키입니다. 이 값은 쿼리의 해시 키로 사용됩니다.
-  - 이 값이 변경되면 자동 업데이트 되어 데이터를 가져옵니다.
+  - 이 값이 변경되면 자동으로 데이터를 가져옵니다.
 - `queryFn: (context: QueryFunctionContext) => Promise<TData>` (**필수**, 단 `defaultOptions`에서 정의된 경우 생략 가능)
   - 데이터를 요청하는데 사용되는 함수입니다.
-  - 파라미터로 `QueryFunctionContext`를 받습니다.
+  - 파라미터로 `context`를 받습니다.
     - `context.queryKey: QueryKey`
       - `queryKey`로 전달한 값과 동일한 값입니다.
     - `context.signal?: AbortSignal`
       - 네트워크 요청을 취소하기 위해 사용되는 [AbortSignal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) 객체입니다.
     - `context.meta: Recode<string, unknown> | undefined`
-      - 쿼리에 대한 추가 정보를 담을 수 있는 객체입니다.
+      - 쿼리에 대한 추가 정보가 담긴 객체입니다.
   - `Promise`를 반환해야 합니다. `undefined`를 반환해서는 안됩니다.
 - `enabled: boolean`
   - `false`으로 설정할 경우 쿼리는 자동으로 데이터를 가져오지 않습니다.
@@ -83,13 +83,14 @@ const {
 - `staleTime: number | Infinity` (default: `0`)
   - 가져온 데이터가 오래된 것으로 판단하는 ms 초입니다. 오래된 데이터로 판단되면 쿼리는 새로운 값을 가져옵니다.
   - `Infinity`로 설정한 경우 오래된 데이터로 판단하지 않아 최초 1회만 데이터를 가져오게 됩니다.
-- `gcTime: number | Infinity` (default: CSR은 `5 * 60 * 1000`, SSR은 `Infinity`)
+- `gcTime: number | Infinity` (default: CSR은 `5 * 60 * 1000`(5분), SSR은 `Infinity`)
   - 사용하지 않거나 비활성화된 캐시 데이터가 메모리에 남아 있는 ms 초입니다. 쿼리의 캐시가 사용되지 않거나 비활성화 되면 이 ms 초가 지난 후에 가비지 컬렉션(Garbage Cllection)됩니다.
   - `Infinity`로 설정할 경우 가비지 켈렉션되지 않아 캐시 데이터가 메모리에서 삭제되지 않습니다.
 - `queryKeyHashFn: (queryKey: QueryKey) => string`
   - `queryKey`를 사용하여 해시 키를 만들어 반환하는 함수입니다. 반환 된 값은 쿼리의 해시 키로 사용됩니다.
 - `refetchInterval: number | false | ((query: Query) => number | false | undefined)`
   - `number` 형태로 설정할 경우 설정한 ms 초 이후에 데이터를 다시 가져옵니다.
+  - `false`로 설정할 경우 즉시 데이터를 다시 가져옵니다.
   - 함수 형태로 설정할 경우 함수의 반환 값에 따라 데이터를 다시 가져옵니다.
 - `refetchIntervalInBackground: boolean`
   - `true`로 설정할 경우 `refetchInterval`를 사용하여 계속 데이터를 다시 가져오게 설정된 쿼리라면 브라우저의 탭이나 창이 백그라운드에 있는 동안에도 계속 데이터를 다시 가져옵니다.
@@ -104,8 +105,7 @@ const {
   - `always`로 설정할 경우 네트워크가 디시 연결되면 항상 데이터를 다시 가져옵니다.
   - 함수 형태로 설정할 경우 함수의 반환 값에 따라 데이터를 다시 가져옵니다.
 - `notifyOnChangeProps: string[] | "all" | (() => string[] | "all")`
-  - 쿼리의 반환 키 값을 배열로 전달합니. 배열로 전달 한 키의 반환 값이 변경될 경우 컴포넌트가 재렌더링됩니다.
-  - `['data', 'error']`로 설정할 경우 `data` 나 `error`의 값이 변경되면 컴포넌트가 재랜더링됩니다.
+  - 쿼리의 반환 키 값을 배열로 전달합니다. 배열로 전달 한 키의 반환 값이 변경될 경우 컴포넌트가 재렌더링됩니다. 예를 들어, `['data', 'error']`로 설정할 경우 `data` 나 `error`의 값이 변경되면 컴포넌트가 재랜더링됩니다.
   - `all`로 설정할 경우 쿼리의 반환 값중 하나라도 값이 변경될 경우 컴포넌트가 재렌더링됩니다.
   - 함수 형태로 설정할 경우 함수의 반환 값에 따라 컴포넌트가 재렌더링됩니다.
 - `select: (data: TData) => unknown`
@@ -126,12 +126,12 @@ const {
   - `false`로 설정할 경우 쿼리에서 에러가 발생해도 에러 바운더리로 에러를 전파하지 않습니다.
   - 함수로 설정할 경우 첫번째 파라미터로 에러 정보 두번째 파라미터로 쿼리 정보가 담기고 이 값들로 에러 바운더리로 보낼지(`true`) 말지(`false`)를 결정하여 반환해야 합니다.
 - `meta: Record<string, unknown>`
-  - 필요에 따라 쿼리 캐시에 저장할 수 있는 추가정보입니다. `queryFn`의 `QueryFunctionContext`에도 `meta` 정보가 담겨 있습니다.
+  - 필요에 따라 쿼리 캐시에 저장할 수 있는 추가정보입니다. 이 값이 `queryFn`의 `context`의 `meta`에 전달됩니다.
 - `queryClient?: QueryClient`
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 
 > ##### `placeholderData` 활용
-> React Query V4에서는 `keepPreviousData` 옵션으로 쿼리 키가 변경되어 새로운 데이터를 가져오는 동안에 이전 데이터를 유지하여 화면에 노출 시킬 수 있었습니다. V5부터는 `keepPreviousData` 옵션이 없어지고 아래 코드와 같이 `placeholderData` 옵션이 그 기능을 커버해 주게 되었습니다.
+> React Query V4에서는 `keepPreviousData` 옵션으로 쿼리 키가 변경되어 새로운 데이터를 가져오는 동안에 이전 데이터를 유지하여 화면에 노출 시킬 수 있었습니다. V5부터는 `keepPreviousData` 옵션이 없어지고 아래 코드와 같이 `placeholderData` 옵션이 그 기능을 대체합니다.
 >
 > ```tsx
 > import { keepPreviousData, useQuery } from '@tanstack/react-query';
@@ -181,10 +181,10 @@ const {
 
 
 ##### Returns
-- `status: String`
+- `status: 'pending' | 'error' | 'success'`
   - `pending`일 경우, 캐시된 데이터가 없고 쿼리 시도가 아직 완료되지 않은 상태입니다.
   - `error`일 경우, 데이터를 가져올 때 에러가 발생한 상태입니다.
-  - `success`일 경우,데이터를 성공적으로 가져오거나, `enabled`가 `false`이면서 `initialData`가 설정된 상태입니다.
+  - `success`일 경우, 데이터를 성공적으로 가져오거나, `enabled`가 `false`이면서 `initialData`가 설정된 상태입니다.
 - `isPending: boolean`
   - `status`가 `pending`일 경우 `true`입니다.
 - `isSuccess: boolean`
@@ -198,13 +198,13 @@ const {
 - `data: TData | undefined` (default: `undefined`)
   - 쿼리가 마지막으로 성공적으로 가져온 데이터입니다.
 - `dataUpdatedAt: number`
-  - 데이터를 성공적으로 가져온 경우, 즉 `status`가 `success`일 때 타임스탬프입니다.
+  - 데이터를 성공적으로 가져온 경우(`status`가 `success`일 때) 타임스탬프입니다.
 - `error: null | TError` (default: `null`)
   - 쿼리에 에러가 발생한 경우 에러 정보를 담는 객체입니다.
 - `errorUpdatedAt: number`
-  - 가장 최근에 에러가 발생했을 경우, 즉 `status`가 `error`일 때 타임스탬프입니다.
+  - 가장 최근에 에러가 발생했을 경우(`status`가 `error`일 때) 타임스탬프입니다.
 - `isStale: boolean`
-  - 캐시가 무효화 됬거나 `staleTime`이 지나 데이터가 오래된 것으로 판단될 때 `true`가 됩니다.
+  - 캐시가 무효화 됬거나 `staleTime`이 지나 데이터가 오래된 것으로 판단될 때 `true`입니다.
 - `isPlaceholderData: boolean`
   - `data` 값이 `placeholderData`일 경우 `true`입니다.
 - `isFetched: boolean`
@@ -212,7 +212,7 @@ const {
 - `isFetchedAfterMount: boolean`
   - 컴포넌트가 마운트 된 후 쿼리가 데이터를 가져온 경우 `true`입니다.
   - 이전에 캐시된 데이터를 사용하고 싶지 않을 때 사용될 수 있습니다.
-- `fetchStatus: FetchStatus`
+- `fetchStatus: 'fetching' | 'paused' | 'idle'`
   - `fetching`일 경우, `queryFn`이 실행 중이거나, 초기 `status`가 `pending` 상태이거나, 백그라운드에서 데이터를 가져오는 상태입니다.
   - `paused`일 경우, 쿼리가 데이터를 가져오려고 했지만 중지된 상태입니다. 대표적으로 네트워크가 끊겨 쿼리가 중지됬을 때 `paused` 상태입니다.
   - `idle`일 경우, `fetching` 상태도 `paused` 상태도 아닌 상태입니다.
@@ -266,7 +266,7 @@ const results = useQueries({
 
 ##### Options
 - `queries`
-  - `useQuery` 훅에서 사용했던 옵션 중 `queryClient`를 제외한 옵션을 사용할 쿼리 수만큼 배열에 담어 전달하면됩니다. 또한 렌더링 할 때마다 호출해야 하는 쿼리의 수가 달라 질 수 있기 때문에 `placeholderData` 함수는 이전 데이터를 파라미터로 전달하지 않습니다.
+  - [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options) 중 `queryClient`를 제외한 옵션을 사용할 쿼리 수만큼 배열에 담어 전달하면됩니다. 또한 렌더링 할 때마다 호출해야 하는 쿼리의 수가 달라 질 수 있기 때문에 `placeholderData` 함수는 이전 데이터를 파라미터로 전달하지 않습니다.
 - `queryClient?: QueryClient`
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 컨텍스트의 쿼리 클라이언트가 사용됩니다.
 - `combine?: (result: UseQueriesResults) => TCombinedResult`
@@ -311,7 +311,7 @@ const {
 ```
 
 ##### Options
-`useInfiniteQuery` 훅의 옵션은 `useQuery` 훅의 옵션에 아래 목록의 옵션이 추가됩니다.
+`useInfiniteQuery` 훅의 옵션은 [`useQuery` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options)에 아래 목록의 옵션이 추가됩니다.
 
 - `queryFn: (context: QueryFunctionContext) => Promise<TData>` (**필수**, 단 `defaultOptions`에서 정의된 경우 생략 가능)
   - `useQuery`에서 사용하는 `queryFn`와 동일하지만 `context.pageParam: TPageParam`와 `context.direction: 'forward' | 'backward'`를 추가로 사용할 수 있습니다.
