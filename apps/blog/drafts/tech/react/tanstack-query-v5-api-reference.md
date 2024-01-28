@@ -318,14 +318,14 @@ const {
     - `context.pageParam: TPageParam`
       - 현재 페이지(현재 `data`)를 가져오기 위해 사용된 파라미터입니다.
     - `context.direction: 'forward' | 'backward'`
-      - 현재 패이지를 가져온 방향입니다.
+      - 현재 패이지를 가져올 방향입니다.
 - `initialPageParam: TPageParam` (**필수**)
   - 첫 페이지를 가져오늘 때 사용할 파라미터입니다.
 - `getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) => TPageParam | undefined | null` (**필수**)
-  - 최근 페이지, 모든 페이지, 최근 파마리터, 모든 파라미터 이 데이터를 사용하여 다음 페이지를 가져오는데 사용되는 파라미터를 반환해야 하는 함수 입니다.
+  - 최근 페이지(`lastPage`), 모든 페이지(`allPages`), 최근 파마리터(`lastPageParam`), 모든 파라미터(`allPageParams`) 이 데이터를 사용하여 다음 페이지를 가져오는데 사용되는 파라미터를 반환해야 하는 함수 입니다.
   - `undefined`나 `null`을 반환할 경우 다음 페이지가 없는 것으로 판단합니다.
 - `getPreviousPageParam: (firstPage, allPages, firstPageParam, allPageParams) => TPageParam | undefined | null`
-  - 최근 페이지, 모든 페이지, 최근 파마리터, 모든 파라미터 이 데이터를 사용하여 이전 페이지를 가져오는데 사용되는 파라미터를 반환해야 하는 함수 입니다.
+  - 최근 페이지(`firstPage`), 모든 페이지(`allPages`), 첫 파마리터(`firstPageParam`), 모든 파라미터(`allPageParams`) 이 데이터를 사용하여 이전 페이지를 가져오는데 사용되는 파라미터를 반환해야 하는 함수 입니다.
   - `undefined`나 `null`을 반환할 경우 이전 페이지가 없는 것으로 판단합니다.
 - `maxPages: number | undefined` (default: `undefined`)
   - `data` 반환 값에 저장할 최대 페이지 수입니다.
@@ -349,7 +349,7 @@ const {
     - `true`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행중이던 요청을 취소하고 재요청합니다.
     - `false`로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.
 - `fetchPreviousPage: (options?: FetchPreviousPageOptions) => Promise<UseInfiniteQueryResult>`
-  - 이번 페이지 데이터를 가져오는 함수입니다.
+  - 이전 페이지 데이터를 가져오는 함수입니다.
   - `options.cancelRefetch: boolean` (default: `true`)
     - `fetchNextPage`의 `options.cancelRefetch: boolean`와 동일합니다.
 - `hasNextPage: boolean`
@@ -402,7 +402,7 @@ mutate(variables, {
 - `mutationFn: (variables: TVariables) => Promise<TData>` (**필수**, 단 `defaultOptions`에서 정의된 경우 생략 가능)
   - 비동기 작업을 수행하고 `Promise`를 반환하는 함수입니다.
   - `variables: TVariables`
-    - 반환 값인 `mutate` 함수를 호출할 때 함께 전달되는 파라미터가 전달됩니다.
+    - 반환 값인 `mutate` 함수를 호출할 때 전달되는 파라미터입니다.
 - `gcTime: number | Infinity`
   - `useQuery`의 `gcTime`과 동일합니다.
 - `mutationKey: unknown[]`
@@ -414,10 +414,10 @@ mutate(variables, {
   - `variables: TVariables`
     - `mutationFn` 함수의 파라미터와 동일한 값을 파라미터로 전달받습니다.
   - `onMutate` 함수는 [낙관적 업데이트(optimistic updates)](/tech/react/tanstack-query-v4/#쿼리-업데이트)에 사용하기 유용합니다. 반환 값은 `onError`와 `onSettled` 함수에 전달되어 mutation 실패 시 낙관적 업데이트를 롤백할 때 사용할 수 있습니다.
-    - 낙관적 업데이트란 mutation이 성공할 것이라 판단하여 수정된 결과를 응답 받기 전, 요청한 데이터를 사용하여 업데이트 하는 것을 이야기 합니다.
+    - 낙관적 업데이트란 mutation이 성공할 것이라 판단하여 수정된 결과를 응답 받기 전, 요청한 데이터를 사용하여 업데이트 하는 것을 말합니다.
 - `onSuccess: (data: TData, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutaionFn`이 성공할 경우 실행됩니다.
-  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`onSettled`, `mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수등)들이 진행되지 않습니다.
+  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`onSettled`, `mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수 등)들이 진행되지 않습니다.
   - `data: TData`
     - `mutationFn` 함수의 반환 값입니다.
   - `variables: TVariables`
@@ -426,7 +426,7 @@ mutate(variables, {
     - `onMutate` 함수의 반환 값입니다.
 - `onError: (err: TError, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutationFn`에서 에러가 발생할 경우 실행됩니다.
-  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`onSettled`, `mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수등)들이 진행되지 않습니다.
+  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`onSettled`, `mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수 등)들이 진행되지 않습니다.
   - `err: TError`
     - 발생한 에러 정보입니다.
   - `variables: TVariables`
@@ -435,11 +435,11 @@ mutate(variables, {
     - `onMutate` 함수의 반환 값입니다.
 - `onSettled: (data: TData, error: TError, variables: TVariables, context?: TContext) => Promise<unknown> | unknown`
   - `mutationFn`이 성공하거나 실패할 경우 실행됩니다.
-  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수등)들이 진행되지 않습니다.
+  - `Promise`를 반환한 경우 `resolved` 될 때까지 이후 작업(`mutate` 함수의 `onSuccess`와 `onError`, `onSettled` 콜백 함수 등)들이 진행되지 않습니다.
   - `data: TData`
     - `mutaionFn`이 성공할 경우 `mutaionFn`의 반환 값입니다.
   - `err: TError`
-    - `mutaionFn`이 실해할 경우 발생한 에러 정보입니다.
+    - `mutaionFn`이 실패할 경우 발생한 에러 정보입니다.
   - `variables: TVariables`
     - `mutate` 함수에 전달한 `variables` 값입니다.
   - `context?: TContext`
@@ -471,7 +471,7 @@ mutate(variables, {
   - `onError: (err: TError, variables: TVariables, context: TContext | undefined) => void`
     - Mutation이 실패 했을 때 호출되는 콜백함수입니다.
     - `err: TError`
-      - `mutaionFn`이 실해할 경우 발생한 에러 정보입니다.
+      - `mutaionFn`이 실패할 경우 발생한 에러 정보입니다.
     - `variables: TVariables`
       - `mutate` 함수에 전달한 `variables` 값입니다.
     - `context: TContext | undefined`
@@ -481,14 +481,14 @@ mutate(variables, {
     - `data: TData | undefined`
       - `mutaionFn`이 성공할 경우 `mutaionFn`의 반환 값입니다.
     - `error: TError | null`
-      - `mutaionFn`이 실해할 경우 발생한 에러 정보입니다.
+      - `mutaionFn`이 실패할 경우 발생한 에러 정보입니다.
     - `variables: TVariables`
       - `mutate` 함수에 전달한 `variables` 값입니다.
     - `context: TContext | undefined`
       - `onMutate` 함수의 반환 값입니다.
 - `mutateAsync: (variables: TVariables, { onSuccess, onSettled, onError }) => Promise<TData>`
   - `mutate` 함수와 동일한 기능을하는 async 함수 입니다.
-- `status: string`
+- `status: 'idle' | 'pending' | 'error' | 'success'`
   - `idle`인 경우, Mutation 함수가 실행되기 전 상태입니다.
   - `pending`인 경우, Mutation 함수가 실행중인 상태입니다.
   - `error` 인 경우, Mutation 함수에서 에러가 발생한 상태입니다.
@@ -552,7 +552,7 @@ const isFetchingPosts = useIsFetching({ queryKey: ['posts'] })
   - `filters.stale?: boolean`
     - `true`로 설정할 경우 오래된(stale) 쿼리 중에 찾습니다.
     - `false`로 설정할 경우 신선한(fresh) 쿼리 중에 찾습니다.
-  - `filters.fetchStatus?: FetchStatus`
+  - `filters.fetchStatus?: 'fetching' | 'paused' | 'idle'`
     - `fetching`으로 설정할 경우 가져오는 중인 쿼리 중에 찾습니다.
     - `paused`로 설정할 경우 데이터를 가져오려고 했지만 일시 중단된 쿼리 중에 찾습니다.
     - `idle`로 설정할 경우 데이터를 가져온 적이 없는 쿼리 중에 찾습니다.
@@ -594,7 +594,7 @@ const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
   - `filters.exact?: boolean`
     - `true`로 설정할 경우 정확히 일치하는 Mutation을 찾습니다.
     - `false`로 설정할 경우 설정한 `filters.mutationKey`가 포함되는 Mutation을 찾습니다.
-  - `filters.status?: MutationStatus`
+  - `filters.status?: 'idle' | 'pending' | 'error' | 'success'`
     - `idle`인 경우 실행되기 전인 Mutation 중에 찾습니다.
     - `pending`인 경우 실행 중인 Mutation 중에 찾습니다.
     - `error` 인 경우 에러가 발생한 Mutation 중에 찾습니다.
@@ -619,7 +619,7 @@ const isMutatingPosts = useIsMutating({ mutationKey: ['posts'] })
 </div>
 
 ### `QueryCache`
-`QueryCache`는 쿼리를 저장하는 저장소입니다. 쿼리에 포함된 데이터, 메타 정보 쿼리의 상태가 저장됩니다. 보통 아래 코드와 같이 QueryClient에 정의하고, `useQueryClient`의 `getQueryCache`를 통해 가져와 사용합니다.
+`QueryCache`는 쿼리를 저장하는 저장소입니다. 쿼리에 포함된 데이터, 메타 정보, 쿼리의 상태가 저장됩니다. 보통 아래 코드와 같이 QueryClient에 정의하고, `useQueryClient`의 `getQueryCache`를 통해 가져와 사용합니다.
 
 ```tsx
 const queryClient = new QueryClient({
@@ -703,7 +703,7 @@ const queryCache = new QueryCache({
     - `filters.stale?: boolean`
       - `true`로 설정할 경우 오래된(stale) 쿼리 중에 찾습니다.
       - `false`로 설정할 경우 신선한(fresh) 쿼리 중에 찾습니다.
-    - `filters.fetchStatus?: FetchStatus`
+    - `filters.fetchStatus?: 'fetching | 'paused' | 'idle'`
       - `fetching`으로 설정할 경우 가져오는 중인 쿼리 중에 찾습니다.
       - `paused`로 설정할 경우 데이터를 가져오려고 했지만 일시 중단된 쿼리 중에 찾습니다.
       - `idle`로 설정할 경우 데이터를 가져온 적이 없는 쿼리 중에 찾습니다.
@@ -779,7 +779,7 @@ const mutationCache = new MutationCache({
   - `error: unknown`
     - 발생한 에러 정보가 담긴 객체입니다.
   - `variables: unknown`
-    - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+    - `mutate`(또는 `mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
   - `context: unknown`
     - `useMutation` 훅의 옵션 중 `onMutate` 함수의 반환 값입니다.
   - `mutation: Mutation`
@@ -789,7 +789,7 @@ const mutationCache = new MutationCache({
   - `data: unknown`
     - `mutationFn` 함수의 반환 값입니다.
   - `variables: unknown`
-    - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+    - `mutate`(또는 `mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
   - `context: unknown`
     - `useMutation` 훅의 옵션 중 `onMutate` 함수의 반환 값입니다.
   - `mutation: Mutation`
@@ -801,7 +801,7 @@ const mutationCache = new MutationCache({
   - `error: unknown | null`
     - Mutation이 실패한 경우 발생한 에러 정보가 담긴 객체입니다.
   - `variables: unknown`
-    - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+    - `mutate`(또는 `mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
   - `context: unknown`
     - `useMutation` 훅의 옵션 중 `onMutate` 함수의 반환 값입니다.
   - `mutation: Mutation`
@@ -809,7 +809,7 @@ const mutationCache = new MutationCache({
 - `onMutate?: (variables: unknown, mutation: Mutation) => Promise<unknown> | unknown`
   - Mutation이 실행되기 전에 호출되는 콜백합수입니다.
   - `variables: unknown`
-    - `mutate`(`mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
+    - `mutate`(또는 `mutateAsync`) 함수의 `variables` 파라미터로 전달한 값입니다.
   - `mutation: Mutation`
     - 실행한 Mutation 객체입니다.
 
@@ -843,7 +843,7 @@ const mutationCache = new MutationCache({
 </div>
 
 ### `useMutationState`
-`useMutationState` 훅은 `MutationCache`에 있는 Mutation에 접근할 수 있는 훅입니다. `filter`을 사용하여 원하는 Mutation을 찾을 수 있고 `select`를 사용하여 필요한 Mutation의 상태를 알 수 있습니다.
+`useMutationState` 훅은 `MutationCache`에 있는 Mutation에 접근할 수 있는 훅입니다. `filter`을 사용하여 원하는 Mutation을 찾을 수 있고 `select`를 사용하여 필요한 Mutation의 값을 선택해 가져올 수 있습니다.
 
 #### 타입 정보
 ```tsx
@@ -874,7 +874,7 @@ const data = useMutationState({
     - `filters.exact?: boolean`
       - `true`로 설정할 경우 정확히 일치하는 Mutation을 찾습니다.
       - `false`로 설정할 경우 설정한 `filters.mutationKey`가 포함되는 Mutation을 찾습니다.
-    - `filters.status?: MutationStatus`
+    - `filters.status?: 'idle' | 'pending' | 'error' | 'success'`
       - `idle`인 경우 실행되기 전인 Mutation 중에 찾습니다.
       - `pending`인 경우 실행 중인 Mutation 중에 찾습니다.
       - `error` 인 경우 에러가 발생한 Mutation 중에 찾습니다.
@@ -996,7 +996,7 @@ const result = useSuspenseQueries(options)
 ### `QueryClient`
 `QueryClient`는 캐시와 상호 작용할 수 있는 기능을 제공합니다. React Query를 사용하기 위해서 루트 위치에서 `QueryClient` 인스턴스를 생성하여 `QueryClientProvider` 컴포넌트의 prop으로 전달해야 합니다.
 
-하위 컴포넌트에서는 `useQueryClient` 훅을 사용하여 `QueryClient` 인스턴스를 접근할 수 있고 `QueryClient` 인스턴스를 통해 대부분의 React Query 기능을 사용할 수 있습니다.
+하위 컴포넌트에서는 `useQueryClient` 훅을 사용하여 `QueryClient` 인스턴스를 접근할 수 있고 `QueryClient` 인스턴스를 통해 다양한 React Query 기능을 사용할 수 있습니다.
 
 #### 타입 정보
 ```tsx
@@ -1069,13 +1069,13 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
     - `dataUpdateCount: number`
       - 쿼리가 데이터를 업데이트 한 횟수 입니다.
     - `dataUpdatedAt: number`
-      - 데이터를 성공적으로 가져온 경우, 즉 `status`가 `success`일 때 타임스탬프입니다.
+      - 데이터를 성공적으로 가져왔을 때(`status`가 `success`) 타임스탬프입니다.
     - `error: TError | null`
       - 쿼리에 에러가 발생한 경우 에러 정보를 담는 객체입니다.
     - `errorUpdateCount: number`
       - 쿼리가 데이터 가져오기를 실패한 총 횟수입니다.
     - `errorUpdatedAt: number`
-      - 가장 최근에 에러가 발생했을 경우, 즉 `status`가 `error`일 때 타임스탬프입니다.
+      - 가장 최근에 에러가 발생했을 때(`status`가 `error`) 타임스탬프입니다.
     - `fetchFailureCount: number`
       - 쿼리가 데이터 가져오기를 실패한 횟수입니다. 쿼리가 성공적으로 데이터를 가져온 경우 `0`으로 초기화 됩니다.
     - `fetchFailureReason: TError | null`
@@ -1084,11 +1084,11 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
       - 쿼리에서 사용한 메타 정보입니다.
     - `isInvalidated: boolean`
       - 유효한 쿼리인지 나타내는 플래그입니다.
-    - `status: QueryStatus`
+    - `status: 'pending' | 'error' | 'success'`
       - `pending`일 경우, 캐시된 데이터가 없고 쿼리 시도가 아직 완료되지 않은 상태입니다.
       - `error`일 경우, 데이터를 가져올 때 에러가 발생한 상태입니다.
       - `success`일 경우,데이터를 성공적으로 가져오거나, `enabled`가 `false`이면서 `initialData`가 설정된 상태입니다.
-    - `fetchStatus: FetchStatus`
+    - `fetchStatus: 'fetching' | 'paused' | 'idle'`
       - `fetching`일 경우, `queryFn`이 실행 중이거나, 초기 `status`가 `pending` 상태이거나, 백그라운드에서 데이터를 가져오는 상태입니다.
       - `paused`일 경우, 쿼리가 데이터를 가져오려고 했지만 중지된 상태입니다. 대표적으로 네트워크가 끊겨 쿼리가 중지됬을 때 `paused` 상태입니다.
       - `idle`일 경우, `fetching` 상태도 `paused` 상태도 아닌 상태입니다.
@@ -1123,8 +1123,8 @@ await queryClient.prefetchQuery({ queryKey: ['posts'], queryFn: fetchPosts })
   - `filters`에 해당하는 쿼리의 캐시를 삭제하는 함수입니다.
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
 - `resetQueries: (filters?: QueryFilters, options?: ResetOptions) => Promise<void>`
-  - `filters`에 해당하는 쿼리를 초기 상태로 재성정 하는 비동기 함수입니다.
-  - `invalidateQueries` 함수와 달리 쿼리는 데이터를 preload 한 상태가 됩니다. `initialData`가 정의된 쿼리라면 해당 데이터로 초기화 되고, 활성화된 쿼리는 데이터를 다시 가져옵니다.
+  - `filters`에 해당하는 쿼리를 초기 상태로 재설정 하는 비동기 함수입니다.
+  - `invalidateQueries` 함수와 달리 쿼리는 데이터를 미리 가져온 상태가 됩니다. `initialData`가 정의된 쿼리라면 해당 데이터로 초기화 되고, 활성화된 쿼리는 데이터를 다시 가져옵니다.
   - `filters` 정보는 [`useIsFetching` 훅의 옵션](/tech/react/tanstack-query-v5-api-reference/#options-4)을 참고 바랍니다.
   - `options` 정보는 `invalidateQueries` 함수의 `options`와 동일합니다.
 - `isFetching: (filters?: QueryFilters) => number`
