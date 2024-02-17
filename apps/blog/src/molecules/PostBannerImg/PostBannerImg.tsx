@@ -99,6 +99,12 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
         alt="포스트 배너"
       />
     ),
+    'etc/forward_proxy_reverse_proxy.png': (
+      <StaticImage
+        src="../../assets/images/etc/forward_proxy_reverse_proxy.png"
+        alt="포스트 배너"
+      />
+    ),
   };
   return (
     imgComponents[img as keyof typeof imgComponents] ?? (

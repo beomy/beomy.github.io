@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[ETC] Forward Proxy와 Reverse Proxy'
-featured-img: javascript/js.png
+featured-img: etc/forward_proxy_reverse_proxy.png
 category: [tech, etc]
 ---
 
@@ -22,11 +22,10 @@ Proxy는 사전적 의미로 대리, 대리인이라는 의미를 가지고 있�
 - 웹 서버는 응답(웹 사이트 데이터)을 프록시 서버로 되보냅니다.
 - 프록시 서버가 사용자에게 응답을 전달합니다.
 
-- Proxy 유무에 따른 그림 비교하며 Proxy의 간략한 역할 설명
-- 위치에 따라, 어느 방향으로 데이터를 제공하느냐에 따라 Forward/Reverse 구분
+프록시 서버가 대신 통신을 하게 되면 통신을 요청/응답하는 대상을 감출 수 있어 보안을 강화할 수 있고, 응답 결과를 캐싱하게 되면 더 나은 속도를 제공할 수 있게 됩니다. 프록시의 위치에 따라 Forward Proxy, Reverse Proxy로 구분할 수 있습니다.
 
 ## Forward Proxy
-- 프록시, 프록시 서버, 웹 프록시, 정방향 프록시라고도 함
+Forward Proxy는 프록시, 프록시 서버, 웹 프록시, 정방향 프록시라고도 불립니다.
 
 ### 개념
 
