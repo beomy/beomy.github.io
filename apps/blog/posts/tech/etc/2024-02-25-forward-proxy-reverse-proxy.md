@@ -3,6 +3,7 @@ layout: post
 title: '[ETC] Forward Proxy와 Reverse Proxy'
 featured-img: etc/forward_proxy_reverse_proxy.png
 category: [tech, etc]
+summary: Proxy는 사전적 의미로 대리, 대리인이라는 의미를 가지고 있습니다. 프록시 서버는 사전적 의미 그대로 아래 그림과 같이 대리로 통신을 하는 서버입니다.
 ---
 
 > ##### TL;DR
