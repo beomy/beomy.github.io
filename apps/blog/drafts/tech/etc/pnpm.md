@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[ETC] PNPM'
-featured-img: etc/yarn_berry.png
+featured-img: etc/pnpm.png
 category: [tech, etc]
 summary:
 ---
