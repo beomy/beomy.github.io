@@ -16,9 +16,9 @@ PNPM이 어떻게 `node_modules`를 구성하는지 이해하면 PNPM이 왜 고
 ### 디스크 공간 절약
 
 > ##### Hard Link와 Symbolic(Soft) Link, inode
-> - Symbolic(Soft) Link
-> - Hard Link
-> - inode
+> - Symbolic(Soft) Link:
+> - Hard Link:
+> - inode:
 
 ### 설치 속도 향상
 
