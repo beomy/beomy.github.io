@@ -64,8 +64,8 @@ function Stopwatch() {
 
 `intervalRef.current = 1`와 같이 `current`의 값은 변경 가능하지만 값이 변경되어도 리렌더링은 발생하지 않습니다. 화면을 그리는데 사용되지 않는 값을 `useRef`로 생성하기 좋습니다.
 
-#### `ref`로 DOM 조작하기
-대부분의 경우 DOM을 조작하기 위하여 `useRef`를 사용합니다. 아래 코드와 같이 `ref`로 DOM을 조작할 수 있습니다.
+#### DOM 조작하기
+대부분의 경우 `useRef`는 DOM을 조작하기 위해 사용됩니다. 아래 코드와 같이 `useRef`로 DOM을 조작할 수 있습니다.
 
 ```tsx
 import { useRef } from 'react';
