@@ -36,7 +36,7 @@ const ref = useRef(initialValue)
 `useRef`의 사용법을 살펴보도록 하겠습니다.
 
 #### 값 참조하기
-아래 코드와 같이 작성하면 `useRef`가 값을 참조할 수 있습니다.
+렌더링에 사용하지 않는 값은 아래 코드 같이 `useRef`가 참조하여 사용할 수 있습니다.
 
 ```tsx
 import { useRef } from 'react';
