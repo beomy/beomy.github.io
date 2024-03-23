@@ -82,6 +82,15 @@ function MyComponent() {
 ```
 
 #### 값 재생성 하지 않기
+```tsx
+function Video() {
+  const playerRef = useRef(null);
+  if (playerRef.current === null) {
+    playerRef.current = new VideoPlayer();
+  }
+  // ...
+}
+```
 
 ## `forwardRef`
 
