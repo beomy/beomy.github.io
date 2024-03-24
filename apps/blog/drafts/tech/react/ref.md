@@ -81,7 +81,20 @@ function MyComponent() {
 }
 ```
 
+`useRef(null)`로 `null`을 참조하는 `ref` 객체를 생성합니다. `<input ref={inputRef} />`와 같이 JSX의 `ref` 속성에 `null`을 참조하고 있던 `ref` 객체를 전달하면 `current`에 DOM이 담기게 되어 `inputRef.current.focus();`와 같이 DOM을 조작할 수 있게 됩니다. 참조하고 있던 DOM이 화면에 제거 되면 `current`가 `null`로 다시 설정됩니다.
+
 #### 값 재생성 하지 않기
+`useRef`에 초기값을 설정하면 첫 렌더링 시에 이 초기값을 저장하고 리렌더링이 발생하더라도 초기값을 다시 저장하지 않고 첫 리렌더링시 반환했던 동일한 객체를 반환합니다. 즉 아래 코드와 같이 작성하게 된다면, 리렌더링이 발생할 때마다 `VideoPlayer` 인스턴스가 생성되지만 이 값은 무시됩니다.
+
+```tsx
+function Video() {
+  const playerRef = useRef(new VideoPlayer());
+  // ...
+}
+```
+
+아래 코드와 같이 작성하면 이런 낭비를 줄일 수 있게 됩니다.
+
 ```tsx
 function Video() {
   const playerRef = useRef(null);
