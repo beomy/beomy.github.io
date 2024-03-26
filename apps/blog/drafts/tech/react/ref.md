@@ -106,6 +106,7 @@ function Video() {
 ```
 
 ## `forwardRef`
+`forwardRef`는 컴포넌트의 `ref` 속성을 통해 부모 컴포넌트에게 자식 컴포넌트의 DOM을 노출 시키기 위해 사용됩니다.
 
 ### 파라미터
 
