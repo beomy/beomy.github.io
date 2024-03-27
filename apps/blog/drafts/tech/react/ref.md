@@ -116,6 +116,12 @@ function Video() {
 
 ## `useImperativeHandle`
 
+### 파라미터
+
+### 반환값
+
+### 사용법
+
 ##### 참고
 - [https://react.dev/reference/react/useRef](https://react.dev/reference/react/useRef)
 - [https://react.dev/reference/react/forwardRef](https://react.dev/reference/react/forwardRef)
