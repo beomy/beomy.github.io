@@ -113,10 +113,58 @@ const SomeComponent = forwardRef(render)
 ```
 
 ### 파라미터
+- `render: (props, ref) => JSX`
+  - 부모로부터 받은 `props`와 `ref`를 파라미터로 전달받아 화면에 그릴 컴포넌트를 반환하는 렌더링 함수입니다.
 
 ### 반환값
+- `SomeComponent`
+  - `forwardRef` 함수는 화면에 그릴 컴포넌트를 반환합니다.
 
 ### 사용법
+`forwardRef`의 사용법을 살펴보도록 하겠습니다.
+
+#### 부모 컴포넌트에 DOM 노출하기
+기본적으로 컴포넌트의 DOM은 부모 컴포넌트에게 노출되지 않습니다. 부모 컴포넌트에서 자식 컴포넌트의 DOM에 포커스를 줘야 할 때 `forwardRef`을 사용하여 부모 컴포넌트에게 DOM을 노출할 수 있습니다.
+
+```tsx
+import { forwardRef } from 'react';
+
+const MyInput = forwardRef(function MyInput(props, ref) {
+  const { label, ...otherProps } = props;
+  return (
+    <label>
+      {label}
+      <input {...otherProps} ref={ref} />
+    </label>
+  );
+});
+
+```
+
+```tsx
+function Form() {
+  const ref = useRef(null);
+
+  function handleClick() {
+    ref.current.focus();
+  }
+
+  return (
+    <form>
+      <MyInput label="Enter your name:" ref={ref} />
+      <button type="button" onClick={handleClick}>
+        Edit
+      </button>
+    </form>
+  );
+}
+```
+
+`Form` 컴포넌트는 `MyInput` 컴포넌트의 `ref` 속성의 `useRef`를 사용하여 참조 값을 전달합니다. `MyInput` 컴포넌트는 전달 받은 참조 값을 `input` 태그의 `ref`에 전달합니다. 이런 과정을 통해 부모 컴포넌트인 `Form` 컴포넌트는 자식 컴포넌트인 `MyInput` 컴포넌트의 `input` 태그에 포커스를 줄 수 있게 됩니다.
+
+#### 중첩된 컴포넌트에 DOM 노출하기
+
+#### DOM 대신 핸들링 함수 노출하기
 
 ## `useImperativeHandle`
 
