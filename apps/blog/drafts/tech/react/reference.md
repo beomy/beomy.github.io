@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[React] 알고 쓰자 React - Ref'
+title: '[React] Reference'
 featured-img: react/react.png
 category: [tech, react]
 summary: React에서 DOM에 접근하기 위해 사용되는 것이 ref입니다. ref는 <div ref={divRef}>...</div>와 같이 속성처럼 사용되지만 속성과는 다른 의미를 가지고 있습니다.
@@ -113,7 +113,7 @@ const SomeComponent = forwardRef(render)
 ```
 
 ### 파라미터
-- `render: (props, ref) => JSX`
+- `render: (props, ref) => Component`
   - 부모로부터 받은 `props`와 `ref`를 파라미터로 전달받아 화면에 그릴 컴포넌트를 반환하는 렌더링 함수입니다.
 
 ### 반환값
@@ -138,7 +138,6 @@ const MyInput = forwardRef(function MyInput(props, ref) {
     </label>
   );
 });
-
 ```
 
 ```tsx
@@ -162,15 +161,99 @@ function Form() {
 
 `Form` 컴포넌트는 `MyInput` 컴포넌트의 `ref` 속성의 `useRef`를 사용하여 참조 값을 전달합니다. `MyInput` 컴포넌트는 전달 받은 참조 값을 `input` 태그의 `ref`에 전달합니다. 이런 과정을 통해 부모 컴포넌트인 `Form` 컴포넌트는 자식 컴포넌트인 `MyInput` 컴포넌트의 `input` 태그에 포커스를 줄 수 있게 됩니다.
 
-#### 중첩된 컴포넌트에 DOM 노출하기
+#### 중첩된 컴포넌트의 DOM 노출하기
+아래 코드와 같이 작성하여 깊이가 있는 컴포넌트 구조에서 상위의 상위 컴포넌트까지 DOM을 노출 시킬 수 있습니다.
+
+```tsx
+import { forwardRef } from 'react';
+
+const MyInput = forwardRef(function MyInput(props, ref) {
+  const { label, ...otherProps } = props;
+  return (
+    <label>
+      {label}
+      <input {...otherProps} ref={ref} />
+    </label>
+  );
+});
+```
+
+```tsx
+const FormField = forwardRef(function FormField(props, ref) {
+  // ...
+  return (
+    <>
+      <MyInput ref={ref} />
+      ...
+    </>
+  );
+});
+```
+
+```tsx
+function Form() {
+  const ref = useRef(null);
+
+  function handleClick() {
+    ref.current.focus();
+  }
+
+  return (
+    <form>
+      <FormField label="Enter your name:" ref={ref} />
+      <button type="button" onClick={handleClick}>
+        Edit
+      </button>
+    </form>
+  );
+}
+```
+
+`Form` 컴포넌트는 `useRef`로 참조 값을 만들고, `FormField` 컴포넌트의 `ref` 속성으로 전달합니다. `FormField` 컴포넌트는 전달 받은 참조 값을 `MyInput` 컴포넌트의 `ref` 속성으로 전달하고, `MyInput` 속성은 `input` 태그의 `ref` 속성에 전달하여 조부모 컴포넌트인 `Form`는 `MyInput` 컴포넌트의 `input` 태그에 포커스를 줄 수 있게 됩니다.
 
 #### DOM 대신 핸들링 함수 노출하기
+DOM 전체를 상위 컴포넌트에 노출시키는 것이 꺼려진다면, `useImperativeHandle` 훅을 사용하여 필요한 메소드만 상위 컴포넌트 노출 시킬 수 있습니다. 그러기 위해서는 아래 코드와 같이 별도의 참조 값을 생성해야 합니다.
+
+```tsx
+import { forwardRef, useRef, useImperativeHandle } from 'react';
+
+const MyInput = forwardRef(function MyInput(props, ref) {
+  const inputRef = useRef(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus() {
+        inputRef.current.focus();
+      },
+      scrollIntoView() {
+        inputRef.current.scrollIntoView();
+      },
+    };
+  }, []);
+
+  return <input {...props} ref={inputRef} />;
+});
+```
+
+`<MyInput ref={ref} />`를 사용하면 `ref` 참조 값은 DOM이 아닌 `focus` 함수와 `scrollIntoView` 함수를 포함하는 `{ focus, scrollIntoView }` 객체가 됩니다.
 
 ## `useImperativeHandle`
+`useImperativeHandle` 훅은 `ref`로 노출할 대상을 커스텀할 때 사용되는 훅입니다.
+
+```tsx
+useImperativeHandle(ref, createHandle, dependencies?)
+```
 
 ### 파라미터
+- `ref`
+  - `forwardRef` 함수의 두번째 파라미터인 `ref`가 전달되어야 합니다.
+- `createHandle`
+  - 상위 컴포넌트에게 노출하려는 값을 반환하는 함수입니다.
+  - 일반적으로 상위 컴포넌트에게 노출하려는 메서드를 포함하는 객체를 반환합니다.
+- `dependencies?`
 
 ### 반환값
+`useImperativeHandle` 훅은 `undefined`를 반환합니다.
 
 ### 사용법
 
