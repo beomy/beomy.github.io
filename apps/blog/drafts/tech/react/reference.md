@@ -7,9 +7,9 @@ summary: React에서 DOM에 접근하기 위해 사용되는 것이 ref입니다
 ---
 
 > ##### TL;DR
-> - `useRef`
-> - `forwardRef`
-> - `useImperativeHandle`
+> - `useRef`: 렌더링에 영향 받지 않는 변수를 만들고 싶을 때 사용하는 훅입니다. 대부분의 경우 `useRef` 훅의 반환 값을 `<input ref="..." />`의 `ref` 속성에 전달하여 DOM을 접근하기 위해 사용됩니다.
+> - `forwardRef`: 부모 컴포넌트에서 자식 컴포넌트의 `ref` 속성을 통해 자식 컴포넌트의 DOM을 접근하기 위해 사용되는 함수입니다.
+> - `useImperativeHandle`: 부모 컴포넌트에서 자식 컴포넌트의 `ref` 속성을 통해 노출되는 값을 제어하기 위해 사용되는 훅입니다.
 
 React에서 DOM에 접근하기 위해 사용되는 것이 `ref`입니다. `ref`는 `<div ref={divRef}>...</div>`와 같이 속성처럼 사용되지만 속성과는 다른 의미를 가지고 있습니다.
 
@@ -251,11 +251,67 @@ useImperativeHandle(ref, createHandle, dependencies?)
   - 상위 컴포넌트에게 노출하려는 값을 반환하는 함수입니다.
   - 일반적으로 상위 컴포넌트에게 노출하려는 메서드를 포함하는 객체를 반환합니다.
 - `dependencies?`
+  - `useMomo`, `useEffect` 등의 훅의 두번째 파라미터와 동일하게 종속성을 가진 변수들을 나열하는 파라미터입니다.
+  - 종속성을 가진 값들을 배열의 형태로 전달해야 하며, 종속성 배열을 하나라도 변경이 되면 `createHandle` 함수가 다시 실행되어, 상위 컴포넌트에 노출되는 값이 변경됩니다.
 
 ### 반환값
 `useImperativeHandle` 훅은 `undefined`를 반환합니다.
 
 ### 사용법
+`useImperativeHandle` 훅의 사용법을 살펴보도록 하겠습니다.
+
+#### 부모 컴포넌트에게 커스텀 함수 노출하기
+`useImperativeHandle` 훅을 사용하면 부모 컴포넌트에서 `ref`로 DOM이 아닌 커스텀 함수를 노출할 수 있습니다.
+
+```tsx
+import { forwardRef, useRef, useImperativeHandle } from 'react';
+
+const MyInput = forwardRef(function MyInput(props, ref) {
+  const inputRef = useRef(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus() {
+        inputRef.current.focus();
+      },
+      scrollIntoView() {
+        inputRef.current.scrollIntoView();
+      },
+      scrollIntoViewDelay(ms) {
+        setTimeout(() => inputRef.current.scrollIntoView(), ms);
+      },
+    };
+  }, []);
+
+  return <input {...props} ref={inputRef} />;
+});
+```
+
+위 코드의 `scrollIntoViewDelay`와 같이 부모 컴포넌트에 노출할 함수 이름이 DOM 메소드와 동일하지 않아도 됩니다.
+
+#### 사용한 `ref` 부모 컴포넌트에 노출하기
+컴포넌트에서 `ref`로 DOM을 가져와 사용하면서 부모 컴포넌트에 사용한 DOM을 전달해야 할 때도 `useImperativeHandle` 훅을 응용하여 사용할 수 있습니다.
+
+```tsx
+import { forwardRef, useRef, useImperativeHandle } from 'react';
+
+const MyInput = forwardRef(function MyInput({ onChange, ...props }, ref) {
+  const inputRef = useRef(null);
+
+  useImperativeHandle(ref, () => inputRef.current, []);
+
+  const handleChange = (e) => {
+    onChange(e)
+    if (e.target.value.length >= 10) {
+      inputRef.current.blur()
+    }
+  }
+
+  return <input {...props} ref={inputRef} onChange={handleChange} />;
+});
+```
+
+위의 코드는 `input`에 10글자를 입력하면 `blur` 되는 컴포넌트입니다. 컴포넌트 내부에서 `input` DOM을 사용하면서 부모 컴포넌트에서 `ref`로 `input` DOM에 접근할 수 있도록 `useImperativeHandle` 훅을 사용했습니다.
 
 ##### 참고
 - [https://react.dev/reference/react/useRef](https://react.dev/reference/react/useRef)
