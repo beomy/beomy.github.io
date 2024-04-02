@@ -6,7 +6,7 @@ category: [tech, etc]
 summary:
 ---
 
-패키지 매니저의 3대장으로 NPM, Yarn, PNPM이 있습니다. 그중 PNPM은 Performant Node Package Manager의 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다.
+패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다.
 
 - Turborepo에서는 PNPM을 권장
 
