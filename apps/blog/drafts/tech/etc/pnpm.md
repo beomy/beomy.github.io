@@ -23,7 +23,7 @@ PNPM이 어떻게 `node_modules`를 구성하는지 이해하면 PNPM이 왜 고
 ### 설치 속도 향상
 
 ### 플랫 하지 않은 `node_modules`
-- 유령 종속성 해결?
+- 유령 종속성 해결
 
 ## PNPM CLI
 - 패키지 설치 & 삭제
