@@ -9,7 +9,16 @@ summary:
 패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다. [Turborepo는 PNPM 사용을 권장](https://turbo.build/repo/docs/getting-started/create-new)하는 등 다른 서비스에서도 PNPM의 성능을 인정하고 있습니다.
 
 ## PNPM는 정말 빠른가?
+개발자에서 좋은 성능을 만들어 준다는 것은 매우 매혹적인 이야기입니다.
+
 아래 표는 가장 유명한 3개의 패키지인 [NPM, Yarn, PNPM을 비교](https://pnpm.io/benchmarks)한 표입니다.
+
+|   행동    |                     조건                     |                           설명                           |  npm   | pnpm | Yarn | Yarn Pnp |
+|:-------:|:------------------------------------------:|:------------------------------------------------------:|:------:|:----:|:----:|:--------:|
+| install | Cache: X<br />lockfile: X<br />node_modules: X | lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는데 걸리는 시간 |  30.3s | 8.1s | 7.3s |   3.6s   |
+| install | Cache: X<br />lockfile: X<br />node_modules: X | lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는데 걸리는 시간 |  30.3s | 8.1s | 7.3s |   3.6s   |
+| install | Cache: X<br />lockfile: X<br />node_modules: X | lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는데 걸리는 시간 |  30.3s | 8.1s | 7.3s |   3.6s   |
+| install | Cache: X<br />lockfile: X<br />node_modules: X | lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는데 걸리는 시간 |  30.3s | 8.1s | 7.3s |   3.6s   |
 
 ## PNPM 컨샙
 PNPM이 어떻게 `node_modules`를 구성하는지 이해하면 PNPM이 왜 고성능이라고 자랑하는지 이해할 수 있습니다.
