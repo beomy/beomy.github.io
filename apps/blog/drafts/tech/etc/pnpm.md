@@ -16,9 +16,6 @@ summary:
 |   행동    |                     조건                     |                           설명                           |  npm   | pnpm | Yarn | Yarn Pnp |
 |:-------:|:------------------------------------------:|:------------------------------------------------------:|:------:|:----:|:----:|:--------:|
 | install | Cache: X<br />lockfile: X<br />node_modules: X | lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는데 걸리는 시간 |  30.3s | 8.1s | 7.3s |   3.6s   |
-| install | Cache: X<br />lockfile: X<br />node_modules: X | lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는데 걸리는 시간 |  30.3s | 8.1s | 7.3s |   3.6s   |
-| install | Cache: X<br />lockfile: X<br />node_modules: X | lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는데 걸리는 시간 |  30.3s | 8.1s | 7.3s |   3.6s   |
-| install | Cache: X<br />lockfile: X<br />node_modules: X | lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는데 걸리는 시간 |  30.3s | 8.1s | 7.3s |   3.6s   |
 
 ## PNPM 컨샙
 PNPM이 어떻게 `node_modules`를 구성하는지 이해하면 PNPM이 왜 고성능이라고 자랑하는지 이해할 수 있습니다.
