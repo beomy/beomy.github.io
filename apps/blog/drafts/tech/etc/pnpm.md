@@ -69,7 +69,9 @@ Yarn에서 이야기 하는 성능은 아래와 같습니다.
 Yarn의 공식문서에서는 `Recurrent calls`를 제외하고 PNPM이 가장 빠른 것을 확인할 수 있습니다. PNPM, Yarn 공식 문서를 종합해 보면 대부분의 경우 PNPM이 더 나은 성능을 보이고 있습니다.
 
 ## PNPM 컨샙
-PNPM이 어떻게 `node_modules`를 구성하는지 이해하면 PNPM이 왜 고성능이라고 하는지 알 수 있습니다.
+PNPM이 NPM이나 Yarn Classic과 가장 큰 차이점은 패키지를 저장하는 방법입니다.
+
+## PNPM 장점
 
 ### 디스크 공간 절약
 
