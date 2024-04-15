@@ -9,7 +9,10 @@ summary:
 패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다. [Turborepo는 PNPM 사용을 권장](https://turbo.build/repo/docs/getting-started/create-new)하는 등 다른 서비스에서도 PNPM의 성능을 인정하고 있습니다.
 
 ## PNPM는 정말 빠른가?
-개발자에서 좋은 성능을 만들어 준다는 것은 매우 매혹적인 이야기입니다. 패키지 매니저가 빠른 성능을 제공하면 패키지를 설치하는 속도를 단축시켜주어 개발 경험을 향상 시키고, CI에서 배포하는데 걸리는 시간을 단축시켜줍니다. 아래 표는 가장 유명한 3개의 패키지 매니저인 NPM, Yarn, PNPM을 비교한 표로 [`package.json`에 나열된 패키지](https://github.com/pnpm/pnpm.io/blob/main/benchmarks/fixtures/alotta-files/package.json)를 설치/업데이트 하는데 걸리는 시간를 측정하였습니다.
+개발자에서 좋은 성능을 만들어 준다는 것은 매우 매혹적인 이야기입니다. 패키지 매니저가 빠른 성능을 제공하면 패키지를 설치하는 속도를 단축시켜주어 개발 경험을 향상 시키고, CI에서 배포하는데 걸리는 시간을 단축시켜줍니다.
+
+### PNPM 공식 문서에서 이야기하는 속도
+아래 표는 [PNPM 공식 문서의 밴치 마크](https://pnpm.io/benchmarks)로 가장 유명한 3개의 패키지 매니저인 NPM, Yarn, PNPM을 비교한 표입니다. [`package.json`에 나열된 패키지](https://github.com/pnpm/pnpm.io/blob/main/benchmarks/fixtures/alotta-files/package.json)를 설치/업데이트 하는데 걸리는 시간를 측정하였습니다.
 
 |   행동    |                       조건                       |                         설명                          |                                 결과                                 |
 |:-------:|:----------------------------------------------:|:---------------------------------------------------:|:------------------------------------------------------------------:|
@@ -25,9 +28,14 @@ summary:
 
 Yarn Pnp는 `node_modules` 폴더가 존재하지 않기 때문에 `node_modules` 폴더가 있는 조건은 모두 `n/a`입니다. 가장 빠른 성능을 보인 패키지 매니저는 굵은 글씨로 표시했습니다. 아래 그림은 위의 표의 결과를 그래프로 나타낸 그림입니다.
 
-![NPM, PNPM, Yarn, Yarn Pnp 성능 비교](/assets/img/posts/etc/npm_pnpm_yarn_yarn_pnp.svg)
+![NPM, PNPM, Yarn, Yarn Pnp 성능 비교](/assets/img/posts/etc/npm_pnpm_yarn_yarn_pnp_from_pnpm.svg)
 
-위의 내용들은 [PNPM 공식 문서의 밴치 마크](https://pnpm.io/benchmarks) 결과입니다. [Yarn 공식 문서의 벤치 마크](https://yarnpkg.com/features/performances)에서도 성능 비교를 확인할 수 있습니다.
+### Yarn 공식 문서에서 이야기하는 속도
+아래 그림은 [Yarn 공식 문서에서 비교한 NPM, Yarn, PNPM 성능](https://yarnpkg.com/features/performances)입니다. Next, Gatsby 프로젝트의 설치 시간을 비교하였습니다.
+
+![NPM, PNPM, Yarn, Yarn Pnp 성능 비교](/assets/img/posts/etc/npm_pnpm_yarn_yarn_pnp_from_yarn.png)
+
+위의 그림에서 Yarn은 Yarn pnp(`nodeLinker: "pnp"`)를, Yarn (NM)은 Yarn node-modules(`nodeLinker: "node-modules"`)를, Classic은 Yarn 1버전을 이야기 합니다.
 
 ### PNPM 성능에 대한 고찰
 어떠한 패키지를 설치하여 성능을 측정하였는지 따라 결과가 다르고, PNPM, Yarn 공식 문서에서 제공하는 성능 측정 결과도 조금씩 다르기 때문에 제가 NPM, Yarn, PNPM 이 3개의 패키지 매니저를 찾아보면서 고민해본 성능에 대한 고찰을 공유하려고 합니다.
@@ -40,12 +48,28 @@ Yarn Pnp는 레파지토리에 필요한 패키지를 압축 파일로 모두 �
 #### 개발/배포에서 가장 중요한 성능은?
 개발하면서 아래의 상황에서 주로 패키지를 설치/업데이트 하게 됩니다.
 
-- 패키지 추가하거나 패키지 버전을 업데이트 하는 경우: `update`
-- 배포를 위해 CI 서버를 통해 패키지를 설치하는 경우: `install, Cache: X, lockfile: O, >node_modules: X`
-- 레파지토리를 처음 클론 받고 패키지를 설치하는 경우: `install, Cache: O, lockfile: O, node_modules: X`
+- 패키지 추가하거나 패키지 버전을 업데이트 하는 경우
+- 배포를 위해 CI 서버를 통해 패키지를 설치하는 경우
+- 레파지토리를 처음 클론 받고 패키지를 설치하는 경우
+
+개발을 하면서 lock 파일은 보통 함께 관리되기 때문에 lock 파일이 존재하는 위의 3가지 상황을 PNPM 공식 문서와, Yarn 공식 문서에서 성능을 확인해 보겠습니다. Yarn Pnp는 위에서 이야기한 다른 메커니즘 때문에 제외하고 살펴보겠습니다.
+
+3가지 상황에서 PNPM에서 이야기 하는 성능은 아래와 같이 모두 PNPM이 빠릅니다.
+
+- `update`: PNPM이 3.5s로 가장 빠름
+- `install, Cache: X, lockfile: O, node_modules: X`: PNPM이 5.2s로 가장 빠름
+- `install, Cache: O, lockfile: O, node_modules: X`: PNPM이 2.6s로 가장 빠름
+
+Yarn에서 이야기 하는 성능은 아래와 같습니다.
+
+- `Full cold`: Next 2.88s, Gatsby 13.46s로 PNPM이 가장 빠름
+- `Cache and lockfile`: Next 849.01ms, Gatsby 3.03s로 PNPM이 가장 빠름
+- `Recurrent calls`: Next 413.08ms로 NPM이, Gatsby 1.88s로 Yarn (NM)이 가장 빠름
+
+Yarn의 공식문서에서는 `Recurrent calls`를 제외하고 PNPM이 가장 빠른 것을 확인할 수 있습니다. PNPM, Yarn 공식 문서를 종합해 보면 대부분의 경우 PNPM이 더 나은 성능을 보이고 있습니다.
 
 ## PNPM 컨샙
-PNPM이 어떻게 `node_modules`를 구성하는지 이해하면 PNPM이 왜 고성능이라고 자랑하는지 이해할 수 있습니다.
+PNPM이 어떻게 `node_modules`를 구성하는지 이해하면 PNPM이 왜 고성능이라고 하는지 알 수 있습니다.
 
 ### 디스크 공간 절약
 
