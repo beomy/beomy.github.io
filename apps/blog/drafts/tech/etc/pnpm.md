@@ -32,7 +32,7 @@ Yarn Pnp는 `node_modules` 폴더가 존재하지 않기 때문에 `node_modules
 
 위의 표와 그림으로 PNPM과 다른 패키지 매니저를 비교해 보면 아래와 같습니다.
 
-- PNPM VS NPM: PNPM은 9가지 행동 중 7가지가 NPM보다 빠릅니다.
+- PNPM VS NPM: PNPM이 9가지 행동 중 7가지가 NPM보다 빠릅니다.
 - PNPM VS Yarn: PNPN이 9가지 행동 중 8가지가 Yarn보다 빠릅니다.
 - PNPM VS Yarn Pnp: Yarn Pnp이 5가지 행동 중 5가지 모두 PNPM보다 빠릅니다.
 
@@ -45,9 +45,12 @@ PNPM은 NPM과 Yarn 보다는 빠르지만 Yarn Pnp보다는 느린 것을 알 �
 
 위의 그림으로 PNPM과 다른 패키지 매니저를 비교해 보면 아래와 같습니다.
 
-- PNPM VS NPM:
-- PNPM VS Yarn:
-- PNPM VS Yarn Pnp:
+- PNPM VS NPM: PNPM이 8가지 행동 중 6가지가 NPM보다 빠릅니다.
+- PNPM VS Yarn NM: PNPM이 8가지 행동 중 6가지가 Yarn NM보다 빠릅니다.
+- PNPM VS Yarn Pnp: PNPM이 8가지 행동 중 4가지가 Yarn Pnp보다 빠릅니다.
+- PNPM VS Yarn Classic: PNPM이 8가지 행동 중 7가지가 Yarn Clasic보다 빠릅니다.
+
+PNPM이 전반적으로 다른 패키지 매니저보다 더 좋은 성능을 보이는 것을 알 수 있습니다. 다만 설치해야 하는 패키지에 따라 성능이 다를 수 있으니 참고해야 합니다.
 
 ## PNPM 컨샙
 PNPM이 NPM이나 Yarn Classic과 구별되는 가장 큰 점은 패키지를 저장하는 방법입니다. PNPM의 패키지 저장 방법을 이해하려면 `./node_modules`, `./node_modules/.pnpm`, `~/Library/pnpm/store/v3` 이 세 디렉토리 관계를 이해하면 됩니다. 아래 그림은 세 디렉토리 관계 관계를 나타낸 그림입니다.
