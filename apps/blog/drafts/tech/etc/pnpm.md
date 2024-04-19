@@ -57,6 +57,47 @@ PNPM이 NPM이나 Yarn Classic과 구별되는 가장 큰 점은 패키지를 �
 
 ~~그림~~
 
+프로젝트에 `express`를 설치하면 아래와 같이 `./node_modules`에 패키지가 설치됩니다.
+
+```bash
+ls -l ./node_modules
+
+express -> .pnpm/express@4.19.2/node_modules/express
+```
+
+`./node_modules/express`는 `./node_modules/.pnpm/express@4.19.2/node_modules/express`의 싱볼릭 링크입니다. `./node_modules`에는 프로젝트에서 설치한 패키지들의 심볼릭 링크들이 저장됩니다. `./node_modules/.pnpm`의 디렉토리 형태는 아래와 같습니다.
+
+```bash
+ls -l ./node_modules/.pnpm
+
+cookie@0.6.0
+express@4.19.2
+...
+```
+
+`./node_modules/.pnpm`에는 프로젝트에서 설치한 패키지들이 필요한 모든 패키지들이 하드 링크로 저장되어 있습니다. 여기서 만약 `msw`라는 패키지를 추가로 설치하면 `./node_modules`와 `./node_modules/.pnpm`의 다랙토리 형태는 아래와 같습니다.
+
+```bash
+ls -l ./node_modules
+
+express -> .pnpm/express@4.19.2/node_modules/express
+msw -> .pnpm/msw@2.2.14/node_modules/msw
+```
+
+```bash
+ls -l ./node_modules/.pnpm
+
+cookie@0.5.0 # msw에서 사용하는 패키지
+cookie@0.6.0 # express에서 사용하는 패키지
+express@4.19.2
+msw@2.2.14
+...
+```
+
+`./node_modules/express`와 마찬가지로 `./node_modules/msw`도 `./node_modules/.pnpm/msw@2.2.14/node_modules/msw`의 싱볼릭 링크입니다. `./node_modules`에는 프로젝트에서 설치한 `express`와 `msw`의 심볼릭 링크가 있고 `./node_modules/.pnpm`에는 `express`와 `msw`에서 필요한 모든 패키지가 버전별로 저장됩니다.
+
+`./node_modules/.pnpm`에 하드 링크되어 있는
+
 > ##### Hard Link와 Symbolic(Soft) Link, inode
 > - Symbolic(Soft) Link:
 > - Hard Link:
