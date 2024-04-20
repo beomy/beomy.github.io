@@ -96,25 +96,69 @@ msw@2.2.14
 
 `./node_modules/express`와 마찬가지로 `./node_modules/msw`도 `./node_modules/.pnpm/msw@2.2.14/node_modules/msw`의 싱볼릭 링크입니다. `./node_modules`에는 프로젝트에서 설치한 `express`와 `msw`의 심볼릭 링크가 있고 `./node_modules/.pnpm`에는 `express`와 `msw`에서 필요한 모든 패키지가 버전별로 저장됩니다.
 
-`./node_modules/.pnpm`에 하드 링크되어 있는
+`./node_modules/.pnpm`에 하드 링크되어 있는 원본 파일 경로는 아래와 같이 `pnpm store path` 명령어를 실행하여 확인할 수 있습니다. 이것을 PNPM은 Content-addressable 스토어라고 이야기 합니다.
+
+```bash
+pnpm store path
+
+~/Library/pnpm/store/v3
+```
+
+`~/Library/pnpm/store/v3/files` 경로에 이제까지 설치했던 패키지의 원본 파일들이 아래와 같이 해시값으로 된 디렉토리 형태로 보관되어 있습니다.
+
+```bash
+ls ~/Library/pnpm/store/v3/files
+
+00 0b 16 21 2c 37 42 4d 58 63 6e 79 84 8f 9a a5 b0 bb c6 d1 dc e7 f2 fd
+...
+```
+
+`package.json`의 inode를 비교하면 아래와 같이 동일한 값인 것을 볼 수 있는데, 같은 inode를 가리키고 있기 때문에 하드 링크를 여러개 만들더라도 용량을 더 차지하지는 않습니다.
+
+```bash
+ls -li ~/Library/pnpm/store/v2/files/19/{package.json 해시값}
+12238952 # 동일한 inode
+
+ls -li node_modules/.pnpm/cookie@0.4.2/node_modules/cookie/package.json
+12238952 # 동일한 inode
+```
+
+각 프로젝트에서 Content-addressable 스토어에 있는 원본 패키지를 하드 링크로 가져와 사용하기 때문에, 두 개의 프로젝트 모두에서 `express@4.19.2`를 설치하더라도 `express@4.19.2`는 한번 Content-addressable 스토어에 한번 저장됩니다.
 
 > ##### Hard Link와 Symbolic(Soft) Link, inode
-> - Symbolic(Soft) Link:
-> - Hard Link:
-> - inode:
+> - inode: 파일 모드, 링크 수, 파일 크기, 파일 주소 등 파일의 메타정보를 담고 있습니다. inode는 파일의 우편번호 같은 역할을 하는데, 동일한 inode를 가지고 있다는 뜻은 동일한 파일을 가르키고 있다는 말과 같습니다.
+> - Symbolic(Soft) Link: 심볼릭 링크는 소프트 링크라고도 하는데, 윈도우의 바로가기와 유사합니다. 심볼릭 링크를 만들면 새로운 inode가 만들어지고 이 inode는 원본의 inode를 가르킵니다.
+> - Hard Link: 원본의 복사본을 만드는 것과 비슷하지만 복사와 다르게 원본과 동일한 inode를 가지기 때문에 하드 링크된 파일이 수정되면 원본 파일도 함께 수정됩니다. 원본 파일이 삭제되어도 하드 링크된 파일은 유지되기 때문에 데이터를 안전하게 관리하고자 할 때 주로 사용됩니다.
 
 ## PNPM 장점
+PNPM은 기존의 NPM에서 디스크 공간 절약, 설치 속도 향상, 플랫 하지 않은 `node_modules`를 보완했다고 이야기합니다. 아래에서 하나씩 살펴보도록 하겠습니다.
 
 ### 디스크 공간 절약
+[PNPM 컨샙](/tech/etc/pnpm/#pnpm-컨샙) 이야기 했던 패키지 구성 방법으로 PNPM은 디스크 공약을 절약할 수 있습니다.
+
+NPM을 사용한다면 각각의 프로젝트 마다 패키지가 `node_modules`에 설치되지만, PNPM은 각각의 프로젝트에 사용되는 패키지가 중복 없이 Content-addressable 스토어에 설치됩니다. 예를 들어 A와 B, 2개의 프로젝트가 10개의 패키지를 사용하는데 이 패키지가 모두 동일한 패키지라면 NPM은 총 20번 패키지를 저장하지만 PNPM은 10번 패키지를 저장합니다.
+
+동일한 패키지가 다른 버전으로 각각의 프로젝트에서 사용된다면 버전별로 Content-addressable 스토어에 설치됩니다. 예를 들어 A Project에서는 `cookie@0.6.0`이 사용되고, B Project에서는 `cookie@0.5.0`이 사용된다면 서로 다른 버전으로 Content-addressable 스토어에 설치됩니다.
 
 ### 설치 속도 향상
+PNPM은 아래 그림과 같이 3가지 절차를 거처 패키지를 설치합니다.
+
+~~그림~~
+
+1. Dependency resolution: 필요한 모든 종속성을 스토어에 가져옵니다.
+2. Directory structure calculation: 종속성 기반으로 `node_modules` 디렉토리 구조가 계산됩니다.
+3. Linking dependencies: 스토어에서 `node_modules`로 하드 링크됩니다.
+
+이런 방식은 아래 그림과 같이 기존의 모든 종속성을 확인하고 가져오고, `node_modules`에 쓰는 3가지 절차, Resolving, Fetching, Linking보다 빠릅니다.
+
+~~그림~~
 
 ### 플랫 하지 않은 `node_modules`
-- 유령 종속성 해결
+NPM이나 Yarn Classic은 종속성을 설치하면 패키지가 `node_modules`로 끌어올려집니다. 이런 동작은 [유령 종속성(의존성)](/tech/etc/yarn-berry/#유령-의존성phantom-dependency) 문제를 만드는데, 프로젝트에 종속성으로 추가하지 않은 패키지를 엑세스해서 사용할 수 있게 됩니다. 유령 종속성 패키지를 액세스해 사용하고 있다가 패키지가 업데이트 되어 유령 종속성 패키지가 제거가 되면 문제가 발생할 수 있기 때문에 유령 종속성 사용은 피해야 합니다.
 
-## PNPM CLI
-- 패키지 설치 & 삭제
-- 명령어 형태는 Yarn과 유사함
+PNPM은 아래 그림과 같이 심볼릭 링크를 사용하기 때문에 프로젝트의 `node_modules`에는 프로젝트의 종속성에 포함된 패키지만 설치되어 유령 종속성 문제가 발생하지 않습니다.
+
+~~그림~~
 
 ## 부록
 
@@ -150,9 +194,14 @@ Yarn에서 이야기 하는 성능은 아래와 같습니다.
 Yarn의 공식문서에서는 `Recurrent calls`를 제외하고 PNPM이 가장 빠른 것을 확인할 수 있습니다. PNPM, Yarn 공식 문서를 종합해 보면 대부분의 경우 PNPM이 더 나은 성능을 보이고 있습니다.
 
 ### PNPM의 디스크 공약 절약에 대한 고찰
+PNPM은 심볼릭 링크를 사용하여 `node_modules`를 구성합니다.
+
+#### 디스크 공간을 절약하려면 모든 프로젝트에 PNPM을 사용해야
+#### Yarn도 global 옵션이 있다.
 
 ##### 참고
 - [https://jeonghwan-kim.github.io/2023/10/20/pnpm](https://jeonghwan-kim.github.io/2023/10/20/pnpm)
 - [https://pnpm.io/](https://pnpm.io/)
 - [http://www.metalpen.net/blog/?p=439](http://www.metalpen.net/blog/?p=439)
 - [https://yarnpkg.com/features/pnp](https://yarnpkg.com/features/pnp)
+- [https://inpa.tistory.com/entry/LINUX-📚-하드-링크hard-link-심볼릭-링크symbolic-link-아이노드inode](https://inpa.tistory.com/entry/LINUX-📚-하드-링크hard-link-심볼릭-링크symbolic-link-아이노드inode)
