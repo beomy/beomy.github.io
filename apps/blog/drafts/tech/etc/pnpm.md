@@ -143,7 +143,7 @@ NPM을 사용한다면 각각의 프로젝트 마다 패키지가 `node_modules`
 ### 설치 속도 향상
 PNPM은 아래 그림과 같이 3가지 절차를 거처 패키지를 설치합니다.
 
-~~그림~~
+![PNPM 패키지 설치](/assets/img/posts/etc/pnpm_package_install.svg)
 
 1. Dependency resolution: 필요한 모든 종속성을 스토어에 가져옵니다.
 2. Directory structure calculation: 종속성 기반으로 `node_modules` 디렉토리 구조가 계산됩니다.
@@ -151,14 +151,14 @@ PNPM은 아래 그림과 같이 3가지 절차를 거처 패키지를 설치합�
 
 이런 방식은 아래 그림과 같이 기존의 모든 종속성을 확인하고 가져오고, `node_modules`에 쓰는 3가지 절차, Resolving, Fetching, Linking보다 빠릅니다.
 
-~~그림~~
+![NPM 패키지 설치](/assets/img/posts/etc/npm_package_install.svg)
 
 ### 플랫 하지 않은 `node_modules`
 NPM이나 Yarn Classic은 종속성을 설치하면 패키지가 `node_modules`로 끌어올려집니다. 이런 동작은 [유령 종속성(의존성)](/tech/etc/yarn-berry/#유령-의존성phantom-dependency) 문제를 만드는데, 프로젝트에 종속성으로 추가하지 않은 패키지를 엑세스해서 사용할 수 있게 됩니다. 유령 종속성 패키지를 액세스해 사용하고 있다가 패키지가 업데이트 되어 유령 종속성 패키지가 제거가 되면 문제가 발생할 수 있기 때문에 유령 종속성 사용은 피해야 합니다.
 
 PNPM은 아래 그림과 같이 심볼릭 링크를 사용하기 때문에 프로젝트의 `node_modules`에는 프로젝트의 종속성에 포함된 패키지만 설치되어 유령 종속성 문제가 발생하지 않습니다.
 
-~~그림~~
+![PNPM 싱볼릭 링크](/assets/img/posts/etc/pnpm_sym_link.svg)
 
 ## 부록
 
