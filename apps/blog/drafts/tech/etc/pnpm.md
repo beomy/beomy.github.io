@@ -6,6 +6,11 @@ category: [tech, etc]
 summary: 패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다.
 ---
 
+> ##### TL;DR
+> - PNPM은 심볼릭 링크와 하드 링크를 사용하여 `node_modules`를 구성합니다.
+>   - `./node_modules/express`는 `./node_modules/.pnpm/express@4.19.2/node_modules/express`의 싱볼릭 링크
+>   - `./node_modules/.pnpm/express@4.19.2/node_modules/express`는 `~/Library/pnpm/store/v3/files/{해시}`의 하드 링크
+
 패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다. [Turborepo는 PNPM 사용을 권장](https://turbo.build/repo/docs/getting-started/create-new)하는 등 다른 서비스에서도 PNPM의 성능을 인정하고 있습니다.
 
 ## PNPM는 정말 빠른가?
