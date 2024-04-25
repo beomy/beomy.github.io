@@ -10,6 +10,9 @@ summary: 패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNP
 > - PNPM은 심볼릭 링크와 하드 링크를 사용하여 `node_modules`를 구성합니다.
 >   - `./node_modules/express`는 `./node_modules/.pnpm/express@4.19.2/node_modules/express`의 싱볼릭 링크
 >   - `./node_modules/.pnpm/express@4.19.2/node_modules/express`는 `~/Library/pnpm/store/v3/files/{해시}`의 하드 링크
+> - PNPM은 Content-addressable 스토어(`~/Library/pnpm/store/v3/files`)를 사용하여 디스크 공간을 절약합니다.
+> - PNPM은 다른 패키지 매니저와 비교하면 비교적 좋은 속도를 보입니다.
+> - PNPM은 패키지를 `node_modules`로 끌어올리지 않아 유령 종속성 문제가 없습니다.
 
 패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다. [Turborepo는 PNPM 사용을 권장](https://turbo.build/repo/docs/getting-started/create-new)하는 등 다른 서비스에서도 PNPM의 성능을 인정하고 있습니다.
 
