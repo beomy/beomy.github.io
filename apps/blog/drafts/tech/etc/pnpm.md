@@ -63,7 +63,7 @@ PNPM이 전반적으로 다른 패키지 매니저보다 더 좋은 성능을 �
 ## PNPM 컨샙
 PNPM이 NPM이나 Yarn Classic과 구별되는 가장 큰 점은 패키지를 저장하는 방법입니다. `./node_modules`, `./node_modules/.pnpm`, `~/Library/pnpm/store/v3` 이 세 디렉토리 관계를 알면 PNPM의 패키지 저장 방법을 이해하기 쉽습니다. 아래 그림은 세 디렉토리 관계 관계를 나타낸 그림입니다.
 
-~~그림~~
+![PNPM 컨샙](/assets/img/posts/etc/pnpm_concept.png)
 
 프로젝트에 `express`를 설치하면 아래와 같이 `./node_modules`에 패키지가 설치됩니다.
 
@@ -124,7 +124,7 @@ ls ~/Library/pnpm/store/v3/files
 `package.json`의 inode를 비교하면 아래와 같이 동일한 값인 것을 볼 수 있는데, 같은 inode를 가리키고 있기 때문에 하드 링크를 여러개 만들더라도 용량을 더 차지하지는 않습니다.
 
 ```bash
-ls -li ~/Library/pnpm/store/v2/files/19/{package.json 해시값}
+ls -li ~/Library/pnpm/store/v3/files/19/{package.json 해시값}
 12238952 # 동일한 inode
 
 ls -li node_modules/.pnpm/cookie@0.4.2/node_modules/cookie/package.json
