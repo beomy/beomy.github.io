@@ -8,17 +8,16 @@ summary: 패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNP
 
 > ##### TL;DR
 > - PNPM은 심볼릭 링크와 하드 링크를 사용하여 `node_modules`를 구성합니다.
->   - `./node_modules/express`는 `./node_modules/.pnpm/express@4.19.2/node_modules/express`의 싱볼릭 링크
->   - `./node_modules/.pnpm/express@4.19.2/node_modules/express`는 `~/Library/pnpm/store/v3/files/{해시}`의 하드 링크
+>   - 예를 들어, `./node_modules/express`는 `./node_modules/.pnpm/express@4.19.2/node_modules/express`의 심볼릭 링크, `./node_modules/.pnpm/express@4.19.2/node_modules/express`는 `~/Library/pnpm/store/v3/files/{해시}`의 하드 링크입니다.
 > - PNPM은 Content-addressable 스토어(`~/Library/pnpm/store/v3/files`)를 사용하여 디스크 공간을 절약합니다.
 > - PNPM은 다른 패키지 매니저와 비교하면 비교적 좋은 속도를 보입니다.
 >   - 빠른 순, Yarn Pnp >= PNPM > NPM, Yarn node_modules, Yarn Classic
 > - PNPM은 패키지를 `node_modules`로 끌어올리지 않아 유령 종속성 문제가 없습니다.
 
-패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다. [Turborepo는 PNPM 사용을 권장](https://turbo.build/repo/docs/getting-started/create-new)하는 등 다른 서비스에서도 PNPM의 성능을 인정받고 있습니다.
+패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다. [Turborepo는 PNPM 사용을 권장](https://turbo.build/repo/docs/getting-started/create-new)하는 등 다른 서비스에서도 PNPM의 성능은 인정받고 있습니다.
 
 ## PNPM는 정말 빠른가?
-개발자에서 좋은 성능을 만들어 준다는 것은 매우 매력적인 이야기입니다. 만약 패키지 매니저가 빠른 성능을 제공하면 패키지를 설치하는 속도를 단축시켜 주어 개발 경험을 향상하고, CI에서 배포하는 데 걸리는 시간을 단축시켜 줍니다. PNPM의 단어 뜻대로 PNPM이 좋은 퍼포먼스를 내는지 살펴보도록 하겠습니다.
+개발자에서 좋은 성능을 만들어 준다는 것은 매력적인 이야기입니다. 만약 패키지 매니저가 빠른 성능을 제공하면 패키지를 설치하는 속도를 단축시켜 주어 개발 경험이 향상하고, CI에서 배포하는 데 걸리는 시간을 단축시켜 줍니다. PNPM의 단어 뜻대로 PNPM이 좋은 퍼포먼스를 내는지 살펴보도록 하겠습니다.
 
 ### PNPM 공식 문서에서 이야기하는 속도
 아래 표는 [PNPM 공식 문서의 밴치 마크](https://pnpm.io/benchmarks)로 가장 유명한 3개의 패키지 매니저인 NPM, Yarn, PNPM을 비교한 표입니다. [`package.json`에 나열된 패키지](https://github.com/pnpm/pnpm.io/blob/main/benchmarks/fixtures/alotta-files/package.json)를 설치/업데이트하는 데 걸리는 시간을 측정하였습니다.
@@ -84,7 +83,7 @@ express@4.19.2
 ...
 ```
 
-`./node_modules/.pnpm`에는 프로젝트에서 설치한 패키지들이 필요한 모든 패키지들이 하드 링크로 저장되어 있습니다. 여기서 만약 `msw`라는 패키지를 추가로 설치하면 `./node_modules`와 `./node_modules/.pnpm`의 디렉터리 형태는 아래와 같습니다.
+`./node_modules/.pnpm`에는 프로젝트에서 설치한 패키지들이 필요한 모든 패키지들이 하드 링크로 저장되어 있습니다. 여기서 `msw`라는 패키지를 추가로 설치하면 `./node_modules`와 `./node_modules/.pnpm`의 디렉터리 형태는 아래와 같습니다.
 
 ```bash
 ls -l ./node_modules
@@ -134,7 +133,7 @@ ls -li node_modules/.pnpm/cookie@0.4.2/node_modules/cookie/package.json
 12238952 # 동일한 inode
 ```
 
-각 프로젝트에서 Content-addressable 스토어에 있는 원본 패키지를 하드 링크로 가져와 사용하기 때문에, 두 개의 프로젝트 모두에서 `express@4.19.2`를 설치하더라도 `express@4.19.2`는 한번 Content-addressable 스토어에 저장됩니다.
+각 프로젝트에서 Content-addressable 스토어에 있는 원본 패키지를 하드 링크로 가져와 사용하기 때문에, 두 개의 프로젝트에서 `express@4.19.2`를 설치하더라도 `express@4.19.2`는 한번 Content-addressable 스토어에 저장됩니다.
 
 > ##### Hard Link와 Symbolic(Soft) Link, inode
 > - inode: 파일 모드, 링크 수, 파일 크기, 파일 주소 등 파일의 메타정보를 담고 있습니다. inode는 파일의 우편번호 같은 역할을 하는데, 동일한 inode를 가지고 있다는 뜻은 동일한 파일을 가리키고 있다는 말과 같습니다.
@@ -142,14 +141,14 @@ ls -li node_modules/.pnpm/cookie@0.4.2/node_modules/cookie/package.json
 > - Hard Link: 원본의 복사본을 만드는 것과 비슷하지만 복사와 다르게 원본과 동일한 inode를 가지기 때문에 하드 링크된 파일이 수정되면 원본 파일도 함께 수정됩니다. 원본 파일이 삭제되어도 하드 링크된 파일은 유지되기 때문에 데이터를 안전하게 관리하고자 할 때 주로 사용됩니다.
 
 ## PNPM 장점
-PNPM은 NPM보다 디스크 공약을 덜 차지하며, 설치 속도가 빠르고 플랫 하지 않는 `node_modules`를 만든다고 이야기합니다. 아래에서 하나씩 살펴보도록 하겠습니다.
+PNPM은 NPM보다 디스크 공약을 덜 차지하며, 설치 속도가 빠르고, 플랫 하지 않는 `node_modules`를 만든다고 이야기합니다. 아래에서 하나씩 살펴보도록 하겠습니다.
 
 ### 디스크 공간 절약
 PNPM은 Content-addressable 스토어를 사용하여 디스크 공약을 절약하였습니다.
 
-NPM을 사용한다면 각각의 프로젝트마다 패키지가 `node_modules`에 설치되지만, PNPM은 각각의 프로젝트에 사용되는 패키지가 중복 없이 Content-addressable 스토어에 설치됩니다. 예를 들어 A와 B, 2개의 프로젝트가 10개의 패키지를 사용하는데 이 패키지가 모두 동일한 패키지라면 NPM은 각 프로젝트 `node_modules`에 총 20번 패키지를 저장하지만 PNPM은 Content-addressable 스토어에 10번 패키지를 저장합니다.
+NPM을 사용한다면 각 프로젝트마다 패키지가 `node_modules`에 설치되지만, PNPM은 각 프로젝트에 사용되는 패키지가 중복 없이 Content-addressable 스토어에 설치됩니다. 예를 들어 A와 B, 2개의 프로젝트가 10개의 패키지를 사용하는데 이 패키지가 모두 동일한 패키지라면 NPM은 각 프로젝트 `node_modules`에 10개씩 총 20번 패키지를 저장하지만 PNPM은 Content-addressable 스토어에 10번 패키지를 저장합니다.
 
-동일한 패키지가 다른 버전으로 각 프로젝트에 사용된다면 버전별로 Content-addressable 스토어에 설치됩니다. 예를 들어 A Project에서는 `cookie@0.6.0`이 사용되고, B Project에서는 `cookie@0.5.0`이 사용된다면 Content-addressable 스토어에 `cookie@0.6.0`와 `cookie@0.5.0`가 설치됩니다.
+동일한 패키지가 다른 버전으로 각 프로젝트에 사용된다면 버전별로 Content-addressable 스토어에 설치됩니다. 예를 들어 A Project에서는 `cookie@0.6.0`이 사용되고, B Project에서는 `cookie@0.5.0`이 사용된다면 Content-addressable 스토어에 `cookie@0.6.0`와 `cookie@0.5.0` 두 개가 설치됩니다.
 
 ### 설치 속도 향상
 PNPM은 아래 그림과 같이 3가지 절차를 거처 패키지를 설치합니다.
@@ -165,7 +164,7 @@ PNPM은 아래 그림과 같이 3가지 절차를 거처 패키지를 설치합�
 ![NPM 패키지 설치](/assets/img/posts/etc/npm_package_install.svg)
 
 ### 플랫 하지 않은 `node_modules`
-NPM이나 Yarn Classic은 종속성을 설치하면 패키지가 `node_modules`로 끌어올려집니다. 이런 동작은 [유령 종속성(의존성)](/tech/etc/yarn-berry/#유령-의존성phantom-dependency) 문제를 만드는데, 프로젝트에 종속성으로 추가하지 않은 패키지를 액세스 해서 사용할 수 있게 됩니다. 유령 종속성 패키지를 액세스해 사용하고 있다가 패키지가 업데이트되어 유령 종속성 패키지가 제거가 되면 문제가 발생할 수 있기 때문에 유령 종속성 사용은 피해야 합니다.
+NPM이나 Yarn Classic은 종속성을 설치하면 중복된 패키지가 `node_modules`로 끌어올려집니다. 이런 동작은 [유령 종속성(의존성)](/tech/etc/yarn-berry/#유령-의존성phantom-dependency) 문제를 만드는데, 프로젝트에 종속성으로 추가하지 않은 패키지를 액세스 해서 사용할 수 있게 됩니다. 유령 종속성 패키지를 액세스해 사용하고 있다가 패키지가 업데이트되어 유령 종속성 패키지가 제거가 되면 문제가 발생할 수 있기 때문에 유령 종속성 사용은 피해야 합니다.
 
 PNPM은 아래 그림과 같이 심볼릭 링크를 사용하기 때문에 프로젝트의 `node_modules`에는 프로젝트의 종속성에 포함된 패키지만 설치되어 유령 종속성 문제가 발생하지 않습니다.
 
@@ -182,7 +181,7 @@ Yarn Pnp는 `node_modules` 폴더 없이 `.yarn/cache`에 압축 파일로 저�
 Yarn Pnp는 레파지토리에 필요한 패키지를 압축 파일로 모두 가지고 있기 때문에 다른 패키지 매니저들과 달리 레파지토리를 가져오는데 시간이 더 걸릴 수 있습니다. 이런 특징 때문에 Yarn Pnp는 전반적으로 더 나은 성능을 보이긴 하지만 프로젝트를 가져오는 데 걸리는 시간에 대한 고려 없이 설치 명령어가 실행되는 데 걸리는 시간으로만 단순 비교하기에는 무리가 있어 보입니다.
 
 #### 개발/배포에서 가장 중요한 성능은?
-개발하면서 아래의 상황에서 주로 패키지를 설치/업데이트하게 됩니다.
+개발하면서 아래의 3가지 상황에서 주로 패키지를 설치/업데이트하게 됩니다. 주로 패키지 매니저가 사용되는 아래 3가지 상황에서 빠른 속소를 제공하는 것이 중요합니다.
 
 - 패키지 추가하거나 패키지 버전을 업데이트하는 경우
 - 배포를 위해 CI 서버를 통해 패키지를 설치하는 경우
@@ -196,13 +195,13 @@ Yarn Pnp는 레파지토리에 필요한 패키지를 압축 파일로 모두 �
 - `install, Cache: X, lockfile: O, node_modules: X`: PNPM이 5.2s로 가장 빠름
 - `install, Cache: O, lockfile: O, node_modules: X`: PNPM이 2.6s로 가장 빠름
 
-Yarn에서 이야기하는 성능은 아래와 같습니다.
+Yarn에서 이야기하는 성능은 아래와 같이 `Recurrent calls`를 제외하고 PNPM이 가장 빠른 것을 확인할 수 있습니다.
 
 - `Full cold`: Next 2.88s, Gatsby 13.46s로 PNPM이 가장 빠름
 - `Cache and lockfile`: Next 849.01ms, Gatsby 3.03s로 PNPM이 가장 빠름
 - `Recurrent calls`: Next 413.08ms로 NPM이, Gatsby 1.88s로 Yarn (NM)이 가장 빠름
 
-Yarn의 공식문서에서는 `Recurrent calls`를 제외하고 PNPM이 가장 빠른 것을 확인할 수 있습니다. PNPM, Yarn 공식 문서를 종합해 보면 대부분의 경우 PNPM이 더 나은 성능을 보이고 있습니다.
+PNPM, Yarn 공식 문서를 종합해 보면 대부분의 경우 PNPM이 더 나은 성능을 보이고 있습니다.
 
 ##### 참고
 - [https://jeonghwan-kim.github.io/2023/10/20/pnpm](https://jeonghwan-kim.github.io/2023/10/20/pnpm)
