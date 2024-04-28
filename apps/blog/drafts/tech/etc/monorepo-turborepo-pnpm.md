@@ -13,8 +13,6 @@ summary:
 ## 퀵스타트
 - `pnpm dlx create-turbo@latest`: 여러가지 예제가 있음
 
-> `yarn dlx` = `npx` = `pnpm dlx`
-
 ## 주요 컨샙
 
 ### Task 캐싱
