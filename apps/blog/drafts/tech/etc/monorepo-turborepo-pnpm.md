@@ -7,7 +7,7 @@ summary:
 ---
 
 ## PNPM 설치
-- turborepo에서는 pnpm을 사용할 것을 추천한다. https://turbo.build/repo/docs/getting-started/create-new
+- turborepo는 pnpm 사용을 추천한다. https://turbo.build/repo/docs/getting-started/create-new
 - `npm install -g pnpm`
 
 ## 퀵스타트
