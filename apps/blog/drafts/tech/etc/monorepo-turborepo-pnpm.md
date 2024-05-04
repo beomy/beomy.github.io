@@ -6,6 +6,20 @@ category: [tech, etc]
 summary:
 ---
 
+## Turborepo 성능
+
+### 캐싱
+
+### 멀티테스킹
+
+## Turborepo 시작하기
+
+### PNPM 설치
+- turborepo는 pnpm 사용을 추천한다.
+
+
+---
+
 ## PNPM 설치
 - turborepo는 pnpm 사용을 추천한다.
   - https://turbo.build/repo/docs/getting-started/create-new
@@ -24,4 +38,4 @@ summary:
 ### Remote 캐싱
 
 ##### 참고
-- [https://turbo.build/repo](https://turbo.build/repo)
+- [https://turbo.build/repo/docs](https://turbo.build/repo/docs)
