@@ -10,10 +10,12 @@ summary:
 
 ### 캐싱
 `package.json`의 `scripts` 필드에 저장 된 `build`, `lint`와 같은 스크립트를 Turborepo는 테스크라고 이야기합니다. Turborepo는 테스크의 결과와 로그를 캐싱하여 성능을 향상 시킵니다.
+- input 값을 평가하여 hash해 둔다
 
 #### Cache Hit/Miss
 
 #### 캐시 설정
+- 캐시를 사용하지 않으려면: `--no-cache`, `--force`, `pipeline.<task>.cache`
 
 ### 멀티테스킹
 
