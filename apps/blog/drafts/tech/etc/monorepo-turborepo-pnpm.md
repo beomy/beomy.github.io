@@ -31,6 +31,9 @@ summary:
 
 ## Turborepo CLI
 
+##### 참고
+- [https://turbo.build/repo/docs](https://turbo.build/repo/docs)
+
 ---
 
 ## PNPM 설치
