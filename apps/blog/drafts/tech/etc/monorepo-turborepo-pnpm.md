@@ -29,7 +29,8 @@ summary:
   - `npm install -g pnpm`
 
 ### Turborepo 템플릿
-- `pnpm dlx create-turbo@latest`: 여러가지 예제가 있음
+- 여러가지 예제가 있음
+  - `pnpm dlx create-turbo@latest`
 
 ## Turborepo CLI
 
