@@ -30,7 +30,7 @@ summary:
 
 ### Turborepo 템플릿
 - 여러가지 예제가 있음
-  - `pnpm dlx create-turbo@latest`
+- `pnpm dlx create-turbo@latest`
 
 ## Turborepo CLI
 
