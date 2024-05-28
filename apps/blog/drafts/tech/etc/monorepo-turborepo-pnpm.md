@@ -15,7 +15,10 @@ summary:
 #### Cache Hit/Miss
 
 #### 캐시 설정
-- 캐시를 사용하지 않으려면: `--no-cache`, `--force`, `pipeline.<task>.cache`
+- 캐시를 사용하지 않으려면
+  - `--no-cache`
+  - `--force`
+  - `pipeline.<task>.cache`
 
 ### Remote 캐싱
 
