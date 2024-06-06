@@ -31,9 +31,15 @@ summary:
 - turborepo는 pnpm 사용을 추천한다.
   - https://turbo.build/repo/docs/getting-started/create-new
 
+### Turborepo 설치
+- 전역 설치
+- 저장소 설치
+- 개인적으로는 저장소 설치 선호
+
 ### Turborepo 템플릿
-- 여러가지 예제가 있음
 - `pnpm dlx create-turbo@latest`
+- 여러가지 예제가 있음
+  - pnpm dlx create-turbo@latest --example [example-name]
 
 ## Monorepo
 
