@@ -6,6 +6,8 @@ category: [tech, etc]
 summary:
 ---
 
+2024년 6월 4일 Turborepo 2.0 출시
+
 ## Turborepo 성능
 
 ### 캐싱
@@ -40,10 +42,14 @@ summary:
 - `pnpm dlx create-turbo@latest`
 - 여러가지 예제가 있음
   - pnpm dlx create-turbo@latest --example [example-name]
+  - https://turbo.build/repo/docs/getting-started/installation#start-with-an-example
 
 ## Monorepo
 
 ## Turborepo CLI
 
+## Turborepo(`turbo.json`) 설정
+
 ##### 참고
 - [https://turbo.build/repo/docs](https://turbo.build/repo/docs)
+- [https://turbo.build/blog/turbo-2-0](https://turbo.build/blog/turbo-2-0)
