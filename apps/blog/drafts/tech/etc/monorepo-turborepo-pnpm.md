@@ -48,7 +48,7 @@ summary:
 
 ## Turborepo CLI
 
-## Turborepo(`turbo.json`) 설정
+## Turborepo 설정
 
 ##### 참고
 - [https://turbo.build/repo/docs](https://turbo.build/repo/docs)
