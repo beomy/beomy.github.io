@@ -31,6 +31,7 @@ summary:
 
 ### PNPM 설치
 - turborepo는 pnpm 사용을 추천한다.
+  - 스팩 아웃
   - https://turbo.build/repo/docs/getting-started/create-new
 
 ### Turborepo 설치
