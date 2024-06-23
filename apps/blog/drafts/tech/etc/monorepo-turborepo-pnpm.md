@@ -34,8 +34,7 @@ summary:
   - https://turbo.build/repo/docs/getting-started/create-new
 
 ### Turborepo 설치
-- 전역 설치
-- 저장소 설치
+- 전역 설치 / 저장소 설치
 - 개인적으로는 저장소 설치 선호
 
 ### Turborepo 템플릿
