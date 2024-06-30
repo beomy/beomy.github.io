@@ -30,8 +30,7 @@ summary:
 ## Turborepo 시작하기
 
 ### PNPM 설치
-- turborepo는 pnpm 사용을 추천한다. (스팩 아웃)
-  - https://turbo.build/repo/docs/getting-started/create-new
+- https://turbo.build/repo/docs/getting-started/create-new
 
 ### Turborepo 설치
 - 전역 설치 / 저장소 설치
