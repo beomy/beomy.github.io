@@ -1,12 +1,26 @@
 ---
 layout: post
-title: '[ETC] Monorepo - Turborepo + PNPM'
+title: '[ETC] Monorepo - Turborepo'
 featured-img: etc/monorepo.png
 category: [tech, etc]
 summary:
 ---
 
 2024년 6월 4일 Turborepo 2.0 출시
+
+## Turborepo 시작하기
+
+### Turbo 설치
+
+### Turborepo 탬플릿 가져오기
+
+## 부록
+
+### turbo.json schema
+
+### 패키지 지원
+
+---
 
 ## Turborepo 성능
 
