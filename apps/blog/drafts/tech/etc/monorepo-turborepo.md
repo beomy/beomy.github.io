@@ -14,6 +14,8 @@ summary:
 
 ### Turborepo 탬플릿 가져오기
 
+## `turbo.json` 설정
+
 ## 부록
 
 ### turbo.json schema
