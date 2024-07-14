@@ -12,16 +12,25 @@ summary:
 
 ### Turbo 설치
 
-### Turborepo 탬플릿 가져오기
+### Turborepo 탬플릿
 
 ## `turbo.json` 설정
+
 ### tasks
 - turbo.json의 tasks에 기록된 항목들은 `turbo run`으로 실행 가능. 하위 패키지의 package.json의 scripts에 동일한 이름의 스크립트를 실행함
 - tasks.{name}.depensOn
   - 테스크를 실행하기 전에 완료해야 하는 목록
 - tasks.{name}.outputs
-  - 캐시할 값
+  - 캐시할 값 - 정의하지 않으면 캐시하지 않음
   - 아웃풋이 없는 린트와 dev 실행은 어찌 캐시하나?
+
+## 캐싱
+- outputs
+  - tasks.{name}.outputs을 캐시
+  - logs 터미널 아웃풋 캐시
+- inputs
+  - 지문과 같은 일치하면 캐시
+  - 여러가지 정보들을 인풋으로 함
 
 ## Turbo CLI
 - `--filter`
