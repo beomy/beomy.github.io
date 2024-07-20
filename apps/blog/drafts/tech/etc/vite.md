@@ -10,3 +10,4 @@ summary:
 
 ##### 참고
 - [https://vitejs.dev/](https://vitejs.dev/)
+- [https://stackoverflow.com/questions/71517082/how-to-share-a-global-d-ts-from-several-packages-in-monorepo](https://stackoverflow.com/questions/71517082/how-to-share-a-global-d-ts-from-several-packages-in-monorepo)
