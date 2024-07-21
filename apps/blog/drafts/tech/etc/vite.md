@@ -11,7 +11,7 @@ summary:
 
 - 사전 번들링
 
-- esbuild + rollup: 개발할 때는 esbuild 배포할 때는 rollup ?
+- esbuild + rollup: 개발할 때는 esbuild 배포할 때는 rollup
 
 - monorepo 구성시 d.ts 확장 방법
 
