@@ -6,6 +6,13 @@ category: [tech, etc]
 summary:
 ---
 
+- vite가 개선하려고 한 것: 느린 서버 시작, 느린 업데이트
+- 빌드할 때는 번들함 왜? 코드 중복 등 청크가 더 효율적임
+
+- 사전 번들링
+
+- esbuild + rollup: 개발할 때는 esbuild 배포할 때는 rollup ?
+
 - monorepo 구성시 d.ts 확장 방법
 
 ##### 참고
