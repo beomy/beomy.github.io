@@ -13,8 +13,5 @@ summary:
 
 - esbuild + rollup: 개발할 때는 esbuild 배포할 때는 rollup
 
-- monorepo 구성시 d.ts 확장 방법
-
 ##### 참고
 - [https://vitejs.dev/](https://vitejs.dev/)
-- [https://stackoverflow.com/questions/71517082/how-to-share-a-global-d-ts-from-several-packages-in-monorepo](https://stackoverflow.com/questions/71517082/how-to-share-a-global-d-ts-from-several-packages-in-monorepo)
