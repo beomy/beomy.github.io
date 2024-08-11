@@ -18,5 +18,7 @@ summary:
   - Safari >=14
   - Edge >=88
 
+- https://vitejs.dev/guide/
+
 ##### 참고
 - [https://vitejs.dev/](https://vitejs.dev/)
