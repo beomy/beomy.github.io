@@ -19,7 +19,7 @@ summary:
 - esbuild + rollup: 개발할 때는 esbuild 배포할 때는 rollup
 - 사전 번들링
 
-- https://vitejs.dev/guide/features.html
+- https://vitejs.dev/guide/cli.html
 
 ##### 참고
 - [https://vitejs.dev/](https://vitejs.dev/)
