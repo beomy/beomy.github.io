@@ -19,6 +19,7 @@ summary:
 - esbuild + rollup: 개발할 때는 esbuild 배포할 때는 rollup
 - 사전 번들링
 - vite awesome plugin
+- @vitejs/plugin-legacy
 
 - https://vitejs.dev/guide/cli.html
 
