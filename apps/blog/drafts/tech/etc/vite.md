@@ -21,7 +21,6 @@ summary:
 - vite awesome plugin
   - @vitejs/plugin-legacy
 
-- https://vitejs.dev/guide/cli.html
-
 ##### 참고
+- https://vitejs.dev/guide/cli.html
 - [https://vitejs.dev/](https://vitejs.dev/)
