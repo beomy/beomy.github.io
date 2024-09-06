@@ -22,5 +22,5 @@ summary:
   - @vitejs/plugin-legacy
 
 ##### 참고
-- https://vitejs.dev/guide/cli.html
+- https://vitejs.dev/guide/dep-pre-bundling.html
 - [https://vitejs.dev/](https://vitejs.dev/)
