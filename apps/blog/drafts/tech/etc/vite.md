@@ -23,7 +23,7 @@ summary:
 - vite awesome plugin
   - @vitejs/plugin-legacy
 
-- https://vitejs.dev/guide/env-and-mode.html
+- https://vitejs.dev/guide/ssr.html
 
 ##### 참고
 - [https://vitejs.dev/](https://vitejs.dev/)
