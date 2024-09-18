@@ -16,10 +16,10 @@ summary:
 - 브라우저 지원 현황
   - Native ES Modules, Native ESM Dynamic Import, `import.meta`를 지원하는 브라우저를 타겟으로 함
   - build.targer으로 커스텀할 수 있으나 최소 버전은 ES2015
-  - Chrome >=87
-  - Firefox >=78
-  - Safari >=14
-  - Edge >=88
+  - Chrome >= 87
+  - Firefox >= 78
+  - Safari >= 14
+  - Edge >= 88
 - vite awesome plugin
   - @vitejs/plugin-legacy
 
