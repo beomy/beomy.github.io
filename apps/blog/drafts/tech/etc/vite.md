@@ -7,7 +7,8 @@ summary:
 ---
 
 - vite가 개선하려고 한 것
-  - 느린 서버 시작, 느린 업데이트
+  - 느린 서버 시작
+  - 느린 업데이트
 - esbuild + rollup: 개발할 때는 esbuild 배포할 때는 rollup
   - rolldown으로 변경 예정
 - 빌드할 때는 번들함
