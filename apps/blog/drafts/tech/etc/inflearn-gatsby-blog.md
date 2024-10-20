@@ -8,3 +8,4 @@ category: [tech, etc]
 - monorepo
 - vite
 - gatsby5
+- next
