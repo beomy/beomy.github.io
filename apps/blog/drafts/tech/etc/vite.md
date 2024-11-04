@@ -6,6 +6,12 @@ category: [tech, etc]
 summary:
 ---
 
+이번 포스트에서는 Vite에 대해 살펴보도록 하겠습니다.
+
+## Vite가 개선하려고 한 것
+- 성능 개선, 느린 서버 시작과 느린 업데이트
+- 기존 번들러와 Native ESM의 차이
+
 - vite가 개선하려고 한 것
   - 느린 서버 시작
   - 느린 업데이트
@@ -23,6 +29,11 @@ summary:
   - Edge >= 88
 - vite awesome plugin
   - @vitejs/plugin-legacy
+  - checker
+- vite를 사용하면서 발생한 트러블 슈팅
+  - node heap 부족
+  - iphone에서 import... (미해결)
+  - 각종 dynamic 에러들... (미해결)
 
 ##### 참고
 - [https://vitejs.dev/](https://vitejs.dev/)
