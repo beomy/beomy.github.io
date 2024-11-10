@@ -6,7 +6,11 @@ category: [tech, etc]
 summary:
 ---
 
+빌드 툴,
+
 이번 포스트에서는 Vite에 대해 살펴보도록 하겠습니다.
+
+## Vite에 대한 평가
 
 ## Vite가 개선하려고 한 것
 - 성능 개선, 느린 서버 시작과 느린 업데이트
@@ -37,4 +41,5 @@ summary:
 
 ##### 참고
 - [https://vitejs.dev/](https://vitejs.dev/)
+- [https://2023.stateofjs.com/en-US/libraries/build_tools/](https://2023.stateofjs.com/en-US/libraries/build_tools/)
 - [https://medium.com/@hw731911/vite-monorepo-이해하기-part1-pre-bundling-cab3c769d781](https://medium.com/@hw731911/vite-monorepo-이해하기-part1-pre-bundling-cab3c769d781)
