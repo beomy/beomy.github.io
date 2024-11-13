@@ -108,6 +108,9 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
     'etc/pnpm.png': (
       <StaticImage src="../../assets/images/etc/pnpm.png" alt="포스트 배너" />
     ),
+    'etc/vite.png': (
+      <StaticImage src="../../assets/images/etc/vite.png" alt="포스트 배너" />
+    ),
   };
   return (
     imgComponents[img as keyof typeof imgComponents] ?? (
