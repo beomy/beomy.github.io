@@ -37,7 +37,7 @@ summary: 웹 개발을 하다보면 자연스럽게 번들러를 사용하게 �
   - Safari >= 14
   - Edge >= 88
 
-## Vite의 생태계
+## Vite 플러그인
 - vite awesome plugin
   - @vitejs/plugin-legacy
   - checker
