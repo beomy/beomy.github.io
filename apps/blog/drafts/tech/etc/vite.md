@@ -30,11 +30,11 @@ summary: 웹 개발을 하다보면 자연스럽게 번들러를 사용하게 �
 
 ### 브라우저 지원
 - Native ES Modules, Native ESM Dynamic Import, `import.meta`를 지원하는 브라우저를 타겟으로 함
+  - Chrome >= 87
+  - Firefox >= 78
+  - Safari >= 14
+  - Edge >= 88
 - build.target으로 커스텀할 수 있으나 최소 버전은 ES2015
-- Chrome >= 87
-- Firefox >= 78
-- Safari >= 14
-- Edge >= 88
 
 ## Vite 플러그인
 - vite awesome plugin
