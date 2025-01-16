@@ -1,4 +1,4 @@
-z---
+---
 layout: post
 title: '[ETC] Vite'
 featured-img: etc/vite.png
@@ -12,7 +12,7 @@ summary: 웹 개발을 하다보면 자연스럽게 번들러를 사용하게 �
 제가 라이브러리를 선택할 때 보는 중요한 3가지는 `얼마나 대중적인가`, `얼마나 좋은 성능을 보이는가`, 그리고 개발 할 때 `얼마나 편리한가`를 생각하며 라이브러리를 선택합니다. 이 3가지 측면에서 Vite를 살펴보려고 합니다.
 
 ### Vite의 대중성
-[2024 State Of JS](https://2024.stateofjs.com/en-US/libraries/build_tools/)를 살펴보면,
+[2024 State Of JS](https://2024.stateofjs.com/en-US/libraries/build_tools/)를 살펴보면, Vite를 사용해본 사용자가 78%로 86%인 Webpack을 빠른 속도로 추격해 왔습니다. Webpack에 비교하면 등장한지는 얼마 되지 않았으나 많은 사람들의 선택을 받아 이미 Webpack에 버금 가는 사용자를 가지고 있습니다.
 
 ### Vite의 성능
 - 성능 개선: 느린 서버 시작과 느린 업데이트
