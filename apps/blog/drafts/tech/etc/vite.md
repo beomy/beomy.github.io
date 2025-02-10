@@ -37,9 +37,8 @@ summary: 웹 개발을 하다보면 자연스럽게 번들러를 사용하게 �
 - `build.target`으로 커스텀할 수 있으나 최소 버전은 ES2015
 
 ## Vite 플러그인
-- vite awesome plugin
-  - @vitejs/plugin-legacy
-  - checker
+- @vitejs/plugin-legacy
+- checker
 
 ---
 - vite가 개선하려고 한 것
