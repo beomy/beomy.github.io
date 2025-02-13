@@ -52,6 +52,7 @@ Vite는 브라우저에게 번들러 작업 일부를 맡기는 방법으로 성
 - `build.target`으로 커스텀할 수 있으나 최소 버전은 ES2015
 
 ## Vite 플러그인
+- vite-awesome-plugin
 - @vitejs/plugin-legacy
 - checker
 
