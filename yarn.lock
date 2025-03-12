@@ -1729,12 +1729,12 @@ __metadata:
   linkType: hard
 
 "@babel/runtime-corejs3@npm:^7.10.2":
-  version: 7.18.9
-  resolution: "@babel/runtime-corejs3@npm:7.18.9"
+  version: 7.26.10
+  resolution: "@babel/runtime-corejs3@npm:7.26.10"
   dependencies:
-    core-js-pure: "npm:^3.20.2"
-    regenerator-runtime: "npm:^0.13.4"
-  checksum: 10/34979cc68eb14208e8512553071153ee1764ac2c33c1c1f03de6ba3f3c462890e5299a6abe8c62b0c82cc3877cb4217b90d5b0193bcbc55ebb74ee3eed3235d2
+    core-js-pure: "npm:^3.30.2"
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10/6da4663c8b1c46410fb698188754ef69d7600c90b47e997a5a002fe069af9bbe5075f7f8c88df3559222536383b47406613e3158d5dcc08b013fc4bcc287324f
   languageName: node
   linkType: hard
 
@@ -11925,10 +11925,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js-pure@npm:^3.20.2, core-js-pure@npm:^3.23.3":
+"core-js-pure@npm:^3.23.3":
   version: 3.30.2
   resolution: "core-js-pure@npm:3.30.2"
   checksum: 10/52bba8bf4bfdec61c3459244a4f349393dd9890307df698993f0c575abc891c5dda9ff8d2af7fc8d4abdef06e6babe48483ddc44749760557b3015406b8d2acc
+  languageName: node
+  linkType: hard
+
+"core-js-pure@npm:^3.30.2":
+  version: 3.41.0
+  resolution: "core-js-pure@npm:3.41.0"
+  checksum: 10/69cc1d966d8a177be3d8ddbb4460c778dbfa5a458f74069b55322428524a54544a787fc15fe905aa84e93e0eab0d6a6501fb7026a885b7a8553c8542b01e79fb
   languageName: node
   linkType: hard
 
@@ -24739,10 +24746,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regenerator-runtime@npm:^0.13.11, regenerator-runtime@npm:^0.13.2, regenerator-runtime@npm:^0.13.3, regenerator-runtime@npm:^0.13.4, regenerator-runtime@npm:^0.13.7":
+"regenerator-runtime@npm:^0.13.11, regenerator-runtime@npm:^0.13.2, regenerator-runtime@npm:^0.13.3, regenerator-runtime@npm:^0.13.7":
   version: 0.13.11
   resolution: "regenerator-runtime@npm:0.13.11"
   checksum: 10/d493e9e118abef5b099c78170834f18540c4933cedf9bfabc32d3af94abfb59a7907bd7950259cbab0a929ebca7db77301e8024e5121e6482a82f78283dfd20c
+  languageName: node
+  linkType: hard
+
+"regenerator-runtime@npm:^0.14.0":
+  version: 0.14.1
+  resolution: "regenerator-runtime@npm:0.14.1"
+  checksum: 10/5db3161abb311eef8c45bcf6565f4f378f785900ed3945acf740a9888c792f75b98ecb77f0775f3bf95502ff423529d23e94f41d80c8256e8fa05ed4b07cf471
   languageName: node
   linkType: hard
 
