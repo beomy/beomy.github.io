@@ -1945,7 +1945,7 @@ __metadata:
     lint-staged: "npm:13.0.3"
     lodash-es: "npm:4.17.21"
     prettier: "npm:2.7.1"
-    prismjs: "npm:1.28.0"
+    prismjs: "npm:1.30.0"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     react-helmet: "npm:6.1.0"
@@ -2050,7 +2050,7 @@ __metadata:
     svelte-spa-router: "npm:3.3.0"
     tslib: "npm:2.4.0"
     typescript: "npm:4.7.4"
-    vite: "npm:4.5.10"
+    vite: "npm:4.5.12"
   languageName: unknown
   linkType: soft
 
@@ -23870,10 +23870,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prismjs@npm:1.28.0":
-  version: 1.28.0
-  resolution: "prismjs@npm:1.28.0"
-  checksum: 10/b64ea33cc2174827f5721c590089e782e74880ce1513d9c401022cf3d72d3523a562117631e5e7c47ce1eaaf324b0838713073d2be5e70a42710e23719954404
+"prismjs@npm:1.30.0":
+  version: 1.30.0
+  resolution: "prismjs@npm:1.30.0"
+  checksum: 10/6b48a2439a82e5c6882f48ebc1564c3890e16463ba17ac10c3ad4f62d98dea5b5c915b172b63b83023a70ad4f5d7be3e8a60304420db34a161fae69dd4e3e2da
   languageName: node
   linkType: hard
 
@@ -28841,9 +28841,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:4.5.10":
-  version: 4.5.10
-  resolution: "vite@npm:4.5.10"
+"vite@npm:4.5.12":
+  version: 4.5.12
+  resolution: "vite@npm:4.5.12"
   dependencies:
     esbuild: "npm:^0.18.10"
     fsevents: "npm:~2.3.2"
@@ -28877,7 +28877,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10/092c54893babb1a7c2539dfbdfb803b9a40019584f0c78f6faba8a4c261d3df622d3d4220d2482ccc22868f3c03018be4e71e783b9cdaee8ffdb8ee44d390756
+  checksum: 10/57b7b9d681872b2465d1539cbabe9102bc78860e02f985a285ce784c1194835f315ada713705268a9f489ba6334541ffc8559161bc3800da6013db1f5a1f2499
   languageName: node
   linkType: hard
 
