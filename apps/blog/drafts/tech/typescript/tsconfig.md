@@ -9,3 +9,6 @@ summary:
 references
 
 files, include 차이
+
+##### 참고
+- [https://www.typescriptlang.org/tsconfig/](https://www.typescriptlang.org/tsconfig/)
