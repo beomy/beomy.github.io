@@ -6,11 +6,18 @@
     "apps/*",
     "packages/*"
   ],
+  "resolutions": {
+    "@types/react": "18.2.79",
+    "@types/react-dom": "18.2.25",
+    "@emotion/react": "11.11.4",
+    "@emotion/styled": "11.11.5"
+  },
   "author": "Hyo Bum Lee",
   "license": "MIT",
   "keywords": [],
   "scripts": {
     "blog": "yarn workspace @beomy/blog",
+    "blog-next": "yarn workspace @beomy/blog-next",
     "games": "yarn workspace @beomy/games",
     "design-system": "yarn workspace @beomy/design-system",
     "utils": "yarn workspace @beomy/utils",
