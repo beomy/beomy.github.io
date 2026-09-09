@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // React Compiler 활성화(자동 메모이제이션). React 19 + babel-plugin-react-compiler 필요.
+  reactCompiler: true,
   // GitHub Pages(정적 배포)를 위한 정적 export
   output: 'export',
   // export 시 next/image 최적화 서버가 없으므로 unoptimized 처리
