@@ -37,7 +37,9 @@ export default async function RootLayout({
   const navData = await getNavData();
 
   return (
-    <html lang="ko">
+    // theme-init 스크립트가 하이드레이션 전에 <html data-theme> 을 설정하므로
+    // 서버/클라이언트 속성 불일치는 의도된 것 → suppressHydrationWarning 으로 무시한다.
+    <html lang="ko" suppressHydrationWarning>
       <body>
         {/* 페인트 전에 테마를 적용해 다크모드 플래시(FOUC)를 방지한다. */}
         <Script id="theme-init" strategy="beforeInteractive">

@@ -47,6 +47,23 @@
   margin: 2.5rem 0 1rem 0;
   line-height: 1.5;
 }
+/* 헤딩 퍼머링크(#): 평소 숨기고 헤딩 hover / 앵커 focus 시에만 표시 */
+.post-contents .anchor {
+  margin-left: 0.35rem;
+  color: var(--caption);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.post-contents h1:hover .anchor,
+.post-contents h2:hover .anchor,
+.post-contents h3:hover .anchor,
+.post-contents h4:hover .anchor,
+.post-contents h5:hover .anchor,
+.post-contents h6:hover .anchor,
+.post-contents .anchor:focus {
+  opacity: 1;
+}
 .post-contents h1 + h1,
 .post-contents h1 + h2,
 .post-contents h1 + h3,
