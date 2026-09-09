@@ -1,5 +1,2 @@
-import TableOfContents from './TableOfContents';
-
-export default TableOfContents;
-export * as TableOfContentsStyles from './TableOfContents.styles';
+export { default } from './TableOfContents';
 export * as TableOfContentsTypes from './TableOfContents.types';

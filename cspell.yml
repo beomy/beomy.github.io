@@ -13,6 +13,9 @@ words:
   - swiper
   - inflearn
   - tanstack
+  - clsx
+  - twMerge
+  - cva
   # Font
   - Neue
   - Malgun

@@ -1,37 +1,47 @@
-import { Icon } from '@beomy/design-system';
+import { Anchor, Icon } from '@beomy/design-system-tailwind';
 import type { PostNavigatorProps } from './PostNavigator.types';
-import * as S from './PostNavigator.styles';
+
+const BTN_WRAPPER =
+  'h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0';
 
 const PostNavigator = ({ previous, next }: PostNavigatorProps) => {
   return (
-    <S.Wrapper>
-      <S.BtnWrapper>
+    <div className="mt-[20px] flex items-center justify-between leading-[1.4] max-xs:block">
+      <div className={BTN_WRAPPER}>
         {previous && (
-          <S.Anchor to={previous.url} border>
-            <S.Icon>
+          <Anchor
+            to={previous.url}
+            border
+            className="flex h-[70px] items-center leading-[1.4]"
+          >
+            <div className="h-[35px] w-[35px]">
               <Icon type="BsChevronLeft" size="100%" />
-            </S.Icon>
-            <S.Contents ml="20px" mr="auto">
+            </div>
+            <div className="ml-[20px] mr-auto [&_small]:text-0">
               <small>이전 포스트</small>
               <div>{previous.title}</div>
-            </S.Contents>
-          </S.Anchor>
+            </div>
+          </Anchor>
         )}
-      </S.BtnWrapper>
-      <S.BtnWrapper>
+      </div>
+      <div className={BTN_WRAPPER}>
         {next && (
-          <S.Anchor to={next.url} textAlign="right" border>
-            <S.Contents ml="auto" mr="20px">
+          <Anchor
+            to={next.url}
+            border
+            className="flex h-[70px] items-center text-right leading-[1.4]"
+          >
+            <div className="ml-auto mr-[20px] [&_small]:text-0">
               <small>다음 포스트</small>
               <div>{next.title}</div>
-            </S.Contents>
-            <S.Icon>
+            </div>
+            <div className="h-[35px] w-[35px]">
               <Icon type="BsChevronRight" size="100%" />
-            </S.Icon>
-          </S.Anchor>
+            </div>
+          </Anchor>
         )}
-      </S.BtnWrapper>
-    </S.Wrapper>
+      </div>
+    </div>
   );
 };
 

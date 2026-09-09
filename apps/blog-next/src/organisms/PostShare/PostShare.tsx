@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react';
-import { IconButton } from '@beomy/design-system';
+import { FieldSet, IconButton } from '@beomy/design-system-tailwind';
 import ShareButton from '@/molecules/ShareButton';
 import { useNotification } from '@/hooks';
-import * as S from './PostShare.styles';
 import { PostShareProps } from './PostShare.types';
 
 export const PostShare = ({ url }: PostShareProps) => {
@@ -16,8 +15,8 @@ export const PostShare = ({ url }: PostShareProps) => {
   }, [message, url]);
 
   return (
-    <S.Wrapper title="공유하기">
-      <S.Contents>
+    <FieldSet title="공유하기">
+      <div className="flex w-full justify-between">
         <ShareButton
           target="facebook"
           url={url}
@@ -48,8 +47,8 @@ export const PostShare = ({ url }: PostShareProps) => {
           onBlur={() => setHover(false)}
           onClick={handleClickChip}
         />
-      </S.Contents>
-    </S.Wrapper>
+      </div>
+    </FieldSet>
   );
 };
 

@@ -1,8 +1,13 @@
 import type { PostContentsProps } from './PostContents.types';
-import * as S from './PostContents.styles';
+import './PostContents.css';
 
 const PostContents = ({ html }: PostContentsProps) => {
-  return <S.Wrapper dangerouslySetInnerHTML={{ __html: html ?? '' }} />;
+  return (
+    <div
+      className="post-contents"
+      dangerouslySetInnerHTML={{ __html: html ?? '' }}
+    />
+  );
 };
 
 export default PostContents;

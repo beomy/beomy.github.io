@@ -1,11 +1,10 @@
 import { getYear } from 'date-fns';
-import { Anchor, Icon } from '@beomy/design-system';
-import * as S from './Footer.styles';
+import { Anchor, Icon } from '@beomy/design-system-tailwind';
 
 const Footer = () => {
   return (
-    <S.Wrapper>
-      <S.Nav>
+    <footer className="border-t border-grey-90 bg-grey-100 py-[25px] text-center">
+      <nav className="mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]">
         <Anchor
           href="https://github.com/beomy"
           target="_blank"
@@ -20,11 +19,11 @@ const Footer = () => {
         >
           <Icon type="BsLinkedin" size={20} />
         </Anchor>
-      </S.Nav>
-      <S.Description>
+      </nav>
+      <span className="text-1 text-caption">
         © {getYear(new Date())} Beomy. All rights reserved.
-      </S.Description>
-    </S.Wrapper>
+      </span>
+    </footer>
   );
 };
 

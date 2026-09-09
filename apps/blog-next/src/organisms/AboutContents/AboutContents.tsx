@@ -1,13 +1,12 @@
 import { H1 } from '@/atoms';
 import type { AboutContentsProps } from './AboutContents.types';
-import * as S from './AboutContents.styles';
 
 const AboutContents = ({ title, children }: AboutContentsProps) => {
   return (
-    <S.Wrapper>
+    <div className="mb-[60px] leading-[2]">
       <H1>{title}</H1>
       {children}
-    </S.Wrapper>
+    </div>
   );
 };
 

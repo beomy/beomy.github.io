@@ -1,11 +1,17 @@
 import { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { TextField, Anchor, Icon, IconButton } from '@beomy/design-system';
+import {
+  TextField,
+  Anchor,
+  Icon,
+  IconButton,
+  cn,
+} from '@beomy/design-system-tailwind';
 import { useScroll } from '@beomy/utils';
 import { useTheme } from '@/hooks';
 import { useNav } from '@/lib/nav-context';
-import { Li } from '@/atoms';
-import * as S from './Header.styles';
+import { Li, Ul } from '@/atoms';
+import Menu from '@/organisms/Menu';
 
 const Header = () => {
   const router = useRouter();
@@ -38,8 +44,14 @@ const Header = () => {
   }, [setTheme]);
 
   return (
-    <S.Wrapper hide={scrollY < 0}>
-      <S.Nav>
+    <header
+      className={cn(
+        'fixed left-0 right-0 top-0 z-[9] flex flex-col shadow-[rgb(0_0_0_/_8%)_0_0_15px] transition-[top] duration-200 ease-in-out',
+        '[&_button]:text-body [&_button:hover]:text-title',
+        scrollY < 0 && 'top-[-140px]',
+      )}
+    >
+      <nav className="flex items-center justify-between border-b border-grey-90 bg-[color-mix(in_srgb,var(--background)_80%,transparent)] px-[75px] py-[10px] max-sm:px-[20px]">
         <Anchor to="/">
           {theme === 'dark' ? (
             <img
@@ -55,26 +67,26 @@ const Header = () => {
             />
           )}
         </Anchor>
-        <S.GNB>
-          <Li m="0 10px">
+        <Ul className="m-0 ml-auto flex p-0 max-sm:hidden [&_a]:px-[10px] [&_a]:py-[5px] [&_a]:capitalize">
+          <Li className="mx-[10px]">
             <Anchor to="/about/" partiallyActive>
               about
             </Anchor>
           </Li>
           {categoryList.map((category) => (
-            <Li m="0 10px" key={category}>
+            <Li className="mx-[10px]" key={category}>
               <Anchor to={`/${category}`} partiallyActive>
                 {category}
               </Anchor>
             </Li>
           ))}
-          <Li m="0 10px">
+          <Li className="mx-[10px]">
             <Anchor href="/games" target="_blank">
               games
             </Anchor>
           </Li>
-        </S.GNB>
-        <S.Action>
+        </Ul>
+        <div className="ml-[10px] flex [&_button+button]:ml-[10px]">
           <IconButton
             icon={theme === 'dark' ? 'BsMoonFill' : 'BsSunFill'}
             size={20}
@@ -87,22 +99,35 @@ const Header = () => {
             aria-label="search"
             onClick={handleClickSearchBtn}
           />
-          <S.MenuBtn onClick={handleClickMenuBtn} aria-label="menu">
+          <button
+            className="hidden max-sm:block"
+            onClick={handleClickMenuBtn}
+            aria-label="menu"
+          >
             <Icon type="BsList" size={30} />
-          </S.MenuBtn>
-        </S.Action>
-      </S.Nav>
-      <S.Search active={isSearch}>
+          </button>
+        </div>
+      </nav>
+      <div
+        className={cn(
+          'flex h-0 items-center overflow-hidden bg-[color-mix(in_srgb,var(--grey-98)_80%,transparent)] transition-[height] duration-[350ms] ease-in-out',
+          isSearch ? 'visible h-[80px]' : 'invisible',
+        )}
+      >
         <TextField
           type="text"
           placeholder="검색어를 입력해 주세요."
           value=""
-          fontSize="20px"
+          className="mx-auto h-full text-[20px] screen-m max-m:screen-sm max-sm:screen-xs"
           onSearch={handleSearch}
         />
-      </S.Search>
-      <S.SNB active={isMenu} onClose={() => setIsMenu(false)} />
-    </S.Wrapper>
+      </div>
+      <Menu
+        className="hidden max-sm:block"
+        active={isMenu}
+        onClose={() => setIsMenu(false)}
+      />
+    </header>
   );
 };
 

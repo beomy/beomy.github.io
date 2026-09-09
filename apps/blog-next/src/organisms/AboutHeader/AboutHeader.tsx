@@ -1,12 +1,11 @@
 import { H1 } from '@/atoms';
-import * as S from './AboutHeader.styles';
 
 const AboutHeader = () => {
   return (
-    <S.Wrapper>
-      <S.Icon>
+    <div className="flex items-center">
+      <div className="mr-[20px] min-w-[100px]">
         <img src="/assets/images/beomy-icon.png" alt="Beomy" />
-      </S.Icon>
+      </div>
       <div>
         <H1>이효범 (Beomy)</H1>
         <div>beomyhlee@gmail.com</div>
@@ -17,7 +16,7 @@ const AboutHeader = () => {
           포스팅하고 있습니다.
         </p>
       </div>
-    </S.Wrapper>
+    </div>
   );
 };
 

@@ -21,12 +21,12 @@ const SearchView = ({ posts }: { posts: Post[] }) => {
   return (
     <ListLayout>
       {filteredPosts.length ? (
-        <H2 textAlign="center" m="50px 0">
+        <H2 className="my-[50px] text-center">
           &quot;<span>{keyword}</span>&quot;에 대해 총{' '}
           <span>{filteredPosts.length}</span>건이 검색되었습니다.
         </H2>
       ) : (
-        <H2 textAlign="center" m="50px 0">
+        <H2 className="my-[50px] text-center">
           &quot;<span>{keyword}</span>&quot;에 대한 검색 결과가 없습니다.
         </H2>
       )}

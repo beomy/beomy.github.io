@@ -1,10 +1,11 @@
 import type { MouseEvent } from 'react';
 import { useEffect, useRef, useCallback } from 'react';
 import { throttle } from 'lodash-es';
+import { FieldSet } from '@beomy/design-system-tailwind';
 import type { TableOfContentsProps } from './TableOfContents.types';
-import * as S from './TableOfContents.styles';
+import './TableOfContents.css';
 
-const TableOfContents = ({ toc, onClick, ...props }: TableOfContentsProps) => {
+const TableOfContents = ({ toc, onClick }: TableOfContentsProps) => {
   const tocRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -48,13 +49,14 @@ const TableOfContents = ({ toc, onClick, ...props }: TableOfContentsProps) => {
   );
 
   return (
-    <S.Wrapper title="목차" {...props}>
-      <S.Toc
+    <FieldSet title="목차" className="max-h-full overflow-auto">
+      <nav
         ref={tocRef}
+        className="toc"
         dangerouslySetInnerHTML={{ __html: toc ?? '' }}
         onClick={handleClickToc}
-      ></S.Toc>
-    </S.Wrapper>
+      ></nav>
+    </FieldSet>
   );
 };
 

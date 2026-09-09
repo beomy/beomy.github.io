@@ -7,7 +7,7 @@ const DefaultLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Header />
-      <Contents width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m']}>
+      <Contents className="screen-xs sm:screen-sm m:screen-m">
         {children}
       </Contents>
       <Footer />

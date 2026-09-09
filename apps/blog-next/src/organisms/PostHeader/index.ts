@@ -1,5 +1,2 @@
-import PostHeader from './PostHeader';
-
-export default PostHeader;
-export * as PostHeaderStyles from './PostHeader.styles';
+export { default } from './PostHeader';
 export * as PostHeaderTypes from './PostHeader.types';

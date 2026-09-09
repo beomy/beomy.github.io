@@ -1,8 +1,11 @@
-import type { H2Props } from './H2.types';
-import * as S from './H2.styles';
+import type { HTMLAttributes, ReactNode } from 'react';
+
+export type H2Props = {
+  children?: ReactNode;
+} & HTMLAttributes<HTMLHeadingElement>;
 
 const H2 = ({ children, ...props }: H2Props) => {
-  return <S.Wrapper {...props}>{children}</S.Wrapper>;
+  return <h2 {...props}>{children}</h2>;
 };
 
 export default H2;

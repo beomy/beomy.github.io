@@ -1,0 +1,32 @@
+/*
+ * 동적으로 삽입되는 목차(TOC) HTML 스타일.
+ */
+.toc {
+  font-size: var(--text-1);
+}
+.toc a {
+  color: var(--caption);
+  text-decoration: none;
+}
+.toc a:hover {
+  color: var(--title);
+}
+.toc .active {
+  transform: scale(1.05);
+}
+.toc .active a {
+  color: var(--title);
+}
+.toc li {
+  list-style: none;
+}
+.toc p {
+  margin: 0;
+}
+.toc > ul {
+  margin: 0;
+  padding: 0;
+}
+.toc > ul > li > ul {
+  padding-left: 15px;
+}

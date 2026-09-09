@@ -1,5 +1,2 @@
-import PostCard from './PostCard';
-
-export default PostCard;
-export * as PostCardStyles from './PostCard.styles';
+export { default } from './PostCard';
 export * as PostCardTypes from './PostCard.types';

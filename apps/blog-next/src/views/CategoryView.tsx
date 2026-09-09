@@ -15,9 +15,7 @@ const CategoryView = ({ posts, slug }: { posts: Post[]; slug: string }) => {
   return (
     <>
       <Header />
-      <Contents
-        width={['screen.xs', 'screen.xs', 'screen.sm', 'screen.m', 'screen.lg']}
-      >
+      <Contents className="screen-xs sm:screen-sm m:screen-m lg:screen-lg">
         <SubMenu menu={subMenu} />
         <PostList posts={posts} />
       </Contents>

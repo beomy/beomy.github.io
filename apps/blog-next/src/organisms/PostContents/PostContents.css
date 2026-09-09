@@ -1,0 +1,176 @@
+/*
+ * 렌더링된 마크다운(dangerouslySetInnerHTML) 콘텐츠 스타일.
+ * 동적으로 삽입되는 HTML 이라 Tailwind 유틸리티를 붙일 수 없으므로,
+ * 디자인 토큰(CSS 변수)을 사용하는 스코프 스타일로 관리합니다.
+ */
+.post-contents img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: var(--color-white);
+}
+.post-contents pre {
+  border-radius: 10px;
+}
+.post-contents :not(pre) code[class*='language-'] {
+  word-break: break-word;
+}
+.post-contents code .token {
+  background: transparent;
+}
+.post-contents table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid var(--grey-90);
+  border-radius: 4px;
+}
+.post-contents table tr {
+  vertical-align: top;
+}
+.post-contents table tr th,
+.post-contents table tr td {
+  padding: 6px 13px;
+  border: 1px solid var(--grey-90);
+}
+.post-contents h1,
+.post-contents h2,
+.post-contents h3,
+.post-contents h4,
+.post-contents h5 {
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.5;
+}
+.post-contents h1 + h1,
+.post-contents h1 + h2,
+.post-contents h1 + h3,
+.post-contents h1 + h4,
+.post-contents h1 + h5,
+.post-contents h2 + h1,
+.post-contents h2 + h2,
+.post-contents h2 + h3,
+.post-contents h2 + h4,
+.post-contents h2 + h5,
+.post-contents h3 + h1,
+.post-contents h3 + h2,
+.post-contents h3 + h3,
+.post-contents h3 + h4,
+.post-contents h3 + h5,
+.post-contents h4 + h1,
+.post-contents h4 + h2,
+.post-contents h4 + h3,
+.post-contents h4 + h4,
+.post-contents h4 + h5,
+.post-contents h5 + h1,
+.post-contents h5 + h2,
+.post-contents h5 + h3,
+.post-contents h5 + h4,
+.post-contents h5 + h5 {
+  margin-top: 1rem;
+}
+.post-contents h1 {
+  font-size: var(--text-6);
+}
+.post-contents h2 {
+  font-size: var(--text-5);
+}
+.post-contents h3 {
+  font-size: var(--text-4);
+}
+.post-contents h4 {
+  font-size: var(--text-3);
+}
+.post-contents h5 {
+  font-size: var(--text-2);
+}
+.post-contents blockquote {
+  margin: 2rem 0;
+  border: 1px solid var(--grey-90);
+  border-left: 4px solid var(--grey-50);
+  background: var(--grey-98);
+  border-radius: 4px;
+  padding: 1rem 1rem 1rem 2rem;
+}
+.post-contents blockquote h1,
+.post-contents blockquote h2,
+.post-contents blockquote h3,
+.post-contents blockquote h4,
+.post-contents blockquote h5 {
+  line-height: 2;
+  margin: 1rem 0;
+}
+.post-contents blockquote h1:first-child,
+.post-contents blockquote h2:first-child,
+.post-contents blockquote h3:first-child,
+.post-contents blockquote h4:first-child,
+.post-contents blockquote h5:first-child {
+  margin-top: 0;
+}
+.post-contents blockquote p:first-child {
+  margin-top: 0;
+}
+.post-contents blockquote p:last-child {
+  margin-bottom: 0;
+}
+.post-contents p {
+  margin: 1rem 0;
+}
+.post-contents p > img {
+  margin: 2rem auto;
+}
+.post-contents ul {
+  margin: 0;
+}
+.post-contents #참고 {
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+.post-contents #참고 + ul {
+  line-height: 1.5;
+}
+.post-contents [data-language] {
+  position: relative;
+}
+.post-contents [data-language]:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 10px;
+  font-size: var(--text-0);
+}
+.post-contents [data-language='http']:before {
+  content: 'HTTP';
+}
+.post-contents [data-language='html']:before {
+  content: 'HTML';
+}
+.post-contents [data-language='js']:before {
+  content: 'JS';
+}
+.post-contents [data-language='jsx']:before {
+  content: 'JSX';
+}
+.post-contents [data-language='ts']:before {
+  content: 'TS';
+}
+.post-contents [data-language='tsx']:before {
+  content: 'TSX';
+}
+.post-contents [data-language='bash']:before {
+  content: 'BASH';
+}
+.post-contents [data-language='scss']:before {
+  content: 'SCSS';
+}
+.post-contents [data-language='json']:before {
+  content: 'JSON';
+}
+.post-contents [data-language='css']:before {
+  content: 'CSS';
+}

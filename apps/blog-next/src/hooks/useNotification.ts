@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useSetAtom } from 'jotai';
 import { uniqueId } from 'lodash-es';
-import { MessageTypes } from '@beomy/design-system';
+import { MessageTypes } from '@beomy/design-system-tailwind';
 import { messageState } from '@/stores/notification';
 
 type UseNotificationType = () => {

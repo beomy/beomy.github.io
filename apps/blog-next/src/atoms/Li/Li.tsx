@@ -1,8 +1,16 @@
-import type { LiProps } from './Li.types';
-import * as S from './Li.styles';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { cn } from '@beomy/design-system-tailwind';
 
-const Li = ({ children, ...props }: LiProps) => {
-  return <S.Wrapper {...props}>{children}</S.Wrapper>;
+export type LiProps = {
+  children?: ReactNode;
+} & HTMLAttributes<HTMLLIElement>;
+
+const Li = ({ children, className, ...props }: LiProps) => {
+  return (
+    <li className={cn('list-none', className)} {...props}>
+      {children}
+    </li>
+  );
 };
 
 export default Li;

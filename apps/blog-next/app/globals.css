@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+@import '@beomy/design-system-tailwind/styles.css';
+
+/*
+ * 디자인 시스템 패키지 소스의 Tailwind 클래스를 스캔 대상에 포함시킵니다.
+ * (node_modules 는 기본 스캔에서 제외되므로 명시적으로 등록)
+ */
+@source '../../../packages/design-system-tailwind/src';

@@ -1,5 +1,2 @@
-import PostShare from './PostShare';
-
-export default PostShare;
-export * as PostShareStyles from './PostShare.styles';
+export { default } from './PostShare';
 export * as PostShareTypes from './PostShare.types';

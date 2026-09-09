@@ -1,8 +1,11 @@
-import type { H1Props } from './H1.types';
-import * as S from './H1.styles';
+import type { HTMLAttributes, ReactNode } from 'react';
+
+export type H1Props = {
+  children?: ReactNode;
+} & HTMLAttributes<HTMLHeadingElement>;
 
 const H1 = ({ children, ...props }: H1Props) => {
-  return <S.Wrapper {...props}>{children}</S.Wrapper>;
+  return <h1 {...props}>{children}</h1>;
 };
 
 export default H1;

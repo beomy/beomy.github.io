@@ -1,5 +1,2 @@
-import PostNavigator from './PostNavigator';
-
-export default PostNavigator;
-export * as PostNavigatorStyles from './PostNavigator.styles';
+export { default } from './PostNavigator';
 export * as PostNavigatorTypes from './PostNavigator.types';

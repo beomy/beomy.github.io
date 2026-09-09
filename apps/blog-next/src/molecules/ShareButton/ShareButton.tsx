@@ -6,9 +6,8 @@ import {
   LinkedinShareButton,
   LineShareButton,
 } from 'react-share';
-import { Icon, IconTypes } from '@beomy/design-system';
+import { Icon, IconTypes, iconButtonVariants } from '@beomy/design-system-tailwind';
 import { ShareButtonProps } from './ShareButton.types';
-import * as S from '@/molecules/ShareButton/ShareButton.styles';
 
 const shareButtonMap: {
   [key in ShareButtonProps['target']]: ForwardRefExoticComponent<any>;
@@ -30,15 +29,14 @@ const shareIconMap: {
 
 const ShareButton = ({ target, url, size, ...props }: ShareButtonProps) => {
   const [isHover, setHover] = useState<boolean>(false);
-  const targetShareButton = useMemo(() => shareButtonMap[target], [target]);
+  const ShareButtonComponent = useMemo(() => shareButtonMap[target], [target]);
   const iconType = useMemo(() => shareIconMap[target], [target]);
 
   return (
-    <S.Wrapper
-      as={targetShareButton}
+    <ShareButtonComponent
       url={url}
       resetButtonStyle={false}
-      border
+      className={iconButtonVariants({ border: true })}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onFocus={() => setHover(true)}
@@ -46,7 +44,7 @@ const ShareButton = ({ target, url, size, ...props }: ShareButtonProps) => {
       {...props}
     >
       <Icon type={isHover ? 'BsLink45Deg' : iconType} size={size} />
-    </S.Wrapper>
+    </ShareButtonComponent>
   );
 };
 

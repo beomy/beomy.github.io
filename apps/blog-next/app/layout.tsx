@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { getNavData } from '@/lib/posts';
 import { siteMetadata } from '@/lib/metadata';
 import Providers from './providers';
+import './globals.css';
 
 const GA_TRACKING_ID = 'G-MD8G3F353P';
 
@@ -38,6 +39,11 @@ export default async function RootLayout({
   return (
     <html lang="ko">
       <body>
+        {/* 페인트 전에 테마를 적용해 다크모드 플래시(FOUC)를 방지한다. */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();`}
+        </Script>
+
         <Providers navData={navData}>{children}</Providers>
 
         {/* Google Analytics (gtag) */}

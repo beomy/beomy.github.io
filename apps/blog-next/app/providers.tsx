@@ -1,10 +1,8 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 import { Provider as JotaiProvider, useAtom } from 'jotai';
-import { ThemeProvider } from '@emotion/react';
-import { BaseStyles } from '@beomy/design-system';
-import * as themes from '@beomy/design-system/tokens';
 import { useMount, useLocalStorage } from '@beomy/utils';
 import type { Theme } from '@/models/theme';
 import { useTheme } from '@/hooks';
@@ -12,10 +10,7 @@ import { themeState } from '@/stores/theme';
 import { Notification } from '@/organisms';
 import { NavProvider } from '@/lib/nav-context';
 import type { NavData } from '@/lib/nav-context';
-import EmotionRegistry from './emotion';
 import PrismTheme from './prism-theme';
-
-const themeMap = themes as unknown as Record<Theme, (typeof themes)['light']>;
 
 const ThemedApp = ({ children }: { children: ReactNode }) => {
   const [theme] = useTheme();
@@ -41,13 +36,18 @@ const ThemedApp = ({ children }: { children: ReactNode }) => {
     return () => matchMedia?.removeEventListener?.('change', handleModeChange);
   });
 
+  // 테마 변경 시 <html data-theme> 을 갱신한다. (Tailwind 다크모드 토글)
+  useEffect(() => {
+    if (!theme) return;
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
   return (
-    <ThemeProvider theme={themeMap[theme ?? 'light']}>
-      <BaseStyles />
+    <>
       <PrismTheme />
       {children}
       <Notification />
-    </ThemeProvider>
+    </>
   );
 };
 
@@ -59,13 +59,11 @@ const Providers = ({
   children: ReactNode;
 }) => {
   return (
-    <EmotionRegistry>
-      <JotaiProvider>
-        <NavProvider value={navData}>
-          <ThemedApp>{children}</ThemedApp>
-        </NavProvider>
-      </JotaiProvider>
-    </EmotionRegistry>
+    <JotaiProvider>
+      <NavProvider value={navData}>
+        <ThemedApp>{children}</ThemedApp>
+      </NavProvider>
+    </JotaiProvider>
   );
 };
 

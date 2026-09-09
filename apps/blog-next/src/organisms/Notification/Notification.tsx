@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 import { useAtom } from 'jotai';
-import { Portal, Message } from '@beomy/design-system';
+import { Portal, Message } from '@beomy/design-system-tailwind';
 import { messageState } from '@/stores/notification';
-import * as S from './Notification.styles';
 
 const Notification = () => {
   const [message, setMessage] = useAtom(messageState);
@@ -17,7 +16,7 @@ const Notification = () => {
   if (!message.length) return null;
   return (
     <Portal>
-      <S.Wrapper>
+      <div className="fixed right-0 top-[70px] z-[9] box-border flex flex-col items-end px-[10px] max-xs:w-full">
         {message.map((item) => (
           <Message
             key={item.id}
@@ -27,7 +26,7 @@ const Notification = () => {
             onClose={handleCloseMessage}
           />
         ))}
-      </S.Wrapper>
+      </div>
     </Portal>
   );
 };

@@ -1,5 +1,2 @@
-import PostList from './PostList';
-
-export default PostList;
-export * as PostListStyles from './PostList.styles';
+export { default } from './PostList';
 export * as PostListTypes from './PostList.types';

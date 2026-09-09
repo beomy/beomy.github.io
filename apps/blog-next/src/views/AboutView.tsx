@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor } from '@beomy/design-system';
+import { Anchor } from '@beomy/design-system-tailwind';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import { Ul, Li, H4 } from '@/atoms';
 import { AboutHeader, AboutContents } from '@/organisms';
@@ -115,8 +115,8 @@ const AboutView = () => {
           </Li>
         </Ul>
         <H4>강의</H4>
-        <Ul display="flex" flexWrap="wrap">
-          <Li width={['100%', '50%', '25%']} mr="10px" mb="10px">
+        <Ul className="flex flex-wrap">
+          <Li className="mb-[10px] mr-[10px] w-full xs:w-1/2 sm:w-1/4">
             <Anchor
               href="https://www.inflearn.com/course/스벨트-입문?inst=77d01d70"
               target="_blank"
@@ -127,7 +127,7 @@ const AboutView = () => {
               />
             </Anchor>
           </Li>
-          <Li width={['100%', '50%', '25%']} mb="10px">
+          <Li className="mb-[10px] w-full xs:w-1/2 sm:w-1/4">
             <Anchor
               href="https://www.inflearn.com/course/스도쿠-실전-스도쿠실습?inst=2f7ebc2f"
               target="_blank"

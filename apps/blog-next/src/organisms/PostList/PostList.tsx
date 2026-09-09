@@ -1,14 +1,13 @@
 import { PostCard } from '@/organisms';
 import type { PostListProps } from './PostList.types';
-import * as S from './PostList.styles';
 
 const PostList = ({ posts }: PostListProps) => {
   return (
-    <S.Wrapper>
+    <div className="flex flex-wrap">
       {posts.map((post) => (
         <PostCard key={post.url} {...post} />
       ))}
-    </S.Wrapper>
+    </div>
   );
 };
 

@@ -1,0 +1,12 @@
+/**
+ * 디자인 시스템 스타일 번들 (토큰 + 기본 스타일).
+ *
+ * 앱에서는 Tailwind 자체(`@import "tailwindcss";`)를 먼저 import 한 뒤 이 파일을
+ * import 하고, 컴포넌트 클래스 스캔을 위해 `@source` 를 추가하세요.
+ *
+ *   @import 'tailwindcss';
+ *   @import '@beomy/design-system-tailwind/styles.css';
+ *   @source '../../node_modules/@beomy/design-system-tailwind/src';
+ */
+@import './theme.css';
+@import './base.css';

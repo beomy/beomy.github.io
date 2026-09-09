@@ -1,0 +1,61 @@
+/**
+ * 전역 기본 스타일 (기존 @beomy/design-system 의 BaseStyles 컴포넌트 대체)
+ *
+ * emotion `<Global>` 로 주입하던 스타일을 Tailwind `@layer base` 로 옮겼습니다.
+ * 앱에서 `@import "@beomy/design-system-tailwind/base.css";` 로 사용합니다.
+ */
+@layer base {
+  body {
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo',
+      'Malgun Gothic', '맑은 고딕', 나눔고딕, 'Nanum Gothic', 'Noto Sans KR',
+      'Noto Sans CJK KR', arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
+    font-size: var(--text-2);
+    color: var(--color-body);
+    background-color: var(--color-background);
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: var(--color-title);
+  }
+
+  a {
+    color: var(--color-blue-50);
+  }
+
+  input {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: 0;
+  }
+
+  input:focus-visible {
+    outline: none;
+  }
+
+  input,
+  button,
+  select,
+  optgroup,
+  textarea {
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+  }
+
+  button {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "@beomy/design-system-tailwind",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Beomy 블로그의 디자인 시스템(Tailwind CSS v4) 프로젝트입니다.",
+  "main": "./src/components/index.ts",
+  "exports": {
+    ".": "./src/components/index.ts",
+    "./icons": "./src/icons/index.ts",
+    "./models": "./src/models/index.ts",
+    "./lib": "./src/lib/index.ts",
+    "./styles.css": "./src/styles/index.css",
+    "./theme.css": "./src/styles/theme.css",
+    "./base.css": "./src/styles/base.css"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "lint": "eslint '**/*.+(ts|js|tsx)' --fix",
+    "format": "prettier '**/*.+(ts|js|tsx)' --write"
+  },
+  "lint-staged": {
+    "*.{ts,js,jsx,tsx}": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
+  "dependencies": {
+    "@beomy/utils": "0.0.0",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "react-icons": "4.4.0",
+    "tailwind-merge": "2.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.79",
+    "@types/react-dom": "18.2.25",
+    "@typescript-eslint/eslint-plugin": "5.32.0",
+    "@typescript-eslint/parser": "5.32.0",
+    "eslint": "8.21.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-n": "15.2.4",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-promise": "6.0.0",
+    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "prettier": "2.7.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "4.1.13",
+    "typescript": "4.7.4"
+  },
+  "peerDependencies": {
+    "next": ">=13",
+    "react": "18.x",
+    "react-dom": "18.x",
+    "tailwindcss": "4.x"
+  }
+}
