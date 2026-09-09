@@ -28,7 +28,7 @@ const TOC_MAX_DEPTH = 3;
 
 /**
  * rehype-slug 이후, autolink 이전에 실행하여 h1~h3 헤딩 정보를 수집한다.
- * (gatsby 의 built-in tableOfContents(maxDepth: 3) 대체)
+ * (목차는 TOC_MAX_DEPTH 까지만 포함)
  */
 const collectHeadings = (headings: Heading[]) => () => (tree: Root) => {
   visit(tree, 'element', (node) => {
@@ -87,7 +87,7 @@ const toPlainText = (markdown: string): string =>
     .replace(/\s+/g, ' ')
     .trim();
 
-const PRUNE_LENGTH = 140; // gatsby-transformer-remark 기본 excerpt 길이
+const PRUNE_LENGTH = 140; // 요약(excerpt) 최대 길이
 
 const buildExcerpt = (plainText: string): string => {
   if (plainText.length <= PRUNE_LENGTH) return plainText;

@@ -37,7 +37,7 @@ export type PostRecord = {
   excerpt: string;
 };
 
-/** gatsby-node categoryToSlugs 와 동일 */
+/** 카테고리 배열을 계층 슬러그 목록으로 변환 (예: ['tech','svelte'] → ['/tech/','/tech/svelte/']) */
 const categoryToSlugs = (category?: string[]): string[] => {
   if (!category) return [];
   let slug = '';
@@ -67,7 +67,7 @@ const buildRecord = async (
   const { data, content } = matter(raw);
   const frontmatter = data as Frontmatter;
 
-  // gatsby createFilePath: 루트 기준 상대경로 (앞뒤 슬래시 포함, 확장자 제거)
+  // 파일 경로를 루트 기준 상대 슬러그로 변환 (앞뒤 슬래시 포함, 확장자 제거)
   const relative = path
     .relative(rootDir, filePath)
     .replace(/\.md$/, '')
@@ -157,7 +157,7 @@ export type PostNavigation = {
   next: Post | null;
 };
 
-/** 포스트 상세 + 이전/다음 (gatsby edges previous/next 와 동일: 오름차순 기준) */
+/** 포스트 상세 + 이전/다음 글 (생성일 오름차순 기준) */
 export const getPostNavigation = async (
   slug: string,
 ): Promise<PostNavigation | undefined> => {
@@ -165,7 +165,7 @@ export const getPostNavigation = async (
   const index = posts.findIndex((post) => post.slug === slug);
   if (index === -1) return undefined;
 
-  // gatsby allMarkdownRemark(ASC) 의 edges.previous/next 규칙과 동일하게 매핑
+  // 생성일 오름차순 정렬에서의 이전/다음 글로 매핑
   const previousRecord = posts[index - 1];
   const nextRecord = posts[index + 1];
 
