@@ -6,7 +6,6 @@
     "baseUrl": ".",
     "declaration": true,
     "target": "ES5",
-    "moduleResolution": "NodeNext",
     "outDir": "./dist"
   },
   "exclude": ["node_modules"],
