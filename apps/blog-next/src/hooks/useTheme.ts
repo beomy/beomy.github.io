@@ -15,7 +15,7 @@ const useTheme: useThemeType = () => {
     (valOrFunc) => {
       const newState =
         typeof valOrFunc === 'function'
-          ? (valOrFunc as Function)(recoilTheme)
+          ? (valOrFunc as (prev: Theme | undefined) => Theme)(recoilTheme)
           : valOrFunc;
       setRecoilTheme(newState);
       setLocalStorageTheme(newState);

@@ -10,10 +10,11 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    setFailed(false);
-    // 하이드레이션 이전에 이미 로드에 실패한 이미지(onError 를 놓친 경우)도 감지한다.
+    // img 가 바뀌면 실패 상태를 새로 계산한다. 하이드레이션 이전에 이미 로드에
+    // 실패한 이미지(onError 를 놓친 경우)를 <img> DOM 상태에서 감지해 동기화한다.
+    // 이는 외부 시스템(img 로드 상태) → React state 동기화라 effect 내 setState 가 필요하다.
     const el = ref.current;
-    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
+    setFailed(!!(el && el.complete && el.naturalWidth === 0));
   }, [img]);
 
   // 이미지가 없거나 로드에 실패하면 fallback 이미지를 표시한다.
