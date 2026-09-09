@@ -10,6 +10,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     sitemap: `${siteMetadata.siteUrl.replace(/\/$/, '')}/sitemap.xml`,
-    host: siteMetadata.siteUrl.replace(/\/$/, ''),
   };
 }

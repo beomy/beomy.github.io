@@ -7,7 +7,8 @@ import {
   getPostsByCategorySlug,
   getPostRecordBySlug,
 } from '@/lib/posts';
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadata, siteMetadata } from '@/lib/metadata';
+import { JsonLd, buildBlogPostingJsonLd } from '@/lib/jsonLd';
 import PostView from '@/views/PostView';
 import CategoryView from '@/views/CategoryView';
 
@@ -53,7 +54,13 @@ export async function generateMetadata({
     });
   }
 
-  return buildMetadata({ title: key, path: key });
+  // 카테고리 페이지: 마지막 세그먼트를 읽기 쉬운 제목으로 사용
+  const categoryName = slug[slug.length - 1] ?? '';
+  return buildMetadata({
+    title: categoryName,
+    description: `Beomy 블로그의 "${categoryName}" 카테고리 글 목록입니다.`,
+    path: key,
+  });
 }
 
 export default async function Page({
@@ -68,23 +75,35 @@ export default async function Page({
   const navigation = await getPostNavigation(key);
   if (navigation) {
     const { post, previous, next } = navigation;
+    const canonicalUrl = `${siteMetadata.siteUrl.replace(/\/$/, '')}${key}`;
     return (
-      <PostView
-        post={{
-          title: post.title,
-          url: post.slug,
-          thumbnail: post.thumbnail,
-          createdDate: post.createdDate,
-          timeToRead: post.timeToRead,
-          summary: post.summary,
-          category: post.category,
-          html: post.html,
-          tableOfContents: post.tableOfContents,
-        }}
-        previous={previous}
-        next={next}
-        slug={key}
-      />
+      <>
+        <JsonLd
+          data={buildBlogPostingJsonLd({
+            title: post.title,
+            description: post.summary,
+            thumbnail: post.thumbnail,
+            createdDate: post.createdDate,
+            url: canonicalUrl,
+          })}
+        />
+        <PostView
+          post={{
+            title: post.title,
+            url: post.slug,
+            thumbnail: post.thumbnail,
+            createdDate: post.createdDate,
+            timeToRead: post.timeToRead,
+            summary: post.summary,
+            category: post.category,
+            html: post.html,
+            tableOfContents: post.tableOfContents,
+          }}
+          previous={previous}
+          next={next}
+          slug={key}
+        />
+      </>
     );
   }
 
