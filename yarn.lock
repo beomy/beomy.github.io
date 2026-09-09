@@ -2067,8 +2067,8 @@ __metadata:
     "@tailwindcss/postcss": "npm:4.1.13"
     "@types/lodash-es": "npm:4.17.6"
     "@types/node": "npm:20.11.1"
-    "@types/react": "npm:18.2.79"
-    "@types/react-dom": "npm:18.2.25"
+    "@types/react": "npm:19.2.18"
+    "@types/react-dom": "npm:19.2.7"
     date-fns: "npm:2.29.1"
     disqus-react: "npm:1.1.5"
     eslint: "npm:9.13.0"
@@ -2081,8 +2081,8 @@ __metadata:
     lodash-es: "npm:4.17.21"
     next: "npm:16.3.4"
     prettier: "npm:2.7.1"
-    react: "npm:18.2.0"
-    react-dom: "npm:18.2.0"
+    react: "npm:19.2.8"
+    react-dom: "npm:19.2.8"
     react-icons: "npm:4.4.0"
     react-share: "npm:4.4.0"
     rehype-autolink-headings: "npm:7.1.0"
@@ -2117,8 +2117,8 @@ __metadata:
     "@types/jest": "npm:28.1.6"
     "@types/lodash-es": "npm:4.17.6"
     "@types/node": "npm:20.11.1"
-    "@types/react": "npm:18.0.15"
-    "@types/react-dom": "npm:18.0.6"
+    "@types/react": "npm:18.2.79"
+    "@types/react-dom": "npm:18.2.25"
     "@types/react-helmet": "npm:6.1.5"
     "@types/styled-system": "npm:5.1.15"
     "@types/testing-library__jest-dom": "npm:5.14.5"
@@ -2190,8 +2190,8 @@ __metadata:
   resolution: "@beomy/design-system-tailwind@workspace:packages/design-system-tailwind"
   dependencies:
     "@beomy/utils": "npm:0.0.0"
-    "@types/react": "npm:18.2.79"
-    "@types/react-dom": "npm:18.2.25"
+    "@types/react": "npm:19.2.18"
+    "@types/react-dom": "npm:19.2.7"
     "@typescript-eslint/eslint-plugin": "npm:5.32.0"
     "@typescript-eslint/parser": "npm:5.32.0"
     class-variance-authority: "npm:0.7.1"
@@ -2206,17 +2206,18 @@ __metadata:
     eslint-plugin-promise: "npm:6.0.0"
     eslint-plugin-react: "npm:7.30.1"
     eslint-plugin-react-hooks: "npm:4.6.0"
+    next: "npm:16.3.4"
     prettier: "npm:2.7.1"
-    react: "npm:18.2.0"
-    react-dom: "npm:18.2.0"
+    react: "npm:19.2.8"
+    react-dom: "npm:19.2.8"
     react-icons: "npm:4.4.0"
     tailwind-merge: "npm:2.6.0"
     tailwindcss: "npm:4.1.13"
     typescript: "npm:4.7.4"
   peerDependencies:
     next: ">=13"
-    react: 18.x
-    react-dom: 18.x
+    react: ">=18"
+    react-dom: ">=18"
     tailwindcss: 4.x
   languageName: unknown
   linkType: soft
@@ -2250,8 +2251,8 @@ __metadata:
     "@svgr/cli": "npm:6.5.0"
     "@types/color": "npm:3.0.3"
     "@types/lodash-es": "npm:4.17.6"
-    "@types/react": "npm:18.0.15"
-    "@types/react-dom": "npm:18.0.6"
+    "@types/react": "npm:18.2.79"
+    "@types/react-dom": "npm:18.2.25"
     "@types/styled-system": "npm:5.1.15"
     "@types/styled-system__should-forward-prop": "npm:5.1.2"
     "@typescript-eslint/eslint-plugin": "npm:5.32.0"
@@ -2347,12 +2348,12 @@ __metadata:
   resolution: "@beomy/utils@workspace:packages/utils"
   dependencies:
     "@types/lodash-es": "npm:4.17.6"
-    "@types/react": "npm:18.0.15"
+    "@types/react": "npm:18.2.79"
     react: "npm:18.2.0"
     react-use: "npm:17.4.0"
     typescript: "npm:4.7.4"
   peerDependencies:
-    react: 18.x
+    react: ">=18"
   peerDependenciesMeta:
     react:
       optional: true
@@ -9149,6 +9150,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:19.2.7":
+  version: 19.2.7
+  resolution: "@types/react-dom@npm:19.2.7"
+  peerDependencies:
+    "@types/react": ^19.2.0
+  checksum: 10/84079ed3b5470b7fafe4478c9180c2b0f19f8c5aebe666091e1ee5bc15464acb248909553769bd338de5f508afe96fec353997aed0457bb0d3a1e6246bcafcb8
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:^18.0.0":
+  version: 18.3.7
+  resolution: "@types/react-dom@npm:18.3.7"
+  peerDependencies:
+    "@types/react": ^18.0.0
+  checksum: 10/317569219366d487a3103ba1e5e47154e95a002915fdcf73a44162c48fe49c3a57fcf7f57fc6979e70d447112681e6b13c6c3c1df289db8b544df4aab2d318f3
+  languageName: node
+  linkType: hard
+
 "@types/react-helmet@npm:6.1.5":
   version: 6.1.5
   resolution: "@types/react-helmet@npm:6.1.5"
@@ -9165,6 +9184,15 @@ __metadata:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 10/2ef833e7d0a5c226beddbbe090811582371f6ae5e2f092a3d9f47cc6087c8bce0b96ee33e351de6d1d470f0a0ec5892d971933f841ef31538c1821681fc6569e
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:19.2.18":
+  version: 19.2.18
+  resolution: "@types/react@npm:19.2.18"
+  dependencies:
+    csstype: "npm:^3.2.2"
+  checksum: 10/c718ec5c5272ef5c1c77fcdd07f567c77197b593583539459b4bdaea89ca55ad7c814b7eb2151dccfa459b2c384b599a45e7e35550b789883d66b363d30c94d8
   languageName: node
   linkType: hard
 
@@ -14422,6 +14450,13 @@ __metadata:
   version: 3.1.1
   resolution: "csstype@npm:3.1.1"
   checksum: 10/a945162578fe5a90d40950646ab289cec8966dfacc7e5220be832d87773684c969d91920e0d5f9a0c4503aca1f9fa91134a822ebc9c2f9e01e3836ebc6369b25
+  languageName: node
+  linkType: hard
+
+"csstype@npm:^3.2.2":
+  version: 3.2.3
+  resolution: "csstype@npm:3.2.3"
+  checksum: 10/ad41baf7e2ffac65ab544d79107bf7cd1a4bb9bab9ac3302f59ab4ba655d5e30942a8ae46e10ba160c6f4ecea464cc95b975ca2fefbdeeacd6ac63f12f99fe1f
   languageName: node
   linkType: hard
 
@@ -28440,6 +28475,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dom@npm:19.2.8":
+  version: 19.2.8
+  resolution: "react-dom@npm:19.2.8"
+  dependencies:
+    scheduler: "npm:^0.27.0"
+  peerDependencies:
+    react: ^19.2.8
+  checksum: 10/fb45d500a8615a36d71a821213a3d4bfe32a70aa1d04ce17d8791dd10c4ef0281e7fdd46694e1112f0f2dcf58df89d12043a13228be9788458aa82f4885a9cdc
+  languageName: node
+  linkType: hard
+
 "react-element-to-jsx-string@npm:^14.3.4":
   version: 14.3.4
   resolution: "react-element-to-jsx-string@npm:14.3.4"
@@ -28663,6 +28709,13 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10/b9214a9bd79e99d08de55f8bef2b7fc8c39630be97c4e29d7be173d14a9a10670b5325e94485f74cd8bff4966ef3c78ee53c79a7b0b9b70cba20aa8973acc694
+  languageName: node
+  linkType: hard
+
+"react@npm:19.2.8":
+  version: 19.2.8
+  resolution: "react@npm:19.2.8"
+  checksum: 10/a3c697798035e295ca9e51591d3a8700824535cb8c070fac1f8abbe69717ceb99108cbc4ba7b31a606806f336b1eba705705f63b9d39ace198fe51e8990ac843
   languageName: node
   linkType: hard
 
@@ -30016,6 +30069,13 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10/0c4557aa37bafca44ff21dc0ea7c92e2dbcb298bc62eae92b29a39b029134f02fb23917d6ebc8b1fa536b4184934314c20d8864d156a9f6357f3398aaf7bfda8
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.27.0":
+  version: 0.27.0
+  resolution: "scheduler@npm:0.27.0"
+  checksum: 10/eab3c3a8373195173e59c147224fc30dabe6dd453f248f5e610e8458512a5a2ee3a06465dc400ebfe6d35c9f5b7f3bb6b2e41c88c86fd177c25a73e7286a1e06
   languageName: node
   linkType: hard
 
