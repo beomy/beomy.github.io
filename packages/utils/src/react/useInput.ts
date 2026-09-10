@@ -1,3 +1,5 @@
+'use client';
+
 import type { ChangeEventHandler, Dispatch, SetStateAction } from 'react';
 import { useState, useCallback } from 'react';
 

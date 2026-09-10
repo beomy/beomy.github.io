@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useState } from 'react';
 import { FieldSet, IconButton } from '@beomy/design-system-tailwind';
 import ShareButton from '@/molecules/ShareButton';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useNav } from '@/lib/nav-context';
 import type { TreeItem } from '@/models/tree';
 

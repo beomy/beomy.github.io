@@ -1,3 +1,5 @@
+'use client';
+
 import type { IconProps } from './Icon.types';
 import { useState } from 'react';
 import { useUpdateEffect } from '@beomy/utils';

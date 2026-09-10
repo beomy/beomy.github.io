@@ -1,5 +1,3 @@
-'use client';
-
 import type { ReactNode } from 'react';
 import { Header, Contents, Footer } from '@/organisms';
 

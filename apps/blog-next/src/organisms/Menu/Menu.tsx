@@ -1,3 +1,5 @@
+'use client';
+
 import { Anchor, IconButton, cn } from '@beomy/design-system-tailwind';
 import { useMenu, useTheme } from '@/hooks';
 import { Li, Ul, Dim } from '@/atoms';

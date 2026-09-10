@@ -1,3 +1,5 @@
+'use client';
+
 import type { TextFieldProps } from './TextField.types';
 import { useMemo, useCallback, useRef, useEffect } from 'react';
 import { useInput } from '@beomy/utils/react';

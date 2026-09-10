@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback } from 'react';
 import { useAtom } from 'jotai';
 import { Portal, Message } from '@beomy/design-system-tailwind';

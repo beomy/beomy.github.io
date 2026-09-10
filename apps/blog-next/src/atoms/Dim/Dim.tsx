@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from '@beomy/design-system-tailwind';
 
 export type DimProps = {

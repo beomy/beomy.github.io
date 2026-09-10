@@ -1,3 +1,5 @@
+'use client';
+
 import type { MouseEvent } from 'react';
 import { useEffect, useRef, useCallback } from 'react';
 import { throttle } from 'lodash-es';

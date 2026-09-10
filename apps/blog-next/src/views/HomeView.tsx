@@ -1,5 +1,3 @@
-'use client';
-
 import { PostList } from '@/organisms';
 import ListLayout from '@/layouts/ListLayout';
 import type { Post } from '@/models/post';

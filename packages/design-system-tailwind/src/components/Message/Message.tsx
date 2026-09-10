@@ -1,3 +1,5 @@
+'use client';
+
 import type { IconProps } from '../Icon/Icon.types';
 import type { MessageProps } from './Message.types';
 import { useMemo, useCallback } from 'react';

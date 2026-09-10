@@ -1,5 +1,3 @@
-'use client';
-
 import { Anchor } from '@beomy/design-system-tailwind';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import { Ul, Li, H4 } from '@/atoms';

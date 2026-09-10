@@ -1,3 +1,5 @@
+'use client';
+
 import type { ForwardRefExoticComponent } from 'react';
 import { useMemo, useState } from 'react';
 import {

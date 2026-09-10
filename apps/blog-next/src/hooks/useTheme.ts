@@ -1,3 +1,5 @@
+'use client';
+
 import type { Dispatch, SetStateAction } from 'react';
 import { useCallback } from 'react';
 import { useAtom } from 'jotai';
