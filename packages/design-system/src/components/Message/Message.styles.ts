@@ -40,7 +40,7 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.colors.grey[70]};
   box-shadow: ${({ theme }) =>
-      Color(theme.colors.grey[0]).alpha(0.2).toString()}
+    Color(theme.colors.grey[0]).alpha(0.2).toString()}
     0 4px 16px 0;
   box-sizing: border-box;
 `;
