@@ -18,7 +18,7 @@ module.exports = {
     project: ['./tsconfig.json'],
     extraFileExtensions: ['.svelte'],
   },
-  plugins: ['svelte3', '@typescript-eslint'],
+  plugins: ['svelte3', '@typescript-eslint', 'import'],
   rules: {
     'import/no-extraneous-dependencies': [
       'error',
@@ -40,6 +40,11 @@ module.exports = {
     'no-return-assign': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
     '@cspell/spellchecker': 'off',
+    // TypeScript 5.4 대응(@typescript-eslint 6)과 파서 복구로 새로 표면화된 룰들.
+    // games 는 ESLint 8 유지·최소 관리 대상이라 airbnb 스타일 룰을 완화한다.
+    'import/extensions': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    '@typescript-eslint/no-unsafe-enum-comparison': 'off',
   },
   overrides: [
     {

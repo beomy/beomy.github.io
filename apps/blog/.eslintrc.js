@@ -21,9 +21,14 @@ module.exports = {
     'plugin:jest/recommended',
     'standard',
     'plugin:prettier/recommended',
-    '../../.eslintrc.js',
   ],
   rules: {
+    // 기존 루트 .eslintrc.js 에서 상속하던 룰을 인라인(루트는 flat config 로 전환됨).
+    'prettier/prettier': 'error',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-unused-vars': [2, { argsIgnorePattern: '^_' }],
     'react/prop-types': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-props-no-spreading': 'off',
