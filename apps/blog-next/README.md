@@ -64,9 +64,6 @@ public/              # 정적 자산 (기존 static/ + src/assets/images)
 
 ## 참고 사항
 
-- **`gatsby` 모듈 shim**: 공유 패키지 `@beomy/design-system` 의 `Anchor` 가 `gatsby` 의 `Link` 를
-  직접 import 하기 때문에, `next.config.mjs` 에서 `gatsby` 를 `src/lib/gatsby-shim.tsx`
-  (next/link 기반) 로 alias 합니다. Turbopack/webpack 양쪽에 등록되어 있습니다.
 - **의존성 통일(루트 `resolutions`)**: `@types/react`, `@emotion/react`, `@emotion/styled` 를
   단일 버전으로 고정합니다. Emotion 인스턴스가 둘이면 `ThemeProvider` 가 design-system 에
   테마를 전달하지 못해 스타일이 깨집니다.
