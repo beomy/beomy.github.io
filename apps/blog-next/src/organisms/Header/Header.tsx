@@ -11,7 +11,7 @@ import {
 } from '@beomy/design-system-tailwind';
 import { useScroll } from '@beomy/utils';
 import { useTheme } from '@/hooks';
-import { useNav } from '@/lib/nav-context';
+import { useNav } from '@/contexts/nav-context';
 import { Li, Ul } from '@/atoms';
 import Menu from '@/organisms/Menu';
 

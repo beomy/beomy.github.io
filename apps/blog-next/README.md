@@ -27,8 +27,8 @@ yarn blog-next deploy
 | --- | --- | --- |
 | 프레임워크 | Gatsby 4 | Next.js 16 (App Router, Turbopack) |
 | 렌더링/배포 | `gatsby build` → 정적 | `output: 'export'` → 정적 (`out/`) |
-| 데이터 레이어 | GraphQL + gatsby-node | `src/lib/posts.ts` (fs + gray-matter) |
-| 마크다운 | gatsby-transformer-remark (+플러그인) | `src/lib/markdown.ts` (unified/remark/rehype) |
+| 데이터 레이어 | GraphQL + gatsby-node | `src/server/posts.ts` (fs + gray-matter) |
+| 마크다운 | gatsby-transformer-remark (+플러그인) | `src/server/markdown.ts` (unified/remark/rehype) |
 | 코드 하이라이트 | gatsby-remark-prismjs | rehype-prism-plus + Prism 테마 CDN |
 | 헤더 앵커 | gatsby-remark-autolink-headers | rehype-slug + rehype-autolink-headings |
 | 목차(TOC) | remark 내장 tableOfContents | `markdown.ts` 커스텀 헤딩 수집 |
@@ -52,7 +52,9 @@ app/                 # App Router (라우팅 + 서버 진입점)
   rss.xml/route.ts   # RSS 피드 (force-static)
   sitemap.ts robots.ts manifest.ts
 src/
-  lib/               # posts(데이터), markdown(파이프라인), metadata, nav-context, gatsby-shim
+  server/            # 서버(Node) 전용: posts(데이터), markdown(파이프라인), content-watcher/version(HMR)
+  lib/               # 서버·클라이언트 공용: metadata, jsonLd
+  contexts/          # React context: nav-context (서버가 계산한 메뉴 데이터를 클라이언트로 전달)
   views/             # 각 라우트의 클라이언트 뷰
   layouts/           # List / Default 레이아웃 (기존 templates)
   atoms/ molecules/ organisms/ hooks/ models/ stores/ utils/
@@ -71,8 +73,8 @@ public/              # 정적 자산 (기존 static/ + src/assets/images)
 - **Disqus 스레드 보존**: 포스트 상세의 Disqus identifier 는 기존 Gatsby URL 형식을 그대로 유지합니다.
 - **마크다운 HMR**: `.md` 는 모듈 그래프에 없어 Next(Turbopack)가 변경을 감지하지 못한다.
   Next 공식 확장 지점인 `instrumentation.ts` 의 `register()` 가 (개발 모드에서만)
-  `src/lib/content-watcher.ts` 를 기동하고, 이 워처가 `posts/`·`drafts/` 변경을 감지해
-  센티널 모듈(`src/lib/content-version.ts`)을 갱신한다. 센티널을 import 하는 `posts.ts` 가
+  `src/server/content-watcher.ts` 를 기동하고, 이 워처가 `posts/`·`drafts/` 변경을 감지해
+  센티널 모듈(`src/server/content-version.ts`)을 갱신한다. 센티널을 import 하는 `posts.ts` 가
   Fast Refresh 로 재실행되어 저장 즉시 화면에 반영된다. 센티널 값은 항상 `0` 으로 커밋한다
   (개발 중 자동 변경분은 커밋하지 말 것). 별도 wrapper 스크립트 없이 `yarn dev`(= `next dev`)만
   사용한다.

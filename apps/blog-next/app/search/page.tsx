@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
-import { getPostsDesc } from '@/lib/posts';
+import { getPostsDesc } from '@/server/posts';
 import { buildMetadata } from '@/lib/metadata';
 import SearchView from '@/views/SearchView';
 

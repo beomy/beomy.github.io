@@ -6,7 +6,7 @@ import {
   getPostNavigation,
   getPostsByCategorySlug,
   getPostRecordBySlug,
-} from '@/lib/posts';
+} from '@/server/posts';
 import { buildMetadata, siteMetadata } from '@/lib/metadata';
 import { JsonLd, buildBlogPostingJsonLd } from '@/lib/jsonLd';
 import PostView from '@/views/PostView';

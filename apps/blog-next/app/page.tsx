@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getPostsDesc } from '@/lib/posts';
+import { getPostsDesc } from '@/server/posts';
 import { buildMetadata, siteMetadata } from '@/lib/metadata';
 import { JsonLd, buildWebSiteJsonLd } from '@/lib/jsonLd';
 import HomeView from '@/views/HomeView';

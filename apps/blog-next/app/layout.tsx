@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import { getNavData } from '@/lib/posts';
+import { getNavData } from '@/server/posts';
 import { siteMetadata } from '@/lib/metadata';
 import Providers from './providers';
 import './globals.css';

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getAllPosts, getAllCategorySlugs } from '@/lib/posts';
+import { getAllPosts, getAllCategorySlugs } from '@/server/posts';
 import { siteMetadata } from '@/lib/metadata';
 
 export const dynamic = 'force-static';

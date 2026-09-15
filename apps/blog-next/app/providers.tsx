@@ -8,8 +8,8 @@ import type { Theme } from '@/models/theme';
 import { useTheme } from '@/hooks';
 import { themeState } from '@/stores/theme';
 import { Notification } from '@/organisms';
-import { NavProvider } from '@/lib/nav-context';
-import type { NavData } from '@/lib/nav-context';
+import { NavProvider } from '@/contexts/nav-context';
+import type { NavData } from '@/contexts/nav-context';
 import PrismTheme from './prism-theme';
 
 const ThemedApp = ({ children }: { children: ReactNode }) => {

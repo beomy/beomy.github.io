@@ -1,14 +1,17 @@
+// 클라이언트 컴포넌트에서 import 하면 빌드 단계에서 에러를 낸다. (fs 를 쓰는 서버 전용 모듈)
+import 'server-only';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { format } from 'date-fns';
 import { processMarkdown } from './markdown';
 // 개발 모드 HMR 센티널: 이 import 로 posts.ts 가 콘텐츠 버전 모듈에 의존하게 되어
-// .md 변경 시 워처가 값을 바꾸면 Fast Refresh 가 트리거된다. (src/lib/content-version.ts 참고)
+// .md 변경 시 워처가 값을 바꾸면 Fast Refresh 가 트리거된다. (src/server/content-version.ts 참고)
 import { CONTENT_VERSION } from './content-version';
 import { arrayToTree } from '@/utils/tree';
 import type { TreeItem } from '@/models/tree';
 import type { Post } from '@/models/post';
+import type { NavData } from '@/contexts/nav-context';
 
 const POSTS_DIR = path.join(process.cwd(), 'posts');
 const DRAFTS_DIR = path.join(process.cwd(), 'drafts');
@@ -207,15 +210,8 @@ export const getCategoryList = async (): Promise<string[]> => {
 /** Menu(SNB) 트리 */
 export const getMenuTree = async (): Promise<TreeItem[]> => {
   const posts = await getAllPosts();
-  const menuArray = posts
-    .map((post) => post.category ?? [])
-    .filter((x) => !!x);
+  const menuArray = posts.map((post) => post.category ?? []).filter((x) => !!x);
   return arrayToTree(menuArray);
-};
-
-export type NavData = {
-  categoryList: string[];
-  menuTree: TreeItem[];
 };
 
 export const getNavData = async (): Promise<NavData> => ({

@@ -1,6 +1,6 @@
 'use client';
 
-import { useNav } from '@/lib/nav-context';
+import { useNav } from '@/contexts/nav-context';
 import type { TreeItem } from '@/models/tree';
 
 type UseMenuType = () => TreeItem[];

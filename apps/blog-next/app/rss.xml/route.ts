@@ -1,4 +1,4 @@
-import { getAllPosts } from '@/lib/posts';
+import { getAllPosts } from '@/server/posts';
 import { siteMetadata } from '@/lib/metadata';
 
 export const dynamic = 'force-static';
