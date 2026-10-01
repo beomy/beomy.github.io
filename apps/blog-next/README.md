@@ -53,7 +53,7 @@ app/                 # App Router (라우팅 + 서버 진입점)
   sitemap.ts robots.ts manifest.ts
 src/
   server/            # 서버(Node) 전용: posts(데이터), markdown(파이프라인), content-watcher/version(HMR)
-  lib/               # 서버·클라이언트 공용: metadata, jsonLd
+  lib/               # 서버·클라이언트 공용: metadata, jsonLd, tree
   contexts/          # React context: nav-context (서버가 계산한 메뉴 데이터를 클라이언트로 전달)
   views/             # 각 라우트의 클라이언트 뷰
   layouts/           # List / Default 레이아웃 (기존 templates)
@@ -63,7 +63,7 @@ src/
     post-list/       #   포스트 목록 (홈 · 검색 · 카테고리)
     layout/          #   Header · Footer · Contents · Menu · Notification
     common/          #   두 그룹 이상에서 공유 (Dim, PostBannerImg)
-  hooks/ models/ stores/ utils/
+  hooks/ models/ stores/
 posts/               # 마크다운 포스트 (기존과 동일)
 public/              # 정적 자산 (기존 static/ + src/assets/images)
 ```

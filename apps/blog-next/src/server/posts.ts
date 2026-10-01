@@ -8,7 +8,7 @@ import { processMarkdown } from './markdown';
 // 개발 모드 HMR 센티널: 이 import 로 posts.ts 가 콘텐츠 버전 모듈에 의존하게 되어
 // .md 변경 시 워처가 값을 바꾸면 Fast Refresh 가 트리거된다. (src/server/content-version.ts 참고)
 import { CONTENT_VERSION } from './content-version';
-import { arrayToTree } from '@/utils/tree';
+import { arrayToTree } from '@/lib/tree';
 import type { TreeItem } from '@/models/tree';
 import type { Post } from '@/models/post';
 import type { NavData } from '@/contexts/nav-context';
