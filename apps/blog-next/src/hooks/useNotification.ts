@@ -1,10 +1,9 @@
 'use client';
 
 import { useCallback } from 'react';
-import { useSetAtom } from 'jotai';
 import { uniqueId } from 'lodash-es';
 import { MessageTypes } from '@beomy/design-system-tailwind';
-import { messageState } from '@/stores/notification';
+import { useNotificationStore } from '@/stores/notification';
 
 type UseNotificationType = () => {
   message: {
@@ -16,15 +15,13 @@ type UseNotificationType = () => {
 };
 
 const useNotification: UseNotificationType = () => {
-  const setMessage = useSetAtom(messageState);
+  const addMessage = useNotificationStore((state) => state.addMessage);
 
   const notification = useCallback(
     (text: string, type: MessageTypes.MessageProps['type'] = 'info') => {
-      setMessage((value) => {
-        return value.concat({ id: uniqueId(type), type, text });
-      });
+      addMessage({ id: uniqueId(type), type, text });
     },
-    [setMessage],
+    [addMessage],
   );
   const info = useCallback(
     (text: string) => notification(text, 'info'),

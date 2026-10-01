@@ -2,11 +2,10 @@
 
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
-import { Provider as JotaiProvider, useAtom } from 'jotai';
 import { useMount, useLocalStorage } from '@beomy/utils';
 import type { Theme } from '@/models/theme';
 import { useTheme } from '@/hooks';
-import { themeState } from '@/stores/theme';
+import { useThemeStore } from '@/stores/theme';
 import { Notification } from '@/components/layout';
 import { NavProvider } from '@/contexts/nav-context';
 import type { NavData } from '@/contexts/nav-context';
@@ -15,22 +14,22 @@ import PrismTheme from './prism-theme';
 const ThemedApp = ({ children }: { children: ReactNode }) => {
   const [theme] = useTheme();
   const [localStorageTheme] = useLocalStorage<Theme>('beomy.theme');
-  const [, setRecoilTheme] = useAtom(themeState);
+  const setTheme = useThemeStore((state) => state.setTheme);
 
   useMount(() => {
     const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
     if (localStorageTheme) {
-      setRecoilTheme(localStorageTheme);
+      setTheme(localStorageTheme);
     } else if (matchMedia.matches) {
-      setRecoilTheme('dark');
+      setTheme('dark');
     } else {
-      setRecoilTheme('light');
+      setTheme('light');
     }
 
     const handleModeChange = (value: MediaQueryListEvent) => {
       if (localStorage.getItem('beomy.theme')) return;
-      setRecoilTheme(value.matches ? 'dark' : 'light');
+      setTheme(value.matches ? 'dark' : 'light');
     };
     matchMedia?.addEventListener?.('change', handleModeChange);
     return () => matchMedia?.removeEventListener?.('change', handleModeChange);
@@ -59,11 +58,9 @@ const Providers = ({
   children: ReactNode;
 }) => {
   return (
-    <JotaiProvider>
-      <NavProvider value={navData}>
-        <ThemedApp>{children}</ThemedApp>
-      </NavProvider>
-    </JotaiProvider>
+    <NavProvider value={navData}>
+      <ThemedApp>{children}</ThemedApp>
+    </NavProvider>
   );
 };
 

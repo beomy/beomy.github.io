@@ -1,4 +1,12 @@
-import { atom } from 'jotai';
-import { Theme } from '@/models/theme';
+import { create } from 'zustand';
+import type { Theme } from '@/models/theme';
 
-export const themeState = atom<Theme | undefined>(undefined);
+type ThemeStore = {
+  theme: Theme | undefined;
+  setTheme: (theme: Theme) => void;
+};
+
+export const useThemeStore = create<ThemeStore>((set) => ({
+  theme: undefined,
+  setTheme: (theme) => set({ theme }),
+}));

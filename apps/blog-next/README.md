@@ -32,7 +32,7 @@ yarn blog-next deploy
 | 코드 하이라이트 | gatsby-remark-prismjs | rehype-prism-plus + Prism 테마 CDN |
 | 헤더 앵커 | gatsby-remark-autolink-headers | rehype-slug + rehype-autolink-headings |
 | 목차(TOC) | remark 내장 tableOfContents | `markdown.ts` 커스텀 헤딩 수집 |
-| 상태관리 | Recoil | **Jotai** (Recoil은 최신 React/Next와 비호환) |
+| 상태관리 | Recoil | **Zustand** (Recoil은 최신 React/Next와 비호환) |
 | 스타일 | Emotion (+ gatsby-plugin-emotion) | Emotion + `compiler.emotion` + SSR 레지스트리 |
 | SEO | react-helmet | App Router Metadata API (`src/lib/metadata.ts`) |
 | 이미지 | gatsby-plugin-image | 정적 `public/` 경로 + `<img>` (export이므로 unoptimized) |
@@ -44,7 +44,7 @@ yarn blog-next deploy
 ```
 app/                 # App Router (라우팅 + 서버 진입점)
   layout.tsx         # 루트 레이아웃 (기본 메타데이터 + GA + Providers)
-  providers.tsx      # 클라이언트 Provider (Jotai/Emotion/테마/알림)
+  providers.tsx      # 클라이언트 Provider (Emotion/테마/알림)
   emotion.tsx        # Emotion SSR 스타일 추출 레지스트리
   page.tsx           # 홈
   about/ search/     # 정적 페이지
