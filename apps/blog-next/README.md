@@ -57,7 +57,13 @@ src/
   contexts/          # React context: nav-context (서버가 계산한 메뉴 데이터를 클라이언트로 전달)
   views/             # 각 라우트의 클라이언트 뷰
   layouts/           # List / Default 레이아웃 (기존 templates)
-  atoms/ molecules/ organisms/ hooks/ models/ stores/ utils/
+  components/        # UI 컴포넌트 (사용 화면 기준으로 분류, 폴더별 index.ts barrel)
+    about/           #   About 페이지
+    post/            #   포스트 상세
+    post-list/       #   포스트 목록 (홈 · 검색 · 카테고리)
+    layout/          #   Header · Footer · Contents · Menu · Notification
+    common/          #   두 그룹 이상에서 공유 (Dim, PostBannerImg)
+  hooks/ models/ stores/ utils/
 posts/               # 마크다운 포스트 (기존과 동일)
 public/              # 정적 자산 (기존 static/ + src/assets/images)
 ```

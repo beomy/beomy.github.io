@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Header, Contents, Footer } from '@/organisms';
+import { Header, Contents, Footer } from '@/components/layout';
 
 const ListLayout = ({ children }: { children: ReactNode }) => {
   return (

@@ -3,17 +3,15 @@
 import { Fragment, useState, useCallback, useMemo } from 'react';
 import { DiscussionEmbed } from 'disqus-react';
 import { IconButton, cn } from '@beomy/design-system-tailwind';
-import { Dim } from '@/atoms';
+import { Dim } from '@/components/common';
+import { Header, Contents, Footer } from '@/components/layout';
 import {
-  Header,
-  Contents,
   PostContents,
   PostHeader,
   TableOfContents,
   PostNavigator,
-  Footer,
   PostShare,
-} from '@/organisms';
+} from '@/components/post';
 import { useTheme } from '@/hooks';
 import { siteMetadata } from '@/lib/metadata';
 import type { Post } from '@/models/post';
@@ -86,7 +84,11 @@ const PostView = ({ post, previous, next, slug }: PostViewProps) => {
           <PostHeader {...post} />
           <PostContents html={post.html} />
           <PostNavigator previous={previous} next={next} />
-          <DiscussionEmbed key={theme} shortname="beomy" config={disqusConfig} />
+          <DiscussionEmbed
+            key={theme}
+            shortname="beomy"
+            config={disqusConfig}
+          />
         </article>
       </Contents>
       <Footer />

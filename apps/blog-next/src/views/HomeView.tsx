@@ -1,4 +1,4 @@
-import { PostList } from '@/organisms';
+import { PostList } from '@/components/post-list';
 import ListLayout from '@/layouts/ListLayout';
 import type { Post } from '@/models/post';
 

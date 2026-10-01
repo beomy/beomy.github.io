@@ -7,7 +7,7 @@ import { useMount, useLocalStorage } from '@beomy/utils';
 import type { Theme } from '@/models/theme';
 import { useTheme } from '@/hooks';
 import { themeState } from '@/stores/theme';
-import { Notification } from '@/organisms';
+import { Notification } from '@/components/layout';
 import { NavProvider } from '@/contexts/nav-context';
 import type { NavData } from '@/contexts/nav-context';
 import PrismTheme from './prism-theme';

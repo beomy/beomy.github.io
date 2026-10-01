@@ -1,6 +1,7 @@
 'use client';
 
-import { Contents, Header, Footer, PostList, SubMenu } from '@/organisms';
+import { Contents, Header, Footer } from '@/components/layout';
+import { PostList, SubMenu } from '@/components/post-list';
 import { useMenu } from '@/hooks';
 import type { Post } from '@/models/post';
 import type { TreeItem } from '@/models/tree';
