@@ -35,13 +35,13 @@ const Menu = ({ active, onClose, className }: MenuProps) => {
           <Anchor to="/">
             {theme === 'dark' ? (
               <img
-                src="/assets/images/beomy-logo-negative.png"
+                src="/assets/img/brand/beomy-logo-negative.png"
                 alt="블로그 로고"
                 width={60}
               />
             ) : (
               <img
-                src="/assets/images/beomy-logo.png"
+                src="/assets/img/brand/beomy-logo.png"
                 alt="블로그 로고"
                 width={60}
               />
@@ -55,7 +55,8 @@ const Menu = ({ active, onClose, className }: MenuProps) => {
             onClick={onClose}
           />
         </div>
-        <ul>
+        {/* my-[1em]: 기존 Gatsby 블로그에서 <ul> 브라우저 기본 마진이 주던 간격 (preflight 가 0 으로 리셋하므로 복원) */}
+        <ul className="my-[1em]">
           <li className="mb-[30px]">
             <Anchor to="/about">About</Anchor>
           </li>
