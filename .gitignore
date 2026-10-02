@@ -11,9 +11,9 @@
 # testing
 /coverage
 
-# gatsby
+# gatsby (apps/blog 빌드 산출물. blog-next 의 public/ 은 정적 자산 소스라 추적한다)
 .cache/
-public/
+apps/blog/public/
 
 # production
 /build

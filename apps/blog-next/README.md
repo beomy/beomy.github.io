@@ -18,6 +18,8 @@ yarn blog-next build
 yarn blog-next serve
 
 # 배포 (out/ 을 blog 브랜치로 push)
+# `public/.nojekyll` 이 함께 올라가야 한다 — GitHub Pages 의 Jekyll 이 `_next/` 를 무시하지 않도록.
+# (gh-pages 는 기본으로 점 파일을 제외하므로 스크립트에 -t 옵션이 들어 있다)
 yarn blog-next deploy
 ```
 
