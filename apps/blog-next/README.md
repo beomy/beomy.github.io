@@ -29,7 +29,7 @@ yarn blog-next deploy
 | 렌더링/배포 | `gatsby build` → 정적 | `output: 'export'` → 정적 (`out/`) |
 | 데이터 레이어 | GraphQL + gatsby-node | `src/server/posts.ts` (fs + gray-matter) |
 | 마크다운 | gatsby-transformer-remark (+플러그인) | `src/server/markdown.ts` (unified/remark/rehype) |
-| 코드 하이라이트 | gatsby-remark-prismjs | rehype-prism-plus + Prism 테마 CDN |
+| 코드 하이라이트 | gatsby-remark-prismjs | shiki (`@shikijs/rehype`) — 빌드 시 라이트/다크 색을 함께 인라인, 다크는 `[data-theme='dark']` 에서 CSS 변수 교체. 하이라이터는 모듈 수준 1회 생성, 본문 렌더는 상세·RSS 에서만 지연 실행 |
 | 헤더 앵커 | gatsby-remark-autolink-headers | rehype-slug + rehype-autolink-headings |
 | 목차(TOC) | remark 내장 tableOfContents | `markdown.ts` 커스텀 헤딩 수집 |
 | 상태관리 | Recoil | **Zustand** (Recoil은 최신 React/Next와 비호환) |

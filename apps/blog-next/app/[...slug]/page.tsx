@@ -6,6 +6,7 @@ import {
   getPostNavigation,
   getPostsByCategorySlug,
   getPostRecordBySlug,
+  renderPost,
 } from '@/server/posts';
 import { buildMetadata, siteMetadata } from '@/lib/metadata';
 import { JsonLd, buildBlogPostingJsonLd } from '@/lib/jsonLd';
@@ -63,11 +64,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
+export default async function Page({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const key = toKey(slug);
 
@@ -75,6 +72,7 @@ export default async function Page({
   const navigation = await getPostNavigation(key);
   if (navigation) {
     const { post, previous, next } = navigation;
+    const { html, tableOfContents } = await renderPost(post);
     const canonicalUrl = `${siteMetadata.siteUrl.replace(/\/$/, '')}${key}`;
     return (
       <>
@@ -96,8 +94,8 @@ export default async function Page({
             timeToRead: post.timeToRead,
             summary: post.summary,
             category: post.category,
-            html: post.html,
-            tableOfContents: post.tableOfContents,
+            html,
+            tableOfContents,
           }}
           previous={previous}
           next={next}

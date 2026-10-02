@@ -1,60 +1,40 @@
-import { getAllPosts } from '@/server/posts';
+import { Feed } from 'feed';
+import { getAllPosts, renderPost } from '@/server/posts';
 import { siteMetadata } from '@/lib/metadata';
 
 export const dynamic = 'force-static';
 
-const escapeXml = (unsafe: string): string =>
-  unsafe.replace(/[<>&'"]/g, (c) => {
-    switch (c) {
-      case '<':
-        return '&lt;';
-      case '>':
-        return '&gt;';
-      case '&':
-        return '&amp;';
-      case "'":
-        return '&apos;';
-      case '"':
-        return '&quot;';
-      default:
-        return c;
-    }
-  });
+const BASE = siteMetadata.siteUrl.replace(/\/$/, '');
 
 export async function GET() {
-  const posts = await getAllPosts();
-  const descPosts = [...posts].reverse();
+  // getAllPosts 는 생성일 오름차순이므로 최신 글이 먼저 오도록 뒤집는다.
+  const posts = [...(await getAllPosts())].reverse();
+  const rendered = await Promise.all(posts.map(renderPost));
 
-  const items = descPosts
-    .map((post) => {
-      const url = `${siteMetadata.siteUrl}${post.slug}`;
-      const pubDate = new Date(post.createdDate).toUTCString();
-      return `    <item>
-      <title>${escapeXml(post.title)}</title>
-      <description>${escapeXml(post.excerpt)}</description>
-      <link>${escapeXml(url)}</link>
-      <guid isPermaLink="false">${escapeXml(url)}</guid>
-      <pubDate>${pubDate}</pubDate>
-      <content:encoded><![CDATA[${post.html}]]></content:encoded>
-    </item>`;
-    })
-    .join('\n');
+  const feed = new Feed({
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    id: `${BASE}/`,
+    link: `${BASE}/`,
+    language: 'ko',
+    copyright: `© ${siteMetadata.author}`,
+    feedLinks: { rss: `${BASE}/rss.xml` },
+    author: { name: siteMetadata.author },
+  });
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>${escapeXml(siteMetadata.title)}</title>
-    <description>${escapeXml(siteMetadata.description)}</description>
-    <link>${escapeXml(siteMetadata.siteUrl)}</link>
-    <atom:link href="${escapeXml(
-      `${siteMetadata.siteUrl}rss.xml`,
-    )}" rel="self" type="application/rss+xml" />
-    <language>ko</language>
-${items}
-  </channel>
-</rss>`;
+  posts.forEach((post, index) => {
+    const url = `${BASE}${post.slug}`;
+    feed.addItem({
+      title: post.title,
+      id: url,
+      link: url,
+      description: post.excerpt,
+      content: rendered[index].html,
+      date: new Date(post.createdDate),
+    });
+  });
 
-  return new Response(xml, {
+  return new Response(feed.rss2(), {
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
     },

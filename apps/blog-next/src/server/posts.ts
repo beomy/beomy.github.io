@@ -4,7 +4,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { format } from 'date-fns';
-import { processMarkdown } from './markdown';
+import { extractMarkdownMeta, renderMarkdown } from './markdown';
+import type { RenderedMarkdown } from './markdown';
 // 개발 모드 HMR 센티널: 이 import 로 posts.ts 가 콘텐츠 버전 모듈에 의존하게 되어
 // .md 변경 시 워처가 값을 바꾸면 Fast Refresh 가 트리거된다. (src/server/content-version.ts 참고)
 import { CONTENT_VERSION } from './content-version';
@@ -35,9 +36,9 @@ export type PostRecord = {
   createdDate: string; // yyyy-MM-dd
   createdTime: number; // 정렬용 timestamp
   timeToRead: number;
-  html: string;
-  tableOfContents: string;
   excerpt: string;
+  /** 마크다운 본문 원문. HTML 은 renderPost() 로 필요할 때만 렌더한다. */
+  content: string;
 };
 
 /** 카테고리 배열을 계층 슬러그 목록으로 변환 (예: ['tech','svelte'] → ['/tech/','/tech/svelte/']) */
@@ -62,10 +63,7 @@ const walk = (dir: string): string[] => {
   });
 };
 
-const buildRecord = async (
-  filePath: string,
-  rootDir: string,
-): Promise<PostRecord> => {
+const buildRecord = (filePath: string, rootDir: string): PostRecord => {
   const raw = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(raw);
   const frontmatter = data as Frontmatter;
@@ -84,8 +82,7 @@ const buildRecord = async (
     ? relativeFilePath.replace(`${dateMatch[0]}-`, '')
     : relativeFilePath;
 
-  const { html, tableOfContents, excerpt, timeToRead } =
-    await processMarkdown(content);
+  const { excerpt, timeToRead } = extractMarkdownMeta(content);
 
   const category = frontmatter.category ?? [];
 
@@ -100,9 +97,8 @@ const buildRecord = async (
     createdDate: format(createdDateObj, 'yyyy-MM-dd'),
     createdTime: createdDateObj.getTime(),
     timeToRead,
-    html,
-    tableOfContents,
     excerpt,
+    content,
   };
 };
 
@@ -120,8 +116,8 @@ export const getAllPosts = async (): Promise<PostRecord[]> => {
   const roots: string[] = [POSTS_DIR];
   if (isDev) roots.push(DRAFTS_DIR);
 
-  const records = await Promise.all(
-    roots.flatMap((root) => walk(root).map((file) => buildRecord(file, root))),
+  const records = roots.flatMap((root) =>
+    walk(root).map((file) => buildRecord(file, root)),
   );
 
   records.sort((a, b) => a.createdTime - b.createdTime);
@@ -137,9 +133,24 @@ const recordToPost = (record: PostRecord): Post => ({
   timeToRead: record.timeToRead,
   summary: record.summary,
   category: record.category,
-  html: record.html,
-  tableOfContents: record.tableOfContents,
 });
+
+// 렌더 결과도 빌드 타임에만 슬러그 단위로 캐시한다 (개발 모드는 .md 수정 반영을 위해 매번 렌더).
+const renderCache = new Map<string, Promise<RenderedMarkdown>>();
+
+/**
+ * 포스트 본문 HTML 과 목차를 렌더한다. shiki 하이라이트 비용이 커서
+ * 모든 포스트를 미리 렌더하지 않고 상세 페이지·RSS 에서만 호출한다.
+ */
+export const renderPost = (record: PostRecord): Promise<RenderedMarkdown> => {
+  if (isDev) return renderMarkdown(record.content);
+  let rendered = renderCache.get(record.slug);
+  if (!rendered) {
+    rendered = renderMarkdown(record.content);
+    renderCache.set(record.slug, rendered);
+  }
+  return rendered;
+};
 
 /** 최신순 Post 목록 (홈/검색용) */
 export const getPostsDesc = async (): Promise<Post[]> => {

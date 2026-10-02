@@ -5,11 +5,37 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrismPlus from 'rehype-prism-plus';
+import { createHighlighter, type Highlighter } from 'shiki';
+import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
-import { toString } from 'hast-util-to-string';
+import { toHtml } from 'hast-util-to-html';
 import type { Root } from 'hast';
+
+/*
+ * shiki 하이라이터는 문법·테마 로드 비용이 커서 모듈 수준에서 한 번만 만들어 공유한다.
+ * (포스트마다 새로 만들면 정적 생성이 수십 배 느려진다)
+ */
+const SHIKI_THEMES = { light: 'github-light', dark: 'github-dark' } as const;
+const SHIKI_LANGS = [
+  'html',
+  'js',
+  'jsx',
+  'ts',
+  'tsx',
+  'json',
+  'http',
+  'bash',
+  'css',
+  'scss',
+];
+
+let highlighterPromise: Promise<Highlighter> | null = null;
+const getHighlighter = (): Promise<Highlighter> =>
+  (highlighterPromise ??= createHighlighter({
+    themes: Object.values(SHIKI_THEMES),
+    langs: SHIKI_LANGS,
+  }));
 
 export type Heading = {
   depth: number;
@@ -17,11 +43,14 @@ export type Heading = {
   text: string;
 };
 
-export type ProcessedMarkdown = {
-  html: string;
-  tableOfContents: string;
+export type MarkdownMeta = {
   excerpt: string;
   timeToRead: number;
+};
+
+export type RenderedMarkdown = {
+  html: string;
+  tableOfContents: string;
 };
 
 const TOC_MAX_DEPTH = 3;
@@ -37,7 +66,8 @@ const collectHeadings = (headings: Heading[]) => () => (tree: Root) => {
     const depth = Number(match[1]);
     const id = node.properties?.id;
     if (depth <= TOC_MAX_DEPTH && typeof id === 'string') {
-      headings.push({ depth, id, text: toString(node) });
+      // 헤딩 내부 HTML 을 그대로 보존한다 (인라인 <code> 등). 이스케이프도 toHtml 이 처리.
+      headings.push({ depth, id, text: toHtml(node.children) });
     }
   });
 };
@@ -101,10 +131,24 @@ const calcTimeToRead = (plainText: string): number => {
   return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 };
 
-export const processMarkdown = async (
+/** 목록·메타용 경량 처리 (요약, 읽기 시간). 파이프라인을 태우지 않아 비용이 거의 없다. */
+export const extractMarkdownMeta = (content: string): MarkdownMeta => {
+  const plainText = toPlainText(content);
+  return {
+    excerpt: buildExcerpt(plainText),
+    timeToRead: calcTimeToRead(plainText),
+  };
+};
+
+/**
+ * 본문 HTML 과 목차 렌더링. shiki 하이라이트가 포함되어 비용이 크므로
+ * 포스트 상세 페이지와 RSS 처럼 실제로 HTML 이 필요한 곳에서만 호출한다.
+ */
+export const renderMarkdown = async (
   content: string,
-): Promise<ProcessedMarkdown> => {
+): Promise<RenderedMarkdown> => {
   const headings: Heading[] = [];
+  const highlighter = await getHighlighter();
 
   const file = await unified()
     .use(remarkParse)
@@ -127,16 +171,26 @@ export const processMarkdown = async (
         children: [{ type: 'text', value: '#' }],
       },
     })
-    .use(rehypePrismPlus, { ignoreMissing: true })
+    .use(rehypeShikiFromHighlighter, highlighter, {
+      // 라이트/다크 색을 CSS 변수(--shiki-dark)로 함께 인라인한다.
+      // 다크 전환은 PostContents.css 에서 <html data-theme='dark'> 일 때 변수를 바꿔 끼운다.
+      themes: SHIKI_THEMES,
+      defaultColor: 'light',
+      fallbackLanguage: 'text',
+      transformers: [
+        {
+          // 코드 블록 우상단 언어 라벨용 (PostContents.css [data-language])
+          pre(node) {
+            node.properties['data-language'] = this.options.lang;
+          },
+        },
+      ],
+    })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
-
-  const plainText = toPlainText(content);
 
   return {
     html: String(file),
     tableOfContents: buildTableOfContents(headings),
-    excerpt: buildExcerpt(plainText),
-    timeToRead: calcTimeToRead(plainText),
   };
 };

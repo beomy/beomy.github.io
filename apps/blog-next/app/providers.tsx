@@ -9,7 +9,6 @@ import { useThemeStore } from '@/stores/theme';
 import { Notification } from '@/components/layout';
 import { NavProvider } from '@/contexts/nav-context';
 import type { NavData } from '@/contexts/nav-context';
-import PrismTheme from './prism-theme';
 
 const ThemedApp = ({ children }: { children: ReactNode }) => {
   const [theme] = useTheme();
@@ -43,7 +42,6 @@ const ThemedApp = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <PrismTheme />
       {children}
       <Notification />
     </>
