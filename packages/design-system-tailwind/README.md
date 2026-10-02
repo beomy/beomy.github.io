@@ -9,7 +9,7 @@ Next.js(App Router) 소비를 전제로 하며, 소스로 직접 트랜스파일
 ## 구성
 
 - `.` — 컴포넌트: `Anchor`, `FieldSet`, `Icon`, `IconButton`, `IconText`, `Message`, `Portal`, `TextField`, `cn`
-- `./icons` — `react-icons/bs` 재노출 + 커스텀 `BmKakaotalk`
+- `./icons` — `react-icons/bs` 중 사용하는 아이콘만 명시 re-export + 커스텀 `BmKakaotalk` (전체 재노출 시 약 1MB 가 번들에 실림. 새 아이콘은 `icons/index.ts` 에 추가)
 - `./models` — 공용 타입(`StyledProps`)
 - `./lib` — `cn` (clsx + tailwind-merge)
 - `./styles.css` — 토큰 + 기본 스타일 번들
