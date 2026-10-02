@@ -1,23 +1,20 @@
-'use client';
-
 import { Contents, Header, Footer } from '@/components/layout';
 import { PostList, SubMenu } from '@/components/post-list';
-import { useMenu } from '@/hooks';
 import type { Post } from '@/models/post';
 import type { TreeItem } from '@/models/tree';
 
-const EMPTY_MENU: TreeItem = { key: '', counter: 0, children: [] };
+type CategoryViewProps = {
+  posts: Post[];
+  /** 이 카테고리의 1depth 메뉴(하위 카테고리 포함). 서버에서 계산해 넘긴다. */
+  menu: TreeItem;
+};
 
-const CategoryView = ({ posts, slug }: { posts: Post[]; slug: string }) => {
-  const menuTree = useMenu();
-  const firstDepth = slug.split('/').filter((x) => !!x)[0];
-  const subMenu = menuTree.find((x) => x.key === firstDepth) ?? EMPTY_MENU;
-
+const CategoryView = ({ posts, menu }: CategoryViewProps) => {
   return (
     <>
       <Header />
       <Contents className="screen-xs sm:screen-sm m:screen-m lg:screen-lg">
-        <SubMenu menu={subMenu} />
+        <SubMenu menu={menu} />
         <PostList posts={posts} />
       </Contents>
       <Footer />

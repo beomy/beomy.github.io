@@ -10,3 +10,7 @@ export { default as ShareButton } from './ShareButton';
 export * from './ShareButton';
 export { default as TableOfContents } from './TableOfContents';
 export * from './TableOfContents';
+export { default as PostSidebar } from './PostSidebar';
+export * from './PostSidebar';
+export { default as PostComments } from './PostComments';
+export * from './PostComments';

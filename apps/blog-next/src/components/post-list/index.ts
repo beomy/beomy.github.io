@@ -4,3 +4,5 @@ export { default as PostCard } from './PostCard';
 export * from './PostCard';
 export { default as SubMenu } from './SubMenu';
 export * from './SubMenu';
+export { default as SearchResults } from './SearchResults';
+export * from './SearchResults';

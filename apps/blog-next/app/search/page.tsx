@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { getPostsDesc } from '@/server/posts';
 import { buildMetadata } from '@/lib/metadata';
@@ -12,9 +11,5 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const posts = await getPostsDesc();
-  return (
-    <Suspense>
-      <SearchView posts={posts} />
-    </Suspense>
-  );
+  return <SearchView posts={posts} />;
 }

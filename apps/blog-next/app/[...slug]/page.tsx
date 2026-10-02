@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import {
   getAllPosts,
+  getCategoryMenu,
   getAllCategorySlugs,
   getPostNavigation,
   getPostsByCategorySlug,
@@ -108,8 +109,11 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   // 2) 카테고리 슬러그인지 확인
   const categorySlugs = await getAllCategorySlugs();
   if (categorySlugs.includes(key)) {
-    const posts = await getPostsByCategorySlug(key);
-    return <CategoryView posts={posts} slug={key} />;
+    const [posts, menu] = await Promise.all([
+      getPostsByCategorySlug(key),
+      getCategoryMenu(key),
+    ]);
+    return <CategoryView posts={posts} menu={menu} />;
   }
 
   notFound();

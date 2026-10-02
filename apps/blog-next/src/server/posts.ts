@@ -229,3 +229,14 @@ export const getNavData = async (): Promise<NavData> => ({
   categoryList: await getCategoryList(),
   menuTree: await getMenuTree(),
 });
+
+const EMPTY_MENU: TreeItem = { key: '', counter: 0, children: [] };
+
+/** 카테고리 페이지 상단 서브메뉴용 1depth 메뉴 (예: '/tech/svelte/' → tech 메뉴) */
+export const getCategoryMenu = async (
+  categorySlug: string,
+): Promise<TreeItem> => {
+  const firstDepth = categorySlug.split('/').filter(Boolean)[0];
+  const menuTree = await getMenuTree();
+  return menuTree.find((menu) => menu.key === firstDepth) ?? EMPTY_MENU;
+};
