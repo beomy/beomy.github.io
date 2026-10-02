@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   TextField,
@@ -21,6 +21,13 @@ const Header = () => {
   const [isSearch, setIsSearch] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const scrollY = useScroll(20);
+
+  // 헤더 숨김 여부를 <html> 에 표시한다. 포스트 사이드바(sticky)가 --sticky-top 으로 참조해
+  // 헤더가 보이면 그 아래(70px), 숨으면 화면 위(10px)에 붙는다 (globals.css).
+  useEffect(() => {
+    if (scrollY < 0) document.documentElement.dataset.headerHidden = '';
+    else delete document.documentElement.dataset.headerHidden;
+  }, [scrollY]);
 
   const handleClickSearchBtn = useCallback(
     () => setIsSearch(!isSearch),
@@ -56,13 +63,13 @@ const Header = () => {
         <Anchor to="/">
           {theme === 'dark' ? (
             <img
-              src="/assets/images/beomy-logo-negative.png"
+              src="/assets/img/brand/beomy-logo-negative.png"
               alt="블로그 로고"
               width={90}
             />
           ) : (
             <img
-              src="/assets/images/beomy-logo.png"
+              src="/assets/img/brand/beomy-logo.png"
               alt="블로그 로고"
               width={90}
             />

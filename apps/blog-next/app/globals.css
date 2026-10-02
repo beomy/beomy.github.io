@@ -6,3 +6,14 @@
  * (node_modules 는 기본 스캔에서 제외되므로 명시적으로 등록)
  */
 @source '../../../packages/design-system-tailwind/src';
+
+/*
+ * sticky 요소(포스트 사이드바)가 화면 위에 붙는 위치.
+ * 고정 헤더가 보이면 그 아래, 스크롤로 숨으면(Header 가 <html data-header-hidden> 을 세팅) 화면 위로 올린다.
+ */
+:root {
+  --sticky-top: 70px;
+}
+:root[data-header-hidden] {
+  --sticky-top: 10px;
+}
