@@ -1,7 +1,7 @@
 import { siteMetadata } from './metadata';
 
 const BASE = siteMetadata.siteUrl.replace(/\/$/, '');
-const LOGO = `${BASE}/assets/images/beomy-logo.png`;
+const LOGO = `${BASE}/assets/img/brand/beomy-logo.png`;
 
 const toIso = (date?: string): string | undefined =>
   date ? `${date}T00:00:00+00:00` : undefined;
@@ -28,7 +28,9 @@ export const buildBlogPostingJsonLd = ({
     '@type': 'BlogPosting',
     headline: title,
     description: description || siteMetadata.description,
-    ...(thumbnail ? { image: [`${BASE}/assets/images/${thumbnail}`] } : {}),
+    ...(thumbnail
+      ? { image: [`${BASE}/assets/img/thumbnails/${thumbnail}`] }
+      : {}),
     ...(published ? { datePublished: published, dateModified: published } : {}),
     author: { '@type': 'Person', name: siteMetadata.author },
     publisher: {

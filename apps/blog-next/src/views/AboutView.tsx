@@ -119,7 +119,7 @@ const AboutView = () => {
               target="_blank"
             >
               <img
-                src="/assets/images/svelte/inflearn-svelte.png"
+                src="/assets/img/thumbnails/svelte/inflearn-svelte.png"
                 alt="Svelte For Beginner"
               />
             </Anchor>
@@ -130,7 +130,7 @@ const AboutView = () => {
               target="_blank"
             >
               <img
-                src="/assets/images/svelte/inflearn-svelte-practice.jpeg"
+                src="/assets/img/thumbnails/svelte/inflearn-svelte-practice.jpeg"
                 alt="Svelte For Practice"
               />
             </Anchor>

@@ -67,7 +67,8 @@ src/
     common/          #   두 그룹 이상에서 공유 (Dim, PostBannerImg)
   hooks/ models/ stores/
 posts/               # 마크다운 포스트 (기존과 동일)
-public/              # 정적 자산 (기존 static/ + src/assets/images)
+public/              # 정적 자산. assets/img/ 하나로 통합 (posts/ 본문 이미지, thumbnails/ 포스트 썸네일, brand/ 로고·아이콘)
+                     #   기존 Gatsby 의 static/assets/img + src/assets/images(→ thumbnails/, brand/)
 ```
 
 ## 참고 사항

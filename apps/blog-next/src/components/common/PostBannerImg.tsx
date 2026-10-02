@@ -21,7 +21,7 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
   }, [img]);
 
   // 이미지가 없거나 로드에 실패하면 fallback 이미지를 표시한다.
-  const src = !img || failed ? FALLBACK_IMG : `/assets/images/${img}`;
+  const src = !img || failed ? FALLBACK_IMG : `/assets/img/thumbnails/${img}`;
 
   // 레이아웃은 소비처(PostCard/PostHeader)에서 `.post-banner-img` 로 제어한다.
   return (

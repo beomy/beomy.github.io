@@ -2,7 +2,7 @@ const AboutHeader = () => {
   return (
     <div className="flex items-center">
       <div className="mr-[20px] min-w-[100px]">
-        <img src="/assets/images/beomy-icon.png" alt="Beomy" />
+        <img src="/assets/img/brand/beomy-icon.png" alt="Beomy" />
       </div>
       <div>
         <h1>이효범 (Beomy)</h1>

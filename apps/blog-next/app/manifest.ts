@@ -11,7 +11,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display: 'minimal-ui',
     icons: [
       {
-        src: '/assets/images/beomy-icon.png',
+        src: '/assets/img/brand/beomy-icon.png',
         sizes: 'any',
         type: 'image/png',
       },

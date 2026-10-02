@@ -7,7 +7,7 @@ export const siteMetadata = {
   siteUrl: 'https://beomy.github.io/',
 };
 
-const DEFAULT_IMAGE = '/assets/images/beomy-logo.png';
+const DEFAULT_IMAGE = '/assets/img/brand/beomy-logo.png';
 
 type BuildMetadataOptions = {
   title: string;

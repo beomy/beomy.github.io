@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: siteMetadata.description,
   authors: [{ name: siteMetadata.author }],
   icons: {
-    icon: '/assets/images/beomy-icon.png',
+    icon: '/assets/img/brand/beomy-icon.png',
   },
   alternates: {
     types: {

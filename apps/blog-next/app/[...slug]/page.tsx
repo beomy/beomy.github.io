@@ -50,7 +50,7 @@ export async function generateMetadata({
       path: key,
       type: 'article',
       image: postRecord.thumbnail
-        ? `/assets/images/${postRecord.thumbnail}`
+        ? `/assets/img/thumbnails/${postRecord.thumbnail}`
         : undefined,
       publishedTime: `${postRecord.createdDate}T00:00:00+00:00`,
     });
