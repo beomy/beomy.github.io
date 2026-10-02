@@ -1,7 +1,12 @@
 'use client';
 
-import { useCallback, useState } from 'react';
-import { FieldSet, IconButton } from '@beomy/design-system-tailwind';
+import { useCallback } from 'react';
+import {
+  FieldSet,
+  Icon,
+  cn,
+  iconButtonVariants,
+} from '@beomy/design-system-tailwind';
 import ShareButton from './ShareButton';
 import { useNotification } from '@/hooks';
 
@@ -10,12 +15,10 @@ export type PostShareProps = {
 };
 
 export const PostShare = ({ url }: PostShareProps) => {
-  const [isHover, setHover] = useState<boolean>(false);
   const { message } = useNotification();
 
   const handleClickChip = useCallback(async () => {
     await window.navigator.clipboard.writeText(url);
-    setHover(false);
     message.info('링크가 복사되었습니다.');
   }, [message, url]);
 
@@ -41,17 +44,24 @@ export const PostShare = ({ url }: PostShareProps) => {
           aria-label="linkedin"
         />
         <ShareButton target="line" url={url} size="24px" aria-label="line" />
-        <IconButton
-          icon={isHover ? 'BsLink45Deg' : 'BsPaperclip'}
-          size="24px"
-          border
+        {/* ShareButton 과 같은 이유로 hover 아이콘 전환은 CSS 로만 처리한다 */}
+        <button
+          type="button"
+          className={cn(iconButtonVariants({ border: true }), 'group')}
           aria-label="link"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          onFocus={() => setHover(true)}
-          onBlur={() => setHover(false)}
           onClick={handleClickChip}
-        />
+        >
+          <Icon
+            type="BsPaperclip"
+            size="24px"
+            className="group-hover:hidden group-focus-visible:hidden"
+          />
+          <Icon
+            type="BsLink45Deg"
+            size="24px"
+            className="hidden group-hover:inline group-hover:animate-spin-in group-focus-visible:inline"
+          />
+        </button>
       </div>
     </FieldSet>
   );
