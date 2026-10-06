@@ -8,7 +8,10 @@ import PostBannerImg from '@/components/common/PostBannerImg';
 import { DateFormat } from '@/models/dateFormat';
 import { Post } from '@/models/post';
 
-export type PostCardProps = Post;
+export type PostCardProps = Post & {
+  /** 첫 화면에 보이는 카드면 true (썸네일을 lazy 없이 먼저 받는다) */
+  priority?: boolean;
+};
 
 const PostCard = ({
   title,
@@ -17,6 +20,7 @@ const PostCard = ({
   createdDate = new Date(),
   timeToRead,
   url,
+  priority = false,
 }: PostCardProps) => {
   const date =
     createdDate instanceof Date
@@ -34,7 +38,7 @@ const PostCard = ({
       className="m-[10px] box-border flex w-[320px] flex-col rounded-[4px] border border-grey-90 bg-grey-100 leading-[1.4] text-title no-underline shadow-[rgb(0_0_0_/_6%)_0_4px_16px_0] max-sm:w-[calc(50%-20px)] max-xs:w-full"
     >
       <div className="relative overflow-hidden bg-white pt-[50%] [&_.post-banner-img]:absolute [&_.post-banner-img]:left-0 [&_.post-banner-img]:top-0 [&_.post-banner-img]:h-full [&_.post-banner-img]:w-full [&_.post-banner-img]:object-cover">
-        <PostBannerImg img={thumbnail} />
+        <PostBannerImg img={thumbnail} priority={priority} />
       </div>
       <div className="grow shrink p-[15px] [&_h4]:text-title [&_p]:m-0 [&_p]:text-1 [&_p]:text-body">
         <h4 className="m-0 mb-[10px]">{title}</h4>

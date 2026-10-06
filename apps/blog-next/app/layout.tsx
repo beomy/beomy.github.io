@@ -48,12 +48,13 @@ export default async function RootLayout({
 
         <Providers navData={navData}>{children}</Providers>
 
-        {/* Google Analytics (gtag) */}
+        {/* Google Analytics (gtag). lazyOnload: 페이지 로드가 끝난 뒤 받는다.
+            498KB 짜리 스크립트가 느린 회선에서 첫 화면 이미지(LCP)와 대역폭을 경쟁하지 않도록. */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script id="gtag-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

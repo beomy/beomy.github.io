@@ -28,7 +28,9 @@ const PostHeader = ({
           {timeToRead}분 소요
         </IconText>
       </div>
-      <PostBannerImg img={thumbnail} />
+      {/* 상단 배너는 이 페이지의 LCP 요소: lazy 없이 먼저 받는다.
+          썸네일 규격은 2000×1000 으로 고정이라 상수로 영역을 미리 확보한다(CLS 방지) */}
+      <PostBannerImg img={thumbnail} priority width={2000} height={1000} />
     </div>
   );
 };

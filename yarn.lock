@@ -2079,6 +2079,7 @@ __metadata:
     github-slugger: "npm:2.0.0"
     gray-matter: "npm:4.0.3"
     hast-util-to-html: "npm:9.0.5"
+    image-size: "npm:2.0.4"
     lodash-es: "npm:4.17.21"
     next: "npm:16.3.4"
     prettier: "npm:3.9.6"
@@ -20196,6 +20197,15 @@ __metadata:
   dependencies:
     "@types/node": "npm:16.9.1"
   checksum: 10/1f7c6c84d0b4d83d50603a38443a51bd45d0aee38ff4284135b30744df9481fa18ae818f906a648d0a6a9a78c884147b7632424199d107998427bb98e96f2584
+  languageName: node
+  linkType: hard
+
+"image-size@npm:2.0.4":
+  version: 2.0.4
+  resolution: "image-size@npm:2.0.4"
+  bin:
+    image-size: bin/image-size.js
+  checksum: 10/a9db27f55c77869fad3420e6e614b64ab1af3fb425e4c3136c5dbb4fefd9346864fa69a1ff1706acab54ea766b01fb015cd2cbed90b122d2dbaa20f785a90e2f
   languageName: node
   linkType: hard
 

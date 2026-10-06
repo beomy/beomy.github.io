@@ -33,6 +33,20 @@
 :root[data-theme='dark'] .post-contents .shiki span {
   color: var(--shiki-dark) !important;
 }
+/*
+ * 본문 링크(헤딩 퍼머링크 .anchor 제외).
+ * - 밑줄: 색만으로 구분되는 링크는 접근성 기준(link-in-text-block) 미달
+ * - 라이트 모드 색: 전역 a 색(blue-50, 대비 4.21:1)이 기준 4.5:1 에 못 미쳐 조금 어둡게
+ */
+.post-contents a:not(.anchor) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  color: hsl(212, 100%, 40%);
+}
+/* 다크 모드: blue-50 은 인라인 코드 배경(#1a1a1a) 위에서 4.21:1 이라 더 밝게 */
+:root[data-theme='dark'] .post-contents a:not(.anchor) {
+  color: hsl(212, 100%, 65%);
+}
 /* 인라인 코드: 코드 블록과 같은 토큰으로 본문과 구분한다 */
 .post-contents :not(pre) > code {
   padding: 0.15em 0.4em;

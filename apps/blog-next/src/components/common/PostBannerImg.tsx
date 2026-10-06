@@ -4,11 +4,24 @@ import { useEffect, useRef, useState } from 'react';
 
 export type PostBannerImgProps = {
   img?: string;
+  /**
+   * 첫 화면(LCP)에 보이는 썸네일이면 true. lazy 를 끄고 fetchpriority=high 로 먼저 받는다.
+   * (lazy 이미지는 브라우저가 후순위로 미뤄 LCP 가 수 초 늦어진다 — Lighthouse 측정 기준 Render Delay 5s+)
+   */
+  priority?: boolean;
+  /** 원본 크기. 알고 있으면 넘겨서 로드 전 영역을 확보한다(CLS 방지) */
+  width?: number;
+  height?: number;
 };
 
 const FALLBACK_IMG = 'https://dummyimage.com/2000x1000/000/fff.png';
 
-const PostBannerImg = ({ img }: PostBannerImgProps) => {
+const PostBannerImg = ({
+  img,
+  priority = false,
+  width,
+  height,
+}: PostBannerImgProps) => {
   const ref = useRef<HTMLImageElement>(null);
   const [failed, setFailed] = useState(false);
 
@@ -30,7 +43,11 @@ const PostBannerImg = ({ img }: PostBannerImgProps) => {
       className="post-banner-img"
       src={src}
       alt="포스트 배너"
-      loading="lazy"
+      width={width}
+      height={height}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : undefined}
+      decoding="async"
       onError={() => setFailed(true)}
     />
   );
