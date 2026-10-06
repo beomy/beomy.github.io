@@ -33,7 +33,12 @@ export default tseslint.config(
     plugins: { react, 'jsx-a11y': jsxA11y, 'react-hooks': reactHooks },
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
-      parserOptions: { ecmaFeatures: { jsx: true } },
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+        // 에디터(VS Code ESLint)가 저장소 루트를 cwd 로 두고 이 config 를 적용하면 typescript-eslint 가
+        // tsconfig 기준 디렉터리 후보를 둘(루트/패키지)로 보고 거부한다 → 이 config 위치로 고정
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     settings: { react: { version: 'detect' } },
     rules: {

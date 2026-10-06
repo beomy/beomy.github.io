@@ -15,7 +15,14 @@ import globals from 'globals';
  * recommended 룰만 스프레드한다.
  */
 export default tseslint.config(
-  { ignores: ['node_modules/**', 'dist/**', 'storybook-static/**', '**/.prettierrc.js'] },
+  {
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      'storybook-static/**',
+      '**/.prettierrc.js',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -23,7 +30,12 @@ export default tseslint.config(
     plugins: { react, 'jsx-a11y': jsxA11y, 'react-hooks': reactHooks },
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
-      parserOptions: { ecmaFeatures: { jsx: true } },
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+        // 에디터(VS Code ESLint)가 저장소 루트를 cwd 로 두고 이 config 를 적용하면 typescript-eslint 가
+        // tsconfig 기준 디렉터리 후보를 둘(루트/패키지)로 보고 거부한다 → 이 config 위치로 고정
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     settings: { react: { version: 'detect' } },
     rules: {
@@ -36,7 +48,10 @@ export default tseslint.config(
       'react/jsx-props-no-spreading': 'off',
       'react/jsx-uses-react': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
     },
   },
   prettier,

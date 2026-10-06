@@ -16,6 +16,11 @@ const eslintConfig = [
   ...nextCoreWebVitals,
   ...nextTypescript,
   {
+    // 에디터(VS Code ESLint)가 저장소 루트를 cwd 로 두고 이 config 를 적용하면 typescript-eslint 가
+    // tsconfig 기준 디렉터리 후보를 둘(루트/앱)로 보고 거부한다 → 이 config 위치로 고정
+    languageOptions: {
+      parserOptions: { tsconfigRootDir: import.meta.dirname },
+    },
     rules: {
       '@next/next/no-img-element': 'off',
       'react/no-unescaped-entities': 'off',
