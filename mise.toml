@@ -1,0 +1,7 @@
+# 도구 버전 관리 (mise). 저장소에 들어오면 mise 가 이 Node 를 자동으로 활성화한다.
+#   처음 한 번: mise install
+# Yarn 은 mise 로 관리하지 않는다 — .yarnrc.yml 의 yarnPath(.yarn/releases) 와 package.json 의
+# packageManager 가 버전을 고정하므로 Node 만 맞추면 된다.
+# 버전을 올릴 때는 이 값을 바꾸고 `mise install` 후 빌드(yarn blog-next build)로 확인한다.
+[tools]
+node = "22.18.0"

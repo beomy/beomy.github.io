@@ -41,8 +41,13 @@ If you prefer you can clone this repository and run the following commands insid
 
 > By default, this starter uses Yarn, but this choice is yours. If you'd like to switch to npm, delete the `yarn.lock` file, install the dependencies with `npm install`, and change the CI workflows, Husky Git hooks, and lint-staged steps to use npm commands.
 
-1. `yarn`;
-2. `yarn start`;
+> Node 버전은 [mise](https://mise.jdx.dev) 로 관리한다 (`mise.toml`). 처음 한 번 `mise install` 을 실행하면
+> 저장소 안에서 고정된 Node 가 자동으로 활성화된다. Yarn 은 `.yarn/releases` 에 포함되어 있어 따로 설치하지 않는다.
+> CI(`.github/workflows/ci.yml`)도 같은 `mise.toml` 을 읽는다.
+
+1. `mise install`;
+2. `yarn`;
+3. `yarn start`;
 
 To view the project you can open `http://localhost:8000`.
 
