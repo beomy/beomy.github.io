@@ -80,10 +80,16 @@ const collectHeadings = (headings: Heading[]) => () => (tree: Root) => {
 
 /**
  * 본문 <img> 에 원본 크기(width/height)를 넣어 로드 전 영역을 확보하고(CLS 방지), lazy loading 을 걸고,
- * 프로덕션에서는 webp 변환본 srcset 을 붙인다.
+ * 프로덕션에서는 webp 변환본 srcset 을 붙인다. <iframe> 임베드에도 lazy loading 을 건다.
  */
 const rehypeImageAttributes = () => (tree: Root) => {
   visit(tree, 'element', (node) => {
+    // 임베드(CodeSandbox, YouTube)는 화면 근처에 올 때 로드. 글마다 iframe 이 수십 개라 첫 로드가 무거웠다.
+    // 글의 iframe 은 모두 height 를 명시하고 있어 지연 로드로 레이아웃이 밀리지 않는다.
+    if (node.tagName === 'iframe') {
+      node.properties.loading ??= 'lazy';
+      return;
+    }
     if (node.tagName !== 'img') return;
     const src = node.properties?.src;
     if (typeof src !== 'string') return;
