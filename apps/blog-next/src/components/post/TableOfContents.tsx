@@ -54,8 +54,9 @@ const TableOfContents = ({ toc, onClick }: TableOfContentsProps) => {
     [onClick],
   );
 
+  // min-h-0: flex 자식의 기본 min-height:auto 를 풀어, 패널(max-h)이 꽉 찼을 때 이 영역만 줄어들며 스크롤되게 한다
   return (
-    <FieldSet title="목차" className="max-h-full overflow-auto">
+    <FieldSet title="목차" className="min-h-0 overflow-auto">
       <nav
         ref={tocRef}
         className="toc"
