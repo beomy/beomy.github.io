@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "type-check": "tsc --noEmit",
     "lint": "eslint . --fix",
     "format": "prettier . --write",
     "prepack": "yarn build"
