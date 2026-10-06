@@ -37,7 +37,8 @@ summary: Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn의 1 버�
 ### PnP(Plug'n'Play)
 PnP는 Plug And Play의 줄임말로 해석하면 '꼽기만 하면 사용할 수 있다.'로 해석할 수 있습니다. `Yarn Berry`는 성능 개선을 위해 `node_modules`를 읽는 느린 메모리 I/O 대신 `.yarn/cache`에 종속 패키지들을 zip 형태로 저장하고, `.pnp.cjs` 파일에 의존성 패키지의 의존성 정보를 저장하여 의존성 정보를 알 수 있게 만들었습니다.
 
-> ##### `.yarn/cache`와 `.pnp.cjs`
+> **`.yarn/cache`와 `.pnp.cjs`**
+>
 > - `.yarn/cache`: 디렉토리 하위에 의존성 패키지들을 zip 형태로 저장하고 있습니다.
 > - `.pnp.cjs`: 어떠한 패키지가 어떠한 패키지에 의존성이 있는지 저장하고 있는 파일입니다. 예를 들어 A 패키지를 실행해야 한다면, `.pnp.cjs` 파일에서 A 패키지의 의존성 정보를 읽어와서 A 패키지의 의존성 패키지를 `.yarn/cache`에서 찾아 A 패키지를 실행합니다.
 

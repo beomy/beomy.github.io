@@ -31,7 +31,8 @@ yarn init -2
 
 명령어를 실행하면 위의 그림과 같이 `Yarn Berry` 프로젝트가 생성됩니다.
 
-> ##### `Yarn Classic`에서 `Yarn Berry`로 마이그레이션 하기
+> **`Yarn Classic`에서 `Yarn Berry`로 마이그레이션 하기**
+>
 > `Yarn Classic`으로 만들어진 프로젝트를 `Yarn Berry`로 업데이트 하고 싶다면, `Yarn Classic` 프로젝트에서 아래 명령어를 실행하면 `Yarn Berry` stable 버전으로 업데이트 됩니다.
 >
 > ```bash
@@ -82,7 +83,8 @@ Emotion과 React, TypeScript를 사용하는 디자인 시스템 프로젝트와
 yarn workspace @monorepo/design-system add -D typescript react react-dom @emotion/react @emotion/styled @types/react @types/react-dom
 ```
 
-> ##### `yarn workspace` 명령어
+> **`yarn workspace` 명령어**
+>
 > `yarn workspace <workspaceName> <commandName>` 형태로 특정 워크스페이스의 스크립트를 실행할 수 있습니다.
 >
 > - `yarn workspace @monorepo/design-system add -D typescript`: `@monorepo/design-system` 프로젝트에 개발자 의존성을 가진 TypeScript를 설치하는 명령어입니다.

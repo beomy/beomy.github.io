@@ -130,7 +130,8 @@ const {
 - `queryClient?: QueryClient`
   - 커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 콘텍스트의 쿼리 클라이언트가 사용됩니다.
 
-> ##### `placeholderData` 활용
+> **`placeholderData` 활용**
+>
 > React Query V4에서는 `keepPreviousData` 옵션으로 쿼리 키가 변경되어 새로운 데이터를 가져오는 동안에 이전 데이터를 유지하여 화면에 노출시킬 수 있었습니다. V5부터는 `keepPreviousData` 옵션이 없어지고 아래 코드와 같이 `placeholderData` 옵션이 그 기능을 대체합니다.
 >
 > ```tsx
@@ -157,7 +158,8 @@ const {
 > }
 > ```
 
-> ##### Structural Sharing를 통한 최적화
+> **Structural Sharing를 통한 최적화**
+>
 > React Query는 새로운 데이터를 만들 때 가능한 한 기존의 데이터를 유지하려고 합니다. 아래 코드와 같이 응답받은 데이터가 있을 때,
 >
 > ```json
@@ -682,7 +684,8 @@ const queryCache = new QueryCache({
   - `query: Query`
     - 실행한 쿼리 객체입니다.
 
-> ##### `QueryClient`의 `defaultOptions`와 `QueryCache`의 옵션의 차이
+> **`QueryClient`의 `defaultOptions`와 `QueryCache`의 옵션의 차이**
+>
 > - `defaultOpions`의 콜백함수들은 각각의 쿼리를 호출할 때 오버라이드될 수 있습니다. `QueryCache`의 전역 콜백함수들은 항상 호출됩니다.
 > - `defaultOpions`의 콜백함수들은 각각의 옵저버에서 한 번씩 호출되지만, `QueryCache`의 전역 콜백함수들은 한 번만 호출됩니다.
 >   - 예를 들어 `useQuery({ queryKey: ['posts'] })`와 같이 동일한 쿼리가 부모, 자식 컴포넌트 각각에 2번 선언되었다면 `defaultOpions`의 콜백함수는 2번 호출되지만, `QueryCache`의 전역 콜백함수는 한 번만 호출됩니다.
@@ -813,7 +816,8 @@ const mutationCache = new MutationCache({
   - `mutation: Mutation`
     - 실행한 Mutation 객체입니다.
 
-> ##### `QueryClient`의 `defaultOptions`와 `MutationCache`의 옵션의 차이
+> **`QueryClient`의 `defaultOptions`와 `MutationCache`의 옵션의 차이**
+>
 > - `defaultOpions`에 정의한 콜백함수들은 각각의 Mutation을 호출할 때 오버라이드될 수 있습니다. `MutationCache`에 정의한 전역 콜백함수들은 항상 호출됩니다.
 > - `MutationCache`의 옵션 중 `onMutate` 함수의 반환 값은 `context`에 담기지 않습니다.
 

@@ -6,7 +6,8 @@ category: [tech, react]
 summary: React Hook Form은 사용자 입력을 받고 검증하는 것을 도와 주는 라이브러리로, React에서 폼을 관리하는 가장 유명한 라이브러리 중 하나입니다. React Hook Form을 사용하면 사용자에게 입력을 받고 검증하는데 드는 시간을 줄일 뿐만 아니라 더불어 성능까지 두 마리 토끼를 모두 잡을 수 있습니다.
 ---
 
-> ##### TL;DR
+> **TL;DR**
+>
 > - React Hook Form은 Uncontrolled 방식의 빠른 성능이 장점인 폼 관리 라이브러리입니다. 물론 Controlled 방식도 지원합니다.
 >   - Uncontrolled 방식은 `register` 함수를 사용합니다.
 >     - `register` 함수의 두 번째 파라미터를 사용하여 유효성 검증이 가능합니다.

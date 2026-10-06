@@ -149,20 +149,14 @@
   border-radius: 4px;
   padding: 1rem 1rem 1rem 2rem;
 }
-.post-contents blockquote h1,
-.post-contents blockquote h2,
-.post-contents blockquote h3,
-.post-contents blockquote h4,
-.post-contents blockquote h5 {
+/*
+ * 인용 박스 캡션: 마크다운에서 `> **제목**` 뒤에 빈 인용 줄을 두는 관례.
+ * (예전에는 `> ##### 제목` 으로 적어 헤딩 트리가 h1→h5 로 건너뛰었다 — 캡션은 섹션이 아니므로 굵은 문단으로)
+ * 굵은 글씨만 있는 첫 문단을 캡션으로 보고 예전 h5 와 같은 크기·행간으로 맞춘다.
+ */
+.post-contents blockquote > p:first-child:has(> strong:only-child) {
+  font-size: var(--text-2);
   line-height: 2;
-  margin: 1rem 0;
-}
-.post-contents blockquote h1:first-child,
-.post-contents blockquote h2:first-child,
-.post-contents blockquote h3:first-child,
-.post-contents blockquote h4:first-child,
-.post-contents blockquote h5:first-child {
-  margin-top: 0;
 }
 .post-contents blockquote p:first-child {
   margin-top: 0;
