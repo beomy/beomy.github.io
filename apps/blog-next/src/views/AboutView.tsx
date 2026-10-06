@@ -1,6 +1,7 @@
 import { Anchor } from '@beomy/design-system-tailwind';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import { AboutHeader, AboutContents } from '@/components/about';
+import { getOptimizedSrcSet } from '@/lib/optimizedImage';
 
 const AboutView = () => {
   return (
@@ -79,7 +80,7 @@ const AboutView = () => {
         </ul>
       </AboutContents>
       <AboutContents title="Activities">
-        <h4>블로그</h4>
+        <h3>블로그</h3>
         <ul>
           <li>
             <Anchor href="https://beomy.tistory.com" target="_blank">
@@ -92,7 +93,7 @@ const AboutView = () => {
             </Anchor>
           </li>
         </ul>
-        <h4>출판</h4>
+        <h3>출판</h3>
         <ul>
           <li>
             <Anchor
@@ -111,7 +112,7 @@ const AboutView = () => {
             </Anchor>
           </li>
         </ul>
-        <h4>강의</h4>
+        <h3>강의</h3>
         <ul className="flex flex-wrap">
           <li className="mb-[10px] mr-[10px] w-full xs:w-1/2 sm:w-1/4">
             <Anchor
@@ -120,7 +121,16 @@ const AboutView = () => {
             >
               <img
                 src="/assets/img/thumbnails/svelte/inflearn-svelte.png"
+                srcSet={getOptimizedSrcSet(
+                  '/assets/img/thumbnails/svelte/inflearn-svelte.png',
+                  768,
+                )}
+                sizes="(max-width: 640px) 100vw, 25vw"
                 alt="Svelte For Beginner"
+                width={768}
+                height={500}
+                loading="lazy"
+                decoding="async"
               />
             </Anchor>
           </li>
@@ -131,7 +141,16 @@ const AboutView = () => {
             >
               <img
                 src="/assets/img/thumbnails/svelte/inflearn-svelte-practice.jpeg"
+                srcSet={getOptimizedSrcSet(
+                  '/assets/img/thumbnails/svelte/inflearn-svelte-practice.jpeg',
+                  768,
+                )}
+                sizes="(max-width: 640px) 100vw, 25vw"
                 alt="Svelte For Practice"
+                width={768}
+                height={500}
+                loading="lazy"
+                decoding="async"
               />
             </Anchor>
           </li>

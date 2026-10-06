@@ -66,12 +66,14 @@ const Header = () => {
               src="/assets/img/brand/beomy-logo-negative.png"
               alt="블로그 로고"
               width={90}
+              height={30}
             />
           ) : (
             <img
               src="/assets/img/brand/beomy-logo.png"
               alt="블로그 로고"
               width={90}
+              height={30}
             />
           )}
         </Anchor>

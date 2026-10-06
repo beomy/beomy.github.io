@@ -38,12 +38,14 @@ const Menu = ({ active, onClose, className }: MenuProps) => {
                 src="/assets/img/brand/beomy-logo-negative.png"
                 alt="블로그 로고"
                 width={60}
+                height={20}
               />
             ) : (
               <img
                 src="/assets/img/brand/beomy-logo.png"
                 alt="블로그 로고"
                 width={60}
+                height={20}
               />
             )}
           </Anchor>
