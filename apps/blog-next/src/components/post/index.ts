@@ -6,8 +6,6 @@ export { default as PostNavigator } from './PostNavigator';
 export * from './PostNavigator';
 export { default as PostShare } from './PostShare';
 export * from './PostShare';
-export { default as ShareButton } from './ShareButton';
-export * from './ShareButton';
 export { default as TableOfContents } from './TableOfContents';
 export * from './TableOfContents';
 export { default as PostSidebar } from './PostSidebar';
