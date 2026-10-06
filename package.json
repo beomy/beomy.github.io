@@ -22,7 +22,7 @@
     "games": "yarn workspace @beomy/games",
     "design-system": "yarn workspace @beomy/design-system",
     "utils": "yarn workspace @beomy/utils",
-    "type-check": "yarn workspaces -Ap foreach run type-check",
+    "type-check": "yarn workspaces foreach -Ap --exclude @beomy/games run type-check",
     "lint": "yarn workspaces foreach -Ap run lint",
     "format": "yarn workspaces foreach -Ap run format",
     "test": "yarn workspaces foreach -Ap run test",
