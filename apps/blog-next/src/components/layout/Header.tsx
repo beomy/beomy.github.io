@@ -17,7 +17,7 @@ import Menu from './Menu';
 const Header = () => {
   const router = useRouter();
   const { categoryList } = useNav();
-  const [theme, setTheme] = useTheme();
+  const { theme, setTheme } = useTheme();
   const [isSearch, setIsSearch] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const scrollY = useScroll(20);

@@ -1,44 +1,31 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { useEffect } from 'react';
-import { useMount, useLocalStorage } from '@beomy/utils';
+import { useMount } from '@beomy/utils';
 import type { Theme } from '@/models/theme';
 import { useTheme } from '@/hooks';
-import { useThemeStore } from '@/stores/theme';
 import { Notification } from '@/components/layout';
 import { NavProvider } from '@/contexts/nav-context';
 import type { NavData } from '@/contexts/nav-context';
 
 const ThemedApp = ({ children }: { children: ReactNode }) => {
-  const [theme] = useTheme();
-  const [localStorageTheme] = useLocalStorage<Theme>('beomy.theme');
-  const setTheme = useThemeStore((state) => state.setTheme);
+  const { syncTheme } = useTheme();
 
   useMount(() => {
+    // 초기 테마는 layout.tsx 의 인라인 스크립트가 이미 결정해 <html data-theme> 에 넣어 두었다.
+    // 같은 규칙을 다시 계산하지 않고 그 값을 스토어로 복사만 한다.
+    const initial = document.documentElement.dataset.theme as Theme | undefined;
+    syncTheme(initial ?? 'light');
+
+    // 사용자가 직접 고른 적이 없으면(localStorage 비어 있음) OS 테마 변경을 따라간다.
     const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
-
-    if (localStorageTheme) {
-      setTheme(localStorageTheme);
-    } else if (matchMedia.matches) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-
-    const handleModeChange = (value: MediaQueryListEvent) => {
+    const handleModeChange = (event: MediaQueryListEvent) => {
       if (localStorage.getItem('beomy.theme')) return;
-      setTheme(value.matches ? 'dark' : 'light');
+      syncTheme(event.matches ? 'dark' : 'light');
     };
-    matchMedia?.addEventListener?.('change', handleModeChange);
-    return () => matchMedia?.removeEventListener?.('change', handleModeChange);
+    matchMedia.addEventListener('change', handleModeChange);
+    return () => matchMedia.removeEventListener('change', handleModeChange);
   });
-
-  // 테마 변경 시 <html data-theme> 을 갱신한다. (Tailwind 다크모드 토글)
-  useEffect(() => {
-    if (!theme) return;
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
 
   return (
     <>

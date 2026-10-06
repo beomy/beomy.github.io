@@ -11,7 +11,7 @@ export type MenuProps = {
 };
 
 const Menu = ({ active, onClose, className }: MenuProps) => {
-  const [theme] = useTheme();
+  const { theme } = useTheme();
   const menuTree = useMenu();
 
   return (

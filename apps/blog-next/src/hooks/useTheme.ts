@@ -6,26 +6,39 @@ import { useLocalStorage } from '@beomy/utils';
 import { Theme } from '@/models/theme';
 import { useThemeStore } from '@/stores/theme';
 
-type useThemeType = () => [Theme | undefined, Dispatch<SetStateAction<Theme>>];
+type UseTheme = () => {
+  /** 현재 테마. 첫 렌더(하이드레이션 전)에는 undefined */
+  theme: Theme | undefined;
+  /** 사용자가 고른 테마. 스토어와 <html data-theme> 를 바꾸고 localStorage 에 기억한다 */
+  setTheme: Dispatch<SetStateAction<Theme>>;
+  /**
+   * 시스템 동기화용. 스토어와 <html data-theme> 만 바꾸고 localStorage 에는 쓰지 않는다.
+   * (초기화, OS 테마 변경 추종처럼 "사용자 선택"이 아닌 경우)
+   */
+  syncTheme: (theme: Theme) => void;
+};
 
-const useTheme: useThemeType = () => {
+/**
+ * 테마 접근의 단일 진입점. 사용처는 스토어(useThemeStore)를 직접 보지 않는다.
+ */
+const useTheme: UseTheme = () => {
   const theme = useThemeStore((state) => state.theme);
-  const setTheme = useThemeStore((state) => state.setTheme);
+  const syncTheme = useThemeStore((state) => state.setTheme);
   const [, setLocalStorageTheme] = useLocalStorage<Theme>('beomy.theme');
 
-  const set: Dispatch<SetStateAction<Theme>> = useCallback(
+  const setTheme: Dispatch<SetStateAction<Theme>> = useCallback(
     (valOrFunc) => {
-      const newState =
+      const next =
         typeof valOrFunc === 'function'
           ? (valOrFunc as (prev: Theme | undefined) => Theme)(theme)
           : valOrFunc;
-      setTheme(newState);
-      setLocalStorageTheme(newState);
+      syncTheme(next);
+      setLocalStorageTheme(next);
     },
-    [setLocalStorageTheme, setTheme, theme],
+    [setLocalStorageTheme, syncTheme, theme],
   );
 
-  return [theme, set];
+  return { theme, setTheme, syncTheme };
 };
 
 export default useTheme;

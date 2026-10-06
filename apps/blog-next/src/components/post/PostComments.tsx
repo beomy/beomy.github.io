@@ -12,7 +12,7 @@ export type PostCommentsProps = {
 
 /** Disqus 댓글. 테마가 바뀌면 key 를 바꿔 Disqus 가 색상을 다시 그리게 한다. */
 const PostComments = ({ url, title }: PostCommentsProps) => {
-  const [theme] = useTheme();
+  const { theme } = useTheme();
   const config = useMemo(() => ({ url, identifier: url, title }), [url, title]);
 
   return <DiscussionEmbed key={theme} shortname="beomy" config={config} />;
