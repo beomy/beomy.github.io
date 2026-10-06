@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next dev",
-    "build": "next build",
+    "build": "next build && next-image-export-optimizer",
     "serve": "npx serve out",
     "deploy": "yarn build && gh-pages -d out -b blog -t",
     "clean": "rm -rf .next out",
@@ -57,6 +57,7 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.4",
     "gh-pages": "5.0.0",
+    "next-image-export-optimizer": "1.21.1",
     "prettier": "3.9.6",
     "tailwindcss": "4.1.13",
     "typescript": "5.4.5"

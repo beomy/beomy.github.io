@@ -37,7 +37,7 @@ yarn blog-next deploy
 | 상태관리 | Recoil | **Zustand** (Recoil은 최신 React/Next와 비호환) |
 | 스타일 | Emotion (+ gatsby-plugin-emotion) | Emotion + `compiler.emotion` + SSR 레지스트리 |
 | SEO | react-helmet | App Router Metadata API (`src/lib/metadata.ts`) |
-| 이미지 | gatsby-plugin-image | 정적 `public/` 경로 + `<img>` (export이므로 unoptimized) |
+| 이미지 | gatsby-plugin-image (썸네일만 webp) | `yarn build` 가 `next-image-export-optimizer` CLI 를 이어서 실행해 `public/assets/img` 전체(본문·썸네일·GIF)를 webp 로 변환. `src/lib/optimizedImage.ts` 가 같은 경로 규칙으로 `<img srcset>` 을 만든다(next/image 미사용). 본문 이미지 크기는 빌드 시 `image-size` 로 읽어 width/height 에 넣음(CLS 방지) |
 | 댓글 | gatsby-plugin-disqus | disqus-react |
 | RSS/사이트맵/robots/manifest | gatsby 플러그인 | `app/rss.xml`, `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts` |
 

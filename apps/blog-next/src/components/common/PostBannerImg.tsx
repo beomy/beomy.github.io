@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { getOptimizedSrcSet } from '@/lib/optimizedImage';
 
 export type PostBannerImgProps = {
   img?: string;
@@ -15,6 +16,8 @@ export type PostBannerImgProps = {
 };
 
 const FALLBACK_IMG = 'https://dummyimage.com/2000x1000/000/fff.png';
+/** 썸네일 규격(고정). srcset 폭 선택과 영역 확보에 쓴다 */
+const THUMBNAIL_WIDTH = 2000;
 
 const PostBannerImg = ({
   img,
@@ -34,7 +37,12 @@ const PostBannerImg = ({
   }, [img]);
 
   // 이미지가 없거나 로드에 실패하면 fallback 이미지를 표시한다.
-  const src = !img || failed ? FALLBACK_IMG : `/assets/img/thumbnails/${img}`;
+  const isFallback = !img || failed;
+  const src = isFallback ? FALLBACK_IMG : `/assets/img/thumbnails/${img}`;
+  // 프로덕션 빌드에서만 webp 변환본이 존재한다 (개발 모드는 undefined → 원본 표시)
+  const srcSet = isFallback
+    ? undefined
+    : getOptimizedSrcSet(src, THUMBNAIL_WIDTH);
 
   // 레이아웃은 소비처(PostCard/PostHeader)에서 `.post-banner-img` 로 제어한다.
   return (
@@ -42,6 +50,9 @@ const PostBannerImg = ({
       ref={ref}
       className="post-banner-img"
       src={src}
+      // srcset 이 있을 때만 sizes 도 붙인다 (카드는 모바일 화면 폭 / 그 외 최대 약 1000px)
+      srcSet={srcSet}
+      sizes={srcSet ? '(max-width: 640px) 100vw, 1000px' : undefined}
       alt="포스트 배너"
       width={width}
       height={height}

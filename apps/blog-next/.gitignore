@@ -22,3 +22,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# next-image-export-optimizer: build 시 public/assets/img 아래에 생성되는 webp 변환본과 해시 캐시
+**/nextImageExportOptimizer/
+/public/assets/img/next-image-export-optimizer-hashes.json

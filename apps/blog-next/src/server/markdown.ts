@@ -12,6 +12,7 @@ import { visit } from 'unist-util-visit';
 import { toHtml } from 'hast-util-to-html';
 import type { Root } from 'hast';
 import { getImageDimensions } from './images';
+import { getOptimizedSrcSet } from '@/lib/optimizedImage';
 
 /*
  * shiki 하이라이터는 문법·테마 로드 비용이 커서 모듈 수준에서 한 번만 만들어 공유한다.
@@ -78,7 +79,8 @@ const collectHeadings = (headings: Heading[]) => () => (tree: Root) => {
 };
 
 /**
- * 본문 <img> 에 원본 크기(width/height)를 넣어 로드 전 영역을 확보하고(CLS 방지), lazy loading 을 건다.
+ * 본문 <img> 에 원본 크기(width/height)를 넣어 로드 전 영역을 확보하고(CLS 방지), lazy loading 을 걸고,
+ * 프로덕션에서는 webp 변환본 srcset 을 붙인다.
  */
 const rehypeImageAttributes = () => (tree: Root) => {
   visit(tree, 'element', (node) => {
@@ -92,6 +94,14 @@ const rehypeImageAttributes = () => (tree: Root) => {
     if (!size) return;
     node.properties.width ??= size.width;
     node.properties.height ??= size.height;
+
+    // 프로덕션 빌드에서는 webp 변환본을 srcset 으로 연결한다 (src/lib/optimizedImage.ts)
+    const srcSet = getOptimizedSrcSet(src, size.width);
+    if (srcSet) {
+      node.properties.srcSet = srcSet;
+      // 본문 폭: 모바일은 화면 폭, 데스크톱은 사이드바(380px)를 뺀 본문 폭(최대 약 1000px)
+      node.properties.sizes ??= '(max-width: 640px) 100vw, 1000px';
+    }
   });
 };
 
