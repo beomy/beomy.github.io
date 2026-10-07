@@ -1,0 +1,717 @@
+1:"$Sreact.fragment"
+3:I[5296,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+4:I[13033,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+6:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"ViewportBoundary"]
+c:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"MetadataBoundary"]
+e:I[82623,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default",1]
+:HL["/_next/static/chunks/3hdp08pq73jzd.css","style"]
+:HL["/_next/static/chunks/0-ed_yd_8cspw.css","style"]
+9:X
+0:{"P":null,"c":["","tech","react","react-hook-form-api-reference",""],"q":"","i":false,"f":[[["",{"children":[["slug","tech/react/react-hook-form-api-reference","c",["about","rss.xml","search"]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3dzek8xgk_dp7.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2o31d8qeycp-m.js","async":true,"nonce":"$undefined"}]],"$L2"]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0-ed_yd_8cspw.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1qnqqqe1l89_0.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0l7lmrpj3f2tc.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],null]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"vRvvjM40XyhyJOEib5x-0"}
+f:I[20775,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],""]
+10:I[3171,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+9:C
+2:["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","$Lf",null,{"id":"theme-init","strategy":"beforeInteractive","children":"(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();"}],["$","$L10",null,{"navData":{"categoryList":["tech","review"],"menuTree":[{"key":"review","counter":1,"children":[{"key":"book","counter":1,"children":[]}]},{"key":"tech","counter":61,"children":[{"key":"browser","counter":7,"children":[]},{"key":"etc","counter":11,"children":[]},{"key":"javascript","counter":4,"children":[]},{"key":"react","counter":8,"children":[]},{"key":"svelte","counter":22,"children":[]},{"key":"vuejs","counter":9,"children":[]}]}]},"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"children":["$","p",null,{"children":"Sorry, page not found!"}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lf",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-MD8G3F353P","strategy":"lazyOnload"}],["$","$Lf",null,{"id":"gtag-init","strategy":"lazyOnload","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-MD8G3F353P');\n          "}]]}]}]
+11:I[48347,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+12:I[48771,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+14:I[17987,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+15:I[1304,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+13:T59f,<ul><li><a href="#useform"><code>useForm</code></a><ul><li><a href="#watch"><code>watch</code></a></li><li><a href="#getvalues"><code>getValues</code></a></li><li><a href="#getfieldstate"><code>getFieldState</code></a></li><li><a href="#seterror"><code>setError</code></a></li><li><a href="#clearerrors"><code>clearErrors</code></a></li><li><a href="#setvalue"><code>setValue</code></a></li><li><a href="#trigger"><code>trigger</code></a></li><li><a href="#formstate"><code>formState</code></a></li><li><a href="#reset"><code>reset</code></a></li><li><a href="#resetfield"><code>resetField</code></a></li><li><a href="#handlesubmit"><code>handleSubmit</code></a></li><li><a href="#unregister"><code>unregister</code></a></li><li><a href="#control"><code>control</code></a></li><li><a href="#register"><code>register</code></a></li><li><a href="#setfocus"><code>setFocus</code></a></li></ul></li><li><a href="#controller"><code>Controller</code></a></li><li><a href="#usecontroller"><code>useController</code></a></li><li><a href="#formprovider%EC%99%80-useformcontext"><code>FormProvider</code>와 <code>useFormContext</code></a></li><li><a href="#usewatch"><code>useWatch</code></a></li><li><a href="#useformstate"><code>useFormState</code></a></li><li><a href="#usefieldarray"><code>useFieldArray</code></a></li><li><a href="#%EB%B6%80%EB%A1%9D">부록</a><ul><li><a href="#errormessage"><code>ErrorMessage</code></a></li></ul></li></ul>16:T207df,<p>사용하고 있는 외부 라이브러리 API를 자세히 알면 그 라이브러리에서 제공하는 다양한 기능을 사용할 수 있기 때문에 라이브러리를 더 멋있게 사용할 수 있습니다. 이번 포스트에서는 React Hook Form을 좀 더 멋있게 사용하기 위해 React Hook Form에서 제공하는 API를 살펴보도록 하겠습니다.</p>
+<h2 id="useform"><code>useForm</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#useform"><span class="anchor-icon">#</span></a></h2>
+<p><code>useForm</code>은 React Hook Form을 사용할 때 항상 사용해야 하는 기본적인 훅입니다. <code>useForm</code>의 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> declare</span><span style="color:#A0111F;--shiki-dark:#FF9492"> function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useForm</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  TFieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  TContext</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  TTransformedValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> undefined</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#023B95;--shiki-dark:#91CBFF"> undefined</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">>(</span><span style="color:#702C00;--shiki-dark:#FFB757">props</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormProps</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TContext</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>)</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  UseFormReturn</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TContext</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TTransformedValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> type</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> Record</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#023B95;--shiki-dark:#91CBFF">string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">any</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span></code></pre>
+<h4 id="props">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">type</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormProps</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TContext</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#702C00;--shiki-dark:#FFB757"> Partial</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;{</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  mode</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Mode</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  reValidateMode</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Exclude</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">Mode</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">'onTouched'</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'all'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  defaultValues</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> DefaultValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">|</span><span style="color:#702C00;--shiki-dark:#FFB757"> AsyncDefaultValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  values</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  resetOptions</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Parameters</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">UseFormReset</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>>[</span><span style="color:#023B95;--shiki-dark:#91CBFF">1</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">];</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  resolver</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Resolver</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TContext</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  context</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TContext</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  shouldFocusError</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  shouldUnregister</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  shouldUseNativeValidation</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  progressive</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  criteriaMode</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> CriteriaMode</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  delayError</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}>;</span></span></code></pre>
+<ul>
+<li><code>mode: 'onChange' | 'onBlur' | 'onSubmit' | 'onTouched' | 'all' = 'onSubmit'</code>: 제출(submit)되기 전의 검증이 실행되는 이벤트를 정의합니다.</li>
+<li><code>reValidateMode: onChange | onBlur | onSubmit = 'onChange'</code>: 제출(submit)된 후의 검증이 실행되는 이벤트를 정의합니다.</li>
+<li><code>defaultValues: Record&#x3C;string, any> | (payload?: unknown) => Promise&#x3C;Record&#x3C;string, any>></code>
+<ul>
+<li>폼의 기본 값을 할당할 때 사용되는 필드입니다. 동기, 비동기 정의 모두 가능합니다.
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// set default value sync</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">useForm</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  defaultValues: {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    firstName: </span><span style="color:#032563;--shiki-dark:#ADDCFF">''</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    lastName: </span><span style="color:#032563;--shiki-dark:#ADDCFF">''</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// set default value async</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">useForm</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  defaultValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#A0111F;--shiki-dark:#FF9492">async</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> fetch</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'/api-endpoint'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+</li>
+<li>기본 값을 <code>undefined</code>로 정의하는 것은 피해야 합니다.</li>
+<li><code>reset</code> 함수로 초기화할 경우, <code>defaultValues</code>에 설정한 값으로 초기화됩니다.</li>
+<li><code>defaultValues</code>에 설정된 값은 제출(submit)에 포함됩니다.</li>
+<li><code>Moment</code>, <code>Luxon</code>과 같은 커스텀 프로토타입 메서드가 포함된 객체를 정의하는 것은 피해야 합니다.</li>
+</ul>
+</li>
+<li><code>values: Record&#x3C;string, any></code>
+<ul>
+<li><code>defaultValues</code>와 유사한 목적으로 사용되지만 <code>defaultValues</code>와 다르게 <code>values</code>는 반응형으로 동작하여 <code>values</code> 값이 변경되면 폼에 반영됩니다. 아래 예제에서 확인할 수 있습니다.</li>
+<li><code>defaultValues</code>와 <code>values</code>가 모두 적용되어 있다면, <code>values</code> 값이 폼에 적용됩니다.</li>
+</ul>
+</li>
+<li><code>resetOptions: KeepStateOptions</code>: <code>defaultValues</code>나 <code>values</code>가 업데이트될 때 내부적으로 <code>reset</code> API가 호출되는데, 이때 호출되는 <code>reset</code> API의 옵션을 설정해 주는 필드입니다. 자세한 내용은 <a href="/tech/react/react-hook-form-api-reference/#reset">reset API</a>를 참고 바랍니다.</li>
+<li><code>resolver: Resolver</code>
+<ul>
+<li><code>resolver</code>는 아래 코드와 같은 형태를 가집니다.
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> type</span><span style="color:#702C00;--shiki-dark:#FFB757"> Resolver</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  TFieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  TContext</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  values</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  context</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TContext</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> undefined</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  options</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> ResolverOptions</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#702C00;--shiki-dark:#FFB757"> Promise</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">ResolverResult</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>> </span><span style="color:#A0111F;--shiki-dark:#FF9492">|</span><span style="color:#702C00;--shiki-dark:#FFB757"> ResolverResult</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> type</span><span style="color:#702C00;--shiki-dark:#FFB757"> ResolverResult</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  TFieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#702C00;--shiki-dark:#FFB757"> ResolverSuccess</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">|</span><span style="color:#702C00;--shiki-dark:#FFB757"> ResolverError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> type</span><span style="color:#702C00;--shiki-dark:#FFB757"> ResolverSuccess</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  values</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  errors</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {};</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> type</span><span style="color:#702C00;--shiki-dark:#FFB757"> ResolverError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  values</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {};</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  errors</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldErrors</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">};</span></span></code></pre>
+</li>
+<li>외부 유효성 검증 라이브러리를 사용하기 위해 사용되는 필드이지만(<a href="/tech/react/react-hook-form/#%EC%99%B8%EB%B6%80-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%A6%9D-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%99%80-%ED%95%A8%EA%BB%98">유효성 검증 - 외부 유효성 검증 라이브러리와 함께</a> 참고), 유효성 검증 로직을 직접 작성할 수도 있습니다.</li>
+</ul>
+</li>
+<li><code>context: object</code>: <code>context</code> 필드를 사용하면 <code>resolver</code> 함수의 두 번째 파라미터로 전달되거나, <code>@hookform/resolvers/yup</code>을 사용한다면 Yup의 context 객체에 주입됩니다.</li>
+<li><code>shouldFocusError: boolean = true</code>
+<ul>
+<li><code>true</code>가 기본 값으로 <code>ture</code>로 설정한 경우, 유효성 검사에 실패한 첫 번째 요소가 포커스 됩니다.</li>
+<li>이 옵션을 사용하기 위해서는 <code>register</code> 함수의 반환 값인 <code>ref</code>(<code>Controller</code> 컴포넌트의 경우 <code>render</code> 함수의 <code>field.ref</code> 파라미터)가 요소의 <code>ref</code>에 전달되어야 합니다.</li>
+</ul>
+</li>
+<li><code>shouldUnregister: boolean = false</code>: <code>false</code>가 기본으로 요소가 언마운트 되어도 입력 값이 유지됩니다. <code>true</code>로 지정할 경우 요소가 언마운트 되면 입력값이 제거됩니다.</li>
+<li><code>shouldUseNativeValidation: boolean = false</code>: <code>false</code>가 기본 값으로 <code>true</code>로 설정한 경우 <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">브라우저 네이티브 검증</a>이 동작하게 됩니다.</li>
+<li><code>criteriaMode: 'firstError' | 'all'</code>
+<ul>
+<li><code>firstError</code>가 기본 값으로 한 요소에 여러 유효성 에러가 발생한 경우 첫 번째 유효성 에러만 <code>formState.errors</code> 객체에 담깁니다.</li>
+<li><code>all</code>로 설정한 경우 모든 유효성 에러가 <code>formState.errors.types</code> 객체에 담깁니다.</li>
+</ul>
+</li>
+<li><code>delayError: number</code>
+<ul>
+<li>입력된 ms초만큼 사용자에게 에러 표시를 지연시킵니다.</li>
+<li>유효성 검사가 통과될 경우에는 즉각 적용됩니다.</li>
+</ul>
+</li>
+</ul>
+<p>아래 코드와 같이 <code>useForm</code> 훅을 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-useform-cggp2g?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - useForm" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<p>아래 예제는 <code>resolver</code>와 <code>context</code>를 사용한 예제입니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-context-crs6cz?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - context" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h4 id="returns">returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">type</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormReturn</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TContext</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TTransformedValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> undefined</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#023B95;--shiki-dark:#91CBFF"> undefined</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  watch</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormWatch</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  getValues</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormGetValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  getFieldState</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormGetFieldState</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  setError</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormSetError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  clearErrors</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormClearErrors</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  setValue</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormSetValue</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  trigger</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormTrigger</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  formState</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> FormState</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  resetField</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormResetField</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  reset</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormReset</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  handleSubmit</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormHandleSubmit</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TTransformedValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  unregister</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormUnregister</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  control</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Control</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TContext</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  register</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormRegister</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  setFocus</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFormSetFocus</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">};</span></span></code></pre>
+<p><code>useForm</code>은 중요한 값들을 반환하는데 아래에서 <code>useForm</code>의 반환 값들을 하나씩 살펴보도록 하겠습니다.</p>
+<h3 id="watch"><code>watch</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#watch"><span class="anchor-icon">#</span></a></h3>
+<p><code>watch</code> 함수는 특정 요소를 감시하여 그 요소의 값을 반환합니다. 해당 요소의 값을 가져와서 사용해야 할 때 유용하게 사용되는 함수입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">watch</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  names</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> string </span><span style="color:#A0111F;--shiki-dark:#FF9492">|</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> string[] </span><span style="color:#A0111F;--shiki-dark:#FF9492">|</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">data</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">options</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  defaultValue</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> Object </span><span style="color:#A0111F;--shiki-dark:#FF9492">|</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> unknown</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> unknown</span></span></code></pre>
+<h4 id="props-1">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-1"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name?: string | string[] | (data, options) => void</code>
+<ul>
+<li><code>watch('inputName')</code>와 같은 형태로 사용한 경우 특정 필드의 값(<code>unknown</code>)을 반환합니다.</li>
+<li><code>watch(['inputName'])</code>와 같은 형태로 사용한 경우 배열 안에 필드의 값들을 배열 형태(<code>unknown[]</code>)로 반환합니다.</li>
+<li><code>watch()</code>와 같은 형태로 사용한 경우 모든 요소의 값을 객체 형태(<code>{[key: string]: unknown}</code>)로 반환합니다.</li>
+<li><code>watch((data, { name, type }) => void)</code>와 같은 형태로 사용한 경우 모든 요소의 값을 구독하며, 값이 업데이트되면 콜백이 실행됩니다. 구독 해제를 위한 함수를 포함한 객체(<code>{ unsubscribe: () => void }</code>)를 반환합니다.</li>
+</ul>
+</li>
+<li><code>defaultValue: Object | unknown</code>
+<ul>
+<li><code>watch</code> 함수는 두 번째 파라미터로 <code>defaultValue</code>를 전달할 수 있는데, <code>defaultValues</code>에 감시하는 요소의 값이 정의되어 있지 않을 경우 <code>defaultValue</code> 값을 반환합니다. <code>defaultValue</code> 마저도 정의되어 있지 않다면 <code>undfined</code>를 반환합니다. <code>defaultValues</code>와 <code>defaultValue</code>가 모두 정의되어 있다면 <code>defaultValue</code> 값을 반환합니다.</li>
+<li><code>watch('inputName')</code>와 같이 <code>name</code>에 문자열을 사용한 경우 <code>watch('inputName', 'one')</code>와 같이 <code>defaultValue</code>를 전달할 수 있습니다.</li>
+<li><code>watch(['first', 'second'])</code>와 같이 <code>name</code>에 배열 형태를 사용한 경우 <code>watch(['first', 'second'], { first: 'one', second: 'two' })</code>와 같이 <code>defaultValue</code>를 전달할 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<p><code>watch</code> 함수는 아래 코드와 같이 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-watch-ftp6ry?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - watch" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="getvalues"><code>getValues</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#getvalues"><span class="anchor-icon">#</span></a></h3>
+<p><code>getValues</code>는 폼의 값을 가져오기 위해 사용되는 함수입니다. <code>watch</code> 함수와 유사한 기능을 제공하지만 차이점은 <code>getValues</code>는 입력을 감시하지 않기 때문에 입력 값이 변경되어도 값이 업데이트되지 않습니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">getValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">payload</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">[]) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> Object</span></span></code></pre>
+<p><code>getValues</code> 함수는 아래 코드와 같이 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-getvalues-2s33zj?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - getValues" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="getfieldstate"><code>getFieldState</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#getfieldstate"><span class="anchor-icon">#</span></a></h3>
+<p><code>getFieldState</code> 함수는 각각의 폼 요소의 상태를 반환하는 함수입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">getFieldState</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">formState</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Object</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> ({isDirty, isTouched, invalid, error})</span></span></code></pre>
+<p><code>getFieldState</code>의 반환 값이 반응형으로 동작하길 원한면 두 번째 파라미터에 <code>useForm</code>의 반환값인 <code>formState</code>를 넘겨주면 됩니다. <code>getFieldState</code> 함수는 아래 코드와 같이 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-getfieldstate-2qjmxf?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - getFieldState" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="seterror"><code>setError</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#seterror"><span class="anchor-icon">#</span></a></h3>
+<p><code>setError</code> 함수는 수동으로 에러를 설정할 때 사용되는 함수입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">setError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:(</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">error</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, { </span><span style="color:#702C00;--shiki-dark:#FFB757">shouldFocus</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">?: </span><span style="color:#702C00;--shiki-dark:#FFB757">boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span></span></code></pre>
+<h4 id="props-2">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-2"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string</code>: 에러를 발생시킬 특정 요소의 이름을 지정합니다.</li>
+<li><code>error: { type: string, message?: string, types: MultipleFieldErrors }</code>: 에러 정보를 담는 객체입니다.
+<ul>
+<li><code>type</code>에는 에러 타입, <code>message</code>는 에러 문구, <code>types</code>에는 여러 개의 에러를 설정해야 할 경우 <code>{ [key: string]: string | string[] | boolean | undefined }</code> 형태로 여러 개의 에러 정보를 담을 수 있습니다.</li>
+</ul>
+</li>
+<li><code>config: 	{ shouldFocus?: boolean }</code>: <code>shouldFocus</code>를 <code>true</code>로 설정할 경우 에러가 발생한 요소에 <code>ref</code>가 지정되어 있다면, 에러가 발생한 요소에 포커스 됩니다.</li>
+</ul>
+<p>아래 코드와 같이 <code>setError</code> 함수를 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-seterror-k8jc28?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - setError" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="clearerrors"><code>clearErrors</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#clearerrors"><span class="anchor-icon">#</span></a></h3>
+<p><code>clearErrors</code> 함수는 수동으로 에러를 초기화하는 함수입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">clearErrors</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">[]) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span></span></code></pre>
+<h4 id="props-3">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-3"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name?: string | string[]</code>: 에러를 초기화할 요소의 이름을 지정합니다.
+<ul>
+<li><code>clearErrors()</code>와 같이 첫 번째 파라미터에 아무 값도 전달하지 않는다면 모든 에러가 초기화됩니다.</li>
+<li><code>clearErrors('yourDetails.firstName')</code>와 같이 첫 번째 파라미터에 문자열을 넘기면 문자열 이름을 가진 요소의 에러가 초기화됩니다.</li>
+<li><code>clearErrors(['yourDetails.firstName', 'yourDetails.lastName'])</code>와 같이 첫 번째 파라미터에 문자열 배열을 넘기면 문자열 배열에 있는 요소의 에러가 초기화됩니다.</li>
+</ul>
+</li>
+</ul>
+<p>아래 코드와 같이 <code>clearErrors</code> 함수를 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-clearerrors-63qt55?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - clearErrors" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="setvalue"><code>setValue</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#setvalue"><span class="anchor-icon">#</span></a></h3>
+<p><code>setValue</code> 함수는 특정 요소의 값을 동적으로 할당하기 위해 사용되는 함수입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">setValue</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unknown</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">config</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Object</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span></span></code></pre>
+<h4 id="props-4">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-4"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string</code>: 값을 업데이트할 요소의 이름을 지정합니다.</li>
+<li><code>value: unknown</code>: 요소의 업데이트할 값을 지정합니다.</li>
+<li><code>config?: { shouldValidate: boolean; shouldDirty: boolean; shouldTouch: boolean; }</code>
+<ul>
+<li><code>setValue</code> 함수를 실행 후에, 폼 상태를 업데이트하기 위한 플래그 설정을 지정합니다.</li>
+<li><code>config.shouldValidate</code>를 <code>true</code>로 설정하면, <code>setValue</code> 함수로 값이 업데이트된 후 유효성 검사를 진행합니다.
+<ul>
+<li><code>setValue</code> 함수로 변경된 요소만 유효성 검사를 진행하고, <code>deps</code>로 정의된 종속성이 있는 요소의 유효성 검사는 하지 않습니다.</li>
+</ul>
+</li>
+<li><code>config.shouldDirty</code>를 <code>true</code>로 설정하면, <code>setValue</code> 함수로 값이 업데이트된 후 <code>defaultValues</code>에서 설정 한 값과 비교하여 변경되었다면 <code>formState.isDirty</code> 플래그는 <code>true</code>가 됩니다.</li>
+<li><code>config.shouldTouch</code>를 <code>true</code>로 설정하면, <code>setValue</code> 함수로 값이 업데이트된 후 요소가 touch 된 것으로 판단하고 <code>formState.touchedFields.{name}</code> 플래그는 <code>ture</code>가 됩니다.</li>
+</ul>
+</li>
+</ul>
+<p>아래 코드와 같이 <code>setValue</code> 함수를 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-getfieldstate-forked-k5qvv3?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - setValue" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="trigger"><code>trigger</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#trigger"><span class="anchor-icon">#</span></a></h3>
+<p><code>trigger</code> 함수는 수동으로 유효성 검사를 하기 위해 사용되는 함수입니다. 종속성 있는 유효성을 검사해야 할 때 유용하게 사용됩니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">trigger</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">[], </span><span style="color:#702C00;--shiki-dark:#FFB757">config</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#702C00;--shiki-dark:#FFB757">shouldFocus</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#023B95;--shiki-dark:#91CBFF"> Promise</span><span style="color:#A0111F;--shiki-dark:#FF9492">&#x3C;</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">boolean</span><span style="color:#A0111F;--shiki-dark:#FF9492">></span></span></code></pre>
+<h4 id="props-5">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-5"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name?: string | string[]</code>: 유효성 검사를 할 요소의 이름을 지정합니다.
+<ul>
+<li><code>trigger()</code>와 같이 파라미터를 전달하지 않는다면 모든 필드의 유효성 검사를 합니다.</li>
+<li><code>trigger('details.firstName')</code>와 같이 파라미터에 문자열을 전달하면 문자열에 해당하는 이름을 가진 필드의 유효성 검사를 합니다.</li>
+<li><code>trigger(['details.lastName'])</code>와 같이 파라미터에 문자열 배열을 전달하면 배열 안에 있는 문자열의 이름을 가진 필드의 유효성 검사를 합니다.</li>
+</ul>
+</li>
+<li><code>config?: { shouldFocus: boolean }</code>
+<ul>
+<li><code>shouldFocus</code>를 <code>true</code>로 설정할 경우 유효성을 통과하지 못한 요소에 포커스를 주게 됩니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="returns-1">returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-1"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>Promise&#x3C;boolean></code>
+<ul>
+<li>유효성 결과를 비동기 데이터(<code>Promise&#x3C;boolean></code> 형태)로 반환합니다.</li>
+<li><code>const result = await trigger()</code>에서 <code>result</code>의 값이 <code>true</code>이면 유효성을 통과한 상태이고, <code>false</code>이면 유효성을 통과하지 못한 상태입니다.</li>
+</ul>
+</li>
+</ul>
+<p>아래 코드와 같이 <code>trigger</code> 함수를 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-trigger-rmsxgt?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - trigger" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="formstate"><code>formState</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#formstate"><span class="anchor-icon">#</span></a></h3>
+<p><code>formState</code>는 폼 전체 상태 정보를 담고 있는 객체입니다. 폼의 상태를 알고 싶을 때 유용하게 사용할 수 있는 값입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">type</span><span style="color:#702C00;--shiki-dark:#FFB757"> FormState</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  isDirty</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  isLoading</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  isSubmitted</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  isSubmitSuccessful</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  isSubmitting</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  isValidating</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  isValid</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  submitCount</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  defaultValues</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> undefined</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#702C00;--shiki-dark:#FFB757"> Readonly</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">DeepPartial</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  dirtyFields</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Partial</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">Readonly</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">FieldNamesMarkedBoolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>>>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  touchedFields</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Partial</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">Readonly</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">FieldNamesMarkedBoolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>>>;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  errors</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> FieldErrors</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">};</span></span></code></pre>
+<h4 id="fields">fields<a class="anchor after" aria-hidden="true" tabindex="-1" href="#fields"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>isDirty: boolean</code>: 사용자가 폼을 수정하여 <code>getValues() !== defaultValues</code>라면 <code>true</code>로 설정됩니다.</li>
+<li><code>isLoading: boolean</code>: 아래 코드와 같이 비동기로 <code>defaultValues</code>를 설정 중이라면 <code>true</code>로 설정됩니다.</li>
+<li><code>isSubmitted: boolean</code>: 폼이 submit 된 적이 있다면 <code>true</code>로 설정됩니다. <code>reset</code> 함수를 호출하면 다시 <code>false</code>로 설정됩니다.</li>
+<li><code>isSubmitSuccessful: boolean</code>: 유효성 에러 없이 정상적으로 submit이 호출되었다면, <code>true</code>로 설정됩니다.</li>
+<li><code>isSubmitting: boolean</code>: 폼이 submit 중인 경우 <code>true</code>로 설정됩니다.</li>
+<li><code>isValidating: boolean</code>: 폼이 유효성 검사 중인 경우 <code>true</code>로 설정됩니다.</li>
+<li><code>isValid: boolean</code>: 유효성 검사를 통과하지 못한 경우 <code>true</code>로 설정됩니다.</li>
+<li><code>submitCount: number</code>: submit이 호출된 횟수를 저장합니다. 유효성 검사가 통과하지 못했더라도 submit이 호출되면 1씩 증가합니다.</li>
+<li><code>defaultValues: object</code>: <code>useForm</code> 훅의 <code>defaultValues</code>로 전달된 값이나 <code>reset</code> 함수로 업데이트된 <code>defaultValues</code> 값을 저장합니다.</li>
+<li><code>dirtyFields: object</code>: 사용자가 수정하여 값이 변경된 요소의 이름을 저장합니다.
+<ul>
+<li><code>defaultValues</code>와 비교하여 변경되었는지 판단하기 때문에 <code>useForm</code> 훅을 사용할 때 <code>defaultValues</code>를 정의해 줘야 합니다.</li>
+</ul>
+</li>
+<li><code>touchedFields: object</code>: 사용자 액션이 있었던 요소의 이름을 저장합니다.</li>
+<li><code>errors: object</code>: 유효성 검증이 실패한 요소의 에러 정보를 저장합니다.</li>
+</ul>
+<p><code>formState</code>의 사용 방법은 아래 코드를 참고 바랍니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-formstate-pcmjjp?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - formState" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="reset"><code>reset</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#reset"><span class="anchor-icon">#</span></a></h3>
+<p><code>reset</code> 함수는 폼의 상태나 값을 초기화할 때 사용하는 함수입니다. 특정 상태는 유지할 수 있도록 옵션을 제공합니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">reset</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: &#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">T</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>(</span><span style="color:#702C00;--shiki-dark:#FFB757">values</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> T</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#702C00;--shiki-dark:#FFB757"> ResetAction</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">T</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>, </span><span style="color:#702C00;--shiki-dark:#FFB757">options</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Record</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#023B95;--shiki-dark:#91CBFF">string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span></span></code></pre>
+<h4 id="props-6">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-6"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>values?: object</code>: 폼의 값을 재설정하기 위한 파라미터입니다. <code>values</code> 파라미터를 전달하지 않아도 되는 옵셔널 한 값이지만 전달하게 되면, <code>defaultValues</code> 전체를 전달하는 것이 좋습니다.</li>
+<li><code>options?: Record&#x3C;string, boolean></code>: 폼의 상태를 유지할 수 있도록 제공하는 옵션들입니다.
+<ul>
+<li><code>options.keepErrors: boolean</code>는 에러를 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepDirty: boolean</code>는 <code>formState.isDirty</code> 값을 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepDirtyValues: boolean</code>는 <code>formState.dirtyFields</code> 값을 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepValues: boolean</code>는 폼의 값을 변경하지 않고 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepDefaultValues: boolean</code>는 <code>formState.defaultValues</code> 값을 유지하도록 하는 플래그입니다. <code>reset</code> 함수의 첫 번째 파라미터를 전달하여 실행하면 <code>defaultValues</code>가 변경되지만, <code>true</code>로 설정할 경우에는 변경되지 않습니다.</li>
+<li><code>options.keepIsSubmitted: boolean</code>는 <code>formState.isSubmitted</code> 값을 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepTouched: boolean</code>는 필드의 <code>isTouched</code> 값을 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepSubmitCount: boolean</code>는 <code>formState.submitCount</code> 값을 유지하도록 하는 플래그입니다.</li>
+</ul>
+</li>
+</ul>
+<p><code>reset</code> 함수의 예제 코드는 아래 코드를 참고 바랍니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-formstate-forked-r8xtyk?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - reset" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="resetfield"><code>resetField</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#resetfield"><span class="anchor-icon">#</span></a></h3>
+<p><code>reset</code> 함수는 폼 전체를 초기화할 때 사용하는 함수라면, <code>resetField</code> 함수는 특정 필드를 초기화할 때 사용하는 함수입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">resetField</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">options</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Record</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#023B95;--shiki-dark:#91CBFF">string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">boolean</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span></span></code></pre>
+<h4 id="props-7">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-7"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string</code>: 값을 재설정하기 위한 필드의 이름입니다.</li>
+<li><code>options?: Record&#x3C;string, boolean | any></code>: <code>reset</code> 함수와 동일하게 상태를 유지할 수 있도록 옵션을 제공합니다.
+<ul>
+<li><code>options.keepError: boolean</code>는 에러를 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepDirty: boolean</code>는 <code>isDirty</code>와 <code>dirtyFields</code>를 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepTouched: boolean</code>는 필드의 <code>isTouched</code> 값을 유지하도록 하는 플래그입니다.</li>
+<li><code>options.defaultValue: unknown</code>
+<ul>
+<li>해당 값을 전달하지 않는다면 <code>defaultValues</code>의 값으로 초기화됩니다.</li>
+<li>해당 값을 전달하면 전달된 값으로 초기화되고, <code>defaultValues</code> 값이 변경됩니다. <code>undefined</code> 값은 지원하지 않습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>resetField</code> 함수의 예제 코드는 아래 코드를 참고 바랍니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-resetfield-8hstfg?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - resetField" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="handlesubmit"><code>handleSubmit</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#handlesubmit"><span class="anchor-icon">#</span></a></h3>
+<p><code>handleSubmit</code> 함수는 유효성 검사가 통과되면 폼 데이터를 받을 수 있는 콜백 함수를 제공하는 함수입니다. 첫 번째 파라미터는 유효성을 통과한 폼 데이터를 받을 수 있는 콜백 함수이고 두 번째 파라미터는 유효성을 통과하지 못할 경우 유효성 에러를 받을 수 있는 콜백함수입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">handleSubmit</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  (</span><span style="color:#702C00;--shiki-dark:#FFB757">data</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Object</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">e</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Event</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#023B95;--shiki-dark:#91CBFF"> Promise</span><span style="color:#A0111F;--shiki-dark:#FF9492">&#x3C;void></span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  (</span><span style="color:#702C00;--shiki-dark:#FFB757">errors</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Object</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">e</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Event</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#023B95;--shiki-dark:#91CBFF"> Promise</span><span style="color:#A0111F;--shiki-dark:#FF9492">&#x3C;void></span></span></code></pre>
+<h4 id="props-8">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-8"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>(data: Object, e?: Event) => Promise&#x3C;void></code>: 유효성 검사가 통과된 폼 데이터를 파라미터로 전달하는 콜백함수입니다.
+<ul>
+<li><code>data: Object</code> 유효성 검사를 통과한 폼 데이터입니다.</li>
+<li><code>e?: Event</code> 이벤트 객체입니다.</li>
+</ul>
+</li>
+<li><code>(errors: Object, e?: Event) => void</code>: 유효성 검사가 실패했을 때 에러 데이터를 전달하는 콜백함수입니다.
+<ul>
+<li><code>errors: Object</code> 유효성 검사 실패 시 실패 정보가 에러 데이터입니다.</li>
+<li><code>e?: Event</code> 이벤트 객체입니다.</li>
+</ul>
+</li>
+</ul>
+<p><code>handleSubmit</code> 함수의 예제 코드는 아래 코드를 참고 바랍니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-handlesubmit-w4wmft?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - handleSubmit" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="unregister"><code>unregister</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#unregister"><span class="anchor-icon">#</span></a></h3>
+<p><code>unregister</code> 함수는 폼 관리를 위해 <code>register</code> 함수로 등록한 것을 취소할 수 있게 만드는 함수입니다. 첫 번째 파라미터는 등록 취소할 필드명이고 두 번째 파라미터는 등록 취소한 후에 상태를 유지하기 위한 옵션입니다. 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">unregister</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">[], </span><span style="color:#702C00;--shiki-dark:#FFB757">options</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Record</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#023B95;--shiki-dark:#91CBFF">string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span></span></code></pre>
+<h4 id="props-9">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-9"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string | string[]</code>: unregister 할 요소의 이름입니다.</li>
+<li><code>options?: Record&#x3C;string, boolean></code>: 상태를 유지할 수 있도록 옵션을 제공합니다.
+<ul>
+<li><code>options.keepDirty: boolean</code>는 <code>isDirty</code>와 <code>dirtyFields</code>를 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepTouched: boolean</code>는 필드의 <code>isTouched</code> 값을 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepIsValid: boolean</code>는 <code>isValid</code> 값을 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepTouched: boolean</code>는 필드의 <code>isTouched</code> 값을 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepValue: boolean</code>는 폼의 값을 변경하지 않고 유지하도록 하는 플래그입니다.</li>
+<li><code>options.keepDefaultValue: boolean</code>는 <code>defaultValues</code> 값을 유지하도록 하는 플래그입니다.</li>
+</ul>
+</li>
+</ul>
+<p><code>unregister</code> 함수의 첫 번째 파라미터에 전달된 필드들이 화면에서 제거되면 <code>handleSubmit</code> 함수의 콜백 함수 파라미터에 포함되지 않습니다. <code>unregister</code> 함수의 예제 코드는 아래 코드를 참고 바랍니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-unregister-5yj35v?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - unregister" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="control"><code>control</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#control"><span class="anchor-icon">#</span></a></h3>
+<p><code>control</code> 객체는 Controlled 방식의 <code>Controller</code> 컴포넌트나 <code>useController</code> 훅을 사용할 때 함께 사용되는 값입니다. 아래 코드와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { useForm, Controller } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> "react-hook-form"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> App</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">() {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#023B95;--shiki-dark:#91CBFF">control</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> } </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useForm</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">Controller</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">      render</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ </span><span style="color:#702C00;--shiki-dark:#FFB757">field</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">input</span><span style="color:#A0111F;--shiki-dark:#FF9492"> {...</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">field</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> /></span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">      name</span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#032563;--shiki-dark:#ADDCFF">"firstName"</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">      control</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">control</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">      defaultValue</span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#032563;--shiki-dark:#ADDCFF">""</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    /></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  );</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h3 id="register"><code>register</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#register"><span class="anchor-icon">#</span></a></h3>
+<p><code>register</code> 함수는 Uncontrolled 함식으로 폼을 관리할 때 사용되는 함수입니다. 아래 코드와 같은 형태를 가지고 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">register</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">options</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> RegisterOptions</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> ({ onChange, onBlur, name, ref });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">type</span><span style="color:#702C00;--shiki-dark:#FFB757"> RegisterOptions</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> Partial</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;{</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  required</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">; </span><span style="color:#702C00;--shiki-dark:#FFB757">message</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">; }; </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 필수값 여부 체크합니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  min</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">; </span><span style="color:#702C00;--shiki-dark:#FFB757">message</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }; </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 입력 값의 최솟값 체크합니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  max</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">; </span><span style="color:#702C00;--shiki-dark:#FFB757">message</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }; </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 입력 값의 최댓값 체크합니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  maxLength</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">; </span><span style="color:#702C00;--shiki-dark:#FFB757">message</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }; </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 입력 값의 최대 길이 체크합니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  minLength</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> number</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">; </span><span style="color:#702C00;--shiki-dark:#FFB757">message</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }; </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 입력 값의 최소 길이 체크합니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  pattern</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> RegExp</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> RegExp</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">; </span><span style="color:#702C00;--shiki-dark:#FFB757">message</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }; </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 정규식을 사용한 입력 값 체크합니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  validate</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Validate</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#702C00;--shiki-dark:#FFB757"> Record</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#023B95;--shiki-dark:#91CBFF">string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">Validate</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>; </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 커스텀 유효성 체크를 만들 때 사용됩니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  valueAsNumber</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // Number로 형변환 합니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  valueAsDate</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // Date로 형변환 합니다.</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  setValueAs</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // value를 가공합니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  disabled</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // true로 설정 시, value가 undefined 되며 요소가 disabled 됩니다.</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  onChange</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">event</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#023B95;--shiki-dark:#91CBFF"> void</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // change 이벤트 발생 시 실행되는 콜백입니다.</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  onBlur</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">event</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> any</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#023B95;--shiki-dark:#91CBFF"> void</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // blur 이벤트 발생 시 실행되는 콜백입니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unknown</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // 요소가 가지고 있는 값입니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  shouldUnregister</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // true로 지정할 경우 요소가 언마운트 되면 입력값이 제거됩니다.</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  deps</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">[] </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 나열된 요소가 함께 유효성 검증이 실행됩니다.</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">type</span><span style="color:#702C00;--shiki-dark:#FFB757"> Validate</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValue</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">TFormValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">value</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TFieldValue</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">formValues</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TFormValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#702C00;--shiki-dark:#FFB757"> ValidateResult</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#702C00;--shiki-dark:#FFB757"> Promise</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">ValidateResult</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>;</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">type</span><span style="color:#702C00;--shiki-dark:#FFB757"> ValidateResult</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> Message</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#702C00;--shiki-dark:#FFB757"> Message</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">[] </span><span style="color:#A0111F;--shiki-dark:#FF9492">|</span><span style="color:#023B95;--shiki-dark:#91CBFF"> boolean</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#023B95;--shiki-dark:#91CBFF"> undefined</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span></code></pre>
+<h4 id="props-10">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-10"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string</code>: 설정한 값에 따라 폼 데이터에 구조를 결정됩니다.
+<ul>
+<li><code>register('firstName')</code>: <code>{firstName: 'value'}</code>이 폼의 결과 값이 됩니다.</li>
+<li><code>register('name.firstName')</code>: <code>{name: { firstName: 'value' }}</code>이 폼의 결과 값이 됩니다.</li>
+<li><code>register('name.firstName.0')</code>: <code>{name: { firstName: [ 'value' ] }}</code>이 폼의 결과 값이 됩니다.</li>
+</ul>
+</li>
+<li><code>options?: RegisterOptions</code>: 폼 요소의 유효성 조건 등 폼 요소를 관리하기 위해 사용되는 옵션입니다. 옵션 별 타입 정보와 옵션 정보는 위의 코드를 참고 바랍니다.</li>
+</ul>
+<h4 id="returns-2">returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-2"><span class="anchor-icon">#</span></a></h4>
+<p><code>register</code> 함수의 반환 값은 보통 객체 구조 분해(<code>...</code>)를 사용하여 폼 요소의 속성으로 전달됩니다.</p>
+<ul>
+<li><code>onChange</code>: 요소의 <code>onChange</code>입니다.</li>
+<li><code>onBlur</code>: 요소의 <code>onBlur</code>입니다.</li>
+<li><code>name</code>: 요소의 <code>name</code> 속성입니다.</li>
+<li><code>ref</code>: 요소의 <code>ref</code>에 할당할 경우, 유효성 검사에 실패할 경우 요소가 포커스 됩니다.</li>
+</ul>
+<h3 id="setfocus"><code>setFocus</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#setfocus"><span class="anchor-icon">#</span></a></h3>
+<p><code>setFocus</code> 함수를 실행하면 첫 번째 파라미터로 설정한 요소가 포커스 됩니다. 아래 코드와 같은 형태를 가지고 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">setFocus</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:(</span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">options</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> SetFocusOptions</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#A0111F;--shiki-dark:#FF9492"> void</span></span></code></pre>
+<h4 id="props-11">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-11"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string</code>: 포커스 할 특정 요소의 이름을 지정합니다.</li>
+<li><code>options?: SetFocusOptions</code>
+<ul>
+<li><code>options.shouldSelect: boolean</code>: <code>true</code>로 설정할 경우 문자열이 selection 된 상태로 포커스 됩니다.</li>
+</ul>
+</li>
+</ul>
+<p>아래 코드와 같이 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-setfocus-sc7pxq?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - setFocus" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h2 id="controller"><code>Controller</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#controller"><span class="anchor-icon">#</span></a></h2>
+<p>React Hook Form은 기본적으로 Uncontrolled 방식을 사용하지만 <code>Controller</code> 컴포넌트를 사용하는 Controlled 방식을 사용하여 <a href="https://ant.design/">Ant Design</a>이나 <a href="https://mui.com/">Mui</a> 등의 UI 라이브러리와 함께 사용할 수 있습니다.</p>
+<h4 id="props-12">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-12"><span class="anchor-icon">#</span></a></h4>
+<p><code>Controller</code> 컴포넌트의 속성은 아래와 같습니다.</p>
+<ul>
+<li><code>name: FieldValues</code>: <code>register</code> 함수의 첫 번째 파라미터와 동일한 역할을 합니다. 요소를 구별할 수 있는 유니크한 값을 지정해야 합니다.</li>
+<li><code>control: Control</code>: <code>useForm</code> 함수의 반환 값인 <code>control</code>을 그대로 전달해야 합니다. <code>FormProvider</code>를 사용했을 경우 생략 가능합니다.</li>
+<li><code>render: Function</code>: 화면에 그려질 컴포넌트를 반환하는 함수입니다.</li>
+<li><code>defaultValue: unknown</code>: 요소의 기본값을 정의합니다. 해당 필드에 값이 정의되거나, <code>useForm</code>의 <code>defaultValues</code>에 값이 정의되어야 합니다. <code>undefined</code>는 사용할 수 없기 때문에 <code>null</code> 혹은 <code>''</code>를 사용하여 정의되지 않을 값을 대신해야 합니다.</li>
+<li><code>rules: RegisterOptions</code>: <code>register</code> 함수의 <code>RegisterOptions</code> 옵션과 동일한 값을 설정할 수 있습니다.</li>
+<li><code>shouldUnregister: boolean</code>: <code>true</code>로 지정할 경우 요소가 언마운트 되면 입력값이 제거됩니다.</li>
+</ul>
+<h4 id="render-함수의-props"><code>render</code> 함수의 props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#render-함수의-props"><span class="anchor-icon">#</span></a></h4>
+<p><code>render</code> 함수의 반환 값이 화면에 그려지게 되는데, <code>render</code> 함수의 파라미터는 아래와 같습니다.</p>
+<ul>
+<li><code>field</code>: 요소의 속성으로 전달되어야 하는 값들을 담고 있는 객체입니다.
+<ul>
+<li><code>field.onChange: (value: any) => void</code>: 요소의 값이 변경될 경우 호출되어야 하는 함수입니다. <code>undefined</code>가 <code>value</code>로 전달되면 안 됩니다.</li>
+<li><code>field.onBlur: () => void</code>: 요소의 blur 이벤트가 발생할 경우 호출되어야 하는 함수입니다.</li>
+<li><code>field.value: unknown</code>: 요소의 값을 저장하고 있는 변수입니다.</li>
+<li><code>field.name: string</code>: 요소의 name 속성에 지정되어야 할 값입니다.</li>
+<li><code>field.ref: React.Ref</code>: 요소의 <code>Ref</code>에 지정되어야 할 값입니다. 해당 값을 지정하면 유효성 검사에 실패될 때 포커스됩니다.</li>
+</ul>
+</li>
+<li><code>fieldState</code>: 요소의 상태를 저장하고 있는 객체입니다.
+<ul>
+<li><code>fieldState.invalid: boolean</code>: 요소가 유효성 검사를 통과한 경우 <code>true</code>입니다.</li>
+<li><code>fieldState.isTouched: boolean</code>: 요소에 Touch 이벤트가 발생했을 경우 <code>true</code>입니다.</li>
+<li><code>fieldState.isDirty: boolean</code>: 요소에 지정된 기본값에서 변경이 있을 경우 <code>true</code>입니다.</li>
+<li><code>fieldState.error: object</code>: 요소가 유효성 검사를 통과하지 못했을 때 유효성 에러 정보를 담고 있는 객체입니다.</li>
+</ul>
+</li>
+<li><code>formState</code>: <code>useForm</code>의 <code>formState</code> 반환 값과 동일한 값을 가집니다. <a href="/tech/react/react-hook-form-api-reference/#formstate">formState</a>를 참고 바랍니다.</li>
+</ul>
+<p><code>Controller</code> 컴포넌트의 사용 방법은 아래 코드와 같습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-controller-xrm6p3?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - Controller" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h2 id="usecontroller"><code>useController</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usecontroller"><span class="anchor-icon">#</span></a></h2>
+<p><code>useController</code> 훅은 <code>Controller</code> 컴포넌트를 훅 형태로 사용할 수 있도록 기능을 제공하는 훅입니다. <code>useController</code> 훅의 파라미터로 <a href="/tech/react/react-hook-form-api-reference/#props-12"><code>Controller</code> 컴포넌트의 props</a>와 동일한 값을 사용하면 되고, <code>useController</code> 훅의 반환 값은 <a href="/tech/react/react-hook-form-api-reference/#render-%ED%95%A8%EC%88%98%EC%9D%98-props"><code>render</code> 함수의 props</a>와 동일합니다.</p>
+<p><code>useController</code> 컴포넌트의 사용방법은 아래 코드와 같습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-usecontroller-jv4rm7?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - useController" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h2 id="formprovider와-useformcontext"><code>FormProvider</code>와 <code>useFormContext</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#formprovider와-useformcontext"><span class="anchor-icon">#</span></a></h2>
+<p><code>useForm</code> 훅의 반환 값을 하위 컴포넌트로 전달해야 할 때 컴포넌트의 트리 구조가 복잡해지면 Prop Drilling 문제가 발생할 수 있습니다. 이런 Prop Drilling 문제를 해결하기 위해 하위 컴포넌트로 콘텍스트를 전달할 수 있는 <code>FormProvider</code> 컴포넌트와 <code>useFormContext</code> 훅을 제공합니다. 아래 코드와 같이 <code>FormProvider</code> 컴포넌트와 <code>useFormContext</code> 훅을 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-formprovider-useformcontext-p6cf2p?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - FormProvider &#x26; useFormContext" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h2 id="usewatch"><code>useWatch</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usewatch"><span class="anchor-icon">#</span></a></h2>
+<p><code>useWatch</code> 훅은 <code>useForm</code> 훅의 반환 값인 <code>watch</code> 함수와 동일한 기능을 합니다. 아래 코드와 같은 형태를 가집니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">useWatch</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: ({ </span><span style="color:#702C00;--shiki-dark:#FFB757">control</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">?: </span><span style="color:#702C00;--shiki-dark:#FFB757">Control</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">?: </span><span style="color:#702C00;--shiki-dark:#FFB757">string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">defaultValue</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">?: </span><span style="color:#702C00;--shiki-dark:#FFB757">unknown</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">disabled</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">?: </span><span style="color:#702C00;--shiki-dark:#FFB757">boolean</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> object</span></span></code></pre>
+<h4 id="props-13">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-13"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string | string[] | undefined</code>: 구독할 대상의 이름을 지정합니다.
+<ul>
+<li><code>string</code> 형태일 경우 특정 요소를 구독합니다. <code>useWatch</code>의 반환 값은 <code>unknown</code> 형태가 됩니다.</li>
+<li><code>string[]</code> 형태일 경우 배열 안의 요소들을 구독합니다. <code>useWatch</code>의 반환 값은 <code>unknown[]</code> 형태가 됩니다.</li>
+<li><code>undefined</code>으로 <code>name</code>을 정의하지 않을 경우 모든 요소를 구독합니다. <code>useWatch</code>의 반환 값은 <code>{[key:string]: unknown}</code> 형태가 됩니다.</li>
+</ul>
+</li>
+<li><code>control: Control</code>: <code>useForm</code> 함수의 반환 값인 <code>control</code>을 그대로 전달해야 합니다. <code>FormProvider</code>를 사용했을 경우 생략 가능합니다.</li>
+<li><code>defaultValue: unknown</code>: <code>useWatch</code> 훅이 반환할 초기 값입니다.</li>
+<li><code>disabled: boolean = false</code>: 구독을 비활성화하는 옵션입니다.</li>
+<li><code>exact: boolean = false</code>: 요소의 이름과 정확히 일치할 때 구독을 하는 옵션입니다.</li>
+</ul>
+<p><code>useWatch</code>의 사용 방법은 아래 코드와 같습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-usewatch-9vp6p3?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - useWatch" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<p><code>watch</code> 함수는 <code>useForm</code> 훅의 반환 값으로 루트에서 <code>watch</code> 함수를 사용하면 루트에서 리렌더링이 발생하지만 <code>useWatch</code> 훅은 하위 컴포넌트에서 사용하여 특정 하위 컴포넌트만 리렌더링이 발생하게 됩니다.</p>
+<h2 id="useformstate"><code>useFormState</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#useformstate"><span class="anchor-icon">#</span></a></h2>
+<p><code>useFormState</code> 훅은 <code>useForm</code> 훅의 반환 값인 <code>formState</code>와 동일한 값을 반환합니다. 아래 코드와 같은 형태를 가집니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">useFormState</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: ({ </span><span style="color:#702C00;--shiki-dark:#FFB757">control</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#702C00;--shiki-dark:#FFB757">Control</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> FormState</span></span></code></pre>
+<h4 id="props-14">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-14"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string | string[] | undefined</code>: 상태 정보를 가져올 대상의 이름을 지정합니다.
+<ul>
+<li><code>string</code> 형태일 경우 특정 요소의 상태를 가져옵니다.</li>
+<li><code>string[]</code> 형태일 경우 배열 안의 요소들의 상태를 가져옵니다.</li>
+<li><code>undefined</code>으로 <code>name</code>을 정의하지 않을 경우 모든 요소를 구독합니다.</li>
+</ul>
+</li>
+<li><code>control: Control</code>: <code>useForm</code> 함수의 반환 값인 <code>control</code>을 그대로 전달해야 합니다. <code>FormProvider</code>를 사용했을 경우 생략 가능합니다.</li>
+<li><code>disabled: boolean = false</code>: 구독을 비활성화하는 옵션입니다.</li>
+<li><code>exact: boolean = false</code>: 요소의 이름과 정확히 일치할 때 구독을 하는 옵션입니다.</li>
+</ul>
+<p>반환 값은 <a href="/tech/react/react-hook-form-api-reference/#formstate">FormState</a>와 동일한 형태를 가집니다. 아래 코드와 같이 <code>useFormState</code> 훅을 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-useformstate-md88vr?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - useFormState" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h2 id="usefieldarray"><code>useFieldArray</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usefieldarray"><span class="anchor-icon">#</span></a></h2>
+<p><code>useFieldArray</code> 훅은 동적으로 폼 배열에 추가하거나 삭제해야 할 때 사용하는 훅입니다. <code>useFieldArray</code> 훅의 형태는 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">useFieldArray</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: UseFieldArrayProps</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> type</span><span style="color:#702C00;--shiki-dark:#FFB757"> UseFieldArrayProps</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  TKeyName</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'id'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  TControl</span><span style="color:#A0111F;--shiki-dark:#FF9492"> extends</span><span style="color:#702C00;--shiki-dark:#FFB757"> Control</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> Control</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">> </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  name</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#023B95;--shiki-dark:#91CBFF"> string</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  keyName</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TKeyName</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  control</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> TControl</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">  rules</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#702C00;--shiki-dark:#FFB757"> Pick</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">    RegisterOptions</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#702C00;--shiki-dark:#FFB757">TFieldValues</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>,</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    'maxLength'</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'minLength'</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'validate'</span><span style="color:#A0111F;--shiki-dark:#FF9492"> |</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'required'</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  >;</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">};</span></span></code></pre>
+<h4 id="props-15">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-15"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string</code>: 동적 폼 배열 요소의 이름입니다.</li>
+<li><code>control: Control</code>: <code>useForm</code> 함수의 반환 값인 <code>control</code>을 그대로 전달해야 합니다. <code>FormProvider</code>를 사용했을 경우 생략 가능합니다.</li>
+<li><code>shouldUnregister: boolean</code>
+<ul>
+<li><code>false</code>가 기본으로 요소가 언마운트 되어도 입력 값이 유지됩니다.</li>
+<li><code>true</code>로 지정할 경우 요소가 언마운트 되면 입력값이 제거됩니다.</li>
+</ul>
+</li>
+<li><code>keyName: string = "id"</code>: key prop으로 사용할 필드의 이름입니다. 다음 메이저 버전에서 제거 예정입니다.</li>
+<li><code>rules: object</code>: <code>RegisterOptions</code> 타입의 <code>maxLength</code>, <code>minLength</code>, <code>required</code>를 제공합니다.
+<ul>
+<li><code>maxLength</code>: 최대 길이에 대한 유효성을 설정합니다.</li>
+<li><code>minLength</code>: 최소 길이에 대한 유효성을 설정합니다.</li>
+<li><code>validate</code>: <code>validate</code>을 사용하면 커스텀한 유효성 검증 로직을 생성할 수 있습니다.</li>
+<li><code>required</code>: 필수 값에 대한 유효성을 설정합니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="returns-3">returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-3"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>fields: (object &#x26; { id: string })[]</code>: <code>useForm</code>의 <code>defaultValues</code> 중 <code>useFieldArray</code>의 <code>name</code>에 명시한 필드를 반환합니다. 이 반환 값은 key prop으로 사용할 <code>keyName</code>에 명시된 이름으로 유니크한 값이 포함된 객체입니다.</li>
+<li><code>append: (obj: object | object[], focusOptions: { shouldFocus?: boolean; focusIndex?: number; focusName?: string; }) => void</code>: 폼 배열 끝에 요소를 추가하는 함수입니다.
+<ul>
+<li><code>obj: object | object[]</code>: 추가될 요소입니다.
+<ul>
+<li><code>object</code> 형태일 경우 폼 배열 끝에 요소를 추가합니다.</li>
+<li><code>object[]</code> 형태일 경우 폼 배열 끝에 요소들을 추가합니다.</li>
+</ul>
+</li>
+<li><code>focusOptions</code>: 추가된 요소에 포커스를 주기 위한 옵션입니다.
+<ul>
+<li><code>focusOptions.shouldFocus?: boolean</code>: 포커스 할지 결정하는 값입니다.</li>
+<li><code>focusOptions.focusIndex?: number</code>: 포커스 할 요소의 위치를 지정합니다.</li>
+<li><code>focusOptions.focusName?: string</code>: 포커스 할 요소의 이름을 지정합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>prepend: (obj: object | object[], focusOptions) => void</code>: 폼 배열 앞에 요소를 추가하는 함수입니다.
+<ul>
+<li><code>obj: object | object[]</code>: 추가될 요소입니다.
+<ul>
+<li><code>object</code> 형태일 경우 폼 배열 앞에 요소를 추가합니다.</li>
+<li><code>object[]</code> 형태일 경우 폼 배열 앞에 요소들을 추가합니다.</li>
+</ul>
+</li>
+<li><code>focusOptions</code>: 추가된 요소에 포커스를 주기 위한 옵션입니다.
+<ul>
+<li><code>focusOptions.shouldFocus?: boolean</code>: 포커스 할지 결정하는 값입니다.</li>
+<li><code>focusOptions.focusIndex?: number</code>: 포커스 할 요소의 위치를 지정합니다.</li>
+<li><code>focusOptions.focusName?: string</code>: 포커스 할 요소의 이름을 지정합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>insert: (index: number, value: object | object[], focusOptions) => void</code>: 특정 위치에 요소를 추가하는 함수입니다.
+<ul>
+<li><code>index: number</code>: 추가될 위치를 지정합니다.</li>
+<li><code>value: object | object[]</code>: 추가될 요소입니다.</li>
+<li><code>focusOptions</code>: 추가된 요소에 포커스를 주기 위한 옵션입니다.
+<ul>
+<li><code>focusOptions.shouldFocus?: boolean</code>: 포커스 할지 결정하는 값입니다.</li>
+<li><code>focusOptions.focusIndex?: number</code>: 포커스 할 요소의 위치를 지정합니다.</li>
+<li><code>focusOptions.focusName?: string</code>: 포커스 할 요소의 이름을 지정합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>swap: (from: number, to: number) => void</code>: <code>from</code>과 <code>to</code>의 위치가 서로 바뀝니다.</li>
+<li><code>move: (from: number, to: number) => void</code>: <code>from</code> 위치에 있는 요소가 <code>to</code>로 이동합니다.</li>
+<li><code>update: (index: number, obj: object) => void</code>: <code>index</code> 위치에 있는 요소가 <code>obj</code>로 업데이트 됩니다.</li>
+<li><code>replace: (obj: object[]) => void</code>: 폼 배열 전체가 <code>obj</code>로 교체됩니다.</li>
+<li><code>remove: (index?: number | number[]) => void</code>: <code>index</code> 위치에 있는 요소들이 제거됩니다.</li>
+</ul>
+<p>아래 코드와 같이 <code>useFieldArray</code> 훅을 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-usefieldarray-6kgzv5?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - useFieldArray" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h2 id="부록">부록<a class="anchor after" aria-hidden="true" tabindex="-1" href="#부록"><span class="anchor-icon">#</span></a></h2>
+<h3 id="errormessage"><code>ErrorMessage</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#errormessage"><span class="anchor-icon">#</span></a></h3>
+<p><code>ErrorMessage</code> 컴포넌트는 에러 메시지를 좀 더 간편하게 사용할 수 있도록 돕는 컴포넌트입니다. 아래 코드와 같이 패키지를 설치한 후 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">npm</span><span style="color:#032563;--shiki-dark:#ADDCFF"> install</span><span style="color:#032563;--shiki-dark:#ADDCFF"> @hookform/error-message</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC"># or</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">pnpm</span><span style="color:#032563;--shiki-dark:#ADDCFF"> add</span><span style="color:#032563;--shiki-dark:#ADDCFF"> @hookform/error-message</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC"># or</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">yarn</span><span style="color:#032563;--shiki-dark:#ADDCFF"> add</span><span style="color:#032563;--shiki-dark:#ADDCFF"> @hookform/error-message</span></span></code></pre>
+<p><code>ErrorMessage</code> 컴포넌트는 아래 코드와 같은 props를 전달할 수 있습니다.</p>
+<h4 id="props-16">props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props-16"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>name: string</code>: 어떤 필드의 에러 메시지를 표시할지 지정합니다.</li>
+<li><code>errors: object</code>: <code>useForm</code> 훅의 반환 값인 <code>formState.errors</code>를 그대로 전달해야 합니다. <code>FormProvider</code>를 사용했을 경우 생략 가능합니다.</li>
+<li><code>message: string | React.ReactElement</code>: 유효성 검증 실패 메시지가 없을 경우 <code>message</code>에 정의된 값이 화면에 노출됩니다.</li>
+<li><code>as: React.ElementType | string</code>: 어떠한 태그, 컴포넌트로 에러메시지를 표시할지 지정합니다. <code>as="span"</code>, <code>as={&#x3C;Text />}</code> 와 같이 사용할 수 있습니다.</li>
+<li><code>render: ({ message: string | React.ReactElement, messages?: Object}) => any</code>: 에러 메시지를 커스텀할 수 있도록 제공하는 prop 함수입니다.</li>
+</ul>
+<p>아래 코드와 같이 <code>ErrorMessage</code> 컴포넌트를 사용할 수 있습니다.</p>
+<div>
+  <iframe src="https://codesandbox.io/embed/react-hook-form-usefieldarray-forked-ncmpdj?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 10px; overflow:hidden;" title="React Hook Form - ErrorMessage" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h5 id="참고">참고<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><a href="https://www.react-hook-form.com/">https://www.react-hook-form.com/</a></li>
+</ul>1a:I[43492,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],""]
+1b:I[44892,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+1c:I[7829,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"IconMark"]
+5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"[React] react-hook-form API 레퍼런스\",\"description\":\"사용하고 있는 외부 라이브러리 API를 자세히 알면 그 라이브러리에서 제공하는 다양한 기능들을 인지하고 사용할 수 있기 때문에 라이브러리를 더 멋있게 사용할 수 있습니다. 이번 포스트에서는 React Hook Form을 좀 더 멋있게 사용하기 위해 React Hook Form에서 제공하는 API들을 살펴보도록 하겠습니다.\",\"image\":[\"https://beomy.github.io/assets/img/thumbnails/react/react-hook-form.png\"],\"datePublished\":\"2023-10-13T00:00:00+00:00\",\"dateModified\":\"2023-10-13T00:00:00+00:00\",\"author\":{\"@type\":\"Person\",\"name\":\"beomy\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Beomy\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://beomy.github.io/assets/img/brand/beomy-logo.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://beomy.github.io/tech/react/react-hook-form-api-reference/\"},\"url\":\"https://beomy.github.io/tech/react/react-hook-form-api-reference/\"}"}}],[["$","$L11",null,{}],["$","main",null,{"className":"mx-auto pb-[10px] pt-[70px] flex flex-row-reverse leading-[2] screen-xs sm:screen-sm m:screen-m","children":[["$","$L12",null,{"url":"https://beomy.github.io//tech/react/react-hook-form-api-reference/","toc":"$13"}],["$","article",null,{"className":"w-[calc(100%-380px)] max-sm:w-full","children":[["$","div",null,{"className":"leading-[1.5] [&>div]:mb-[30px] [&_.post-banner-img]:block [&_.post-banner-img]:h-auto [&_.post-banner-img]:w-full [&_.post-banner-img]:rounded-[8px]","children":[["$","h1",null,{"className":"m-0 text-7","children":"[React] react-hook-form API 레퍼런스"}],["$","div",null,{"children":[["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle mr-[20px] text-caption","children":[["$","$L14",null,{"type":"BsCalendar"}],["$","span",null,{"children":"2023년 10월 13일"}]]}],["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle text-caption","children":[["$","$L14",null,{"type":"BsClock"}],["$","span",null,{"children":[9,"분 소요"]}]]}]]}],["$","$L15",null,{"img":"react/react-hook-form.png","priority":true,"width":2000,"height":1000}]]}],["$","div",null,{"className":"post-contents","dangerouslySetInnerHTML":{"__html":"$16"}}],"$L17","$L18"]}]]}],"$L19"]]
+17:["$","div",null,{"className":"mt-[20px] flex items-center justify-between leading-[1.4] max-xs:block","children":[["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L1a",null,{"href":"/tech/react/react-hook-form/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center leading-[1.4]","children":[["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L14",null,{"type":"BsChevronLeft","size":"100%"}]}],["$","div",null,{"className":"ml-[20px] mr-auto [&_small]:text-0","children":[["$","small",null,{"children":"이전 포스트"}],["$","div",null,{"children":"[React] react-hook-form으로 폼 관리하기"}]]}]]}]}],["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L1a",null,{"href":"/tech/react/concurrent-rendering/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center text-right leading-[1.4]","children":[["$","div",null,{"className":"ml-auto mr-[20px] [&_small]:text-0","children":[["$","small",null,{"children":"다음 포스트"}],["$","div",null,{"children":"[React] Concurrent Rendering - 동시성 렌더링"}]]}],["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L14",null,{"type":"BsChevronRight","size":"100%"}]}]]}]}]]}]
+18:["$","$L1b",null,{"url":"https://beomy.github.io//tech/react/react-hook-form-api-reference/","title":"[React] react-hook-form API 레퍼런스"}]
+19:["$","footer",null,{"className":"border-t border-grey-90 bg-grey-100 py-[25px] text-center","children":[["$","nav",null,{"className":"mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]","children":[["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://github.com/beomy","target":"_blank","aria-label":"github","children":["$","$L14",null,{"type":"BsGithub","size":20}]}],["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://www.linkedin.com/in/효범-이-930453134","target":"_blank","aria-label":"linkedin","children":["$","$L14",null,{"type":"BsLinkedin","size":20}]}]]}],["$","span",null,{"className":"text-1 text-caption","children":["© ",2026," Beomy. All rights reserved."]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#663399"}]]
+8:null
+d:[["$","title","0",{"children":"[React] react-hook-form API 레퍼런스 | Beomy"}],["$","meta","1",{"name":"description","content":"사용하고 있는 외부 라이브러리 API를 자세히 알면 그 라이브러리에서 제공하는 다양한 기능들을 인지하고 사용할 수 있기 때문에 라이브러리를 더 멋있게 사용할 수 있습니다. 이번 포스트에서는 React Hook Form을 좀 더 멋있게 사용하기 위해 React Hook Form에서 제공하는 API들을 살펴보도록 하겠습니다."}],["$","meta","2",{"name":"author","content":"beomy"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest","crossOrigin":"$undefined"}],["$","link","4",{"rel":"canonical","href":"https://beomy.github.io/tech/react/react-hook-form-api-reference/"}],["$","meta","5",{"property":"og:title","content":"[React] react-hook-form API 레퍼런스"}],["$","meta","6",{"property":"og:description","content":"사용하고 있는 외부 라이브러리 API를 자세히 알면 그 라이브러리에서 제공하는 다양한 기능들을 인지하고 사용할 수 있기 때문에 라이브러리를 더 멋있게 사용할 수 있습니다. 이번 포스트에서는 React Hook Form을 좀 더 멋있게 사용하기 위해 React Hook Form에서 제공하는 API들을 살펴보도록 하겠습니다."}],["$","meta","7",{"property":"og:url","content":"https://beomy.github.io/tech/react/react-hook-form-api-reference/"}],["$","meta","8",{"property":"og:site_name","content":"Beomy"}],["$","meta","9",{"property":"og:locale","content":"ko"}],["$","meta","10",{"property":"og:image","content":"https://beomy.github.io/assets/img/thumbnails/react/react-hook-form.png"}],["$","meta","11",{"property":"og:image:alt","content":"[React] react-hook-form API 레퍼런스"}],["$","meta","12",{"property":"og:type","content":"article"}],["$","meta","13",{"property":"article:published_time","content":"2023-10-13T00:00:00+00:00"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","15",{"name":"twitter:creator","content":"beomy"}],["$","meta","16",{"name":"twitter:title","content":"[React] react-hook-form API 레퍼런스"}],["$","meta","17",{"name":"twitter:description","content":"사용하고 있는 외부 라이브러리 API를 자세히 알면 그 라이브러리에서 제공하는 다양한 기능들을 인지하고 사용할 수 있기 때문에 라이브러리를 더 멋있게 사용할 수 있습니다. 이번 포스트에서는 React Hook Form을 좀 더 멋있게 사용하기 위해 React Hook Form에서 제공하는 API들을 살펴보도록 하겠습니다."}],["$","meta","18",{"name":"twitter:image","content":"https://beomy.github.io/assets/img/thumbnails/react/react-hook-form.png"}],["$","meta","19",{"name":"twitter:image:alt","content":"[React] react-hook-form API 레퍼런스"}],["$","link","20",{"rel":"icon","href":"/assets/img/brand/beomy-icon.png"}],["$","$L1c","21",{}]]

@@ -1,0 +1,251 @@
+1:"$Sreact.fragment"
+2:I[48347,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+3:I[48771,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+5:I[17987,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+6:I[1304,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+4:T4cc,<ul><li><a href="#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EA%B5%AC%EC%A1%B0">브라우저 구조</a></li><li><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%97%94%EC%A7%84">렌더링 엔진</a><ul><li><a href="#%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%97%94%EC%A7%84%EB%93%A4">렌더링 엔진들</a></li><li><a href="#%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95-%EC%9A%94%EC%95%BD">동작 과정 요약</a></li><li><a href="#%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95-%EC%83%81%EC%84%B8">동작 과정 상세</a></li></ul></li><li><a href="#parser">Parser</a><ul><li><a href="#domdocumnet-object-model">DOM(Documnet Object Model)</a></li><li><a href="#cssomcss-object-model">CSSOM(CSS Object Model)</a></li><li><a href="#%EC%B0%B8%EA%B3%A0-javascript%EC%99%80-css">참고: JavaScript와 CSS</a></li></ul></li><li><a href="#attachment">Attachment</a><ul><li><a href="#%EB%A0%8C%EB%8D%94-%ED%8A%B8%EB%A6%AC-%EA%B5%AC%EC%B6%95">렌더 트리 구축</a></li><li><a href="#dom-%ED%8A%B8%EB%A6%AC%EC%99%80-%EB%A0%8C%EB%8D%94-%ED%8A%B8%EB%A6%AC%EC%9D%98-%EA%B4%80%EA%B3%84">DOM 트리와 렌더 트리의 관계</a></li></ul></li><li><a href="#layout">Layout</a></li><li><a href="#painting">Painting</a></li><li><a href="#%EC%9A%94%EC%95%BD">요약</a></li></ul>7:T6db5,<p>이번 포스트에서는 브라우저가 화면을 렌더링 하는 과정에 대해 이야기할 것입니다. 렌더링 과정을 이해하면 웹페이지의 렌더링 최적화에 도움이 될 수 있겠죠? 렌더링 최적화 방법은 <a href="/tech/browser/critical-rendering-path">[Browser] Critical Rendering Path 최적화</a>에서 다룰 예정입니다.</p>
+<h2 id="브라우저-구조">브라우저 구조<a class="anchor after" aria-hidden="true" tabindex="-1" href="#브라우저-구조"><span class="anchor-icon">#</span></a></h2>
+<p>브라우저의 렌더링 과정을 이야기하기 전에 브라우저의 구조를 잠시 살펴보겠습니다.</p>
+<p><img src="/assets/img/posts/browser/browser_architecture.png" alt="브라우저 구조" loading="lazy" decoding="async" width="987" height="719" srcset="/assets/img/posts/browser/nextImageExportOptimizer/browser_architecture-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/browser_architecture-opt-1080.WEBP 1080w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<ul>
+<li>User Interface: 주소 표시줄, 이전/다음 버튼, 북마크 메뉴 등. 요청한 페이지를 보여주는 창을 제외한 나머지 모든 부분</li>
+<li>Browser Engine: User Interface와 Rendering Engine 사이의 동작을 제어</li>
+<li>Rendering Engine: 요청한 콘텐츠를 표시, HTML을 요청하면 HTML과 CSS를 파싱 하여 화면에 표시함</li>
+<li>Networking: HTTP 요청과 같은 네트워크 호출에 사용됨</li>
+<li>Javascript Interpreter(또는 Engine): 자바스크립트 코드를 해석하고 실행함. 크롬에서는 <a href="/tech/javascript/javascript-runtime/#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%97%94%EC%A7%84-v8">V8 엔진</a>을 사용함</li>
+<li>Display Backend: 기본적인 위젯(콤보 박스 등..)을 그림</li>
+<li>Data Persistence: Local Storage, 쿠키 등 클라이언트 사이드에서 데이터를 저장하는 영역</li>
+</ul>
+<p>구조는 브라우저마다 조금씩 다를 수 있습니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">파이어폭스 브라우저</th><th align="center">크롬 브라우저</th></tr></thead><tbody><tr><td align="center"><img src="/assets/img/posts/browser/firefox_architecture.png" alt="파이어폭스 구조" loading="lazy" decoding="async" width="1429" height="947" srcset="/assets/img/posts/browser/nextImageExportOptimizer/firefox_architecture-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/firefox_architecture-opt-1080.WEBP 1080w, /assets/img/posts/browser/nextImageExportOptimizer/firefox_architecture-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></td><td align="center"><img src="/assets/img/posts/browser/chrome_architecture.png" alt="크롬 구조" loading="lazy" decoding="async" width="1271" height="927" srcset="/assets/img/posts/browser/nextImageExportOptimizer/chrome_architecture-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/chrome_architecture-opt-1080.WEBP 1080w, /assets/img/posts/browser/nextImageExportOptimizer/chrome_architecture-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></td></tr></tbody></table>
+<p>파이어폭스 브라우저와 크롬 브라우저의 구조는 위의 그림과 같이 차이가 있습니다. 이번 포스트에서는 브라우저의 구조에서 렌더링 엔진에 대해 이야기할 것입니다.</p>
+<h2 id="렌더링-엔진">렌더링 엔진<a class="anchor after" aria-hidden="true" tabindex="-1" href="#렌더링-엔진"><span class="anchor-icon">#</span></a></h2>
+<p>렌더링 엔진의 역할은 요청받은 내용을 브라우저 화면에 나타내는 일입니다. HTML, CSS, JavaScript 등의 파일을 브라우저가 화면에 표시할 수 있도록 변환하여 픽셀 단위로 나타냅니다.</p>
+<h3 id="렌더링-엔진들">렌더링 엔진들<a class="anchor after" aria-hidden="true" tabindex="-1" href="#렌더링-엔진들"><span class="anchor-icon">#</span></a></h3>
+<p>브라우저마다 사용하는 렌더링 엔진들이 다릅니다. 렌더링 엔진이 브라우저마다 다르기 때문에, 같은 소스가 브라우저마다 다르게 그려지는 크로스 브라우징 이슈가 발생하게 됩니다.(자바스크립트 엔진이 달라 발생하기도 합니다.)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">브라우저</th><th align="center">렌더링 엔진</th></tr></thead><tbody><tr><td align="center">IE</td><td align="center">Trident</td></tr><tr><td align="center">Edge</td><td align="center">EdgeHTML, Blink</td></tr><tr><td align="center">Chrome</td><td align="center">Webkit, Blink(버전 28 이후)</td></tr><tr><td align="center">Safari</td><td align="center">Webkit</td></tr><tr><td align="center">FireFox</td><td align="center">Gecko</td></tr></tbody></table>
+<p>크롬 브라우저(정확히는 크로미움은)는 사파리 브라우저에서 사용하는 Webkit을 사용하다가 버전 28 이후 Webkit 소스를 Fork 하여 Blink 엔진을 만들어 사용하고 있습니다.</p>
+<h4 id="참고-크로미움이란">참고: 크로미움이란?<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고-크로미움이란"><span class="anchor-icon">#</span></a></h4>
+<p>크롬은 크로미움 기반으로 만들어진 브라우저라는 이야기를 많이 들어보셨을 것입니다. <a href="https://ko.wikipedia.org/wiki/%ED%81%AC%EB%A1%9C%EB%AF%B8%EC%97%84_(%EC%9B%B9_%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80)">크로미움</a>은 오픈 소스 웹 브라우저입니다. <a href="https://chromium.woolyss.com/download/ko/">https://chromium.woolyss.com/download/ko/</a>에서 다운로드해 브라우저로 사용할 수도 있습니다.</p>
+<p>크로미움은 V8이라는 자바스크립트 엔진과 Blink라는 렌더링 엔진을 사용하는 브라우저입니다. 크롬이 크로미움 기반으로 만들어졌다는 것은 오픈 소스인 크로미움 브라우저 코드 위에 살을 덧붙여 개발되었다는 의미입니다.</p>
+<p>크로미움 기반의 크롬이 절반 이상 점유율을 차지하고 있습니다(<a href="https://www.koreahtml5.kr/front/stats/browser/browserUseStats.do">브라우저 점유율</a> 참고). 이제는 Edge 브라우저도 크로미움 기반의 브라우저가 되었습니다. Edge 브라우저가 사용하던 EdgeHTML 렌더링 엔진을 포기하고 크로미움 기반의 브라우저를 만들겠다고 발표를 했습니다.(<a href="https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/">Edge 브라우저의 크로미움 도입 발표</a> 참고)</p>
+<h3 id="동작-과정-요약">동작 과정 요약<a class="anchor after" aria-hidden="true" tabindex="-1" href="#동작-과정-요약"><span class="anchor-icon">#</span></a></h3>
+<p>렌더링 엔진은 요청한 문서의 내용을 얻는 것에서 시작합니다. 문서는 보통 8KB 단위로 전송됩니다.</p>
+<p><img src="/assets/img/posts/browser/rendering_engine_process_summary.png" alt="렌더링 엔진 동작 과정 요약" loading="lazy" decoding="async" width="1662" height="156" srcset="/assets/img/posts/browser/nextImageExportOptimizer/rendering_engine_process_summary-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/rendering_engine_process_summary-opt-1080.WEBP 1080w, /assets/img/posts/browser/nextImageExportOptimizer/rendering_engine_process_summary-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>위의 그림은 렌더링 엔진의 기본 동작 과정을 나타낸 그림입니다.</p>
+<p>렌더링 엔진은 HTML 문서를 파싱 하여 DOM 트리를 만들고, CSS 문서를 파싱 하여 CSSOM 트리를 만듭니다. DOM과 CSSOM을 이용하여 렌더 트리를 만듭니다.</p>
+<p>렌더 트리 생성이 끝나면 Layout(Reflow라고도 합니다)이 시작됩니다. 이 과정은 각 노드가 화면의 정확한 위치에 표시하기 위해 위치와 크기를 계산하는 과정을 말합니다.  마지막으로 계산된 위치과 크기 등의 스타일들이 실제 픽셀로 표현하는 과정이 시작됩니다. 이 과정을 Paint(Rasterizing라고도 합니다.)라고 합니다.</p>
+<h3 id="동작-과정-상세">동작 과정 상세<a class="anchor after" aria-hidden="true" tabindex="-1" href="#동작-과정-상세"><span class="anchor-icon">#</span></a></h3>
+<p><img src="/assets/img/posts/browser/webkit_rendering_engine_process.png" alt="웹킷 렌더링 엔진 동작 과정" loading="lazy" decoding="async" width="1552" height="720" srcset="/assets/img/posts/browser/nextImageExportOptimizer/webkit_rendering_engine_process-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/webkit_rendering_engine_process-opt-1080.WEBP 1080w, /assets/img/posts/browser/nextImageExportOptimizer/webkit_rendering_engine_process-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>위의 그림은 Webkit의 렌더링 동작 과정입니다. 위의 렌더링 동작 과정을 간략히 이야기하면,</p>
+<ol>
+<li><span style="background: #FFC000;">HTML</span>을 <span style="background: #5B9BD5;">파싱</span>하여 DOM 노드를 만듭니다. 이 <span style="background: #A5A5A5;">DOM 노드들을 병합</span>하여 <span style="background: #70AD47;">DOM 트리</span>를 만듭니다.</li>
+<li><span style="background: #FFC000;">CSS</span>를 <span style="background: #5B9BD5;">파싱</span>하여, <span style="background: #70AD47;">스타일 규칙</span>을 만듭니다.</li>
+<li><span style="background: #70AD47;">DOM 트리</span>와 <span style="background: #70AD47;">스타일 규칙</span>을 사용하여, <span style="background: #5B9BD5;">Attachment</span>라는 과정을 통해 <span style="background: #70AD47;">Render 트리</span>를 생성합니다.</li>
+<li><span style="background: #70AD47;">Render 트리</span>를 <span style="background: #5B9BD5;">배치(Layout)</span>합니다.</li>
+<li><span style="background: #70AD47;">Render 트리</span>를 화면에 <span style="background: #5B9BD5;">그림(Painting)</span>니다.</li>
+</ol>
+<p>위의 5가지 과정을 통해 브라우저는 렌더링을 합니다. (색깔 별로 위의 그림의 과정을 표시했습니다.)</p>
+<p><img src="/assets/img/posts/browser/gecko_rendering_engine_process.png" alt="게코 렌더링 엔진 동작 과정" loading="lazy" decoding="async" width="1776" height="719" srcset="/assets/img/posts/browser/nextImageExportOptimizer/gecko_rendering_engine_process-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/gecko_rendering_engine_process-opt-1080.WEBP 1080w, /assets/img/posts/browser/nextImageExportOptimizer/gecko_rendering_engine_process-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>위의 그림은 Gecko의 렌더링 동작 과정입니다.</p>
+<p>Webkit과 Gecko는 용어가 약간 다르지만 렌더링 과정은 유사합니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">Webkit</th><th align="center">Gecko</th><th align="center">설명</th></tr></thead><tbody><tr><td align="center">Render Tree</td><td align="center">Frame Tree</td><td align="center">렌더링 되는 노드 트리</td></tr><tr><td align="center">Render Object</td><td align="center">Frame</td><td align="center">렌더링 되는 노드</td></tr><tr><td align="center">Layout</td><td align="center">Reflow</td><td align="center">렌더링 되는 노드를 배치하는 과정</td></tr><tr><td align="center">Attachment</td><td align="center">Frame Constructor</td><td align="center">렌더링 되는 노드 트리를 만드는 과정</td></tr><tr><td align="center">-</td><td align="center">Content Sink</td><td align="center">DOM 노드를 만드는 과정</td></tr></tbody></table>
+<p>Webkit과 Gecko는 위의 표 정도의 차이를 가지고 있습니다.</p>
+<h2 id="parser">Parser<a class="anchor after" aria-hidden="true" tabindex="-1" href="#parser"><span class="anchor-icon">#</span></a></h2>
+<p>파싱은 서버로부터 전송받은 문서의 문자열을 브라우저가 이해할 수 있는 구조로 변환하는 과정을 파싱이라고 합니다. 파싱 결과는 문서 구조를 나타내는 노드 트리인데, 파싱 트리(parse tree) 또는 문법 트리(syntax tree)라고 합니다.</p>
+<h3 id="domdocumnet-object-model">DOM(Documnet Object Model)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#domdocumnet-object-model"><span class="anchor-icon">#</span></a></h3>
+<p><img src="/assets/img/posts/browser/dom_parsing_summary.png" alt="DOM 파싱 요약" loading="lazy" decoding="async" width="703" height="282" srcset="/assets/img/posts/browser/nextImageExportOptimizer/dom_parsing_summary-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/dom_parsing_summary-opt-1080.WEBP 1080w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>위의 그림은 <a href="/tech/browser/browser-rendering/#%EB%8F%99%EC%9E%91-%EA%B3%BC%EC%A0%95-%EC%83%81%EC%84%B8">동작 과정 상세</a>에서 이야기한 DOM을 파싱 하는 과정입니다. 이 과정에 대해 좀 더 자세히 이야기하도록 하겠습니다.</p>
+<p><img src="/assets/img/posts/browser/dom_parsing.png" alt="DOM Parsing" loading="lazy" decoding="async" width="1123" height="622" srcset="/assets/img/posts/browser/nextImageExportOptimizer/dom_parsing-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/dom_parsing-opt-1080.WEBP 1080w, /assets/img/posts/browser/nextImageExportOptimizer/dom_parsing-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<ol>
+<li>변환(Conversion): HTML의 원시 바이트(raw bytes)를 읽어와 해당 파일에 지정된 인코딩(UTF-8 등...)에 따라 문자열로 변환하는 과정입니다.</li>
+<li>토큰화(Tokenizing): 문자열을 <a href="http://www.w3.org/TR/html5/">W3C HTML5 표준</a>에 따라 고유 토큰(<code>&#x3C;html></code>, <code>&#x3C;body></code>등, 꺽쇠괄호로 묶인 문자열)으로 변환합니다. 각 토큰은 특별한 의미와 고유한 규칙을 가집니다.</li>
+<li>렉싱(Lexing): 토큰을 해당 속성 및 규칙을 정의한 객체(Nodes)로 변환합니다.</li>
+<li>DOM 생성(Dom construction): HTML은 상위-하위 관계로 정의할 수 있어, 트리 구조로 나타낼 수 있습니다. 렉싱 과정을 거쳐 생성된 노드들을 트리 구조로 변환합니다.</li>
+</ol>
+<p><img src="/assets/img/posts/browser/dom_tree.png" alt="DOM Tree" loading="lazy" decoding="async" width="665" height="284" srcset="/assets/img/posts/browser/nextImageExportOptimizer/dom_tree-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/dom_tree-opt-1080.WEBP 1080w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>위에서 이야기한 4가지 과정을 모두 거치면 위의 그림과 같은 트리 형태의 DOM이 만들어집니다. 브라우저는 이후 모든 페이지 처리를 이 DOM을 사용합니다.</p>
+<h3 id="cssomcss-object-model">CSSOM(CSS Object Model)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#cssomcss-object-model"><span class="anchor-icon">#</span></a></h3>
+<p><img src="/assets/img/posts/browser/css_parsing_summary.png" alt="CSS 파싱 요약" loading="lazy" decoding="async" width="715" height="152" srcset="/assets/img/posts/browser/nextImageExportOptimizer/css_parsing_summary-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/css_parsing_summary-opt-1080.WEBP 1080w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>이번에는 위의 그림과 같이 CSS를 파싱 하는 부분을 이야기하도록 하겠습니다.</p>
+<p><img src="/assets/img/posts/browser/cssom_construction.png" alt="CSSOM 생성" loading="lazy" decoding="async" width="1012" height="65" srcset="/assets/img/posts/browser/nextImageExportOptimizer/cssom_construction-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/cssom_construction-opt-1080.WEBP 1080w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>위의 그림과 같이 DOM을 생성하는 과정 그대로 CSSOM을 생성합니다.</p>
+<p>브라우저는 DOM을 생성하는 동안 외부 CSS를 참조하는 <code>&#x3C;link></code> 태그를 만나게 되면 브라우저에 리소스를 요청합니다. CSS의 원시 바이트(raw bytes)가 문자열로 변환된 후 차례로 토큰과 노드로 변환되고 마지막으로 CSSOM(CSS Object Model)이라는 트리 구조를 만듭니다.</p>
+<p><img src="/assets/img/posts/browser/cssom_tree.png" alt="CSSOM Tree" loading="lazy" decoding="async" width="582" height="299" srcset="/assets/img/posts/browser/nextImageExportOptimizer/cssom_tree-opt-640.WEBP 640w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>CSSOM이 트리 구조를 가지는 이유는 하향식으로 규칙을 적용하기 때문입니다. 최종 스타일을 계산할 때 브라우저는 해당 노드에 적용 가능한 가장 일반적인 규칙으로 시작해 더 구체적인 규칙을 적용하는 방식입니다.</p>
+<p>위의 CSSOM 트리 그림을 보시면 하양식 규칙 적용을 좀 더 쉽게 이해할 수 있습니다. <code>body</code> 태그 내에 있는 <code>span</code> 태그 안에 포함된 텍스트의 크기는 16px이고 색상은 빨간색입니다. 하지만 <code>span</code> 태그가 <code>p</code> 태그의 하위인 경우 해당 콘텐츠는 표시되지 않습니다.</p>
+<h3 id="참고-javascript와-css">참고: JavaScript와 CSS<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고-javascript와-css"><span class="anchor-icon">#</span></a></h3>
+<p>HTML과 CSS, 자바스크립트를 파싱 하여 렌더 트리를 형성하고 화면에 그리는 과정을 최적화하면 브라우저의 렌더링 속도를 높여 사용성을 개선할 수 있습니다. 자바스크립트와 CSS가 렌더링 과정에 어떤 영향을 미치는지 살펴보도록 하겠습니다.</p>
+<h4 id="javascript">JavaScript<a class="anchor after" aria-hidden="true" tabindex="-1" href="#javascript"><span class="anchor-icon">#</span></a></h4>
+<p>자바스크립트는 파서 차단 리소스(parser blocking resource)입니다. 브라우저는 문서를 파싱 하다가 자바스크립트를 만나면 진행하던 파싱을 중지하고 자바스크립트 엔진에게 권한을 넘겨 자바스크립트를 파싱하고 실행합니다.</p>
+<p>자바스크립트가 실행되는 동안 문서의 파싱은 중단됩니다. 자바스크립트는 파싱을 중단시키기 때문에, 보통 자바스크립트를 <code>&#x3C;head></code> 태그가 아닌 <code>&#x3C;body></code> 태그가 닫히기 바로 전에 사용되도록 하는 것이 좋습니다.</p>
+<p><code>&#x3C;script></code> 태그에 <code>defer</code> 속성을 주면, 문서 파싱은 중단되지 않고 문서 파싱이 완료된 이후에 자바스크립트가 실행됩니다.
+HTML5에서 스크립트를 비동기(<code>async</code>)로 처리하는 속성이 추가되었습니다. 자바스크립트가 별도의 맥락에 의해 파싱 되고 실행된다.</p>
+<p><a href="/tech/browser/async-defer/">[Browser] async와 defer</a>에서 <code>defer</code> 속성과 <code>async</code> 속성의 차이를 확인하실 수 있습니다.</p>
+<h4 id="css">CSS<a class="anchor after" aria-hidden="true" tabindex="-1" href="#css"><span class="anchor-icon">#</span></a></h4>
+<p>CSS는 렌더링 차단 리소스(render blocking resource)입니다. CSS는 렌더링을 할 때 반드시 필요한 리소스이기 때문에 브라우저는 빠르게 CSS를 다운로드하는 것이 좋습니다. <code>&#x3C;head></code> 태그 안에서 정의하여 빠르게 리소스를 받을 수 있도록 해야 합니다.</p>
+<p>CSS는 DOM 트리를 변경하지 않기 때문에 문서 파싱을 기다리거나 중단할 이유가 없습니다. 그러나 자바스크립트에서 스타일 정보를 요청하는 경우, CSS가 파싱 되지 않은 상태라면 스크립트 에러가 발생할 수 있습니다.</p>
+<p>이런 문제를 해결하기 위해 파이어폭스는 로드 중이거나 파싱 중인 CSS가 있는 경우 모든 자바스크립트 실행을 중지합니다. 반면 웹킷은 로드되지 않은 CSS 가운데 문제가 될 만한 속성이 있을 때에만 자바스크립트를 중단합니다.</p>
+<h2 id="attachment">Attachment<a class="anchor after" aria-hidden="true" tabindex="-1" href="#attachment"><span class="anchor-icon">#</span></a></h2>
+<p>CSSOM 트리와 DOM 트리를 결합하여, 표시해야 할 순서로 내용을 그려낼 수 있도록 하기 위해 렌더 트리를 형성합니다. 이 과정을 웹킷에서는 Attachment라고 합니다. 렌더 트리는 화면에 표시되는 각 노드의 위치를 계산하는 레이아웃에 사용되고 픽셀을 화면에 그리는 페인트 과정에도 사용됩니다.</p>
+<h3 id="렌더-트리-구축">렌더 트리 구축<a class="anchor after" aria-hidden="true" tabindex="-1" href="#렌더-트리-구축"><span class="anchor-icon">#</span></a></h3>
+<p><img src="/assets/img/posts/browser/attachment_summary.png" alt="Attachment 요약" loading="lazy" decoding="async" width="564" height="449" srcset="/assets/img/posts/browser/nextImageExportOptimizer/attachment_summary-opt-640.WEBP 640w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>위의 그림의 attachment 과정을 이야기하도록 하겠습니다. 브라우저가 DOM 및 CSSOM을 렌더 트리에 결합합니다. 렌더 트리는 페이지에 표시되는 모든 DOM 콘텐츠와 각 노드에 대한 모든 CSSOM 스타일 정보를 가집니다.</p>
+<p><img src="/assets/img/posts/browser/render_tree_construction.png" alt="Render Tree 형성" loading="lazy" decoding="async" width="1150" height="537" srcset="/assets/img/posts/browser/nextImageExportOptimizer/render_tree_construction-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/render_tree_construction-opt-1080.WEBP 1080w, /assets/img/posts/browser/nextImageExportOptimizer/render_tree_construction-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>렌더 트리를 생성하려면 브라우저는 대략 3가지 작업을 수행합니다.</p>
+<ol>
+<li>DOM 트리의 루트에서 시작하여 화면에 표시되는 노드 각각을 탐색합니다.</li>
+</ol>
+<ul>
+<li>화면에 표시되지 않는 일부 노드들(<code>script</code>, <code>meta</code> 태그 등..)은 렌더 트리에 반영되지 않습니다.</li>
+<li>CSS에 의해 화면에서 숨겨지는 노드들은 렌더 트리에 반영되지 않습니다. 위의 예시에서 <code>span</code> 노드의 경우 <code>display:none</code>이 설정되기 때문에 렌더 트리에 반영되지 않습니다.</li>
+</ul>
+<ol start="2">
+<li>화면에 표시되는 각 노드에 대해 적절하게 일치하는 CSSOM 규칙을 찾아 적용합니다.</li>
+<li>화면에 표시되는 노드를 콘텐츠 및 계산된 스타일과 함께 내보냅니다.</li>
+</ol>
+<h3 id="dom-트리와-렌더-트리의-관계">DOM 트리와 렌더 트리의 관계<a class="anchor after" aria-hidden="true" tabindex="-1" href="#dom-트리와-렌더-트리의-관계"><span class="anchor-icon">#</span></a></h3>
+<p>렌더 트리 구축의 1번에서 잠깐 이야기 한 것처럼 화면에 표시되지 않는 노드들은 렌더 트리에 포함되지 않습니다. 예를 들어, <code>&#x3C;head></code> 태그와 같은 비시각적 DOM 노드는 렌더 트리에 추가되지 않습니다.</p>
+<p>뿐만 아니라 CSS로 인해 <code>display</code> 속성에 <code>none</code> 값이 할당된 노드들을 렌더 트리에 추가되지 않습니다. 하지만, <code>visibility:hidden</code>은 렌더 트리에 포함됩니다. <code>visibility</code> 속성에 <code>hidden</code> 값이 할당된 노드는 화면에 공간을 차지하기 때문에 렌더 트리에 포함됩니다.</p>
+<h2 id="layout">Layout<a class="anchor after" aria-hidden="true" tabindex="-1" href="#layout"><span class="anchor-icon">#</span></a></h2>
+<p><img src="/assets/img/posts/browser/layout_summary.png" alt="Layout 요약" loading="lazy" decoding="async" width="261" height="283" srcset="/assets/img/posts/browser/nextImageExportOptimizer/layout_summary-opt-640.WEBP 640w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>렌더 트리가 생성되고, 기기의 뷰포트 내에서 렌더 트리의 노드가 정확한 위치와 크기를 계산하는 과정을 Layout(혹은 Reflow)라고 합니다. 모든 상대적인 측정값은 화면에서 절대적인 픽셀로 변환됩니다. 즉 CSS에 상대적인 값인 %로 할당된 값들은 절대적인 값은 px 단위로 변환 됩니다.</p>
+<h2 id="painting">Painting<a class="anchor after" aria-hidden="true" tabindex="-1" href="#painting"><span class="anchor-icon">#</span></a></h2>
+<p><img src="/assets/img/posts/browser/painting_summary.png" alt="Painting 요약" loading="lazy" decoding="async" width="795" height="126" srcset="/assets/img/posts/browser/nextImageExportOptimizer/painting_summary-opt-640.WEBP 640w, /assets/img/posts/browser/nextImageExportOptimizer/painting_summary-opt-1080.WEBP 1080w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>렌더 트리의 각 노드를 화면의 실제 픽셀로 나타내는 과정을 Painting(혹은 rasterizing)라고 합니다. Painting 과정 후 브라우저 화면에 UI가 나타나게 됩니다.</p>
+<h2 id="요약">요약<a class="anchor after" aria-hidden="true" tabindex="-1" href="#요약"><span class="anchor-icon">#</span></a></h2>
+<p>지금까지 이야기했던 내용들을 핵심만 요약하여 5가지로 정리해 보면,</p>
+<ol>
+<li>HTML 마크업을 처리하고 DOM 트리를 빌드 합니다. (DOM 파싱)</li>
+<li>CSS 마크업을 처리하고 CSSOM 트리를 빌드 합니다. (CSS 파싱)</li>
+<li>DOM 및 CSSOM을 결합하여 렌더 트리를 형성합니다. (Attachment)</li>
+<li>렌더 트리에서 레이아웃을 실행하여 각 노드의 기하학적 형태를 계산합니다. (Layout)</li>
+<li>개별 노드를 화면에 페인트 합니다. (Painting)</li>
+</ol>
+<p>위의 5단계를 걸쳐 브라우저는 화면에 렌더링 하게 됩니다.</p>
+<h5 id="참고">참고<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path?hl=ko">https://developers.google.com/web/fundamentals/performance/critical-rendering-path?hl=ko</a></li>
+<li><a href="https://janghanboram.github.io/2018/06/06/browser-rendering/">https://janghanboram.github.io/2018/06/06/browser-rendering/</a></li>
+<li><a href="https://d2.naver.com/helloworld/59361">https://d2.naver.com/helloworld/59361</a></li>
+<li><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm#Render_tree_construction">http://taligarsiel.com/Projects/howbrowserswork1.htm#Render_tree_construction</a></li>
+<li><a href="https://grosskurth.ca/papers/browser-refarch.pdf">https://grosskurth.ca/papers/browser-refarch.pdf</a></li>
+<li><a href="https://yilpe93.github.io/2018/06/18/etc/web-browser/">https://yilpe93.github.io/2018/06/18/etc/web-browser/</a></li>
+<li><a href="https://sangbui.com/sb-files/BrowserArchitecture_ClientSide.pdf">https://sangbui.com/sb-files/BrowserArchitecture_ClientSide.pdf</a></li>
+<li><a href="https://medium.com/@monica1109/how-does-web-browsers-work-c95ad628a509">https://medium.com/@monica1109/how-does-web-browsers-work-c95ad628a509</a></li>
+<li><a href="https://blog.lgcns.com/1911">https://blog.lgcns.com/1911</a></li>
+<li><a href="https://cisctbd.github.io/Report.pdf">https://cisctbd.github.io/Report.pdf</a></li>
+<li><a href="https://blog.asamaru.net/2017/05/04/understanding-the-critical-rendering-path/">https://blog.asamaru.net/2017/05/04/understanding-the-critical-rendering-path/</a></li>
+</ul>10:X
+15:X
+15:C
+0:{"buildId":"vRvvjM40XyhyJOEib5x-0","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"[Browser] 브라우저 렌더링\",\"description\":\"브라우저가 화면을 렌더링 하는 과정에 대해 이야기할 것입니다.\",\"image\":[\"https://beomy.github.io/assets/img/thumbnails/browser/browser.png\"],\"datePublished\":\"2019-10-16T00:00:00+00:00\",\"dateModified\":\"2019-10-16T00:00:00+00:00\",\"author\":{\"@type\":\"Person\",\"name\":\"beomy\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Beomy\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://beomy.github.io/assets/img/brand/beomy-logo.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://beomy.github.io/tech/browser/browser-rendering/\"},\"url\":\"https://beomy.github.io/tech/browser/browser-rendering/\"}"}}],[["$","$L2",null,{}],["$","main",null,{"className":"mx-auto pb-[10px] pt-[70px] flex flex-row-reverse leading-[2] screen-xs sm:screen-sm m:screen-m","children":[["$","$L3",null,{"url":"https://beomy.github.io//tech/browser/browser-rendering/","toc":"$4"}],["$","article",null,{"className":"w-[calc(100%-380px)] max-sm:w-full","children":[["$","div",null,{"className":"leading-[1.5] [&>div]:mb-[30px] [&_.post-banner-img]:block [&_.post-banner-img]:h-auto [&_.post-banner-img]:w-full [&_.post-banner-img]:rounded-[8px]","children":[["$","h1",null,{"className":"m-0 text-7","children":"[Browser] 브라우저 렌더링"}],["$","div",null,{"children":[["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle mr-[20px] text-caption","children":[["$","$L5",null,{"type":"BsCalendar"}],["$","span",null,{"children":"2019년 10월 16일"}]]}],["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle text-caption","children":[["$","$L5",null,{"type":"BsClock"}],["$","span",null,{"children":[5,"분 소요"]}]]}]]}],["$","$L6",null,{"img":"browser/browser.png","priority":true,"width":2000,"height":1000}]]}],["$","div",null,{"className":"post-contents","dangerouslySetInnerHTML":{"__html":"$7"}}],"$L8","$L9"]}]]}],"$La"]],["$Lb","$Lc","$Ld"],"$Le"]}],"isPartial":"$@f","staleTime":"$10","varyParams":null},{"rsc":"$L11","isPartial":"$@12","staleTime":"$10","varyParams":null},{"rsc":"$L13","isPartial":"$@14","staleTime":"$10","varyParams":"$15"},{"rsc":"$L16","isPartial":"$@17","staleTime":"$10","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@18","rootVaryParams":null,"needsRuntimeRequest":"$@19"}
+1a:I[43492,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],""]
+1b:I[44892,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+1c:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+1f:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"ViewportBoundary"]
+20:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"MetadataBoundary"]
+21:I[7829,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"IconMark"]
+22:I[5296,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+23:I[13033,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+24:I[20775,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],""]
+25:I[3171,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+:HL["/_next/static/chunks/0-ed_yd_8cspw.css","style"]
+:HL["/_next/static/chunks/3hdp08pq73jzd.css","style"]
+8:["$","div",null,{"className":"mt-[20px] flex items-center justify-between leading-[1.4] max-xs:block","children":[["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L1a",null,{"href":"/tech/javascript/javascript-runtime/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center leading-[1.4]","children":[["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L5",null,{"type":"BsChevronLeft","size":"100%"}]}],["$","div",null,{"className":"ml-[20px] mr-auto [&_small]:text-0","children":[["$","small",null,{"children":"이전 포스트"}],["$","div",null,{"children":"[JavaScript] 자바스크립트 런타임"}]]}]]}]}],["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L1a",null,{"href":"/tech/browser/critical-rendering-path/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center text-right leading-[1.4]","children":[["$","div",null,{"className":"ml-auto mr-[20px] [&_small]:text-0","children":[["$","small",null,{"children":"다음 포스트"}],["$","div",null,{"children":"[Browser] Critical Rendering Path 최적화"}]]}],["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L5",null,{"type":"BsChevronRight","size":"100%"}]}]]}]}]]}]
+9:["$","$L1b",null,{"url":"https://beomy.github.io//tech/browser/browser-rendering/","title":"[Browser] 브라우저 렌더링"}]
+a:["$","footer",null,{"className":"border-t border-grey-90 bg-grey-100 py-[25px] text-center","children":[["$","nav",null,{"className":"mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]","children":[["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://github.com/beomy","target":"_blank","aria-label":"github","children":["$","$L5",null,{"type":"BsGithub","size":20}]}],["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://www.linkedin.com/in/효범-이-930453134","target":"_blank","aria-label":"linkedin","children":["$","$L5",null,{"type":"BsLinkedin","size":20}]}]]}],["$","span",null,{"className":"text-1 text-caption","children":["© ",2026," Beomy. All rights reserved."]}]]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0-ed_yd_8cspw.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/1qnqqqe1l89_0.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/0l7lmrpj3f2tc.js","async":true}]
+e:["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]
+11:["$","$1","h",{"children":[null,["$","$L1f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#663399"}]]}],["$","div",null,{"hidden":true,"children":["$","$L20",null,{"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"[Browser] 브라우저 렌더링 | Beomy"}],["$","meta","1",{"name":"description","content":"브라우저가 화면을 렌더링 하는 과정에 대해 이야기할 것입니다."}],["$","meta","2",{"name":"author","content":"beomy"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","link","4",{"rel":"canonical","href":"https://beomy.github.io/tech/browser/browser-rendering/"}],["$","meta","5",{"property":"og:title","content":"[Browser] 브라우저 렌더링"}],["$","meta","6",{"property":"og:description","content":"브라우저가 화면을 렌더링 하는 과정에 대해 이야기할 것입니다."}],["$","meta","7",{"property":"og:url","content":"https://beomy.github.io/tech/browser/browser-rendering/"}],["$","meta","8",{"property":"og:site_name","content":"Beomy"}],["$","meta","9",{"property":"og:locale","content":"ko"}],["$","meta","10",{"property":"og:image","content":"https://beomy.github.io/assets/img/thumbnails/browser/browser.png"}],["$","meta","11",{"property":"og:image:alt","content":"[Browser] 브라우저 렌더링"}],["$","meta","12",{"property":"og:type","content":"article"}],["$","meta","13",{"property":"article:published_time","content":"2019-10-16T00:00:00+00:00"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","15",{"name":"twitter:creator","content":"beomy"}],["$","meta","16",{"name":"twitter:title","content":"[Browser] 브라우저 렌더링"}],["$","meta","17",{"name":"twitter:description","content":"브라우저가 화면을 렌더링 하는 과정에 대해 이야기할 것입니다."}],["$","meta","18",{"name":"twitter:image","content":"https://beomy.github.io/assets/img/thumbnails/browser/browser.png"}],["$","meta","19",{"name":"twitter:image:alt","content":"[Browser] 브라우저 렌더링"}],["$","link","20",{"rel":"icon","href":"/assets/img/brand/beomy-icon.png"}],["$","$L21","21",{}]]}]}]}],null]}]
+13:["$","$1","c",{"children":[null,["$","$L22",null,{"parallelRouterKey":"children","template":["$","$L23",null,{}]}]]}]
+16:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3dzek8xgk_dp7.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/2o31d8qeycp-m.js","async":true}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","$L24",null,{"id":"theme-init","strategy":"beforeInteractive","children":"(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();"}],["$","$L25",null,{"navData":{"categoryList":["tech","review"],"menuTree":[{"key":"review","counter":1,"children":[{"key":"book","counter":1,"children":[]}]},{"key":"tech","counter":61,"children":[{"key":"browser","counter":7,"children":[]},{"key":"etc","counter":11,"children":[]},{"key":"javascript","counter":4,"children":[]},{"key":"react","counter":8,"children":[]},{"key":"svelte","counter":22,"children":[]},{"key":"vuejs","counter":9,"children":[]}]}]},"children":["$","$L22",null,{"parallelRouterKey":"children","template":["$","$L23",null,{}],"notFound":[["$","main",null,{"children":["$","p",null,{"children":"Sorry, page not found!"}]}],[]]}]}],["$","$L24",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-MD8G3F353P","strategy":"lazyOnload"}],["$","$L24",null,{"id":"gtag-init","strategy":"lazyOnload","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-MD8G3F353P');\n          "}]]}]}]]}]
+1e:null
+19:true
+10:300
+10:C
+18:0
+12:"$undefined"
+14:"$undefined"
+17:"$undefined"
+f:"$undefined"

@@ -1,0 +1,585 @@
+1:"$Sreact.fragment"
+2:I[48347,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+3:I[48771,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+4:T984,<ul><li><a href="#name"><code>name</code></a></li><li><a href="#version"><code>version</code></a></li><li><a href="#files"><code>files</code></a></li><li><a href="#main"><code>main</code></a></li><li><a href="#module-yarn-2"><code>module</code> (Yarn 2+)</a></li><li><a href="#browser"><code>browser</code></a></li><li><a href="#type-node"><code>type</code> (Node)</a></li><li><a href="#packagemanager-node"><code>packageManager</code> (Node)</a></li><li><a href="#exports-node"><code>exports</code> (Node)</a></li><li><a href="#imports-node"><code>imports</code> (Node)</a></li><li><a href="#types-typescript"><code>types</code> (Typescript)</a></li><li><a href="#bin"><code>bin</code></a></li><li><a href="#scripts"><code>scripts</code></a></li><li><a href="#engines-npm-pnpm"><code>engines</code> (NPM, PNPM)</a></li><li><a href="#os"><code>os</code></a></li><li><a href="#cpu"><code>cpu</code></a></li><li><a href="#libc-yarn-2"><code>libc</code> (Yarn 2+)</a></li><li><a href="#dependencies"><code>dependencies</code></a></li><li><a href="#devdependencies"><code>devDependencies</code></a></li><li><a href="#peerdependencies"><code>peerDependencies</code></a></li><li><a href="#bundledependencies-npm"><code>bundleDependencies</code> (NPM)</a></li><li><a href="#optionaldependencies"><code>optionalDependencies</code></a></li><li><a href="#dependenciesmeta-yarn-2-pnpm"><code>dependenciesMeta</code> (Yarn 2+, PNPM)</a></li><li><a href="#peerdependenciesmeta"><code>peerDependenciesMeta</code></a></li><li><a href="#overrides-npm"><code>overrides</code> (NPM)</a></li><li><a href="#resolutions-yarn-2-pnpm"><code>resolutions</code> (Yarn 2+, PNPM)</a></li><li><a href="#private"><code>private</code></a></li><li><a href="#publishconfig"><code>publishConfig</code></a></li><li><a href="#workspaces-npm-yarn-2"><code>workspaces</code> (NPM, Yarn 2+)</a></li><li><a href="#description"><code>description</code></a></li><li><a href="#keywords"><code>keywords</code></a></li><li><a href="#homepage"><code>homepage</code></a></li><li><a href="#bugs"><code>bugs</code></a></li><li><a href="#license"><code>license</code></a></li><li><a href="#author-contributors"><code>author</code>, <code>contributors</code></a></li><li><a href="#funding"><code>funding</code></a></li><li><a href="#man"><code>man</code></a></li><li><a href="#directories"><code>directories</code></a></li><li><a href="#repository"><code>repository</code></a></li></ul>c:X
+11:X
+11:C
+0:{"buildId":"vRvvjM40XyhyJOEib5x-0","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"[ETC] package.json 톺아보기\",\"description\":\"package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.\",\"image\":[\"https://beomy.github.io/assets/img/thumbnails/etc/package_json.png\"],\"datePublished\":\"2022-10-14T00:00:00+00:00\",\"dateModified\":\"2022-10-14T00:00:00+00:00\",\"author\":{\"@type\":\"Person\",\"name\":\"beomy\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Beomy\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://beomy.github.io/assets/img/brand/beomy-logo.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://beomy.github.io/tech/etc/package-json/\"},\"url\":\"https://beomy.github.io/tech/etc/package-json/\"}"}}],[["$","$L2",null,{}],["$","main",null,{"className":"mx-auto pb-[10px] pt-[70px] flex flex-row-reverse leading-[2] screen-xs sm:screen-sm m:screen-m","children":[["$","$L3",null,{"url":"https://beomy.github.io//tech/etc/package-json/","toc":"$4"}],"$L5"]}],"$L6"]],["$L7","$L8","$L9"],"$La"]}],"isPartial":"$@b","staleTime":"$c","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$c","varyParams":null},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$c","varyParams":"$11"},{"rsc":"$L12","isPartial":"$@13","staleTime":"$c","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@14","rootVaryParams":null,"needsRuntimeRequest":"$@15"}
+16:I[17987,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+17:I[1304,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+1b:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"OutletBoundary"]
+1c:"$Sreact.suspense"
+1e:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"ViewportBoundary"]
+1f:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"MetadataBoundary"]
+20:I[7829,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"IconMark"]
+21:I[5296,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+22:I[13033,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+23:I[20775,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],""]
+24:I[3171,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+:HL["/_next/static/chunks/0-ed_yd_8cspw.css","style"]
+:HL["/_next/static/chunks/3hdp08pq73jzd.css","style"]
+18:T1975e,<p><code>package.json</code>에는 프로젝트에 대한 설명, 종속성 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 <code>package.json</code>에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다.</p>
+<p>사용하는 패키지 매니저(NPM, Yarn, PNPM 과 같은)에 따라 설정 가능한 필드들이 다를 수 있기 때문에 사용하는 패키지 매니저의 공식 홈페이지(<a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json">NPM</a>, <a href="https://yarnpkg.com/configuration/manifest">Yarn 2+</a>, <a href="https://pnpm.io/package_json">PNPM</a>)에서 설정 가능한 필드를 확인하는 것이 좋습니다.</p>
+<p>eslint나 prettier 등의 라이브러리 설정(eslint의 경우 <code>eslintConfig</code> 필드)도 <code>package.json</code>에서 가능하기 때문에 이러한 설정 역시 사용하는 라이브러리의 공식 홈페이지에서 확인하고 사용하는 것이 좋습니다.</p>
+<p><code>package.json</code>에 설정 가능한 필드를 하나씩 살펴보도록 하겠습니다. 필드 이름 옆 괄호로 어떠한 환경에서 설정 가능한 필드인지 나타내었습니다.</p>
+<h2 id="name"><code>name</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#name"><span class="anchor-icon">#</span></a></h2>
+<p><code>name</code> 필드는 프로젝트의 이름을 나타냅니다. 아래와 같이 <code>name</code> 필드를 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"@beomy/blog"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p><code>@beomy/</code>처럼 <code>name</code> 필드는 <code>@</code>로 시작하여 스코프를 지정할 수도 있습니다.</p>
+<h2 id="version"><code>version</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#version"><span class="anchor-icon">#</span></a></h2>
+<p><code>version</code> 필드는 프로젝트의 버전을 나타냅니다. 아래와 같이 <code>version</code> 필드를 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "version"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"1.2.3"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<blockquote>
+<p><strong>NPM 패키지에서 <code>name</code>과 <code>version</code></strong></p>
+<p>프로젝트가 NPM에 배포(Publish) 될 때 <code>name</code>와 <code>version</code> 필드는 필수 값입니다. <code>name</code>와 <code>version</code> 필드는 NPM 패키지의 식별자이기 때문에 <code>name</code>와 <code>version</code> 필드를 합친 값(예를 들어, <code>@beomy/blog@1.2.3</code>)은 유니크 한 값이여야 합니다.</p>
+</blockquote>
+<blockquote>
+<p><strong>오픈소스의 버전 구분</strong></p>
+<p>버전은 아래 그림과 같이 Major, Minor, Patch로 구성되어 있습니다. 이런 형태의 버전 표시방법은 오픈소스 프로젝트에 일반적으로 사용됩니다.</p>
+<p><img src="/assets/img/posts/etc/package_version.png" alt="package.json version" loading="lazy" decoding="async" width="410" height="191" srcset="/assets/img/posts/etc/nextImageExportOptimizer/package_version-opt-640.WEBP 640w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<ul>
+<li>Major: API가 변경/삭제 되어 사용자가 Major 버전을 업데이트 할 경우 기존의 코드가 동작하지 않을 수 있을 때, Major 버전을 업데이트하여 배포합니다.</li>
+<li>Minor: 이전 버전과 호환되는 방식으로 API가 추가/변경 되었을 때 Minor 버전을 업데이트하여 배포합니다.</li>
+<li>Patch: 이전 버전과 호환되는 버그 수정을 할 경우 Patch 버전을 업데이트하여 배포합니다.</li>
+</ul>
+</blockquote>
+<h2 id="files"><code>files</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#files"><span class="anchor-icon">#</span></a></h2>
+<p><code>files</code> 필드는 패키지가 설치될 때 포함될 항목들을 저장하는 필드입니다. 아래와 같이 glob 패턴으로 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "files"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "dist/**/*"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "lib/**/*"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  ]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p><code>files</code> 필드를 사용하지 않고 프로젝트 루프에 <code>.npmignore</code> 파일을 생성하여 NPM에 배포하지 않을 파일들을 지정할 수도 있습니다. <code>.npmignore</code> 파일이 없는 경우 <code>.gitignore</code> 파일에 작성된 목록들이 NPM에 배포되지 않습니다.</p>
+<h2 id="main"><code>main</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#main"><span class="anchor-icon">#</span></a></h2>
+<p><code>main</code> 필드는 패키지 사용자가 패키지를 사용할 때 진입 되는 경로입니다. 아래와 같이 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "main"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./sources/index.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>아래 <code>package.json</code>과 같이 작성된 패키지가 있다면,</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"beomy-lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "main"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"lib/index.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p><code>import BeomyLib from 'beomy-lib'</code>으로 패키지를 가져오면 <code>beomy-lib</code>의 <code>lib/index.js</code>를 가져오는 것과 동일합니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> BeomyLib </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'beomy-lib'</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Loads ./node_modules/beomy-lib/lib/index.js</span></span></code></pre>
+<h2 id="module-yarn-2"><code>module</code> (Yarn 2+)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#module-yarn-2"><span class="anchor-icon">#</span></a></h2>
+<p><code>module</code> 필드는 <code>main</code> 필드와 유사한 목적으로 사용 되는 필드입니다. ES6 호환 환경에서 패키지를 사용할 때 진입 되는 경로입니다. 아래와 같이 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "module"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./sources/index.mjs"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="browser"><code>browser</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#browser"><span class="anchor-icon">#</span></a></h2>
+<p><code>browser</code> 필드는 패키지가 클라이언트 사이드(Client side), 브라우저에서 사용되는 패키지라면 <code>main</code> 필드 대신 사용되는 필드입니다. 아래와 같이 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "browser"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./sources/index.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p><code>browser</code> 필드를 사용하면 클라이언트 사이드에서 동작하는 패키지라는 것을 명시하는 것이기 때문에, <code>window</code> 객체와 같이 Node.js에서 사용이 불가능한 요소에 대한 힌트를 사용자에게 제공하게 됩니다.</p>
+<h2 id="type-node"><code>type</code> (Node)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#type-node"><span class="anchor-icon">#</span></a></h2>
+<p><code>type</code> 필드는 <code>commonjs</code>(기본 값)와 <code>module</code> 중 하나를 사용할 수 있습니다. <code>type</code> 필드가 정의되어 있지 않다면 <code>commonjs</code>로 처리됩니다. 아래와 같이 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"module"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>파일의 확장자가 <code>.mjs</code>이거나 <code>type</code> 필드가 <code>module</code>일 경우 패키지는 ES Module를 사용하여 <code>import</code>나 <code>import()</code> 함수를 사용할 수 있게 됩니다. 파일 확장자가 <code>.cjs</code>이거나 <code>type</code> 필드가 <code>commonjs</code>일 경우(혹은 생략) <code>import</code>, <code>import()</code> 함수, <code>require()</code> 함수를 사용할 수 있습니다.</p>
+<h2 id="packagemanager-node"><code>packageManager</code> (Node)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#packagemanager-node"><span class="anchor-icon">#</span></a></h2>
+<p><code>packageManager</code> 필드는 패키지가 특정 패키지 매니저를 사용해야 할 경우 특정 패키지와 버전을 지정할 수 있는 필드입니다. 아래와 같이 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "packageManager"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"yarn@3.2.4"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="exports-node"><code>exports</code> (Node)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#exports-node"><span class="anchor-icon">#</span></a></h2>
+<p><code>main</code> 필드와 <code>exports</code> 필드를 사용하면 패키지의 진입점을 설정할 수 있습니다. <code>exports</code> 필드는 <code>main</code> 필드와 다르게 여러 개의 진입점을 설정할 수 있습니다. 아래와 같이 작성할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "exports"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "."</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./lib/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "./lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./lib/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "./feature"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./feature/index.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>Node 10 버전 이하에서는 <code>main</code> 필드를 사용해야 하고,  11 버전 이상에서는 <code>exports</code> 필드와 <code>main</code> 필드가 모두 정의되어 있는 경우 <code>exports</code> 필드가 우선합니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"beomy-lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "exports"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "."</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./lib/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "./lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./lib/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "./feature"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./feature/index.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>위의 코드에서는 <code>./feature/utils.js</code>가 <code>exports</code> 필드에 명시 되어있지 않기 때문에 <code>import util from 'beomy-lib/feature/utils.js'</code>가 불가능합니다. 이러한 경우 다른 파일들과 동일하게 <code>./feature/utils.js</code>를 <code>exports</code> 필드에 추가하거나 아래와 같이 작성하여 해결 할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"beomy-lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "exports"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "."</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./lib/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "./lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./lib/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "./feature"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./feature/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "./feature/*.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./feature/*.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> BeomyLib </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'beomy-lib'</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Loads ./node_modules/beomy-lib/lib/index.js</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> BeomyLib </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'beomy-lib/lib'</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Loads ./node_modules/beomy-lib/lib/index.js</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> BeomyLib </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'beomy-lib/feature'</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Loads ./node_modules/beomy-lib/feature/index.js</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> BeomyLib </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'beomy-lib/feature/utils.js'</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Loads ./node_modules/beomy-lib/feature/utils.js</span></span></code></pre>
+<h2 id="imports-node"><code>imports</code> (Node)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#imports-node"><span class="anchor-icon">#</span></a></h2>
+<p><code>exports</code> 필드가 패키지 사용자에게 패키지를 진입할 수 있는 진입점을 제공하는 필드라면, <code>imports</code> 필드는 패키지를 개발하는 패키지 생성자에게 진입점을 제공하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "imports"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "#dep"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "node"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"dep-node-native"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "default"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./dep-polyfill.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "dependencies"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "dep-node-native"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"^1.0.0"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>외부 패키지와 구분될 수 있도록 <code>#</code>으로 시작해야 합니다. 위의 코드와 같이 조건 별로 진입점을 다르게 제공할 수 있습니다. 패키지 생성자는 <code>import #dep</code>로 가져와 사용할 수 있습니다.</p>
+<h2 id="types-typescript"><code>types</code> (Typescript)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#types-typescript"><span class="anchor-icon">#</span></a></h2>
+<p><code>types</code> 필드는 타입스크립트의 <code>d.ts</code> 타입 정의 파일의 경로를 저장하는 필드입니다. <code>types</code> 필드 대신 <code>typings</code> 필드를 사용할 수 있습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "types"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./lib/index.d.ts"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>타입 정의 파일의 이름이 <code>index.d.ts</code>이고 패키지 루트(<code>index.js</code>의 위치)에 있으면 생략 가능합니다.</p>
+<h2 id="bin"><code>bin</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#bin"><span class="anchor-icon">#</span></a></h2>
+<p><code>bin</code> 필드는 실행 가능한 자바스크립트 파일을 상위 패키지에 노출하는데 사용되는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "bin"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "my-bin"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./dist/my-bin.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p><code>bin</code> 필드의 사용 방법은 글로벌로 설치되어 많이 사용되는 패키지를 살펴보면 쉽게 이해 할 수 있습니다. <a href="https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/package.json">create-react-app</a> 패키지의 <code>bin</code> 필드는 아래 코드와 같이 되어 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "bin"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "create-react-app"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./index.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="scripts"><code>scripts</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#scripts"><span class="anchor-icon">#</span></a></h2>
+<p><code>scripts</code> 필드는 실행 명령어를 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "scripts"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "test"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"jest"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "build"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"webpack-cli --config ./webpack.config.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "count-words"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"echo </span><span style="color:#A0111F;--shiki-dark:#FF9492">\"</span><span style="color:#032563;--shiki-dark:#ADDCFF">$@</span><span style="color:#A0111F;--shiki-dark:#FF9492">\"</span><span style="color:#032563;--shiki-dark:#ADDCFF"> | wc -w"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>NPM의 경우 <code>npm run test</code>와 같이 <code>npm run &#x3C;scripts 필드에 작성한 명령어></code> 형태로 사용할 수 있습니다. Yarn의 경우도 비슷하게 <code>yarn run &#x3C;scripts 필드에 작성한 명령어></code> 형태로 사용할 수 있는데, <code>run</code>을 생략하여 <code>yarn &#x3C;scripts 필드에 작성한 명령어></code> 형태로도 사용할 수 있습니다.</p>
+<h2 id="engines-npm-pnpm"><code>engines</code> (NPM, PNPM)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#engines-npm-pnpm"><span class="anchor-icon">#</span></a></h2>
+<p><code>engines</code> 필드는 패키지가 동작하는 Node 버전이나, 패키지 매니저(NPM, PNPM) 버전을 지정하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "engines"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "node"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">">=0.10.3 &#x3C;15"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "npm"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"~1.0.20"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "pnpm"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">">=3"</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // PNPM을 사용한다면,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>패키지 사용자의 <code>.npmrc</code> 설정 중 <code>engine-strict</code>가 설정되어 있지 않다면 <code>engines</code> 필드는 권고 사항입니다. 해당 패키지가 <code>dependencies</code>에 작성되었다면 패키지가 설치될 때 경고가 발생합니다.</p>
+<h2 id="os"><code>os</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#os"><span class="anchor-icon">#</span></a></h2>
+<p><code>os</code> 필드는 허용되는 os 목록을 저장하는 필드입니다. 패키지를 설치할 때 <code>process.platform</code> 값과 비교하여 일치하는 값이 없을 경우 <code>dependencies</code>에 작성된 패키지였다면 <code>postinstall</code> 스크립트가 실행되지 않고, <code>optionalDependencies</code>에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "os"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">"linux"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"darwin"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"win32"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>아래 코드와 같이 <code>!</code>를 사용하여 차단할 os를 지정할 수도 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "os"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">"!win32"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="cpu"><code>cpu</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#cpu"><span class="anchor-icon">#</span></a></h2>
+<p><code>cpu</code> 필드는 허용되는 cpu 목록을 저장하는 필드입니다. 패키지를 설치할 때 <code>process.arch</code> 값과 비교하여 일치하는 값이 없을 경우 <code>dependencies</code>에 작성된 패키지였다면 <code>postinstall</code> 스크립트가 실행되지 않고, <code>optionalDependencies</code>에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "cpu"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">"x64"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"ia32"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"arm64"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p><code>os</code> 필드와 마찬가지로 <code>!</code>를 사용하여 차단할 cpu를 지정할 수도 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "cpu"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">"!arm"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"!mips"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="libc-yarn-2"><code>libc</code> (Yarn 2+)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#libc-yarn-2"><span class="anchor-icon">#</span></a></h2>
+<p><code>libc</code> 필드는 허용하는 표준 C 라이브러리 목록을 저장하는 필드입니다. 패키지를 설치할 때 호스트의 표준 C 라이브러리와 비교하여 일치하는 값이 없을 경우 <code>dependencies</code>에 작성된 패키지였다면 <code>postinstall</code> 스크립트가 실행되지 않고, <code>optionalDependencies</code>에 작성된 패키지였다면 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "libc"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "glibc"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "musl"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  ]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="dependencies"><code>dependencies</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#dependencies"><span class="anchor-icon">#</span></a></h2>
+<p><code>dependencies</code> 필드는 패키지에서 사용되는 종속성들을 나열하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "dependencies"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "foo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"1.0.0 - 2.9999.9999"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "bar"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">">=1.0.2 &#x3C;2.1.2"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "baz"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">">1.0.2 &#x3C;=2.3.4"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "boo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"2.0.1"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "qux"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"&#x3C;1.0.0 || >=2.3.1 &#x3C;2.4.5 || >=2.5.2 &#x3C;3.0.0"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "til"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"~1.2"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "elf"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"~1.2.3"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "two"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"2.x"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "thr"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"3.3.x"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "lat"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"latest"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "dyl"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"file:../dyl"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>NPM을 사용할 경우 <code>npm install &#x3C;종속 패키지 이름></code>, Yarn을 사용할 경우 <code>yarn add &#x3C;종속 패키지 이름></code>, PNPM을 사용할 경우 <code>pnpm install &#x3C;종속 패키지 이름></code> 명령어를 사용하면 패키지를 설치하고 <code>dependencies</code> 필드에 설치 된 종속 패키지가 버전 정보와 함께 저장됩니다.</p>
+<blockquote>
+<p><strong>패키지 버전 표시 방법</strong></p>
+<p>패키지에 종속 패키지를 추가할 경우 <code>dependencies</code> 필드에 <code>&#x3C;패키지 이름>: "&#x3C;패키지 버전 정보>"</code> 형태로 저장됩니다. 패키지를 설치할 때 <code>&#x3C;패키지 버전 정보></code>와 매칭되는 패키지가 설치됩니다. <code>&#x3C;패키지 버전 정보></code>의 형태는 아래와 같습니다.</p>
+<ul>
+<li><code>version</code>: 정확한 <code>version</code>의 패키지와 매칭됩니다.</li>
+<li><code>1.2.x</code>: <code>1.2.0</code>, <code>1.2.1</code>와 같이 <code>1.2</code> 버전 대역의 패키지와 매칭됩니다.</li>
+<li><code>>version</code>: <code>version</code>보다 큰 버전의 패키지와 매칭됩니다.</li>
+<li><code>>=version</code>: <code>version</code>보다 크거나 같은 버전의 패키지와 매칭됩니다.</li>
+<li><code>&#x3C;version</code>: <code>version</code>보다 작은 버전의 패키지와 매칭됩니다.</li>
+<li><code>&#x3C;=version</code>: <code>version</code>보다 작거나 같은 버전의 패키지와 매칭됩니다.</li>
+<li><code>~version</code>: <code>version</code>과 가장 동일한 버전의 패키지와 매칭됩니다. 예를 들어,
+<ul>
+<li><code>~1.2.3</code>은 <code>>=1.2.3 &#x3C;1.3.0-0</code>과 동일한 의미입니다.</li>
+<li><code>~1.2</code>는 <code>>=1.2.0 &#x3C;1.3.0-0</code>과 <code>1.2.x</code>와 동일한 의미입니다.</li>
+<li><code>~1</code>은 <code>>=1.0.0 &#x3C;2.0.0-0</code>과 <code>1.x</code>와 동일한 의미입니다.</li>
+</ul>
+</li>
+<li><code>^version</code>: <code>version</code>과 호환 가능한 버전의 패키지와 매칭됩니다. 예를 들어,
+<ul>
+<li><code>^1.2.3</code>은 <code>>=1.2.3 &#x3C;2.0.0-0</code>과 동일한 의미입니다.</li>
+<li><code>^0.2.3</code>은 <code>>=0.2.3 &#x3C;0.3.0-0</code>과 동일한 의미입니다.</li>
+<li><code>^0.0.3</code>은 <code>>=0.0.3 &#x3C;0.0.4-0</code>과 동일한 의미입니다.</li>
+</ul>
+</li>
+<li><code>*</code>: 모든 버전의 패키지와 매칭됩니다.</li>
+<li><code>""</code>(공백 문자): <code>*</code>와 동일합니다.</li>
+<li><code>version1 - version2</code>: <code>>=version1 &#x3C;=version2</code>와 동일합니다.</li>
+<li><code>range1 || range2</code>: <code>range1</code> 또는 <code>range2</code>에 만족하는 버전의 패키지와 매칭됩니다.</li>
+<li><code>path/path/path</code>: <code>path/path/path</code> 로컬 경로에 해당하는 패키지와 매칭됩니다.</li>
+</ul>
+</blockquote>
+<h2 id="devdependencies"><code>devDependencies</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#devdependencies"><span class="anchor-icon">#</span></a></h2>
+<p><code>devDependencies</code> 필드는 개발 종속성들을 나열하는 필드입니다. <code>dependencies</code> 필드와 동일하게 작성합니다. <code>devDependencies</code> 필드에 나열된 종속성들은 패키지 개발자의 로컬에는 설치되지만, 패키지를 사용하는 사용자에게는 설치되지 않습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "devDependencies"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "webpack"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"^5.0.0"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="peerdependencies"><code>peerDependencies</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#peerdependencies"><span class="anchor-icon">#</span></a></h2>
+<p><code>peerDependencies</code> 종속성은 상속 받아야 하는 종속성을 나열하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "peerDependencies"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "react"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"*"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "react-dom"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"*"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>상속 받아야 하는 종속성이란 패키지 개발에 필요한 종속성을 peer(해석하면 또래)에게 제공받는 종속성입니다.</p>
+<p>예를 들어 react와 emotion을 사용하여 UI 컴포넌트를 패키지로 만든다고 하면, react나 emotion은 UI 컴포넌트 패키지 입장에서는 패키지 사용자에게서 제공받아야 합니다. 별도의 react와 emotion을 사용하면 사용자와 생성자가 각각의 react, emotion을 가지고 있기 때문에 react, emotion 패키지 내부의 데이터(예를 들면 emotion의 테마 정보)를 공유해 사용할 수 없게 됩니다.</p>
+<h2 id="bundledependencies-npm"><code>bundleDependencies</code> (NPM)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#bundledependencies-npm"><span class="anchor-icon">#</span></a></h2>
+<p><code>bundleDependencies</code> 필드는 <code>bundledDependencies</code> 이름으로 사용될 수 있습니다. <code>bundleDependencies</code> 이름 그대로 패키지를 배포(publish) 할 때 번들로 제공할 패키지를 배열로 정의합니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "bundleDependencies"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "renderized"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "super-streams"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  ]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="optionaldependencies"><code>optionalDependencies</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#optionaldependencies"><span class="anchor-icon">#</span></a></h2>
+<p><code>optionalDependencies</code> 필드는 이름 그대로 선택적 종속성 패키지를 나열하는 필드입니다. 종속성이 사용되지만 패키지를 찾을 수 없거나 설치에 실패한 경우에도 패키지 설치를 계속 진행하기 위해 사용하는 필드 입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "optionalDependencies"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "fsevents"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"^5.0.0"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="dependenciesmeta-yarn-2-pnpm"><code>dependenciesMeta</code> (Yarn 2+, PNPM)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#dependenciesmeta-yarn-2-pnpm"><span class="anchor-icon">#</span></a></h2>
+<p><code>dependenciesMeta</code> 필드는 <code>dependencies</code> 필드와 <code>devDependencies</code> 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 프로젝트가 모노레포로 구성되어 여러 개의 workspace가 있는 경우 프로젝트 루트의 <code>package.json</code>에 정의되어야 합니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "dependenciesMeta"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "fsevents"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "built"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">false</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "optional"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">false</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "unplugged"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">false</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>설정 할 패키지 이름을 키로 하고 값으로 오는 객체에 Yarn 2+에서는 <code>build</code>, <code>optional</code>, <code>unplugged</code>, PNPM에는 <code>injected</code> 설정을 추가할 수 있습니다. 각각의 설정의 내용은 아래와 같습니다.</p>
+<ul>
+<li><code>built</code>(Yarn 2+): 빌드 스크립트를 실행할지 실행하지 않을지 결정하는 플래그입니다. <code>false</code>를 지정하면 빌드 스크립트를 실행하지 않습니다. <code>.yarnrc.yml</code> 파일에 <code>enableScripts: false</code>를 저장하면 모든 패키지의 빌드 스크립트를 실행하지 않게 됩니다.</li>
+<li><code>optional</code>(Yarn 2+): 단어 그대로 옵셔널을 설정 할 수 있는 플래그입니다. <code>true</code>를 지정하면 설치가 성공한 것으로 판단되어 <code>os</code>, <code>cpu</code>, <code>libc</code> 등의 패키지 제약을 설정하는 필드들을 무시하게 됩니다. 이 옵션이 <code>true</code>로 설정된 패키지는 패키지가 컴파일 될 때 <code>optionalDependencies</code> 필드에 작성되어 집니다.</li>
+<li><code>unplugged</code>(Yarn 2+): 자바스크립트가 아닌 다른 언어로 된 스크립트를 포함하는 패키지에만 필요한 설정입니다. <code>true</code>인 경우 설치 시 패키지가 <code>.yarn/unplugged</code> 디렉토리(<code>.yarnrc.yml</code> 설정에서 디렉토리 이름 변경 가능)로 분리되어 설치됩니다.</li>
+<li><code>injected</code>(PNPM): <code>true</code>로 설정하면 패키지가 심볼릭 링크가 아닌 하드 링크됩니다.</li>
+</ul>
+<h2 id="peerdependenciesmeta"><code>peerDependenciesMeta</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#peerdependenciesmeta"><span class="anchor-icon">#</span></a></h2>
+<p><code>peerDependenciesMeta</code> 필드는 <code>peerDependencies</code> 필드에 나열된 패키지들의 추가 설정을 할 수 있는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "peerDependenciesMeta"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "react-dom"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "optional"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">true</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>패키지의 optional을 설정할 수 있는데, <code>optional</code> 값을 <code>true</code>로 설정할 경우 패키지 사용자쪽에서 <code>peerDependencies</code>로 패키지를 추가하지 않아도 에러가 발생하지 않게 됩니다.</p>
+<h2 id="overrides-npm"><code>overrides</code> (NPM)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#overrides-npm"><span class="anchor-icon">#</span></a></h2>
+<p>NPM에서 <code>overrides</code> 필드는 종속성의 종속성 버전을 바꾸기 위해서 사용됩니다. 아래 코드와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "overrides"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "foo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"1.0.0"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// `dependencies`에 의해 설치된 버전과 상관없이 항상 1.0.0버전의 foo 패키지가 설치됩니다.</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "bar"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "."</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"1.0.0"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// `dependencies`에 의해 설치된 버전과 상관없이 항상 1.0.0버전의 bar 패키지가 설치됩니다.</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "baz"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"1.0.0"</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // bar 패키지의 baz 종속 패키지의 버전을 1.0.0으로 설치합니다.</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    },</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "boo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "qux"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">        "til"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"1.0.0"</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // boo 패키지의 qux 종속 패키지의 til 종속 패키지의 버전을 1.0.0으로 설치합니다.</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">      }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    },</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "elf@2.0.0"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "two"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"1.0.0"</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // 2.0.0 버전의 elf 패키지의 two 종속 패키지의 버전을 1.0.0으로 설치합니다.</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>위의 코드와 같이 특정할 종속 패키지의 깊이를 조절할 수 있으며, 특정 버전의 패키지 종속성만 버전을 수정할 수도 있습니다.</p>
+<p>PNPM의 경우 <code>pnpm.overrides</code>, <code>resolutions</code> 필드가, Yarn 2+의 경우 <code>resolutions</code> 필드가 NPM의 <code>overrides</code> 필드와 동일한 기능을 합니다.</p>
+<h2 id="resolutions-yarn-2-pnpm"><code>resolutions</code> (Yarn 2+, PNPM)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#resolutions-yarn-2-pnpm"><span class="anchor-icon">#</span></a></h2>
+<p><code>resolutions</code> 필드는 NPM의 <code>overrides</code> 필드와 동일한 기능을 하지만 사용 방법이 조금 다릅니다. <code>resolutions</code> 필드는 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "resolutions"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "relay-compiler"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"3.0.0"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "webpack/memory-fs"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"0.4.1"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "@babel/core/json5"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"2.1.0"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "@babel/core/@babel/generator"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"7.3.4"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "@babel/core@npm:7.0.0/@babel/generator"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"7.3.4"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="private"><code>private</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#private"><span class="anchor-icon">#</span></a></h2>
+<p><code>private</code> 필드의 값을 <code>true</code>로 설정하면 패키지 배포(publish)가 되지 않습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "private"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">true</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="publishconfig"><code>publishConfig</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#publishconfig"><span class="anchor-icon">#</span></a></h2>
+<p><code>publishConfig</code> 필드를 사용하면 패키지를 배포(publish) 할 때 몇가지 설정들을 오버라이드 할 수 있습니다. 패키지 매니저에 따라 오버라이드 할 수 있는 값들이 다르기 때문에 패키지 매니저의 공식 문서에서 오버라이드 되는 필드들을 확인하는 것이 좋습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "publishConfig"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "access"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"public"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "bin"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./build/bin.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "browser"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./build/browser.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "executableFiles"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">      "./dist/shim.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    ],</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "main"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./build/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "exports"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "."</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./build/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "./lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./build/index.js"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "./feature"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./build/feature/index.js"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    },</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "module"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./build/index.mjs"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "registry"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://npm.pkg.github.com"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>Yarn 2+에서는 <code>bin</code>, <code>browser</code>, <code>main</code>, <code>module</code>, <code>exports</code> 필드를 오버라이드 할 수 있고, <code>access</code>, <code>executableFiles</code>, <code>registry</code> 필드를 추가로 설정할 수 있습니다.</p>
+<ul>
+<li><code>access</code>: NPM에 패키지를 공개할지 공개하지 않을지 결정하는 필드입니다. <code>public</code>, <code>restricted</code> 두 개의 값 중 하나를 설정해야 하는데, <code>restricted</code>을 설정하면 패키지가 비공개 됩니다.</li>
+<li><code>executableFiles</code>: 기본적으로 <code>bin</code> 필드에 나열된 파일 외에는 실행 가능한 파일로 표시되지 않습니다. <code>executableFiles</code> 필드를 사용하면 <code>bin</code> 필드를 통해 직접 실행할 수 없는 파일의 경우에도 실행가능 플래그(파일 권한 r(read), w(write), x(execute) 중 x)가 설정됩니다.</li>
+<li><code>registry</code>: 패키지의 레지스토리 경로를 저장하는 필드입니다.</li>
+</ul>
+<p>PNPM에서는 <code>bin</code>, <code>main</code>, <code>exports</code>, <code>types</code>(또는 <code>typings</code>), <code>module</code>, <code>browser</code>, <code>cpu</code>, <code>os</code> 필드 등을 오버라이드 할 수 있고, <code>executableFiles</code>, <code>directory</code>, <code>linkDirectory</code> 필드를 추가로 설정할 수 있습니다.</p>
+<ul>
+<li><code>executableFiles</code>: Yarn 2+와 동일한 기능을 하는 필드입니다.</li>
+<li><code>directory</code>: 현재 <code>package.json</code> 위치를 기준으로 배포(publish) 되는 디렉토리를 저장하는 필드입니다.</li>
+<li><code>linkDirectory</code>: <code>true</code>로 설정할 경우 개발 중에 <code>publishConfig.directory</code> 위치에 심볼릭 링크가 생성됩니다.</li>
+</ul>
+<h2 id="workspaces-npm-yarn-2"><code>workspaces</code> (NPM, Yarn 2+)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#workspaces-npm-yarn-2"><span class="anchor-icon">#</span></a></h2>
+<p><code>workspaces</code> 필드는 프로젝트를 모노레포로 구성할 때 하위 프로젝트의 경로를 나열하는 필드입니다. glob 패턴으로 작성할 수 있습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "workspaces"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "packages/*"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  ]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>NPM과 Yarn의 경우 <code>package.json</code>의 <code>workspaces</code> 필드를 사용하여 모노레포를 구현할 수 있지만, PNPM의 경우 <code>pnpm-workspace.yaml</code> 파일에 하위 프로젝트를 저장하여 모노레포를 구현하게 됩니다.</p>
+<h2 id="description"><code>description</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#description"><span class="anchor-icon">#</span></a></h2>
+<p>패키지에 대한 설명을 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "description"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"A packaged foo fooer for fooing foos"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="keywords"><code>keywords</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#keywords"><span class="anchor-icon">#</span></a></h2>
+<p>패키지의 키워드를 나열하는 필드입니다. <code>npm search</code>로 사용자들이 필요한 패키지를 검색할 때 사용되는 정보입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "keywords"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">"xhr"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"http"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"ajax"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"promise"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">"node"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="homepage"><code>homepage</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#homepage"><span class="anchor-icon">#</span></a></h2>
+<p>패키지의 홈페이지 주소를 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "homepage"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://beomy.github.io"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="bugs"><code>bugs</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#bugs"><span class="anchor-icon">#</span></a></h2>
+<p>패키지의 이슈가 있을 경우 제보할 수 있는 이메일이나 url을 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "bugs"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://github.com/owner/project/issues"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "email"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"project@hostname.com"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>url만 제공하고 싶을 경우 아래와 같이 문자열을 저장하면 됩니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "bugs"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://github.com/owner/project/issues"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="license"><code>license</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#license"><span class="anchor-icon">#</span></a></h2>
+<p>패키지의 라이센스를 표시하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "license"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"BSD-3-Clause"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "license"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"(ISC OR GPL-3.0)"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// 여러 개의 라이센스를 가지고 있을 때</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "license"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"SEE LICENSE IN &#x3C;filename>"</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // 커스텀한 라이센스를 표시할 때</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p>아래와 같은 방식은 더이상 사용되지 않습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Not valid metadata</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "license"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"ISC"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://opensource.org/licenses/ISC"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Not valid metadata</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "licenses"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : [</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"MIT"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://www.opensource.org/licenses/mit-license.php"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Apache-2.0"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://opensource.org/licenses/apache2.0.php"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  ]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="author-contributors"><code>author</code>, <code>contributors</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#author-contributors"><span class="anchor-icon">#</span></a></h2>
+<p><code>author</code>, <code>contributors</code> 두 개의 필드는 모두 패키지를 만드는데 기여한 사람들을 저장할 때 사용되는 필드입니다.</p>
+<p><code>author</code> 필드는 한 사람을 표시할 수 있습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "author"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Hyo Bum lee"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "email"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"beomyh.lee@gmail.com"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://beomy.github.io"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "author"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Hyo Bum lee &#x3C;beomyh.lee@gmail.com> (https://beomy.github.io)"</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // 한 줄로 표시할 수 있습니다.</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<p><code>contributors</code> 필드는 여러 사람을 배열로 표시할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "contributors"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Hyo Bum lee"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "email"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"beomyh.lee@gmail.com"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://beomy.github.io"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Beomy"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "email"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"beomyh.lee@gmail.com"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://beomy.github.io"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  ]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="funding"><code>funding</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#funding"><span class="anchor-icon">#</span></a></h2>
+<p>패키지 개발자에게 펀딩 할 수 있는 경로를 표시하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "funding"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"individual"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"http://example.com/donate"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "funding"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"patreon"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://www.patreon.com/my-account"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "funding"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"http://example.com/donate"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "funding"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"individual"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"http://example.com/donate"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    },</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "http://example.com/donateAlso"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"patreon"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> : </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://www.patreon.com/my-account"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  ]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="man"><code>man</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#man"><span class="anchor-icon">#</span></a></h2>
+<p>manual 프로그램이 읽을 수 있는 파일 혹은 파일 배열을 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "man"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./man/doc.1"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "man"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "./man/foo.1"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#032563;--shiki-dark:#ADDCFF">    "./man/bar.1"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  ]</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h2 id="directories"><code>directories</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#directories"><span class="anchor-icon">#</span></a></h2>
+<p>CommonJS 패키지 스펙에서는 <code>directories</code> 필드를 사용하여 패키지 구성을 나타낼 수 있습니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "directories"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "bin"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./bin"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "doc"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./doc"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./lib"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "man"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"./man"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<ul>
+<li><code>directories.bin</code>: <code>bin</code> 필드와 동일한 기능을 하는 필드입니다. <code>directories.bin</code>와 <code>bin</code> 하나의 필드만 설정되어야 합니다.</li>
+<li><code>directories.doc</code>: 패키지의 문서, 마크다운 파일들의 위치를 표시하는 필드입니다.</li>
+<li><code>directories.lib</code>: 패키지의 라이브러리의 위치를 표시하는 필드입니다.</li>
+<li><code>directories.man</code>: <code>man</code> 필드와 동일한 기능을 하는 필드입니다. 매뉴얼 페이지의 경로를 저장합니다. <code>man</code> 필드에 배열 형태로 저장하는 것을 간단(Sugar)하게 만들 수 있게 제공되는 필드입니다.</li>
+</ul>
+<p><a href="https://github.com/npm/cli/blob/latest/package.json">npm-cli</a>에서 <code>directories</code> 필드가 설정되어 있는 것을 확인할 수 있습니다.</p>
+<h2 id="repository"><code>repository</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#repository"><span class="anchor-icon">#</span></a></h2>
+<p>코드가 있는 위치를 저장하는 필드입니다. 아래와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">{</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "repository"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"git"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://github.com/npm/cli.git"</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "repository"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"npm/npm"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "repository"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"github:user/repo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "repository"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"gist:11081aaa281"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "repository"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"bitbucket:user/repo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "repository"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"gitlab:user/repo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  "repository"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: {</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "type"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"git"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "url"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"https://github.com/facebook/react.git"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    "directory"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"packages/react-dom"</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> // 모노레포로 구성되어 루트에 패키지가 없는 경우 경로를 지정할 수 있습니다.</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h5 id="참고">참고<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><a href="https://flaviocopes.com/npm-peer-dependencies/">https://flaviocopes.com/npm-peer-dependencies/</a></li>
+<li><a href="https://yceffort.kr/2021/10/debt-of-package-json">https://yceffort.kr/2021/10/debt-of-package-json</a></li>
+<li><a href="https://gigibean.tistory.com/m/73">https://gigibean.tistory.com/m/73</a></li>
+<li><a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json">https://docs.npmjs.com/cli/v8/configuring-npm/package-json</a></li>
+<li><a href="https://nodejs.org/api/packages.html">https://nodejs.org/api/packages.html</a></li>
+<li><a href="https://yarnpkg.com/configuration/manifest">https://yarnpkg.com/configuration/manifest</a></li>
+<li><a href="https://heropy.blog/2019/01/31/node-js-npm-module-publish/">https://heropy.blog/2019/01/31/node-js-npm-module-publish/</a></li>
+<li><a href="https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH%EC%99%80-%EB%AA%85%EC%84%B8%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC">https://velog.io/@slaslaya/Semantic-Versioning-2.0.0-MAJOR-MINOR-PATCH와-명세에-관하여</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html">https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html</a></li>
+<li><a href="https://docs.npmjs.com/cli/v8/using-npm/scripts">https://docs.npmjs.com/cli/v8/using-npm/scripts</a></li>
+<li><a href="https://yarnpkg.com/advanced/lifecycle-scripts">https://yarnpkg.com/advanced/lifecycle-scripts</a></li>
+<li><a href="https://github.com/npm/node-semver#versions">https://github.com/npm/node-semver#versions</a></li>
+<li><a href="https://pnpm.io/package_json">https://pnpm.io/package_json</a></li>
+<li><a href="https://dev.to/arcanis/introducing-yarn-2-4eh1">https://dev.to/arcanis/introducing-yarn-2-4eh1</a></li>
+<li><a href="https://programmingsummaries.tistory.com/385">https://programmingsummaries.tistory.com/385</a></li>
+</ul>5:["$","article",null,{"className":"w-[calc(100%-380px)] max-sm:w-full","children":[["$","div",null,{"className":"leading-[1.5] [&>div]:mb-[30px] [&_.post-banner-img]:block [&_.post-banner-img]:h-auto [&_.post-banner-img]:w-full [&_.post-banner-img]:rounded-[8px]","children":[["$","h1",null,{"className":"m-0 text-7","children":"[ETC] package.json 톺아보기"}],["$","div",null,{"children":[["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle mr-[20px] text-caption","children":[["$","$L16",null,{"type":"BsCalendar"}],["$","span",null,{"children":"2022년 10월 14일"}]]}],["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle text-caption","children":[["$","$L16",null,{"type":"BsClock"}],["$","span",null,{"children":[7,"분 소요"]}]]}]]}],["$","$L17",null,{"img":"etc/package_json.png","priority":true,"width":2000,"height":1000}]]}],["$","div",null,{"className":"post-contents","dangerouslySetInnerHTML":{"__html":"$18"}}],"$L19","$L1a"]}]
+6:["$","footer",null,{"className":"border-t border-grey-90 bg-grey-100 py-[25px] text-center","children":[["$","nav",null,{"className":"mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]","children":[["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://github.com/beomy","target":"_blank","aria-label":"github","children":["$","$L16",null,{"type":"BsGithub","size":20}]}],["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://www.linkedin.com/in/효범-이-930453134","target":"_blank","aria-label":"linkedin","children":["$","$L16",null,{"type":"BsLinkedin","size":20}]}]]}],["$","span",null,{"className":"text-1 text-caption","children":["© ",2026," Beomy. All rights reserved."]}]]}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0-ed_yd_8cspw.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/1qnqqqe1l89_0.js","async":true}]
+9:["$","script","script-1",{"src":"/_next/static/chunks/0l7lmrpj3f2tc.js","async":true}]
+a:["$","$L1b",null,{"children":["$","$1c",null,{"name":"Next.MetadataOutlet","children":"$@1d"}]}]
+d:["$","$1","h",{"children":[null,["$","$L1e",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#663399"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1f",null,{"children":["$","$1c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"[ETC] package.json 톺아보기 | Beomy"}],["$","meta","1",{"name":"description","content":"package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다."}],["$","meta","2",{"name":"author","content":"beomy"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","link","4",{"rel":"canonical","href":"https://beomy.github.io/tech/etc/package-json/"}],["$","meta","5",{"property":"og:title","content":"[ETC] package.json 톺아보기"}],["$","meta","6",{"property":"og:description","content":"package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다."}],["$","meta","7",{"property":"og:url","content":"https://beomy.github.io/tech/etc/package-json/"}],["$","meta","8",{"property":"og:site_name","content":"Beomy"}],["$","meta","9",{"property":"og:locale","content":"ko"}],["$","meta","10",{"property":"og:image","content":"https://beomy.github.io/assets/img/thumbnails/etc/package_json.png"}],["$","meta","11",{"property":"og:image:alt","content":"[ETC] package.json 톺아보기"}],["$","meta","12",{"property":"og:type","content":"article"}],["$","meta","13",{"property":"article:published_time","content":"2022-10-14T00:00:00+00:00"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","15",{"name":"twitter:creator","content":"beomy"}],["$","meta","16",{"name":"twitter:title","content":"[ETC] package.json 톺아보기"}],["$","meta","17",{"name":"twitter:description","content":"package.json에는 프로젝트에 대한 설명, 패키지, 실행 스크립트 등의 정보를 담는 매니페이스(Manifest) 파일입니다. 이번 포스트에서는 package.json에서 설정할 수 있는 필드 값들을 하나씩 살펴보도록 하겠습니다."}],["$","meta","18",{"name":"twitter:image","content":"https://beomy.github.io/assets/img/thumbnails/etc/package_json.png"}],["$","meta","19",{"name":"twitter:image:alt","content":"[ETC] package.json 톺아보기"}],["$","link","20",{"rel":"icon","href":"/assets/img/brand/beomy-icon.png"}],["$","$L20","21",{}]]}]}]}],null]}]
+f:["$","$1","c",{"children":[null,["$","$L21",null,{"parallelRouterKey":"children","template":["$","$L22",null,{}]}]]}]
+12:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3dzek8xgk_dp7.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/2o31d8qeycp-m.js","async":true}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","$L23",null,{"id":"theme-init","strategy":"beforeInteractive","children":"(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();"}],["$","$L24",null,{"navData":{"categoryList":["tech","review"],"menuTree":[{"key":"review","counter":1,"children":[{"key":"book","counter":1,"children":[]}]},{"key":"tech","counter":61,"children":[{"key":"browser","counter":7,"children":[]},{"key":"etc","counter":11,"children":[]},{"key":"javascript","counter":4,"children":[]},{"key":"react","counter":8,"children":[]},{"key":"svelte","counter":22,"children":[]},{"key":"vuejs","counter":9,"children":[]}]}]},"children":["$","$L21",null,{"parallelRouterKey":"children","template":["$","$L22",null,{}],"notFound":[["$","main",null,{"children":["$","p",null,{"children":"Sorry, page not found!"}]}],[]]}]}],["$","$L23",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-MD8G3F353P","strategy":"lazyOnload"}],["$","$L23",null,{"id":"gtag-init","strategy":"lazyOnload","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-MD8G3F353P');\n          "}]]}]}]]}]
+25:I[43492,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],""]
+26:I[44892,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+19:["$","div",null,{"className":"mt-[20px] flex items-center justify-between leading-[1.4] max-xs:block","children":[["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L25",null,{"href":"/tech/etc/http-caching/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center leading-[1.4]","children":[["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L16",null,{"type":"BsChevronLeft","size":"100%"}]}],["$","div",null,{"className":"ml-[20px] mr-auto [&_small]:text-0","children":[["$","small",null,{"children":"이전 포스트"}],["$","div",null,{"children":"[ETC] HTTP 캐시"}]]}]]}]}],["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L25",null,{"href":"/tech/etc/package-json-scripts/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center text-right leading-[1.4]","children":[["$","div",null,{"className":"ml-auto mr-[20px] [&_small]:text-0","children":[["$","small",null,{"children":"다음 포스트"}],["$","div",null,{"children":"[ETC] package.json의 scripts"}]]}],["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L16",null,{"type":"BsChevronRight","size":"100%"}]}]]}]}]]}]
+1a:["$","$L26",null,{"url":"https://beomy.github.io//tech/etc/package-json/","title":"[ETC] package.json 톺아보기"}]
+1d:null
+15:true
+c:300
+c:C
+14:0
+e:"$undefined"
+10:"$undefined"
+13:"$undefined"
+b:"$undefined"

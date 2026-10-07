@@ -1,0 +1,145 @@
+1:"$Sreact.fragment"
+2:I[48347,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+3:I[48771,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+4:I[17987,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+5:I[1304,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+6:T415c,<p><code>Yarn</code>은 <code>NPM</code>과 같은 Node Package Manager입니다. <code>Yarn</code>의 1 버전을 <code>Yarn Classic</code>이라고 하고 <code>Yarn</code>의 2 버전 이상을 <code>Yarn Berry</code>라고 합니다.</p>
+<h2 id="yarn-classic"><code>Yarn Classic</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#yarn-classic"><span class="anchor-icon">#</span></a></h2>
+<p><code>Yarn</code>의 1 버전을 <code>Yarn Classic</code> 이라고 합니다. <a href="https://github.com/yarnpkg/yarn">Yarn Classic 저장소</a>에 프로젝트 설명을 보면, 1.x 버전의 유지보수를 중단하고 새로운 기능이나 버그 픽스는 <code>Yarn Berry</code>에서 이루어 진다고 명시되어 있습니다.</p>
+<p><img src="/assets/img/posts/etc/yarn_classic_frozen.png" alt="동결된 Yarn Classic" loading="lazy" decoding="async" width="273" height="121" srcset="/assets/img/posts/etc/nextImageExportOptimizer/yarn_classic_frozen-opt-640.WEBP 640w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<h3 id="yarn-classic의-문제점"><code>Yarn Classic</code>의 문제점<a class="anchor after" aria-hidden="true" tabindex="-1" href="#yarn-classic의-문제점"><span class="anchor-icon">#</span></a></h3>
+<p><code>Yarn Classic</code>은 <code>NPM</code>과 동일하게 <code>node_modules</code> 디렉토리를 이용하여 의존성을 관리합니다. <code>node_modules</code>를 이용한 의존성 관리는 아래와 같은 3가지 문제점이 있습니다.</p>
+<h4 id="의존성-탐색-알고리즘의-비효율">의존성 탐색 알고리즘의 비효율<a class="anchor after" aria-hidden="true" tabindex="-1" href="#의존성-탐색-알고리즘의-비효율"><span class="anchor-icon">#</span></a></h4>
+<p>패키지를 찾기 위해서 아래 그림과 같이 <code>node_modules</code> 디렉토리를 탐색합니다. 이 때 <code>node_modules</code> 디렉토리를 읽기 위해 메모리 I/O를 반복하게 됩니다.</p>
+<p><img src="/assets/img/posts/etc/node_modules_search.png" alt="node_modules 검색 과정" loading="lazy" decoding="async" width="490" height="267" srcset="/assets/img/posts/etc/nextImageExportOptimizer/node_modules_search-opt-640.WEBP 640w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<h4 id="큰-저장-공간과-설치-시간">큰 저장 공간과 설치 시간<a class="anchor after" aria-hidden="true" tabindex="-1" href="#큰-저장-공간과-설치-시간"><span class="anchor-icon">#</span></a></h4>
+<p><code>node_modules</code> 디렉토리에는 사용되는 모든 의존성 패키지들이 설치되어 매우 큰 공간을 차지하게 됩니다. 또한 <code>node_modules</code> 디렉토리 구조를 만들기 위해 많은 메모리 I/O가 필요합니다.</p>
+<h4 id="유령-의존성phantom-dependency">유령 의존성(phantom dependency)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#유령-의존성phantom-dependency"><span class="anchor-icon">#</span></a></h4>
+<p><code>Yarn Classic</code>은 <code>node_modules</code>의 의존성 탐색, 저장 공간과 설치 시간의 비효율을 줄이기 위해 호이스팅(Hoisting)을 사용합니다. 호이스팅은 아래 그림과 같이 의존성 트리를 만듭니다.</p>
+<p><img src="/assets/img/posts/etc/monorepo_yarn_hoist.png" alt="yarn 호이스팅" loading="lazy" decoding="async" width="631" height="251" srcset="/assets/img/posts/etc/nextImageExportOptimizer/monorepo_yarn_hoist-opt-640.WEBP 640w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>호이스팅이 되면서 <code>Package-1</code>에서는 설치하지 않았던 <code>B (1.0)</code> 의존성이 설치되어 <code>B (1.0)</code>를 <code>import</code>하여 사용할 수 있는 유령 의존성이 생기게 됩니다. 이런 유령 의존성은 <code>A (1.0)</code>와 <code>C (1.0)</code> 의존성이 제거 되면 함께 제거되고, 또 <code>A (1.0)</code>이 업데이트 되어 <code>B (1.0)</code>를 사용하지 않게 된다면 자동으로 제거되어 어떤 사이드 이팩트가 발생 할 지 예상하기 어렵게 만듭니다.</p>
+<h2 id="yarn-berry"><code>Yarn Berry</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#yarn-berry"><span class="anchor-icon">#</span></a></h2>
+<p><code>Yarn</code>의 2 버전 이상을 <code>Yarn Berry</code> 이라고 합니다. <code>Yarn Berry</code>에는 PnP와 Zero Install 두가지 중요한 개념이 있습니다.</p>
+<h3 id="pnpplugnplay">PnP(Plug'n'Play)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#pnpplugnplay"><span class="anchor-icon">#</span></a></h3>
+<p>PnP는 Plug And Play의 줄임말로 해석하면 '꼽기만 하면 사용할 수 있다.'로 해석할 수 있습니다. <code>Yarn Berry</code>는 성능 개선을 위해 <code>node_modules</code>를 읽는 느린 메모리 I/O 대신 <code>.yarn/cache</code>에 종속 패키지들을 zip 형태로 저장하고, <code>.pnp.cjs</code> 파일에 의존성 패키지의 의존성 정보를 저장하여 의존성 정보를 알 수 있게 만들었습니다.</p>
+<blockquote>
+<p><strong><code>.yarn/cache</code>와 <code>.pnp.cjs</code></strong></p>
+<ul>
+<li><code>.yarn/cache</code>: 디렉토리 하위에 의존성 패키지들을 zip 형태로 저장하고 있습니다.</li>
+<li><code>.pnp.cjs</code>: 어떠한 패키지가 어떠한 패키지에 의존성이 있는지 저장하고 있는 파일입니다. 예를 들어 A 패키지를 실행해야 한다면, <code>.pnp.cjs</code> 파일에서 A 패키지의 의존성 정보를 읽어와서 A 패키지의 의존성 패키지를 <code>.yarn/cache</code>에서 찾아 A 패키지를 실행합니다.</li>
+</ul>
+</blockquote>
+<p><code>Yarn Berry</code>는 PnP 방식을 사용하여 아래의 3가지 개선점을 만들었습니다.</p>
+<h4 id="의존성-탐색-시간의-단축">의존성 탐색 시간의 단축<a class="anchor after" aria-hidden="true" tabindex="-1" href="#의존성-탐색-시간의-단축"><span class="anchor-icon">#</span></a></h4>
+<p><code>Yarn Classic</code>은 패키지의 <code>node_modules</code>에 의존성을 저장하고, 또 그 의존성 패키지의 <code>node_modules</code> 밑에 의존성을 저장하는 방식으로 수직적으로 의존성을 관리하였다면, <code>Yarn Berry</code>는 <code>.yarn/cache</code>에 모든 의존성을 담아 수평적으로 의존성을 관리합니다. 수평적 의존성 관리는 모든 패키지의 접근 시간을 O(1)로 만들어 <code>require</code> 등으로 패키지를 가져오는데 사용되는 시간을 단축했습니다.</p>
+<h4 id="의존성-파일-크기-감소">의존성 파일 크기 감소<a class="anchor after" aria-hidden="true" tabindex="-1" href="#의존성-파일-크기-감소"><span class="anchor-icon">#</span></a></h4>
+<p><code>Yarn Berry</code>는 <code>.yarn/cache</code>에 압축 파일 단위로 의존성을 관리하여 파일의 수와 크기를 감소시켰습니다.</p>
+<h4 id="유령-의존성-해결">유령 의존성 해결<a class="anchor after" aria-hidden="true" tabindex="-1" href="#유령-의존성-해결"><span class="anchor-icon">#</span></a></h4>
+<p><code>Yarn Berry</code>는 호이스팅을 사용하지 않아 유령 의존성 사용으로 발생하는 사이드 이팩트를 막았습니다.</p>
+<h3 id="zero-install">Zero Install<a class="anchor after" aria-hidden="true" tabindex="-1" href="#zero-install"><span class="anchor-icon">#</span></a></h3>
+<p><code>Yarn Berry</code>를 좀 더 PnP스럽게 사용하려면 Zero Install을 사용하면 됩니다. Zero Install이란 단어 그대로 설치 없이(<code>yarn install</code> 명령어 없이) 바로 프로젝트를 실행할 수 있도록 하는 설정을 이야기합니다.</p>
+<p><code>.yarn/cache</code>에 저장되어 있는 의존성 패키지와 <code>.pnp.cjs</code>에 저장되어 있는 패키지 의존성 정보를 버전 관리 프로그램(Git 등..)이 관리할 수 있도록 해서 구현할 수 있습니다. 버전 관리 프로그램으로 Git을 사용한다면, Zero Install을 사용할 때와 사용하지 않을 때 <code>.gitignore</code> 파일을 아래 코드와 같이 설정하면 됩니다.</p>
+<pre><code># Zero Install 사용할 경우
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+</code></pre>
+<pre><code># Zero Install 사용하지 않을 경우
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+</code></pre>
+<p>Zero Install을 사용하면 아래 2가지 장점이 있습니다.</p>
+<h4 id="ci-시간-감소">CI 시간 감소<a class="anchor after" aria-hidden="true" tabindex="-1" href="#ci-시간-감소"><span class="anchor-icon">#</span></a></h4>
+<p>프로젝트마다 다르지만, 보통의 경우 아래와 같은 과정을 거쳐 서비스가 배포됩니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">git</span><span style="color:#032563;--shiki-dark:#ADDCFF"> clone</span><span style="color:#A0111F;--shiki-dark:#FF9492"> &#x3C;</span><span style="color:#032563;--shiki-dark:#ADDCFF">project</span><span style="color:#032563;--shiki-dark:#ADDCFF"> repositor</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">y</span><span style="color:#A0111F;--shiki-dark:#FF9492">></span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">yarn</span><span style="color:#032563;--shiki-dark:#ADDCFF"> install</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">yarn</span><span style="color:#032563;--shiki-dark:#ADDCFF"> build</span></span></code></pre>
+<p>Zero Install을 사용할 경우 의존성을 설치할 필요가 없어서, <code>yarn install</code> 명령어 없이 <code>git clone</code> 만으로 프로젝트가 바로 빌드 가능한 상태가 되어 의존성을 설치하는 시간을 절약할 수 있습니다.</p>
+<h4 id="브랜치-변경시-바로-프로젝트-실행-가능">브랜치 변경시 바로 프로젝트 실행 가능<a class="anchor after" aria-hidden="true" tabindex="-1" href="#브랜치-변경시-바로-프로젝트-실행-가능"><span class="anchor-icon">#</span></a></h4>
+<p>버전 관리 프로그램을 통해 의존성 패키지가 관리되면, 브랜치를 변경할 경우 해당 브랜치에 이미 필요한 의존성 패키지가 존재하여 추가로 <code>yarn install</code> 명령어 실행 없이 프로젝트를 실행할 수 있습니다.</p>
+<h3 id="yarn-berry-설정"><code>Yarn Berry</code> 설정<a class="anchor after" aria-hidden="true" tabindex="-1" href="#yarn-berry-설정"><span class="anchor-icon">#</span></a></h3>
+<p><code>.yarnrc.yml</code> 파일에서 <code>Yarn Berry</code> 설정을 할 수 있습니다. <code>.yarnrc.yml</code> 파일에 작성 할 수 있는 몇가지 <code>Yarn Berry</code> 설정을 살펴도록 하겠습니다. 자세한 <code>.yarnrc.yml</code> 설정 방법은 <a href="https://yarnpkg.com/configuration/yarnrc">공식 문서</a>를 참고 부탁드립니다.</p>
+<h4 id="nodelinker"><code>nodeLinker</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#nodelinker"><span class="anchor-icon">#</span></a></h4>
+<pre><code>nodeLinker: "pnp" | "pnpm" | "node-modules"
+</code></pre>
+<p>패키지를 설치하는데 사용하는 링커를 선택할 수 있는 옵션입니다. 기본 값은 <code>pnp</code>입니다. <code>node-modules</code>로 설정할 경우 <code>Yarn Classic</code>이나 <code>NPM</code>처럼 <code>node_modules</code> 디렉토리에서 의존성을 관리하게 됩니다.</p>
+<h4 id="pnpmode"><code>pnpMode</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#pnpmode"><span class="anchor-icon">#</span></a></h4>
+<pre><code>pnpMode: "strict" | "loose"
+</code></pre>
+<p><code>strict</code>가 기본 값입니다. <code>Yarn Berry</code>의 PnP는 호이스팅을 사용하지 않아서 <code>package.json</code>의 <code>dependencies</code>에 나열 된 의존성만 설치됩니다. 이런 동작은 유령 의존성을 없앨 수 있지만, 사용중인 패키지가 유령 의존성을 사용하고 있다면 문제가 될 수 있습니다. 이런 경우 <code>loose</code>를 사용하여 문제를 해결 할 수 있습니다.</p>
+<p><code>pnpMode: "loose"</code>를 사용할 경우 <code>node-modules</code> 호이스터를 사용해서 호이스팅 되는 패키지 목록을 폴백 풀(fallback pool)로 만들어 <code>.pnp.cjs</code>에 저장합니다. 의존성 패키지를 찾지 못할 경우 폴백 풀에서 패키지를 찾아 실행하게 됩니다.</p>
+<h4 id="packageextensions"><code>packageExtensions</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#packageextensions"><span class="anchor-icon">#</span></a></h4>
+<pre><code>webpack@*:
+  dependencies:
+    lodash: "^4.15.0"
+  peerDependencies:
+    webpack-cli: "*"
+  peerDependenciesMeta:
+    webpack-cli:
+      optional: true
+</code></pre>
+<p>일부 패키지는 의존성 정보가 잘못되었거나 누락이 있을 수 있습니다. <code>Yarn Berry</code>의 PnP는 의존성 관리에 엄격한 편인데, 사용하는 패키지에 의존성 정보가 잘못되어 있다면 해당 패키지는 사용할 수 없습니다. 의존성 정보가 잘못 된 패키지를 사용하기 위해서 <code>packageExtensions</code>을 사용하여 의존성 정보를 확장할 수 있습니다.</p>
+<p>위의 코드는 모든 버전에 해당하는 <code>webpack</code>의 <code>dependencies</code>에 <code>loash@^4.15.0</code>, <code>peerDependencies</code>에 <code>webpack-cli@*</code>, <code>peerDependenciesMeta</code>에 <code>webpack-cli</code>의 <code>optional</code>을 확장한 코드입니다.</p>
+<h4 id="enablescripts"><code>enableScripts</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#enablescripts"><span class="anchor-icon">#</span></a></h4>
+<pre><code>enableScripts: true | false
+</code></pre>
+<p><code>enableScripts</code>의 기본 값은 <code>true</code>입니다.</p>
+<p><code>clone</code> 된 프로젝트에 <code>.yarn/cache</code>와 <code>.pnp.cjs</code> 파일이 모두 존재하지만 <code>yarn install</code> 후에야 프로젝트를 실행할 수 있는 반쪽 자리 Zero Install이라면, <code>.yarn/unplugged</code> 디렉토리를 의심해 봐야 합니다.</p>
+<p><code>Yarn Berry</code>는 의존성 패키지를 모두 zip으로 관리하기 때문에 의존성 패키지는 모두 읽기 전용으로 동작할 수 밖에 없습니다. 하지만 의존성 패키지가 쓰여지거나(파일 쓰기) 실행(쉘 스크립트 실행 등..) 되어야 한다면, zip 파일은 압축 해제되어 <code>.yarn/unplugged</code> 디렉토리에 저장됩니다.</p>
+<p><code>yarn install</code> 과정 중에 의존성 패키지에 사후 설치(postinstall) 스크립트가 있다면 해당 패키지는 압축 해제 되어 <code>.yarn/unplugged</code> 디렉토리에 저장됩니다. 이런 이유로 Zero Install 설정을 했지만 <code>yarn install</code>을 해야 프로젝트가 실행되는 경우가 발생하게 됩니다.</p>
+<p><code>yarn install</code> 없이 바로 프로젝트를 실행하기 위해서는 <code>enableScripts: false</code>로 설정해야 합니다. <code>enableScripts: false</code>는 사후 설치 스크립트를 막아 <code>.yarn/unplugged</code> 디렉토리를 생성하지 않도록 만듭니다.</p>
+<h5 id="참고">참고<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><a href="https://d2.naver.com/helloworld/7553804">https://d2.naver.com/helloworld/7553804</a></li>
+<li><a href="https://toss.tech/article/node-modules-and-yarn-berry">https://toss.tech/article/node-modules-and-yarn-berry</a></li>
+<li><a href="https://velog.io/@oimne/yarn-berry">https://velog.io/@oimne/yarn-berry</a></li>
+<li><a href="https://yarnpkg.com/features/pnp">https://yarnpkg.com/features/pnp</a></li>
+<li><a href="https://yarnpkg.com/getting-started/qa">https://yarnpkg.com/getting-started/qa</a></li>
+<li><a href="https://yarnpkg.com/configuration/yarnrc#enableScripts">https://yarnpkg.com/configuration/yarnrc#enableScripts</a></li>
+<li><a href="https://yarnpkg.com/advanced/lexicon#unplugged-package">https://yarnpkg.com/advanced/lexicon#unplugged-package</a></li>
+<li><a href="https://yarnpkg.com/features/offline-cache">https://yarnpkg.com/features/offline-cache</a></li>
+</ul>f:X
+14:X
+14:C
+0:{"buildId":"vRvvjM40XyhyJOEib5x-0","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"[ETC] Yarn Berry\",\"description\":\"Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn의 1 버전을 Yarn Classic이라고 하고 Yarn의 2 버전 이상을 Yarn Berry라고 합니다.\",\"image\":[\"https://beomy.github.io/assets/img/thumbnails/etc/yarn_berry.png\"],\"datePublished\":\"2023-02-08T00:00:00+00:00\",\"dateModified\":\"2023-02-08T00:00:00+00:00\",\"author\":{\"@type\":\"Person\",\"name\":\"beomy\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Beomy\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://beomy.github.io/assets/img/brand/beomy-logo.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://beomy.github.io/tech/etc/yarn-berry/\"},\"url\":\"https://beomy.github.io/tech/etc/yarn-berry/\"}"}}],[["$","$L2",null,{}],["$","main",null,{"className":"mx-auto pb-[10px] pt-[70px] flex flex-row-reverse leading-[2] screen-xs sm:screen-sm m:screen-m","children":[["$","$L3",null,{"url":"https://beomy.github.io//tech/etc/yarn-berry/","toc":"<ul><li><a href=\"#yarn-classic\"><code>Yarn Classic</code></a><ul><li><a href=\"#yarn-classic%EC%9D%98-%EB%AC%B8%EC%A0%9C%EC%A0%90\"><code>Yarn Classic</code>의 문제점</a></li></ul></li><li><a href=\"#yarn-berry\"><code>Yarn Berry</code></a><ul><li><a href=\"#pnpplugnplay\">PnP(Plug'n'Play)</a></li><li><a href=\"#zero-install\">Zero Install</a></li><li><a href=\"#yarn-berry-%EC%84%A4%EC%A0%95\"><code>Yarn Berry</code> 설정</a></li></ul></li></ul>"}],["$","article",null,{"className":"w-[calc(100%-380px)] max-sm:w-full","children":[["$","div",null,{"className":"leading-[1.5] [&>div]:mb-[30px] [&_.post-banner-img]:block [&_.post-banner-img]:h-auto [&_.post-banner-img]:w-full [&_.post-banner-img]:rounded-[8px]","children":[["$","h1",null,{"className":"m-0 text-7","children":"[ETC] Yarn Berry"}],["$","div",null,{"children":[["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle mr-[20px] text-caption","children":[["$","$L4",null,{"type":"BsCalendar"}],["$","span",null,{"children":"2023년 02월 08일"}]]}],["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle text-caption","children":[["$","$L4",null,{"type":"BsClock"}],["$","span",null,{"children":[3,"분 소요"]}]]}]]}],["$","$L5",null,{"img":"etc/yarn_berry.png","priority":true,"width":2000,"height":1000}]]}],["$","div",null,{"className":"post-contents","dangerouslySetInnerHTML":{"__html":"$6"}}],"$L7","$L8"]}]]}],"$L9"]],["$La","$Lb","$Lc"],"$Ld"]}],"isPartial":"$@e","staleTime":"$f","varyParams":null},{"rsc":"$L10","isPartial":"$@11","staleTime":"$f","varyParams":null},{"rsc":"$L12","isPartial":"$@13","staleTime":"$f","varyParams":"$14"},{"rsc":"$L15","isPartial":"$@16","staleTime":"$f","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@17","rootVaryParams":null,"needsRuntimeRequest":"$@18"}
+19:I[43492,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],""]
+1a:I[44892,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+1b:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"OutletBoundary"]
+1c:"$Sreact.suspense"
+1e:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"ViewportBoundary"]
+1f:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"MetadataBoundary"]
+20:I[7829,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"IconMark"]
+21:I[5296,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+22:I[13033,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+23:I[20775,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],""]
+24:I[3171,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+:HL["/_next/static/chunks/0-ed_yd_8cspw.css","style"]
+:HL["/_next/static/chunks/3hdp08pq73jzd.css","style"]
+7:["$","div",null,{"className":"mt-[20px] flex items-center justify-between leading-[1.4] max-xs:block","children":[["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L19",null,{"href":"/tech/etc/package-json-scripts/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center leading-[1.4]","children":[["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L4",null,{"type":"BsChevronLeft","size":"100%"}]}],["$","div",null,{"className":"ml-[20px] mr-auto [&_small]:text-0","children":[["$","small",null,{"children":"이전 포스트"}],["$","div",null,{"children":"[ETC] package.json의 scripts"}]]}]]}]}],["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L19",null,{"href":"/tech/etc/monorepo-concept/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center text-right leading-[1.4]","children":[["$","div",null,{"className":"ml-auto mr-[20px] [&_small]:text-0","children":[["$","small",null,{"children":"다음 포스트"}],["$","div",null,{"children":"[ETC] Monorepo - 개념"}]]}],["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L4",null,{"type":"BsChevronRight","size":"100%"}]}]]}]}]]}]
+8:["$","$L1a",null,{"url":"https://beomy.github.io//tech/etc/yarn-berry/","title":"[ETC] Yarn Berry"}]
+9:["$","footer",null,{"className":"border-t border-grey-90 bg-grey-100 py-[25px] text-center","children":[["$","nav",null,{"className":"mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]","children":[["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://github.com/beomy","target":"_blank","aria-label":"github","children":["$","$L4",null,{"type":"BsGithub","size":20}]}],["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://www.linkedin.com/in/효범-이-930453134","target":"_blank","aria-label":"linkedin","children":["$","$L4",null,{"type":"BsLinkedin","size":20}]}]]}],["$","span",null,{"className":"text-1 text-caption","children":["© ",2026," Beomy. All rights reserved."]}]]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0-ed_yd_8cspw.css","precedence":"next"}]
+b:["$","script","script-0",{"src":"/_next/static/chunks/1qnqqqe1l89_0.js","async":true}]
+c:["$","script","script-1",{"src":"/_next/static/chunks/0l7lmrpj3f2tc.js","async":true}]
+d:["$","$L1b",null,{"children":["$","$1c",null,{"name":"Next.MetadataOutlet","children":"$@1d"}]}]
+10:["$","$1","h",{"children":[null,["$","$L1e",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#663399"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1f",null,{"children":["$","$1c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"[ETC] Yarn Berry | Beomy"}],["$","meta","1",{"name":"description","content":"Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn의 1 버전을 Yarn Classic이라고 하고 Yarn의 2 버전 이상을 Yarn Berry라고 합니다."}],["$","meta","2",{"name":"author","content":"beomy"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","link","4",{"rel":"canonical","href":"https://beomy.github.io/tech/etc/yarn-berry/"}],["$","meta","5",{"property":"og:title","content":"[ETC] Yarn Berry"}],["$","meta","6",{"property":"og:description","content":"Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn의 1 버전을 Yarn Classic이라고 하고 Yarn의 2 버전 이상을 Yarn Berry라고 합니다."}],["$","meta","7",{"property":"og:url","content":"https://beomy.github.io/tech/etc/yarn-berry/"}],["$","meta","8",{"property":"og:site_name","content":"Beomy"}],["$","meta","9",{"property":"og:locale","content":"ko"}],["$","meta","10",{"property":"og:image","content":"https://beomy.github.io/assets/img/thumbnails/etc/yarn_berry.png"}],["$","meta","11",{"property":"og:image:alt","content":"[ETC] Yarn Berry"}],["$","meta","12",{"property":"og:type","content":"article"}],["$","meta","13",{"property":"article:published_time","content":"2023-02-08T00:00:00+00:00"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","15",{"name":"twitter:creator","content":"beomy"}],["$","meta","16",{"name":"twitter:title","content":"[ETC] Yarn Berry"}],["$","meta","17",{"name":"twitter:description","content":"Yarn은 NPM과 동일한 Node Package Manager입니다. Yarn의 1 버전을 Yarn Classic이라고 하고 Yarn의 2 버전 이상을 Yarn Berry라고 합니다."}],["$","meta","18",{"name":"twitter:image","content":"https://beomy.github.io/assets/img/thumbnails/etc/yarn_berry.png"}],["$","meta","19",{"name":"twitter:image:alt","content":"[ETC] Yarn Berry"}],["$","link","20",{"rel":"icon","href":"/assets/img/brand/beomy-icon.png"}],["$","$L20","21",{}]]}]}]}],null]}]
+12:["$","$1","c",{"children":[null,["$","$L21",null,{"parallelRouterKey":"children","template":["$","$L22",null,{}]}]]}]
+15:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3dzek8xgk_dp7.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/2o31d8qeycp-m.js","async":true}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","$L23",null,{"id":"theme-init","strategy":"beforeInteractive","children":"(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();"}],["$","$L24",null,{"navData":{"categoryList":["tech","review"],"menuTree":[{"key":"review","counter":1,"children":[{"key":"book","counter":1,"children":[]}]},{"key":"tech","counter":61,"children":[{"key":"browser","counter":7,"children":[]},{"key":"etc","counter":11,"children":[]},{"key":"javascript","counter":4,"children":[]},{"key":"react","counter":8,"children":[]},{"key":"svelte","counter":22,"children":[]},{"key":"vuejs","counter":9,"children":[]}]}]},"children":["$","$L21",null,{"parallelRouterKey":"children","template":["$","$L22",null,{}],"notFound":[["$","main",null,{"children":["$","p",null,{"children":"Sorry, page not found!"}]}],[]]}]}],["$","$L23",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-MD8G3F353P","strategy":"lazyOnload"}],["$","$L23",null,{"id":"gtag-init","strategy":"lazyOnload","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-MD8G3F353P');\n          "}]]}]}]]}]
+1d:null
+18:true
+f:300
+f:C
+17:0
+11:"$undefined"
+13:"$undefined"
+16:"$undefined"
+e:"$undefined"

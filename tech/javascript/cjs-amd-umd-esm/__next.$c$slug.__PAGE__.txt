@@ -1,0 +1,230 @@
+1:"$Sreact.fragment"
+2:I[48347,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+3:I[48771,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+5:I[17987,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+6:I[1304,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+4:T6c5,<ul><li><a href="#cjs-commonjs">CJS (CommonJS)</a><ul><li><a href="#%EC%BD%94%EB%93%9C-%EC%98%88%EC%A0%9C">코드 예제</a></li><li><a href="#%ED%8A%B9%EC%A7%95-%EB%8F%99%EA%B8%B0">특징: 동기</a></li><li><a href="#cjs%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">CJS를 사용하는 라이브러리</a></li></ul></li><li><a href="#amd-asynchronous-module-definition">AMD (Asynchronous Module Definition)</a><ul><li><a href="#%EC%BD%94%EB%93%9C-%EC%98%88%EC%A0%9C-1">코드 예제</a></li><li><a href="#%ED%8A%B9%EC%A7%95-%EB%B9%84%EB%8F%99%EA%B8%B0">특징: 비동기</a></li><li><a href="#amd%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">AMD를 사용하는 라이브러리</a></li></ul></li><li><a href="#umd-universal-module-definition">UMD (Universal Module Definition)</a><ul><li><a href="#%EC%BD%94%EB%93%9C-%EC%98%88%EC%A0%9C-2">코드 예제</a></li><li><a href="#%ED%8A%B9%EC%A7%95-%EC%97%AC%EB%9F%AC-%EB%AA%A8%EB%93%88-%EB%A1%9C%EB%8D%94%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5">특징: 여러 모듈 로더에서 사용 가능</a></li></ul></li><li><a href="#esm-ecmascript-module">ESM (ECMAScript Module)</a><ul><li><a href="#%EC%BD%94%EB%93%9C-%EC%98%88%EC%A0%9C-3">코드 예제</a></li><li><a href="#%ED%8A%B9%EC%A7%95-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%9E%90%EC%B2%B4-%EB%AA%A8%EB%93%88-%EC%8B%9C%EC%8A%A4%ED%85%9C">특징: 자바스크립트 자체 모듈 시스템</a></li><li><a href="#%EB%B6%80%EB%A1%9D-script-typemodule-srcindexmjs">부록: <code>&#x3C;script type="module" src="index.mjs"></code></a></li></ul></li><li><a href="#%EC%9A%94%EC%95%BD">요약</a></li></ul>10:X
+15:X
+15:C
+0:{"buildId":"vRvvjM40XyhyJOEib5x-0","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"[JavaScript] CJS, AMD, UMD, ESM\",\"description\":\"자바스크립트를 모듈화할 수 있게 한 CJS, AMD, UMD, ESM에 대해 살펴보겠습니다.\",\"image\":[\"https://beomy.github.io/assets/img/thumbnails/javascript/js.png\"],\"datePublished\":\"2020-05-25T00:00:00+00:00\",\"dateModified\":\"2020-05-25T00:00:00+00:00\",\"author\":{\"@type\":\"Person\",\"name\":\"beomy\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Beomy\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://beomy.github.io/assets/img/brand/beomy-logo.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://beomy.github.io/tech/javascript/cjs-amd-umd-esm/\"},\"url\":\"https://beomy.github.io/tech/javascript/cjs-amd-umd-esm/\"}"}}],[["$","$L2",null,{}],["$","main",null,{"className":"mx-auto pb-[10px] pt-[70px] flex flex-row-reverse leading-[2] screen-xs sm:screen-sm m:screen-m","children":[["$","$L3",null,{"url":"https://beomy.github.io//tech/javascript/cjs-amd-umd-esm/","toc":"$4"}],["$","article",null,{"className":"w-[calc(100%-380px)] max-sm:w-full","children":[["$","div",null,{"className":"leading-[1.5] [&>div]:mb-[30px] [&_.post-banner-img]:block [&_.post-banner-img]:h-auto [&_.post-banner-img]:w-full [&_.post-banner-img]:rounded-[8px]","children":[["$","h1",null,{"className":"m-0 text-7","children":"[JavaScript] CJS, AMD, UMD, ESM"}],["$","div",null,{"children":[["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle mr-[20px] text-caption","children":[["$","$L5",null,{"type":"BsCalendar"}],["$","span",null,{"children":"2020년 05월 25일"}]]}],["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle text-caption","children":[["$","$L5",null,{"type":"BsClock"}],["$","span",null,{"children":[2,"분 소요"]}]]}]]}],["$","$L6",null,{"img":"javascript/js.png","priority":true,"width":2000,"height":1000}]]}],"$L7","$L8","$L9"]}]]}],"$La"]],["$Lb","$Lc","$Ld"],"$Le"]}],"isPartial":"$@f","staleTime":"$10","varyParams":null},{"rsc":"$L11","isPartial":"$@12","staleTime":"$10","varyParams":null},{"rsc":"$L13","isPartial":"$@14","staleTime":"$10","varyParams":"$15"},{"rsc":"$L16","isPartial":"$@17","staleTime":"$10","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@18","rootVaryParams":null,"needsRuntimeRequest":"$@19"}
+1b:I[43492,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],""]
+1c:I[44892,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+1d:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"OutletBoundary"]
+1e:"$Sreact.suspense"
+20:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"ViewportBoundary"]
+21:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"MetadataBoundary"]
+22:I[7829,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"IconMark"]
+23:I[5296,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+24:I[13033,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+25:I[20775,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],""]
+26:I[3171,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+:HL["/_next/static/chunks/0-ed_yd_8cspw.css","style"]
+:HL["/_next/static/chunks/3hdp08pq73jzd.css","style"]
+1a:T863b,<p>처음 자바스크립트는 모듈을 가져오거나 내보내는 방법이 없어, 하나의 파일에 모든 기능들이 들어가야 했습니다. CJS, AMD, UMD, ESM이 등장 후에는 모듈로 개발하고 배포할 수 있게 되었습니다. 이번 포스트에서는 모듈화 개발을 할 수 있게 한 CJS, AMD, UMD, ESM가 무엇인지 살펴보겠습니다.</p>
+<h2 id="cjs-commonjs">CJS (CommonJS)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#cjs-commonjs"><span class="anchor-icon">#</span></a></h2>
+<p>CommonJS(<a href="http://www.commonjs.org/">http://www.commonjs.org/</a>)는 이름의 'Common'에서 알 수 있듯이 JavaScript를 브라우저에서뿐만 아니라 범용 언어로 사용할 수 있도록 하겠다는 의지를 가진 워킹 그룹입니다.</p>
+<h3 id="코드-예제">코드 예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#코드-예제"><span class="anchor-icon">#</span></a></h3>
+<p>CJS를 사용하는 방법은 아래 코드와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 아래와 같이 require을 통해 package/lib 모듈을 변수에 담을 수 있습니다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">var</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> lib </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> require</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'package/lib'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 가져온 모듈을 아래와 같이 사용할 수 있습니다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> foo</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  lib.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'hello world!'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// foo 함수를 다른 파일에서 사용할 수 있도록, 다른 모듈로 추출될 수 있습니다.</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">exports</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">.foobar </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> foo;</span></span></code></pre>
+<h3 id="특징-동기">특징: 동기<a class="anchor after" aria-hidden="true" tabindex="-1" href="#특징-동기"><span class="anchor-icon">#</span></a></h3>
+<p>CommonJS는 아래 코드와 같이 동기로 동작하는 특징을 가집니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">var</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> foo </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> require</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'foo'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">var</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> bar </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> require</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'bar'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">foo.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'It is foo'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">bar.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'It is bar'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span></code></pre>
+<p>CommonJS는 동기적인 특징으로 서버사이드에 사용하기 용이합니다. (CommonJS의 첫 이름은 <a href="https://www.blueskyonmars.com/2009/01/29/what-server-side-javascript-needs/">ServerJS</a> 였다고 합니다.) Node.js가 CommonJS를 채택하여 사용하고 있습니다.</p>
+<h3 id="cjs를-사용하는-라이브러리">CJS를 사용하는 라이브러리<a class="anchor after" aria-hidden="true" tabindex="-1" href="#cjs를-사용하는-라이브러리"><span class="anchor-icon">#</span></a></h3>
+<ul>
+<li>브라우저
+<ul>
+<li>curl.js(<a href="http://github.com/unscriptable/curl">http://github.com/unscriptable/curl</a>)</li>
+<li>SproutCore(<a href="http://sproutcore.com">http://sproutcore.com</a>)</li>
+<li>PINF(<a href="http://github.com/pinf/loader-js">http://github.com/pinf/loader-js</a>)</li>
+</ul>
+</li>
+<li>서버사이드
+<ul>
+<li>Node.js(<a href="http://nodejs.org">http://nodejs.org</a>)</li>
+<li>Narwhal(<a href="https://github.com/tlrobinson/narwhal">https://github.com/tlrobinson/narwhal</a>)</li>
+<li>Persevere(<a href="http://www.persvr.org">http://www.persvr.org</a>)</li>
+<li>Wakanda(<a href="http://www.wakandasoft.com">http://www.wakandasoft.com</a>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="amd-asynchronous-module-definition">AMD (Asynchronous Module Definition)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#amd-asynchronous-module-definition"><span class="anchor-icon">#</span></a></h2>
+<p>CommonJS는 모든 파일이 로컬 디스크에 있어 필요할 때 바로 불러올 수 있는 상황을 전제로 합니다. 즉 동기적인 동작이 가능한 서버사이드 자바스크립트 환경을 전제로 합니다. 브라우저에서 이런 방식은 필요한 모듈이 모두 다운로드할 때까지 아무것도 할 수 없는 상태가 되어 치명적인 단점이 됩니다.</p>
+<p>AMD 그룹은 비동기 상황에서 자바스크립트 모듈을 사용하기 위해 CommonJS에서 함께 논의하다 합의점을 이루지 못하고 독립한 그룹입니다. CommonJS가 자바스크립트를 브라우저 밖으로 꺼내기 위해 탄생된 그룹이고, AMD는 브라우저에 중점을 둔 그룹입니다.</p>
+<h3 id="코드-예제-1">코드 예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#코드-예제-1"><span class="anchor-icon">#</span></a></h3>
+<p>아래 코드는 AMD에서 모듈로 추출하는 코드입니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 종속성을 갖는 모듈인 'package/lib'를 모듈 선언부의 첫 번째 파라미터에 넣으면,</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 'package/lib'은 콜백 함수의 lib 파라미터 안에 담깁니다.</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">define</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">([</span><span style="color:#032563;--shiki-dark:#ADDCFF">'package/lib'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">], </span><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">lib</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // 로드된 종속 모듈을 아래와 같이 사용할 수 있습니다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> foo</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    lib.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'hello world!'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // 생성된 foo 함수는 리턴을 통해 foobar라는 이름의 다른 모듈로 추출될 수 있습니다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    foobar: foo</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  };</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">});</span></span></code></pre>
+<p>선언된 모듈들을 아래와 같이 <code>require</code>로 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">require</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">([</span><span style="color:#032563;--shiki-dark:#ADDCFF">'package/myModule'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">], </span><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">myModule</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  myModule.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">foobar</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">();</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">});</span></span></code></pre>
+<h3 id="특징-비동기">특징: 비동기<a class="anchor after" aria-hidden="true" tabindex="-1" href="#특징-비동기"><span class="anchor-icon">#</span></a></h3>
+<p>브라우저는 네트워크를 통해 모듈들을 내려받기 때문에 비동기적으로 동작해야 합니다. AMD 이름의 'Asynchronous'에서 알 수 있듯이 AMD는 비동기 모듈에 대한 표준안을 다루고 있습니다. AMD는 비동기적인 특징으로 클라이언트 사이드 개발에 적합합니다.</p>
+<h3 id="amd를-사용하는-라이브러리">AMD를 사용하는 라이브러리<a class="anchor after" aria-hidden="true" tabindex="-1" href="#amd를-사용하는-라이브러리"><span class="anchor-icon">#</span></a></h3>
+<ul>
+<li>브라우저
+<ul>
+<li>RequireJS(<a href="http://requirejs.org">http://requirejs.org</a>)</li>
+<li>curl.js(<a href="http://github.com/unscriptable/curl">http://github.com/unscriptable/curl</a>)</li>
+<li>bdLoad(<a href="http://bdframework.org/bdLoad/">http://bdframework.org/bdLoad/</a>)</li>
+<li>Yabble(<a href="http://github.com/jbrantly/yabble">http://github.com/jbrantly/yabble</a>)</li>
+<li>PINF(<a href="http://github.com/pinf/loader-js">http://github.com/pinf/loader-js</a>)</li>
+</ul>
+</li>
+<li>서버사이드
+<ul>
+<li>RequireJS(<a href="http://requirejs.org">http://requirejs.org</a>)</li>
+<li>PINF(<a href="http://github.com/pinf/loader-js">http://github.com/pinf/loader-js</a>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="umd-universal-module-definition">UMD (Universal Module Definition)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#umd-universal-module-definition"><span class="anchor-icon">#</span></a></h2>
+<p>AMD와 CommonJS 두 그룹으로 나누어지다 보니 서로 호환되지 않는 문제가 발생하게 됩니다. 이것을 해결하기 위해 나온 것이 UMD입니다. UMD는 디자인 패턴에 더 가깝습니다. AMD와 CommonJS, window에 추가하는 방식까지 모두 가능한 모듈을 작성하는 방식입니다.</p>
+<h3 id="코드-예제-2">코드 예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#코드-예제-2"><span class="anchor-icon">#</span></a></h3>
+<p>AMD는 <code>define</code>을 사용하고, CommonJS는 <code>module.exports</code>를 사용합니다. 이 차이를 이용하여 UMD를 만들 수 있습니다. UMD는 두 부분으로 구성됩니다.</p>
+<ul>
+<li>모듈 로더를 확인하는 즉시 실행 함수(IIFE): 이 함수는 <code>root</code>(전역 범위)와 <code>factory</code>(모듈을 선언하는 함수) 2개의 파라미터를 가집니다.</li>
+<li>모듈을 생성하는 익명 함수: 이 함수가 즉시 실행 함수의 2번째 파라미터로 전달됩니다.</li>
+</ul>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">root</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">factory</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  if</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#A0111F;--shiki-dark:#FF9492">typeof</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> define </span><span style="color:#A0111F;--shiki-dark:#FF9492">===</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'function'</span><span style="color:#A0111F;--shiki-dark:#FF9492"> &#x26;&#x26;</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> define.amd) {</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">    // AMD</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">    define</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">([</span><span style="color:#032563;--shiki-dark:#ADDCFF">'exports'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">'b'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">], factory);</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  } </span><span style="color:#A0111F;--shiki-dark:#FF9492">else</span><span style="color:#A0111F;--shiki-dark:#FF9492"> if</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#A0111F;--shiki-dark:#FF9492">typeof</span><span style="color:#023B95;--shiki-dark:#91CBFF"> exports</span><span style="color:#A0111F;--shiki-dark:#FF9492"> ===</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'object'</span><span style="color:#A0111F;--shiki-dark:#FF9492"> &#x26;&#x26;</span><span style="color:#A0111F;--shiki-dark:#FF9492"> typeof</span><span style="color:#023B95;--shiki-dark:#91CBFF"> exports</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">.nodeName </span><span style="color:#A0111F;--shiki-dark:#FF9492">!==</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'string'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) {</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">    // CommonJS</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">    factory</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#023B95;--shiki-dark:#91CBFF">exports</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#622CBC;--shiki-dark:#DBB7FF">require</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'b'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">));</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  } </span><span style="color:#A0111F;--shiki-dark:#FF9492">else</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">    // Browser globals</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">    factory</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((root.commonJsStrict </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {}), root.b);</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}(</span><span style="color:#023B95;--shiki-dark:#91CBFF">this</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">exports</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">b</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) {</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  //use b in some fashion.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // attach properties to the exports object to define</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // the exported module properties.</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  exports</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">action</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> function</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () {};</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}));</span></span></code></pre>
+<p>위의 코드를 보면, <code>exports</code>와 <code>module</code>이 존재하면 CommonJS 방식으로, <code>define</code>이 함수이고 <code>define.amd</code>가 존재할 경우 AMD 방식으로 그것도 아니라면 window 객체에 모듈을 내보냅니다.</p>
+<h3 id="특징-여러-모듈-로더에서-사용-가능">특징: 여러 모듈 로더에서 사용 가능<a class="anchor after" aria-hidden="true" tabindex="-1" href="#특징-여러-모듈-로더에서-사용-가능"><span class="anchor-icon">#</span></a></h3>
+<p>UMD의 특징은 위에서 말했던 것처럼 AMD와 CommonJS 모두 사용 가능하다는 점입니다. AMD는 클라이언트 사이드에서 많이 사용되고, CommonJS는 서버 사이드에서 많이 사용되기 때문에, UMD를 사용하면 두 개의 모듈을 따로 만들 필요가 없게 됩니다.</p>
+<h2 id="esm-ecmascript-module">ESM (ECMAScript Module)<a class="anchor after" aria-hidden="true" tabindex="-1" href="#esm-ecmascript-module"><span class="anchor-icon">#</span></a></h2>
+<p>ES6에 자바스크립트 모듈 기능이 추가되었습니다.</p>
+<h3 id="코드-예제-3">코드 예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#코드-예제-3"><span class="anchor-icon">#</span></a></h3>
+<p>아래 코드와 같이 ESM을 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> lib </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'package/lib'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> foo</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  lib.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'hello world!'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  foobar: foo</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">};</span></span></code></pre>
+<h3 id="특징-자바스크립트-자체-모듈-시스템">특징: 자바스크립트 자체 모듈 시스템<a class="anchor after" aria-hidden="true" tabindex="-1" href="#특징-자바스크립트-자체-모듈-시스템"><span class="anchor-icon">#</span></a></h3>
+<p>ESM은 ECMAScript에서 지원하는 자바스크립트 공식 모듈 시스템입니다. 아직 브라우저에서 <code>import</code>와 <code>export</code>를 지원하지 않아 번들러를 함께 사용해야 합니다.</p>
+<h3 id="부록-script-typemodule-srcindexmjs">부록: <code>&#x3C;script type="module" src="index.mjs"></code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#부록-script-typemodule-srcindexmjs"><span class="anchor-icon">#</span></a></h3>
+<p><code>&#x3C;script></code> 태그에 <code>type="module"</code>을 선언하면 자바스크립트 파일은 모듈로 동작합니다. 이때 모듈이라는 것을 명확히 알기 위해서 <code>mjs</code> 확장자를 사용하도록 권장합니다. 예제를 살펴보면,</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="html"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;!</span><span style="color:#024C1A;--shiki-dark:#72F088">DOCTYPE</span><span style="color:#023B95;--shiki-dark:#91CBFF"> html</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">html</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">body</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">script</span><span style="color:#023B95;--shiki-dark:#91CBFF"> type</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">=</span><span style="color:#032563;--shiki-dark:#ADDCFF">"module"</span><span style="color:#023B95;--shiki-dark:#91CBFF"> src</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">=</span><span style="color:#032563;--shiki-dark:#ADDCFF">"foo.mjs"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>&#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">script</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">script</span><span style="color:#023B95;--shiki-dark:#91CBFF"> type</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">=</span><span style="color:#032563;--shiki-dark:#ADDCFF">"module"</span><span style="color:#023B95;--shiki-dark:#91CBFF"> src</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">=</span><span style="color:#032563;--shiki-dark:#ADDCFF">"bar.mjs"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>&#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">script</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">body</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">&#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">html</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span></code></pre>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// foo.mjs</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">var</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> x </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'foo'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(x); </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// foo</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 변수 x는 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(window.x); </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// undefined</span></span></code></pre>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// bar.mjs</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// import 사용이 가능합니다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> test </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> './module.mjs'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(test);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 변수 x는 foo.mjs에서 선언한 변수 x와 스코프가 다른 변수이다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">var</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> x </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'bar'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(x); </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// bar</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 변수 x는 전역 변수가 아니며 window 객체의 프로퍼티도 아니다.</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(window.x); </span><span style="color:#66707B;--shiki-dark:#BDC4CC">// undefined</span></span></code></pre>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="js"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// module.mjs</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> test</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'hello world!'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// export 사용이 가능합니다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> default</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> test;</span></span></code></pre>
+<p><code>type="module"</code>을 사용하면 해당 파일에 <code>import</code>와 <code>export</code> 사용이 가능합니다. 또한 파일마다 독립적인 스코프를 가져, <code>foo.mjs</code> 파일과 <code>bar.mjs</code>파일의 <code>window</code>는 서로 공유되지 않습니다.</p>
+<p><code>type="module"</code>는 아직 많은 브라우저에서 모듈 시스템을 지원하지 않기 때문에 webpack이나 rollup 등의 번들러를 사용하는 것이 좋습니다.</p>
+<h2 id="요약">요약<a class="anchor after" aria-hidden="true" tabindex="-1" href="#요약"><span class="anchor-icon">#</span></a></h2>
+<ul>
+<li>CJS(CommonJS): 동기적인 특징으로 서버 사이드에서 사용하기 용이합니다.</li>
+<li>AMD(Asynchronous Module Definition): 비동기적인 특징으로 클라이언트 사이드에서 사용하기 용기합니다.</li>
+<li>UMD(Universal Module Definition): CJS와 AMD 모두 사용 가능한 모듈을 만들기 위해 사용됩니다.</li>
+<li>ESM(ECMAScript Module): 자바스크립트 공식 모듈 시스템입니다.
+<ul>
+<li><code>&#x3C;script type="module" src="index.mjs"></code>을 사용하여 브라우저에서도 모듈 시스템을 사용할 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="참고">참고<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><a href="https://d2.naver.com/helloworld/12864">https://d2.naver.com/helloworld/12864</a></li>
+<li><a href="https://iam-song.tistory.com/28">https://iam-song.tistory.com/28</a></li>
+<li><a href="https://www.zerocho.com/category/JavaScript/post/5b67e7847bbbd3001b43fd73">https://www.zerocho.com/category/JavaScript/post/5b67e7847bbbd3001b43fd73</a></li>
+<li><a href="https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm">https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm</a></li>
+<li><a href="https://minjung-jeon.github.io/AMD-CommonJS-RequireJS/">https://minjung-jeon.github.io/AMD-CommonJS-RequireJS/</a></li>
+<li><a href="https://velog.io/@doondoony/JavaScript-Module-System">https://velog.io/@doondoony/JavaScript-Module-System</a></li>
+<li><a href="https://velog.io/@zeros0623/JavaScript-ModuleCommonJS-Nodejs-RequireJS-AMD-ESM-UMD">https://velog.io/@zeros0623/JavaScript-ModuleCommonJS-Nodejs-RequireJS-AMD-ESM-UMD</a></li>
+<li><a href="https://ko.wikipedia.org/wiki/CommonJS">https://ko.wikipedia.org/wiki/CommonJS</a></li>
+<li><a href="https://programmingsummaries.tistory.com/321">https://programmingsummaries.tistory.com/321</a></li>
+<li><a href="https://helloworldjavascript.net/pages/293-module.html">https://helloworldjavascript.net/pages/293-module.html</a></li>
+<li><a href="https://riptutorial.com/ko/javascript/example/16339/%EB%B2%94%EC%9A%A9-%EB%AA%A8%EB%93%88-%EC%A0%95%EC%9D%98--umd-">https://riptutorial.com/ko/javascript/example/16339/범용-모듈-정의--umd-</a></li>
+<li><a href="https://blog.rhostem.com/posts/2019-06-23-universal-module-definition-pattern">https://blog.rhostem.com/posts/2019-06-23-universal-module-definition-pattern</a></li>
+<li><a href="https://poiemaweb.com/es6-module">https://poiemaweb.com/es6-module</a></li>
+<li><a href="https://velog.io/@widian/%EC%9B%B9%EC%97%90%EC%84%9C-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%A8%EB%93%88-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">https://velog.io/@widian/웹에서-자바스크립트-모듈-사용하기</a></li>
+</ul>7:["$","div",null,{"className":"post-contents","dangerouslySetInnerHTML":{"__html":"$1a"}}]
+8:["$","div",null,{"className":"mt-[20px] flex items-center justify-between leading-[1.4] max-xs:block","children":[["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L1b",null,{"href":"/tech/svelte/vue-vs-svelte/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center leading-[1.4]","children":[["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L5",null,{"type":"BsChevronLeft","size":"100%"}]}],["$","div",null,{"className":"ml-[20px] mr-auto [&_small]:text-0","children":[["$","small",null,{"children":"이전 포스트"}],["$","div",null,{"children":"[Svelte] Vue와 Svelte 비교"}]]}]]}]}],["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L1b",null,{"href":"/tech/svelte/inflearn-svelte-for-beginner/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center text-right leading-[1.4]","children":[["$","div",null,{"className":"ml-auto mr-[20px] [&_small]:text-0","children":[["$","small",null,{"children":"다음 포스트"}],["$","div",null,{"children":"[Svelte] 스벨트 입문 A부터 Z까지"}]]}],["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L5",null,{"type":"BsChevronRight","size":"100%"}]}]]}]}]]}]
+9:["$","$L1c",null,{"url":"https://beomy.github.io//tech/javascript/cjs-amd-umd-esm/","title":"[JavaScript] CJS, AMD, UMD, ESM"}]
+a:["$","footer",null,{"className":"border-t border-grey-90 bg-grey-100 py-[25px] text-center","children":[["$","nav",null,{"className":"mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]","children":[["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://github.com/beomy","target":"_blank","aria-label":"github","children":["$","$L5",null,{"type":"BsGithub","size":20}]}],["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://www.linkedin.com/in/효범-이-930453134","target":"_blank","aria-label":"linkedin","children":["$","$L5",null,{"type":"BsLinkedin","size":20}]}]]}],["$","span",null,{"className":"text-1 text-caption","children":["© ",2026," Beomy. All rights reserved."]}]]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0-ed_yd_8cspw.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/1qnqqqe1l89_0.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/0l7lmrpj3f2tc.js","async":true}]
+e:["$","$L1d",null,{"children":["$","$1e",null,{"name":"Next.MetadataOutlet","children":"$@1f"}]}]
+11:["$","$1","h",{"children":[null,["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#663399"}]]}],["$","div",null,{"hidden":true,"children":["$","$L21",null,{"children":["$","$1e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"[JavaScript] CJS, AMD, UMD, ESM | Beomy"}],["$","meta","1",{"name":"description","content":"자바스크립트를 모듈화할 수 있게 한 CJS, AMD, UMD, ESM에 대해 살펴보겠습니다."}],["$","meta","2",{"name":"author","content":"beomy"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","link","4",{"rel":"canonical","href":"https://beomy.github.io/tech/javascript/cjs-amd-umd-esm/"}],["$","meta","5",{"property":"og:title","content":"[JavaScript] CJS, AMD, UMD, ESM"}],["$","meta","6",{"property":"og:description","content":"자바스크립트를 모듈화할 수 있게 한 CJS, AMD, UMD, ESM에 대해 살펴보겠습니다."}],["$","meta","7",{"property":"og:url","content":"https://beomy.github.io/tech/javascript/cjs-amd-umd-esm/"}],["$","meta","8",{"property":"og:site_name","content":"Beomy"}],["$","meta","9",{"property":"og:locale","content":"ko"}],["$","meta","10",{"property":"og:image","content":"https://beomy.github.io/assets/img/thumbnails/javascript/js.png"}],["$","meta","11",{"property":"og:image:alt","content":"[JavaScript] CJS, AMD, UMD, ESM"}],["$","meta","12",{"property":"og:type","content":"article"}],["$","meta","13",{"property":"article:published_time","content":"2020-05-25T00:00:00+00:00"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","15",{"name":"twitter:creator","content":"beomy"}],["$","meta","16",{"name":"twitter:title","content":"[JavaScript] CJS, AMD, UMD, ESM"}],["$","meta","17",{"name":"twitter:description","content":"자바스크립트를 모듈화할 수 있게 한 CJS, AMD, UMD, ESM에 대해 살펴보겠습니다."}],["$","meta","18",{"name":"twitter:image","content":"https://beomy.github.io/assets/img/thumbnails/javascript/js.png"}],["$","meta","19",{"name":"twitter:image:alt","content":"[JavaScript] CJS, AMD, UMD, ESM"}],["$","link","20",{"rel":"icon","href":"/assets/img/brand/beomy-icon.png"}],["$","$L22","21",{}]]}]}]}],null]}]
+13:["$","$1","c",{"children":[null,["$","$L23",null,{"parallelRouterKey":"children","template":["$","$L24",null,{}]}]]}]
+16:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3dzek8xgk_dp7.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/2o31d8qeycp-m.js","async":true}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","$L25",null,{"id":"theme-init","strategy":"beforeInteractive","children":"(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();"}],["$","$L26",null,{"navData":{"categoryList":["tech","review"],"menuTree":[{"key":"review","counter":1,"children":[{"key":"book","counter":1,"children":[]}]},{"key":"tech","counter":61,"children":[{"key":"browser","counter":7,"children":[]},{"key":"etc","counter":11,"children":[]},{"key":"javascript","counter":4,"children":[]},{"key":"react","counter":8,"children":[]},{"key":"svelte","counter":22,"children":[]},{"key":"vuejs","counter":9,"children":[]}]}]},"children":["$","$L23",null,{"parallelRouterKey":"children","template":["$","$L24",null,{}],"notFound":[["$","main",null,{"children":["$","p",null,{"children":"Sorry, page not found!"}]}],[]]}]}],["$","$L25",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-MD8G3F353P","strategy":"lazyOnload"}],["$","$L25",null,{"id":"gtag-init","strategy":"lazyOnload","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-MD8G3F353P');\n          "}]]}]}]]}]
+1f:null
+19:true
+10:300
+10:C
+18:0
+12:"$undefined"
+14:"$undefined"
+17:"$undefined"
+f:"$undefined"

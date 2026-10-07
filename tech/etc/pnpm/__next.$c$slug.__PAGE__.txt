@@ -1,0 +1,254 @@
+1:"$Sreact.fragment"
+2:I[48347,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+3:I[48771,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+5:I[17987,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+6:I[1304,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+4:T4b8,<ul><li><a href="#pnpm%EB%8A%94-%EC%A0%95%EB%A7%90-%EB%B9%A0%EB%A5%B8%EA%B0%80">PNPM는 정말 빠른가?</a><ul><li><a href="#pnpm-%EA%B3%B5%EC%8B%9D-%EB%AC%B8%EC%84%9C%EC%97%90%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%98%EB%8A%94-%EC%86%8D%EB%8F%84">PNPM 공식 문서에서 이야기하는 속도</a></li><li><a href="#yarn-%EA%B3%B5%EC%8B%9D-%EB%AC%B8%EC%84%9C%EC%97%90%EC%84%9C-%EC%9D%B4%EC%95%BC%EA%B8%B0%ED%95%98%EB%8A%94-%EC%86%8D%EB%8F%84">Yarn 공식 문서에서 이야기하는 속도</a></li></ul></li><li><a href="#pnpm-%EC%BD%98%EC%85%89%ED%8A%B8">PNPM 콘셉트</a></li><li><a href="#pnpm-%EC%9E%A5%EC%A0%90">PNPM 장점</a><ul><li><a href="#%EB%94%94%EC%8A%A4%ED%81%AC-%EA%B3%B5%EA%B0%84-%EC%A0%88%EC%95%BD">디스크 공간 절약</a></li><li><a href="#%EC%84%A4%EC%B9%98-%EC%86%8D%EB%8F%84-%ED%96%A5%EC%83%81">설치 속도 향상</a></li><li><a href="#%ED%94%8C%EB%9E%AB-%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%80-node_modules">플랫 하지 않은 <code>node_modules</code></a></li></ul></li><li><a href="#%EB%B6%80%EB%A1%9D">부록</a><ul><li><a href="#pnpm%EC%9D%98-%EC%86%8D%EB%8F%84%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B3%A0%EC%B0%B0">PNPM의 속도에 대한 고찰</a></li></ul></li></ul>7:T7448,<blockquote>
+<p><strong>TL;DR</strong></p>
+<ul>
+<li>PNPM은 심볼릭 링크와 하드 링크를 사용하여 <code>node_modules</code>를 구성합니다.
+<ul>
+<li>예를 들어, <code>./node_modules/express</code>는 <code>./node_modules/.pnpm/express@4.19.2/node_modules/express</code>의 심볼릭 링크, <code>./node_modules/.pnpm/express@4.19.2/node_modules/express</code>는 <code>~/Library/pnpm/store/v3/files/{해시}</code>의 하드 링크입니다.</li>
+</ul>
+</li>
+<li>PNPM은 Content-addressable 스토어(<code>~/Library/pnpm/store/v3/files</code>)를 사용하여 디스크 공간을 절약합니다.</li>
+<li>PNPM은 다른 패키지 매니저와 비교하면 비교적 좋은 속도를 보입니다.
+<ul>
+<li>빠른 순, Yarn Pnp >= PNPM > NPM, Yarn node_modules, Yarn Classic</li>
+</ul>
+</li>
+<li>PNPM은 패키지를 <code>node_modules</code>로 끌어올리지 않아 유령 종속성 문제가 없습니다.</li>
+</ul>
+</blockquote>
+<p>패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다. <a href="https://turbo.build/repo/docs/getting-started/create-new">Turborepo는 PNPM 사용을 권장</a>하는 등 다른 서비스에서도 PNPM의 성능은 인정받고 있습니다.</p>
+<h2 id="pnpm는-정말-빠른가">PNPM는 정말 빠른가?<a class="anchor after" aria-hidden="true" tabindex="-1" href="#pnpm는-정말-빠른가"><span class="anchor-icon">#</span></a></h2>
+<p>개발자에서 좋은 성능을 만들어 준다는 것은 매력적인 이야기입니다. 만약 패키지 매니저가 빠른 성능을 제공하면 패키지를 설치하는 속도를 단축시켜 주어 개발 경험이 향상하고, CI에서 배포하는 데 걸리는 시간을 단축시켜 줍니다. PNPM의 단어 뜻대로 PNPM이 좋은 퍼포먼스를 내는지 살펴보도록 하겠습니다.</p>
+<h3 id="pnpm-공식-문서에서-이야기하는-속도">PNPM 공식 문서에서 이야기하는 속도<a class="anchor after" aria-hidden="true" tabindex="-1" href="#pnpm-공식-문서에서-이야기하는-속도"><span class="anchor-icon">#</span></a></h3>
+<p>아래 표는 <a href="https://pnpm.io/benchmarks">PNPM 공식 문서의 밴치 마크</a>로 가장 유명한 3개의 패키지 매니저인 NPM, Yarn, PNPM을 비교한 표입니다. <a href="https://github.com/pnpm/pnpm.io/blob/main/benchmarks/fixtures/alotta-files/package.json"><code>package.json</code>에 나열된 패키지</a>를 설치/업데이트하는 데 걸리는 시간을 측정하였습니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">행동</th><th align="center">조건</th><th align="center">설명</th><th align="center">결과</th></tr></thead><tbody><tr><td align="center"><strong>install</strong><br>clean</td><td align="center">Cache: X<br>lockfile: X<br>node_modules: X</td><td align="center">lock 파일도, 캐시도, node_modules 폴더도 없는 완전히 새로 설치하는 경우</td><td align="center">npm: 30.3s<br>pnpm: 8.1s<br>Yarn: 7.3s<br><strong>Yarn Pnp: 3.6s</strong></td></tr><tr><td align="center"><strong>install</strong><br>with cache<br>with lockfile<br>with mode_modules</td><td align="center">Cache: O<br>lockfile: O<br>node_modules: O</td><td align="center">패키지 설치가 완료된 후 다시 설치 명령어를 실행하여 패키지를 설치하는 경우</td><td align="center">npm: 1.5s<br><strong>pnpm: 1s</strong><br>Yarn: 5.2s<br>Yarn Pnp: n/a</td></tr><tr><td align="center"><strong>install</strong><br>with cache<br>with lockfile</td><td align="center">Cache: O<br>lockfile: O<br>node_modules: X</td><td align="center">개발자가 레포지토리를 가져와서 처음 패키지를 설치하는 경우</td><td align="center">npm: 8.1s<br>pnpm: 2.6s<br>Yarn: 5.4s<br><strong>Yarn Pnp: 1.4s</strong></td></tr><tr><td align="center"><strong>install</strong><br>with cache</td><td align="center">Cache: O<br>lockfile: X<br>node_modules: X</td><td align="center">개발자가 레포지토리를 가져와서 lock 파일 없이 처음 패키지를 설치하는 경우</td><td align="center">npm: 13s<br>pnpm: 5.7s<br>Yarn: 7.3s<br><strong>Yarn Pnp: 3s</strong></td></tr><tr><td align="center"><strong>install</strong><br>with lockfile</td><td align="center">Cache: X<br>lockfile: O<br>node_modules: X</td><td align="center">CI 서버에서 패키지를 설치하는 경우</td><td align="center">npm: 11.8s<br>pnpm: 5.2s<br>Yarn: 5.4s<br><strong>Yarn Pnp: 1.4s</strong></td></tr><tr><td align="center"><strong>install</strong><br>with cache<br>with mode_modules</td><td align="center">Cache: O<br>lockfile: X<br>node_modules: O</td><td align="center">lock 파일 삭제 후 다시 패키지를 설치하는 경우</td><td align="center"><strong>npm: 1.7s</strong><br>pnpm: 2.4s<br>Yarn: 6.9s<br>Yarn Pnp: n/a</td></tr><tr><td align="center"><strong>install</strong><br>with lockfile<br>with mode_modules</td><td align="center">Cache: X<br>lockfile: O<br>node_modules: O</td><td align="center">캐시를 삭제하고 패키지를 다시 설치하는 경우</td><td align="center">npm: 1.4s<br><strong>pnpm: 1s</strong><br>Yarn: 5.2s<br>Yarn Pnp: n/a</td></tr><tr><td align="center"><strong>install</strong><br>with mode_modules</td><td align="center">Cache: X<br>lockfile: X<br>node_modules: O</td><td align="center">캐시와 lock 파일 삭제 후 다시 패키지를 설치하는 경우</td><td align="center"><strong>npm: 1.7s</strong><br>pnpm: 5.3s<br>Yarn: 6.9s<br>Yarn Pnp: n/a</td></tr><tr><td align="center"><strong>update</strong></td><td align="center"></td><td align="center">package.json에서 버전을 변경하고 패키지를 다시 설치하여 종속성을 업데이트한 경우</td><td align="center">npm: 6.6s<br>pnpm: 3.5s<br>Yarn: 5.8s<br><strong>Yarn Pnp: 3s</strong></td></tr></tbody></table>
+<p>Yarn Pnp는 <code>node_modules</code> 폴더가 존재하지 않기 때문에 <code>node_modules</code> 폴더가 있는 조건은 모두 <code>n/a</code>(해당사항 없음)입니다. 가장 빠른 성능을 보인 패키지 매니저는 굵은 글씨로 표시했습니다. 아래 그림은 위의 표의 결과를 그래프로 나타낸 그림입니다.</p>
+<p><img src="/assets/img/posts/etc/npm_pnpm_yarn_yarn_pnp_from_pnpm.svg" alt="NPM, PNPM, Yarn, Yarn Pnp 성능 비교" loading="lazy" decoding="async" width="300" height="319"></p>
+<p>위의 표와 그림으로 PNPM과 다른 패키지 매니저를 비교해 보면 아래와 같습니다.</p>
+<ul>
+<li>PNPM VS NPM: PNPM이 9가지 행동 중 7가지가 NPM보다 빠릅니다.</li>
+<li>PNPM VS Yarn: PNPN이 9가지 행동 중 8가지가 Yarn보다 빠릅니다.</li>
+<li>PNPM VS Yarn Pnp: Yarn Pnp이 5가지 행동 중 5가지 모두 PNPM보다 빠릅니다.</li>
+</ul>
+<p>PNPM은 NPM과 Yarn 보다는 빠르지만 Yarn Pnp보다는 느린 것을 알 수 있습니다. 하지만 Yarn Pnp는 <code>node_modules</code>를 사용하지 않는 전혀 다른 방식으로 동작하기 때문에 단순 비교하지 못하는 부분이 있는 것을 감안해야 합니다.</p>
+<h3 id="yarn-공식-문서에서-이야기하는-속도">Yarn 공식 문서에서 이야기하는 속도<a class="anchor after" aria-hidden="true" tabindex="-1" href="#yarn-공식-문서에서-이야기하는-속도"><span class="anchor-icon">#</span></a></h3>
+<p>아래 그림은 <a href="https://yarnpkg.com/features/performances">Yarn 공식 문서에서 비교한 NPM, Yarn, PNPM 성능</a>입니다. Next, Gatsby 프로젝트의 설치 시간을 비교하였습니다. 아래 그림에서 Yarn은 Yarn pnp(<code>nodeLinker: "pnp"</code>)를, Yarn (NM)은 Yarn node-modules(<code>nodeLinker: "node-modules"</code>)를, Classic은 Yarn 1 버전을 이야기합니다.</p>
+<p><img src="/assets/img/posts/etc/npm_pnpm_yarn_yarn_pnp_from_yarn.png" alt="NPM, PNPM, Yarn, Yarn Pnp 성능 비교" loading="lazy" decoding="async" width="2776" height="3108" srcset="/assets/img/posts/etc/nextImageExportOptimizer/npm_pnpm_yarn_yarn_pnp_from_yarn-opt-640.WEBP 640w, /assets/img/posts/etc/nextImageExportOptimizer/npm_pnpm_yarn_yarn_pnp_from_yarn-opt-1080.WEBP 1080w, /assets/img/posts/etc/nextImageExportOptimizer/npm_pnpm_yarn_yarn_pnp_from_yarn-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>위의 그림으로 PNPM과 다른 패키지 매니저를 비교해 보면 아래와 같습니다.</p>
+<ul>
+<li>PNPM VS NPM: PNPM이 8가지 행동 중 6가지가 NPM보다 빠릅니다.</li>
+<li>PNPM VS Yarn NM: PNPM이 8가지 행동 중 6가지가 Yarn NM보다 빠릅니다.</li>
+<li>PNPM VS Yarn Pnp: PNPM이 8가지 행동 중 4가지가 Yarn Pnp보다 빠릅니다.</li>
+<li>PNPM VS Yarn Classic: PNPM이 8가지 행동 중 7가지가 Yarn Clasic보다 빠릅니다.</li>
+</ul>
+<p>PNPM이 전반적으로 다른 패키지 매니저보다 더 좋은 성능을 보이는 것을 알 수 있습니다. 다만 설치해야 하는 패키지에 따라 성능이 다를 수 있으니 참고해야 합니다.</p>
+<h2 id="pnpm-콘셉트">PNPM 콘셉트<a class="anchor after" aria-hidden="true" tabindex="-1" href="#pnpm-콘셉트"><span class="anchor-icon">#</span></a></h2>
+<p>PNPM이 NPM이나 Yarn Classic과 구별되는 가장 큰 점은 패키지를 저장하는 방법입니다. <code>./node_modules</code>, <code>./node_modules/.pnpm</code>, <code>~/Library/pnpm/store/v3</code> 이 세 디렉터리 관계를 알면 PNPM의 패키지 저장 방법을 이해하기 쉽습니다. 아래 그림은 세 디렉터리 관계 관계를 나타낸 그림입니다.</p>
+<p><img src="/assets/img/posts/etc/pnpm_concept.png" alt="PNPM 콘셉트" loading="lazy" decoding="async" width="2030" height="1608" srcset="/assets/img/posts/etc/nextImageExportOptimizer/pnpm_concept-opt-640.WEBP 640w, /assets/img/posts/etc/nextImageExportOptimizer/pnpm_concept-opt-1080.WEBP 1080w, /assets/img/posts/etc/nextImageExportOptimizer/pnpm_concept-opt-1920.WEBP 1920w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<p>프로젝트에 <code>express</code>를 설치하면 아래와 같이 <code>./node_modules</code>에 패키지가 설치됩니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">ls</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -l</span><span style="color:#032563;--shiki-dark:#ADDCFF"> ./node_modules</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">express</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> -</span><span style="color:#A0111F;--shiki-dark:#FF9492">></span><span style="color:#032563;--shiki-dark:#ADDCFF"> .pnpm/express@4.19.2/node_modules/express</span></span></code></pre>
+<p><code>./node_modules/express</code>는 <code>./node_modules/.pnpm/express@4.19.2/node_modules/express</code>의 싱볼릭 링크입니다. <code>./node_modules</code>에는 프로젝트에서 설치한 패키지들의 심볼릭 링크들이 저장됩니다. <code>./node_modules/.pnpm</code>의 디렉터리 형태는 아래와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">ls</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -l</span><span style="color:#032563;--shiki-dark:#ADDCFF"> ./node_modules/.pnpm</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">cookie@0.6.0</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">express@4.19.2</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">...</span></span></code></pre>
+<p><code>./node_modules/.pnpm</code>에는 프로젝트에서 설치한 패키지들이 필요한 모든 패키지들이 하드 링크로 저장되어 있습니다. 여기서 <code>msw</code>라는 패키지를 추가로 설치하면 <code>./node_modules</code>와 <code>./node_modules/.pnpm</code>의 디렉터리 형태는 아래와 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">ls</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -l</span><span style="color:#032563;--shiki-dark:#ADDCFF"> ./node_modules</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">express</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> -</span><span style="color:#A0111F;--shiki-dark:#FF9492">></span><span style="color:#032563;--shiki-dark:#ADDCFF"> .pnpm/express@4.19.2/node_modules/express</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">msw</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> -</span><span style="color:#A0111F;--shiki-dark:#FF9492">></span><span style="color:#032563;--shiki-dark:#ADDCFF"> .pnpm/msw@2.2.14/node_modules/msw</span></span></code></pre>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">ls</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -l</span><span style="color:#032563;--shiki-dark:#ADDCFF"> ./node_modules/.pnpm</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">cookie@0.5.0</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> # msw에서 사용하는 패키지</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">cookie@0.6.0</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> # express에서 사용하는 패키지</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">express@4.19.2</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">msw@2.2.14</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">...</span></span></code></pre>
+<p><code>./node_modules/express</code>와 마찬가지로 <code>./node_modules/msw</code>도 <code>./node_modules/.pnpm/msw@2.2.14/node_modules/msw</code>의 싱볼릭 링크입니다.</p>
+<p><code>./node_modules</code>에는 프로젝트에서 설치한 <code>express</code>와 <code>msw</code>의 심볼릭 링크가 있고 <code>./node_modules/.pnpm</code>에는 <code>express</code>와 <code>msw</code>에서 필요한 모든 패키지가 버전별로 저장됩니다.</p>
+<p><code>./node_modules/.pnpm</code>에 하드 링크되어 있는 원본 파일 경로는 아래와 같이 <code>pnpm store path</code> 명령어를 실행하여 확인할 수 있습니다. 이것을 PNPM은 Content-addressable 스토어라고 이야기합니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">pnpm</span><span style="color:#032563;--shiki-dark:#ADDCFF"> store</span><span style="color:#032563;--shiki-dark:#ADDCFF"> path</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">~</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">/Library/pnpm/store/v3</span></span></code></pre>
+<p><code>~/Library/pnpm/store/v3/files</code> 경로에 이제까지 설치했던 패키지의 원본 파일들이 아래와 같이 해시값으로 된 디렉터리 형태로 보관되어 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">ls</span><span style="color:#032563;--shiki-dark:#ADDCFF"> ~/Library/pnpm/store/v3/files</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">00</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 0b</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 16</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 21</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 2c</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 37</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 42</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 4d</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 58</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 63</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 6e</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 79</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 84</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 8f</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 9a</span><span style="color:#032563;--shiki-dark:#ADDCFF"> a5</span><span style="color:#032563;--shiki-dark:#ADDCFF"> b0</span><span style="color:#032563;--shiki-dark:#ADDCFF"> bb</span><span style="color:#032563;--shiki-dark:#ADDCFF"> c6</span><span style="color:#032563;--shiki-dark:#ADDCFF"> d1</span><span style="color:#032563;--shiki-dark:#ADDCFF"> dc</span><span style="color:#032563;--shiki-dark:#ADDCFF"> e7</span><span style="color:#032563;--shiki-dark:#ADDCFF"> f2</span><span style="color:#032563;--shiki-dark:#ADDCFF"> fd</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">...</span></span></code></pre>
+<p><code>package.json</code>의 inode를 비교하면 아래와 같이 동일한 값인 것을 볼 수 있는데, 같은 inode를 가리키고 있기 때문에 하드 링크를 여러 개 만들더라도 용량을 더 차지하지는 않습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">ls</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -li</span><span style="color:#032563;--shiki-dark:#ADDCFF"> ~/Library/pnpm/store/v3/files/19/{package.json</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 해시값}</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">12238952</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> # 동일한 inode</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">ls</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -li</span><span style="color:#032563;--shiki-dark:#ADDCFF"> node_modules/.pnpm/cookie@0.4.2/node_modules/cookie/package.json</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">12238952</span><span style="color:#66707B;--shiki-dark:#BDC4CC"> # 동일한 inode</span></span></code></pre>
+<p>각 프로젝트에서 Content-addressable 스토어에 있는 원본 패키지를 하드 링크로 가져와 사용하기 때문에, 두 개의 프로젝트에서 <code>express@4.19.2</code>를 설치하더라도 <code>express@4.19.2</code>는 한번 Content-addressable 스토어에 저장됩니다.</p>
+<blockquote>
+<p><strong>Hard Link와 Symbolic(Soft) Link, inode</strong></p>
+<ul>
+<li>inode: 파일 모드, 링크 수, 파일 크기, 파일 주소 등 파일의 메타정보를 담고 있습니다. inode는 파일의 우편번호 같은 역할을 하는데, 동일한 inode를 가지고 있다는 뜻은 동일한 파일을 가리키고 있다는 말과 같습니다.</li>
+<li>Symbolic(Soft) Link: 심볼릭 링크는 소프트 링크라고도 하는데, 윈도우의 바로가기와 유사합니다. 심볼릭 링크를 만들면 새로운 inode가 만들어지고 이 inode는 원본의 inode를 가리킵니다.</li>
+<li>Hard Link: 원본의 복사본을 만드는 것과 비슷하지만 복사와 다르게 원본과 동일한 inode를 가지기 때문에 하드 링크된 파일이 수정되면 원본 파일도 함께 수정됩니다. 원본 파일이 삭제되어도 하드 링크된 파일은 유지되기 때문에 데이터를 안전하게 관리하고자 할 때 주로 사용됩니다.</li>
+</ul>
+</blockquote>
+<h2 id="pnpm-장점">PNPM 장점<a class="anchor after" aria-hidden="true" tabindex="-1" href="#pnpm-장점"><span class="anchor-icon">#</span></a></h2>
+<p>PNPM은 NPM보다 디스크 공약을 덜 차지하며, 설치 속도가 빠르고, 플랫 하지 않는 <code>node_modules</code>를 만든다고 이야기합니다. 아래에서 하나씩 살펴보도록 하겠습니다.</p>
+<h3 id="디스크-공간-절약">디스크 공간 절약<a class="anchor after" aria-hidden="true" tabindex="-1" href="#디스크-공간-절약"><span class="anchor-icon">#</span></a></h3>
+<p>PNPM은 Content-addressable 스토어를 사용하여 디스크 공약을 절약하였습니다.</p>
+<p>NPM을 사용한다면 각 프로젝트마다 패키지가 <code>node_modules</code>에 설치되지만, PNPM은 각 프로젝트에 사용되는 패키지가 중복 없이 Content-addressable 스토어에 설치됩니다. 예를 들어 A와 B, 2개의 프로젝트가 10개의 패키지를 사용하는데 이 패키지가 모두 동일한 패키지라면 NPM은 각 프로젝트 <code>node_modules</code>에 10개씩 총 20번 패키지를 저장하지만 PNPM은 Content-addressable 스토어에 10번 패키지를 저장합니다.</p>
+<p>동일한 패키지가 다른 버전으로 각 프로젝트에 사용된다면 버전별로 Content-addressable 스토어에 설치됩니다. 예를 들어 A Project에서는 <code>cookie@0.6.0</code>이 사용되고, B Project에서는 <code>cookie@0.5.0</code>이 사용된다면 Content-addressable 스토어에 <code>cookie@0.6.0</code>와 <code>cookie@0.5.0</code> 두 개가 설치됩니다.</p>
+<h3 id="설치-속도-향상">설치 속도 향상<a class="anchor after" aria-hidden="true" tabindex="-1" href="#설치-속도-향상"><span class="anchor-icon">#</span></a></h3>
+<p>PNPM은 아래 그림과 같이 3가지 절차를 거처 패키지를 설치합니다.</p>
+<p><img src="/assets/img/posts/etc/pnpm_package_install.svg" alt="PNPM 패키지 설치" loading="lazy" decoding="async" width="574" height="314"></p>
+<ul>
+<li>Dependency resolution: 필요한 모든 종속성을 스토어에 가져옵니다.</li>
+<li>Directory structure calculation: 종속성 기반으로 <code>node_modules</code> 디렉터리 구조가 계산됩니다.</li>
+<li>Linking dependencies: 스토어에서 <code>node_modules</code>로 하드 링크됩니다.</li>
+</ul>
+<p>이런 방식은 아래 그림과 같이 기존의 모든 종속성을 확인하고 가져오고, <code>node_modules</code>에 쓰는 3가지 절차, Resolving, Fetching, Linking보다 빠릅니다.</p>
+<p><img src="/assets/img/posts/etc/npm_package_install.svg" alt="NPM 패키지 설치" loading="lazy" decoding="async" width="690" height="314"></p>
+<h3 id="플랫-하지-않은-node_modules">플랫 하지 않은 <code>node_modules</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#플랫-하지-않은-node_modules"><span class="anchor-icon">#</span></a></h3>
+<p>NPM이나 Yarn Classic은 종속성을 설치하면 중복된 패키지가 <code>node_modules</code>로 끌어올려집니다. 이런 동작은 <a href="/tech/etc/yarn-berry/#%EC%9C%A0%EB%A0%B9-%EC%9D%98%EC%A1%B4%EC%84%B1phantom-dependency">유령 종속성(의존성)</a> 문제를 만드는데, 프로젝트에 종속성으로 추가하지 않은 패키지를 액세스 해서 사용할 수 있게 됩니다. 유령 종속성 패키지를 액세스해 사용하고 있다가 패키지가 업데이트되어 유령 종속성 패키지가 제거가 되면 문제가 발생할 수 있기 때문에 유령 종속성 사용은 피해야 합니다.</p>
+<p>PNPM은 아래 그림과 같이 심볼릭 링크를 사용하기 때문에 프로젝트의 <code>node_modules</code>에는 프로젝트의 종속성에 포함된 패키지만 설치되어 유령 종속성 문제가 발생하지 않습니다.</p>
+<p><img src="/assets/img/posts/etc/pnpm_sym_link.svg" alt="PNPM 싱볼릭 링크" loading="lazy" decoding="async" width="225" height="323"></p>
+<h2 id="부록">부록<a class="anchor after" aria-hidden="true" tabindex="-1" href="#부록"><span class="anchor-icon">#</span></a></h2>
+<h3 id="pnpm의-속도에-대한-고찰">PNPM의 속도에 대한 고찰<a class="anchor after" aria-hidden="true" tabindex="-1" href="#pnpm의-속도에-대한-고찰"><span class="anchor-icon">#</span></a></h3>
+<p>어떠한 패키지를 설치하여 성능을 측정하였는지 따라 결과가 다르고, PNPM, Yarn 공식 문서에서 제공하는 성능 측정 결과도 조금씩 다르기 때문에 제가 NPM, Yarn, PNPM 이 3개의 패키지 매니저를 찾아보면서 고민해 본 성능에 대한 고찰을 공유하려고 합니다.</p>
+<h4 id="yarn-pnp는-다른-패키지-매니저와-단순-비교가-가능할까">Yarn Pnp는 다른 패키지 매니저와 단순 비교가 가능할까?<a class="anchor after" aria-hidden="true" tabindex="-1" href="#yarn-pnp는-다른-패키지-매니저와-단순-비교가-가능할까"><span class="anchor-icon">#</span></a></h4>
+<p>Yarn Pnp는 <code>node_modules</code> 폴더 없이 <code>.yarn/cache</code>에 압축 파일로 저장된 패키지와 종속성 정보를 담고 있는 <code>.pnp.cjs</code> 파일로 종속성을 관리하는 메커니즘을 가지고 있습니다. 그렇기 때문에 패키지를 설치 없이 프로젝트를 즉시 시작(Plug &#x26; Play)할 수 있습니다.</p>
+<p>Yarn Pnp는 레파지토리에 필요한 패키지를 압축 파일로 모두 가지고 있기 때문에 다른 패키지 매니저들과 달리 레파지토리를 가져오는데 시간이 더 걸릴 수 있습니다. 이런 특징 때문에 Yarn Pnp는 전반적으로 더 나은 성능을 보이긴 하지만 프로젝트를 가져오는 데 걸리는 시간에 대한 고려 없이 설치 명령어가 실행되는 데 걸리는 시간으로만 단순 비교하기에는 무리가 있어 보입니다.</p>
+<h4 id="개발배포에서-가장-중요한-성능은">개발/배포에서 가장 중요한 성능은?<a class="anchor after" aria-hidden="true" tabindex="-1" href="#개발배포에서-가장-중요한-성능은"><span class="anchor-icon">#</span></a></h4>
+<p>개발하면서 아래의 3가지 상황에서 주로 패키지를 설치/업데이트하게 됩니다. 주로 패키지 매니저가 사용되는 아래 3가지 상황에서 빠른 속소를 제공하는 것이 중요합니다.</p>
+<ul>
+<li>패키지 추가하거나 패키지 버전을 업데이트하는 경우</li>
+<li>배포를 위해 CI 서버를 통해 패키지를 설치하는 경우</li>
+<li>레파지토리를 처음 클론 받고 패키지를 설치하는 경우</li>
+</ul>
+<p>개발을 하면서 lock 파일은 보통 함께 관리되기 때문에 lock 파일이 존재하는 위의 3가지 상황을 PNPM 공식 문서와, Yarn 공식 문서에서 성능을 확인해 보겠습니다. Yarn Pnp는 위에서 이야기한 다른 메커니즘 때문에 제외하고 살펴보겠습니다.</p>
+<p>3가지 상황에서 PNPM에서 이야기하는 성능은 아래와 같이 모두 PNPM이 빠릅니다.</p>
+<ul>
+<li><code>update</code>: PNPM이 3.5s로 가장 빠름</li>
+<li><code>install, Cache: X, lockfile: O, node_modules: X</code>: PNPM이 5.2s로 가장 빠름</li>
+<li><code>install, Cache: O, lockfile: O, node_modules: X</code>: PNPM이 2.6s로 가장 빠름</li>
+</ul>
+<p>Yarn에서 이야기하는 성능은 아래와 같이 <code>Recurrent calls</code>를 제외하고 PNPM이 가장 빠른 것을 확인할 수 있습니다.</p>
+<ul>
+<li><code>Full cold</code>: Next 2.88s, Gatsby 13.46s로 PNPM이 가장 빠름</li>
+<li><code>Cache and lockfile</code>: Next 849.01ms, Gatsby 3.03s로 PNPM이 가장 빠름</li>
+<li><code>Recurrent calls</code>: Next 413.08ms로 NPM이, Gatsby 1.88s로 Yarn (NM)이 가장 빠름</li>
+</ul>
+<p>PNPM, Yarn 공식 문서를 종합해 보면 대부분의 경우 PNPM이 더 나은 성능을 보이고 있습니다.</p>
+<h5 id="참고">참고<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><a href="https://jeonghwan-kim.github.io/2023/10/20/pnpm">https://jeonghwan-kim.github.io/2023/10/20/pnpm</a></li>
+<li><a href="https://pnpm.io/">https://pnpm.io/</a></li>
+<li><a href="http://www.metalpen.net/blog/?p=439">http://www.metalpen.net/blog/?p=439</a></li>
+<li><a href="https://yarnpkg.com/features/pnp">https://yarnpkg.com/features/pnp</a></li>
+<li><a href="https://inpa.tistory.com/entry/LINUX-%F0%9F%93%9A-%ED%95%98%EB%93%9C-%EB%A7%81%ED%81%AChard-link-%EC%8B%AC%EB%B3%BC%EB%A6%AD-%EB%A7%81%ED%81%ACsymbolic-link-%EC%95%84%EC%9D%B4%EB%85%B8%EB%93%9Cinode">https://inpa.tistory.com/entry/LINUX-📚-하드-링크hard-link-심볼릭-링크symbolic-link-아이노드inode</a></li>
+</ul>10:X
+15:X
+15:C
+0:{"buildId":"vRvvjM40XyhyJOEib5x-0","data":[{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"[ETC] PNPM\",\"description\":\"패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다.\",\"image\":[\"https://beomy.github.io/assets/img/thumbnails/etc/pnpm.png\"],\"datePublished\":\"2024-04-27T00:00:00+00:00\",\"dateModified\":\"2024-04-27T00:00:00+00:00\",\"author\":{\"@type\":\"Person\",\"name\":\"beomy\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Beomy\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://beomy.github.io/assets/img/brand/beomy-logo.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://beomy.github.io/tech/etc/pnpm/\"},\"url\":\"https://beomy.github.io/tech/etc/pnpm/\"}"}}],[["$","$L2",null,{}],["$","main",null,{"className":"mx-auto pb-[10px] pt-[70px] flex flex-row-reverse leading-[2] screen-xs sm:screen-sm m:screen-m","children":[["$","$L3",null,{"url":"https://beomy.github.io//tech/etc/pnpm/","toc":"$4"}],["$","article",null,{"className":"w-[calc(100%-380px)] max-sm:w-full","children":[["$","div",null,{"className":"leading-[1.5] [&>div]:mb-[30px] [&_.post-banner-img]:block [&_.post-banner-img]:h-auto [&_.post-banner-img]:w-full [&_.post-banner-img]:rounded-[8px]","children":[["$","h1",null,{"className":"m-0 text-7","children":"[ETC] PNPM"}],["$","div",null,{"children":[["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle mr-[20px] text-caption","children":[["$","$L5",null,{"type":"BsCalendar"}],["$","span",null,{"children":"2024년 04월 27일"}]]}],["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle text-caption","children":[["$","$L5",null,{"type":"BsClock"}],["$","span",null,{"children":[6,"분 소요"]}]]}]]}],["$","$L6",null,{"img":"etc/pnpm.png","priority":true,"width":2000,"height":1000}]]}],["$","div",null,{"className":"post-contents","dangerouslySetInnerHTML":{"__html":"$7"}}],"$L8","$L9"]}]]}],"$La"]],["$Lb","$Lc","$Ld"],"$Le"]}],"isPartial":"$@f","staleTime":"$10","varyParams":null},{"rsc":"$L11","isPartial":"$@12","staleTime":"$10","varyParams":null},{"rsc":"$L13","isPartial":"$@14","staleTime":"$10","varyParams":"$15"},{"rsc":"$L16","isPartial":"$@17","staleTime":"$10","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@18","rootVaryParams":null,"needsRuntimeRequest":"$@19"}
+1a:I[43492,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],""]
+1b:I[44892,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+1c:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+1f:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"ViewportBoundary"]
+20:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"MetadataBoundary"]
+21:I[7829,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"IconMark"]
+22:I[5296,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+23:I[13033,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+24:I[20775,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],""]
+25:I[3171,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+:HL["/_next/static/chunks/0-ed_yd_8cspw.css","style"]
+:HL["/_next/static/chunks/3hdp08pq73jzd.css","style"]
+8:["$","div",null,{"className":"mt-[20px] flex items-center justify-between leading-[1.4] max-xs:block","children":[["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L1a",null,{"href":"/tech/react/reference/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center leading-[1.4]","children":[["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L5",null,{"type":"BsChevronLeft","size":"100%"}]}],["$","div",null,{"className":"ml-[20px] mr-auto [&_small]:text-0","children":[["$","small",null,{"children":"이전 포스트"}],["$","div",null,{"children":"[React] Reference"}]]}]]}]}],["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":null}]]}]
+9:["$","$L1b",null,{"url":"https://beomy.github.io//tech/etc/pnpm/","title":"[ETC] PNPM"}]
+a:["$","footer",null,{"className":"border-t border-grey-90 bg-grey-100 py-[25px] text-center","children":[["$","nav",null,{"className":"mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]","children":[["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://github.com/beomy","target":"_blank","aria-label":"github","children":["$","$L5",null,{"type":"BsGithub","size":20}]}],["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://www.linkedin.com/in/효범-이-930453134","target":"_blank","aria-label":"linkedin","children":["$","$L5",null,{"type":"BsLinkedin","size":20}]}]]}],["$","span",null,{"className":"text-1 text-caption","children":["© ",2026," Beomy. All rights reserved."]}]]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0-ed_yd_8cspw.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/1qnqqqe1l89_0.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/0l7lmrpj3f2tc.js","async":true}]
+e:["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]
+11:["$","$1","h",{"children":[null,["$","$L1f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#663399"}]]}],["$","div",null,{"hidden":true,"children":["$","$L20",null,{"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"[ETC] PNPM | Beomy"}],["$","meta","1",{"name":"description","content":"패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다."}],["$","meta","2",{"name":"author","content":"beomy"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","link","4",{"rel":"canonical","href":"https://beomy.github.io/tech/etc/pnpm/"}],["$","meta","5",{"property":"og:title","content":"[ETC] PNPM"}],["$","meta","6",{"property":"og:description","content":"패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다."}],["$","meta","7",{"property":"og:url","content":"https://beomy.github.io/tech/etc/pnpm/"}],["$","meta","8",{"property":"og:site_name","content":"Beomy"}],["$","meta","9",{"property":"og:locale","content":"ko"}],["$","meta","10",{"property":"og:image","content":"https://beomy.github.io/assets/img/thumbnails/etc/pnpm.png"}],["$","meta","11",{"property":"og:image:alt","content":"[ETC] PNPM"}],["$","meta","12",{"property":"og:type","content":"article"}],["$","meta","13",{"property":"article:published_time","content":"2024-04-27T00:00:00+00:00"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","15",{"name":"twitter:creator","content":"beomy"}],["$","meta","16",{"name":"twitter:title","content":"[ETC] PNPM"}],["$","meta","17",{"name":"twitter:description","content":"패키지 매니저로 NPM, Yarn, PNPM 등이 있습니다. 그 중 PNPM은 Performant Node Package Manager 약자로 고성능 노드 패키지 매니저라는 뜻을 가지고 있습니다."}],["$","meta","18",{"name":"twitter:image","content":"https://beomy.github.io/assets/img/thumbnails/etc/pnpm.png"}],["$","meta","19",{"name":"twitter:image:alt","content":"[ETC] PNPM"}],["$","link","20",{"rel":"icon","href":"/assets/img/brand/beomy-icon.png"}],["$","$L21","21",{}]]}]}]}],null]}]
+13:["$","$1","c",{"children":[null,["$","$L22",null,{"parallelRouterKey":"children","template":["$","$L23",null,{}]}]]}]
+16:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3dzek8xgk_dp7.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/2o31d8qeycp-m.js","async":true}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","$L24",null,{"id":"theme-init","strategy":"beforeInteractive","children":"(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();"}],["$","$L25",null,{"navData":{"categoryList":["tech","review"],"menuTree":[{"key":"review","counter":1,"children":[{"key":"book","counter":1,"children":[]}]},{"key":"tech","counter":61,"children":[{"key":"browser","counter":7,"children":[]},{"key":"etc","counter":11,"children":[]},{"key":"javascript","counter":4,"children":[]},{"key":"react","counter":8,"children":[]},{"key":"svelte","counter":22,"children":[]},{"key":"vuejs","counter":9,"children":[]}]}]},"children":["$","$L22",null,{"parallelRouterKey":"children","template":["$","$L23",null,{}],"notFound":[["$","main",null,{"children":["$","p",null,{"children":"Sorry, page not found!"}]}],[]]}]}],["$","$L24",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-MD8G3F353P","strategy":"lazyOnload"}],["$","$L24",null,{"id":"gtag-init","strategy":"lazyOnload","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-MD8G3F353P');\n          "}]]}]}]]}]
+1e:null
+19:true
+10:300
+10:C
+18:0
+12:"$undefined"
+14:"$undefined"
+17:"$undefined"
+f:"$undefined"

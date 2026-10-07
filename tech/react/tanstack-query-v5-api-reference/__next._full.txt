@@ -1,0 +1,2158 @@
+1:"$Sreact.fragment"
+3:I[5296,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+4:I[13033,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+6:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"ViewportBoundary"]
+c:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"MetadataBoundary"]
+e:I[82623,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default",1]
+:HL["/_next/static/chunks/3hdp08pq73jzd.css","style"]
+:HL["/_next/static/chunks/0-ed_yd_8cspw.css","style"]
+9:X
+0:{"P":null,"c":["","tech","react","tanstack-query-v5-api-reference",""],"q":"","i":false,"f":[[["",{"children":[["slug","tech/react/tanstack-query-v5-api-reference","c",["about","rss.xml","search"]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3dzek8xgk_dp7.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2o31d8qeycp-m.js","async":true,"nonce":"$undefined"}]],"$L2"]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0-ed_yd_8cspw.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1qnqqqe1l89_0.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0l7lmrpj3f2tc.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],null]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3hdp08pq73jzd.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"vRvvjM40XyhyJOEib5x-0"}
+f:I[20775,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],""]
+10:I[3171,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+9:C
+2:["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","$Lf",null,{"id":"theme-init","strategy":"beforeInteractive","children":"(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();"}],["$","$L10",null,{"navData":{"categoryList":["tech","review"],"menuTree":[{"key":"review","counter":1,"children":[{"key":"book","counter":1,"children":[]}]},{"key":"tech","counter":61,"children":[{"key":"browser","counter":7,"children":[]},{"key":"etc","counter":11,"children":[]},{"key":"javascript","counter":4,"children":[]},{"key":"react","counter":8,"children":[]},{"key":"svelte","counter":22,"children":[]},{"key":"vuejs","counter":9,"children":[]}]}]},"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"children":["$","p",null,{"children":"Sorry, page not found!"}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lf",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-MD8G3F353P","strategy":"lazyOnload"}],["$","$Lf",null,{"id":"gtag-init","strategy":"lazyOnload","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-MD8G3F353P');\n          "}]]}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#663399"}]]
+11:I[7829,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"[React] TanStack Query v5 (React Query) API 레퍼런스 | Beomy"}],["$","meta","1",{"name":"description","content":"2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query를 멋있게 사용할 수 있도록 React Query의 API를 살펴보도록 하겠습니다."}],["$","meta","2",{"name":"author","content":"beomy"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest","crossOrigin":"$undefined"}],["$","link","4",{"rel":"canonical","href":"https://beomy.github.io/tech/react/tanstack-query-v5-api-reference/"}],["$","meta","5",{"property":"og:title","content":"[React] TanStack Query v5 (React Query) API 레퍼런스"}],["$","meta","6",{"property":"og:description","content":"2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query를 멋있게 사용할 수 있도록 React Query의 API를 살펴보도록 하겠습니다."}],["$","meta","7",{"property":"og:url","content":"https://beomy.github.io/tech/react/tanstack-query-v5-api-reference/"}],["$","meta","8",{"property":"og:site_name","content":"Beomy"}],["$","meta","9",{"property":"og:locale","content":"ko"}],["$","meta","10",{"property":"og:image","content":"https://beomy.github.io/assets/img/thumbnails/react/tanstack-query-v5.png"}],["$","meta","11",{"property":"og:image:alt","content":"[React] TanStack Query v5 (React Query) API 레퍼런스"}],["$","meta","12",{"property":"og:type","content":"article"}],["$","meta","13",{"property":"article:published_time","content":"2024-01-28T00:00:00+00:00"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","15",{"name":"twitter:creator","content":"beomy"}],["$","meta","16",{"name":"twitter:title","content":"[React] TanStack Query v5 (React Query) API 레퍼런스"}],["$","meta","17",{"name":"twitter:description","content":"2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query를 멋있게 사용할 수 있도록 React Query의 API를 살펴보도록 하겠습니다."}],["$","meta","18",{"name":"twitter:image","content":"https://beomy.github.io/assets/img/thumbnails/react/tanstack-query-v5.png"}],["$","meta","19",{"name":"twitter:image:alt","content":"[React] TanStack Query v5 (React Query) API 레퍼런스"}],["$","link","20",{"rel":"icon","href":"/assets/img/brand/beomy-icon.png"}],["$","$L11","21",{}]]
+12:I[48347,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+13:I[48771,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+14:T6a6,<ul><li><a href="#react-query-%EA%B5%AC%EC%A1%B0">React Query 구조</a></li><li><a href="#react-query-api-%EB%A0%88%ED%8D%BC%EB%9F%B0%EC%8A%A4">React Query API 레퍼런스</a><ul><li><a href="#usequery"><code>useQuery</code></a></li><li><a href="#usequeries"><code>useQueries</code></a></li><li><a href="#useinfinitequery"><code>useInfiniteQuery</code></a></li><li><a href="#usemutation"><code>useMutation</code></a></li><li><a href="#useisfetching"><code>useIsFetching</code></a></li><li><a href="#useismutating"><code>useIsMutating</code></a></li><li><a href="#querycache"><code>QueryCache</code></a></li><li><a href="#mutationcache"><code>MutationCache</code></a></li><li><a href="#usemutationstate"><code>useMutationState</code></a></li><li><a href="#usesuspensequery"><code>useSuspenseQuery</code></a></li><li><a href="#usesuspenseinfinitequery"><code>useSuspenseInfiniteQuery</code></a></li><li><a href="#usesuspensequeries"><code>useSuspenseQueries</code></a></li><li><a href="#queryclient"><code>QueryClient</code></a></li><li><a href="#usequeryclient"><code>useQueryClient</code></a></li><li><a href="#queryclientprovider"><code>QueryClientProvider</code></a></li><li><a href="#queryobserver"><code>QueryObserver</code></a></li><li><a href="#infinitequeryobserver"><code>InfiniteQueryObserver</code></a></li><li><a href="#queriesobserver"><code>QueriesObserver</code></a></li><li><a href="#queryerrorresetboundary"><code>QueryErrorResetBoundary</code></a></li><li><a href="#usequeryerrorresetboundary"><code>useQueryErrorResetBoundary</code></a></li><li><a href="#focusmanager"><code>focusManager</code></a></li><li><a href="#onlinemanager"><code>onlineManager</code></a></li></ul></li></ul>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"[React] TanStack Query v5 (React Query) API 레퍼런스\",\"description\":\"2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query를 멋있게 사용할 수 있도록 React Query의 API를 살펴보도록 하겠습니다.\",\"image\":[\"https://beomy.github.io/assets/img/thumbnails/react/tanstack-query-v5.png\"],\"datePublished\":\"2024-01-28T00:00:00+00:00\",\"dateModified\":\"2024-01-28T00:00:00+00:00\",\"author\":{\"@type\":\"Person\",\"name\":\"beomy\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Beomy\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://beomy.github.io/assets/img/brand/beomy-logo.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://beomy.github.io/tech/react/tanstack-query-v5-api-reference/\"},\"url\":\"https://beomy.github.io/tech/react/tanstack-query-v5-api-reference/\"}"}}],[["$","$L12",null,{}],["$","main",null,{"className":"mx-auto pb-[10px] pt-[70px] flex flex-row-reverse leading-[2] screen-xs sm:screen-sm m:screen-m","children":[["$","$L13",null,{"url":"https://beomy.github.io//tech/react/tanstack-query-v5-api-reference/","toc":"$14"}],["$","article",null,{"className":"w-[calc(100%-380px)] max-sm:w-full","children":[["$","div",null,{"className":"leading-[1.5] [&>div]:mb-[30px] [&_.post-banner-img]:block [&_.post-banner-img]:h-auto [&_.post-banner-img]:w-full [&_.post-banner-img]:rounded-[8px]","children":[["$","h1",null,{"className":"m-0 text-7","children":"[React] TanStack Query v5 (React Query) API 레퍼런스"}],["$","div",null,{"children":[["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle mr-[20px] text-caption","children":["$L15","$L16"]}],"$L17"]}],"$L18"]}],"$L19","$L1a","$L1b"]}]]}],"$L1c"]]
+1d:I[17987,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+1e:I[1304,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+20:I[43492,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],""]
+21:I[44892,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/1qnqqqe1l89_0.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+15:["$","$L1d",null,{"type":"BsCalendar"}]
+16:["$","span",null,{"children":"2024년 01월 28일"}]
+17:["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle text-caption","children":[["$","$L1d",null,{"type":"BsClock"}],["$","span",null,{"children":[13,"분 소요"]}]]}]
+18:["$","$L1e",null,{"img":"react/tanstack-query-v5.png","priority":true,"width":2000,"height":1000}]
+1f:T2f8d2,<p>2023년 10월 TanStack Query v5가 정식 버전으로 릴리즈 되었습니다. 이번 포스터에서는 TanStack Query v5의 React Query를 멋있게 사용할 수 있도록 React Query의 API를 살펴보도록 하겠습니다.</p>
+<h2 id="react-query-구조">React Query 구조<a class="anchor after" aria-hidden="true" tabindex="-1" href="#react-query-구조"><span class="anchor-icon">#</span></a></h2>
+<p>React Query의 API는 서로 연관이 있는 부분들이 많아, React Query의 구조를 이해하면 API의 역할을 이해하는데 많은 도움을 줄 수 있습니다. 아래 그림은 React Query의 구조를 간단하게 나타낸 그림입니다.</p>
+<p><img src="/assets/img/posts/react/react_query_structure.png" alt="React Query 구조" loading="lazy" decoding="async" width="600" height="475" srcset="/assets/img/posts/react/nextImageExportOptimizer/react_query_structure-opt-640.WEBP 640w" sizes="(max-width: 640px) 100vw, 1000px"></p>
+<h2 id="react-query-api-레퍼런스">React Query API 레퍼런스<a class="anchor after" aria-hidden="true" tabindex="-1" href="#react-query-api-레퍼런스"><span class="anchor-icon">#</span></a></h2>
+<p>React Query는 다양한 API를 제공해 줍니다. 그중 <code>useQuery</code>, <code>useMutation</code>, <code>useQueryClient</code> 이 3개 훅은 자주 사용되기 때문에, 이 3개의 API는 자세히 살펴보는 것이 좋습니다.</p>
+<h3 id="usequery"><code>useQuery</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usequery"><span class="anchor-icon">#</span></a></h3>
+<p><code>useQuery</code>는 React Query에서 가장 많이 사용되는 훅 중 하나입니다. <code>useQuery</code>를 통해 가져온 데이터는 캐시 됩니다. 또한 동일한 <code>queryKey</code>를 사용하는 <code>useQuery</code>가 동시에 여러 번 마운트 되면 최적화되어 한 번만 데이터를 요청합니다. <code>useQuery</code>는 API 서버에서 HTTP의 GET 메서드로 데이터를 가져오는 작업을 할 때 주로 사용됩니다.</p>
+<h4 id="타입-정보">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  data</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">dataUpdatedAt</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">error</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">errorUpdatedAt</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  failureCount</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">failureReason</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">fetchStatus</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  isError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isFetched</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isFetchedAfterMount</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  isFetching</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isInitialLoading</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isLoading</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  isLoadingError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isPaused</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isPending</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  isPlaceholderData</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isRefetchError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  isRefetching</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isStale</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isSuccess</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">refetch</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  status</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">} </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useQuery</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  queryKey, queryFn, gcTime, enabled,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  networkMode, initialData,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  initialDataUpdatedAt, meta,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  notifyOnChangeProps, placeholderData,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  queryKeyHashFn, refetchInterval,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  refetchIntervalInBackground,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  refetchOnMount, refetchOnReconnect,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  refetchOnWindowFocus, retry, retryOnMount,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  retryDelay, select, staleTime,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  structuralSharing, throwOnError,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>queryKey: unknown[]</code> (<strong>필수</strong>)
+<ul>
+<li>다른 쿼리와 구분될 수 있는 유니크한 키입니다. 이 값은 쿼리의 해시 키로 사용됩니다.</li>
+<li>이 값이 변경되면 자동으로 데이터를 가져옵니다.</li>
+</ul>
+</li>
+<li><code>queryFn: (context: QueryFunctionContext) => Promise&#x3C;TData></code> (<strong>필수</strong>, 단 <code>defaultOptions</code>에서 정의된 경우 생략 가능)
+<ul>
+<li>데이터를 요청하는 데 사용되는 함수입니다.</li>
+<li>파라미터로 <code>context</code>를 받습니다.
+<ul>
+<li><code>context.queryKey: QueryKey</code>
+<ul>
+<li><code>queryKey</code>로 전달한 값과 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>context.signal?: AbortSignal</code>
+<ul>
+<li>네트워크 요청을 취소하기 위해 사용되는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal">AbortSignal</a> 객체입니다.</li>
+</ul>
+</li>
+<li><code>context.meta: Recode&#x3C;string, unknown> | undefined</code>
+<ul>
+<li>쿼리에 대한 추가 정보가 담긴 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Promise</code>를 반환해야 합니다. <code>undefined</code>를 반환해서는 안됩니다.</li>
+</ul>
+</li>
+<li><code>enabled: boolean</code>
+<ul>
+<li><code>false</code>으로 설정할 경우 쿼리는 자동으로 데이터를 가져오지 않습니다.</li>
+</ul>
+</li>
+<li><code>networkMode: 'online' | 'always' | 'offlineFirst</code> (default: <code>online</code>)
+<ul>
+<li><code>online</code>으로 설정할 경우 네트워크에 연결되어 있을 경우에 데이터를 요청합니다.</li>
+<li><code>always</code>로 설정할 경우 네트워크 상태와 상관없이 항상 데이터를 요청합니다.</li>
+<li><code>offlineFirst</code>로 설정할 경우 데이터를 한번 요청하고 재시도하지 않습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Tutorials/js13kGames/Offline_Service_workers">offline-first PWA</a>나 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#the_cache-control_header">Cache-Control 헤더</a>로 요청을 캐싱하는 경우 유용한 옵션입니다. 요청을 캐싱하였기 때문에 오프라인에서도 요청은 성공할 수 있습니다. 만약 Cache Miss 되어 요청이 실패되면 <code>online</code> 옵션처럼 동작하여 네트워크가 연결될 때까지 요청을 하지 않습니다.</li>
+</ul>
+</li>
+<li><code>retry: boolean | number | (failureCount: number, error: TError) => boolean</code> (default: CSR은 <code>3</code>, SSR은 <code>0</code>)
+<ul>
+<li><code>false</code>로 설정할 경우 요청이 실패하면 재시도하지 않습니다.</li>
+<li><code>true</code>로 설정할 경우 요청이 실패하면 성공할 때까지 재시도합니다.</li>
+<li><code>number</code>형태로 설정할 경우 설정한 값만큼 요청이 실패하면 재시도합니다.</li>
+<li>함수 형태로 설정할 경우 함수가 <code>true</code>를 반환하면 재시도하고 <code>false</code>를 반환하면 재시도하지 않습니다.
+<ul>
+<li><code>failureCount: number</code>는 실패한 횟수를 나타냅니다.</li>
+<li><code>error: TError</code>는 에러 정보를 담고 있는 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>retryOnMount: boolean</code> (default: <code>true</code>)
+<ul>
+<li><code>false</code>로 설정할 경우 실패했던 쿼리가 다시 마운트 되면 데이터 요청을 재시도하지 않습니다.</li>
+</ul>
+</li>
+<li><code>retryDelay: number | (retryAttempt: number, error: TError) => number</code>
+<ul>
+<li><code>number</code> 형태로 설정할 경우 설정한 ms 초 이후에 재시도합니다.</li>
+<li>함수 형태로 설정할 경우 함수가 반환하는 ms 초 이후에 재시도합니다.
+<ul>
+<li><code>retryAttempt: number</code>는 정수 값으로 아래와 같이 재시도할 시간을 계산하는 데 사용됩니다.
+<ul>
+<li><code>attempt => Math.min(attempt > 1 ? 2 ** attempt * 1000 : 1000, 30 * 1000)</code></li>
+<li><code>attempt => attempt * 1000</code></li>
+</ul>
+</li>
+<li><code>error: TError</code>는 에러 정보를 담고 있는 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>staleTime: number | Infinity</code> (default: <code>0</code>)
+<ul>
+<li>가져온 데이터가 오래된 것으로 판단하는 ms 초입니다. 오래된 데이터로 판단되면 쿼리는 새로운 값을 가져옵니다.</li>
+<li><code>Infinity</code>로 설정한 경우 오래된 데이터로 판단하지 않아 최초 1회만 데이터를 가져오게 됩니다.</li>
+</ul>
+</li>
+<li><code>gcTime: number | Infinity</code> (default: CSR은 <code>5 * 60 * 1000</code>(5분), SSR은 <code>Infinity</code>)
+<ul>
+<li>사용하지 않거나 비활성화된 캐시 데이터가 메모리에 남아 있는 ms 초입니다. 쿼리의 캐시가 사용되지 않거나 비활성화되면 이 ms 초가 지난 후에 가비지 컬렉션(Garbage Cllection)됩니다.</li>
+<li><code>Infinity</code>로 설정할 경우 가비지 켈렉션 되지 않아 캐시 데이터가 메모리에서 삭제되지 않습니다.</li>
+</ul>
+</li>
+<li><code>queryKeyHashFn: (queryKey: QueryKey) => string</code>
+<ul>
+<li><code>queryKey</code>를 사용하여 해시 키를 만들어 반환하는 함수입니다. 반환된 값은 쿼리의 해시 키로 사용됩니다.</li>
+</ul>
+</li>
+<li><code>refetchInterval: number | false | ((query: Query) => number | false | undefined)</code>
+<ul>
+<li><code>number</code> 형태로 설정할 경우 설정한 ms 초 이후에 데이터를 다시 가져옵니다.</li>
+<li><code>false</code>로 설정할 경우 즉시 데이터를 다시 가져옵니다.</li>
+<li>함수 형태로 설정할 경우 함수의 반환 값에 따라 데이터를 다시 가져옵니다.</li>
+</ul>
+</li>
+<li><code>refetchIntervalInBackground: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 <code>refetchInterval</code>를 사용하여 계속 데이터를 다시 가져오게 설정된 쿼리라면 브라우저의 탭이나 창이 백그라운드에 있는 동안에도 계속 데이터를 다시 가져옵니다.</li>
+</ul>
+</li>
+<li><code>refetchOnMount: boolean | "always" | ((query: Query) => boolean | "always")</code> (default: <code>true</code>)
+<ul>
+<li><code>true</code>로 설정할 경우 데이터가 오래되었다면 쿼리가 마운트 되면 데이터를 다시 가져옵니다.</li>
+<li><code>false</code>로 설정할 경우 쿼리가 마운트 될 때 데이터를 다시 가져오지 않습니다.</li>
+<li><code>always</code>로 설정할 경우 쿼리가 마운트 될 때 항상 데이터를 다시 가져옵니다.</li>
+<li>함수 형태로 설정할 경우 함수의 반환 값에 따라 데이터를 다시 가져옵니다.</li>
+</ul>
+</li>
+<li><code>refetchOnReconnect: boolean | "always" | ((query: Query) => boolean | "always")</code> (default: <code>true</code>)
+<ul>
+<li><code>true</code>로 설정할 경우 네트워크가 다시 연결되면 데이터가 오래되었을 경우 데이터를 다시 가져옵니다.</li>
+<li><code>false</code>로 설정할 경우 네트워크가 다시 연결되어도 데이터를 다시 가져오지 않습니다.</li>
+<li><code>always</code>로 설정할 경우 네트워크가 디시 연결되면 항상 데이터를 다시 가져옵니다.</li>
+<li>함수 형태로 설정할 경우 함수의 반환 값에 따라 데이터를 다시 가져옵니다.</li>
+</ul>
+</li>
+<li><code>notifyOnChangeProps: string[] | "all" | (() => string[] | "all")</code>
+<ul>
+<li>쿼리의 반환 키 값을 배열로 전달합니다. 배열로 전달 한 키의 반환 값이 변경될 경우 컴포넌트가 재렌더링됩니다. 예를 들어, <code>['data', 'error']</code>로 설정할 경우 <code>data</code> 나 <code>error</code>의 값이 변경되면 컴포넌트가 재랜더링됩니다.</li>
+<li><code>all</code>로 설정할 경우 쿼리의 반환 값 중 하나라도 값이 변경될 경우 컴포넌트가 재렌더링됩니다.</li>
+<li>함수 형태로 설정할 경우 함수의 반환 값에 따라 컴포넌트가 재렌더링됩니다.</li>
+</ul>
+</li>
+<li><code>select: (data: TData) => unknown</code>
+<ul>
+<li><code>queryFn</code> 함수에서 반환한 값을 가공할 때 사용되는 옵션입니다. 반환된 값이 <code>data</code>에 담기지만 쿼리 캐시에는 영향을 주지 않습니다.</li>
+</ul>
+</li>
+<li><code>initialData: TData | () => TData</code>
+<ul>
+<li>쿼리가 생성되거나 캐시 되지 않은 경우 이 값은 캐시 되어, 쿼리의 초기 데이터로 사용됩니다.</li>
+</ul>
+</li>
+<li><code>initialDataUpdatedAt: number | (() => number | undefined)</code>
+<ul>
+<li><code>initialData</code>가 마지막으로 업데이트된 시간(ms)으로 사용됩니다.</li>
+</ul>
+</li>
+<li><code>placeholderData: TData | (previousValue: TData | undefined; previousQuery: Query | undefined,) => TData</code>
+<ul>
+<li>이 값은 쿼리가 <code>pending</code> 상태일 때 placeholder로 사용할 수 있는 데이터로 사용됩니다. 이 값은 쿼리 캐시에 영향을 주지 않습니다.</li>
+<li>함수로 설정할 경우 함수의 첫 번째 파라미터는 이전에 가져온 쿼리 데이터이고 두 번째 파라미터는 이전에 완료된 쿼리 인스턴스입니다. 함수의 반환 값이 placeholder 데이터로 사용됩니다.</li>
+<li><code>initialData</code>와 함께 설정되어 있다면, <code>initialData</code>가 더 높은 우선순위를 가집니다.</li>
+</ul>
+</li>
+<li><code>structuralSharing: boolean | (&#x3C;T>(oldData: T | undefined, newData: T) => T)</code> (default: <code>true</code>)
+<ul>
+<li><code>false</code>로 설정할 경우 쿼리가 가져온 데이터를 공유하지 않습니다.</li>
+<li>함수로 설정할 경우 함수의 첫 번째 파라미터는 이전에 가져온 쿼리 데이터이고 두 번째 파라미터는 새 쿼리 데이터입니다. 이 함수는 이전 데이터의 참조를 최대한 유지하면서 새로운 데이터를 반환하는 것이 좋습니다. 함수에서 반환한 데이터가 <code>data</code>로 사용됩니다.</li>
+</ul>
+</li>
+<li><code>throwOnError: undefined | boolean | (error: TError, query: Query) => boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 쿼리에서 에러가 발생할 경우 가장 가까운 에러 바운더리(Error Boundary)로 에러를 전파합니다.</li>
+<li><code>false</code>로 설정할 경우 쿼리에서 에러가 발생해도 에러 바운더리로 에러를 전파하지 않습니다.</li>
+<li>함수로 설정할 경우 첫 번째 파라미터로 에러 정보 두 번째 파라미터로 쿼리 정보가 담기고 이 값들로 에러 바운더리로 보낼지(<code>true</code>) 말지(<code>false</code>)를 결정하여 반환해야 합니다.</li>
+</ul>
+</li>
+<li><code>meta: Record&#x3C;string, unknown></code>
+<ul>
+<li>필요에 따라 쿼리 캐시에 저장할 수 있는 추가정보입니다. 이 값이 <code>queryFn</code>의 <code>context</code>의 <code>meta</code>에 전달됩니다.</li>
+</ul>
+</li>
+<li><code>queryClient?: QueryClient</code>
+<ul>
+<li>커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 콘텍스트의 쿼리 클라이언트가 사용됩니다.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong><code>placeholderData</code> 활용</strong></p>
+<p>React Query V4에서는 <code>keepPreviousData</code> 옵션으로 쿼리 키가 변경되어 새로운 데이터를 가져오는 동안에 이전 데이터를 유지하여 화면에 노출시킬 수 있었습니다. V5부터는 <code>keepPreviousData</code> 옵션이 없어지고 아래 코드와 같이 <code>placeholderData</code> 옵션이 그 기능을 대체합니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { keepPreviousData, useQuery } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> React </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> "react"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> Todos</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">() {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> [</span><span style="color:#023B95;--shiki-dark:#91CBFF">page</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">setPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">] </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> React.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">useState</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#023B95;--shiki-dark:#91CBFF">0</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> fetchProjects</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">page</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#023B95;--shiki-dark:#91CBFF"> 0</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> fetch</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'/api/projects?page='</span><span style="color:#A0111F;--shiki-dark:#FF9492"> +</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> page).</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">then</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">res</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> res.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">json</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">())</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">    isPending</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">    isError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">    error</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">    data</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">    isFetching</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">    isPlaceholderData</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  } </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useQuery</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    queryKey: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'projects'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, page],</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">    queryFn</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: () </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> fetchProjects</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(page),</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    placeholderData: keepPreviousData,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  })</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+</blockquote>
+<blockquote>
+<p><strong>Structural Sharing를 통한 최적화</strong></p>
+<p>React Query는 새로운 데이터를 만들 때 가능한 한 기존의 데이터를 유지하려고 합니다. 아래 코드와 같이 응답받은 데이터가 있을 때,</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">[</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  { </span><span style="color:#024C1A;--shiki-dark:#72F088">"id"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">1</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Learn React"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"status"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"active"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  { </span><span style="color:#024C1A;--shiki-dark:#72F088">"id"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">2</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Learn React Query"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"status"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"todo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span></code></pre>
+<p>서버에서 <code>id</code> 1에 대한 값이 업데이트되었다면, React Query는 아래 코드와 같이 모든 데이터를 교체하지 않고 변경된 값만 교체하여 기존의 데이터는 유지합니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="json"><code><span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">[</span></span>
+<span class="line"><span style="color:#6E011A;--shiki-light-font-style:italic;--shiki-dark:#FFB1AF;--shiki-dark-font-style:italic">  -</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#024C1A;--shiki-dark:#72F088">"id"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">1</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Learn React"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"status"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"active"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> },</span></span>
+<span class="line"><span style="color:#6E011A;--shiki-light-font-style:italic;--shiki-dark:#FFB1AF;--shiki-dark-font-style:italic">  +</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#024C1A;--shiki-dark:#72F088">"id"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">1</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Learn React"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"status"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"done"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  { </span><span style="color:#024C1A;--shiki-dark:#72F088">"id"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">2</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"name"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"Learn React Query"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">"status"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">"todo"</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span></code></pre>
+<p>React Query는 이전 데이터를 유지함으로 변경되지 않은 데이터를 사용하는 컴포넌트에서는 리렌더링이 발생하지 않도록 최적화합니다. 기존의 데이터를 유지하지 않고 항상 새로운 데이터로 사용하기 위해서는 <code>structuralSharing</code> 옵션을 <code>false</code>로 설정하면 됩니다.</p>
+</blockquote>
+<h5 id="returns">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>status: 'pending' | 'error' | 'success'</code>
+<ul>
+<li><code>pending</code>일 경우, 캐시 된 데이터가 없고 쿼리 시도가 아직 완료되지 않은 상태입니다.</li>
+<li><code>error</code>일 경우, 데이터를 가져올 때 에러가 발생한 상태입니다.</li>
+<li><code>success</code>일 경우, 데이터를 성공적으로 가져오거나, <code>enabled</code>가 <code>false</code>이면서 <code>initialData</code>가 설정된 상태입니다.</li>
+</ul>
+</li>
+<li><code>isPending: boolean</code>
+<ul>
+<li><code>status</code>가 <code>pending</code>일 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isSuccess: boolean</code>
+<ul>
+<li><code>status</code>가 <code>success</code>일 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isError: boolean</code>
+<ul>
+<li><code>status</code>가 <code>error</code>일 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isLoadingError: boolean</code>
+<ul>
+<li>처음 데이터를 가져올 때 에러가 발생한 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isRefetchError: boolean</code>
+<ul>
+<li>데이터 다시 가져오기가 실패한 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>data: TData | undefined</code> (default: <code>undefined</code>)
+<ul>
+<li>쿼리가 마지막으로 성공적으로 가져온 데이터입니다.</li>
+</ul>
+</li>
+<li><code>dataUpdatedAt: number</code>
+<ul>
+<li>데이터를 성공적으로 가져온 경우(<code>status</code>가 <code>success</code>일 때) 타임스탬프입니다.</li>
+</ul>
+</li>
+<li><code>error: null | TError</code> (default: <code>null</code>)
+<ul>
+<li>쿼리에 에러가 발생한 경우 에러 정보를 담는 객체입니다.</li>
+</ul>
+</li>
+<li><code>errorUpdatedAt: number</code>
+<ul>
+<li>가장 최근에 에러가 발생했을 경우(<code>status</code>가 <code>error</code>일 때) 타임스탬프입니다.</li>
+</ul>
+</li>
+<li><code>isStale: boolean</code>
+<ul>
+<li>캐시가 무효화 됐거나 <code>staleTime</code>이 지나 데이터가 오래된 것으로 판단될 때 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isPlaceholderData: boolean</code>
+<ul>
+<li><code>data</code> 값이 <code>placeholderData</code>일 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isFetched: boolean</code>
+<ul>
+<li>쿼리가 데이터를 가져온 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isFetchedAfterMount: boolean</code>
+<ul>
+<li>컴포넌트가 마운트 된 후 쿼리가 데이터를 가져온 경우 <code>true</code>입니다.</li>
+<li>이전에 캐시 된 데이터를 사용하고 싶지 않을 때 사용될 수 있습니다.</li>
+</ul>
+</li>
+<li><code>fetchStatus: 'fetching' | 'paused' | 'idle'</code>
+<ul>
+<li><code>fetching</code>일 경우, <code>queryFn</code>이 실행 중이거나, 초기 <code>status</code>가 <code>pending</code> 상태이거나, 백그라운드에서 데이터를 가져오는 상태입니다.</li>
+<li><code>paused</code>일 경우, 쿼리가 데이터를 가져오려고 했지만 중지된 상태입니다. 대표적으로 네트워크가 끊겨 쿼리가 중지됐을 때 <code>paused</code> 상태입니다.</li>
+<li><code>idle</code>일 경우, <code>fetching</code> 상태도 <code>paused</code> 상태도 아닌 상태입니다.</li>
+</ul>
+</li>
+<li><code>isFetching: boolean</code>
+<ul>
+<li><code>fetchStatus</code>가 <code>fetching</code>일 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isPaused: boolean</code>
+<ul>
+<li><code>fetchStatus</code>가 <code>paused</code>일 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isRefetching: boolean</code>
+<ul>
+<li>초기 <code>pending</code> 상태가 아니며 백그라운드에서 데이터를 가져오는 중일 때 <code>true</code>입니다.</li>
+<li><code>isFetching &#x26;&#x26; !isPending</code>와 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>isLoading: boolean</code>
+<ul>
+<li>쿼리가 처음으로 데이터를 가져오는 중일 때 <code>true</code>입니다.</li>
+<li><code>isFetching &#x26;&#x26; isPending</code>와 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>failureCount: number</code>
+<ul>
+<li>쿼리가 데이터 가져오기를 실패한 횟수입니다. 쿼리가 성공적으로 데이터를 가져온 경우 <code>0</code>으로 초기화됩니다.</li>
+</ul>
+</li>
+<li><code>failureReason: null | TError</code>
+<ul>
+<li>쿼리가 데이터를 가져오기 재시도를 실패했을 경우 에러 정보가 담깁니다. 쿼리가 성공적으로 데이터를 가져온 경우 <code>null</code>로 초기화 됩니다.</li>
+<li>예를 들어 <code>retry</code>가 <code>5</code>로 설정되어 있을 경우 쿼리가 데이터 가져오기 재시도를 실패하면 <code>failureReason</code>에 에러 정보가 담깁니다. 5번의 재시도가 모두 실패할 경우 <code>error</code> 객체에 에러 정보가 담기게 됩니다.</li>
+</ul>
+</li>
+<li><code>errorUpdateCount: number</code>
+<ul>
+<li>쿼리가 데이터 가져오기를 실패한 총횟수입니다.</li>
+</ul>
+</li>
+<li><code>refetch: (options: { throwOnError: boolean, cancelRefetch: boolean }) => Promise&#x3C;UseQueryResult></code>
+<ul>
+<li>수동으로 쿼리가 데이터를 다시 가져올 수 있게 하는 함수입니다.</li>
+<li><code>options.throwOnError: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 다시 가져오기가 실패하면 가장 가까운 에러 바운더리로 에러를 전파합니다.</li>
+</ul>
+</li>
+<li><code>options.cancelRefetch: boolean</code> (default: <code>true</code>)
+<ul>
+<li><code>true</code>로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행 중이던 요청을 취소하고 재요청합니다.</li>
+<li><code>false</code>로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/zjfrnf?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useQuery" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="usequeries"><code>useQueries</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usequeries"><span class="anchor-icon">#</span></a></h3>
+<p><code>useQuery</code>와 동일하게 데이터를 가져오기 위해 사용되는 쿼리입니다. 여러 개의 <code>useQuery</code>를 사용하고 싶을 경우 <code>useQuery</code>를 여러 번 선언할 필요 없이 <code>useQueries</code>로 대신할 수 있습니다.</p>
+<h4 id="타입-정보-1">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-1"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> ids</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> [</span><span style="color:#023B95;--shiki-dark:#91CBFF">1</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span><span style="color:#023B95;--shiki-dark:#91CBFF">2</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span><span style="color:#023B95;--shiki-dark:#91CBFF">3</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> results</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useQueries</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  queries: ids.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">map</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#702C00;--shiki-dark:#FFB757">id</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    { </span><span style="color:#702C00;--shiki-dark:#FFB757">queryKey</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'post'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">id</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">], </span><span style="color:#702C00;--shiki-dark:#FFB757">queryFn</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: () </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> fetchPost</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(id), </span><span style="color:#702C00;--shiki-dark:#FFB757">staleTime</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#702C00;--shiki-dark:#FFB757">Infinity</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  )),</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-1">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-1"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>queries</code>
+<ul>
+<li><a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a> 중 <code>queryClient</code>를 제외한 옵션을 사용할 쿼리 수만큼 배열에 담아 전달하면 됩니다. 또한 렌더링 할 때마다 호출해야 하는 쿼리의 수가 달라질 수 있기 때문에 <code>placeholderData</code> 함수는 이전 데이터를 파라미터로 전달하지 않습니다.</li>
+</ul>
+</li>
+<li><code>queryClient?: QueryClient</code>
+<ul>
+<li>커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 콘텍스트의 쿼리 클라이언트가 사용됩니다.</li>
+</ul>
+</li>
+<li><code>combine?: (result: UseQueriesResults) => TCombinedResult</code>
+<ul>
+<li>이 옵션을 사용하면 여러 쿼리의 결과 값을 단일 값으로 합칠 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="returns-1">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-1"><span class="anchor-icon">#</span></a></h5>
+<p><code>useQueries</code> 훅의 반환 값은 <a href="/tech/react/tanstack-query-v5-api-reference/#returns"><code>useQuery</code> 훅의 반환 값</a>과 동일한 값을 <code>queries</code>에 선언한 쿼리 순서대로 배열 형태로 반환합니다.</p>
+<h4 id="예제-1">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-1"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/gmvk2m?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useQueries" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="useinfinitequery"><code>useInfiniteQuery</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#useinfinitequery"><span class="anchor-icon">#</span></a></h3>
+<p><code>useInfiniteQuery</code> 훅 역시 <code>useQuery</code>나 <code>useQueries</code> 훅과 같이 데이터를 가져오기 위해 사용되는 쿼리입니다. 무한 스크롤을 통한 데이터 무한 로딩 등을 구현할 때 종종 사용되는 훅입니다.</p>
+<h4 id="타입-정보-2">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-2"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  fetchNextPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  fetchPreviousPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  hasNextPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  hasPreviousPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  isFetchingNextPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  isFetchingPreviousPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  ...</span><span style="color:#023B95;--shiki-dark:#91CBFF">result</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">} </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useInfiniteQuery</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  queryKey,</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  queryFn</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: ({ </span><span style="color:#702C00;--shiki-dark:#FFB757">pageParam</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> fetchPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(pageParam),</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  initialPageParam: </span><span style="color:#023B95;--shiki-dark:#91CBFF">1</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  ...</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">options,</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  getNextPageParam</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">lastPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">allPages</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">lastPageParam</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">allPageParams</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    lastPage.nextCursor,</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  getPreviousPageParam</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">firstPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">allPages</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">firstPageParam</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">allPageParams</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    firstPage.prevCursor,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-2">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-2"><span class="anchor-icon">#</span></a></h5>
+<p><code>useInfiniteQuery</code> 훅의 옵션은 <a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>에 아래 목록의 옵션이 추가됩니다.</p>
+<ul>
+<li><code>queryFn: (context: QueryFunctionContext) => Promise&#x3C;TData></code> (<strong>필수</strong>, 단 <code>defaultOptions</code>에서 정의된 경우 생략 가능)
+<ul>
+<li><code>useQuery</code>에서 사용하는 <code>queryFn</code>와 동일하지만 <code>context.pageParam: TPageParam</code>와 <code>context.direction: 'forward' | 'backward'</code>를 추가로 사용할 수 있습니다.
+<ul>
+<li><code>context.pageParam: TPageParam</code>
+<ul>
+<li>현재 페이지(현재 <code>data</code>)를 가져오기 위해 사용된 파라미터입니다.</li>
+</ul>
+</li>
+<li><code>context.direction: 'forward' | 'backward'</code>
+<ul>
+<li>현재 페이지를 가져올 방향입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>initialPageParam: TPageParam</code> (<strong>필수</strong>)
+<ul>
+<li>첫 페이지를 가져올 때 사용할 파라미터입니다.</li>
+</ul>
+</li>
+<li><code>getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) => TPageParam | undefined | null</code> (<strong>필수</strong>)
+<ul>
+<li>최근 페이지(<code>lastPage</code>), 모든 페이지(<code>allPages</code>), 최근 파마리터(<code>lastPageParam</code>), 모든 파라미터(<code>allPageParams</code>) 이 데이터를 사용하여 다음 페이지를 가져오는 데 사용되는 파라미터를 반환해야 하는 함수입니다.</li>
+<li><code>undefined</code>나 <code>null</code>을 반환할 경우 다음 페이지가 없는 것으로 판단합니다.</li>
+</ul>
+</li>
+<li><code>getPreviousPageParam: (firstPage, allPages, firstPageParam, allPageParams) => TPageParam | undefined | null</code>
+<ul>
+<li>최근 페이지(<code>firstPage</code>), 모든 페이지(<code>allPages</code>), 첫 파마리터(<code>firstPageParam</code>), 모든 파라미터(<code>allPageParams</code>) 이 데이터를 사용하여 이전 페이지를 가져오는 데 사용되는 파라미터를 반환해야 하는 함수입니다.</li>
+<li><code>undefined</code>나 <code>null</code>을 반환할 경우 이전 페이지가 없는 것으로 판단합니다.</li>
+</ul>
+</li>
+<li><code>maxPages: number | undefined</code> (default: <code>undefined</code>)
+<ul>
+<li><code>data</code> 반환 값에 저장할 최대 페이지 수입니다.</li>
+<li>최대 페이지 수에 도달하면 방향에 따라 첫 번째 또는 마지막 페이지가 제거됩니다.</li>
+<li><code>undefined</code>나 <code>0</code>이 설정된 경우 저장할 수 있는 페이지 수의 제한이 없게 됩니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="returns-2">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-2"><span class="anchor-icon">#</span></a></h5>
+<p><code>useInfiniteQuery</code> 훅의 반환 값은 아래 목록을 제외하고 <code>useQuery</code>의 반환 값과 동일합니다.</p>
+<ul>
+<li><code>data.pages: TData[]</code>
+<ul>
+<li>모든 페이지의 데이터가 배열 형태로 저장됩니다.</li>
+</ul>
+</li>
+<li><code>data.pageParams: unknown[]</code>
+<ul>
+<li>페이지를 가져오기 위해 사용된 모든 파라미터 데이터가 배열 형태로 저장됩니다.</li>
+</ul>
+</li>
+<li><code>isFetchingNextPage: boolean</code>
+<ul>
+<li><code>fetchNextPage</code> 함수로 다음 페이지를 가져오는 동안 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isFetchingPreviousPage: boolean</code>
+<ul>
+<li><code>fetchPreviousPage</code> 함수로 이전 페이지를 가져오는 동안 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>fetchNextPage: (options?: FetchNextPageOptions) => Promise&#x3C;UseInfiniteQueryResult></code>
+<ul>
+<li>다음 페이지 데이터를 가져오는 함수입니다.</li>
+<li><code>options.cancelRefetch: boolean</code> (default: <code>true</code>)
+<ul>
+<li><code>true</code>로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행 중이던 요청을 취소하고 재요청합니다.</li>
+<li><code>false</code>로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>fetchPreviousPage: (options?: FetchPreviousPageOptions) => Promise&#x3C;UseInfiniteQueryResult></code>
+<ul>
+<li>이전 페이지 데이터를 가져오는 함수입니다.</li>
+<li><code>options.cancelRefetch: boolean</code> (default: <code>true</code>)
+<ul>
+<li><code>fetchNextPage</code>의 <code>options.cancelRefetch: boolean</code>와 동일합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>hasNextPage: boolean</code>
+<ul>
+<li>다음 페이지가 있는 경우 <code>true</code>입니다.</li>
+<li>다음 페이지가 없는 경우, 즉 <code>getNextPageParam</code> 함수가 <code>undefined</code>나 <code>null</code>을 반환할 경우 <code>false</code>입니다.</li>
+</ul>
+</li>
+<li><code>hasPreviousPage: boolean</code>
+<ul>
+<li>이전 페이지가 있는 경우 <code>true</code>입니다.</li>
+<li>이전 페이지가 없는 경우, 즉 <code>getPreviousPageParam</code> 함수가 <code>undefined</code>나 <code>null</code>을 반환할 경우 <code>false</code>입니다.</li>
+</ul>
+</li>
+<li><code>isRefetching: boolean</code>
+<ul>
+<li>초기 <code>pending</code>, 다음/이전 데이터를 가져오는 중을 제외하고 백그라운드에서 데이터를 가져오는 중일 경우 <code>true</code>입니다.</li>
+<li><code>isFetching &#x26;&#x26; !isPending &#x26;&#x26; !isFetchingNextPage &#x26;&#x26; !isFetchingPreviousPage</code>와 동일한 값입니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-2">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-2"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/m9sfx3?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useInfiniteQuery" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="usemutation"><code>useMutation</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usemutation"><span class="anchor-icon">#</span></a></h3>
+<p><code>useMutation</code> 역시 React Query에서 가장 많이 사용되는 훅 중 하나입니다. <code>useMutation</code>은 API 서버에 데이터를 저장하거나 업데이트, 삭제 하는 등의 데이터에 영향을 주는 HTTP의 POST, PUT, DELETE 메서드에 주로 사용됩니다.</p>
+<h4 id="타입-정보-3">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-3"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  data</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">error</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isIdle</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  isPending</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isPaused</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">isSuccess</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  failureCount</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">failureReason</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  mutate</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">mutateAsync</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">reset</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">  status</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">submittedAt</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">variables</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">} </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useMutation</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  mutationFn, gcTime,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  mutationKey, networkMode,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  onError, onMutate, onSettled,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  onSuccess, retry, retryDelay,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  throwOnError, meta,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">mutate</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(variables, {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  onError,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  onSettled,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  onSuccess,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-3">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-3"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>mutationFn: (variables: TVariables) => Promise&#x3C;TData></code> (<strong>필수</strong>, 단 <code>defaultOptions</code>에서 정의된 경우 생략 가능)
+<ul>
+<li>비동기 작업을 수행하고 <code>Promise</code>를 반환하는 함수입니다.</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li>반환 값인 <code>mutate</code> 함수를 호출할 때 전달되는 파라미터입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>gcTime: number | Infinity</code>
+<ul>
+<li><code>useQuery</code>의 <code>gcTime</code>과 동일합니다.</li>
+</ul>
+</li>
+<li><code>mutationKey: unknown[]</code>
+<ul>
+<li>다른 Mutation과 구분될 수 있는 유니크한 키입니다. 쿼리의 <code>queryKey</code>와는 다르게 필수값이 아닙니다.</li>
+</ul>
+</li>
+<li><code>networkMode: 'online' | 'always' | 'offlineFirst</code> (default: <code>online</code>)
+<ul>
+<li><code>useQuery</code>의 <code>networkMode</code>과 동일합니다.</li>
+</ul>
+</li>
+<li><code>onMutate: (variables: TVariables) => Promise&#x3C;TContext | void> | TContext | void</code>
+<ul>
+<li><code>mutationFn</code>이 실행되기 전에 실행됩니다.</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li><code>mutationFn</code> 함수의 파라미터와 동일한 값을 파라미터로 전달받습니다.</li>
+</ul>
+</li>
+<li><code>onMutate</code> 함수는 <a href="/tech/react/tanstack-query-v4/#%EC%BF%BC%EB%A6%AC-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8">낙관적 업데이트(optimistic updates)</a>에 사용하기 유용합니다. 반환 값은 <code>onError</code>와 <code>onSettled</code> 함수에 전달되어 mutation 실패 시 낙관적 업데이트를 롤백할 때 사용할 수 있습니다.
+<ul>
+<li>낙관적 업데이트란 mutation이 성공할 것이라 판단하여 수정된 결과를 응답받기 전, 요청한 데이터를 사용하여 업데이트하는 것을 말합니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onSuccess: (data: TData, variables: TVariables, context?: TContext) => Promise&#x3C;unknown> | unknown</code>
+<ul>
+<li><code>mutaionFn</code>이 성공할 경우 실행됩니다.</li>
+<li><code>Promise</code>를 반환한 경우 <code>resolved</code> 될 때까지 이후 작업(<code>onSettled</code>, <code>mutate</code> 함수의 <code>onSuccess</code>와 <code>onError</code>, <code>onSettled</code> 콜백 함수 등)들이 진행되지 않습니다.</li>
+<li><code>data: TData</code>
+<ul>
+<li><code>mutationFn</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li><code>mutate</code> 함수에 전달한 <code>variables</code> 값입니다.</li>
+</ul>
+</li>
+<li><code>context?: TContext</code>
+<ul>
+<li><code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onError: (err: TError, variables: TVariables, context?: TContext) => Promise&#x3C;unknown> | unknown</code>
+<ul>
+<li><code>mutationFn</code>에서 에러가 발생할 경우 실행됩니다.</li>
+<li><code>Promise</code>를 반환한 경우 <code>resolved</code> 될 때까지 이후 작업(<code>onSettled</code>, <code>mutate</code> 함수의 <code>onSuccess</code>와 <code>onError</code>, <code>onSettled</code> 콜백 함수 등)들이 진행되지 않습니다.</li>
+<li><code>err: TError</code>
+<ul>
+<li>발생한 에러 정보입니다.</li>
+</ul>
+</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li><code>mutate</code> 함수에 전달한 <code>variables</code> 값입니다.</li>
+</ul>
+</li>
+<li><code>context?: TContext</code>
+<ul>
+<li><code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onSettled: (data: TData, error: TError, variables: TVariables, context?: TContext) => Promise&#x3C;unknown> | unknown</code>
+<ul>
+<li><code>mutationFn</code>이 성공하거나 실패할 경우 실행됩니다.</li>
+<li><code>Promise</code>를 반환한 경우 <code>resolved</code> 될 때까지 이후 작업(<code>mutate</code> 함수의 <code>onSuccess</code>와 <code>onError</code>, <code>onSettled</code> 콜백 함수 등)들이 진행되지 않습니다.</li>
+<li><code>data: TData</code>
+<ul>
+<li><code>mutaionFn</code>이 성공할 경우 <code>mutaionFn</code>의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>err: TError</code>
+<ul>
+<li><code>mutaionFn</code>이 실패할 경우 발생한 에러 정보입니다.</li>
+</ul>
+</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li><code>mutate</code> 함수에 전달한 <code>variables</code> 값입니다.</li>
+</ul>
+</li>
+<li><code>context?: TContext</code>
+<ul>
+<li><code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>retry: boolean | number | (failureCount: number, error: TError) => boolean</code> (default: <code>0</code>)
+<ul>
+<li><code>useQuery</code>의 <code>retry</code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>retryDelay: number | (retryAttempt: number, error: TError) => number</code>
+<ul>
+<li><code>useQuery</code>의 <code>retryDelay</code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>throwOnError: undefined | boolean | (error: TError) => boolean</code>
+<ul>
+<li><code>useQuery</code>의 <code>throwOnError</code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>meta: Record&#x3C;string, unknown></code>
+<ul>
+<li>필요에 따라 Mutation 캐시에 저장할 수 있는 추가정보입니다. <code>MutationCache</code>의 <code>onError</code>, <code>onSuccess</code>와 같이 <code>mutation</code>을 사용할 수 있다면 <code>meta</code>를 사용할 수 있습니다.</li>
+</ul>
+</li>
+<li><code>queryClient?: QueryClient</code>
+<ul>
+<li><code>useQuery</code>의 <code>queryClient</code>와 동일합니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="returns-3">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-3"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>mutate: (variables: TVariables, { onSuccess, onSettled, onError }) => void</code>
+<ul>
+<li>변경할 데이터를 파라미터로 전달하여 데이터 변경을 수행하는 함수입니다. 두 번째 파라미터는 옵션 정보로, 콜백 함수를 정의할 수 있습니다.</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li><code>mutationFn</code>의 <code>variables</code> 파라미터로 전달됩니다.</li>
+</ul>
+</li>
+<li><code>onSuccess: (data: TData, variables: TVariables, context: TContext) => void</code>
+<ul>
+<li>Mutation이 성공했을 때 호출되는 콜백함수입니다.</li>
+<li><code>data: TData</code>
+<ul>
+<li><code>mutationFn</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li><code>mutate</code> 함수에 전달한 <code>variables</code> 값입니다.</li>
+</ul>
+</li>
+<li><code>context: TContext</code>
+<ul>
+<li><code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onError: (err: TError, variables: TVariables, context: TContext | undefined) => void</code>
+<ul>
+<li>Mutation이 실패했을 때 호출되는 콜백함수입니다.</li>
+<li><code>err: TError</code>
+<ul>
+<li><code>mutaionFn</code>이 실패할 경우 발생한 에러 정보입니다.</li>
+</ul>
+</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li><code>mutate</code> 함수에 전달한 <code>variables</code> 값입니다.</li>
+</ul>
+</li>
+<li><code>context: TContext | undefined</code>
+<ul>
+<li><code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onSettled: (data: TData | undefined, error: TError | null, variables: TVariables, context: TContext | undefined) => void</code>
+<ul>
+<li>Mutation이 성공하거나 실패할 경우 실행됩니다.</li>
+<li><code>data: TData | undefined</code>
+<ul>
+<li><code>mutaionFn</code>이 성공할 경우 <code>mutaionFn</code>의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>error: TError | null</code>
+<ul>
+<li><code>mutaionFn</code>이 실패할 경우 발생한 에러 정보입니다.</li>
+</ul>
+</li>
+<li><code>variables: TVariables</code>
+<ul>
+<li><code>mutate</code> 함수에 전달한 <code>variables</code> 값입니다.</li>
+</ul>
+</li>
+<li><code>context: TContext | undefined</code>
+<ul>
+<li><code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>mutateAsync: (variables: TVariables, { onSuccess, onSettled, onError }) => Promise&#x3C;TData></code>
+<ul>
+<li><code>mutate</code> 함수와 동일한 기능을 하는 async 함수입니다.</li>
+</ul>
+</li>
+<li><code>status: 'idle' | 'pending' | 'error' | 'success'</code>
+<ul>
+<li><code>idle</code>인 경우, Mutation 함수가 실행되기 전 상태입니다.</li>
+<li><code>pending</code>인 경우, Mutation 함수가 실행 중인 상태입니다.</li>
+<li><code>error</code> 인 경우, Mutation 함수에서 에러가 발생한 상태입니다.</li>
+<li><code>success</code>인 경우, Mutation 함수가 성공한 상태입니다.</li>
+</ul>
+</li>
+<li><code>isIdle: boolean</code>
+<ul>
+<li><code>status</code>가 <code>idle</code>인 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isPending: boolean</code>
+<ul>
+<li><code>status</code>가 <code>pending</code>인 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isError: boolean</code>
+<ul>
+<li><code>status</code>가 <code>error</code>인 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isSuccess: boolean</code>
+<ul>
+<li><code>status</code>가 <code>success</code>인 경우 <code>true</code>입니다.</li>
+</ul>
+</li>
+<li><code>isPaused: boolean</code>
+<ul>
+<li>Mutation이 중지된 상태입니다. 대표적으로 네트워크가 끊겨 Mutation이 중지됐을 때 <code>paused</code> 상태입니다.</li>
+</ul>
+</li>
+<li><code>data: undefined | unknown</code> (default: <code>undefined</code>)
+<ul>
+<li>가장 최근에 성공한 Mutation의 반환 값을 담습니다.</li>
+</ul>
+</li>
+<li><code>error: null | TError</code>
+<ul>
+<li>Mutation이 실패했을 경우 에러 정보가 담긴 객체입니다.</li>
+</ul>
+</li>
+<li><code>reset: () => void</code>
+<ul>
+<li>Mutation의 상태를 초기화하는 함수입니다.</li>
+</ul>
+</li>
+<li><code>failureReason: null | TError</code>
+<ul>
+<li>Mutation 재시도를 실패했을 경우 에러 정보가 담깁니다. Mutation이 성공한 경우 <code>null</code>로 초기화 됩니다.</li>
+</ul>
+</li>
+<li><code>submittedAt: number</code> (default: <code>0</code>)
+<ul>
+<li>Mutation이 실행된 시점의 타입스탬프입니다.</li>
+</ul>
+</li>
+<li><code>variables: undefined | TVariables</code> (default: <code>undefined</code>)
+<ul>
+<li><code>mutationFn</code> 함수의 파라미터로 전달된 <code>variables</code> 값입니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-3">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-3"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/7cjzgh?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useMutation" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="useisfetching"><code>useIsFetching</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#useisfetching"><span class="anchor-icon">#</span></a></h3>
+<p><code>useIsFetching</code> 훅은 데이터를 가져오는 중인 쿼리의 수를 반환합니다.</p>
+<h4 id="타입-정보-4">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-4"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { useIsFetching } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// How many queries are fetching?</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> isFetching</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useIsFetching</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// How many queries matching the posts prefix are fetching?</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> isFetchingPosts</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useIsFetching</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ queryKey: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'posts'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">] })</span></span></code></pre>
+<h5 id="options-4">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-4"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>filters?: QueryFilters</code>
+<ul>
+<li><code>filters.queryKey?: QueryKey</code>
+<ul>
+<li>찾으려고 하는 쿼리의 쿼리 키입니다.</li>
+</ul>
+</li>
+<li><code>filters.exact?: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 정확히 일치하는 쿼리를 찾습니다.</li>
+<li><code>false</code>로 설정할 경우 설정한 <code>filters.queryKey</code>가 포함되는 쿼리를 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.type?: 'active' | 'inactive' | 'all'</code> (default: <code>all</code>)
+<ul>
+<li><code>active</code>로 설정할 경우 활성화된 쿼리 중에 찾습니다.</li>
+<li><code>inactive</code>로 설정할 경우 비활성화된 쿼리 중에 찾습니다.</li>
+<li><code>all</code>로 설정할 경우 모든 쿼리 중에 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.stale?: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 오래된(stale) 쿼리 중에 찾습니다.</li>
+<li><code>false</code>로 설정할 경우 신선한(fresh) 쿼리 중에 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.fetchStatus?: 'fetching' | 'paused' | 'idle'</code>
+<ul>
+<li><code>fetching</code>으로 설정할 경우 가져오는 중인 쿼리 중에 찾습니다.</li>
+<li><code>paused</code>로 설정할 경우 데이터를 가져오려고 했지만 일시 중단된 쿼리 중에 찾습니다.</li>
+<li><code>idle</code>로 설정할 경우 데이터를 가져온 적이 없는 쿼리 중에 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.predicate?: (query: Query) => boolean</code>
+<ul>
+<li>최종 필터로 사용되는 함수입니다. 다른 필터를 정의하지 않으면 모든 쿼리 중에 찾습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>queryClient?: QueryClient</code>
+<ul>
+<li>커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 콘텍스트의 쿼리 클라이언트가 사용됩니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="returns-4">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-4"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>isFetching: number</code>
+<ul>
+<li>데이터를 가져오는 중인 쿼리의 수입니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-4">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-4"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/cq2gkp?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useIsFetching" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="useismutating"><code>useIsMutating</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#useismutating"><span class="anchor-icon">#</span></a></h3>
+<p><code>useIsMutating</code> 훅은 Mutation 중인 수를 반환합니다.</p>
+<h4 id="타입-정보-5">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-5"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { useIsMutating } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// How many mutations are fetching?</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> isMutating</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useIsMutating</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// How many mutations matching the posts prefix are fetching?</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> isMutatingPosts</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useIsMutating</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ mutationKey: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'posts'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">] })</span></span></code></pre>
+<h5 id="options-5">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-5"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>filters?: MutationFilters</code>
+<ul>
+<li><code>filters.mutationKey?: MutationKey</code>
+<ul>
+<li>찾으려고 하는 Mutation의 키입니다.</li>
+</ul>
+</li>
+<li><code>filters.exact?: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 정확히 일치하는 Mutation을 찾습니다.</li>
+<li><code>false</code>로 설정할 경우 설정한 <code>filters.mutationKey</code>가 포함되는 Mutation을 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.status?: 'idle' | 'pending' | 'error' | 'success'</code>
+<ul>
+<li><code>idle</code>인 경우 실행되기 전인 Mutation 중에 찾습니다.</li>
+<li><code>pending</code>인 경우 실행 중인 Mutation 중에 찾습니다.</li>
+<li><code>error</code> 인 경우 에러가 발생한 Mutation 중에 찾습니다.</li>
+<li><code>success</code>인 경우 성공한 Mutation 중에 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.predicate?: (mutation: Mutation) => boolean</code>
+<ul>
+<li>최종 필터로 사용되는 함수입니다. 다른 필터를 정의하지 않으면 모든 Mutation 중에 찾습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>queryClient?: QueryClient</code>
+<ul>
+<li>커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 콘텍스트의 쿼리 클라이언트가 사용됩니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="returns-5">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-5"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>isMutating: number</code>
+<ul>
+<li>Mutation 중인 숫자입니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-5">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-5"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/rzm4tc?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useIsMutating" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="querycache"><code>QueryCache</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#querycache"><span class="anchor-icon">#</span></a></h3>
+<p><code>QueryCache</code>는 쿼리를 저장하는 저장소입니다. 쿼리에 포함된 데이터, 메타 정보, 쿼리의 상태가 저장됩니다. 보통 아래 코드와 같이 QueryClient에 정의하고, <code>useQueryClient</code>의 <code>getQueryCache</code>를 통해 가져와 사용합니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> QueryClient</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  queryCache: </span><span style="color:#A0111F;--shiki-dark:#FF9492">new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> QueryCache</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">    // 옵션 설정</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }),</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> App</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useQueryClient</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryCache</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> queryClient.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">getQueryCache</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // ...</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">root.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">render</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">QueryClientProvider</span><span style="color:#023B95;--shiki-dark:#91CBFF"> client</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">App</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> /></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  &#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">QueryClientProvider</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span></code></pre>
+<h4 id="타입-정보-6">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-6"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { QueryCache } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryCache</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> QueryCache</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  onError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">error</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(error)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  onSuccess</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">data</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(data)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  onSettled</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">data</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">error</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(data, error)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-6">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-6"><span class="anchor-icon">#</span></a></h5>
+<p><code>QueryCache</code>의 옵션들은 모두 콜백함수입니다. 전역에서 처리해야 할 적업을 할 때 사용할 수 있습니다.</p>
+<ul>
+<li><code>onError?: (error: unknown, query: Query) => void</code>
+<ul>
+<li>실행한 쿼리에 에러가 발생할 경우 호출되는 콜백함수입니다.</li>
+<li><code>error: unknown</code>
+<ul>
+<li>발생한 에러 정보가 담긴 객체입니다.</li>
+</ul>
+</li>
+<li><code>query: Query</code>
+<ul>
+<li>실행한 쿼리 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onSuccess?: (data: unknown, query: Query) => void</code>
+<ul>
+<li>실행한 쿼리가 성공하면 호출되는 콜백함수입니다.</li>
+<li><code>data: unknown</code>
+<ul>
+<li><code>queryFn</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>query: Query</code>
+<ul>
+<li>실행한 쿼리 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onSettled?: (data: unknown | undefined, error: unknown | null, query: Query) => void</code>
+<ul>
+<li>실행한 쿼리가 성공 혹은 실패하여 종료되면 호출되는 콜백함수입니다.</li>
+<li><code>data: unknown | undefined</code>
+<ul>
+<li>쿼리가 성공한 경우 <code>queryFn</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>error: unknown | null</code>
+<ul>
+<li>쿼리가 실패한 경우 발생한 에러 정보가 담긴 객체입니다.</li>
+</ul>
+</li>
+<li><code>query: Query</code>
+<ul>
+<li>실행한 쿼리 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong><code>QueryClient</code>의 <code>defaultOptions</code>와 <code>QueryCache</code>의 옵션의 차이</strong></p>
+<ul>
+<li><code>defaultOpions</code>의 콜백함수들은 각각의 쿼리를 호출할 때 오버라이드될 수 있습니다. <code>QueryCache</code>의 전역 콜백함수들은 항상 호출됩니다.</li>
+<li><code>defaultOpions</code>의 콜백함수들은 각각의 옵저버에서 한 번씩 호출되지만, <code>QueryCache</code>의 전역 콜백함수들은 한 번만 호출됩니다.
+<ul>
+<li>예를 들어 <code>useQuery({ queryKey: ['posts'] })</code>와 같이 동일한 쿼리가 부모, 자식 컴포넌트 각각에 2번 선언되었다면 <code>defaultOpions</code>의 콜백함수는 2번 호출되지만, <code>QueryCache</code>의 전역 콜백함수는 한 번만 호출됩니다.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="returns-6">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-6"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>find: (filters: QueryFilters) => Query | undefined</code>
+<ul>
+<li><code>filters</code>에 해당하는 쿼리를 반환하는 함수입니다. 해당하는 쿼리가 없을 경우 <code>undefined</code>를 반환합니다.</li>
+<li><code>filters?: QueryFilters</code>
+<ul>
+<li><code>filters.queryKey?: QueryKey</code>
+<ul>
+<li>찾으려고 하는 쿼리의 쿼리 키입니다.</li>
+</ul>
+</li>
+<li><code>filters.exact?: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 정확히 일치하는 쿼리를 찾습니다.</li>
+<li><code>false</code>로 설정할 경우 설정한 <code>filters.queryKey</code>가 포함되는 쿼리를 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.type?: 'active' | 'inactive' | 'all'</code> (default: <code>all</code>)
+<ul>
+<li><code>active</code>로 설정할 경우 활성화된 쿼리 중에 찾습니다.</li>
+<li><code>inactive</code>로 설정할 경우 비활성화된 쿼리 중에 찾습니다.</li>
+<li><code>all</code>로 설정할 경우 모든 쿼리 중에 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.stale?: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 오래된(stale) 쿼리 중에 찾습니다.</li>
+<li><code>false</code>로 설정할 경우 신선한(fresh) 쿼리 중에 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.fetchStatus?: 'fetching | 'paused' | 'idle'</code>
+<ul>
+<li><code>fetching</code>으로 설정할 경우 가져오는 중인 쿼리 중에 찾습니다.</li>
+<li><code>paused</code>로 설정할 경우 데이터를 가져오려고 했지만 일시 중단된 쿼리 중에 찾습니다.</li>
+<li><code>idle</code>로 설정할 경우 데이터를 가져온 적이 없는 쿼리 중에 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.predicate?: (query: Query) => boolean</code>
+<ul>
+<li>최종 필터로 사용되는 함수입니다. 다른 필터를 정의하지 않으면 모든 쿼리 중에 찾습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>findAll: (filters: QueryFilters) => Query[]</code>
+<ul>
+<li><code>filters</code>에 해당하는 쿼리를 배열 형태로 반환하는 함수입니다. 해당하는 쿼리가 없을 경우 `빈 배열을 반환합니다.</li>
+<li><code>find</code> 함수의 <code>filters</code>와 동일한 값을 파라미터로 전달받습니다.</li>
+</ul>
+</li>
+<li><code>subscribe: (callback: (event: QueryCacheNotifyEvent) => void) => unsubscribe: Function => void</code>
+<ul>
+<li>쿼리 캐시를 구독합니다. <code>query.setState</code>나 <code>queryClient.removeQueries</code> 등 쿼리가 업데이트될 때마다 업데이트된 쿼리를 파라미터로 하여 <code>callback</code> 함수가 호출됩니다.</li>
+<li>구독을 취소하는 함수인 <code>unsubscribe</code>를 반환합니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> callback</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#702C00;--shiki-dark:#FFB757">event</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(event.type, event.query)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unsubscribe</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> queryCache.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">subscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(callback)</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>clear: () => void</code>
+<ul>
+<li>쿼리 캐시를 모두 지우는 데 사용되는 함수입니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-6">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-6"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/5vcsmr?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2Findex.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="QueryCache" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="mutationcache"><code>MutationCache</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#mutationcache"><span class="anchor-icon">#</span></a></h3>
+<p><code>MutationCache</code>는 Mutation을 저장하는 저장소입니다. 보통 아래 코드와 같이 <code>QueryClient</code>에 정의하고, <code>useQueryClient</code>의 <code>getMutationCache</code>를 통해 가져와 사용합니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> QueryClient</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  mutationCache: </span><span style="color:#A0111F;--shiki-dark:#FF9492">new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> MutationCache</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">    // 옵션 설정</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }),</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> App</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useQueryClient</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> mutationCache</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> queryClient.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">getMutationCache</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // ...</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">root.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">render</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">QueryClientProvider</span><span style="color:#023B95;--shiki-dark:#91CBFF"> client</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">App</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> /></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  &#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">QueryClientProvider</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">);</span></span></code></pre>
+<h4 id="타입-정보-7">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-7"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { MutationCache } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> mutationCache</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> MutationCache</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  onError</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#702C00;--shiki-dark:#FFB757">error</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(error)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  onSuccess</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#702C00;--shiki-dark:#FFB757">data</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(data)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-7">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-7"><span class="anchor-icon">#</span></a></h5>
+<p><code>MutationCache</code>의 옵션들은 모두 콜백함수입니다. 전역에서 처리해야 할 적업을 할 때 사용할 수 있습니다.</p>
+<ul>
+<li><code>onError?: (error: unknown, variables: unknown, context: unknown, mutation: Mutation) => Promise&#x3C;unknown> | unknown</code>
+<ul>
+<li>실행한 Mutation에 에러가 발생할 경우 호출되는 콜백함수입니다. <code>Promise</code>를 반환할 경우 <code>resolved</code> 될 때까지 이후 작업들이 진행되지 않습니다.</li>
+<li><code>error: unknown</code>
+<ul>
+<li>발생한 에러 정보가 담긴 객체입니다.</li>
+</ul>
+</li>
+<li><code>variables: unknown</code>
+<ul>
+<li><code>mutate</code>(또는 <code>mutateAsync</code>) 함수의 <code>variables</code> 파라미터로 전달한 값입니다.</li>
+</ul>
+</li>
+<li><code>context: unknown</code>
+<ul>
+<li><code>useMutation</code> 훅의 옵션 중 <code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>mutation: Mutation</code>
+<ul>
+<li>실행한 Mutation 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onSuccess?: (data: unknown, variables: unknown, context: unknown, mutation: Mutation) => Promise&#x3C;unknown> | unknown</code>
+<ul>
+<li>실행한 Mutation이 성공하면 호출되는 콜백함수입니다. <code>Promise</code>를 반환할 경우 <code>resolved</code> 될 때까지 이후 작업들이 진행되지 않습니다.</li>
+<li><code>data: unknown</code>
+<ul>
+<li><code>mutationFn</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>variables: unknown</code>
+<ul>
+<li><code>mutate</code>(또는 <code>mutateAsync</code>) 함수의 <code>variables</code> 파라미터로 전달한 값입니다.</li>
+</ul>
+</li>
+<li><code>context: unknown</code>
+<ul>
+<li><code>useMutation</code> 훅의 옵션 중 <code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>mutation: Mutation</code>
+<ul>
+<li>실행한 Mutation 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onSettled?: (data: unknown | undefined, error: unknown | null, variables: unknown, context: unknown, mutation: Mutation) => Promise&#x3C;unknown> | unknown</code>
+<ul>
+<li>실행한 Mutation이 성공 혹은 실패하여 종료되면 호출되는 콜백함수입니다. <code>Promise</code>를 반환할 경우 <code>resolved</code> 될 때까지 이후 작업들이 진행되지 않습니다.</li>
+<li><code>data: unknown | undefined</code>
+<ul>
+<li>Mutation이 성공한 경우 <code>mutationFn</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>error: unknown | null</code>
+<ul>
+<li>Mutation이 실패한 경우 발생한 에러 정보가 담긴 객체입니다.</li>
+</ul>
+</li>
+<li><code>variables: unknown</code>
+<ul>
+<li><code>mutate</code>(또는 <code>mutateAsync</code>) 함수의 <code>variables</code> 파라미터로 전달한 값입니다.</li>
+</ul>
+</li>
+<li><code>context: unknown</code>
+<ul>
+<li><code>useMutation</code> 훅의 옵션 중 <code>onMutate</code> 함수의 반환 값입니다.</li>
+</ul>
+</li>
+<li><code>mutation: Mutation</code>
+<ul>
+<li>실행한 Mutation 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>onMutate?: (variables: unknown, mutation: Mutation) => Promise&#x3C;unknown> | unknown</code>
+<ul>
+<li>Mutation이 실행되기 전에 호출되는 콜백합수입니다.</li>
+<li><code>variables: unknown</code>
+<ul>
+<li><code>mutate</code>(또는 <code>mutateAsync</code>) 함수의 <code>variables</code> 파라미터로 전달한 값입니다.</li>
+</ul>
+</li>
+<li><code>mutation: Mutation</code>
+<ul>
+<li>실행한 Mutation 객체입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong><code>QueryClient</code>의 <code>defaultOptions</code>와 <code>MutationCache</code>의 옵션의 차이</strong></p>
+<ul>
+<li><code>defaultOpions</code>에 정의한 콜백함수들은 각각의 Mutation을 호출할 때 오버라이드될 수 있습니다. <code>MutationCache</code>에 정의한 전역 콜백함수들은 항상 호출됩니다.</li>
+<li><code>MutationCache</code>의 옵션 중 <code>onMutate</code> 함수의 반환 값은 <code>context</code>에 담기지 않습니다.</li>
+</ul>
+</blockquote>
+<h5 id="returns-7">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-7"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>getAll: () => Mutation[]</code>
+<ul>
+<li>캐시 된 모든 Mutation을 반환합니다.</li>
+</ul>
+</li>
+<li><code>subscribe: (callback: (mutation?: MutationCacheNotifyEvent) => void) => unsubscribe: Function => void</code>
+<ul>
+<li>Mutation 캐시를 구독합니다. Mutation 추가/삭제/수정되면 <code>callback</code> 함수가 실행됩니다.</li>
+<li>구독을 취소하는 함수인 <code>unsubscribe</code>를 반환합니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> callback</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#702C00;--shiki-dark:#FFB757"> event</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(event.type, event.mutation)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unsubscribe</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> mutationCache.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">subscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(callback)</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>clear: () => void</code>
+<ul>
+<li>Mutation 캐시를 모두 지우는 데 사용되는 함수입니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-7">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-7"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/9m9p9l?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2Findex.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="MutationCache" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="usemutationstate"><code>useMutationState</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usemutationstate"><span class="anchor-icon">#</span></a></h3>
+<p><code>useMutationState</code> 훅은 <code>MutationCache</code>에 있는 Mutation에 접근할 수 있는 훅입니다. <code>filter</code>을 사용하여 원하는 Mutation을 찾을 수 있고 <code>select</code>를 사용하여 필요한 Mutation의 값을 선택해 가져올 수 있습니다.</p>
+<h4 id="타입-정보-8">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-8"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { useMutation, useMutationState } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> mutationKey</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'posts'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Some mutation that we want to get the state for</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> mutation</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useMutation</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  mutationKey,</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  mutationFn</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">newPost</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">    return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> axios.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">post</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'/posts'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, newPost)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> data</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useMutationState</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // this mutation key needs to match the mutation key of the given mutation (see above)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  filters: { mutationKey },</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  select</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">mutation</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> mutation.state.data,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-8">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-8"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>options</code>
+<ul>
+<li><code>filters?: MutationFilters</code>
+<ul>
+<li><code>filters.mutationKey?: MutationKey</code>
+<ul>
+<li>찾으려고 하는 Mutation의 키입니다.</li>
+</ul>
+</li>
+<li><code>filters.exact?: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 정확히 일치하는 Mutation을 찾습니다.</li>
+<li><code>false</code>로 설정할 경우 설정한 <code>filters.mutationKey</code>가 포함되는 Mutation을 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.status?: 'idle' | 'pending' | 'error' | 'success'</code>
+<ul>
+<li><code>idle</code>인 경우 실행되기 전인 Mutation 중에 찾습니다.</li>
+<li><code>pending</code>인 경우 실행 중인 Mutation 중에 찾습니다.</li>
+<li><code>error</code> 인 경우 에러가 발생한 Mutation 중에 찾습니다.</li>
+<li><code>success</code>인 경우 성공한 Mutation 중에 찾습니다.</li>
+</ul>
+</li>
+<li><code>filters.predicate?: (mutation: Mutation) => boolean</code>
+<ul>
+<li>최종 필터로 사용되는 함수입니다. 다른 필터를 정의하지 않으면 모든 Mutation 중에 찾습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>select?: (mutation: Mutation) => TResult</code>
+<ul>
+<li>이 옵션을 사용하여 Mutation의 정보를 선택해 가져올 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>queryClient?: QueryClient</code>
+<ul>
+<li>커스텀한 쿼리 클라이언트를 지정할 수 있습니다. 이 값을 설정하지 않는다면 가장 가까운 콘텍스트의 쿼리 클라이언트가 사용됩니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="returns-8">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-8"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>Array&#x3C;TResult></code>
+<ul>
+<li><code>select</code> 옵션에서 반환한 Mutation 배열입니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-8">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-8"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/wft346?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useMutationState" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="usesuspensequery"><code>useSuspenseQuery</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usesuspensequery"><span class="anchor-icon">#</span></a></h3>
+<p><code>useSuspenseQuery</code> 훅은 <code>useQuery</code>와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행시킵니다.</p>
+<h4 id="타입-정보-9">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-9"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> result</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useSuspenseQuery</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(options)</span></span></code></pre>
+<h5 id="options-9">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-9"><span class="anchor-icon">#</span></a></h5>
+<p><a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>에서 <code>throwOnError</code>, <code>enabled</code>, <code>placeholderData</code>가 빠진 형태입니다.</p>
+<h5 id="returns-9">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-9"><span class="anchor-icon">#</span></a></h5>
+<p><a href="/tech/react/tanstack-query-v5-api-reference/#returns"><code>useQuery</code> 훅의 반환 값</a>과 대부분 동일하지만, 아래 목록만 차이가 있습니다.</p>
+<ul>
+<li><code>data</code>는 항상 <code>undefined</code>가 아닙니다.
+<ul>
+<li>데이터를 가져오는 동안에는 Suspense가 동작하기 때문에 <code>data</code>는 항상 <code>undefined</code>가 아니게 됩니다.</li>
+</ul>
+</li>
+<li><code>isPlaceholderData</code>이 제거되었습니다.
+<ul>
+<li><code>placeholderData</code>로 화면에 노출되는 것이 아니라 Suspense가 화면에 노출되기 때문에 <code>isPlaceholderData</code>가 제거되었습니다.</li>
+</ul>
+</li>
+<li><code>status</code>는 항상 <code>success</code>입니다.
+<ul>
+<li><code>useQuery</code> 훅의 <code>status</code> 반환 값 중 <code>pending</code>일 경우 Suspense가 동작하고, <code>error</code>일 경우 Error Boundary가 화면에 노출되기 때문에 항상 <code>success</code>가 됩니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-9">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-9"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/ghm5tk?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useSuspenseQuery" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="usesuspenseinfinitequery"><code>useSuspenseInfiniteQuery</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usesuspenseinfinitequery"><span class="anchor-icon">#</span></a></h3>
+<p><code>useSuspenseInfiniteQuery</code> 훅은 <code>useInfiniteQuery</code> 와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행 시킵니다.</p>
+<h4 id="타입-정보-10">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-10"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> result</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useSuspenseInfiniteQuery</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(options)</span></span></code></pre>
+<h5 id="options-10">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-10"><span class="anchor-icon">#</span></a></h5>
+<p><a href="/tech/react/tanstack-query-v5-api-reference/#options-2"><code>useInfiniteQuery</code> 훅의 옵션</a>에서 <code>throwOnError</code>, <code>enabled</code>, <code>placeholderData</code>가 빠진 형태입니다.</p>
+<h5 id="returns-10">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-10"><span class="anchor-icon">#</span></a></h5>
+<p><a href="/tech/react/tanstack-query-v5-api-reference/#returns-2"><code>useInfiniteQuery</code> 훅의 반환 값</a>과 대부분 동일하지만, 아래 목록만 차이가 있습니다.</p>
+<ul>
+<li><code>data</code>는 항상 <code>undefined</code>가 아닙니다.
+<ul>
+<li>데이터를 가져오는 동안에는 Suspense가 동작하기 때문에 <code>data</code>는 항상 <code>undefined</code>가 아니게 됩니다.</li>
+</ul>
+</li>
+<li><code>isPlaceholderData</code>이 제거되었습니다.
+<ul>
+<li><code>placeholderData</code>로 화면에 노출되는 것이 아니라 Suspense가 화면에 노출되기 때문에 <code>isPlaceholderData</code>가 제거되었습니다.</li>
+</ul>
+</li>
+<li><code>status</code>는 항상 <code>success</code>입니다.
+<ul>
+<li><code>useInfiniteQuery</code> 훅의 <code>status</code> 반환 값 중 <code>pending</code>일 경우 Suspense가 동작하고, <code>error</code>일 경우 Error Boundary가 화면에 노출되기 때문에 항상 <code>success</code>가 됩니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-10">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-10"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/3z7s5v?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useSuspenseInfiniteQuery" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="usesuspensequeries"><code>useSuspenseQueries</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usesuspensequeries"><span class="anchor-icon">#</span></a></h3>
+<p><code>useSuspenseQueries</code> 훅은 <code>useQueries</code>와 동일한 동작을 하지만 데이터를 가져오는 동안에 React의 Suspense 동작을 실행시킵니다.</p>
+<h4 id="타입-정보-11">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-11"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> result</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useSuspenseQueries</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(options)</span></span></code></pre>
+<h5 id="options-11">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-11"><span class="anchor-icon">#</span></a></h5>
+<p><a href="/tech/react/tanstack-query-v5-api-reference/#options-1"><code>useQueries</code> 훅의 옵션</a>에서 <code>throwOnError</code>, <code>enabled</code>, <code>placeholderData</code>가 빠진 형태입니다.</p>
+<h5 id="returns-11">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-11"><span class="anchor-icon">#</span></a></h5>
+<p><a href="/tech/react/tanstack-query-v5-api-reference/#returns-1"><code>useQueries</code> 훅의 반환 값</a>과 대부분 동일하지만, 아래 목록만 차이가 있습니다.</p>
+<ul>
+<li><code>data</code>는 항상 <code>undefined</code>가 아닙니다.
+<ul>
+<li>데이터를 가져오는 동안에는 Suspense가 동작하기 때문에 <code>data</code>는 항상 <code>undefined</code>가 아니게 됩니다.</li>
+</ul>
+</li>
+<li><code>isPlaceholderData</code>이 제거되었습니다.
+<ul>
+<li><code>placeholderData</code>로 화면에 노출되는 것이 아니라 Suspense가 화면에 노출되기 때문에 <code>isPlaceholderData</code>가 제거되었습니다.</li>
+</ul>
+</li>
+<li><code>status</code>는 항상 <code>success</code>입니다.
+<ul>
+<li><code>useQuery</code> 훅의 <code>status</code> 반환 값 중 <code>pending</code>일 경우 Suspense가 동작하고, <code>error</code>일 경우 Error Boundary가 화면에 노출되기 때문에 항상 <code>success</code>가 됩니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="예제-11">예제<a class="anchor after" aria-hidden="true" tabindex="-1" href="#예제-11"><span class="anchor-icon">#</span></a></h4>
+<div>
+  <iframe src="https://codesandbox.io/embed/4jzy9s?view=Editor+%2B+Preview&#x26;module=%2Fsrc%2FApp.tsx" style="width:100%; height: 500px; border:0; border-radius: 10px; overflow:hidden;" title="useSuspenseQueries" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+</div>
+<h3 id="queryclient"><code>QueryClient</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#queryclient"><span class="anchor-icon">#</span></a></h3>
+<p><code>QueryClient</code>는 캐시와 상호 작용할 수 있는 기능을 제공합니다. React Query를 사용하기 위해서 루트 위치에서 <code>QueryClient</code> 인스턴스를 생성하여 <code>QueryClientProvider</code> 컴포넌트의 prop으로 전달해야 합니다.</p>
+<p>하위 컴포넌트에서는 <code>useQueryClient</code> 훅을 사용하여 <code>QueryClient</code> 인스턴스를 접근할 수 있고 <code>QueryClient</code> 인스턴스를 통해 다양한 React Query 기능을 사용할 수 있습니다.</p>
+<h4 id="타입-정보-12">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-12"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { QueryClient } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> QueryClient</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  defaultOptions: {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    queries: {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">      staleTime: </span><span style="color:#023B95;--shiki-dark:#91CBFF">Infinity</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">await</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> queryClient.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">prefetchQuery</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ queryKey: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'posts'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">], queryFn: fetchPosts })</span></span></code></pre>
+<h5 id="options-12">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-12"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>queryCache?: QueryCache</code>
+<ul>
+<li>쿼리 클라이언트에서 사용할 쿼리 캐시입니다.</li>
+<li><code>QueryCache</code>는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-6"><code>QueryCache</code>의 옵션</a>와 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>mutationCache?: MutationCache</code>
+<ul>
+<li>쿼리 클라이언트에서 사용할 Mutation 캐시입니다.</li>
+<li><code>MutationCache</code>는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-7"><code>MutationCache</code>의 옵션</a>와 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>defaultOptions?: DefaultOptions</code>
+<ul>
+<li>쿼리와 Mutation에서 사용할 기본 옵션입니다.</li>
+<li><code>defaultOptions.queries</code>
+<ul>
+<li><a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>defaultOptions.mutations</code>
+<ul>
+<li><a href="/tech/react/tanstack-query-v5-api-reference/#options-3"><code>useMutation</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="returns-12">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-12"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>fetchQuery: (options) => Promise&#x3C;TData></code>
+<ul>
+<li>쿼리로 데이터를 가져와 캐시 하는 데 사용하는 비동기 메서드입니다. 가져온 데이터를 <code>Promise</code> 형태로 반환하거나 에러가 발생했을 경우 에러를 <code>throw</code> 합니다.</li>
+<li>캐시 된 데이터가 <code>staleTime</code>이 지나지 않았다면 캐시 된 데이터를 반환합니다. <code>staleTime</code>이 지났다면 데이터를 새로 가져옵니다.</li>
+<li><code>options</code>는 <code>enabled</code>, <code>refetchInterval</code>, <code>refetchIntervalInBackground</code>, <code>refetchOnWindowFocus</code>, <code>refetchOnReconnect</code>, <code>refetchOnMount</code>, <code>notifyOnChangeProps</code>, <code>throwOnError</code>, <code>select</code>, <code>suspense</code>, <code>placeholderData</code>를 제외한 <code>useQuery</code> 훅의 옵션과 동일합니다.</li>
+</ul>
+</li>
+<li><code>fetchInfiniteQuery: (options) => Promise&#x3C;InfiniteData&#x3C;TData, TPageParam>></code>
+<ul>
+<li>무한 쿼리로 데이터를 가져와 캐시 하는 데 사용되는 비동기 메서드입니다.</li>
+<li><code>options</code>는 <code>fetchQuery</code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>prefetchQuery: (opitons) => Promise&#x3C;void></code>
+<ul>
+<li>쿼리 데이터를 사용하기 전에 데이터를 미리 가져와 캐시 하는 데 사용하는 비동기 메서드입니다. 가져온 데이터를 반환하지 않는다는 점을 제외하면 <code>fetchQuery</code>와 동일합니다.</li>
+<li><code>options</code>는 <code>fetchQuery</code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>prefetchInfiniteQuery: (options) => Promise&#x3C;void></code>
+<ul>
+<li>무한 쿼리 데이터를 사용하기 전에 데이터를 미리 가져와 캐시 하는 데 사용하는 비동기 메서드입니다.</li>
+<li><code>options</code>는 <code>fetchQuery</code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>getQueryData: (queryKey: QueryKey) => TQueryFnData | undefined</code>
+<ul>
+<li>쿼리의 캐시 된 데이터를 가져오는 함수입니다. 쿼리의 캐시 된 데이터가 없다면 <code>undefined</code>를 반환합니다.</li>
+</ul>
+</li>
+<li><code>ensureQueryData: (options) => Promise&#x3C;TData></code>
+<ul>
+<li>쿼리의 캐시 된 데이터를 가져오는 비동기 함수입니다. 쿼리의 캐시 된 데이터가 없다면 <code>fetchQuery</code>가 호출되고 그 응답 값을 반환합니다.</li>
+<li><code>options</code>는 <code>fetchQuery</code>와 동일하지만, <code>queryKey</code>가 필수 값입니다.</li>
+</ul>
+</li>
+<li><code>getQueriesData: (filters: QueryFilters) => [queryKey: QueryKey, data: TQueryFnData | undefined][]</code>
+<ul>
+<li>여러 쿼리의 캐시 된 데이터를 가져오는 함수입니다. 파라미터로 전달한 <code>filters</code>에 일치되는 쿼리의 데이터를 <code>[queryKey, data]</code> 튜플의 배열 형태로 반환합니다. 일치되는 쿼리가 없으면 빈 배열을 반환합니다.</li>
+<li><code>filters</code> 정보는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-4"><code>useIsFetching</code> 훅의 옵션</a>을 참고 바랍니다.</li>
+</ul>
+</li>
+<li><code>setQueryData: (queryKey: QueryKey, updater: TQueryFnData | undefined | ((oldData: TQueryFnData | undefined) => TQueryFnData | undefined)) => TInferredQueryFnData | undefined</code>
+<ul>
+<li>쿼리의 캐시 된 데이터를 업데이트하는 함수입니다. 쿼리가 존재하지 않으면 쿼리가 생성됩니다.</li>
+<li><code>queryKey: QueryKey</code>
+<ul>
+<li>데이터를 업데이트할 쿼리 키입니다.</li>
+</ul>
+</li>
+<li><code>updater: TQueryFnData | undefined | ((oldData: TQueryFnData | undefined) => TQueryFnData | undefined)</code>
+<ul>
+<li>함수가 아닌 값을 전달할 경우 전달된 값으로 쿼리의 데이터가 업데이트됩니다.</li>
+<li>함수를 전달할 경우 함수는 현재 데이터를 파라미터로 하여 업데이트할 값을 반환해야 합니다. 함수가 반환된 값으로 쿼리의 데이터가 업데이트됩니다.</li>
+<li><code>undefined</code>를 전달하거나 함수의 반환 값이 <code>undefined</code>일 경우 쿼리의 데이터는 업데이트되지 않습니다.</li>
+<li><code>oldData</code>나 <code>getQueryData</code> 통해 가져온 캐시 된 데이터를 직접 수정하면 안 됩니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>getQueryState: (querykey: QueryKey) => QueryState</code>
+<ul>
+<li>쿼리의 상태를 가져오는 함수입니다. 쿼리가 존재하지 않으면 <code>undefined</code>를 반환합니다.</li>
+<li><code>queryKey: QueryKey</code>
+<ul>
+<li>쿼리 상태를 가져올 쿼리 키입니다.</li>
+</ul>
+</li>
+<li><code>QueryState</code>
+<ul>
+<li>쿼리 상태를 담고 있는 객체입니다.</li>
+<li><code>data: TData | undefined</code>
+<ul>
+<li>쿼리가 마지막으로 성공적으로 가져온 데이터입니다.</li>
+</ul>
+</li>
+<li><code>dataUpdateCount: number</code>
+<ul>
+<li>쿼리가 데이터를 업데이트 한 횟수입니다.</li>
+</ul>
+</li>
+<li><code>dataUpdatedAt: number</code>
+<ul>
+<li>데이터를 성공적으로 가져왔을 때(<code>status</code>가 <code>success</code>) 타임스탬프입니다.</li>
+</ul>
+</li>
+<li><code>error: TError | null</code>
+<ul>
+<li>쿼리에 에러가 발생한 경우 에러 정보를 담는 객체입니다.</li>
+</ul>
+</li>
+<li><code>errorUpdateCount: number</code>
+<ul>
+<li>쿼리가 데이터 가져오기를 실패한 총횟수입니다.</li>
+</ul>
+</li>
+<li><code>errorUpdatedAt: number</code>
+<ul>
+<li>가장 최근에 에러가 발생했을 때(<code>status</code>가 <code>error</code>) 타임스탬프입니다.</li>
+</ul>
+</li>
+<li><code>fetchFailureCount: number</code>
+<ul>
+<li>쿼리가 데이터 가져오기를 실패한 횟수입니다. 쿼리가 성공적으로 데이터를 가져온 경우 <code>0</code>으로 초기화됩니다.</li>
+</ul>
+</li>
+<li><code>fetchFailureReason: TError | null</code>
+<ul>
+<li>쿼리가 데이터를 가져오기 재시도를 실패했을 경우 에러 정보가 담깁니다. 쿼리가 성공적으로 데이터를 가져온 경우 <code>null</code>로 초기화 됩니다.</li>
+</ul>
+</li>
+<li><code>fetchMeta: FetchMeta | null</code>
+<ul>
+<li>쿼리에서 사용한 메타 정보입니다.</li>
+</ul>
+</li>
+<li><code>isInvalidated: boolean</code>
+<ul>
+<li>유효한 쿼리인지 나타내는 플래그입니다.</li>
+</ul>
+</li>
+<li><code>status: 'pending' | 'error' | 'success'</code>
+<ul>
+<li><code>pending</code>일 경우, 캐시 된 데이터가 없고 쿼리 시도가 아직 완료되지 않은 상태입니다.</li>
+<li><code>error</code>일 경우, 데이터를 가져올 때 에러가 발생한 상태입니다.</li>
+<li><code>success</code>일 경우, 데이터를 성공적으로 가져오거나, <code>enabled</code>가 <code>false</code>이면서 <code>initialData</code>가 설정된 상태입니다.</li>
+</ul>
+</li>
+<li><code>fetchStatus: 'fetching' | 'paused' | 'idle'</code>
+<ul>
+<li><code>fetching</code>일 경우, <code>queryFn</code>이 실행 중이거나, 초기 <code>status</code>가 <code>pending</code> 상태이거나, 백그라운드에서 데이터를 가져오는 상태입니다.</li>
+<li><code>paused</code>일 경우, 쿼리가 데이터를 가져오려고 했지만 중지된 상태입니다. 대표적으로 네트워크가 끊겨 쿼리가 중지됐을 때 <code>paused</code> 상태입니다.</li>
+<li><code>idle</code>일 경우, <code>fetching</code> 상태도 <code>paused</code> 상태도 아닌 상태입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>setQueriesData: (filters: QueryFilters, updater: TQueryFnData | (oldData: TQueryFnData | undefined) => TQueryFnData) => [QueryKey, TQueryFnData | undefined][]</code>
+<ul>
+<li><code>filters</code>에 해당하는 여러 쿼리의 캐시 된 데이터를 업데이트하는 함수입니다. 내부적으로 각각의 쿼리는 <code>setQueryData</code> 함수가 호출됩니다.</li>
+<li><code>filters</code> 정보는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-4"><code>useIsFetching</code> 훅의 옵션</a>을 참고 바랍니다.</li>
+<li><code>updater</code> 정보는 <code>setQueryData</code> 함수의 <code>updater</code> 파라미터와 동일합니다.</li>
+</ul>
+</li>
+<li><code>invalidateQueries: (filters?: InvalidateQueryFilters, options?: InvalidateOptions) => Promise&#x3C;void></code>
+<ul>
+<li><code>filters</code>에 해당하는 쿼리를 무효화하고 데이터를 다시 가져오는 비동기 함수입니다.</li>
+<li><code>filters?: InvalidateQueryFilters</code>
+<ul>
+<li><code>QueryFilter</code>에 <code>refetchType?: 'active' | 'inactive' | 'all' | 'none'</code>가 추가된 형태입니다.</li>
+<li><code>refetchType?: 'active' | 'inactive' | 'all' | 'none'</code> (default: <code>'active'</code>)
+<ul>
+<li><code>active</code>로 설정할 경우, 활성화된 쿼리의 데이터를 무효화 후 다시 가져옵니다.</li>
+<li><code>inactive</code>로 설정할 경우, 비활성화된 쿼리의 데이터를 무효화 후 다시 가져옵니다.</li>
+<li><code>all</code>로 설정할 경우, 활성화/비활성화된 쿼리의 데이터를 무효화 후 다시 가져옵니다.</li>
+<li><code>none</code>으로 설정할 경우, 쿼리의 데이터를 무효화하지만 다시 가져오지는 않습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>options?: InvalidateOptions</code>
+<ul>
+<li><code>throwOnError?: boolean</code>
+<ul>
+<li><code>true</code>로 설정할 경우 쿼리에서 에러가 발생할 경우 가장 가까운 에러 바운더리(Error Boundary)로 에러를 전파합니다.</li>
+<li><code>false</code>로 설정할 경우 쿼리에서 에러가 발생해도 에러 바운더리로 에러를 전파하지 않습니다.</li>
+</ul>
+</li>
+<li><code>cancelRefetch?: boolean</code> (default <code>true</code>)
+<ul>
+<li><code>true</code>로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 진행 중이던 요청을 취소하고 재요청합니다.</li>
+<li><code>false</code>로 설정할 경우 쿼리가 데이터를 가져오는 중일 경우 데이터를 재요청하지 않습니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>refetchQueries: (filters?: QueryFilters, options?: RefetchOptions) => Promise&#x3C;void></code>
+<ul>
+<li><code>filters</code>에 해당하는 쿼리의 데이터를 다시 가져오는 비동기 함수입니다.</li>
+<li><code>filters</code> 정보는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-4"><code>useIsFetching</code> 훅의 옵션</a>을 참고 바랍니다.</li>
+<li><code>options</code> 정보는 <code>invalidateQueries</code> 함수의 <code>options</code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>cancelQueries: (filters?: QueryFilters) => Promise&#x3C;void></code>
+<ul>
+<li><code>filters</code>에 해당하는 쿼리의 요청을 취소하는 비동기 함수입니다.</li>
+<li><code>filters</code> 정보는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-4"><code>useIsFetching</code> 훅의 옵션</a>을 참고 바랍니다.</li>
+</ul>
+</li>
+<li><code>removeQueries: (filters?: QueryFilters) => void</code>
+<ul>
+<li><code>filters</code>에 해당하는 쿼리의 캐시를 삭제하는 함수입니다.</li>
+<li><code>filters</code> 정보는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-4"><code>useIsFetching</code> 훅의 옵션</a>을 참고 바랍니다.</li>
+</ul>
+</li>
+<li><code>resetQueries: (filters?: QueryFilters, options?: ResetOptions) => Promise&#x3C;void></code>
+<ul>
+<li><code>filters</code>에 해당하는 쿼리를 초기 상태로 재설정하는 비동기 함수입니다.</li>
+<li><code>invalidateQueries</code> 함수와 달리 쿼리는 데이터를 미리 가져온 상태가 됩니다. <code>initialData</code>가 정의된 쿼리라면 해당 데이터로 초기화되고, 활성화된 쿼리는 데이터를 다시 가져옵니다.</li>
+<li><code>filters</code> 정보는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-4"><code>useIsFetching</code> 훅의 옵션</a>을 참고 바랍니다.</li>
+<li><code>options</code> 정보는 <code>invalidateQueries</code> 함수의 <code>options</code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>isFetching: (filters?: QueryFilters) => number</code>
+<ul>
+<li><code>filters</code>에 해당하는 쿼리 중 데이터를 가져오는 중인 쿼리의 수를 반환하는 함수입니다. <code>useIsFetching</code> 훅과 동일한 역할을 합니다.</li>
+<li><code>filters</code> 정보는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-4"><code>useIsFetching</code> 훅의 옵션</a>을 참고 바랍니다.</li>
+</ul>
+</li>
+<li><code>isMutating: (filters?: QueryFilters) => number</code>
+<ul>
+<li><code>filters</code>에 해당하는 Mutation 중인 수를 반환하는 함수입니다. <code>useIsMutating</code> 훅과 동일한 역할을 합니다.</li>
+<li><code>filters</code> 정보는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-4"><code>useIsFetching</code> 훅의 옵션</a>을 참고 바랍니다.</li>
+</ul>
+</li>
+<li><code>getDefaultOptions: () => DefaultOptions</code>
+<ul>
+<li><code>QueryClient</code> 인스턴스를 생성할 때 전달할 <code>defaultOptions</code> 혹은 <code>setDefaultOptions</code> 함수에 전달한 파라미터를 반환합니다.</li>
+<li><code>DefaultOptions</code>
+<ul>
+<li>쿼리와 Mutation에서 사용할 기본 옵션입니다.</li>
+<li><code>queries?: QueryObserverOptions</code>
+<ul>
+<li><a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>mutations?: MutationObserverOptions</code>
+<ul>
+<li><a href="/tech/react/tanstack-query-v5-api-reference/#options-3"><code>useMutation</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>setDefaultOptions: (options: DefaultOptions) => void</code>
+<ul>
+<li><code>QueryClient</code>의 기본 옵션을 동적으로 변경하기 위해 사용되는 함수입니다.</li>
+<li><code>DefaultOptions</code>
+<ul>
+<li>쿼리와 Mutation에서 사용할 기본 옵션입니다.</li>
+<li><code>queries?: QueryObserverOptions</code>
+<ul>
+<li><a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>mutations?: MutationObserverOptions</code>
+<ul>
+<li><a href="/tech/react/tanstack-query-v5-api-reference/#options-3"><code>useMutation</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>getQueryDefaults: (queryKey: QueryKey) => QueryObserverOptions</code>
+<ul>
+<li><code>queryKey</code>에 해당되는 쿼리의 기본 옵션을 반환합니다. <code>queryKey</code>에 일치하는 쿼리가 여러 개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 반환합니다.</li>
+<li><code>QueryObserverOptions</code>는 <a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>setQueryDefaults: (queryKey: QueryKey, options: QueryOptions) => void</code>
+<ul>
+<li><code>queryKey</code>에 해당되는 쿼리의 기본 옵션을 <code>options</code>로 변경합니다. <code>queryKey</code>에 일치하는 쿼리가 여러 개일 경우 가장 먼저 매칭되는 쿼리의 기본 옵션을 변경합니다.</li>
+<li><code>QueryOptions</code>은 <a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>에서 <code>queryKey</code>를 제외한 값의 옵셔널 한 형태입니다. 즉 <code>Partial&#x3C;Omit&#x3C;QueryObserverOptions, 'queryKey''>></code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>getMutationDefaults: (mutationKey: MutationKey) => MutationObserverOptions</code>
+<ul>
+<li><code>mutationKey</code>에 해당되는 Mutation의 기본 옵션을 반환합니다.</li>
+<li><code>MutationObserverOptions</code>은 <a href="/tech/react/tanstack-query-v5-api-reference/#options-3"><code>useMutation</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>setMutationDefaults: (mutationKey: MutationKey, options: MutationOptions) => void</code>
+<ul>
+<li><code>mutationKey</code>에 해당되는 Mutation의 기본 옵션을 <code>options</code>로 변경합니다.</li>
+<li><code>MutationOptions</code>은 <a href="/tech/react/tanstack-query-v5-api-reference/#options-3"><code>useMutation</code> 훅의 옵션</a>에서 <code>mutationKey</code>를 제외한 값의 옵셔널 한 형태입니다. 즉 <code>Partial&#x3C;Omit&#x3C;MutationObserverOptions, 'mutationKey''>></code>와 동일합니다.</li>
+</ul>
+</li>
+<li><code>getQueryCache: () => QueryCache</code>
+<ul>
+<li><code>QueryClient</code>에 연결된 <code>QueryCache</code>를 반환합니다.</li>
+<li><code>QueryCache</code>는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-6"><code>QueryCache</code>의 옵션</a>와 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>getMutationCache: () => MutationCache</code>
+<ul>
+<li><code>QueryClient</code>에 연결된 <code>MutationCache</code>를 반환합니다.</li>
+<li><code>MutationCache</code>는 <a href="/tech/react/tanstack-query-v5-api-reference/#options-7"><code>MutationCache</code>의 옵션</a>와 동일한 값입니다.</li>
+</ul>
+</li>
+<li><code>clear: () => void</code>
+<ul>
+<li>모든 캐시를 삭제하는 함수입니다.</li>
+</ul>
+</li>
+<li><code>resumePausedMutations: () => Promise&#x3C;unknown></code>
+<ul>
+<li>네트워크 연결이 되지 않아 일시 중지된 Mutation을 다시 시작하는 데 사용하는 함수입니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="usequeryclient"><code>useQueryClient</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usequeryclient"><span class="anchor-icon">#</span></a></h3>
+<p>현재 사용하는 <code>QueryClient</code>의 인스턴스를 반환하는 훅입니다.</p>
+<h4 id="타입-정보-13">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-13"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { useQueryClient } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useQueryClient</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492">?:</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> QueryClient)</span></span></code></pre>
+<h5 id="options-13">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-13"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>queryClient?: QueryClient</code>
+<ul>
+<li>커스텀한 <code>QueryClient</code>를 사용하려면 이 파라미터를 전달해야 합니다. 전달하지 않을 경우 가장 가까운 콘텍스트의 <code>QueryClient</code>를 사용합니다.</li>
+</ul>
+</li>
+</ul>
+<h5 id="returns-13">Returns<a class="anchor after" aria-hidden="true" tabindex="-1" href="#returns-13"><span class="anchor-icon">#</span></a></h5>
+<p><code>useQueryClient</code> 훅의 반환 값은 <a href="/tech/react/tanstack-query-v5-api-reference/#returns-12"><code>QueryClient</code>의 반환 값</a>과 동일합니다.</p>
+<h3 id="queryclientprovider"><code>QueryClientProvider</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#queryclientprovider"><span class="anchor-icon">#</span></a></h3>
+<p><code>QueryClientProvider</code> 컴포넌트는 React Query를 사용하기 위해서 루트 위치에서 선언되어야 합니다. <code>QueryClientProvider</code>의 <code>client</code> 속성으로 <code>QueryClient</code>를 전달해야 하며, 전달된 <code>QueryClient</code>는 하위 컴포넌트에서 <code>useQuery</code> 등, React Query를 사용할 때 사용됩니다.</p>
+<h4 id="타입-정보-14">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-14"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { QueryClient, QueryClientProvider } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> QueryClient</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> App</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">() {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">QueryClientProvider</span><span style="color:#023B95;--shiki-dark:#91CBFF"> client</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">queryClient</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>...&#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">QueryClientProvider</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h5 id="props">Props<a class="anchor after" aria-hidden="true" tabindex="-1" href="#props"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>client: QueryClient</code>
+<ul>
+<li>하위 컴포넌트에서 React Query를 사용할 때 사용되는 <code>QueryClient</code>입니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="queryobserver"><code>QueryObserver</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#queryobserver"><span class="anchor-icon">#</span></a></h3>
+<p><code>QueryObserver</code>는 쿼리를 관찰할 때 사용됩니다. <code>useQuery</code>는 내부적으로 <code>QueryObserver</code> 인스턴스를 만들어 사용하는데, <code>useQuery</code> 훅을 사용하면 되기 때문에 직접 <code>QueryObserver</code> 인스턴스를 생성하는 경우는 많지 않습니다.</p>
+<h4 id="타입-정보-15">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-15"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> observer</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> QueryObserver</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(queryClient, { queryKey: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'posts'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">] })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unsubscribe</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> observer.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">subscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">result</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(result)</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  unsubscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-14">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-14"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>queryClient: QueryClient</code>
+<ul>
+<li>관찰할 쿼리가 있는 <code>QueryClient</code> 인스턴스입니다.</li>
+</ul>
+</li>
+<li><code>options: QueryObserverOptions</code>
+<ul>
+<li>쿼리 데이터를 가져오기 위해 사용되는 옵션입니다. <a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="infinitequeryobserver"><code>InfiniteQueryObserver</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#infinitequeryobserver"><span class="anchor-icon">#</span></a></h3>
+<p><code>InfiniteQueryObserver</code>는 무한 쿼리를 관찰합니다. <code>useInfiniteQuery</code>는 내부적으로 <code>InfiniteQueryObserver</code> 인스턴스를 만들어 사용하는데, <code>useInfiniteQuery</code> 혹을 사용하면 되기 때문에 직접 <code>InfiniteQueryObserver</code> 인스턴스를 생성하는 경우는 많지 않습니다.</p>
+<h4 id="타입-정보-16">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-16"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> observer</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> InfiniteQueryObserver</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(queryClient, {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  queryKey: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'posts'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">],</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  queryFn: fetchPosts,</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  getNextPageParam</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">lastPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">allPages</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> lastPage.nextCursor,</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  getPreviousPageParam</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: (</span><span style="color:#702C00;--shiki-dark:#FFB757">firstPage</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#702C00;--shiki-dark:#FFB757">allPages</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> firstPage.prevCursor,</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unsubscribe</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> observer.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">subscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">result</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(result)</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  unsubscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-15">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-15"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>queryClient: QueryClient</code>
+<ul>
+<li>관찰할 무한 쿼리가 있는 <code>QueryClient</code> 인스턴스입니다.</li>
+</ul>
+</li>
+<li><code>options: InfiniteQueryObserverOptions</code>
+<ul>
+<li>무한 쿼리 데이터를 가져오기 위해 사용되는 옵션입니다. <a href="/tech/react/tanstack-query-v5-api-reference/#options-2"><code>useInfiniteQuery</code> 훅의 옵션</a>과 동일한 값입니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="queriesobserver"><code>QueriesObserver</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#queriesobserver"><span class="anchor-icon">#</span></a></h3>
+<p><code>QueriesObserver</code>는 쿼리들(queries)을 관찰합니다. <code>useQueries</code>의 내부적으로 <code>QueriesObserver</code> 인스턴스를 만들어 사용하는데, <code>useQueries</code> 훅을 사용하면 되기 때문에 직접 <code>QueriesObserver</code> 인스턴스를 생성하는 경우는 많지 않습니다.</p>
+<h4 id="타입-정보-17">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-17"><span class="anchor-icon">#</span></a></h4>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> observer</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#A0111F;--shiki-dark:#FF9492"> new</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> QueriesObserver</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(queryClient, [</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  { queryKey: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'post'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">1</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">], queryFn: fetchPost },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  { queryKey: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'post'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#023B95;--shiki-dark:#91CBFF">2</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">], queryFn: fetchPost },</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">])</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unsubscribe</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> observer.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">subscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">result</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(result)</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">  unsubscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+<h5 id="options-16">Options<a class="anchor after" aria-hidden="true" tabindex="-1" href="#options-16"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><code>queryClient: QueryClient</code>
+<ul>
+<li>관찰할 무한 쿼리가 있는 <code>QueryClient</code> 인스턴스입니다.</li>
+</ul>
+</li>
+<li><code>options: QueryObserverOptions[]</code>
+<ul>
+<li>queries의 데이터를 가져오기 위해 사용되는 옵션입니다. <a href="/tech/react/tanstack-query-v5-api-reference/#options"><code>useQuery</code> 훅의 옵션</a>과 동일한 값의 배열입니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="queryerrorresetboundary"><code>QueryErrorResetBoundary</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#queryerrorresetboundary"><span class="anchor-icon">#</span></a></h3>
+<p><code>suspense</code>나 <code>throwOnError</code>를 사용하면 컴포넌트에서 에러가 발생할 때 에러 화면으로 전환할 수 있습니다. 전환된 에러 화면에서 쿼리의 에러를 초기화하고 데이터를 다시 요청해야 할 때 사용하는 것이 <code>QueryErrorResetBoundary</code> 컴포넌트입니다. 아래 코드와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { QueryErrorResetBoundary } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { ErrorBoundary } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'react-error-boundary'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> App</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> React</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">.</span><span style="color:#702C00;--shiki-dark:#FFB757">FC</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">QueryErrorResetBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">    {</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ </span><span style="color:#702C00;--shiki-dark:#FFB757">reset</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">      &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">ErrorBoundary</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">        onReset</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">reset</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">        fallbackRender</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ </span><span style="color:#702C00;--shiki-dark:#FFB757">resetErrorBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">          &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">div</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">            There was an error!</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">            &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">Button</span><span style="color:#023B95;--shiki-dark:#91CBFF"> onClick</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">() </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> resetErrorBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>Try again&#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">Button</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">          &#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">div</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">        )</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">      ></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">        &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">Page</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> /></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">      &#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">ErrorBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    )</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  &#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">QueryErrorResetBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">)</span></span></code></pre>
+<h3 id="usequeryerrorresetboundary"><code>useQueryErrorResetBoundary</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#usequeryerrorresetboundary"><span class="anchor-icon">#</span></a></h3>
+<p><code>useQueryErrorResetBoundary</code> 훅은 <code>QueryErrorResetBoundary</code> 컴포넌트를 훅 형태로 사용할 수 있게 합니다. 아래 코드와 같이 사용할 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { useQueryErrorResetBoundary } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { ErrorBoundary } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'react-error-boundary'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> App</span><span style="color:#A0111F;--shiki-dark:#FF9492">:</span><span style="color:#702C00;--shiki-dark:#FFB757"> React</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">.</span><span style="color:#702C00;--shiki-dark:#FFB757">FC</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  const</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { </span><span style="color:#023B95;--shiki-dark:#91CBFF">reset</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> } </span><span style="color:#A0111F;--shiki-dark:#FF9492">=</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> useQueryErrorResetBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">ErrorBoundary</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">      onReset</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">reset</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span></span>
+<span class="line"><span style="color:#023B95;--shiki-dark:#91CBFF">      fallbackRender</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ </span><span style="color:#702C00;--shiki-dark:#FFB757">resetErrorBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">        &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">div</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">          There was an error!</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">          &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">Button</span><span style="color:#023B95;--shiki-dark:#91CBFF"> onClick</span><span style="color:#A0111F;--shiki-dark:#FF9492">={</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">() </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> resetErrorBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">>Try again&#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">Button</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">        &#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">div</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">      )</span><span style="color:#A0111F;--shiki-dark:#FF9492">}</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    ></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">      &#x3C;</span><span style="color:#024C1A;--shiki-dark:#72F088">Page</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> /></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    &#x3C;/</span><span style="color:#024C1A;--shiki-dark:#72F088">ErrorBoundary</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">></span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  )</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<h3 id="focusmanager"><code>focusManager</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#focusmanager"><span class="anchor-icon">#</span></a></h3>
+<p><code>focusManager</code>은 React Query가 포커스 될 때 발생하는 이벤트 리스너를 변경하거나, 수동으로 포커스 할 때 사용됩니다.</p>
+<h4 id="타입-정보-18">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-18"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>focusManager.setEventListener</code>
+<ul>
+<li>이벤트 리스너를 변경할 때 사용되는 함수입니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { focusManager } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">focusManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">setEventListener</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">handleFocus</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // Listen to visibilitychange</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  if</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> (</span><span style="color:#A0111F;--shiki-dark:#FF9492">typeof</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> window </span><span style="color:#A0111F;--shiki-dark:#FF9492">!==</span><span style="color:#032563;--shiki-dark:#ADDCFF"> 'undefined'</span><span style="color:#A0111F;--shiki-dark:#FF9492"> &#x26;&#x26;</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> window.addEventListener) {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    window.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">addEventListener</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'visibilitychange'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, handleFocus, </span><span style="color:#023B95;--shiki-dark:#91CBFF">false</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> () </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">    // Be sure to unsubscribe if a new handler is set</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    window.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">removeEventListener</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'visibilitychange'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, handleFocus)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  }</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>focusManager.subscribe</code>
+<ul>
+<li>포커스 상태가 변경되는 것을 구독하는 함수입니다. 구독을 취소하는 함수를 반환합니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { focusManager } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unsubscribe</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> focusManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">subscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">isVisible</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'isVisible'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, isVisible)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>focusManager.setFocused</code>
+<ul>
+<li>포커스 상태를 수동으로 설정할 수 있는 함수입니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { focusManager } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Set focused</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">focusManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">setFocused</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#023B95;--shiki-dark:#91CBFF">true</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Set unfocused</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">focusManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">setFocused</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#023B95;--shiki-dark:#91CBFF">false</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Fallback to the default focus check</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">focusManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">setFocused</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#023B95;--shiki-dark:#91CBFF">undefined</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">)</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>focusManager.isFocused</code>
+<ul>
+<li>현재 포커스 상태를 가져오는 함수입니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> isFocused</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> focusManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">isFocused</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="onlinemanager"><code>onlineManager</code><a class="anchor after" aria-hidden="true" tabindex="-1" href="#onlinemanager"><span class="anchor-icon">#</span></a></h3>
+<p><code>onlineManager</code>은 온라인 상태를 감지하는 이벤트 리스터를 변경하거나, 수동으로 온라인 상태로 변경할 때 사용됩니다.</p>
+<h4 id="타입-정보-19">타입 정보<a class="anchor after" aria-hidden="true" tabindex="-1" href="#타입-정보-19"><span class="anchor-icon">#</span></a></h4>
+<ul>
+<li><code>onlineManager.setEventListener</code>
+<ul>
+<li>이벤트 리스너를 변경할 때 사용되는 함수입니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> NetInfo </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@react-native-community/netinfo'</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { onlineManager } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">onlineManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">setEventListener</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">setOnline</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> NetInfo.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">addEventListener</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">state</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#622CBC;--shiki-dark:#DBB7FF">    setOnline</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#A0111F;--shiki-dark:#FF9492">!!</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">state.isConnected)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  })</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>onlineManager.subscribe</code>
+<ul>
+<li>온라인 상태가 변경되는 것을 구독하는 함수입니다. 구독을 취소하는 함수를 반환합니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { onlineManager } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> unsubscribe</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> onlineManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">subscribe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">((</span><span style="color:#702C00;--shiki-dark:#FFB757">isOnline</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">) </span><span style="color:#A0111F;--shiki-dark:#FF9492">=></span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> {</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  console.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">log</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#032563;--shiki-dark:#ADDCFF">'isOnline'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, isOnline)</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">})</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>onlineManager.setOnline</code>
+<ul>
+<li>온라인 상태를 수동으로 설정할 수 있는 함수입니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">import</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> { onlineManager } </span><span style="color:#A0111F;--shiki-dark:#FF9492">from</span><span style="color:#032563;--shiki-dark:#ADDCFF"> '@tanstack/react-query'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Set to online</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">onlineManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">setOnline</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#023B95;--shiki-dark:#91CBFF">true</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// Set to offline</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">onlineManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">setOnline</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">(</span><span style="color:#023B95;--shiki-dark:#91CBFF">false</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">)</span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><code>onlineManager.isOnline</code>
+<ul>
+<li>현재 온라인 상태를 가져오는 함수입니다.</li>
+<li>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">const</span><span style="color:#023B95;--shiki-dark:#91CBFF"> isOnline</span><span style="color:#A0111F;--shiki-dark:#FF9492"> =</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> onlineManager.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">isOnline</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">()</span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="참고">참고<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><a href="https://tanstack.com/query/v5/docs/framework/react/overview">https://tanstack.com/query/v5/docs/framework/react/overview</a></li>
+<li><a href="https://tanstack.com/blog/announcing-tanstack-query-v5">https://tanstack.com/blog/announcing-tanstack-query-v5</a></li>
+<li><a href="https://velog.io/@hyunjine/Inside-React-Query">https://velog.io/@hyunjine/Inside-React-Query</a></li>
+<li><a href="https://leego.tistory.com/entry/react-query%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EB%8F%99%ED%95%A0%EA%B9%8C">https://leego.tistory.com/entry/react-query는-어떻게-작동할까</a></li>
+<li><a href="https://fe-developers.kakaoent.com/2023/230720-react-query/">https://fe-developers.kakaoent.com/2023/230720-react-query/</a></li>
+<li><a href="https://velog.io/@hyunjine/Inside-React-Query">https://velog.io/@hyunjine/Inside-React-Query</a></li>
+<li><a href="https://velog.io/@dev_jazziron/React-Query-Render-Optimizations">https://velog.io/@dev_jazziron/React-Query-Render-Optimizations</a></li>
+<li><a href="https://yiyb-blog.vercel.app/posts/error-boundary-with-react-query">https://yiyb-blog.vercel.app/posts/error-boundary-with-react-query</a></li>
+<li><a href="https://velog.io/@suyeon9456/React-Query-Error-Boundary-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0">https://velog.io/@suyeon9456/React-Query-Error-Boundary-적용하기</a></li>
+<li><a href="https://www.timegambit.com/blog/digging/react-query/01">https://www.timegambit.com/blog/digging/react-query/01</a></li>
+<li><a href="https://www.timegambit.com/blog/digging/react-query/02">https://www.timegambit.com/blog/digging/react-query/02</a></li>
+<li><a href="https://www.timegambit.com/blog/digging/react-query/03">https://www.timegambit.com/blog/digging/react-query/03</a></li>
+</ul>19:["$","div",null,{"className":"post-contents","dangerouslySetInnerHTML":{"__html":"$1f"}}]
+1a:["$","div",null,{"className":"mt-[20px] flex items-center justify-between leading-[1.4] max-xs:block","children":[["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L20",null,{"href":"/tech/react/suspense/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center leading-[1.4]","children":[["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L1d",null,{"type":"BsChevronLeft","size":"100%"}]}],["$","div",null,{"className":"ml-[20px] mr-auto [&_small]:text-0","children":[["$","small",null,{"children":"이전 포스트"}],["$","div",null,{"children":"[React] Suspense"}]]}]]}]}],["$","div",null,{"className":"h-[70px] grow shrink basis-0 mb-[10px] first-of-type:mr-[5px] last-of-type:ml-[5px] empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:first-of-type:mr-0 max-xs:last:ml-0","children":["$","$L20",null,{"href":"/tech/etc/forward-proxy-reverse-proxy/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center text-right leading-[1.4]","children":[["$","div",null,{"className":"ml-auto mr-[20px] [&_small]:text-0","children":[["$","small",null,{"children":"다음 포스트"}],["$","div",null,{"children":"[ETC] Forward Proxy와 Reverse Proxy"}]]}],["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L1d",null,{"type":"BsChevronRight","size":"100%"}]}]]}]}]]}]
+1b:["$","$L21",null,{"url":"https://beomy.github.io//tech/react/tanstack-query-v5-api-reference/","title":"[React] TanStack Query v5 (React Query) API 레퍼런스"}]
+1c:["$","footer",null,{"className":"border-t border-grey-90 bg-grey-100 py-[25px] text-center","children":[["$","nav",null,{"className":"mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]","children":[["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://github.com/beomy","target":"_blank","aria-label":"github","children":["$","$L1d",null,{"type":"BsGithub","size":20}]}],["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://www.linkedin.com/in/효범-이-930453134","target":"_blank","aria-label":"linkedin","children":["$","$L1d",null,{"type":"BsLinkedin","size":20}]}]]}],["$","span",null,{"className":"text-1 text-caption","children":["© ",2026," Beomy. All rights reserved."]}]]}]

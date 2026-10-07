@@ -1,4 +1,4 @@
-User-agent: *
+User-Agent: *
 Allow: /
-Sitemap: https://beomy.github.io/sitemap/sitemap-index.xml
-Host: https://beomy.github.io
+
+Sitemap: https://beomy.github.io/sitemap.xml
