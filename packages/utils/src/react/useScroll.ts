@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useLayoutEffect } from 'react';
 import { throttle } from 'lodash-es';
 

@@ -1,0 +1,40 @@
+/*
+ * 동적으로 삽입되는 목차(TOC) HTML 스타일.
+ */
+.toc {
+  font-size: var(--text-1);
+}
+.toc a {
+  color: var(--caption);
+  text-decoration: none;
+}
+.toc a:hover {
+  color: var(--title);
+}
+.toc .active {
+  transform: scale(1.05);
+}
+.toc .active a {
+  color: var(--title);
+}
+.toc li {
+  list-style: none;
+}
+/* 헤딩에 포함된 인라인 코드: 본문(PostContents.css)과 같은 토큰, 목차 글자 크기에 맞춰 축소 */
+.toc code {
+  padding: 0.05em 0.3em;
+  border: 1px solid var(--grey-90);
+  border-radius: 3px;
+  background-color: var(--grey-98);
+  font-size: 0.9em;
+}
+.toc p {
+  margin: 0;
+}
+.toc > ul {
+  margin: 0;
+  padding: 0;
+}
+.toc > ul > li > ul {
+  padding-left: 15px;
+}

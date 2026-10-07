@@ -3,12 +3,11 @@
     "target": "esnext",
     "lib": ["dom", "esnext"],
     "module": "esnext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
     "jsx": "react"
   },
   "exclude": ["node_modules"]

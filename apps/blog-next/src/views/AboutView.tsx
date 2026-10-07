@@ -1,0 +1,163 @@
+import { Anchor } from '@beomy/design-system-tailwind';
+import DefaultLayout from '@/layouts/DefaultLayout';
+import { AboutHeader, AboutContents } from '@/components/about';
+import { getOptimizedSrcSet } from '@/lib/optimizedImage';
+
+const AboutView = () => {
+  return (
+    <DefaultLayout>
+      <AboutHeader />
+      <AboutContents title="Technical Summary">
+        <ul>
+          <li>
+            <b>Front-End</b>: Vue.js, React.js, Electron.js, Svelte
+          </li>
+          <li>
+            <b>Back-End</b>:
+            <ul>
+              <li>
+                <b>.Net</b>: ASP.NET MVC, .NET Core
+              </li>
+              <li>
+                <b>Node.js</b>: Express.js
+              </li>
+              <li>
+                <b>DataBase</b>: MSSQL, Mysql
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </AboutContents>
+      <AboutContents title="Works">
+        <ul>
+          <li>
+            <b>인프라웨어 테크놀러지</b> (2015.01.05 ~ 2019.05.31)
+          </li>
+          <li>
+            <b>위메프</b> (2019.06.03 ~ 2021.12.03)
+          </li>
+          <li>
+            <b>야놀자</b> (2021.12.06 ~)
+          </li>
+        </ul>
+      </AboutContents>
+      <AboutContents title="Libraries">
+        <ul>
+          <li>
+            <b>
+              <Anchor
+                href="https://www.npmjs.com/package/vue-fast-scroll"
+                target="_blank"
+              >
+                vue-fast-scroll
+              </Anchor>
+            </b>
+            : 네이티브의 Fast Scroll과 같은 동작을 할 수 있도록 기능을 제공하는
+            Vue Plugin
+          </li>
+          <li>
+            <b>
+              <Anchor
+                href="https://www.npmjs.com/package/svelte-hammer"
+                target="_blank"
+              >
+                svelte-hammer
+              </Anchor>
+            </b>
+            : Hammer 기능을 Svelte의 디렉티브로 제공
+          </li>
+          <li>
+            <b>
+              <Anchor
+                href="https://www.npmjs.com/package/svelte-swiper"
+                target="_blank"
+              >
+                svelte-swiper
+              </Anchor>
+            </b>
+            : swiper.js를 매핑한 Svelte 컴포넌트
+          </li>
+        </ul>
+      </AboutContents>
+      <AboutContents title="Activities">
+        <h3>블로그</h3>
+        <ul>
+          <li>
+            <Anchor href="https://beomy.tistory.com" target="_blank">
+              https://beomy.tistory.com
+            </Anchor>
+          </li>
+          <li>
+            <Anchor href="https://beomy.github.io" target="_blank">
+              https://beomy.github.io
+            </Anchor>
+          </li>
+        </ul>
+        <h3>출판</h3>
+        <ul>
+          <li>
+            <Anchor
+              href="https://search.shopping.naver.com/book/catalog/32505045623"
+              target="_blank"
+            >
+              [비제이퍼블릭]ReactJS 이 정도는 알아야지 (2018.01.31)
+            </Anchor>
+          </li>
+          <li>
+            <Anchor
+              href="https://search.shopping.naver.com/book/catalog/32492632526"
+              target="_blank"
+            >
+              [비제이퍼블릭]Svelte로 맛보는 웹 애플리케이션 개발 (2021.09.30)
+            </Anchor>
+          </li>
+        </ul>
+        <h3>강의</h3>
+        <ul className="flex flex-wrap">
+          <li className="mb-[10px] mr-[10px] w-full xs:w-1/2 sm:w-1/4">
+            <Anchor
+              href="https://www.inflearn.com/course/스벨트-입문?inst=77d01d70"
+              target="_blank"
+            >
+              <img
+                src="/assets/img/thumbnails/svelte/inflearn-svelte.png"
+                srcSet={getOptimizedSrcSet(
+                  '/assets/img/thumbnails/svelte/inflearn-svelte.png',
+                  768,
+                )}
+                sizes="(max-width: 640px) 100vw, 25vw"
+                alt="Svelte For Beginner"
+                width={768}
+                height={500}
+                loading="lazy"
+                decoding="async"
+              />
+            </Anchor>
+          </li>
+          <li className="mb-[10px] w-full xs:w-1/2 sm:w-1/4">
+            <Anchor
+              href="https://www.inflearn.com/course/스도쿠-실전-스도쿠실습?inst=2f7ebc2f"
+              target="_blank"
+            >
+              <img
+                src="/assets/img/thumbnails/svelte/inflearn-svelte-practice.jpeg"
+                srcSet={getOptimizedSrcSet(
+                  '/assets/img/thumbnails/svelte/inflearn-svelte-practice.jpeg',
+                  768,
+                )}
+                sizes="(max-width: 640px) 100vw, 25vw"
+                alt="Svelte For Practice"
+                width={768}
+                height={500}
+                loading="lazy"
+                decoding="async"
+              />
+            </Anchor>
+          </li>
+        </ul>
+      </AboutContents>
+    </DefaultLayout>
+  );
+};
+
+export default AboutView;

@@ -1,8 +1,12 @@
-import { Helmet } from 'react-helmet';
+import type { ComponentType } from 'react';
+import { Helmet as HelmetBase } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
 import type { Data } from '@/models/graphQL';
 import type { SeoProps } from './Seo.types';
+
+// @types/react 18.2 에서 react-helmet 의 클래스 컴포넌트 타입이 호환되지 않아 캐스팅
+const Helmet = HelmetBase as unknown as ComponentType<any>;
 
 const Seo = ({
   description,

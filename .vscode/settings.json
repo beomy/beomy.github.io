@@ -3,8 +3,8 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-  "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  // nodeLinker 가 node-modules 라 Yarn SDK(.yarn/sdks) 없이 node_modules 의 패키지를 그대로 쓴다.
+  // 에디터가 저장소와 같은 TypeScript 버전으로 진단하도록 워크스페이스 버전을 가리킨다.
+  "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true
 }

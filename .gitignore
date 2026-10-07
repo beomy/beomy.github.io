@@ -11,9 +11,9 @@
 # testing
 /coverage
 
-# gatsby
+# gatsby (apps/blog 빌드 산출물. blog-next 의 public/ 은 정적 자산 소스라 추적한다)
 .cache/
-public/
+apps/blog/public/
 
 # production
 /build
@@ -39,6 +39,7 @@ yarn-error.log*
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
 !.yarn/versions
+
+# playwright mcp (브라우저 자동화 스냅샷·콘솔 로그 출력물)
+.playwright-mcp/

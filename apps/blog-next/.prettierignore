@@ -1,0 +1,7 @@
+# 빌드 산출물
+.next/
+out/
+
+# 정적 자산 소스. 미리 빌드된 데모 번들(games, prayForYou, svelte-swiper)과
+# vendor 스크립트가 들어 있어 포맷하면 크기만 2배가 된다 (eslint.config.mjs 도 동일하게 제외)
+public/

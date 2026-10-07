@@ -1,0 +1,9 @@
+# 도구 버전 관리 (mise). 저장소에 들어오면 mise 가 이 도구들을 자동으로 활성화한다.
+#   처음 한 번: mise trust && mise install
+# Node 와 Yarn 버전은 이 파일 한 곳에서만 관리한다. corepack(packageManager)·yarnPath(.yarn/releases) 는
+# 쓰지 않는다 — corepack 은 Node 25 부터 번들에서 빠져 Node 를 올릴 때마다 yarn 이 사라지는 문제가 있었다.
+# 올릴 때: 값을 바꾸고 `mise install` → `yarn install` → 빌드(yarn blog-next build)로 확인.
+# CI(jdx/mise-action)도 같은 파일을 읽는다.
+[tools]
+node = "24.21.0" # 최신 LTS
+yarn = "4.18.1"

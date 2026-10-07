@@ -1,0 +1,181 @@
+/**
+ * Beomy 디자인 시스템 토큰 (Tailwind CSS v4, CSS-first)
+ *
+ * 기존 emotion 테마(@beomy/design-system tokens)를 CSS 변수로 옮긴 것입니다.
+ * - grey 스케일과 시맨틱 색(background/title/body/caption)은 테마에 따라 값이
+ *   바뀌므로 `:root`(light) / `.dark`(dark)에서 각각 정의한 뒤 `@theme inline`으로
+ *   Tailwind 유틸리티에 연결합니다. (inline 이어야 다크 오버라이드가 반영됩니다.)
+ * - 나머지 색 스케일(primary/blue/... )과 white/black/dimmed, 폰트, z-index,
+ *   애니메이션은 테마에 무관하므로 일반 `@theme`에 정의합니다.
+ *
+ * 다크 모드 전략: `data-theme="dark"` 또는 `.dark` 클래스를 최상위 요소에 부여.
+ */
+
+/* ── 테마 의존 토큰 (light 기본값) ───────────────────────────── */
+:root {
+  /* grey: 100(밝음) → 0(어두움) */
+  --grey-100: hsl(0, 0%, 100%);
+  --grey-98: hsl(0, 0%, 98%);
+  --grey-90: hsl(0, 0%, 90%);
+  --grey-80: hsl(0, 0%, 80%);
+  --grey-70: hsl(0, 0%, 70%);
+  --grey-60: hsl(0, 0%, 60%);
+  --grey-50: hsl(0, 0%, 50%);
+  --grey-40: hsl(0, 0%, 40%);
+  --grey-30: hsl(0, 0%, 30%);
+  --grey-20: hsl(0, 0%, 20%);
+  --grey-10: hsl(0, 0%, 10%);
+  --grey-0: hsl(0, 0%, 0%);
+
+  /* 시맨틱 */
+  --background: var(--grey-100);
+  --title: var(--grey-0);
+  --body: var(--grey-40);
+  --caption: var(--grey-50);
+}
+
+/* ── 다크: grey 반전 + 시맨틱 재정의 ────────────────────────── */
+:root[data-theme='dark'],
+.dark {
+  --grey-100: hsl(0, 0%, 0%);
+  --grey-98: hsl(0, 0%, 10%);
+  --grey-90: hsl(0, 0%, 20%);
+  --grey-80: hsl(0, 0%, 30%);
+  --grey-70: hsl(0, 0%, 40%);
+  --grey-60: hsl(0, 0%, 50%);
+  --grey-50: hsl(0, 0%, 60%);
+  --grey-40: hsl(0, 0%, 70%);
+  --grey-30: hsl(0, 0%, 80%);
+  --grey-20: hsl(0, 0%, 90%);
+  --grey-10: hsl(0, 0%, 98%);
+  --grey-0: hsl(0, 0%, 100%);
+
+  --background: var(--grey-100);
+  --title: var(--grey-0);
+  --body: var(--grey-40);
+  --caption: var(--grey-50);
+}
+
+/* ── 테마 무관 토큰 ─────────────────────────────────────────── */
+@theme {
+  /* 색상 스케일 */
+  --color-primary-98: hsl(234, 75%, 98%);
+  --color-primary-90: hsl(234, 75%, 90%);
+  --color-primary-80: hsl(234, 75%, 80%);
+  --color-primary-50: hsl(234, 75%, 50%);
+
+  --color-blue-98: hsl(212, 100%, 98%);
+  --color-blue-90: hsl(212, 100%, 90%);
+  --color-blue-80: hsl(212, 100%, 80%);
+  --color-blue-50: hsl(212, 100%, 50%);
+
+  --color-green-98: hsl(138, 76%, 98%);
+  --color-green-90: hsl(138, 76%, 90%);
+  --color-green-80: hsl(138, 76%, 80%);
+  --color-green-50: hsl(138, 76%, 50%);
+
+  --color-orange-98: hsl(29, 100%, 98%);
+  --color-orange-90: hsl(29, 100%, 90%);
+  --color-orange-80: hsl(29, 100%, 80%);
+  --color-orange-50: hsl(29, 100%, 50%);
+
+  --color-red-98: hsl(3, 92%, 98%);
+  --color-red-90: hsl(3, 92%, 90%);
+  --color-red-80: hsl(3, 92%, 80%);
+  --color-red-50: hsl(3, 92%, 50%);
+
+  --color-purple-98: hsl(277, 80%, 98%);
+  --color-purple-90: hsl(277, 80%, 90%);
+  --color-purple-80: hsl(277, 80%, 80%);
+  --color-purple-50: hsl(277, 80%, 50%);
+
+  --color-yellow-98: hsl(50, 100%, 98%);
+  --color-yellow-90: hsl(50, 100%, 90%);
+  --color-yellow-80: hsl(50, 100%, 80%);
+  --color-yellow-50: hsl(50, 100%, 50%);
+
+  --color-white: hsl(0, 0%, 100%);
+  --color-black: hsl(0, 0%, 0%);
+  --color-dimmed: hsl(0, 0%, 0%, 0.7);
+
+  /* 폰트 크기 (기존 fontSizes 배열 인덱스와 동일) */
+  --text-0: 0.75rem;
+  --text-1: 0.875rem;
+  --text-2: 1rem;
+  --text-3: 1.25rem;
+  --text-4: 1.5rem;
+  --text-5: 2rem;
+  --text-6: 2.5rem;
+  --text-7: 3rem;
+
+  /* z-index */
+  --z-index-toaster: 200;
+  --z-index-bottom-sheet: 100;
+  --z-index-modal: 50;
+  --z-index-overlay: 10;
+  --z-index-snackbar: 8;
+
+  /* 애니메이션 */
+  --animate-spin-in: spin-in 0.2s;
+
+  /*
+   * 브레이크포인트 (기존 design-system breakpoints 와 동일).
+   * 기본값을 모두 지운 뒤 xs/sm/m/lg 만 정의합니다.
+   * - min-width 변형: `xs:`, `sm:`, `m:`, `lg:` (styled-system 반응형 배열 대응)
+   * - max-width 변형: `max-xs:` 등 (기존 sizes.mediaQueries 대응)
+   */
+  --breakpoint-*: initial;
+  --breakpoint-xs: 767px;
+  --breakpoint-sm: 1056px;
+  --breakpoint-m: 1440px;
+  --breakpoint-lg: 1919px;
+}
+
+/*
+ * 컨테이너 폭 유틸리티 (기존 sizes.screen 토큰).
+ * 반응형 변형과 함께 사용: `screen-xs sm:screen-sm m:screen-m lg:screen-lg`
+ */
+@utility screen-xs {
+  width: calc(100% - 20px);
+}
+@utility screen-sm {
+  width: 1024px;
+}
+@utility screen-m {
+  width: 1376px;
+}
+@utility screen-lg {
+  width: 1728px;
+}
+
+/* ── 테마 의존 토큰을 Tailwind 유틸리티에 연결 (inline: var 참조 유지) ── */
+@theme inline {
+  --color-grey-100: var(--grey-100);
+  --color-grey-98: var(--grey-98);
+  --color-grey-90: var(--grey-90);
+  --color-grey-80: var(--grey-80);
+  --color-grey-70: var(--grey-70);
+  --color-grey-60: var(--grey-60);
+  --color-grey-50: var(--grey-50);
+  --color-grey-40: var(--grey-40);
+  --color-grey-30: var(--grey-30);
+  --color-grey-20: var(--grey-20);
+  --color-grey-10: var(--grey-10);
+  --color-grey-0: var(--grey-0);
+
+  --color-background: var(--background);
+  --color-title: var(--title);
+  --color-body: var(--body);
+  --color-caption: var(--caption);
+}
+
+@keyframes spin-in {
+  from {
+    scale: 0.3;
+    rotate: 60deg;
+  }
+  to {
+    scale: 1;
+    rotate: 0deg;
+  }
+}
