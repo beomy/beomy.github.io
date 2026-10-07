@@ -11,7 +11,7 @@
     "start": "next dev",
     "build": "next build && next-image-export-optimizer",
     "serve": "npx serve out",
-    "deploy": "yarn build && gh-pages -d out -b blog -t",
+    "deploy": "yarn build && GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=http.postBuffer GIT_CONFIG_VALUE_0=524288000 gh-pages -d out -b blog -t",
     "clean": "rm -rf .next out",
     "type-check": "tsc --noEmit",
     "lint": "eslint '**/*.+(ts|js|tsx)' --fix",
