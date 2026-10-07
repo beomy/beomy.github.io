@@ -26,7 +26,9 @@ const PostSidebar = ({ url, toc }: PostSidebarProps) => {
       className={cn(
         // 데스크톱: 본문(article)과 같은 높이로 늘어나 sticky 패널의 이동 범위가 된다
         'w-[380px] self-stretch',
-        'max-sm:fixed max-sm:right-0 max-sm:top-0 max-sm:z-[10] max-sm:w-0',
+        // 모바일: fixed 가 되면 self-stretch 가 효력을 잃고 자식(absolute Dim, fixed 패널)도 높이에 기여하지 않아
+        // h-full 을 주지 않으면 nav 높이가 0 이 되어 Dim 이 보이지 않는다
+        'max-sm:fixed max-sm:right-0 max-sm:top-0 max-sm:z-[10] max-sm:h-full max-sm:w-0',
         'max-sm:[&>*]:transition-all max-sm:[&>*]:duration-300 max-sm:[&>*]:ease-[cubic-bezier(0.78,0.14,0.15,0.86)]',
         isActive && 'max-sm:w-full',
       )}
@@ -42,8 +44,8 @@ const PostSidebar = ({ url, toc }: PostSidebarProps) => {
           'sticky top-(--sticky-top) ml-[40px] box-border flex max-h-[calc(100vh-var(--sticky-top)-125px)] w-[340px] flex-col px-[10px] pt-[10px] pb-[30px]',
           'transition-[top,height] duration-200 ease-in-out',
           '[&_fieldset+fieldset]:mt-[10px] [&>button]:hidden',
-          // 모바일: 화면 밖에서 슬라이드되는 오버레이 패널이라 fixed 유지
-          'max-sm:fixed max-sm:right-0 max-sm:top-0 max-sm:m-0 max-sm:h-full max-sm:max-w-[calc(100%-60px)] max-sm:bg-background',
+          // 모바일: 화면 밖에서 슬라이드되는 오버레이 패널이라 fixed 유지. 데스크톱용 max-h 상한을 풀어 화면 높이를 꽉 채운다
+          'max-sm:fixed max-sm:right-0 max-sm:top-0 max-sm:m-0 max-sm:h-full max-sm:max-h-none max-sm:max-w-[calc(100%-60px)] max-sm:bg-background',
           'max-sm:[&>button]:absolute max-sm:[&>button]:bottom-[20px] max-sm:[&>button]:left-[-50px] max-sm:[&>button]:inline-flex max-sm:[&>button]:bg-background max-sm:[&>button]:transition-transform max-sm:[&>button]:duration-300',
           isActive
             ? 'max-sm:translate-x-0 max-sm:[&>button]:rotate-0'
