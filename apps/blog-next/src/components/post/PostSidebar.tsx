@@ -37,15 +37,24 @@ const PostSidebar = ({ url, toc }: PostSidebarProps) => {
       <div
         className={cn(
           // 데스크톱: fixed 대신 sticky. 스크롤을 따라오다 본문 끝(nav 바닥)에서 멈춰 푸터와 겹치지 않는다.
-          // 높이는 내용에 맞추고 최대만 제한한다(h 가 아니라 max-h). 본문 끝에서 패널은 푸터(115px)+본문 하단
-          // 패딩(10px)만큼 위로 밀리므로, 최대 높이에서 그 125px 를 미리 빼 두어야 긴 목차에서도 상단(공유하기)이 잘리지 않는다.
+          // 본문 아래에는 전체 폭 댓글 영역이 있어(PostView) 본문 끝에서 패널은 댓글·푸터에 밀려 본문과 함께 화면 위로
+          // 빠져나간다. 그래서 최대 높이에서 푸터 몫을 미리 뺄 필요가 없고 화면 높이를 그대로 쓴다.
+          // 높이는 내용에 맞추고 최대만 제한한다(h 가 아니라 max-h).
           // top 은 --sticky-top(globals.css): 헤더가 보이면 70px, 스크롤로 숨으면 10px. 헤더 슬라이드(200ms)에 맞춰 전환.
-          // 하단 패딩을 더 주는 이유: 목차가 길면 패널 바닥까지 꽉 차므로 숨 쉴 공간을 패널 쪽에서 확보한다
-          'sticky top-(--sticky-top) ml-[40px] box-border flex max-h-[calc(100vh-var(--sticky-top)-125px)] w-[340px] flex-col px-[10px] pt-[10px] pb-[30px]',
-          'transition-[top,height] duration-200 ease-in-out',
-          '[&_fieldset+fieldset]:mt-[10px] [&>button]:hidden',
-          // 모바일: 화면 밖에서 슬라이드되는 오버레이 패널이라 fixed 유지. 데스크톱용 max-h 상한을 풀어 화면 높이를 꽉 채운다
-          'max-sm:fixed max-sm:right-0 max-sm:top-0 max-sm:m-0 max-sm:h-full max-sm:max-h-none max-sm:max-w-[calc(100%-60px)] max-sm:bg-background',
+          // max-h 는 --sticky-top 이 아니라 헤더가 보일 때 값(70px)으로 고정한다. 변수를 쓰면 헤더가 숨을 때마다 패널 높이가
+          // 60px 늘었다 줄어 목차가 출렁인다. 헤더가 숨은 동안 아래 60px 가 비는 건 감수한다.
+          // 데스크톱은 하단 패딩을 주지 않는다. 패널 바닥이 곧 nav 바닥(=본문 네비게이터 바닥)이라 본문 끝에서 목차와 본문의
+          // 하단이 나란히 맞는다. 스크롤 중 화면 아래와의 숨 쉴 공간(30px)은 패딩 대신 max-h 에서 뺀다.
+          // flex 가 아니라 grid 인 이유: fieldset 은 flex 자식으로 줄어들어도(min-h-0) Chromium 에서 내부 익명 콘텐츠 박스가
+          // 내용 높이를 유지해 overflow 가 동작하지 않고 목차가 흘러넘친다. grid 의 minmax(0,1fr) 행은 fieldset 에 확정된
+          // 높이를 내려 주므로 목차 fieldset 안에서 스크롤된다. 목차가 짧으면 max-h 안에서 내용 높이만큼만 차지한다.
+          // 닫기 버튼은 데스크톱에선 hidden, 모바일에선 absolute 라 grid 행을 차지하지 않는다.
+          'sticky top-(--sticky-top) ml-[40px] box-border grid max-h-[calc(100vh-100px)] w-[340px] grid-rows-[auto_minmax(0,1fr)] gap-[10px] px-[10px] pt-[10px]',
+          'transition-[top] duration-200 ease-in-out',
+          '[&>button]:hidden',
+          // 모바일: 화면 밖에서 슬라이드되는 오버레이 패널이라 fixed. 데스크톱용 max-h 상한을 풀어 화면 높이를 꽉 채우고,
+          // 목차가 화면 바닥에 붙지 않게 하단 패딩을 둔다
+          'max-sm:fixed max-sm:right-0 max-sm:top-0 max-sm:m-0 max-sm:h-full max-sm:max-h-none max-sm:pb-[30px] max-sm:max-w-[calc(100%-60px)] max-sm:bg-background',
           'max-sm:[&>button]:absolute max-sm:[&>button]:bottom-[20px] max-sm:[&>button]:left-[-50px] max-sm:[&>button]:inline-flex max-sm:[&>button]:bg-background max-sm:[&>button]:transition-transform max-sm:[&>button]:duration-300',
           isActive
             ? 'max-sm:translate-x-0 max-sm:[&>button]:rotate-0'

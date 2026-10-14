@@ -27,14 +27,21 @@ const PostView = ({ post, previous, next, slug }: PostViewProps) => {
   return (
     <>
       <Header />
-      <Contents className="flex flex-row-reverse leading-[2] screen-xs sm:screen-sm m:screen-m">
-        <PostSidebar url={url} toc={post.tableOfContents} />
-        <article className="w-[calc(100%-380px)] max-sm:w-full">
-          <PostHeader {...post} />
-          <PostContents html={post.html} />
-          <PostNavigator previous={previous} next={next} />
-          <PostComments url={url} title={post.title} />
-        </article>
+      <Contents className="leading-[2] screen-xs sm:screen-sm m:screen-m">
+        {/* 상단은 본문(좌)·sticky 사이드바(우) 두 열, 댓글은 그 아래 전체 폭.
+            댓글을 두 열 밖으로 빼야 사이드바의 sticky 범위가 본문까지로 끝나, 댓글이 화면에 들어오면
+            패널이 본문과 함께 위로 빠져나간다. 댓글이 열 안에 있으면 패널이 푸터(125px)에만 밀려 상단이 어중간하게 잘린다.
+            댓글과의 간격은 네비게이터 margin 이 아니라 이 블록의 padding 으로 준다. 사이드바는 이 블록 높이만큼 늘어나므로
+            margin 으로 주면 사이드바 끝(목차 바닥)이 네비게이터보다 그만큼 아래에 놓여 하단이 어긋난다. */}
+        <div className="flex flex-row-reverse pb-[10px]">
+          <PostSidebar url={url} toc={post.tableOfContents} />
+          <article className="w-[calc(100%-380px)] max-sm:w-full">
+            <PostHeader {...post} />
+            <PostContents html={post.html} />
+            <PostNavigator previous={previous} next={next} />
+          </article>
+        </div>
+        <PostComments url={url} title={post.title} />
       </Contents>
       <Footer />
     </>
