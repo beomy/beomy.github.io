@@ -6,5 +6,12 @@
   // nodeLinker 가 node-modules 라 Yarn SDK(.yarn/sdks) 없이 node_modules 의 패키지를 그대로 쓴다.
   // 에디터가 저장소와 같은 TypeScript 버전으로 진단하도록 워크스페이스 버전을 가리킨다.
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  // VS Code 태스크·NPM Scripts 패널은 .zshrc 를 읽지 않는 비대화형 셸로 실행돼 mise 의 디렉터리 훅이 돌지 않고,
+  // VS Code 가 시작할 때 가져온 전역 PATH(전역 node 의 corepack yarn = 1.x)를 그대로 쓴다.
+  // mise shims 를 PATH 맨 앞에 두면 shim 이 cwd 의 mise.toml 을 읽어 저장소가 고정한 node·yarn 으로 해석한다.
+  // (husky 훅도 같은 방식으로 shims 를 쓴다) 적용하려면 VS Code 창을 다시 연다.
+  "terminal.integrated.env.osx": {
+    "PATH": "${env:HOME}/.local/share/mise/shims:${env:PATH}"
+  }
 }
