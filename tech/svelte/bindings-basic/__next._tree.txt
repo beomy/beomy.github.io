@@ -1,3 +1,3 @@
-:HL["/_next/static/chunks/24iheamldh4pv.css","style"]
+:HL["/_next/static/chunks/42qi6sro-2pwb.css","style"]
 :HL["/_next/static/chunks/0-ed_yd_8cspw.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"slug","param":{"type":"c","key":"tech/svelte/bindings-basic","siblings":["about","rss.xml","search"]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"ywLSjaNBC751uTIrx2btc"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"slug","param":{"type":"c","key":"tech/svelte/bindings-basic","siblings":["about","rss.xml","search"]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"H3TejR-WEpz9MqbGtX9Fu"}
