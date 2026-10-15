@@ -11,10 +11,11 @@
 .toc a:hover {
   color: var(--title);
 }
-.toc .active {
+/* 활성 항목 강조. li 에는 하위 ul 이 함께 들어 있으므로 직계 a 에만 적용해 하위 제목까지 강조되지 않게 한다. */
+.toc .active > a {
+  display: inline-block;
   transform: scale(1.05);
-}
-.toc .active a {
+  transform-origin: left center;
   color: var(--title);
 }
 .toc li {
