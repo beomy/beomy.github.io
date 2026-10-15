@@ -170,8 +170,24 @@
 .post-contents p > img {
   margin: 2rem auto;
 }
+/*
+ * 목록. Tailwind preflight 가 ol/ul 의 list-style 과 padding 을 초기화하므로
+ * 브라우저 기본 마커(불릿·숫자)와 들여쓰기를 되살린다. (toc 는 TableOfContents.css 에서 따로 없앤다)
+ */
 .post-contents ul {
   margin: 0;
+  padding-left: 1.5em;
+  list-style: disc;
+}
+.post-contents ol {
+  padding-left: 1.5em;
+  list-style: decimal;
+}
+.post-contents ul ul {
+  list-style: circle;
+}
+.post-contents ul ul ul {
+  list-style: square;
 }
 .post-contents #참고 {
   margin-top: 50px;
