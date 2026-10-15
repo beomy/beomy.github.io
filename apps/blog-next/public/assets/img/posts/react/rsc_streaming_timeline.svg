@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="450" viewBox="0 0 960 450" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+    </marker>
+  </defs>
+  <rect width="960" height="450" fill="#ffffff"/>
+
+  <!-- 시간축 -->
+  <line x1="130" y1="36" x2="930" y2="36" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="900" y="28" fill="#6b7280" font-size="12" text-anchor="end">시간</text>
+
+  <!-- 레인 라벨 -->
+  <text x="20" y="84" font-weight="700" fill="#2f4f8f">서버</text>
+  <text x="20" y="174" font-weight="700" fill="#2f4f8f">응답</text>
+  <text x="20" y="320" font-weight="700" fill="#2e7d4f">브라우저</text>
+  <text x="20" y="338" fill="#2e7d4f" font-size="12">화면</text>
+
+  <!-- 시점 세로 점선 -->
+  <line x1="330" y1="46" x2="330" y2="440" stroke="#d1d5db" stroke-dasharray="4 4"/>
+  <line x1="660" y1="46" x2="660" y2="440" stroke="#d1d5db" stroke-dasharray="4 4"/>
+  <text x="330" y="60" fill="#6b7280" font-size="12" text-anchor="middle">① 0번 줄 전송</text>
+  <text x="660" y="60" fill="#6b7280" font-size="12" text-anchor="middle">② 2번 줄 전송</text>
+
+  <!-- 서버 레인 -->
+  <rect x="130" y="68" width="200" height="40" rx="8" fill="#e8effb" stroke="#4a7bd0" stroke-width="1.5"/>
+  <text x="230" y="86" fill="#1f2937" font-weight="700" text-anchor="middle" font-size="12">Page 실행</text>
+  <text x="230" y="101" fill="#4b5563" text-anchor="middle" font-size="11">header 완성, Comments 는 보류</text>
+  <rect x="330" y="68" width="330" height="40" rx="8" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="495" y="86" fill="#1f2937" font-weight="700" text-anchor="middle" font-size="12">Comments 의 await</text>
+  <text x="495" y="101" fill="#4b5563" text-anchor="middle" font-size="11">느린 DB 쿼리를 기다리는 중</text>
+  <rect x="660" y="68" width="200" height="40" rx="8" fill="#e8effb" stroke="#4a7bd0" stroke-width="1.5"/>
+  <text x="760" y="86" fill="#1f2937" font-weight="700" text-anchor="middle" font-size="12">await 종료</text>
+  <text x="760" y="101" fill="#4b5563" text-anchor="middle" font-size="11">Comments 렌더링, 2번 줄 생성</text>
+
+  <!-- 응답 레인: 하나의 긴 바 -->
+  <rect x="330" y="150" width="600" height="56" rx="10" fill="#fff7e0" stroke="#d9a520" stroke-width="1.5"/>
+  <text x="630" y="196" fill="#8a6d1a" font-size="11" text-anchor="middle">요청 하나, 응답 하나. 연결을 열어 둔 채 준비된 줄부터 이어서 보냅니다.</text>
+  <rect x="338" y="156" width="190" height="24" rx="6" fill="#ffffff" stroke="#d9a520"/>
+  <text x="433" y="172" fill="#1f2937" font-family="Menlo, Consolas, monospace" font-size="11" text-anchor="middle">0:[... "children":"$L2" ...]</text>
+  <rect x="668" y="156" width="190" height="24" rx="6" fill="#ffffff" stroke="#d9a520"/>
+  <text x="763" y="172" fill="#1f2937" font-family="Menlo, Consolas, monospace" font-size="11" text-anchor="middle">2:["$","ul",null,{...}]</text>
+  <line x1="330" y1="108" x2="330" y2="148" stroke="#4a7bd0" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="660" y1="108" x2="660" y2="148" stroke="#4a7bd0" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 브라우저 레인: 장면 1 -->
+  <line x1="433" y1="206" x2="433" y2="238" stroke="#3da35d" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="323" y="240" width="220" height="104" rx="8" fill="#ffffff" stroke="#3da35d" stroke-width="1.5"/>
+  <rect x="323" y="240" width="220" height="22" rx="8" fill="#e9f7ef"/>
+  <rect x="323" y="254" width="220" height="8" fill="#e9f7ef"/>
+  <text x="335" y="256" fill="#1f2937" font-weight="700" font-size="12">My Blog</text>
+  <rect x="335" y="276" width="196" height="12" rx="4" fill="#e5e7eb"/>
+  <rect x="335" y="296" width="150" height="12" rx="4" fill="#e5e7eb"/>
+  <rect x="335" y="316" width="176" height="12" rx="4" fill="#e5e7eb"/>
+  <text x="433" y="366" fill="#6b7280" font-size="11" text-anchor="middle">$L2 가 가리키는 2번 줄이 아직 없음</text>
+  <text x="433" y="382" fill="#6b7280" font-size="11" text-anchor="middle">→ Suspense 가 fallback(스켈레톤)을 표시</text>
+  <text x="433" y="414" fill="#1f2937" font-weight="700" font-size="12" text-anchor="middle">header 는 즉시, 댓글은 스켈레톤</text>
+
+  <!-- 브라우저 레인: 장면 2 -->
+  <line x1="763" y1="206" x2="763" y2="238" stroke="#3da35d" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="653" y="240" width="220" height="104" rx="8" fill="#ffffff" stroke="#3da35d" stroke-width="1.5"/>
+  <rect x="653" y="240" width="220" height="22" rx="8" fill="#e9f7ef"/>
+  <rect x="653" y="254" width="220" height="8" fill="#e9f7ef"/>
+  <text x="665" y="256" fill="#1f2937" font-weight="700" font-size="12">My Blog</text>
+  <text x="665" y="288" fill="#374151" font-size="12">• 첫 댓글</text>
+  <text x="665" y="308" fill="#374151" font-size="12">• 둘째 댓글</text>
+  <text x="763" y="366" fill="#6b7280" font-size="11" text-anchor="middle">2번 줄이 도착하면 $L2 자리를 채움</text>
+  <text x="763" y="382" fill="#6b7280" font-size="11" text-anchor="middle">→ 스켈레톤만 댓글로 교체, 나머지는 그대로</text>
+  <text x="763" y="414" fill="#1f2937" font-weight="700" font-size="12" text-anchor="middle">페이지를 다시 요청하지 않음</text>
+
+  <!-- 장면 1 → 장면 2 화살표 -->
+  <line x1="543" y1="292" x2="651" y2="292" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="597" y="285" fill="#6b7280" font-size="11" text-anchor="middle">같은 화면 유지</text>
+</svg>
