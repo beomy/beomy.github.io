@@ -58,7 +58,8 @@
 }
 .post-contents table {
   display: table;
-  table-layout: fixed;
+  /* 열 폭은 내용에 맞춘다. fixed 는 짧은 열(코드 한 토큰)과 긴 열(설명)을 균등 분할해 공간을 낭비했다. */
+  table-layout: auto;
   width: 100%;
   overflow-x: auto;
   border-collapse: collapse;
@@ -73,6 +74,10 @@
 .post-contents table tr td {
   padding: 6px 13px;
   border: 1px solid var(--grey-90);
+  /* auto 레이아웃은 열의 최소 폭을 내용으로 정한다. 한국어는 글자마다 줄바꿈이 가능해 최소 폭이
+   * 한 글자가 되므로 좁은 화면에서 열이 글자 단위로 쪼개진다. 단어 단위로만 줄바꿈하게 한다. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 .post-contents h1,
 .post-contents h2,
