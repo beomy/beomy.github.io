@@ -28,7 +28,7 @@
   <!-- 결과 -->
   <text x="60" y="320" fill="#1f2937" font-weight="700" font-size="12">결과</text>
   <text x="60" y="340" fill="#4b5563" font-size="12">• 에러는 없지만 서버 컴포넌트의 의미가 사라짐</text>
-  <text x="60" y="358" fill="#4b5563" font-size="12">• async 였거나 DB 모듈을 썼다면 에러</text>
+  <text x="60" y="358" fill="#4b5563" font-size="12">• async 였거나 server-only 모듈을 썼다면 에러</text>
   <text x="60" y="376" fill="#4b5563" font-size="12">• 서버 전용 코드가 브라우저로 노출될 수 있음</text>
 
   <!-- ===== 오른쪽: children ===== -->
