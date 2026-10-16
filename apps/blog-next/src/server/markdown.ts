@@ -163,11 +163,29 @@ const buildExcerpt = (plainText: string): string => {
   return `${plainText.slice(0, PRUNE_LENGTH).trimEnd()}…`;
 };
 
-const WORDS_PER_MINUTE = 265;
+/**
+ * 읽기 속도. 본문은 한국어 기준 분당 200어절(공백 단위). 영어 기준 265단어보다 낮게 잡는다.
+ * 코드는 한 줄씩 훑어 읽으므로 분당 줄 수로 센다.
+ */
+const WORDS_PER_MINUTE = 200;
+const CODE_LINES_PER_MINUTE = 80;
 
-const calcTimeToRead = (plainText: string): number => {
-  const words = plainText ? plainText.split(/\s+/).length : 0;
-  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
+const countWords = (text: string): number =>
+  text.trim() ? text.trim().split(/\s+/).length : 0;
+
+/** 코드 블록 안의 비어 있지 않은 줄 수 */
+const countCodeLines = (markdown: string): number => {
+  let lines = 0;
+  for (const block of markdown.match(/```[\s\S]*?```/g) ?? []) {
+    const body = block.split('\n').slice(1, -1); // 여는 ```lang 과 닫는 ``` 제외
+    lines += body.filter((line) => line.trim()).length;
+  }
+  return lines;
+};
+
+const calcTimeToRead = (plainText: string, codeLines: number): number => {
+  const minutes = countWords(plainText) / WORDS_PER_MINUTE + codeLines / CODE_LINES_PER_MINUTE;
+  return Math.max(1, Math.round(minutes));
 };
 
 /** 목록·메타용 경량 처리 (요약, 읽기 시간). 파이프라인을 태우지 않아 비용이 거의 없다. */
@@ -175,7 +193,7 @@ export const extractMarkdownMeta = (content: string): MarkdownMeta => {
   const plainText = toPlainText(content);
   return {
     excerpt: buildExcerpt(plainText),
-    timeToRead: calcTimeToRead(plainText),
+    timeToRead: calcTimeToRead(plainText, countCodeLines(content)),
   };
 };
 
