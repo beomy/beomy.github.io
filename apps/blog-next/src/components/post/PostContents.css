@@ -19,12 +19,19 @@
  * blockquote 와 같은 디자인 토큰(grey-98 배경 + grey-90 테두리)으로 통일한다.
  */
 .post-contents pre {
-  padding: 1em;
   margin: 0.5em 0;
-  overflow: auto;
   border: 1px solid var(--grey-90);
   border-radius: 10px;
   line-height: 1.5;
+}
+/*
+ * 가로 스크롤은 pre 가 아니라 안쪽 code 가 맡는다.
+ * pre 가 스크롤 컨테이너이면 우상단 언어 라벨(::before)도 코드와 함께 밀려 버린다.
+ */
+.post-contents pre > code {
+  display: block;
+  padding: 1em;
+  overflow-x: auto;
 }
 .post-contents pre.shiki {
   background-color: var(--grey-98) !important;
