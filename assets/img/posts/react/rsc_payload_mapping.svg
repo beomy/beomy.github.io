@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="410" viewBox="0 0 960 410" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+    </marker>
+  </defs>
+  <rect width="960" height="410" fill="#ffffff"/>
+  <text x="60" y="40" font-size="15" font-weight="700" fill="#2f4f8f">서버에서 실행된 Page 의 엘리먼트 트리</text>
+  <text x="470" y="40" font-size="15" font-weight="700" fill="#2f4f8f">RSC Payload</text>
+  <rect x="456" y="88" width="490" height="180" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+  <rect x="60" y="60" width="330" height="44" rx="8" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="72" y="79" font-weight="700" fill="#1f2937" font-size="14">Page</text>
+  <text x="72" y="96" fill="#4b5563" font-size="12">서버 컴포넌트 · async</text>
+  <rect x="84" y="120" width="306" height="44" rx="8" fill="#dbe7fb" stroke="#4a7bd0" stroke-width="1.5"/>
+  <text x="96" y="139" font-weight="700" fill="#1f2937" font-size="14">article</text>
+  <rect x="108" y="180" width="282" height="44" rx="8" fill="#d8f0e0" stroke="#3da35d" stroke-width="1.5"/>
+  <text x="120" y="199" font-weight="700" fill="#1f2937" font-size="14">h1</text>
+  <text x="120" y="216" fill="#4b5563" font-size="12">{note.title} → "Hello"</text>
+  <rect x="108" y="240" width="282" height="44" rx="8" fill="#fde9b4" stroke="#d9a520" stroke-width="1.5"/>
+  <text x="120" y="259" font-weight="700" fill="#1f2937" font-size="14">Counter</text>
+  <text x="120" y="276" fill="#4b5563" font-size="12">'use client' · initialCount={note.likes} → 3</text>
+  <path d="M72,104 L72,142 L84,142" fill="none" stroke="#9ca3af" stroke-width="1.5"/>
+  <path d="M96,164 L96,262 L108,262" fill="none" stroke="#9ca3af" stroke-width="1.5"/>
+  <path d="M96,202 L108,202" fill="none" stroke="#9ca3af" stroke-width="1.5"/>
+  <rect x="519.8" y="99" width="70.6" height="18" rx="4" fill="#dbe7fb"/>
+  <text x="470" y="112" font-family="Menlo, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#4b5563">0:</tspan><tspan fill="#4b5563">["$",</tspan><tspan fill="#1f2937" font-weight="700">"article"</tspan><tspan fill="#4b5563">,null,{"children":[</tspan></text>
+  <rect x="529.0" y="127" width="33.6" height="18" rx="4" fill="#dbe7fb"/>
+  <rect x="691.8" y="127" width="55.8" height="18" rx="4" fill="#d8f0e0"/>
+  <text x="494" y="140" font-family="Menlo, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#4b5563">["$",</tspan><tspan fill="#1f2937" font-weight="700">"h1"</tspan><tspan fill="#4b5563">,null,{"children":</tspan><tspan fill="#1f2937" font-weight="700">"Hello"</tspan><tspan fill="#4b5563">}],</tspan></text>
+  <rect x="529.0" y="155" width="41.0" height="18" rx="4" fill="#fde9b4"/>
+  <rect x="610.4" y="155" width="137.2" height="18" rx="4" fill="#e6e3fb"/>
+  <text x="494" y="168" font-family="Menlo, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#4b5563">["$",</tspan><tspan fill="#1f2937" font-weight="700">"$L1"</tspan><tspan fill="#4b5563">,null,</tspan><tspan fill="#1f2937" font-weight="700">{"initialCount":3}</tspan><tspan fill="#4b5563">]</tspan></text>
+  <text x="470" y="196" font-family="Menlo, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#4b5563">]}]</tspan></text>
+  <rect x="482.8" y="237" width="11.4" height="18" rx="4" fill="#fde9b4"/>
+  <text x="470" y="250" font-family="Menlo, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#4b5563">1:</tspan><tspan fill="#1f2937" font-weight="700">I</tspan><tspan fill="#1f2937">["./Counter.js",["chunk.js"],"default"]</tspan></text>
+  <path d="M390,142 C422.0,142 422.0,108 454,108" fill="none" stroke="#4a7bd0" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M390,202 C422.0,202 422.0,136 454,136" fill="none" stroke="#3da35d" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M390,262 C422.0,262 422.0,164 454,164" fill="none" stroke="#d9a520" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M549.5,176 L549.5,232" fill="none" stroke="#d9a520" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="470" y="300" fill="#1f2937" font-size="13" font-weight="700">읽는 법</text>
+  <rect x="470" y="312" width="12" height="12" rx="3" fill="#dbe7fb"/><text x="488" y="322" fill="#4b5563" font-size="12">일반 HTML 엘리먼트는 태그 이름을 그대로 기록</text>
+  <rect x="470" y="332" width="12" height="12" rx="3" fill="#d8f0e0"/><text x="488" y="342" fill="#4b5563" font-size="12">서버에서 읽은 데이터는 값만 남고, 읽는 코드는 남지 않음</text>
+  <rect x="470" y="352" width="12" height="12" rx="3" fill="#fde9b4"/><text x="488" y="362" fill="#4b5563" font-size="12">클라이언트 컴포넌트는 RSC Payload 생성 시 실행하지 않고 참조(1번 항목의 모듈 정보)로 기록</text>
+  <rect x="470" y="372" width="12" height="12" rx="3" fill="#e6e3fb"/><text x="488" y="382" fill="#4b5563" font-size="12">클라이언트 컴포넌트에 넘긴 props 는 계산이 끝난 값으로 기록</text>
+  <text x="60" y="322" fill="#4b5563" font-size="12">Page 자체는 실행되어 사라지고 반환한 트리만 남습니다.</text>
+  <text x="60" y="342" fill="#4b5563" font-size="12">서버 컴포넌트의 이름은 RSC Payload 에 등장하지 않습니다.</text>
+</svg>
