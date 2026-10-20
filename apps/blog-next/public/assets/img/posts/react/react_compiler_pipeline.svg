@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="410" viewBox="0 0 960 410" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/>
+    </marker>
+  </defs>
+  <rect width="960" height="410" fill="#ffffff"/>
+  <text x="40" y="36" font-size="15" font-weight="700" fill="#2f4f8f">빌드 시간 (Build Time)</text>
+  <text x="775" y="36" font-size="15" font-weight="700" fill="#2f4f8f">실행 시간 (Runtime)</text>
+  <line x1="757" y1="20" x2="757" y2="300" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <rect x="40" y="60" width="150" height="80" rx="8" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="56" y="84" font-weight="700" fill="#1f2937">소스 코드</text>
+  <text x="56" y="104" fill="#4b5563" font-size="12">Counter.tsx</text>
+  <text x="56" y="122" fill="#4b5563" font-size="12">useMemo 없는 일반 코드</text>
+
+  <rect x="228" y="60" width="340" height="230" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+  <text x="244" y="84" font-weight="700" fill="#1f2937">babel-plugin-react-compiler</text>
+  <text x="244" y="102" fill="#4b5563" font-size="12">Babel 플러그인 중 가장 먼저 실행</text>
+
+  <rect x="244" y="116" width="308" height="34" rx="6" fill="#dbe7fb" stroke="#4a7bd0" stroke-width="1.5"/>
+  <text x="256" y="138" fill="#1f2937" font-size="13">1. 컴포넌트·훅 찾기</text>
+  <rect x="244" y="158" width="308" height="34" rx="6" fill="#dbe7fb" stroke="#4a7bd0" stroke-width="1.5"/>
+  <text x="256" y="180" fill="#1f2937" font-size="13">2. HIR 로 변환해 값의 변경·의존 관계 분석</text>
+  <rect x="244" y="200" width="308" height="34" rx="6" fill="#fde9b4" stroke="#d9a520" stroke-width="1.5"/>
+  <text x="256" y="222" fill="#1f2937" font-size="13">3. React 규칙 검사 (위반 시 건너뜀)</text>
+  <rect x="244" y="242" width="308" height="34" rx="6" fill="#d8f0e0" stroke="#3da35d" stroke-width="1.5"/>
+  <text x="256" y="264" fill="#1f2937" font-size="13">4. Reactive Scope 로 묶고 캐시 코드 삽입</text>
+
+  <rect x="600" y="60" width="140" height="80" rx="8" fill="#ffffff" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="616" y="84" font-weight="700" fill="#1f2937">컴파일된 코드</text>
+  <text x="616" y="104" fill="#4b5563" font-size="12">const $ = _c(13)</text>
+  <text x="616" y="122" fill="#4b5563" font-size="12">if ($[0] !== items) …</text>
+
+  <rect x="775" y="60" width="170" height="80" rx="8" fill="#e6e3fb" stroke="#7c6bd0" stroke-width="1.5"/>
+  <text x="787" y="84" font-weight="700" fill="#1f2937" font-size="12">react/compiler-runtime</text>
+  <text x="787" y="104" fill="#4b5563" font-size="12">c(n): 캐시 배열 생성</text>
+  <text x="787" y="122" fill="#4b5563" font-size="12">컴포넌트마다 하나씩 보관</text>
+
+  <path d="M190,100 L226,100" fill="none" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M568,100 L598,100" fill="none" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M740,100 L773,100" fill="none" stroke="#7c6bd0" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="741" y="92" fill="#7c6bd0" font-size="11">import</text>
+
+  <rect x="600" y="170" width="140" height="60" rx="8" fill="#ffffff" stroke="#d9a520" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="616" y="194" font-weight="700" fill="#1f2937" font-size="13">원본 그대로 출력</text>
+  <text x="616" y="214" fill="#4b5563" font-size="12">규칙 위반 컴포넌트</text>
+  <path d="M552,217 L598,202" fill="none" stroke="#d9a520" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <line x1="40" y1="316" x2="920" y2="316" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="40" y="342" fill="#1f2937" font-size="13" font-weight="700">정리</text>
+  <text x="40" y="366" fill="#4b5563" font-size="12">· 컴파일러는 빌드 시간에만 동작합니다. 실행 시간에 추가되는 것은 작은 캐시 배열과 비교 연산뿐입니다.</text>
+  <text x="40" y="388" fill="#4b5563" font-size="12">· 규칙 위반으로 건너뛴 컴포넌트는 컴파일 전과 똑같이 동작합니다. 빌드가 실패하는 것이 아닙니다.</text>
+</svg>
