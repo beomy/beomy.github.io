@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>React Compiler 적용 전후 비교</title>
+<style>
+  body { margin: 0; padding: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; color: #1f2937; background: #fff; }
+  p.desc { margin: 0 0 12px; font-size: 14px; color: #4b5563; }
+  main { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel { border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; min-width: 0; }
+  .panel h2 { margin: 0 0 8px; font-size: 16px; }
+  .controls { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  button { font: inherit; padding: 6px 14px; border-radius: 6px; border: 1px solid #4a7bd0; background: #dbe7fb; color: #1f2937; cursor: pointer; }
+  button:active { background: #b9cff5; }
+  .count { font-variant-numeric: tabular-nums; }
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0 0 8px; font-size: 13px; }
+  dt { color: #4b5563; } dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+  ul { list-style: none; margin: 0; padding: 0; max-height: 260px; overflow: auto; border-top: 1px solid #e5e7eb; }
+  li { padding: 2px 6px; font-size: 13px; border-radius: 4px; cursor: pointer; }
+  li .dim { color: #9ca3af; }
+  li.flash { animation: flash 0.6s ease-out; }
+  @keyframes flash { from { background: #fde0d0; } to { background: transparent; } }
+  @media (max-width: 640px) { main { grid-template-columns: 1fr; } }
+</style>
+<script type="importmap">
+{ "imports": {
+  "react": "https://esm.sh/react@19.2.0",
+  "react/jsx-runtime": "https://esm.sh/react@19.2.0/jsx-runtime",
+  "react/compiler-runtime": "https://esm.sh/react@19.2.0/compiler-runtime",
+  "react-dom/client": "https://esm.sh/react-dom@19.2.0/client?deps=react@19.2.0"
+} }
+</script>
+</head>
+<body>
+<p class="desc">같은 컴포넌트를 React Compiler 로 컴파일하지 않은 것(왼쪽)과 컴파일한 것(오른쪽)입니다. 버튼을 누르면 부모의 count 상태만 바뀝니다. 다시 렌더링된 행은 붉게 반짝입니다.</p>
+<main id="root"></main>
+<script type="module">
+import { useState, useEffect, useRef } from 'react'
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from 'react/jsx-runtime'
+import { c as _c } from 'react/compiler-runtime'
+import { createRoot } from 'react-dom/client'
+
+const AppPlain = (() => {
+const ROWS = 300;
+const items = Array.from({
+  length: ROWS
+}, (_, i) => ({
+  id: i + 1,
+  name: `item ${i + 1}`
+}));
+
+// 행 하나를 그릴 때 드는 약간의 계산 (실제 앱의 포맷팅·필터링 등을 흉내)
+const format = n => {
+  let s = 0;
+  for (let i = 0; i < 20000; i++) s = (s + n * i) % 9973;
+  return s;
+};
+const Row = ({
+  item,
+  onSelect,
+  onRender
+}) => {
+  const ref = useRef(null);
+  useEffect(() => {
+    // 이 이펙트는 Row 가 렌더링될 때마다 실행됩니다. 렌더링 횟수를 세고 행을 잠깐 반짝입니다.
+    onRender();
+    const el = ref.current;
+    el.classList.remove('flash');
+    el.getBoundingClientRect(); // 리플로우를 강제해 애니메이션을 다시 시작시킵니다
+    el.classList.add('flash');
+  });
+  return /*#__PURE__*/_jsxs("li", {
+    ref: ref,
+    onClick: () => onSelect(item.id),
+    children: [item.name, " ", /*#__PURE__*/_jsx("span", {
+      className: "dim",
+      children: format(item.id)
+    })]
+  });
+};
+const App = ({
+  label
+}) => {
+  const [count, setCount] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const rowRenders = useRef(0);
+  const clickedAt = useRef(0);
+  const statRef = useRef(null);
+  const rendersRef = useRef(null);
+  const onRender = () => {
+    rowRenders.current += 1;
+  };
+  const onClick = () => {
+    clickedAt.current = performance.now();
+    setCount(count + 1);
+  };
+  useEffect(() => {
+    // 렌더링과 커밋이 끝난 시점. 자식 Row 의 이펙트가 먼저 실행되므로 누적 횟수가 정확합니다.
+    rendersRef.current.textContent = String(rowRenders.current);
+    if (clickedAt.current) {
+      const ms = performance.now() - clickedAt.current;
+      statRef.current.textContent = `${ms.toFixed(1)} ms`;
+      clickedAt.current = 0;
+    }
+  });
+  return /*#__PURE__*/_jsxs("section", {
+    className: "panel",
+    children: [/*#__PURE__*/_jsx("h2", {
+      children: label
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "controls",
+      children: [/*#__PURE__*/_jsx("button", {
+        onClick: onClick,
+        children: "count + 1"
+      }), /*#__PURE__*/_jsxs("span", {
+        className: "count",
+        children: ["count: ", count]
+      })]
+    }), /*#__PURE__*/_jsxs("dl", {
+      children: [/*#__PURE__*/_jsx("dt", {
+        children: "마지막 클릭 처리 시간"
+      }), /*#__PURE__*/_jsx("dd", {
+        ref: statRef,
+        children: "-"
+      }), /*#__PURE__*/_jsx("dt", {
+        children: "Row 누적 렌더링 횟수"
+      }), /*#__PURE__*/_jsx("dd", {
+        ref: rendersRef,
+        children: "0"
+      }), /*#__PURE__*/_jsx("dt", {
+        children: "선택한 행"
+      }), /*#__PURE__*/_jsx("dd", {
+        children: selected ?? '-'
+      })]
+    }), /*#__PURE__*/_jsx("ul", {
+      children: items.map(item => /*#__PURE__*/_jsx(Row, {
+        item: item,
+        onSelect: setSelected,
+        onRender: onRender
+      }, item.id))
+    })]
+  });
+};
+return App
+})()
+
+const AppCompiled = (() => {
+const ROWS = 300;
+const items = Array.from({
+  length: ROWS
+}, (_, i) => ({
+  id: i + 1,
+  name: `item ${i + 1}`
+}));
+
+// 행 하나를 그릴 때 드는 약간의 계산 (실제 앱의 포맷팅·필터링 등을 흉내)
+const format = n => {
+  let s = 0;
+  for (let i = 0; i < 20000; i++) s = (s + n * i) % 9973;
+  return s;
+};
+const Row = t0 => {
+  const $ = _c(13);
+  const {
+    item,
+    onSelect,
+    onRender
+  } = t0;
+  const ref = useRef(null);
+  let t1;
+  if ($[0] !== onRender) {
+    t1 = () => {
+      onRender();
+      const el = ref.current;
+      el.classList.remove("flash");
+      el.getBoundingClientRect();
+      el.classList.add("flash");
+    };
+    $[0] = onRender;
+    $[1] = t1;
+  } else {
+    t1 = $[1];
+  }
+  useEffect(t1);
+  let t2;
+  if ($[2] !== item.id || $[3] !== onSelect) {
+    t2 = () => onSelect(item.id);
+    $[2] = item.id;
+    $[3] = onSelect;
+    $[4] = t2;
+  } else {
+    t2 = $[4];
+  }
+  const t3 = item.name;
+  let t4;
+  if ($[5] !== item.id) {
+    t4 = format(item.id);
+    $[5] = item.id;
+    $[6] = t4;
+  } else {
+    t4 = $[6];
+  }
+  let t5;
+  if ($[7] !== t4) {
+    t5 = /*#__PURE__*/_jsx("span", {
+      className: "dim",
+      children: t4
+    });
+    $[7] = t4;
+    $[8] = t5;
+  } else {
+    t5 = $[8];
+  }
+  let t6;
+  if ($[9] !== item.name || $[10] !== t2 || $[11] !== t5) {
+    t6 = /*#__PURE__*/_jsxs("li", {
+      ref: ref,
+      onClick: t2,
+      children: [t3, " ", t5]
+    });
+    $[9] = item.name;
+    $[10] = t2;
+    $[11] = t5;
+    $[12] = t6;
+  } else {
+    t6 = $[12];
+  }
+  return t6;
+};
+const App = t0 => {
+  const $ = _c(25);
+  const {
+    label
+  } = t0;
+  const [count, setCount] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const rowRenders = useRef(0);
+  const clickedAt = useRef(0);
+  const statRef = useRef(null);
+  const rendersRef = useRef(null);
+  let t1;
+  if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
+    t1 = () => {
+      rowRenders.current = rowRenders.current + 1;
+    };
+    $[0] = t1;
+  } else {
+    t1 = $[0];
+  }
+  const onRender = t1;
+  let t2;
+  if ($[1] !== count) {
+    t2 = () => {
+      clickedAt.current = performance.now();
+      setCount(count + 1);
+    };
+    $[1] = count;
+    $[2] = t2;
+  } else {
+    t2 = $[2];
+  }
+  const onClick = t2;
+  let t3;
+  if ($[3] === Symbol.for("react.memo_cache_sentinel")) {
+    t3 = () => {
+      rendersRef.current.textContent = String(rowRenders.current);
+      if (clickedAt.current) {
+        const ms = performance.now() - clickedAt.current;
+        statRef.current.textContent = `${ms.toFixed(1)} ms`;
+        clickedAt.current = 0;
+      }
+    };
+    $[3] = t3;
+  } else {
+    t3 = $[3];
+  }
+  useEffect(t3);
+  let t4;
+  if ($[4] !== label) {
+    t4 = /*#__PURE__*/_jsx("h2", {
+      children: label
+    });
+    $[4] = label;
+    $[5] = t4;
+  } else {
+    t4 = $[5];
+  }
+  let t5;
+  if ($[6] !== onClick) {
+    t5 = /*#__PURE__*/_jsx("button", {
+      onClick: onClick,
+      children: "count + 1"
+    });
+    $[6] = onClick;
+    $[7] = t5;
+  } else {
+    t5 = $[7];
+  }
+  let t6;
+  if ($[8] !== count) {
+    t6 = /*#__PURE__*/_jsxs("span", {
+      className: "count",
+      children: ["count: ", count]
+    });
+    $[8] = count;
+    $[9] = t6;
+  } else {
+    t6 = $[9];
+  }
+  let t7;
+  if ($[10] !== t5 || $[11] !== t6) {
+    t7 = /*#__PURE__*/_jsxs("div", {
+      className: "controls",
+      children: [t5, t6]
+    });
+    $[10] = t5;
+    $[11] = t6;
+    $[12] = t7;
+  } else {
+    t7 = $[12];
+  }
+  let t10;
+  let t11;
+  let t12;
+  let t8;
+  let t9;
+  if ($[13] === Symbol.for("react.memo_cache_sentinel")) {
+    t8 = /*#__PURE__*/_jsx("dt", {
+      children: "마지막 클릭 처리 시간"
+    });
+    t9 = /*#__PURE__*/_jsx("dd", {
+      ref: statRef,
+      children: "-"
+    });
+    t10 = /*#__PURE__*/_jsx("dt", {
+      children: "Row 누적 렌더링 횟수"
+    });
+    t11 = /*#__PURE__*/_jsx("dd", {
+      ref: rendersRef,
+      children: "0"
+    });
+    t12 = /*#__PURE__*/_jsx("dt", {
+      children: "선택한 행"
+    });
+    $[13] = t10;
+    $[14] = t11;
+    $[15] = t12;
+    $[16] = t8;
+    $[17] = t9;
+  } else {
+    t10 = $[13];
+    t11 = $[14];
+    t12 = $[15];
+    t8 = $[16];
+    t9 = $[17];
+  }
+  const t13 = selected ?? "-";
+  let t14;
+  if ($[18] !== t13) {
+    t14 = /*#__PURE__*/_jsxs("dl", {
+      children: [t8, t9, t10, t11, t12, /*#__PURE__*/_jsx("dd", {
+        children: t13
+      })]
+    });
+    $[18] = t13;
+    $[19] = t14;
+  } else {
+    t14 = $[19];
+  }
+  let t15;
+  if ($[20] === Symbol.for("react.memo_cache_sentinel")) {
+    t15 = /*#__PURE__*/_jsx("ul", {
+      children: items.map(item => /*#__PURE__*/_jsx(Row, {
+        item: item,
+        onSelect: setSelected,
+        onRender: onRender
+      }, item.id))
+    });
+    $[20] = t15;
+  } else {
+    t15 = $[20];
+  }
+  let t16;
+  if ($[21] !== t14 || $[22] !== t4 || $[23] !== t7) {
+    t16 = /*#__PURE__*/_jsxs("section", {
+      className: "panel",
+      children: [t4, t7, t14, t15]
+    });
+    $[21] = t14;
+    $[22] = t4;
+    $[23] = t7;
+    $[24] = t16;
+  } else {
+    t16 = $[24];
+  }
+  return t16;
+};
+return App
+})()
+
+createRoot(document.getElementById('root')).render(/*#__PURE__*/_jsxs(_Fragment, {
+  children: [/*#__PURE__*/_jsx(AppPlain, {
+    label: "컴파일 전"
+  }), /*#__PURE__*/_jsx(AppCompiled, {
+    label: "컴파일 후 (React Compiler)"
+  })]
+}));
+</script>
+</body>
+</html>
