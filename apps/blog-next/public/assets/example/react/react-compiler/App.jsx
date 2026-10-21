@@ -13,11 +13,11 @@ const format = (n) => {
 const Row = ({ item, onSelect, onRender }) => {
   const ref = useRef(null)
   useEffect(() => {
-    // 이 효과는 Row 가 렌더링될 때마다 실행됩니다. 렌더링 횟수를 세고 행을 잠깐 반짝입니다.
+    // 이 이펙트는 Row 가 렌더링될 때마다 실행됩니다. 렌더링 횟수를 세고 행을 잠깐 반짝입니다.
     onRender()
     const el = ref.current
     el.classList.remove('flash')
-    void el.offsetWidth
+    el.getBoundingClientRect() // 리플로우를 강제해 애니메이션을 다시 시작시킵니다
     el.classList.add('flash')
   })
   return (
@@ -44,7 +44,7 @@ export const App = ({ label }) => {
   }
 
   useEffect(() => {
-    // 렌더링과 커밋이 끝난 시점. 자식 Row 의 효과가 먼저 실행되므로 누적 횟수가 정확합니다.
+    // 렌더링과 커밋이 끝난 시점. 자식 Row 의 이펙트가 먼저 실행되므로 누적 횟수가 정확합니다.
     rendersRef.current.textContent = String(rowRenders.current)
     if (clickedAt.current) {
       const ms = performance.now() - clickedAt.current
