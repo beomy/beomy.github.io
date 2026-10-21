@@ -16,6 +16,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# 마크다운 HMR 센티널 (postinstall 의 scripts/content-version.mjs 가 생성, 워처가 갱신)
+/content-version.ts
+
 # rss (build 시 생성)
 /public/rss.xml
 

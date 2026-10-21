@@ -54,7 +54,7 @@ app/                 # App Router (라우팅 + 서버 진입점)
   rss.xml/route.ts   # RSS 피드 (force-static)
   sitemap.ts robots.ts manifest.ts
 src/
-  server/            # 서버(Node) 전용: posts(데이터), markdown(파이프라인), content-watcher/version(HMR)
+  server/            # 서버(Node) 전용: posts(데이터), markdown(파이프라인), content-watcher(HMR)
   lib/               # 서버·클라이언트 공용: metadata, jsonLd, tree
   contexts/          # React context: nav-context (서버가 계산한 메뉴 데이터를 클라이언트로 전달)
   views/             # 각 라우트의 클라이언트 뷰
@@ -80,10 +80,10 @@ public/              # 정적 자산. assets/img/ 하나로 통합 (posts/ 본�
 - **마크다운 HMR**: `.md` 는 모듈 그래프에 없어 Next(Turbopack)가 변경을 감지하지 못한다.
   Next 공식 확장 지점인 `instrumentation.ts` 의 `register()` 가 (개발 모드에서만)
   `src/server/content-watcher.ts` 를 기동하고, 이 워처가 `posts/`·`drafts/` 변경을 감지해
-  센티널 모듈(`src/server/content-version.ts`)을 갱신한다. 센티널을 import 하는 `posts.ts` 가
-  Fast Refresh 로 재실행되어 저장 즉시 화면에 반영된다. 센티널 값은 항상 `0` 으로 커밋한다
-  (개발 중 자동 변경분은 커밋하지 말 것). 별도 wrapper 스크립트 없이 `yarn dev`(= `next dev`)만
-  사용한다.
+  센티널 모듈(앱 루트의 `content-version.ts`)을 갱신한다. 센티널을 import 하는 `posts.ts` 가
+  Fast Refresh 로 재실행되어 저장 즉시 화면에 반영된다. 센티널은 git 에 추적하지 않으며
+  (`.gitignore`), `scripts/content-version.mjs` 가 `postinstall` 시점에 없으면 생성한다
+  (지웠다면 `yarn install` 또는 `node scripts/content-version.mjs`). 별도 wrapper 스크립트 없이 `yarn dev` 만 사용한다.
   > Turbopack 은 아직 공개 플러그인 API 가 없고, `import.meta.glob`/`require.context` 같은
   > 폴더 단위 정적 import 도 지원하지 않는다. Contentlayer·Velite·content-collections 등
   > 콘텐츠 라이브러리도 내부적으로 동일한 파일 워처를 돌리므로, 의존성을 늘리는 대신
