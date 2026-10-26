@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="440" viewBox="0 0 1080 440" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- browser -->
+  <rect x="30" y="50" width="320" height="230" rx="10" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="48" y="80" font-size="16" font-weight="700" fill="#2f4f8f">브라우저 캐시</text>
+  <text x="48" y="100" font-size="12" fill="#4b5563">개인 전용(private) · 사용자 한 명</text>
+  <text x="48" y="136" fill="#1f2937">· max-age 로 신선도 판단</text>
+  <text x="48" y="160" fill="#1f2937">· no-cache 면 매번 재검증</text>
+  <text x="48" y="184" fill="#1f2937">· immutable 이면 새로고침에도 재검증 안 함</text>
+  <text x="48" y="208" fill="#1f2937">· 조건부 요청(If-None-Match) → 304</text>
+  <text x="48" y="256" font-size="12" fill="#b45309">⚠ 무효화(invalidation)가 닿지 않는 곳</text>
+
+  <!-- cloudfront -->
+  <rect x="380" y="50" width="320" height="230" rx="10" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="398" y="80" font-size="16" font-weight="700" fill="#b45309">CloudFront 엣지 캐시</text>
+  <text x="398" y="100" font-size="12" fill="#4b5563">공용(shared) · 엣지 로케이션마다 따로</text>
+  <text x="398" y="136" fill="#1f2937">· TTL 우선순위: s-maxage → max-age → Expires</text>
+  <text x="398" y="160" fill="#1f2937">· 최소·기본·최대 TTL 로 범위 보정</text>
+  <text x="398" y="184" fill="#1f2937">· 캐시 키 = 경로 (+ 선택한 쿼리·헤더)</text>
+  <text x="398" y="208" fill="#1f2937">· 무효화(invalidation)로 강제로 비움</text>
+  <text x="398" y="256" font-size="12" fill="#b45309">X-Cache: Hit / Miss / RefreshHit</text>
+
+  <!-- s3 -->
+  <rect x="730" y="50" width="320" height="230" rx="10" fill="#e6f5ea" stroke="#15803d" stroke-width="1.5"/>
+  <text x="748" y="80" font-size="16" font-weight="700" fill="#15803d">S3 원본(origin)</text>
+  <text x="748" y="100" font-size="12" fill="#4b5563">캐시가 아니라 진실의 원천</text>
+  <text x="748" y="136" fill="#1f2937">· 객체 메타데이터의 Cache-Control 을</text>
+  <text x="748" y="156" fill="#1f2937">  응답 헤더로 그대로 내려 줌</text>
+  <text x="748" y="184" fill="#1f2937">· ETag(MD5) · Last-Modified 자동 생성</text>
+  <text x="748" y="208" fill="#1f2937">· 헤더가 없으면 CloudFront 는 기본 TTL,</text>
+  <text x="748" y="228" fill="#1f2937">  브라우저는 휴리스틱으로 캐시</text>
+
+  <!-- arrows -->
+  <line x1="350" y1="165" x2="380" y2="165" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="700" y1="165" x2="730" y2="165" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="365" y="154" font-size="11" fill="#6b7280" text-anchor="middle">miss</text>
+  <text x="715" y="154" font-size="11" fill="#6b7280" text-anchor="middle">miss</text>
+
+  <!-- bottom: one header, two readers -->
+  <rect x="30" y="316" width="1020" height="94" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="48" y="344" font-weight="700" fill="#1f2937">Cache-Control: public, max-age=0, s-maxage=86400</text>
+  <text x="48" y="370" font-size="13" fill="#4b5563">같은 헤더를 브라우저는 max-age=0 으로 읽어 매번 재검증하고,</text>
+  <text x="48" y="392" font-size="13" fill="#4b5563">CloudFront 는 s-maxage=86400 으로 읽어 하루 동안 엣지에서 응답합니다.</text>
+</svg>

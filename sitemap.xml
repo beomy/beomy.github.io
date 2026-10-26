@@ -395,6 +395,12 @@
 <priority>0.7</priority>
 </url>
 <url>
+<loc>https://beomy.github.io/tech/etc/cloudfront-s3-cache/</loc>
+<lastmod>2026-10-26</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
 <loc>https://beomy.github.io/tech/</loc>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
