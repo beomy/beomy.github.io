@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="14">
+  <rect width="960" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- time axis -->
+  <line x1="200" y1="310" x2="930" y2="310" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="900" y="335" font-size="12" fill="#6b7280">시간</text>
+
+  <!-- deploy marker -->
+  <line x1="520" y1="40" x2="520" y2="310" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="528" y="56" font-size="13" font-weight="700" fill="#dc2626">배포 + 무효화(/*)</text>
+
+  <!-- lane labels -->
+  <text x="30" y="110" font-weight="700" fill="#b45309">CloudFront</text>
+  <text x="30" y="128" font-size="12" fill="#6b7280">엣지 캐시</text>
+  <text x="30" y="200" font-weight="700" fill="#2f4f8f">브라우저 A</text>
+  <text x="30" y="218" font-size="12" fill="#6b7280">HTML max-age=0</text>
+  <text x="30" y="270" font-weight="700" fill="#2f4f8f">브라우저 B</text>
+  <text x="30" y="288" font-size="12" fill="#6b7280">HTML max-age=3600</text>
+
+  <!-- cloudfront lane -->
+  <rect x="200" y="90" width="320" height="40" rx="6" fill="#fde0d0" stroke="#e0603a" stroke-width="1.5"/>
+  <text x="212" y="115" fill="#1f2937">v1 index.html 캐시</text>
+  <rect x="520" y="90" width="410" height="40" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="532" y="115" fill="#1f2937">비워짐 → 다음 요청에 S3 에서 v2 가져와 캐시</text>
+
+  <!-- browser A lane -->
+  <rect x="200" y="180" width="320" height="40" rx="6" fill="#fde0d0" stroke="#e0603a" stroke-width="1.5"/>
+  <text x="212" y="205" fill="#1f2937">v1 (요청마다 CloudFront 에 재검증, 304)</text>
+  <rect x="520" y="180" width="410" height="40" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="532" y="205" fill="#1f2937">재검증 → ETag 가 달라 200 으로 v2 수신</text>
+
+  <!-- browser B lane -->
+  <rect x="200" y="250" width="320" height="40" rx="6" fill="#fde0d0" stroke="#e0603a" stroke-width="1.5"/>
+  <text x="212" y="275" fill="#1f2937">v1 (1시간 동안 요청 자체를 안 보냄)</text>
+  <rect x="520" y="250" width="260" height="40" rx="6" fill="#fde0d0" stroke="#e0603a" stroke-width="1.5"/>
+  <text x="532" y="275" fill="#1f2937">여전히 v1 · 무효화가 닿지 않음</text>
+  <rect x="780" y="250" width="150" height="40" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text x="792" y="275" fill="#1f2937">만료 후에야 v2</text>
+</svg>
