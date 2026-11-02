@@ -248,3 +248,9 @@
 .post-contents [data-language='css']:before {
   content: 'CSS';
 }
+.post-contents [data-language='yaml']:before {
+  content: 'YAML';
+}
+.post-contents [data-language='nginx']:before {
+  content: 'NGINX';
+}

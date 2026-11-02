@@ -34,6 +34,8 @@ const SHIKI_LANGS = [
   'bash',
   'css',
   'scss',
+  'yaml',
+  'nginx',
 ];
 
 let highlighterPromise: Promise<Highlighter> | null = null;
