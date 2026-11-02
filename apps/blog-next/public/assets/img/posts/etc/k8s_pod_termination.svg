@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="400" viewBox="0 0 1080 400" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- timeline axis -->
+  <line x1="200" y1="60" x2="1040" y2="60" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="200" y="45" font-size="12" fill="#4b5563">t=0 삭제 요청</text>
+  <line x1="200" y1="52" x2="200" y2="68" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="440" y="45" text-anchor="middle" font-size="12" fill="#4b5563">t≈10s</text>
+  <line x1="440" y1="52" x2="440" y2="68" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="980" y="45" text-anchor="middle" font-size="12" fill="#c0392b">terminationGracePeriodSeconds</text>
+  <line x1="980" y1="52" x2="980" y2="68" stroke="#c0392b" stroke-width="1.5"/>
+
+  <!-- row labels -->
+  <text x="30" y="110" font-size="13" font-weight="700" fill="#2f4f8f">네트워크 경로</text>
+  <text x="30" y="128" font-size="11" fill="#4b5563">EndpointSlice 제거 전파</text>
+
+  <text x="30" y="200" font-size="13" font-weight="700" fill="#1e7e34">컨테이너 (kubelet)</text>
+  <text x="30" y="218" font-size="11" fill="#4b5563">preStop → SIGTERM → SIGKILL</text>
+
+  <text x="30" y="290" font-size="13" font-weight="700" fill="#b45309">서버 프로세스</text>
+  <text x="30" y="308" font-size="11" fill="#4b5563">Node.js</text>
+
+  <!-- network row -->
+  <rect x="200" y="90" width="240" height="44" rx="8" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="320" y="110" text-anchor="middle" font-size="12" fill="#1f2937">엔드포인트 제거 전파 중</text>
+  <text x="320" y="126" text-anchor="middle" font-size="11" fill="#4b5563">그동안 새 요청이 여전히 들어올 수 있음</text>
+  <rect x="440" y="90" width="540" height="44" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="710" y="116" text-anchor="middle" font-size="12" fill="#6b7280">새 요청 없음 (ALB 는 draining)</text>
+
+  <!-- container row -->
+  <rect x="200" y="180" width="240" height="44" rx="8" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="320" y="200" text-anchor="middle" font-size="12" fill="#1f2937">preStop: sleep 10</text>
+  <text x="320" y="216" text-anchor="middle" font-size="11" fill="#4b5563">끝나야 SIGTERM 이 전달됨</text>
+  <line x1="440" y1="170" x2="440" y2="234" stroke="#1e7e34" stroke-width="2"/>
+  <text x="448" y="176" font-size="12" font-weight="700" fill="#1e7e34">SIGTERM</text>
+  <rect x="440" y="180" width="540" height="44" rx="8" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="710" y="206" text-anchor="middle" font-size="12" fill="#1f2937">프로세스가 스스로 끝나기를 기다림</text>
+  <line x1="980" y1="170" x2="980" y2="234" stroke="#c0392b" stroke-width="2"/>
+  <text x="988" y="176" font-size="12" font-weight="700" fill="#c0392b">SIGKILL</text>
+
+  <!-- process row -->
+  <rect x="200" y="270" width="240" height="44" rx="8" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="320" y="296" text-anchor="middle" font-size="12" fill="#1f2937">정상 서비스 (요청 계속 처리)</text>
+  <rect x="440" y="270" width="300" height="44" rx="8" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="590" y="290" text-anchor="middle" font-size="12" fill="#1f2937">새 연결 거절, readiness 503</text>
+  <text x="590" y="306" text-anchor="middle" font-size="11" fill="#4b5563">진행 중 요청만 끝내고 exit</text>
+  <rect x="740" y="270" width="240" height="44" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="860" y="296" text-anchor="middle" font-size="12" fill="#6b7280">종료됨 (SIGKILL 전에 끝남)</text>
+
+  <!-- warnings -->
+  <text x="200" y="350" font-size="12" fill="#b45309">⚠ preStop 없이 SIGTERM 에 즉시 listen 을 닫으면: 전파가 끝나기 전 들어온 요청이 연결 거부 → 502</text>
+  <text x="200" y="372" font-size="12" fill="#c0392b">⚠ SIGTERM 을 무시하면(npm 이 PID 1, 핸들러 없음): 유예 시간 뒤 SIGKILL → 처리 중 요청 끊김</text>
+</svg>

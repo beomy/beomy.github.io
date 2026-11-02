@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="624" viewBox="0 0 1080 624" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="624" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f8f"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1e7e34"/>
+    </marker>
+  </defs>
+
+  <!-- control plane -->
+  <rect x="20" y="40" width="670" height="440" rx="12" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="38" y="68" font-size="16" font-weight="700" fill="#2f4f8f">컨트롤 플레인</text>
+
+  <rect x="38" y="90" width="284" height="156" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="54" y="112" font-size="14" font-weight="700" fill="#1f2937">컨트롤러 매니저</text>
+  <rect x="54" y="124" width="252" height="44" rx="6" fill="#f3f6fb" stroke="#2f4f8f" stroke-width="1"/>
+  <text x="68" y="142" font-size="12" font-weight="700" fill="#1f2937">Deployment 컨트롤러</text>
+  <text x="68" y="159" font-size="11" fill="#4b5563">Deployment 객체를 지켜봄</text>
+  <rect x="54" y="184" width="252" height="44" rx="6" fill="#f3f6fb" stroke="#2f4f8f" stroke-width="1"/>
+  <text x="68" y="202" font-size="12" font-weight="700" fill="#1f2937">ReplicaSet 컨트롤러</text>
+  <text x="68" y="219" font-size="11" fill="#4b5563">ReplicaSet 과 Pod 객체 개수를 지켜봄</text>
+
+  <rect x="38" y="272" width="284" height="60" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="54" y="294" font-size="14" font-weight="700" fill="#1f2937">스케줄러</text>
+  <text x="54" y="313" font-size="11" fill="#4b5563">노드가 비어 있는 Pod 객체를 지켜봄</text>
+
+  <text x="38" y="440" font-size="11" fill="#6b7280">API 서버는 생략했습니다. 객체를 읽고 쓰는 화살표는</text>
+  <text x="38" y="456" font-size="11" fill="#6b7280">모두 API 서버를 거쳐 etcd 에 닿습니다.</text>
+
+  <!-- etcd objects -->
+  <rect x="372" y="52" width="300" height="420" rx="10" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="388" y="74" font-size="14" font-weight="700" fill="#1f2937">etcd <tspan font-size="11" font-weight="400" fill="#4b5563">에 저장된 객체</tspan></text>
+
+  <rect x="388" y="90" width="268" height="56" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="404" y="112" font-size="14" font-weight="700" fill="#1f2937">Deployment web</text>
+  <text x="404" y="131" font-size="11" fill="#4b5563">replicas: 3 · image: web:1.2.3 · 사람이 선언</text>
+
+  <rect x="388" y="180" width="268" height="56" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="404" y="202" font-size="14" font-weight="700" fill="#1f2937">ReplicaSet web-7d9f8b6c5</text>
+  <text x="404" y="221" font-size="11" fill="#4b5563">replicas: 3 · template 은 Deployment 와 같음</text>
+
+  <rect x="388" y="270" width="268" height="110" rx="8" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="404" y="292" font-size="14" font-weight="700" fill="#1f2937">Pod web-7d9f8b6c5-abcde</text>
+  <text x="404" y="312" font-size="11" fill="#4b5563">"이런 Pod 가 있어야 한다"는 선언</text>
+  <text x="404" y="336" font-size="11" fill="#1f2937">nodeName: <tspan fill="#9ca3af">(비어 있음)</tspan> → <tspan fill="#b45309" font-weight="700">노드 1</tspan></text>
+  <text x="404" y="358" font-size="11" fill="#1f2937">status: <tspan fill="#9ca3af">Pending</tspan> → <tspan fill="#b45309" font-weight="700">Running</tspan></text>
+
+  <line x1="522" y1="146" x2="522" y2="178" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <line x1="522" y1="236" x2="522" y2="268" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <text x="532" y="166" font-size="10.5" fill="#6b7280">소유</text>
+  <text x="532" y="256" font-size="10.5" fill="#6b7280">소유</text>
+
+  <!-- node 1 -->
+  <rect x="730" y="40" width="330" height="440" rx="12" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="748" y="68" font-size="16" font-weight="700" fill="#1e7e34">노드 1</text>
+
+  <rect x="748" y="90" width="294" height="72" rx="8" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="764" y="112" font-size="14" font-weight="700" fill="#1f2937">kubelet</text>
+  <text x="764" y="131" font-size="11" fill="#4b5563">자기 노드에 배정된 Pod 객체를 지켜봄</text>
+  <text x="764" y="148" font-size="11" fill="#4b5563">실물을 만들게 하고 결과를 객체에 기록</text>
+
+  <rect x="748" y="200" width="294" height="50" rx="8" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="764" y="222" font-size="14" font-weight="700" fill="#1f2937">컨테이너 런타임 (containerd)</text>
+  <text x="764" y="240" font-size="11" fill="#4b5563">이미지를 내려받아 프로세스를 시작</text>
+
+  <rect x="748" y="300" width="294" height="80" rx="8" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="764" y="324" font-size="14" font-weight="700" fill="#1f2937">Pod web-7d9f8b6c5-abcde <tspan font-size="11" font-weight="400" fill="#b45309">(실물)</tspan></text>
+  <text x="764" y="344" font-size="11" fill="#4b5563">web 컨테이너 :3000 이 실제로 돌아가는 곳</text>
+  <text x="764" y="364" font-size="11" fill="#4b5563">왼쪽 Pod 객체와 이름이 같은 한 쌍</text>
+
+  <!-- watch: object -> controller (dashed) -->
+  <path d="M386,104 L328,104 L328,134 L308,134" fill="none" stroke="#2f4f8f" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <path d="M386,200 L308,200" fill="none" stroke="#2f4f8f" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <path d="M386,296 L324,296" fill="none" stroke="#2f4f8f" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+
+  <!-- (1) deployment ctrl -> replicaset object -->
+  <path d="M306,158 L338,158 L338,186 L386,186" fill="none" stroke="#2f4f8f" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+  <circle cx="338" cy="172" r="10" fill="#2f4f8f"/><text x="338" y="176" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">1</text>
+
+  <!-- (2) replicaset ctrl -> pod object -->
+  <path d="M306,218 L352,218 L352,282 L386,282" fill="none" stroke="#2f4f8f" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+  <circle cx="352" cy="256" r="10" fill="#2f4f8f"/><text x="352" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">2</text>
+
+  <!-- (3) scheduler -> pod object (nodeName) -->
+  <path d="M322,310 L338,310 L338,340 L386,340" fill="none" stroke="#2f4f8f" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+  <circle cx="338" cy="352" r="10" fill="#2f4f8f"/><text x="338" y="356" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">3</text>
+
+  <!-- (4) pod object -> kubelet (watch) -->
+  <path d="M656,296 L700,296 L700,118 L746,118" fill="none" stroke="#1e7e34" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-green)"/>
+  <circle cx="700" cy="206" r="10" fill="#1e7e34"/><text x="700" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">4</text>
+
+  <!-- (5) kubelet -> containerd -> pod real -->
+  <line x1="895" y1="162" x2="895" y2="198" stroke="#1e7e34" stroke-width="1.6" marker-end="url(#arrow-green)"/>
+  <circle cx="915" cy="180" r="10" fill="#1e7e34"/><text x="915" y="184" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">5</text>
+  <line x1="895" y1="250" x2="895" y2="298" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+  <text x="905" y="278" font-size="10.5" fill="#b45309">컨테이너 생성</text>
+
+  <!-- (6) kubelet -> pod object (status) -->
+  <path d="M746,140 L716,140 L716,356 L658,356" fill="none" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+  <circle cx="716" cy="262" r="10" fill="#d97706"/><text x="716" y="266" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">6</text>
+
+  <!-- step list -->
+  <g font-size="12" fill="#374151">
+    <circle cx="40" cy="512" r="9" fill="#2f4f8f"/><text x="40" y="516" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">1</text>
+    <text x="56" y="516">Deployment 컨트롤러가 ReplicaSet 객체를 만듦</text>
+    <circle cx="40" cy="540" r="9" fill="#2f4f8f"/><text x="40" y="544" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">2</text>
+    <text x="56" y="544">ReplicaSet 컨트롤러가 개수를 맞추려 Pod 객체를 만듦. 아직 노드 없음, Pending</text>
+    <circle cx="40" cy="568" r="9" fill="#2f4f8f"/><text x="40" y="572" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">3</text>
+    <text x="56" y="572">스케줄러가 노드를 정해 Pod 객체의 nodeName 에 기록</text>
+
+    <circle cx="580" cy="512" r="9" fill="#1e7e34"/><text x="580" y="516" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">4</text>
+    <text x="596" y="516">노드 1 의 kubelet 이 자기 노드로 배정된 Pod 객체를 발견</text>
+    <circle cx="580" cy="540" r="9" fill="#1e7e34"/><text x="580" y="544" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">5</text>
+    <text x="596" y="544">컨테이너 런타임에 지시해 실물 컨테이너를 만듦</text>
+    <circle cx="580" cy="568" r="9" fill="#d97706"/><text x="580" y="572" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">6</text>
+    <text x="596" y="572">kubelet 이 Pod 객체의 status 를 Running 으로 기록</text>
+  </g>
+  <!-- legend -->
+  <line x1="30" y1="604" x2="70" y2="604" stroke="#2f4f8f" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <text x="80" y="608" font-size="11" fill="#374151">객체를 지켜봄 (watch)</text>
+  <line x1="230" y1="604" x2="270" y2="604" stroke="#2f4f8f" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+  <text x="280" y="608" font-size="11" fill="#374151">객체를 만들거나 고침</text>
+  <line x1="430" y1="604" x2="470" y2="604" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+  <text x="480" y="608" font-size="11" fill="#374151">실물 생성 · 상태 기록</text>
+</svg>

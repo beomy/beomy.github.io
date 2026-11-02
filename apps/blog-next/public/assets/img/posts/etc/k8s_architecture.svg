@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="490" viewBox="0 0 1080 490" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="490" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- kubectl -->
+  <rect x="30" y="150" width="120" height="60" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="90" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#374151">kubectl</text>
+  <text x="90" y="196" text-anchor="middle" font-size="11" fill="#4b5563">CI/CD, 대시보드</text>
+  <line x1="150" y1="180" x2="208" y2="180" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="179" y="170" text-anchor="middle" font-size="11" fill="#6b7280">선언</text>
+
+  <!-- control plane -->
+  <rect x="210" y="40" width="330" height="408" rx="12" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="228" y="68" font-size="16" font-weight="700" fill="#2f4f8f">컨트롤 플레인</text>
+  <text x="228" y="86" font-size="12" fill="#4b5563">EKS 에서는 AWS 가 운영 (보이지 않음)</text>
+
+  <rect x="228" y="110" width="294" height="66" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="244" y="132" font-size="14" font-weight="700" fill="#1f2937">API 서버</text>
+  <text x="244" y="150" font-size="11" fill="#4b5563">클러스터의 유일한 출입구</text>
+  <text x="244" y="166" font-size="11" fill="#4b5563">kubectl 이 올린 Deployment 를 받음</text>
+
+  <rect x="228" y="186" width="294" height="80" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="244" y="208" font-size="14" font-weight="700" fill="#1f2937">etcd</text>
+  <text x="244" y="226" font-size="11" fill="#4b5563">모든 선언과 상태를 저장하는 키-값 저장소</text>
+  <text x="244" y="242" font-size="11" fill="#b45309">Deployment · ReplicaSet · Pod · Service 객체를 보관</text>
+  <text x="244" y="258" font-size="11" fill="#b45309">EndpointSlice(Service 별 Ready 인 Pod IP 목록)도 여기</text>
+
+  <rect x="228" y="276" width="294" height="66" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="244" y="298" font-size="14" font-weight="700" fill="#1f2937">스케줄러</text>
+  <text x="244" y="316" font-size="11" fill="#4b5563">노드가 비어 있는 새 Pod 를 발견해</text>
+  <text x="244" y="332" font-size="11" fill="#4b5563">어느 노드에 둘지 결정</text>
+
+  <rect x="228" y="352" width="294" height="80" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="244" y="374" font-size="14" font-weight="700" fill="#1f2937">컨트롤러 매니저</text>
+  <text x="244" y="392" font-size="11" fill="#4b5563">선언 ↔ 실제 상태의 차이를 계속 좁힘</text>
+  <text x="244" y="408" font-size="11" fill="#b45309">Deployment·ReplicaSet 컨트롤러가 Pod 객체를 만듦</text>
+  <text x="244" y="424" font-size="11" fill="#b45309">EndpointSlice 컨트롤러가 Pod IP 목록을 갱신</text>
+
+  <!-- arrow control plane -> nodes -->
+  <line x1="540" y1="140" x2="598" y2="140" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="598" y1="160" x2="540" y2="160" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="569" y="130" text-anchor="middle" font-size="11" fill="#6b7280">지시</text>
+  <text x="569" y="176" text-anchor="middle" font-size="11" fill="#6b7280">상태 보고</text>
+
+  <!-- data plane -->
+  <rect x="600" y="40" width="450" height="408" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="618" y="68" font-size="16" font-weight="700" fill="#475569">데이터 플레인 (워커 노드들)</text>
+  <text x="618" y="86" font-size="12" fill="#4b5563">EKS 에서는 EC2 · Fargate · Auto Mode</text>
+
+  <!-- node 1 -->
+  <rect x="618" y="104" width="200" height="300" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="634" y="128" font-size="14" font-weight="700" fill="#1e7e34">노드 1</text>
+  <rect x="634" y="140" width="168" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="718" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2937">kubelet</text>
+  <text x="718" y="175" text-anchor="middle" font-size="11" fill="#b45309">프로브를 실행하는 주체</text>
+  <rect x="634" y="192" width="168" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="718" y="210" text-anchor="middle" font-size="12" fill="#1f2937">kube-proxy</text>
+  <text x="718" y="227" text-anchor="middle" font-size="10.5" fill="#b45309">EndpointSlice 로 규칙을 만듦</text>
+  <rect x="634" y="244" width="168" height="34" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="718" y="266" text-anchor="middle" font-size="12" fill="#1f2937">컨테이너 런타임 (containerd)</text>
+  <rect x="634" y="290" width="78" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="673" y="314" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
+  <rect x="724" y="290" width="78" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="763" y="314" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
+  <rect x="634" y="340" width="78" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="673" y="364" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
+
+  <!-- node 2 -->
+  <rect x="834" y="104" width="200" height="300" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="850" y="128" font-size="14" font-weight="700" fill="#1e7e34">노드 2</text>
+  <rect x="850" y="140" width="168" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="934" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2937">kubelet</text>
+  <text x="934" y="175" text-anchor="middle" font-size="11" fill="#b45309">프로브를 실행하는 주체</text>
+  <rect x="850" y="192" width="168" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="934" y="210" text-anchor="middle" font-size="12" fill="#1f2937">kube-proxy</text>
+  <text x="934" y="227" text-anchor="middle" font-size="10.5" fill="#b45309">EndpointSlice 로 규칙을 만듦</text>
+  <rect x="850" y="244" width="168" height="34" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="934" y="266" text-anchor="middle" font-size="12" fill="#1f2937">컨테이너 런타임 (containerd)</text>
+  <rect x="850" y="290" width="78" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="889" y="314" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
+  <rect x="940" y="290" width="78" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="979" y="314" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
+
+  <text x="30" y="466" font-size="12" fill="#6b7280">컨트롤 플레인은 "무엇을" 정합니다. Deployment · Service 같은 선언은 etcd 에 저장되고, 컨트롤러 매니저가 그것을 Pod 객체와 Pod IP 목록(EndpointSlice)으로 만들고, 스케줄러가 노드를 정합니다.</text>
+  <text x="30" y="482" font-size="12" fill="#6b7280">워커 노드에 실제로 올라가는 것은 Pod 뿐이고, 각 노드의 kubelet 이 컨테이너를 띄우고 프로브로 상태를 확인하며, kube-proxy 가 그 목록을 보고 트래픽을 Pod 로 보냅니다.</text>
+</svg>

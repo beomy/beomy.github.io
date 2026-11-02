@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="432" viewBox="0 0 1080 432" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="432" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f8f"/>
+    </marker>
+  </defs>
+
+  <!-- row labels -->
+  <text x="20" y="66" font-size="12" font-weight="700" fill="#6b7280">버전 관리</text>
+  <text x="20" y="196" font-size="12" font-weight="700" fill="#6b7280">개수 유지</text>
+  <text x="20" y="326" font-size="12" font-weight="700" fill="#6b7280">실제 실행</text>
+
+  <!-- Deployment -->
+  <rect x="390" y="30" width="330" height="72" rx="10" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="406" y="54" font-size="14" font-weight="700" fill="#1f2937">Deployment web</text>
+  <text x="406" y="74" font-size="11" fill="#4b5563">image: web:1.2.3 · replicas: 3</text>
+  <text x="406" y="92" font-size="11" fill="#2f4f8f">template 이 바뀌면 새 ReplicaSet 을 만들어 교체</text>
+
+  <!-- arrows deployment -> replicasets -->
+  <path d="M470,102 L470,124 L245,124 L245,158" fill="none" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <path d="M555,102 L555,158" fill="none" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <path d="M640,102 L640,124 L865,124 L865,158" fill="none" stroke="#2f4f8f" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+
+  <!-- ReplicaSet 1 (old) -->
+  <rect x="110" y="160" width="270" height="90" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="126" y="184" font-size="13" font-weight="700" fill="#6b7280">ReplicaSet web-5c8d7f9b4</text>
+  <text x="126" y="204" font-size="11" fill="#6b7280">template: web:1.2.1</text>
+  <text x="126" y="222" font-size="11" fill="#6b7280">replicas: 0 · 3일 전 버전</text>
+  <text x="126" y="240" font-size="11" fill="#6b7280">롤백용으로 남아 있음</text>
+  <text x="245" y="320" text-anchor="middle" font-size="12" fill="#9ca3af">Pod 없음</text>
+
+  <!-- ReplicaSet 2 (old) -->
+  <rect x="420" y="160" width="270" height="90" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="436" y="184" font-size="13" font-weight="700" fill="#6b7280">ReplicaSet web-6f7b8c9d5</text>
+  <text x="436" y="204" font-size="11" fill="#6b7280">template: web:1.2.2</text>
+  <text x="436" y="222" font-size="11" fill="#6b7280">replicas: 0 · 1일 전 버전</text>
+  <text x="436" y="240" font-size="11" fill="#6b7280">롤백용으로 남아 있음</text>
+  <text x="555" y="320" text-anchor="middle" font-size="12" fill="#9ca3af">Pod 없음</text>
+
+  <!-- ReplicaSet 3 (current) -->
+  <rect x="730" y="160" width="270" height="90" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="746" y="184" font-size="13" font-weight="700" fill="#1f2937">ReplicaSet web-7d9f8b6c5</text>
+  <text x="746" y="204" font-size="11" fill="#4b5563">template: web:1.2.3</text>
+  <text x="746" y="222" font-size="11" fill="#1f2937">replicas: 3 · 현재 버전</text>
+  <text x="746" y="240" font-size="11" fill="#2f4f8f">Pod 가 죽으면 다시 만들어 3개를 유지</text>
+
+  <!-- arrows rs3 -> pods -->
+  <path d="M865,250 L865,270 L775,270 L775,290" fill="none" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M865,250 L865,290" fill="none" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M865,250 L865,270 L955,270 L955,290" fill="none" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- pods -->
+  <rect x="735" y="292" width="80" height="50" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="775" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2937">Pod</text>
+  <text x="775" y="330" text-anchor="middle" font-size="10.5" fill="#4b5563">web:1.2.3</text>
+  <rect x="825" y="292" width="80" height="50" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="865" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2937">Pod</text>
+  <text x="865" y="330" text-anchor="middle" font-size="10.5" fill="#4b5563">web:1.2.3</text>
+  <rect x="915" y="292" width="80" height="50" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="955" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2937">Pod</text>
+  <text x="955" y="330" text-anchor="middle" font-size="10.5" fill="#4b5563">web:1.2.3</text>
+
+  <text x="20" y="366" font-size="12" fill="#6b7280">상자는 모두 etcd 에 저장된 객체입니다. 화살표를 만드는 것은 컨트롤러 매니저 안의 Deployment 컨트롤러와 ReplicaSet 컨트롤러이고, Pod 만 노드에서 실제로 돌아가는 실물이 함께 있습니다.</text>
+  <text x="20" y="386" font-size="12" fill="#6b7280">이름 뒤의 해시는 Pod template 내용으로 만든 값입니다. 이미지처럼 template 이 바뀌면 새 ReplicaSet 이 생기고, replicas 만 바꾸면 기존 ReplicaSet 의 개수만 바뀝니다.</text>
+  <text x="20" y="406" font-size="12" fill="#6b7280">kubectl rollout undo 는 옛 ReplicaSet 의 replicas 를 다시 올리고 현재 것을 0 으로 내리는 것입니다. 남겨 두는 개수는 revisionHistoryLimit (기본 10) 으로 정합니다.</text>
+</svg>

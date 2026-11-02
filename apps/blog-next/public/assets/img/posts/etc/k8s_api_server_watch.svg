@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="540" viewBox="0 0 1080 540" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="540" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f8f"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <!-- kubectl -->
+  <rect x="20" y="96" width="120" height="60" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="80" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#374151">kubectl</text>
+  <text x="80" y="142" text-anchor="middle" font-size="11" fill="#4b5563">YAML 선언</text>
+  <line x1="140" y1="126" x2="226" y2="126" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+  <text x="182" y="116" text-anchor="middle" font-size="11" fill="#b45309">apply (씀)</text>
+
+  <!-- control plane -->
+  <rect x="210" y="40" width="330" height="440" rx="12" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="228" y="68" font-size="16" font-weight="700" fill="#2f4f8f">컨트롤 플레인</text>
+
+  <!-- API server (hub) -->
+  <rect x="228" y="90" width="304" height="66" rx="8" fill="#2f4f8f" stroke="#1e3a6e" stroke-width="1.2"/>
+  <text x="244" y="112" font-size="14" font-weight="700" fill="#ffffff">API 서버</text>
+  <text x="244" y="130" font-size="11" fill="#dbe4f5">클러스터의 유일한 출입구</text>
+  <text x="244" y="146" font-size="11" fill="#dbe4f5">watch 요청을 받아 두고 객체가 바뀌면 알려 줌</text>
+
+  <!-- etcd -->
+  <rect x="228" y="186" width="250" height="52" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="244" y="208" font-size="14" font-weight="700" fill="#1f2937">etcd</text>
+  <text x="244" y="226" font-size="11" fill="#4b5563">모든 객체를 저장. 닿는 것은 API 서버뿐</text>
+  <line x1="300" y1="158" x2="300" y2="184" stroke="#6b7280" stroke-width="1.6" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="312" y="175" font-size="11" fill="#6b7280">읽고 씀</text>
+
+  <!-- scheduler -->
+  <rect x="228" y="266" width="250" height="84" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="244" y="288" font-size="14" font-weight="700" fill="#1f2937">스케줄러</text>
+  <text x="244" y="308" font-size="11" fill="#2f4f8f">지켜봄: 노드가 비어 있는 Pod</text>
+  <text x="244" y="326" font-size="11" fill="#b45309">씀: Pod 객체에 노드 이름 기록</text>
+
+  <!-- controller manager -->
+  <rect x="228" y="372" width="250" height="92" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="244" y="394" font-size="14" font-weight="700" fill="#1f2937">컨트롤러 매니저</text>
+  <text x="244" y="414" font-size="11" fill="#2f4f8f">지켜봄: Deployment · ReplicaSet ·</text>
+  <text x="244" y="429" font-size="11" fill="#2f4f8f">Pod · Service</text>
+  <text x="244" y="449" font-size="11" fill="#b45309">씀: Pod 객체 생성, EndpointSlice 갱신</text>
+
+  <!-- lanes: scheduler (x=490 dashed, 502 solid), controller manager (x=514 dashed, 526 solid) -->
+  <path d="M490,158 L490,296 L480,296" fill="none" stroke="#2f4f8f" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <path d="M480,322 L502,322 L502,160" fill="none" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+  <path d="M514,158 L514,406 L480,406" fill="none" stroke="#2f4f8f" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <path d="M480,442 L526,442 L526,160" fill="none" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+
+  <!-- data plane -->
+  <rect x="600" y="40" width="450" height="440" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="618" y="68" font-size="16" font-weight="700" fill="#475569">데이터 플레인 (워커 노드들)</text>
+
+  <!-- node 1 -->
+  <rect x="618" y="90" width="414" height="374" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="634" y="114" font-size="14" font-weight="700" fill="#1e7e34">노드 1 <tspan font-weight="400" font-size="11" fill="#4b5563">(다른 노드도 같은 연결을 가짐)</tspan></text>
+
+  <rect x="634" y="128" width="382" height="108" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="648" y="149" font-size="13" font-weight="700" fill="#1f2937">kubelet</text>
+  <text x="648" y="167" font-size="11" fill="#2f4f8f">지켜봄: 내 노드에 배정된 Pod 객체 (스케줄러가 노드 이름을 적은 것)</text>
+  <text x="648" y="185" font-size="11" fill="#b45309">씀: Pod 상태 (Pending → Running, Ready 조건, 재시작 횟수)</text>
+  <text x="648" y="205" font-size="10.5" fill="#4b5563">그 사이에 컨테이너 런타임에 컨테이너를 만들게 하고,</text>
+  <text x="648" y="220" font-size="10.5" fill="#4b5563">프로브를 주기적으로 돌려 결과를 상태에 반영</text>
+
+  <rect x="634" y="252" width="382" height="92" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="648" y="273" font-size="13" font-weight="700" fill="#1f2937">kube-proxy</text>
+  <text x="648" y="291" font-size="11" fill="#2f4f8f">지켜봄: Service · EndpointSlice 객체</text>
+  <text x="648" y="311" font-size="10.5" fill="#4b5563">API 서버에 쓰는 것은 없음. 목록이 바뀌면</text>
+  <text x="648" y="326" font-size="10.5" fill="#4b5563">노드 커널의 Service IP → Pod IP 규칙을 고침</text>
+
+  <rect x="634" y="360" width="382" height="34" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="825" y="382" text-anchor="middle" font-size="12" fill="#1f2937">컨테이너 런타임 (containerd) · kubelet 의 지시로 컨테이너를 만듦</text>
+  <rect x="634" y="408" width="118" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="693" y="432" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
+  <rect x="766" y="408" width="118" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="825" y="432" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
+  <rect x="898" y="408" width="118" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="957" y="432" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
+
+  <!-- API server <-> node 1 -->
+  <path d="M532,104 L562,104 L562,166 L632,166" fill="none" stroke="#2f4f8f" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <path d="M632,192 L578,192 L578,126 L534,126" fill="none" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+  <path d="M532,146 L548,146 L548,298 L632,298" fill="none" stroke="#2f4f8f" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+
+  <!-- legend -->
+  <line x1="30" y1="500" x2="80" y2="500" stroke="#2f4f8f" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <text x="90" y="504" font-size="12" fill="#374151">watch 알림: "이 종류의 객체가 바뀌면 알려 달라"고 걸어 두면 API 서버가 변화를 보내 줌</text>
+  <line x1="30" y1="524" x2="80" y2="524" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+  <text x="90" y="528" font-size="12" fill="#374151">쓰기: 자기 몫의 일을 한 뒤 결과를 객체에 기록. 구성 요소끼리는 서로 직접 부르지 않고 모두 API 서버를 거침</text>
+</svg>

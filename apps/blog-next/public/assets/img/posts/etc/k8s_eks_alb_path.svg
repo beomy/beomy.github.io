@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="440" viewBox="0 0 1080 440" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1e7e34"/>
+    </marker>
+  </defs>
+
+  <!-- user -->
+  <rect x="30" y="170" width="110" height="60" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="85" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#374151">사용자</text>
+  <line x1="140" y1="200" x2="188" y2="200" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ALB -->
+  <rect x="190" y="120" width="200" height="160" rx="10" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="208" y="150" font-size="16" font-weight="700" fill="#b45309">ALB</text>
+  <text x="208" y="170" font-size="12" fill="#4b5563">AWS, 쿠버네티스를 모름</text>
+  <text x="208" y="200" fill="#1f2937">타깃 그룹 (IP 타깃)</text>
+  <text x="208" y="222" font-size="12" fill="#1f2937">· 10.0.1.23:3000 healthy</text>
+  <text x="208" y="240" font-size="12" fill="#1f2937">· 10.0.2.41:3000 healthy</text>
+  <text x="208" y="258" font-size="12" fill="#9ca3af">· 10.0.3.17:3000 initial</text>
+
+  <!-- EKS cluster box -->
+  <rect x="430" y="40" width="620" height="360" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="448" y="66" font-size="14" font-weight="700" fill="#475569">EKS 클러스터</text>
+
+  <!-- LB controller -->
+  <rect x="450" y="130" width="230" height="80" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="468" y="156" font-size="14" font-weight="700" fill="#4f46e5">AWS Load Balancer Controller</text>
+  <text x="468" y="178" font-size="12" fill="#1f2937">EndpointSlice 를 지켜보다가</text>
+  <text x="468" y="196" font-size="12" fill="#1f2937">Ready 인 Pod IP 를 타깃에 등록/해제</text>
+
+  <!-- EndpointSlice -->
+  <rect x="450" y="240" width="230" height="110" rx="10" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="468" y="266" font-size="14" font-weight="700" fill="#2f4f8f">Service web → EndpointSlice</text>
+  <text x="468" y="290" font-size="12" fill="#1f2937">· 10.0.1.23 (Ready)</text>
+  <text x="468" y="308" font-size="12" fill="#1f2937">· 10.0.2.41 (Ready)</text>
+  <text x="468" y="326" font-size="12" fill="#9ca3af">· 10.0.3.17 (Not Ready → 목록에 없음)</text>
+
+  <line x1="565" y1="240" x2="565" y2="212" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- controller -> ALB -->
+  <path d="M450,185 C420,185 405,215 392,240" fill="none" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Pods -->
+  <g>
+    <rect x="720" y="90" width="300" height="80" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+    <text x="738" y="114" font-size="14" font-weight="700" fill="#1e7e34">Pod web-a · 10.0.1.23</text>
+    <text x="738" y="136" font-size="12" fill="#1f2937">Ready=True</text>
+    <text x="738" y="156" font-size="12" fill="#4b5563">kubelet readiness ✓ · ALB 헬스체크 ✓</text>
+  </g>
+  <g>
+    <rect x="720" y="190" width="300" height="80" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+    <text x="738" y="214" font-size="14" font-weight="700" fill="#1e7e34">Pod web-b · 10.0.2.41</text>
+    <text x="738" y="236" font-size="12" fill="#1f2937">Ready=True</text>
+    <text x="738" y="256" font-size="12" fill="#4b5563">kubelet readiness ✓ · ALB 헬스체크 ✓</text>
+  </g>
+  <g>
+    <rect x="720" y="290" width="300" height="90" rx="10" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+    <text x="738" y="314" font-size="14" font-weight="700" fill="#b45309">Pod web-c · 10.0.3.17 (새 버전)</text>
+    <text x="738" y="336" font-size="12" fill="#1f2937">kubelet readiness ✓ · ALB 헬스체크 아직 initial</text>
+    <text x="738" y="356" font-size="12" fill="#b45309">readiness gate 가 있으면 ALB healthy 전까지</text>
+    <text x="738" y="372" font-size="12" fill="#b45309">Ready=False 로 묶어 둠 → 이전 Pod 가 안 빠짐</text>
+  </g>
+
+  <!-- traffic: ALB -> pods (direct, IP mode) -->
+  <path d="M390,190 C430,190 425,88 470,88 L680,88 C705,88 700,130 718,130" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <path d="M390,200 C440,200 435,100 480,100 L670,100 C712,100 700,230 718,230" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="575" y="120" text-anchor="middle" font-size="11" fill="#b45309">요청 + ALB 헬스체크 (Pod IP 로 직접)</text>
+
+  <!-- kubelet probes -->
+  <rect x="720" y="40" width="300" height="34" rx="8" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="870" y="62" text-anchor="middle" font-size="12" fill="#1e7e34">① kubelet readiness 프로브 → EndpointSlice 반영</text>
+  <rect x="190" y="300" width="200" height="34" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="290" y="322" text-anchor="middle" font-size="12" fill="#b45309">② ALB 타깃 그룹 헬스체크</text>
+
+  <text x="30" y="425" font-size="12" fill="#6b7280">트래픽은 두 번 검사받습니다. 두 결과가 어긋나는 순간(새 Pod Ready, ALB 는 initial)이 롤링 업데이트 중 502 의 원인입니다.</text>
+</svg>
