@@ -12,7 +12,7 @@ summary: 쿠버네티스는 컨테이너를 여러 서버에 나눠 띄우고, �
 > - 컨트롤 플레인은 어느 노드에 어떤 Pod를 둘지 정하기만 하고, 컨테이너를 실제로 띄우는 것은 각 노드의 **kubelet**입니다. Deployment 같은 선언은 etcd에 저장되고, 컨트롤러 매니저가 그것을 Pod 객체로 만들고, 스케줄러가 노드를 정하고, 그 노드의 kubelet이 컨테이너 런타임에 컨테이너를 만들게 합니다.
 > - Pod는 쿠버네티스가 배포하는 최소 단위이고 언제든 죽고 다시 만들어지는 일회용입니다. 같은 서버를 여러 개 띄우려면 Pod를 여러 개(`replicas`) 만들고, 로그 수집기처럼 역할이 다른 프로세스를 붙이려면 Pod 하나에 컨테이너를 여러 개 넣습니다. 같은 Pod 안의 컨테이너는 IP 하나를 공유하고 포트로 구분합니다. 트래픽은 노드가 아니라 Pod IP 목록(EndpointSlice) 중 하나를 골라 보내므로, 트래픽을 나누는 단위도 Pod입니다.
 > - Pod는 직접 만들지 않고 **Deployment**로 선언합니다. 직접 만든 Pod는 죽으면 그대로 끝이지만, Deployment는 "이 Pod를 몇 개 띄워 두고 계속 유지하라"는 선언이라서 죽은 Pod는 다시 만들어지고 이미지를 바꾸면 하나씩 교체됩니다.
-> - EKS는 쿠버네티스 컨트롤 플레인을 AWS가 대신 운영해 주는 서비스이고, 로드 밸런서나 스토리지는 EKS에 포함된 것이 아니라 애드온이 연결해 주는 별도 AWS 서비스입니다.
+> - EKS는 쿠버네티스 컨트롤 플레인을 AWS가 대신 운영해 주는 서비스이고, ALB 같은 로드 밸런서나 스토리지는 EKS에 포함된 것이 아니라 애드온이 연결해 주는 별도 AWS 서비스입니다.
 
 프론트엔드 개발자가 쿠버네티스를 직접 운영할 일은 많지 않지만, Next.js나 Nuxt처럼 서버가 있는 프레임워크를 쓰면 내가 만든 서버가 쿠버네티스 위에서 돌아가는 상황을 피할 수 없습니다. 배포 직후 잠깐 502가 뜨거나, 멀쩡히 돌던 Pod가 주기적으로 재시작되거나, 롤링 업데이트 중에 사용자 요청이 끊기는 문제를 만나면 결국 Deployment YAML을 열어 봐야 합니다. 이 글은 그 YAML을 읽을 수 있을 만큼의 쿠버네티스 구조를 정리합니다. 클러스터가 어떻게 생겼는지, 각 구성 요소가 무슨 일을 하는지, Pod와 Deployment가 무엇이고 누가 만드는지, 트래픽이 어떤 길로 Pod에 도달하는지, 그리고 쿠버네티스가 직접 처리하지 않고 애드온에 맡기는 일이 무엇인지 살펴보겠습니다.
 
@@ -102,7 +102,7 @@ EKS를 "쿠버네티스 + 로드 밸런서 + IAM"처럼 한 덩어리로 생각�
 | Pod 띄우기와 내리기 | API 서버를 지켜보다가 이 노드에 배정된 Pod를 발견하면 Pod의 네트워크 공간(Pod IP)을 먼저 만들고, 컨테이너 런타임에 "이 이미지로 컨테이너를 만들어 그 공간에 넣어라"라고 컨테이너마다 시킵니다. 런타임은 컨테이너를 하나씩 만들 뿐이고, 그것들을 하나의 Pod로 묶어 관리하는 것은 kubelet입니다. Pod가 삭제되면 컨테이너에 먼저 종료 신호(SIGTERM)를 보내 스스로 정리할 시간을 주고, 정해진 시간(기본 30초) 안에 끝나지 않으면 강제로(SIGKILL) 끝냅니다. |
 | 프로브 실행 | **프로브**(probe)는 kubelet이 컨테이너에 주기적으로 보내는 상태 확인 요청입니다. 기동이 끝났는지(startup), 살아 있는지(liveness), 트래픽을 받을 준비가 됐는지(readiness) 세 종류가 있고, 셋 모두 kubelet이 호출합니다. liveness가 실패하면 컨테이너를 재시작하고, readiness가 실패하면 Pod의 Ready 조건을 False로 바꿉니다. |
 | 상태 보고 | 컨테이너가 돌고 있는지, 몇 번 재시작했는지, 노드의 CPU·메모리 용량이 얼마인지를 API 서버에 계속 올립니다. `kubectl get pods`에서 보는 `Running`, `CrashLoopBackOff` 같은 상태가 여기서 나옵니다. |
-| 리소스 관리 | Pod에 선언한 `requests`·`limits`를 cgroup(리눅스 커널이 프로세스 묶음의 CPU·메모리 사용량을 제한하는 기능)으로 적용하고, 메모리 한도를 넘은 컨테이너를 `OOMKilled`로 처리합니다. 노드 전체 메모리가 부족해지면 Pod를 쫓아내는(eviction) 것도 kubelet입니다. |
+| 리소스 관리 | Pod에 선언한 `requests`·`limits`를 cgroup(리눅스 커널이 프로세스 묶음의 CPU·메모리 사용량을 제한하는 기능)으로 적용하고, 메모리 한도를 넘어 커널이 죽인 컨테이너를 `OOMKilled`로 기록합니다. 노드 전체 메모리가 부족해지면 Pod를 쫓아내는(eviction) 것도 kubelet입니다. |
 
 비유하면 컨트롤 플레인은 본사, kubelet은 지점마다 한 명씩 있는 **지점장**입니다. 본사가 무엇을 할지 정하고, 지점장이 현장에서 실행한 뒤 결과를 보고합니다. 그래서 Pod의 상태를 확인하는 프로브도 컨트롤 플레인이 아니라 **각 노드의 kubelet이 수행**합니다. 본사는 지점장이 올린 보고를 받아 볼 뿐입니다.
 
@@ -188,7 +188,7 @@ Deployment나 Service 같은 **종류**를 **리소스**(resource)라고 부르�
 | **Service** | 바뀌는 Pod IP 대신 고정된 이름과 IP를 주고, Ready인 Pod 목록(EndpointSlice)으로 트래픽을 분산 | 내부 로드 밸런서 |
 | **Ingress** | 클러스터 밖에서 들어오는 HTTP 요청을 호스트·경로 규칙에 따라 Service로 연결 | 리버스 프록시 설정 |
 | **ConfigMap / Secret** | 설정값과 비밀값을 컨테이너에 환경 변수나 파일로 주입 | `.env` |
-| **HorizontalPodAutoscaler** | CPU 사용률 같은 지표를 보고 Deployment의 `replicas`를 사람 대신 정함 | 오토 스케일링 |
+| **HorizontalPodAutoscaler** (HPA) | CPU 사용률 같은 지표를 보고 Deployment의 `replicas`를 사람 대신 정함 | 오토 스케일링 |
 
 ### Deployment와 복제본
 Pod는 **일회용**입니다. 노드가 죽거나, 리소스가 부족해 밀려나거나(eviction), 새 버전을 배포하면 Pod는 삭제되고 새 Pod가 만들어집니다. Pod는 `kind: Pod` YAML로 직접 만들 수도 있습니다. 하지만 그렇게 만든 Pod는 어느 컨트롤러의 담당도 아니라서, 노드가 죽어 Pod가 사라지면 다시 만들어 주는 쪽이 없습니다. 그래서 항상 떠 있어야 하는 서버는 `kind: Pod`가 아니라 `kind: Deployment`로 선언합니다.
@@ -268,7 +268,7 @@ Pod끼리 호출할 때도 같은 길을 씁니다. web 컨테이너가 api 서�
 const res = await fetch('http://api:8080/users'); // api 는 Service 이름
 ```
 
-클러스터 내부 DNS가 `api`를 api Service의 고정 IP로 바꾸고, web Pod가 있는 노드의 kube-proxy가 그 IP로 나가는 연결을 EndpointSlice에 있는 Ready인 api Pod 중 하나로 보냅니다. 새 연결을 맺을 때마다 다시 고르므로, web이 매번 새 연결로 100번 호출하면 api Pod 3개에 대략 33번씩 갑니다. api Pod가 죽거나 Not Ready가 되면 목록에서 빠져 더 이상 가지 않습니다. 반대로 Pod IP를 직접 적어 호출하면 분산도 없고 그 Pod가 재생성되면 IP가 바뀌어 호출이 실패하므로, Pod IP를 코드에 적을 일은 없습니다.
+클러스터 내부 DNS가 `api`를 api Service의 고정 IP로 바꾸고, web Pod가 있는 노드의 kube-proxy가 그 IP로 나가는 연결을 EndpointSlice에 있는 Ready인 api Pod 중 하나로 보냅니다. 새 연결을 맺을 때마다 다시 고르므로, web이 매번 새 연결로 100번 호출하면 api Pod 2개에 대략 50번씩 갑니다. api Pod가 죽거나 Not Ready가 되면 목록에서 빠져 더 이상 가지 않습니다. 반대로 Pod IP를 직접 적어 호출하면 분산도 없고 그 Pod가 재생성되면 IP가 바뀌어 호출이 실패하므로, Pod IP를 코드에 적을 일은 없습니다.
 
 그래서 트래픽 분산의 단위는 **노드가 아니라 Pod**입니다. Service와 로드 밸런서는 어느 노드인지 보지 않고 Pod IP 목록에서 하나를 고릅니다. 이 목록에는 kubelet의 readiness 프로브를 통과해 **Ready 상태**가 된 Pod만 들어갑니다.
 
@@ -301,7 +301,7 @@ ReplicaSet이 따로 있는 이유는 노드 바깥에서 Pod 개수를 세는 �
 | Pod에 클라우드 권한 주기 | ServiceAccount 객체를 저장 | IAM 역할의 자격 증명을 Pod에 넣어 줌 | Pod Identity, IRSA |
 | Pod에 IP 주기 | Pod마다 IP가 필요하다는 사실만 앎 | 노드의 네트워크 인터페이스에서 IP를 떼어 Pod에 배정 | VPC CNI |
 | 이름으로 Service 찾기 | Service 객체를 저장 | `api` 같은 이름을 Service IP로 바꿔 주는 DNS 서버 | CoreDNS |
-| CPU 사용률 보고 Pod 늘리기 | HorizontalPodAutoscaler 객체를 저장 | 각 Pod의 CPU·메모리 사용량을 모아 API로 제공 | metrics-server |
+| CPU 사용률 보고 Pod 늘리기 | HorizontalPodAutoscaler 컨트롤러가 사용량을 보고 `replicas`를 고침 | 각 Pod의 CPU·메모리 사용량을 모아 그 컨트롤러가 읽을 API로 제공 | metrics-server |
 
 이 중 VPC CNI와 CoreDNS는 EKS 클러스터를 만들 때 기본으로 설치되고, 나머지는 직접 설치하거나 EKS Auto Mode에 맡깁니다. 프론트엔드 개발자가 자주 마주치는 것은 Karpenter와 AWS Load Balancer Controller라서 아래에서 따로 살펴봅니다.
 
