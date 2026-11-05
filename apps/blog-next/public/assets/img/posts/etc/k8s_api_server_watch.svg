@@ -93,7 +93,7 @@
 
   <!-- legend -->
   <line x1="30" y1="500" x2="80" y2="500" stroke="#2f4f8f" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
-  <text x="90" y="504" font-size="12" fill="#374151">watch 알림: "이 종류의 객체가 바뀌면 알려 달라"고 걸어 두면 API 서버가 변화를 보내 줌</text>
+  <text x="90" y="505" font-size="14" fill="#374151">watch 알림: "이 종류의 객체가 바뀌면 알려 달라"고 걸어 두면 API 서버가 변화를 보내 줌</text>
   <line x1="30" y1="524" x2="80" y2="524" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
-  <text x="90" y="528" font-size="12" fill="#374151">쓰기: 자기 몫의 일을 한 뒤 결과를 객체에 기록. 구성 요소끼리는 서로 직접 부르지 않고 모두 API 서버를 거침</text>
+  <text x="90" y="529" font-size="14" fill="#374151">쓰기: 자기 몫의 일을 한 뒤 결과를 객체에 기록. 구성 요소끼리는 서로 직접 부르지 않고 모두 API 서버를 거침</text>
 </svg>

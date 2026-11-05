@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
-  <rect width="1080" height="600" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="550" viewBox="0 0 1080 550" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="550" fill="#ffffff"/>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
@@ -104,6 +104,4 @@
   <circle cx="762" cy="479" r="10" fill="#6d28d9"/><text x="762" y="483" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">4</text><text x="778" y="476" font-size="11" fill="#6d28d9">커널 규칙이 목적지를 10.0.2.60 으로 바꿔</text>
   <text x="778" y="491" font-size="11" fill="#6d28d9">패킷이 여기로 바로 도착</text>
 
-  <text x="30" y="558" font-size="12" fill="#6b7280">Service 는 노드 위에서 돌아가는 프로세스가 아니라 etcd 에 저장된 객체(이름 · 고정 IP · Pod IP 목록)입니다. 실제 패킷은 Service 를 "통과"하지 않고 Pod IP 로 직접 갑니다.</text>
-  <text x="30" y="578" font-size="12" fill="#6b7280">바깥에서 들어온 요청은 ALB 가, 클러스터 안의 Pod 간 호출은 kube-proxy 가 써 둔 커널 규칙이 그 목록에서 Pod IP 하나를 골라 보냅니다.</text>
 </svg>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="360" viewBox="0 0 1080 360" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
-  <rect width="1080" height="360" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="330" viewBox="0 0 1080 330" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="330" fill="#ffffff"/>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
@@ -52,5 +52,4 @@
   <path d="M720,210 C720,310 320,310 320,210" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
   <text x="520" y="300" text-anchor="middle" font-size="12" fill="#c0392b">liveness 실패 → 컨테이너 재시작 (반복되면 CrashLoopBackOff)</text>
 
-  <text x="30" y="345" font-size="12" fill="#6b7280">Running 은 "프로세스가 떠 있다"일 뿐, 트래픽을 받는 조건은 Ready condition 입니다.</text>
 </svg>

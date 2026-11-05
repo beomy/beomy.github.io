@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="432" viewBox="0 0 1080 432" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
-  <rect width="1080" height="432" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="362" viewBox="0 0 1080 362" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="362" fill="#ffffff"/>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
@@ -64,8 +64,4 @@
   <rect x="915" y="292" width="80" height="50" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
   <text x="955" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2937">Pod</text>
   <text x="955" y="330" text-anchor="middle" font-size="10.5" fill="#4b5563">web:1.2.3</text>
-
-  <text x="20" y="366" font-size="12" fill="#6b7280">상자는 모두 etcd 에 저장된 객체입니다. 화살표를 만드는 것은 컨트롤러 매니저 안의 Deployment 컨트롤러와 ReplicaSet 컨트롤러이고, Pod 만 노드에서 실제로 돌아가는 실물이 함께 있습니다.</text>
-  <text x="20" y="386" font-size="12" fill="#6b7280">이름 뒤의 해시는 Pod template 내용으로 만든 값입니다. 이미지처럼 template 이 바뀌면 새 ReplicaSet 이 생기고, replicas 만 바꾸면 기존 ReplicaSet 의 개수만 바뀝니다.</text>
-  <text x="20" y="406" font-size="12" fill="#6b7280">kubectl rollout undo 는 옛 ReplicaSet 의 replicas 를 다시 올리고 현재 것을 0 으로 내리는 것입니다. 남겨 두는 개수는 revisionHistoryLimit (기본 10) 으로 정합니다.</text>
 </svg>

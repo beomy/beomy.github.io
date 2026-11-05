@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="400" viewBox="0 0 1080 400" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
-  <rect width="1080" height="400" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="334" viewBox="0 0 1080 334" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="334" fill="#ffffff"/>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
@@ -53,7 +53,4 @@
   <rect x="740" y="270" width="240" height="44" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
   <text x="860" y="296" text-anchor="middle" font-size="12" fill="#6b7280">종료됨 (SIGKILL 전에 끝남)</text>
 
-  <!-- warnings -->
-  <text x="200" y="350" font-size="12" fill="#b45309">⚠ preStop 없이 SIGTERM 에 즉시 listen 을 닫으면: 전파가 끝나기 전 들어온 요청이 연결 거부 → 502</text>
-  <text x="200" y="372" font-size="12" fill="#c0392b">⚠ SIGTERM 을 무시하면(npm 이 PID 1, 핸들러 없음): 유예 시간 뒤 SIGKILL → 처리 중 요청 끊김</text>
 </svg>

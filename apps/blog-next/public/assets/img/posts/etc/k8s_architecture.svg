@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="490" viewBox="0 0 1080 490" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
-  <rect width="1080" height="490" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="468" viewBox="0 0 1080 468" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="468" fill="#ffffff"/>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
@@ -86,6 +86,4 @@
   <rect x="940" y="290" width="78" height="40" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
   <text x="979" y="314" text-anchor="middle" font-size="12" fill="#1f2937">Pod</text>
 
-  <text x="30" y="466" font-size="12" fill="#6b7280">컨트롤 플레인은 "무엇을" 정합니다. Deployment · Service 같은 선언은 etcd 에 저장되고, 컨트롤러 매니저가 그것을 Pod 객체와 Pod IP 목록(EndpointSlice)으로 만들고, 스케줄러가 노드를 정합니다.</text>
-  <text x="30" y="482" font-size="12" fill="#6b7280">워커 노드에 실제로 올라가는 것은 Pod 뿐이고, 각 노드의 kubelet 이 컨테이너를 띄우고 프로브로 상태를 확인하며, kube-proxy 가 그 목록을 보고 트래픽을 Pod 로 보냅니다.</text>
 </svg>
