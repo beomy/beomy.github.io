@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="330" viewBox="0 0 1080 330" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- Pending -->
+  <rect x="30" y="60" width="220" height="150" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="48" y="90" font-size="16" font-weight="700" fill="#374151">Pending</text>
+  <text x="48" y="110" font-size="12" fill="#4b5563">phase</text>
+  <text x="48" y="140" fill="#1f2937">· 노드 선택(스케줄링)</text>
+  <text x="48" y="162" fill="#1f2937">· 이미지 pull</text>
+  <text x="48" y="184" fill="#1f2937">· 컨테이너 아직 안 뜸</text>
+
+  <!-- Running / Not Ready -->
+  <rect x="290" y="60" width="220" height="150" rx="10" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="308" y="90" font-size="16" font-weight="700" fill="#b45309">Running</text>
+  <text x="308" y="110" font-size="12" fill="#4b5563">phase · Ready=False</text>
+  <text x="308" y="140" fill="#1f2937">· 프로세스는 떠 있음</text>
+  <text x="308" y="162" fill="#1f2937">· startup → readiness 평가 중</text>
+  <text x="308" y="184" fill="#1f2937">· 트래픽 안 들어옴</text>
+
+  <!-- Running / Ready -->
+  <rect x="550" y="60" width="220" height="150" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="568" y="90" font-size="16" font-weight="700" fill="#1e7e34">Running</text>
+  <text x="568" y="110" font-size="12" fill="#4b5563">phase · Ready=True</text>
+  <text x="568" y="140" fill="#1f2937">· readiness 통과</text>
+  <text x="568" y="162" fill="#1f2937">· EndpointSlice 에 IP 등록</text>
+  <text x="568" y="184" fill="#1f2937">· READY 1/1, 트래픽 수신</text>
+
+  <!-- Terminating -->
+  <rect x="810" y="60" width="240" height="150" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="828" y="90" font-size="16" font-weight="700" fill="#c0392b">Terminating</text>
+  <text x="828" y="110" font-size="12" fill="#4b5563">삭제 요청 이후</text>
+  <text x="828" y="140" fill="#1f2937">· EndpointSlice 에서 제거</text>
+  <text x="828" y="162" fill="#1f2937">· preStop → SIGTERM</text>
+  <text x="828" y="184" fill="#1f2937">· 유예 시간 뒤 SIGKILL</text>
+
+  <!-- arrows -->
+  <line x1="250" y1="135" x2="288" y2="135" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="510" y1="135" x2="548" y2="135" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="770" y1="135" x2="808" y2="135" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- readiness fail loop -->
+  <path d="M640,210 C640,240 420,240 420,210" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="530" y="250" text-anchor="middle" font-size="12" fill="#b45309">readiness 실패 → Ready=False, 엔드포인트 제외 (재시작 없음)</text>
+
+  <!-- liveness fail loop -->
+  <path d="M720,210 C720,310 320,310 320,210" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="520" y="300" text-anchor="middle" font-size="12" fill="#c0392b">liveness 실패 → 컨테이너 재시작 (반복되면 CrashLoopBackOff)</text>
+
+</svg>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="400" viewBox="0 0 1080 400" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- kubelet -->
+  <rect x="30" y="150" width="150" height="120" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="105" y="200" text-anchor="middle" font-size="16" font-weight="700" fill="#374151">kubelet</text>
+  <text x="105" y="222" text-anchor="middle" font-size="12" fill="#4b5563">노드마다 하나</text>
+  <text x="105" y="240" text-anchor="middle" font-size="12" fill="#4b5563">주기적으로 질문</text>
+
+  <!-- arrows from kubelet -->
+  <line x1="180" y1="190" x2="248" y2="100" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="180" y1="210" x2="248" y2="210" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="180" y1="230" x2="248" y2="320" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- startup -->
+  <rect x="250" y="40" width="300" height="100" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="268" y="68" font-size="16" font-weight="700" fill="#4f46e5">startupProbe</text>
+  <text x="268" y="92" fill="#1f2937">"아직 켜지는 중이냐?"</text>
+  <text x="268" y="114" font-size="12" fill="#4b5563">시작 시 한 번만. 성공 전까지 다른 프로브 보류</text>
+
+  <!-- liveness -->
+  <rect x="250" y="160" width="300" height="100" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="268" y="188" font-size="16" font-weight="700" fill="#c0392b">livenessProbe</text>
+  <text x="268" y="212" fill="#1f2937">"살아 있냐, 아니면 재시작할까?"</text>
+  <text x="268" y="234" font-size="12" fill="#4b5563">운영 중 계속. 재시작으로 고쳐지는 것만</text>
+
+  <!-- readiness -->
+  <rect x="250" y="280" width="300" height="100" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="268" y="308" font-size="16" font-weight="700" fill="#1e7e34">readinessProbe</text>
+  <text x="268" y="332" fill="#1f2937">"지금 트래픽을 받아도 되냐?"</text>
+  <text x="268" y="354" font-size="12" fill="#4b5563">운영 중 계속. 꼭 필요한 의존성만</text>
+
+  <!-- fail arrows -->
+  <line x1="550" y1="90" x2="618" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="210" x2="618" y2="210" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="330" x2="618" y2="330" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="584" y="80" text-anchor="middle" font-size="11" fill="#6b7280">실패하면</text>
+  <text x="584" y="200" text-anchor="middle" font-size="11" fill="#6b7280">실패하면</text>
+  <text x="584" y="320" text-anchor="middle" font-size="11" fill="#6b7280">실패하면</text>
+
+  <!-- results -->
+  <rect x="620" y="40" width="430" height="100" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="638" y="68" font-size="14" font-weight="700" fill="#4f46e5">failureThreshold × periodSeconds 안에 못 켜지면</text>
+  <text x="638" y="92" fill="#1f2937">→ 컨테이너 재시작</text>
+  <text x="638" y="114" font-size="12" fill="#4b5563">성공하면 liveness·readiness 시작, 이후 startup 은 다시 안 돎</text>
+
+  <rect x="620" y="160" width="430" height="100" rx="10" fill="#ffffff" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="638" y="188" font-size="14" font-weight="700" fill="#c0392b">연속 failureThreshold 번 실패하면</text>
+  <text x="638" y="212" fill="#1f2937">→ 컨테이너 kill 후 재시작</text>
+  <text x="638" y="234" font-size="12" fill="#b45309">⚠ DB·외부 API 체크 넣으면 남의 장애에 내 서버가 재시작 루프</text>
+
+  <rect x="620" y="280" width="430" height="100" rx="10" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="638" y="308" font-size="14" font-weight="700" fill="#1e7e34">연속 failureThreshold 번 실패하면</text>
+  <text x="638" y="332" fill="#1f2937">→ Ready=False, Service 엔드포인트에서 제외 (재시작 없음)</text>
+  <text x="638" y="354" font-size="12" fill="#4b5563">다시 successThreshold 번 성공하면 복귀</text>
+
+</svg>

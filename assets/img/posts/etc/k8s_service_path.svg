@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="550" viewBox="0 0 1080 550" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13">
+  <rect width="1080" height="550" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6d28d9"/>
+    </marker>
+  </defs>
+
+  <!-- user -->
+  <rect x="30" y="250" width="100" height="56" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="80" y="284" text-anchor="middle" font-size="14" font-weight="700" fill="#374151">사용자</text>
+  <line x1="130" y1="278" x2="158" y2="278" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <circle cx="144" cy="254" r="10" fill="#6b7280"/><text x="144" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">1</text>
+
+  <!-- ALB -->
+  <rect x="160" y="214" width="172" height="128" rx="10" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="176" y="240" font-size="15" font-weight="700" fill="#b45309">ALB</text>
+  <text x="176" y="258" font-size="11" fill="#4b5563">외부 로드 밸런서 (AWS)</text>
+  <text x="176" y="282" font-size="11" fill="#1f2937">타깃 = web Pod IP 목록</text>
+  <text x="176" y="298" font-size="11" fill="#1f2937">10.0.1.23 · 10.0.2.8 · 10.0.2.41</text>
+  <text x="176" y="320" font-size="10.5" fill="#6b7280">LB 컨트롤러가 web 의</text>
+  <text x="176" y="334" font-size="10.5" fill="#6b7280">EndpointSlice 를 복사해 둠</text>
+
+  <!-- cluster -->
+  <rect x="360" y="30" width="690" height="500" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="378" y="54" font-size="14" font-weight="700" fill="#475569">클러스터</text>
+
+  <!-- control plane strip -->
+  <rect x="380" y="64" width="650" height="104" rx="10" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="396" y="86" font-size="13" font-weight="700" fill="#2f4f8f">컨트롤 플레인 (etcd 안의 객체, 노드에 떠 있지 않음) · Service 마다 Ready 인 Pod IP 목록(EndpointSlice)이 붙음</text>
+
+  <rect x="396" y="98" width="308" height="66" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="412" y="118" font-size="14" font-weight="700" fill="#1f2937">Service web <tspan font-weight="400" font-size="11" fill="#4b5563">고정 IP 10.96.0.10 · 80 → 3000</tspan></text>
+  <text x="412" y="136" font-size="11" fill="#4b5563">selector app=web</text>
+  <text x="412" y="154" font-size="11" fill="#b45309">EndpointSlice: 10.0.1.23 · 10.0.2.8 · 10.0.2.41</text>
+
+  <rect x="720" y="98" width="294" height="66" rx="8" fill="#ffffff" stroke="#2f4f8f" stroke-width="1.2"/>
+  <text x="736" y="118" font-size="14" font-weight="700" fill="#1f2937">Service api <tspan font-weight="400" font-size="11" fill="#4b5563">고정 IP 10.96.0.20 · 8080 → 8080</tspan></text>
+  <text x="736" y="136" font-size="11" fill="#4b5563">selector app=api</text>
+  <text x="736" y="154" font-size="11" fill="#6d28d9">EndpointSlice: 10.0.1.40 · 10.0.2.60</text>
+
+  <!-- node 1 -->
+  <rect x="380" y="200" width="310" height="310" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="396" y="222" font-size="14" font-weight="700" fill="#1e7e34">노드 1</text>
+
+  <rect x="396" y="232" width="278" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="412" y="249" font-size="13" font-weight="700" fill="#1f2937">kube-proxy</text>
+  <text x="412" y="265" font-size="11" fill="#4b5563">아래 규칙을 써 둘 뿐, 패킷은 거치지 않음</text>
+  <line x1="535" y1="276" x2="535" y2="284" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="3 2"/>
+
+  <rect x="396" y="284" width="278" height="40" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.2"/>
+  <text x="412" y="301" font-size="11" font-weight="700" fill="#374151">커널 규칙 (iptables)</text>
+  <text x="412" y="316" font-size="10.5" fill="#4b5563">10.96.0.20:8080 → 10.0.1.40 또는 10.0.2.60</text>
+
+  <rect x="396" y="352" width="278" height="48" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="412" y="371" font-size="13" font-weight="700" fill="#1f2937">Pod web · 10.0.1.23</text>
+  <text x="412" y="388" font-size="11" fill="#4b5563">web 컨테이너 :3000</text>
+
+  <rect x="396" y="410" width="278" height="48" rx="6" fill="#ede9fe" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="412" y="429" font-size="13" font-weight="700" fill="#1f2937">Pod api · 10.0.1.40</text>
+  <text x="412" y="446" font-size="11" fill="#4b5563">api 컨테이너 :8080</text>
+
+  <!-- node 2 -->
+  <rect x="720" y="200" width="310" height="310" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="736" y="222" font-size="14" font-weight="700" fill="#1e7e34">노드 2</text>
+
+  <rect x="736" y="232" width="278" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.2"/>
+  <text x="752" y="249" font-size="13" font-weight="700" fill="#1f2937">kube-proxy</text>
+  <text x="752" y="265" font-size="11" fill="#4b5563">노드 1 과 같은 규칙을 써 둠</text>
+  <line x1="875" y1="276" x2="875" y2="284" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="3 2"/>
+
+  <rect x="736" y="284" width="278" height="40" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.2"/>
+  <text x="752" y="301" font-size="11" font-weight="700" fill="#374151">커널 규칙</text>
+  <text x="752" y="316" font-size="10.5" fill="#4b5563">노드 1 과 같음</text>
+
+  <rect x="736" y="352" width="132" height="48" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="802" y="371" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2937">Pod web</text>
+  <text x="802" y="388" text-anchor="middle" font-size="11" fill="#4b5563">10.0.2.8 :3000</text>
+  <rect x="882" y="352" width="132" height="48" rx="6" fill="#fff4e0" stroke="#d97706" stroke-width="1.2"/>
+  <text x="948" y="371" text-anchor="middle" font-size="12" font-weight="700" fill="#1f2937">Pod web</text>
+  <text x="948" y="388" text-anchor="middle" font-size="11" fill="#4b5563">10.0.2.41 :3000</text>
+
+  <rect x="736" y="410" width="278" height="48" rx="6" fill="#ede9fe" stroke="#6d28d9" stroke-width="1.2"/>
+  <text x="752" y="429" font-size="13" font-weight="700" fill="#1f2937">Pod api · 10.0.2.60</text>
+  <text x="752" y="446" font-size="11" fill="#4b5563">api 컨테이너 :8080</text>
+
+  <!-- (2) ALB -> web pods, directly to Pod IP -->
+  <path d="M332,300 L366,300 L366,376 L394,376" fill="none" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+  <path d="M332,262 L350,262 L350,191 L850,191 L850,350" fill="none" stroke="#d97706" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-orange)"/>
+  <path d="M850,191 L948,191 L948,350" fill="none" stroke="#d97706" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow-orange)"/>
+  <circle cx="404" cy="178" r="10" fill="#d97706"/><text x="404" y="182" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">2</text><text x="420" y="182" font-size="11" fill="#b45309">Service 를 거치지 않고 Pod IP 로 직접 (목록 중 하나를 골라)</text>
+
+  <!-- (3)(4) pod -> kernel rule -> pod -->
+  <path d="M440,352 L440,326" fill="none" stroke="#6d28d9" stroke-width="1.6" marker-end="url(#arrow-purple)"/>
+  <circle cx="462" cy="339" r="10" fill="#6d28d9"/><text x="462" y="343" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">3</text><text x="478" y="343" font-size="11" fill="#6d28d9">fetch('http://api:8080'), 목적지 10.96.0.20</text>
+  <path d="M674,304 L706,304 L706,434 L734,434" fill="none" stroke="#6d28d9" stroke-width="1.6" marker-end="url(#arrow-purple)"/>
+  <circle cx="762" cy="479" r="10" fill="#6d28d9"/><text x="762" y="483" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">4</text><text x="778" y="476" font-size="11" fill="#6d28d9">커널 규칙이 목적지를 10.0.2.60 으로 바꿔</text>
+  <text x="778" y="491" font-size="11" fill="#6d28d9">패킷이 여기로 바로 도착</text>
+
+</svg>
