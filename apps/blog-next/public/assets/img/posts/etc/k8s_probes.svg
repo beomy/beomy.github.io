@@ -22,7 +22,7 @@
   <rect x="250" y="40" width="300" height="100" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
   <text x="268" y="68" font-size="16" font-weight="700" fill="#4f46e5">startupProbe</text>
   <text x="268" y="92" fill="#1f2937">"아직 켜지는 중이냐?"</text>
-  <text x="268" y="114" font-size="12" fill="#4b5563">시작 시 한 번만. 성공 전까지 다른 프로브 보류</text>
+  <text x="268" y="114" font-size="12" fill="#4b5563">기동 중에만. 성공 전까지 다른 프로브 보류</text>
 
   <!-- liveness -->
   <rect x="250" y="160" width="300" height="100" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="1.5"/>

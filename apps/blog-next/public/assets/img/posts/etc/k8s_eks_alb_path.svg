@@ -35,14 +35,14 @@
   <rect x="450" y="130" width="230" height="80" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
   <text x="468" y="156" font-size="14" font-weight="700" fill="#4f46e5">AWS Load Balancer Controller</text>
   <text x="468" y="178" font-size="12" fill="#1f2937">EndpointSlice 를 지켜보다가</text>
-  <text x="468" y="196" font-size="12" fill="#1f2937">Ready 인 Pod IP 를 타깃에 등록/해제</text>
+  <text x="468" y="196" font-size="12" fill="#1f2937">Pod IP 를 타깃에 등록/해제</text>
 
   <!-- EndpointSlice -->
   <rect x="450" y="240" width="230" height="110" rx="10" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
   <text x="468" y="266" font-size="14" font-weight="700" fill="#2f4f8f">Service web → EndpointSlice</text>
   <text x="468" y="290" font-size="12" fill="#1f2937">· 10.0.1.23 (Ready)</text>
   <text x="468" y="308" font-size="12" fill="#1f2937">· 10.0.2.41 (Ready)</text>
-  <text x="468" y="326" font-size="12" fill="#9ca3af">· 10.0.3.17 (Not Ready → 목록에 없음)</text>
+  <text x="468" y="326" font-size="12" fill="#9ca3af">· 10.0.3.17 (Not Ready → 트래픽 제외)</text>
 
   <line x1="565" y1="240" x2="565" y2="212" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
   <!-- controller -> ALB -->

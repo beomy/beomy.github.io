@@ -48,7 +48,7 @@
   <rect x="200" y="270" width="240" height="44" rx="8" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
   <text x="320" y="296" text-anchor="middle" font-size="12" fill="#1f2937">정상 서비스 (요청 계속 처리)</text>
   <rect x="440" y="270" width="300" height="44" rx="8" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
-  <text x="590" y="290" text-anchor="middle" font-size="12" fill="#1f2937">새 연결 거절, readiness 503</text>
+  <text x="590" y="290" text-anchor="middle" font-size="12" fill="#1f2937">listen 닫아 새 연결 거절</text>
   <text x="590" y="306" text-anchor="middle" font-size="11" fill="#4b5563">진행 중 요청만 끝내고 exit</text>
   <rect x="740" y="270" width="240" height="44" rx="8" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
   <text x="860" y="296" text-anchor="middle" font-size="12" fill="#6b7280">종료됨 (SIGKILL 전에 끝남)</text>

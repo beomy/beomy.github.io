@@ -25,8 +25,8 @@
 
   <!-- Running / Ready -->
   <rect x="550" y="60" width="220" height="150" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
-  <text x="568" y="90" font-size="16" font-weight="700" fill="#1e7e34">Running</text>
-  <text x="568" y="110" font-size="12" fill="#4b5563">phase · Ready=True</text>
+  <text x="568" y="90" font-size="16" font-weight="700" fill="#1e7e34">Ready</text>
+  <text x="568" y="110" font-size="12" fill="#4b5563">phase는 Running · Ready=True</text>
   <text x="568" y="140" fill="#1f2937">· readiness 통과</text>
   <text x="568" y="162" fill="#1f2937">· EndpointSlice 에 IP 등록</text>
   <text x="568" y="184" fill="#1f2937">· READY 1/1, 트래픽 수신</text>
