@@ -8,7 +8,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { createHighlighter, type Highlighter } from 'shiki';
 import rehypeShikiFromHighlighter from '@shikijs/rehype/core';
 import rehypeStringify from 'rehype-stringify';
-import { visit } from 'unist-util-visit';
+import { SKIP, visit } from 'unist-util-visit';
 import { toHtml } from 'hast-util-to-html';
 import type { Root } from 'hast';
 import { getImageDimensions } from './images';
@@ -114,6 +114,23 @@ const rehypeImageAttributes = () => (tree: Root) => {
 };
 
 /**
+ * <table> 을 가로 스크롤 컨테이너(div.table-scroll)로 감싼다.
+ * table 은 내용 최소 폭보다 좁아지지 않고 overflow 도 적용되지 않아, 열이 많으면 모바일에서 본문 밖으로 넘친다.
+ */
+const rehypeWrapTables = () => (tree: Root) => {
+  visit(tree, 'element', (node, index, parent) => {
+    if (node.tagName !== 'table' || !parent || index === undefined) return;
+    parent.children[index] = {
+      type: 'element',
+      tagName: 'div',
+      properties: { className: ['table-scroll'] },
+      children: [node],
+    };
+    return SKIP; // 감싼 table 을 다시 방문하지 않는다
+  });
+};
+
+/**
  * 수집한 헤딩으로 중첩 <ul> 목차 HTML 을 생성한다.
  * TableOfContents 오거니즘은 `#id` 형태의 앵커를 기대한다.
  */
@@ -215,6 +232,7 @@ export const renderMarkdown = async (
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeImageAttributes)
+    .use(rehypeWrapTables)
     .use(rehypeSlug)
     .use(collectHeadings(headings))
     .use(rehypeAutolinkHeadings, {

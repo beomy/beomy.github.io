@@ -63,12 +63,17 @@
   font-size: 0.9em;
   word-break: break-word;
 }
+/* 표가 본문보다 넓으면 페이지가 아니라 이 컨테이너 안에서 가로 스크롤한다. (markdown.ts rehypeWrapTables) */
+.post-contents .table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .post-contents table {
   display: table;
   /* 열 폭은 내용에 맞춘다. fixed 는 짧은 열(코드 한 토큰)과 긴 열(설명)을 균등 분할해 공간을 낭비했다. */
   table-layout: auto;
   width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
   border-spacing: 0;
   border: 1px solid var(--grey-90);
