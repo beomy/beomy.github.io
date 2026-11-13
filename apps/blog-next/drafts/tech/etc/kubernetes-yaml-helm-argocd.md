@@ -8,8 +8,8 @@ summary: 쿠버네티스에 서버를 올리려면 Deployment, Service, Ingress 
 
 > **TL;DR**
 >
-> - 모든 쿠버네티스 YAML은 **`apiVersion`, `kind`, `metadata`, `spec`** 네 필드로 시작합니다. `spec`은 사람이 적는 "원하는 상태"이고 `status`는 클러스터가 적는 "현재 상태"라 YAML에 쓰지 않습니다.
-> - 객체는 **이름과 라벨**로 이어집니다. Ingress는 Service를 이름으로 가리키고, Service는 Pod를 라벨로 고르고, Deployment의 `selector`와 `template.metadata.labels`는 같아야 합니다. 이 고리 중 하나가 어긋나면 에러 없이 트래픽만 안 갑니다.
+> - 쿠버네티스 YAML은 **`apiVersion`, `kind`, `metadata`, `spec`** 네 필드로 시작합니다(ConfigMap, Secret처럼 데이터만 담는 객체는 `spec` 대신 `data`). `spec`은 사람이 적는 "원하는 상태"이고 `status`는 클러스터가 적는 "현재 상태"라 YAML에 쓰지 않습니다.
+> - 객체는 **이름과 라벨**로 이어집니다. Ingress는 Service를 이름으로 가리키고, Service는 Pod를 라벨로 고르고, Deployment의 `template.metadata.labels`는 `selector`의 라벨을 포함해야 합니다. 특히 Service의 selector와 Pod 라벨이 어긋나면 에러 없이 트래픽만 안 갑니다.
 > - 환경이 여러 개면 YAML을 복사하지 않고 **Helm chart**로 템플릿을 만듭니다. 공통 구조는 `templates/`에, 환경마다 다른 값은 `values-*.yaml`에 둡니다. `helm template`으로 완성된 YAML을 확인할 수 있습니다.
 > - **Argo CD**는 git 저장소를 지켜보다가 바뀐 YAML(또는 chart)을 렌더링해 API 서버에 보내는 컨트롤러입니다. 사람이 `kubectl apply`를 치는 대신 git에 올리는 것으로 배포가 끝나고, 클러스터 상태가 git과 다르면 Argo CD가 알려 주거나 되돌립니다.
 
@@ -22,7 +22,7 @@ summary: 쿠버네티스에 서버를 올리려면 Deployment, Service, Ingress 
 - **API 서버**: 모든 YAML이 도착하는 곳. `kubectl`, Helm, Argo CD 모두 결국 여기에 요청을 보냅니다.
 
 ## YAML의 뼈대
-쿠버네티스 YAML은 종류가 무엇이든 같은 네 필드로 시작합니다.
+쿠버네티스 YAML은 종류가 무엇이든 같은 네 필드로 시작합니다. 앞의 세 필드는 모든 객체에 있고, `spec`은 원하는 상태를 적는 객체에 있습니다. ConfigMap이나 Secret처럼 데이터만 담는 객체는 `spec` 대신 `data`를 가집니다.
 
 ```yaml
 apiVersion: apps/v1       # 이 리소스가 속한 API 그룹과 버전
@@ -45,7 +45,7 @@ kubectl explain deployment.spec
 kubectl explain deployment.spec.strategy.rollingUpdate
 ```
 
-`status`는 YAML에 쓰지 않습니다. 컨트롤러와 kubelet이 현재 상태를 적는 자리라서, `kubectl get deployment web -o yaml`로 꺼내 보면 우리가 쓴 적 없는 `status.readyReplicas` 같은 값이 들어 있습니다. 반대로 이 출력을 그대로 파일에 저장해 다시 `apply`하면 `status`와 자동 생성 필드가 섞여 지저분해지므로, 저장소에는 우리가 쓴 `spec`까지만 둡니다.
+`status`는 YAML에 쓰지 않습니다. 컨트롤러와 kubelet이 현재 상태를 적는 자리라서, `kubectl get deployment web -o yaml`로 꺼내 보면 우리가 쓴 적 없는 `status.readyReplicas` 같은 값이 들어 있습니다. 반대로 이 출력을 그대로 파일에 저장해 다시 `apply`하면 `resourceVersion` 같은 자동 생성 필드 때문에 그 사이 객체가 바뀌었을 때 충돌 에러가 나므로, 저장소에는 우리가 쓴 `spec`까지만 둡니다.
 
 ### 라벨과 어노테이션
 `metadata` 아래 `labels`와 `annotations`는 둘 다 `key: value` 쌍이지만 쓰임이 다릅니다.
@@ -59,7 +59,7 @@ kubectl explain deployment.spec.strategy.rollingUpdate
 라벨은 선택에 쓰이므로 값이 짧고 규칙적이어야 합니다. 어노테이션은 선택에 쓰이지 않아 긴 값도 괜찮고, 앞 글에서 본 ALB 옵션처럼 특정 컨트롤러에게 보내는 설정이 주로 여기에 들어갑니다.
 
 ### 여러 객체를 한 파일에
-YAML은 `---` 한 줄로 문서를 나눌 수 있어서, 한 파일에 Deployment와 Service를 함께 둘 수 있습니다. `kubectl apply -f`에 파일 대신 폴더를 주면 그 안의 YAML을 모두 적용합니다.
+YAML은 `---` 한 줄로 문서를 나눌 수 있어서, 한 파일에 Deployment와 Service를 함께 둘 수 있습니다. `kubectl apply -f`에 파일 대신 폴더를 주면 그 안의 YAML을 모두 적용합니다(하위 폴더까지 포함하려면 `-R`).
 
 ```yaml
 apiVersion: apps/v1
@@ -141,7 +141,7 @@ spec:
 
 컨테이너 설정에서 자주 헷갈리는 것 몇 가지만 짚습니다.
 
-- **`image` 태그.** `latest`나 태그 없는 이미지는 피합니다. 같은 YAML을 다시 적용해도 쿠버네티스는 바뀐 것이 없다고 보아 Pod를 교체하지 않고, 노드마다 다른 버전이 떠 있을 수 있습니다. 태그가 `latest`면 `imagePullPolicy` 기본값이 `Always`가 되어 Pod를 만들 때마다 이미지를 다시 받는 것도 느려지는 원인입니다. 빌드마다 고유한 태그를 붙이고 YAML의 태그를 바꿔 배포합니다.
+- **`image` 태그.** `latest`나 태그 없는 이미지는 피합니다. 같은 YAML을 다시 적용해도 쿠버네티스는 바뀐 것이 없다고 보아 Pod를 교체하지 않고, 노드마다 다른 버전이 떠 있을 수 있습니다. 태그가 `latest`면 `imagePullPolicy` 기본값이 `Always`가 되어 컨테이너가 시작될 때마다 레지스트리에 조회하므로, 레지스트리가 느리거나 장애일 때 기동이 늦어지는 원인이 됩니다. 빌드마다 고유한 태그를 붙이고 YAML의 태그를 바꿔 배포합니다.
 - **`env` 값은 문자열.** `value: 3000`처럼 따옴표 없이 적으면 YAML이 숫자로 읽어 적용이 거부됩니다. 환경 변수는 전부 문자열이라 `"3000"`, `"true"`처럼 따옴표를 붙입니다.
 - **리소스 단위.** CPU `250m`은 0.25코어입니다. 메모리 `512Mi`는 2의 거듭제곱 단위(메비바이트)이고 `512M`은 10의 거듭제곱 단위라 약 5% 차이가 납니다. 쿠버네티스에서는 관례적으로 `Mi`, `Gi`를 씁니다.
 - **`ports`는 문서용.** `containerPort`를 적지 않아도 컨테이너의 포트는 열립니다. 이 값은 어떤 포트를 쓰는지 사람과 도구에게 알려 주는 선언이고, Service의 `targetPort`에 이름으로 참조할 때 쓰입니다.
@@ -174,9 +174,9 @@ spec:
       labels: { app: web }
 ```
 
-Ingress는 Service를 **이름**으로 가리킵니다. 같은 네임스페이스에 그 이름의 Service가 있어야 합니다. Service는 Pod를 **라벨**로 고릅니다. `selector`에 적은 라벨을 모두 가진 Pod가 EndpointSlice에 들어갑니다. Deployment도 Pod를 라벨로 고르는데, 자기가 만드는 Pod에 그 라벨을 붙이므로 `selector.matchLabels`와 `template.metadata.labels`가 같아야 합니다. 다르면 적용 단계에서 거부됩니다.
+Ingress는 Service를 **이름**으로 가리킵니다. 같은 네임스페이스에 그 이름의 Service가 있어야 합니다. Service는 Pod를 **라벨**로 고릅니다. `selector`에 적은 라벨을 모두 가진 Pod가 EndpointSlice에 들어갑니다. Deployment도 Pod를 라벨로 고르는데, 자기가 만드는 Pod에 그 라벨을 붙이므로 `template.metadata.labels`에는 `selector.matchLabels`의 라벨이 모두 들어 있어야 합니다. 라벨을 더 붙이는 것은 되지만 빠지면 적용 단계에서 거부됩니다. `selector`는 한 번 만들면 바꿀 수 없으므로 처음부터 바뀌지 않을 라벨로 정합니다.
 
-이 고리에서 가장 흔한 사고는 Service의 `selector`와 Pod 라벨이 어긋나는 것입니다. 이때는 아무 에러도 나지 않습니다. Deployment도 Pod도 멀쩡하고 Service도 만들어지는데, EndpointSlice가 비어 있어 트래픽만 가지 않습니다. 앞 글의 장애 대응 절에서 `kubectl get endpointslices`를 먼저 보라고 한 이유입니다.
+이 고리에서 가장 흔한 사고는 Service의 `selector`와 Pod 라벨이 어긋나는 것입니다. 이때는 아무 에러도 나지 않습니다. Deployment도 Pod도 멀쩡하고 Service도 만들어지는데, EndpointSlice에 Pod IP가 하나도 없어 트래픽만 가지 않습니다. 앞 글의 장애 대응 절에서 `kubectl get endpointslices`를 먼저 보라고 한 이유입니다.
 
 ## Service와 Ingress
 Service와 Ingress는 Deployment보다 짧습니다. 포트가 세 번 나오는데 각각 어디의 포트인지만 구분하면 됩니다.
@@ -253,7 +253,7 @@ stringData:                        # 평문으로 적으면 저장될 때 base64
 
 Secret에 대해 두 가지를 알아 두어야 합니다. 첫째, Secret의 `data`는 **base64 인코딩이지 암호화가 아닙니다.** `kubectl get secret web-secret -o yaml`을 볼 권한이 있는 사람은 누구나 디코딩할 수 있습니다. 보호는 RBAC(누가 Secret을 읽을 수 있는지)과 etcd 암호화 설정에서 합니다. 둘째, 그래서 Secret YAML은 git에 올리지 않습니다. 회사에서는 보통 AWS Secrets Manager 같은 외부 저장소에 값을 두고, External Secrets Operator 같은 컨트롤러가 그 값을 읽어 클러스터 안에 Secret 객체를 만들어 줍니다. git에는 "어느 외부 비밀을 어떤 이름의 Secret으로 만들라"는 선언만 올라갑니다.
 
-ConfigMap 값을 바꿔도 **이미 떠 있는 Pod의 환경 변수는 바뀌지 않습니다.** 환경 변수는 프로세스가 시작할 때 한 번 읽히기 때문입니다. 새 값을 반영하려면 Pod를 다시 만들어야 하는데, ConfigMap만 바뀌면 Deployment의 `template`은 그대로라 롤링 업데이트가 일어나지 않습니다. 뒤에서 Helm으로 이 문제를 해결하는 방법이 나옵니다.
+ConfigMap 값을 바꿔도 **이미 떠 있는 Pod의 환경 변수는 바뀌지 않습니다.** 환경 변수는 프로세스가 시작할 때 한 번 읽히기 때문입니다. 볼륨으로 마운트한 파일은 잠시 뒤 갱신되지만(`subPath` 마운트는 예외), 환경 변수로 쓰는 한 새 값을 반영하려면 Pod를 다시 만들어야 하는데, ConfigMap만 바뀌면 Deployment의 `template`은 그대로라 롤링 업데이트가 일어나지 않습니다. 뒤에서 Helm으로 이 문제를 해결하는 방법이 나옵니다.
 
 ## 환경이 여러 개가 되면: Helm
 dev, stage, prod 세 환경에 같은 서버를 올린다고 하면 Deployment, Service, Ingress, ConfigMap 네 장이 환경마다 필요합니다. 그런데 환경마다 다른 값은 이미지 태그, `replicas`, 도메인, API 주소 정도이고 나머지는 같습니다. YAML을 세 벌 복사하면 프로브 설정을 하나 고칠 때 세 군데를 고쳐야 하고, 머지않아 어긋납니다.
@@ -274,6 +274,7 @@ web/
     service.yaml
     ingress.yaml
     configmap.yaml
+    hpa.yaml              # autoscaling.enabled 일 때만 렌더링
 ```
 
 ```yaml
@@ -341,7 +342,7 @@ ingress:
   host: example.com
 ```
 
-템플릿 문법에서 자주 보이는 것은 네 가지입니다. `{{ .Values.x }}`는 값을 끼워 넣고, `{{- if }}`와 `{{- end }}`는 조건에 따라 줄을 넣거나 빼며, `toYaml`은 values의 한 덩어리를 YAML 그대로 옮기고, `nindent 12`는 그 덩어리를 12칸 들여씁니다. `{{-`의 `-`는 앞의 줄바꿈과 공백을 지우라는 뜻으로, 이것이 없으면 빈 줄이 남습니다.
+템플릿 문법에서 자주 보이는 것은 네 가지입니다. `{{ .Values.x }}`는 값을 끼워 넣고, `{{- if }}`와 `{{- end }}`는 조건에 따라 줄을 넣거나 빼며, `toYaml`은 values의 한 덩어리를 YAML 그대로 옮기고, `nindent 12`는 그 덩어리 앞에 줄바꿈을 하나 넣고 12칸 들여씁니다. `{{-`의 `-`는 앞의 줄바꿈과 공백을 지우라는 뜻으로, 이것이 없으면 빈 줄이 남습니다. `nindent`가 줄바꿈을 다시 넣어 주기 때문에 둘은 세트로 씁니다.
 
 주석을 단 `checksum/config` 줄은 앞 절의 ConfigMap 문제를 푸는 관용구입니다. ConfigMap 템플릿을 렌더링한 결과의 해시를 Pod 어노테이션에 넣어 두면, ConfigMap 값이 바뀔 때 Pod `template`도 함께 바뀌어 롤링 업데이트가 일어납니다.
 
@@ -351,16 +352,16 @@ ingress:
 템플릿과 값이 합쳐진 결과는 `helm template`으로 확인합니다. 클러스터에 아무것도 보내지 않고 완성된 YAML만 출력하므로, chart를 고친 뒤 의도대로 나오는지 보는 데 가장 자주 쓰는 명령입니다.
 
 ```bash
-helm template web ./web -n web -f values-prod.yaml --set image.tag=1.2.4
+helm template web ./web -n web -f ./web/values-prod.yaml --set image.tag=1.2.4
 ```
 
 설치와 업데이트는 `helm upgrade --install` 하나로 합니다. 처음이면 설치하고 이미 있으면 업데이트하라는 뜻입니다. Helm은 설치된 결과를 **release**라고 부르고, 어떤 값으로 어떤 YAML을 보냈는지를 네임스페이스 안의 Secret에 버전별로 기록합니다. 그래서 이전 버전으로 되돌리는 롤백이 간단합니다.
 
 ```bash
-helm upgrade --install web ./web -n web -f values-prod.yaml --set image.tag=1.2.4
+helm upgrade --install web ./web -n web --create-namespace -f ./web/values-prod.yaml --set image.tag=1.2.4
 helm history web -n web          # 1, 2, 3 ... 버전별 배포 기록
-helm rollback web 2 -n web       # 2번 버전의 YAML 을 다시 적용
-helm uninstall web -n web        # chart 가 만든 객체를 모두 삭제
+helm rollback web 2 -n web       # 2번 버전의 YAML 을 다시 적용. 기록에는 새 버전으로 쌓인다
+helm uninstall web -n web        # chart 가 만든 객체를 삭제 (keep 어노테이션이 붙은 것과 CRD 는 남음)
 ```
 
 Helm 대신 쓰는 도구로 Kustomize가 있습니다. 템플릿 없이 기본 YAML에 환경별 패치를 겹치는 방식이고 `kubectl apply -k`로 kubectl에 들어 있습니다. 애드온처럼 남이 만든 것을 설치할 때는 대부분 Helm chart로 배포되므로, 회사가 Kustomize를 쓰더라도 Helm은 만나게 됩니다.
@@ -381,12 +382,12 @@ Argo CD는 클러스터 안에 설치되는 컨트롤러입니다. 앞 글의 �
 
 ![git 에 올린 YAML 이 Argo CD 를 거쳐 클러스터에 반영되는 흐름](/assets/img/posts/etc/k8s_gitops_flow.svg)
 
-1. git 저장소의 지정한 경로를 주기적으로(기본 3분) 읽습니다. 웹훅을 걸면 push 즉시 읽습니다.
+1. git 저장소의 지정한 경로를 주기적으로(기본 2~3분, 120초에 최대 60초의 무작위 지연을 더한 값) 읽습니다. 웹훅을 걸면 push 즉시 읽습니다.
 2. 그 경로가 Helm chart면 `helm template`으로, 평범한 YAML이면 그대로 렌더링해 **git이 원하는 상태**를 만듭니다.
 3. 클러스터에서 같은 객체들을 읽어 **현재 상태**와 비교합니다. 다르면 OutOfSync입니다.
-4. 자동 동기화가 켜져 있으면 차이 나는 객체를 API 서버에 `apply`합니다. 그 뒤는 앞 글에서 본 대로 컨트롤러와 kubelet의 몫입니다.
+4. 자동 동기화가 켜져 있으면 렌더링한 객체를 API 서버에 `apply`합니다. 그 뒤는 앞 글에서 본 대로 컨트롤러와 kubelet의 몫입니다.
 
-Argo CD는 Helm의 `install`을 쓰지 않고 `template`으로 YAML만 뽑아 직접 적용합니다. 그래서 `helm list`에는 아무것도 나오지 않고, 롤백도 Helm이 아니라 Argo CD의 배포 기록이나 git 되돌리기로 합니다.
+Argo CD는 Helm의 `install`을 쓰지 않고 `template`으로 YAML만 뽑아 직접 적용합니다. 그래서 `helm list`에는 아무것도 나오지 않고, 롤백도 Helm이 아니라 git에서 커밋을 되돌려서 합니다. Argo CD에도 배포 기록으로 되돌리는 기능이 있지만 자동 동기화가 켜진 Application에서는 쓸 수 없습니다. 또 Argo CD는 기본적으로 Application 이름을 Helm의 release 이름으로 쓰므로, 템플릿이 `.Release.Name`으로 객체 이름을 정한다면 아래처럼 `releaseName`을 지정해야 `helm`으로 설치했을 때와 같은 이름이 됩니다.
 
 ### Application 선언
 Argo CD에게 "이 저장소의 이 경로를 이 클러스터의 이 네임스페이스에 맞춰라"고 알려 주는 것도 YAML입니다. Argo CD가 추가한 Application이라는 리소스입니다.
@@ -404,6 +405,7 @@ spec:
     targetRevision: main                 # 브랜치 또는 태그
     path: apps/web                       # chart 가 있는 경로
     helm:
+      releaseName: web                   # 생략하면 Application 이름(web-prod)이 release 이름이 됨
       valueFiles:
         - values-prod.yaml
   destination:
@@ -426,19 +428,19 @@ Argo CD 화면에서 Application마다 두 가지 상태가 보입니다. 서로
 
 | 상태 | 묻는 것 | 값 |
 | --- | --- | --- |
-| Sync | git과 클러스터의 **선언**이 같은가 | Synced, OutOfSync |
-| Health | 선언대로 **실제로 돌고** 있는가 | Healthy, Progressing, Degraded, Missing |
+| Sync | git과 클러스터의 **선언**이 같은가 | Synced, OutOfSync, Unknown |
+| Health | 선언대로 **실제로 돌고** 있는가 | Healthy, Progressing, Degraded, Suspended, Missing, Unknown |
 
-Sync는 `spec`을 비교한 결과입니다. Health는 `status`를 읽은 결과로, Deployment라면 `readyReplicas`가 `replicas`에 도달했는지를 봅니다. 그래서 배포 직후에는 Synced이면서 Progressing이고, 새 Pod가 readiness 프로브를 통과하면 Healthy가 됩니다. 새 Pod가 계속 `CrashLoopBackOff`면 Deployment의 `progressDeadlineSeconds`(기본 600초)가 지난 뒤 Degraded로 바뀝니다. 앞 글의 프로브가 여기서도 판정 기준이 됩니다.
+Sync는 git에 적힌 필드(라벨과 어노테이션 포함)를 클러스터 객체의 같은 필드와 비교한 결과입니다. `status`나 클러스터가 채운 기본값은 비교하지 않습니다. Health는 `status`를 읽은 결과로, Deployment라면 `kubectl rollout status`와 같은 기준으로 새 Pod가 모두 교체되어 가용(available) 상태가 되고 이전 Pod가 다 내려갔는지를 봅니다. 그래서 배포 직후에는 Synced이면서 Progressing이고, 새 Pod가 readiness 프로브를 통과하고(`minReadySeconds`가 있으면 그만큼 더 지나) 이전 Pod가 내려가면 Healthy가 됩니다. 새 Pod가 계속 `CrashLoopBackOff`면 Deployment의 `progressDeadlineSeconds`(기본 600초)가 지난 뒤 Degraded로 바뀝니다. 앞 글의 프로브가 여기서도 판정 기준이 됩니다.
 
 ## 자주 하는 실수
-- **selector와 라벨 불일치.** 에러 없이 트래픽만 안 갑니다. `kubectl get endpointslices -n web`이 비어 있으면 이것입니다.
+- **Service selector와 Pod 라벨 불일치.** 에러 없이 트래픽만 안 갑니다. `kubectl get endpointslices -n web`의 `ENDPOINTS` 열이 `<unset>`이면 이것입니다.
 - **네임스페이스 누락.** `metadata.namespace`를 빼면 현재 컨텍스트의 네임스페이스(보통 `default`)에 만들어집니다. Service가 다른 네임스페이스의 Pod를 고를 수는 없으므로 같은 서비스의 객체는 모두 같은 네임스페이스에 둡니다.
 - **env 값에 따옴표 누락.** `value: 3000`, `value: true`는 적용이 거부됩니다. `"3000"`, `"true"`로 씁니다.
-- **HPA가 있는데 `replicas`를 남김.** 배포할 때마다 YAML의 값으로 덮어써 HPA가 늘린 Pod가 줄어듭니다. HPA를 쓰면 `replicas` 줄을 지웁니다.
+- **HPA가 있는데 `replicas`를 남김.** 배포할 때마다 YAML의 값으로 덮어써 HPA가 늘린 Pod가 줄어듭니다. HPA를 쓰면 `replicas` 줄을 지웁니다. 단 이미 돌고 있는 Deployment에서 줄만 지우고 적용하면 기본값 1로 떨어져 Pod가 한 개만 남는 순간이 생기므로, 공식 문서의 안내대로 `kubectl apply edit-last-applied`로 기록에서 먼저 지운 뒤 파일에서 지웁니다.
 - **`latest` 태그.** 같은 YAML을 적용해도 Pod가 교체되지 않고, 어느 버전이 떠 있는지 알 수 없습니다.
 - **Secret을 git에 커밋.** base64는 암호화가 아닙니다. 외부 비밀 저장소와 External Secrets 같은 도구로 분리합니다.
-- **Argo CD가 있는데 `kubectl apply`로 직접 고침.** `selfHeal`이 켜져 있으면 몇 분 뒤 git 상태로 되돌아가고, 꺼져 있으면 OutOfSync로 남아 다음 배포 때 덮어써집니다. 고칠 것은 git에서 고칩니다.
+- **Argo CD가 있는데 `kubectl apply`로 직접 고침.** `selfHeal`이 켜져 있으면 수 초 안에 git 상태로 되돌아가고, 꺼져 있으면 OutOfSync로 남아 다음 배포 때 덮어써집니다. 고칠 것은 git에서 고칩니다.
 
 ## 부록: 적용 전에 확인하는 명령
 ```bash
@@ -448,11 +450,11 @@ kubectl explain deployment.spec.template.spec.containers.resources
 # 적용하면 무엇이 바뀌는지 미리 보기. 바뀌는 것이 없으면 출력도 없다
 kubectl diff -f web.yaml
 
-# 문법과 스키마만 검사하고 보내지 않음
+# API 서버까지 보내되 저장하지 않음. 스키마 검증과 어드미션 웹훅까지 통과하는지 확인
 kubectl apply -f web.yaml --dry-run=server
 
 # chart 가 어떤 YAML 로 렌더링되는지 보기
-helm template web ./web -n web -f values-prod.yaml
+helm template web ./web -n web -f ./web/values-prod.yaml
 
 # 클러스터에 실제로 들어간 YAML. status 와 자동 생성 필드가 함께 나온다
 kubectl get deployment web -n web -o yaml
