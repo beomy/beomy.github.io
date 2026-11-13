@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="360" viewBox="0 0 1080 360" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13" xml:space="preserve">
+  <rect width="1080" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-indigo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4f46e5"/>
+    </marker>
+  </defs>
+
+  <!-- developer -->
+  <rect x="30" y="120" width="120" height="70" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="90" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#374151">개발자 / CI</text>
+  <text x="90" y="172" text-anchor="middle" font-size="12" fill="#4b5563">values 의 tag 수정</text>
+  <line x1="150" y1="155" x2="198" y2="155" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="174" y="144" text-anchor="middle" font-size="11" fill="#6b7280">git push</text>
+
+  <!-- git repo -->
+  <rect x="200" y="80" width="210" height="150" rx="10" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="218" y="108" font-size="16" font-weight="700" fill="#b45309">git 저장소</text>
+  <text x="218" y="134" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">apps/web/</text>
+  <text x="218" y="152" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">  Chart.yaml</text>
+  <text x="218" y="170" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">  templates/</text>
+  <text x="218" y="188" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">  values.yaml</text>
+  <text x="218" y="206" font-family="Menlo, Consolas, monospace" font-size="12" fill="#b45309" font-weight="700">  values-prod.yaml</text>
+
+  <!-- EKS cluster -->
+  <rect x="450" y="18" width="600" height="322" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="468" y="44" font-size="14" font-weight="700" fill="#475569">EKS 클러스터</text>
+
+  <!-- Argo CD -->
+  <rect x="470" y="70" width="250" height="170" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="488" y="98" font-size="16" font-weight="700" fill="#4f46e5">Argo CD</text>
+  <text x="488" y="120" font-size="12" fill="#4b5563">Application 선언대로</text>
+  <text x="488" y="146" font-size="12" fill="#1f2937">① git 읽기 (3분마다 또는 웹훅)</text>
+  <text x="488" y="166" font-size="12" fill="#1f2937">② helm template 으로 렌더링</text>
+  <text x="488" y="186" font-size="12" fill="#1f2937">③ 클러스터 상태와 비교</text>
+  <text x="488" y="206" font-size="12" fill="#1f2937">④ 다르면 apply (OutOfSync → Synced)</text>
+  <text x="488" y="226" font-size="12" fill="#1f2937">⑤ status 로 Health 판정</text>
+
+  <!-- Argo pulls from git -->
+  <path d="M470,130 L412,130" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-indigo)"/>
+  <text x="440" y="118" text-anchor="middle" font-size="11" fill="#4f46e5">pull</text>
+
+  <!-- API server -->
+  <rect x="770" y="70" width="260" height="70" rx="10" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="788" y="98" font-size="16" font-weight="700" fill="#2f4f8f">API 서버</text>
+  <text x="788" y="122" font-size="12" fill="#4b5563">Deployment · Service · Ingress 객체 갱신</text>
+  <line x1="720" y1="92" x2="768" y2="92" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#arrow-indigo)"/>
+  <text x="744" y="82" text-anchor="middle" font-size="11" fill="#4f46e5">apply</text>
+  <line x1="768" y1="122" x2="722" y2="122" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="744" y="140" text-anchor="middle" font-size="11" fill="#6b7280">status 읽기</text>
+
+  <!-- controllers / kubelet -->
+  <rect x="770" y="170" width="260" height="70" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="788" y="198" font-size="16" font-weight="700" fill="#1e7e34">컨트롤러 · kubelet</text>
+  <text x="788" y="222" font-size="12" fill="#4b5563">ReplicaSet 교체, Pod 생성, 롤링 업데이트</text>
+  <line x1="900" y1="140" x2="900" y2="168" stroke="#6b7280" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="910" y="158" font-size="11" fill="#6b7280">watch · status 기록</text>
+
+
+  <!-- footnote -->
+  <text x="470" y="318" font-size="12" fill="#475569">클러스터 자격 증명은 클러스터 밖으로 나가지 않고, git 이 곧 배포 기록이 됩니다</text>
+  <text x="30" y="318" font-size="12" fill="#6b7280">push 방식: 개발자나 CI 가 kubectl / helm 으로 API 서버에 직접 보냄</text>
+</svg>

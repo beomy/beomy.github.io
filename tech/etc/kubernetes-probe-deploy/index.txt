@@ -1,0 +1,498 @@
+1:"$Sreact.fragment"
+3:I[5296,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+4:I[13033,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+6:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"ViewportBoundary"]
+c:I[79074,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"MetadataBoundary"]
+e:I[82623,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default",1]
+:HL["/_next/static/chunks/42qi6sro-2pwb.css","style"]
+:HL["/_next/static/chunks/2n7-8s_3zvs-z.css","style"]
+9:X
+0:{"P":null,"c":["","tech","etc","kubernetes-probe-deploy",""],"q":"","i":false,"f":[[["",{"children":[["slug","tech/etc/kubernetes-probe-deploy","c",["about","rss.xml","search"]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/42qi6sro-2pwb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3dzek8xgk_dp7.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2o31d8qeycp-m.js","async":true,"nonce":"$undefined"}]],"$L2"]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2n7-8s_3zvs-z.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/20ng4nivnm_br.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0l7lmrpj3f2tc.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],null]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/42qi6sro-2pwb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"PGAjfE8RHpyF4RGxsUo0X"}
+f:I[20775,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],""]
+10:I[3171,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"default"]
+9:C
+2:["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","$Lf",null,{"id":"theme-init","strategy":"beforeInteractive","children":"(function(){try{var v=localStorage.getItem('beomy.theme');var t=v?JSON.parse(v):null;if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();"}],["$","$L10",null,{"navData":{"categoryList":["tech","review"],"menuTree":[{"key":"review","counter":1,"children":[{"key":"book","counter":1,"children":[]}]},{"key":"tech","counter":66,"children":[{"key":"browser","counter":7,"children":[]},{"key":"etc","counter":14,"children":[]},{"key":"javascript","counter":4,"children":[]},{"key":"react","counter":10,"children":[]},{"key":"svelte","counter":22,"children":[]},{"key":"vuejs","counter":9,"children":[]}]}]},"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"children":["$","p",null,{"children":"Sorry, page not found!"}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lf",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-MD8G3F353P","strategy":"lazyOnload"}],["$","$Lf",null,{"id":"gtag-init","strategy":"lazyOnload","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-MD8G3F353P');\n          "}]]}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#663399"}]]
+11:I[7829,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js"],"IconMark"]
+8:null
+d:[["$","title","0",{"children":"[ETC] 쿠버네티스(Kubernetes) 프로브와 무중단 배포 | Beomy"}],["$","meta","1",{"name":"description","content":"쿠버네티스 위의 서버가 \"떴다\"는 판단은 kubelet이 던지는 프로브(Probe)로 내려집니다. startup·liveness·readiness 세 프로브가 각각 무엇을 묻고 실패하면 무슨 일이 벌어지는지, 외부 로드 밸런서를 쓰면 왜 헬스체크를 두 번 받는지, 롤링 업데이트와 Pod 종료가 어떤 순서로 진행되고 배포 중 5xx는 어디서 나는지를 Next.js 서버를 예로 살펴봅니다."}],["$","meta","2",{"name":"author","content":"beomy"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest","crossOrigin":"$undefined"}],["$","link","4",{"rel":"canonical","href":"https://beomy.github.io/tech/etc/kubernetes-probe-deploy/"}],["$","meta","5",{"property":"og:title","content":"[ETC] 쿠버네티스(Kubernetes) 프로브와 무중단 배포"}],["$","meta","6",{"property":"og:description","content":"쿠버네티스 위의 서버가 \"떴다\"는 판단은 kubelet이 던지는 프로브(Probe)로 내려집니다. startup·liveness·readiness 세 프로브가 각각 무엇을 묻고 실패하면 무슨 일이 벌어지는지, 외부 로드 밸런서를 쓰면 왜 헬스체크를 두 번 받는지, 롤링 업데이트와 Pod 종료가 어떤 순서로 진행되고 배포 중 5xx는 어디서 나는지를 Next.js 서버를 예로 살펴봅니다."}],["$","meta","7",{"property":"og:url","content":"https://beomy.github.io/tech/etc/kubernetes-probe-deploy/"}],["$","meta","8",{"property":"og:site_name","content":"Beomy"}],["$","meta","9",{"property":"og:locale","content":"ko"}],["$","meta","10",{"property":"og:image","content":"https://beomy.github.io/assets/img/thumbnails/etc/k8s_probe_deploy.png"}],["$","meta","11",{"property":"og:image:alt","content":"[ETC] 쿠버네티스(Kubernetes) 프로브와 무중단 배포"}],["$","meta","12",{"property":"og:type","content":"article"}],["$","meta","13",{"property":"article:published_time","content":"2026-11-13T00:00:00+00:00"}],["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","15",{"name":"twitter:creator","content":"beomy"}],["$","meta","16",{"name":"twitter:title","content":"[ETC] 쿠버네티스(Kubernetes) 프로브와 무중단 배포"}],["$","meta","17",{"name":"twitter:description","content":"쿠버네티스 위의 서버가 \"떴다\"는 판단은 kubelet이 던지는 프로브(Probe)로 내려집니다. startup·liveness·readiness 세 프로브가 각각 무엇을 묻고 실패하면 무슨 일이 벌어지는지, 외부 로드 밸런서를 쓰면 왜 헬스체크를 두 번 받는지, 롤링 업데이트와 Pod 종료가 어떤 순서로 진행되고 배포 중 5xx는 어디서 나는지를 Next.js 서버를 예로 살펴봅니다."}],["$","meta","18",{"name":"twitter:image","content":"https://beomy.github.io/assets/img/thumbnails/etc/k8s_probe_deploy.png"}],["$","meta","19",{"name":"twitter:image:alt","content":"[ETC] 쿠버네티스(Kubernetes) 프로브와 무중단 배포"}],["$","link","20",{"rel":"icon","href":"/assets/img/brand/beomy-icon.png"}],["$","$L11","21",{}]]
+12:I[48347,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/20ng4nivnm_br.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+13:I[48771,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/20ng4nivnm_br.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+15:I[17987,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/20ng4nivnm_br.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+14:T70f,<ul><li><a href="#pod%EC%9D%98-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0">Pod의 생명주기</a></li><li><a href="#%ED%94%84%EB%A1%9C%EB%B8%8C">프로브</a><ul><li><a href="#liveness-%EC%82%B4%EC%95%84-%EC%9E%88%EB%82%98">liveness: 살아 있나</a></li><li><a href="#readiness-%EC%A7%80%EA%B8%88-%ED%8A%B8%EB%9E%98%ED%94%BD%EC%9D%84-%EB%B0%9B%EC%95%84%EB%8F%84-%EB%90%98%EB%82%98">readiness: 지금 트래픽을 받아도 되나</a></li><li><a href="#startup-%EC%95%84%EC%A7%81-%EC%BC%9C%EC%A7%80%EB%8A%94-%EC%A4%91%EC%9D%B8%EA%B0%80">startup: 아직 켜지는 중인가</a></li><li><a href="#%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0">파라미터</a></li><li><a href="#%EC%84%A0%EC%96%B8-%EC%98%88%EC%8B%9C">선언 예시</a></li><li><a href="#%ED%97%AC%EC%8A%A4%EC%B2%B4%ED%81%AC-%EC%97%94%EB%93%9C%ED%8F%AC%EC%9D%B8%ED%8A%B8">헬스체크 엔드포인트</a></li></ul></li><li><a href="#%EC%99%B8%EB%B6%80-%EB%A1%9C%EB%93%9C-%EB%B0%B8%EB%9F%B0%EC%84%9C%EC%99%80-%EB%91%90-%EB%B2%88%EC%9D%98-%ED%97%AC%EC%8A%A4%EC%B2%B4%ED%81%AC">외부 로드 밸런서와 두 번의 헬스체크</a><ul><li><a href="#pod-readiness-gate">Pod readiness gate</a></li></ul></li><li><a href="#%EB%B0%B0%ED%8F%AC%EC%99%80-%EC%A2%85%EB%A3%8C">배포와 종료</a><ul><li><a href="#%EB%A1%A4%EB%A7%81-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8">롤링 업데이트</a></li><li><a href="#%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%A7%81">스케일링</a></li><li><a href="#%EC%A2%85%EB%A3%8C">종료</a></li></ul></li><li><a href="#%EC%9E%A5%EC%95%A0-%EB%8C%80%EC%9D%91">장애 대응</a><ul><li><a href="#%EB%A6%AC%EC%86%8C%EC%8A%A4%EC%99%80-oomkilled">리소스와 OOMKilled</a></li><li><a href="#%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%83%9D%EA%B2%BC%EC%9D%84-%EB%95%8C-%EB%B3%B4%EB%8A%94-%EA%B2%83">문제가 생겼을 때 보는 것</a></li></ul></li></ul>5:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"[ETC] 쿠버네티스(Kubernetes) 프로브와 무중단 배포\",\"description\":\"쿠버네티스 위의 서버가 \\\"떴다\\\"는 판단은 kubelet이 던지는 프로브(Probe)로 내려집니다. startup·liveness·readiness 세 프로브가 각각 무엇을 묻고 실패하면 무슨 일이 벌어지는지, 외부 로드 밸런서를 쓰면 왜 헬스체크를 두 번 받는지, 롤링 업데이트와 Pod 종료가 어떤 순서로 진행되고 배포 중 5xx는 어디서 나는지를 Next.js 서버를 예로 살펴봅니다.\",\"image\":[\"https://beomy.github.io/assets/img/thumbnails/etc/k8s_probe_deploy.png\"],\"datePublished\":\"2026-11-13T00:00:00+00:00\",\"dateModified\":\"2026-11-13T00:00:00+00:00\",\"author\":{\"@type\":\"Person\",\"name\":\"beomy\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Beomy\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://beomy.github.io/assets/img/brand/beomy-logo.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://beomy.github.io/tech/etc/kubernetes-probe-deploy/\"},\"url\":\"https://beomy.github.io/tech/etc/kubernetes-probe-deploy/\"}"}}],[["$","$L12",null,{}],["$","main",null,{"className":"mx-auto pb-[10px] pt-[70px] leading-[2] screen-xs sm:screen-sm m:screen-m","children":[["$","div",null,{"className":"flex flex-row-reverse pb-[10px]","children":[["$","$L13",null,{"url":"https://beomy.github.io//tech/etc/kubernetes-probe-deploy/","toc":"$14"}],["$","article",null,{"className":"w-[calc(100%-380px)] max-sm:w-full","children":[["$","div",null,{"className":"leading-[1.5] [&>div]:mb-[30px] [&_.post-banner-img]:block [&_.post-banner-img]:h-auto [&_.post-banner-img]:w-full [&_.post-banner-img]:rounded-[8px]","children":[["$","h1",null,{"className":"m-0 text-7","children":"[ETC] 쿠버네티스(Kubernetes) 프로브와 무중단 배포"}],["$","div",null,{"children":[["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle mr-[20px] text-caption","children":[["$","$L15",null,{"type":"BsCalendar"}],"$L16"]}],"$L17"]}],"$L18"]}],"$L19","$L1a"]}]]}],"$L1b"]}],"$L1c"]]
+1d:I[1304,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/20ng4nivnm_br.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+1f:I[43492,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/20ng4nivnm_br.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],""]
+20:I[44892,["/_next/static/chunks/3dzek8xgk_dp7.js","/_next/static/chunks/2o31d8qeycp-m.js","/_next/static/chunks/20ng4nivnm_br.js","/_next/static/chunks/0l7lmrpj3f2tc.js"],"default"]
+16:["$","span",null,{"children":"2026년 11월 13일"}]
+17:["$","span",null,{"className":"inline-flex items-center gap-[5px] align-middle text-caption","children":[["$","$L15",null,{"type":"BsClock"}],["$","span",null,{"children":[25,"분 소요"]}]]}]
+18:["$","$L1d",null,{"img":"etc/k8s_probe_deploy.png","priority":true,"width":2000,"height":1000}]
+1e:T178b3,<blockquote>
+<p><strong>TL;DR</strong></p>
+<ul>
+<li><strong>프로브</strong>는 노드의 kubelet이 컨테이너에 주기적으로 던지는 질문입니다. <strong>startup</strong>은 "아직 켜지는 중이냐"를 물어 성공할 때까지 다른 프로브를 막고, <strong>liveness</strong>는 "살아 있냐"를 물어 연속 실패하면 재시작하고, <strong>readiness</strong>는 "트래픽을 받아도 되냐"를 물어 실패하면 재시작 없이 EndpointSlice에서만 뺍니다. liveness에 DB나 외부 API 체크를 넣으면 남의 장애에 내 서버가 재시작 루프에 빠집니다.</li>
+<li>배포 중 에러 없이 Pod를 교체하려면 <strong>readiness 프로브가 반드시 있어야 합니다.</strong> 없으면 아직 켜지지 않은 새 Pod에 트래픽을 보내면서 이전 Pod를 내립니다.</li>
+<li>Pod 종료는 SIGTERM → <code>terminationGracePeriodSeconds</code>(기본 30초) 대기 → SIGKILL 순서입니다. 배포 중 5xx는 <strong>너무 빨리 닫아서</strong>(SIGTERM을 받자마자 listen을 닫아 아직 들어오는 요청이 거부됨) 또는 <strong>너무 안 닫아서</strong>(SIGTERM을 못 받거나 무시해 SIGKILL로 처리 중 요청이 끊김) 생깁니다. 앞은 <code>preStop</code> sleep으로 막고, 뒤는 Node.js를 직접 띄우고 SIGTERM 핸들러를 넣어 막습니다.</li>
+<li>ALB 같은 외부 로드 밸런서는 readiness 결과를 모르고 <strong>자체 헬스체크</strong>로 따로 판정합니다. 롤링 업데이트는 readiness만 보고 이전 Pod를 내리므로 ALB가 새 Pod를 healthy로 보기 전에 공백이 생깁니다. <strong>Pod readiness gate</strong>를 켜면 둘 다 통과해야 Ready가 되어 이 공백이 사라집니다.</li>
+</ul>
+</blockquote>
+<p>앞 글 <a href="/tech/etc/kubernetes/">쿠버네티스 구조</a>에서 클러스터가 컨트롤 플레인과 워커 노드로 이루어져 있고, Deployment로 선언한 것을 컨트롤러가 Pod 객체로 만들고 각 노드의 kubelet이 실제로 띄운다는 것까지 살펴봤습니다. 이 글은 그 다음 이야기입니다. kubelet이 띄운 Pod가 트래픽을 받아도 되는지는 누가 어떻게 판단하는지, 새 버전을 배포할 때 이전 Pod는 어떤 순서로 내려가는지, 그리고 배포 직후 잠깐 뜨는 502나 멀쩡한 Pod가 주기적으로 재시작되는 문제가 어디서 오는지를 Next.js 서버를 예로 정리합니다.</p>
+<p>아래는 이 글을 읽는 데 도움이 되는 자주 나오는 용어입니다.</p>
+<ul>
+<li><strong>kubelet</strong>: 노드마다 하나씩 있으며 컨테이너를 띄우고 상태를 보고하는 에이전트.</li>
+<li><strong>Deployment</strong>: Pod를 몇 개 어떤 모습으로 유지할지 적은 선언.</li>
+<li><strong>EndpointSlice</strong>: Service가 트래픽을 보낼 Pod IP 목록.</li>
+</ul>
+<h2 id="pod의-생명주기">Pod의 생명주기<a class="anchor after" aria-hidden="true" tabindex="-1" href="#pod의-생명주기"><span class="anchor-icon">#</span></a></h2>
+<p>Pod가 만들어져 트래픽을 받기까지 다음 단계를 거칩니다.</p>
+<p><img src="/assets/img/posts/etc/k8s_pod_lifecycle.svg" alt="Pod가 만들어져 트래픽을 받고 종료되기까지" loading="lazy" decoding="async" width="1080" height="330"></p>
+<ol>
+<li><strong>Pending</strong>: Pod 객체는 만들어졌지만 아직 컨테이너가 돌지 않습니다. 스케줄러가 리소스 여유가 있는 노드를 고르는 중이거나, 노드가 이미지를 내려받는 중입니다. 노드가 부족하면 여기서 멈춥니다.</li>
+<li><strong>Running</strong>: 노드에 배치되고 컨테이너가 하나 이상 시작된 상태입니다. <strong>Running은 "서비스 가능"을 뜻하지 않습니다.</strong> 서버가 <code>listen</code>을 시작하기 전이라도 프로세스가 떠 있으면 Running입니다.</li>
+<li><strong>Ready</strong>: Pod의 컨테이너가 모두 readiness 프로브를 통과한 상태입니다. 이때부터 Service의 EndpointSlice에 IP가 올라가고 트래픽이 들어옵니다. <code>kubectl get pods</code>의 <code>READY</code> 열에 <code>1/1</code>로 표시됩니다.</li>
+<li><strong>Terminating</strong>: 삭제가 요청된 상태입니다. EndpointSlice에서 빠지고 컨테이너에 SIGTERM이 전달됩니다. 유예 시간 안에 종료하지 않으면 SIGKILL로 강제 종료됩니다.</li>
+</ol>
+<p>위 단계에 나온 값은 모두 <strong>Pod 상태</strong>입니다. Pod 상태는 두 필드로 표현되는데, <code>phase</code>는 Pending, Running, Succeeded, Failed, Unknown 다섯 가지뿐이고 Ready는 phase가 아니라 <strong>condition</strong>입니다. <code>kubectl describe pod</code>를 치면 둘이 따로 나옵니다. 아래는 컨테이너는 떠 있지만 아직 readiness 프로브를 통과하지 못한 Pod의 출력 일부입니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="text"><code><span class="line"><span>Name:         web-7d4b9c6f8-abcde</span></span>
+<span class="line"><span>Status:       Running                 # phase</span></span>
+<span class="line"><span>Conditions:</span></span>
+<span class="line"><span>  Type              Status</span></span>
+<span class="line"><span>  Initialized       True              # init 컨테이너가 끝남</span></span>
+<span class="line"><span>  Ready             False             # 트래픽을 받을 수 없음</span></span>
+<span class="line"><span>  ContainersReady   False             # 컨테이너 중 readiness 미통과가 있음</span></span>
+<span class="line"><span>  PodScheduled      True              # 노드가 정해짐</span></span></code></pre>
+<p><code>Status</code>는 Running인데 <code>Ready</code>는 False입니다. 이 Pod는 <code>kubectl get pods</code>에서 <code>READY 0/1</code>로 보이고 EndpointSlice에도 없습니다.</p>
+<p>컨테이너가 죽으면 kubelet이 같은 Pod 안에서 컨테이너를 다시 시작합니다. 이것을 정하는 값이 Pod 명세의 <code>restartPolicy</code>이고, Deployment에서는 컨테이너 목록과 같은 높이에 적습니다. 기본값이 <code>Always</code>라서 보통은 적지 않습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">apiVersion</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">apps/v1</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">kind</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">Deployment</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">spec</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  template</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:                   </span><span style="color:#66707B;--shiki-dark:#BDC4CC"># 이 아래가 Pod 명세</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    spec</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      restartPolicy</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">Always</span><span style="color:#66707B;--shiki-dark:#BDC4CC">   # 기본값. Deployment 는 Always 만 허용</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      containers</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">        - </span><span style="color:#024C1A;--shiki-dark:#72F088">name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">          image</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">registry.example.com/web:1.2.3</span></span></code></pre>
+<p>시작하자마자 계속 죽으면 재시작 간격이 기본값 기준으로 10초, 20초, 40초로 늘어나 최대 5분까지 벌어지는데, 이 상태가 <code>CrashLoopBackOff</code>입니다. 10분 동안 문제없이 돌면 간격은 초기화됩니다.</p>
+<p>CrashLoopBackOff는 Pod 상태가 아니라 <strong>컨테이너 상태</strong>입니다. 컨테이너 상태는 Pod 안의 컨테이너마다 따로 기록되고, <code>kubectl describe pod</code>에서는 <code>Containers:</code> 항목 아래 <code>State</code>와 <code>Last State</code>로 나옵니다. 컨테이너가 재시작을 반복하는 동안에도 Pod의 phase는 Running이므로 <code>Status:</code> 줄은 바뀌지 않습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="text"><code><span class="line"><span>Status:       Running                 # Pod 상태(phase)는 그대로</span></span>
+<span class="line"><span>Containers:</span></span>
+<span class="line"><span>  web:</span></span>
+<span class="line"><span>    State:          Waiting            # 컨테이너 상태</span></span>
+<span class="line"><span>      Reason:       CrashLoopBackOff   #   다음 재시작을 기다리는 중</span></span>
+<span class="line"><span>    Last State:     Terminated         # 직전 컨테이너가 어떻게 끝났는지</span></span>
+<span class="line"><span>      Reason:       Error</span></span>
+<span class="line"><span>      Exit Code:    1</span></span>
+<span class="line"><span>    Restart Count:  5</span></span></code></pre>
+<p><code>kubectl get pods</code>의 <code>STATUS</code> 열은 이와 달리 Pod 상태와 컨테이너 상태를 한 단어로 합친 요약입니다. 기본은 phase를 보여 주지만, 컨테이너에 문제가 있으면 그 사유를 대신 보여 줍니다. 그래서 phase가 Running인 Pod에 CrashLoopBackOff가 찍힙니다. 뒤에 나올 <code>ImagePullBackOff</code>도 컨테이너 상태이고 <code>Terminating</code>은 삭제 요청 표시인데, 둘 다 같은 이유로 이 열에 나타납니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="text"><code><span class="line"><span>NAME                    READY   STATUS             RESTARTS      AGE</span></span>
+<span class="line"><span>web-7d4b9c6f8-abcde     0/1     CrashLoopBackOff   5 (40s ago)   4m</span></span></code></pre>
+<h2 id="프로브">프로브<a class="anchor after" aria-hidden="true" tabindex="-1" href="#프로브"><span class="anchor-icon">#</span></a></h2>
+<p>프로브(probe)는 쿠버네티스가 제공하는 <strong>헬스체크 기능</strong>입니다. 라이브러리를 설치하거나 애플리케이션 코드에 쿠버네티스 SDK를 넣는 것이 아니라, Pod 명세(YAML)에 "이 경로로 이렇게 물어봐라"라고 적어 두면 쿠버네티스가 알아서 실행합니다. 역할을 나누면 다음과 같습니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-scroll"><table><thead><tr><th>누가</th><th>무엇을</th></tr></thead><tbody><tr><td>개발자 (Pod YAML)</td><td>어떤 방식으로, 어떤 경로에, 몇 초마다 물어볼지 선언</td></tr><tr><td>쿠버네티스 (노드의 kubelet)</td><td>선언대로 주기적으로 요청을 보내고 결과에 따라 재시작·EndpointSlice 제외를 수행</td></tr><tr><td>애플리케이션</td><td>요청이 오면 200 또는 실패 응답을 돌려주는 엔드포인트만 제공</td></tr></tbody></table></div>
+<p>즉 프로브는 <strong>kubelet이 컨테이너에 주기적으로 던지는 질문</strong>입니다. 애플리케이션이 쿠버네티스에 상태를 알려 주는 것이 아니라, 쿠버네티스가 애플리케이션에 물어보는 방향입니다. 프로브는 Pod 단위가 아니라 <strong>컨테이너마다</strong> 선언합니다. 질문하는 방법은 네 가지입니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-scroll"><table><thead><tr><th>방법</th><th>성공 조건</th><th>용도</th></tr></thead><tbody><tr><td><code>httpGet</code></td><td>지정한 경로로 GET 요청을 보내 <strong>200 이상 400 미만</strong> 응답</td><td>HTTP 서버. 가장 일반적</td></tr><tr><td><code>tcpSocket</code></td><td>지정한 포트로 TCP 연결 성공</td><td>HTTP가 아닌 서버, 포트만 열렸는지 확인</td></tr><tr><td><code>grpc</code></td><td>gRPC 헬스체크 프로토콜 응답이 SERVING</td><td>gRPC 서버</td></tr><tr><td><code>exec</code></td><td>컨테이너 안에서 명령을 실행해 종료 코드 0</td><td>파일 존재 확인 등. 프로세스 생성 비용이 있어 주기가 짧으면 부담</td></tr></tbody></table></div>
+<p>그리고 <strong>무엇을 묻는지</strong>에 따라 세 종류가 있습니다. 같은 <code>httpGet</code>을 쓰더라도 질문의 뜻과 실패했을 때의 결과가 다릅니다. 프로브는 기본으로 켜져 있는 것이 아니라 컨테이너 설정에 선언한 것만 kubelet이 실행하고, YAML 필드 이름은 각각 <code>startupProbe</code>, <code>livenessProbe</code>, <code>readinessProbe</code>입니다.</p>
+<p><img src="/assets/img/posts/etc/k8s_probes.svg" alt="startup, liveness, readiness 세 프로브의 질문과 실패 시 동작" loading="lazy" decoding="async" width="1080" height="400"></p>
+<h3 id="liveness-살아-있나">liveness: 살아 있나<a class="anchor after" aria-hidden="true" tabindex="-1" href="#liveness-살아-있나"><span class="anchor-icon">#</span></a></h3>
+<p>liveness 프로브가 <code>failureThreshold</code>번 연속으로 실패하면 kubelet은 컨테이너를 <strong>죽이고 다시 시작</strong>합니다. 교착 상태(deadlock)에 빠졌거나 이벤트 루프가 완전히 멈춰 요청을 받지 못하는 프로세스를 되살리는 것이 목적입니다.</p>
+<p><strong>재시작으로 고쳐지는 문제만 liveness로 감지해야 합니다.</strong> DB 연결이 끊겼거나 외부 API가 죽은 상태를 liveness에 포함하면, 외부 장애가 발생할 때마다 모든 Pod가 동시에 재시작됩니다. 재시작해도 DB는 여전히 죽어 있으니 다시 실패하고, 또 재시작하고, 결국 <code>CrashLoopBackOff</code>에 빠집니다. 외부 장애가 복구되어도 Pod는 백오프 간격만큼 늦게 돌아옵니다. liveness는 "프로세스가 요청을 받을 수 있는 상태인가"만 확인하는 가장 단순한 핸들러여야 합니다.</p>
+<h3 id="readiness-지금-트래픽을-받아도-되나">readiness: 지금 트래픽을 받아도 되나<a class="anchor after" aria-hidden="true" tabindex="-1" href="#readiness-지금-트래픽을-받아도-되나"><span class="anchor-icon">#</span></a></h3>
+<p>readiness 프로브가 실패하면 컨테이너를 재시작하지 않습니다. 대신 Pod의 <code>Ready</code> condition을 False로 바꾸고 <strong>Service의 EndpointSlice에서 IP를 뺍니다</strong>. 트래픽이 들어오지 않을 뿐, 프로세스는 그대로 돌아갑니다. 다시 성공하면 EndpointSlice에 다시 들어갑니다.</p>
+<p>readiness는 시작할 때만 쓰는 것이 아니라 <strong>운영 중에도 계속 평가됩니다</strong>. 캐시 워밍업이 끝나지 않았거나, 처리 중인 요청이 너무 많아 잠시 쉬어야 하거나, 꼭 필요한 의존성이 끊긴 상태라면 readiness를 실패로 돌려 트래픽을 피할 수 있습니다.</p>
+<p>다만 여기에도 함정이 있습니다. readiness에 외부 의존성 체크를 넣었을 때 그 의존성이 전체 장애를 일으키면, 모든 Pod가 동시에 Not Ready가 되어 Service의 EndpointSlice에 Pod IP가 하나도 남지 않습니다. 사용자는 "일부 기능이 안 되는 페이지" 대신 <strong>503을</strong> 보게 됩니다. ALB는 보낼 타깃이 하나도 없으면 503을 돌려줍니다. 의존성 없이도 보여 줄 수 있는 페이지가 있다면, readiness에서는 그 의존성을 빼고 애플리케이션 안에서 에러를 처리하는 쪽이 낫습니다. 그 의존성 없이는 아무것도 할 수 없는 경우에만 readiness에 넣습니다.</p>
+<h3 id="startup-아직-켜지는-중인가">startup: 아직 켜지는 중인가<a class="anchor after" aria-hidden="true" tabindex="-1" href="#startup-아직-켜지는-중인가"><span class="anchor-icon">#</span></a></h3>
+<p>startup 프로브는 컨테이너가 처음 시작될 때만 던지는 질문입니다. startup 프로브가 <strong>한 번 성공하기 전까지는 liveness와 readiness 프로브가 시작되지 않고</strong>, 성공한 뒤로는 다시 실행되지 않습니다. <code>failureThreshold × periodSeconds</code> 안에 성공하지 못하면 liveness처럼 컨테이너를 재시작합니다.</p>
+<p>startup 프로브가 따로 필요한 이유는 기동 시간 때문입니다. 켜지는 데 60초가 걸리는 서버를 예로 들겠습니다. liveness는 기본값으로 10초마다 묻고 3번 연속 실패하면 재시작하므로, 켜지는 중인 30초쯤에 컨테이너가 재시작됩니다. 다시 켜지다가 또 30초에 재시작되고, 서버는 아무 문제가 없는데도 영원히 기동을 끝내지 못합니다. <strong>멀쩡한 서버가 켜지는 중에 억울하게 재시작되는 루프</strong>입니다.</p>
+<p>startup 프로브가 없던 시절에는 이를 막기 위해 liveness의 <code>initialDelaySeconds</code>를 길게 두었습니다. "60초 동안은 liveness를 시작하지 마라"는 뜻입니다. 하지만 이 방법에는 두 가지 문제가 있습니다.</p>
+<ul>
+<li><strong>기동 시간은 매번 다릅니다.</strong> 넉넉히 60초로 잡으면 평소 20초에 켜지는 서버도 60초 동안 아무 감시를 받지 않습니다. 반대로 노드가 바쁜 날 70초가 걸리면 다시 재시작 루프입니다. 한 숫자로 두 상황을 모두 맞출 수 없습니다.</li>
+<li><strong>기동 때만 필요한 값이 평생 설정에 붙어 있습니다.</strong> <code>initialDelaySeconds</code>는 liveness 설정의 일부라서, 뒤에 읽는 사람은 이 60초가 기동 때문인지 다른 이유인지 알기 어렵습니다.</li>
+</ul>
+<p>startup 프로브는 이 두 문제를 "최대 이만큼은 기다려 준다"와 "켜진 뒤에는 촘촘하게 본다"로 분리해 풉니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">startupProbe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  httpGet</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">path</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">/api/health/live</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">port</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3000</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  periodSeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">5</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  failureThreshold</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">24</span><span style="color:#66707B;--shiki-dark:#BDC4CC">      # 최대 5 × 24 = 120초까지 기동을 기다린다</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">livenessProbe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  httpGet</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">path</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">/api/health/live</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">port</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3000</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  periodSeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">10</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  failureThreshold</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3</span><span style="color:#66707B;--shiki-dark:#BDC4CC">       # 켜진 뒤에는 30초 안에 반응 없으면 재시작</span></span></code></pre>
+<p>기동에 20초가 걸리면 20초 만에 startup 프로브가 통과하고 그 즉시 liveness 감시가 시작됩니다. 100초가 걸려도 재시작되지 않습니다. 기동 중에는 느긋하게, 켜진 뒤에는 빡빡하게 볼 수 있다는 점이 <code>initialDelaySeconds</code>를 늘리는 것과의 차이입니다.</p>
+<h3 id="파라미터">파라미터<a class="anchor after" aria-hidden="true" tabindex="-1" href="#파라미터"><span class="anchor-icon">#</span></a></h3>
+<p>세 프로브는 같은 파라미터를 받습니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-scroll"><table><thead><tr><th>파라미터</th><th>기본값</th><th>의미</th></tr></thead><tbody><tr><td><code>initialDelaySeconds</code></td><td>0</td><td>컨테이너 시작 후 첫 프로브까지 대기 시간</td></tr><tr><td><code>periodSeconds</code></td><td>10</td><td>프로브 간격</td></tr><tr><td><code>timeoutSeconds</code></td><td>1</td><td>이 시간 안에 응답이 없으면 실패</td></tr><tr><td><code>failureThreshold</code></td><td>3</td><td>연속 실패 횟수가 이만큼이면 실패로 확정</td></tr><tr><td><code>successThreshold</code></td><td>1</td><td>실패 뒤 연속 성공 횟수가 이만큼이면 성공으로 복귀. liveness와 startup은 1만 가능</td></tr></tbody></table></div>
+<p>기본값 조합에서 눈여겨볼 것은 <code>timeoutSeconds: 1</code>입니다. Node.js 서버가 큰 JSON을 직렬화하거나 SSR 렌더링으로 이벤트 루프가 1초 넘게 막히면 헬스체크 응답도 1초를 넘기고, 이것이 3번 연속이면 liveness가 컨테이너를 재시작합니다. 트래픽이 몰릴 때 멀쩡한 Pod가 재시작되는 원인 중 하나입니다. SSR 서버라면 liveness의 <code>timeoutSeconds</code>는 3~5초 정도로 넉넉하게 두는 것이 안전합니다.</p>
+<p><code>initialDelaySeconds</code>는 startup 프로브가 있으면 liveness와 readiness에 둘 필요가 거의 없습니다. 두 프로브는 어차피 startup 프로브가 성공한 뒤에 시작되니, 기동이 끝날 때까지 기다리는 역할은 startup 프로브가 맡고 있는 셈입니다. 그래서 이 값은 startup 프로브에 두는 것이 자연스럽습니다. 예를 들어 켜지는 데 최소 10초는 걸리는 서버라면 startup 프로브에 <code>initialDelaySeconds: 10</code>을 줘서, 어차피 실패할 처음 몇 번의 프로브를 건너뛸 수 있습니다. 반대로 1~2초면 켜지는 가벼운 서버라면 startup 프로브 없이 liveness에 짧은 <code>initialDelaySeconds</code> 하나만 두는 편이 간단합니다.</p>
+<p>readiness의 <code>successThreshold</code>를 2~3으로 두면 한 번 성공했다고 바로 트래픽을 받지 않고 안정적으로 응답하는지 확인한 뒤 들어가므로 깜빡이는(flapping) 상태를 줄여 줍니다.</p>
+<h3 id="선언-예시">선언 예시<a class="anchor after" aria-hidden="true" tabindex="-1" href="#선언-예시"><span class="anchor-icon">#</span></a></h3>
+<p>세 프로브를 Deployment의 컨테이너에 붙이면 다음과 같습니다. 경로는 뒤에서 만들 헬스체크 엔드포인트입니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">containers</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  - </span><span style="color:#024C1A;--shiki-dark:#72F088">name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    image</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">registry.example.com/web:1.2.3</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    ports</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">      - </span><span style="color:#024C1A;--shiki-dark:#72F088">containerPort</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3000</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    startupProbe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      httpGet</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">path</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">/api/health/live</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">port</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3000</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      periodSeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">2</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      failureThreshold</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">30</span><span style="color:#66707B;--shiki-dark:#BDC4CC">      # 최대 60초까지 기동을 기다린다</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    livenessProbe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      httpGet</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">path</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">/api/health/live</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">port</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3000</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      periodSeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">10</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      timeoutSeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      failureThreshold</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3</span><span style="color:#66707B;--shiki-dark:#BDC4CC">       # 30초 동안 응답 없으면 재시작</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    readinessProbe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      httpGet</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">path</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">/api/health/ready</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">port</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3000</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      periodSeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">5</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      timeoutSeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      failureThreshold</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">2</span><span style="color:#66707B;--shiki-dark:#BDC4CC">       # 10초 안에 EndpointSlice에서 제외</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      successThreshold</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">2</span><span style="color:#66707B;--shiki-dark:#BDC4CC">       # 10초 연속 성공해야 다시 포함</span></span></code></pre>
+<p>startup은 짧은 간격으로 자주 물어서 기동이 끝나는 즉시 넘어가게 하고, liveness는 느긋하게, readiness는 트래픽에 바로 영향을 주므로 liveness보다 빠르게 반응하도록 둡니다. 숫자는 서버의 기동 시간과 트래픽 특성에 맞춰 조정하면 됩니다.</p>
+<h3 id="헬스체크-엔드포인트">헬스체크 엔드포인트<a class="anchor after" aria-hidden="true" tabindex="-1" href="#헬스체크-엔드포인트"><span class="anchor-icon">#</span></a></h3>
+<p>프로브는 쿠버네티스가 실행하므로 애플리케이션이 할 일은 <strong>응답할 엔드포인트를 만드는 것</strong>뿐입니다. 다만 세 프로브는 묻는 것이 다르기 때문에 엔드포인트도 나누는 것이 좋습니다. 하나로 합치면 앞에서 본 "liveness에 외부 의존성이 들어가는" 문제를 피하기 어렵습니다. 예제는 Next.js App Router의 Route Handler입니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// app/api/health/live/route.ts</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 프로세스가 요청을 받을 수 있는가. 의존성을 보지 않는다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> GET</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">() {</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> Response.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">json</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ status: </span><span style="color:#032563;--shiki-dark:#ADDCFF">'ok'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> });</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// app/api/health/ready/route.ts</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">// 트래픽을 받아도 되는가. 꼭 필요한 의존성만 확인한다.</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">export</span><span style="color:#A0111F;--shiki-dark:#FF9492"> async</span><span style="color:#A0111F;--shiki-dark:#FF9492"> function</span><span style="color:#622CBC;--shiki-dark:#DBB7FF"> GET</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">() {</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // 예: 이 서버가 그 없이는 아무것도 못 하는 의존성만</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  // await checkRequiredDependency();</span></span>
+<span class="line"><span style="color:#A0111F;--shiki-dark:#FF9492">  return</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> Response.</span><span style="color:#622CBC;--shiki-dark:#DBB7FF">json</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">({ status: </span><span style="color:#032563;--shiki-dark:#ADDCFF">'ok'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> });</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">}</span></span></code></pre>
+<blockquote>
+<p><strong>Next.js 14 이하라면 <code>force-dynamic</code>이 필요합니다</strong></p>
+<p>Next.js 14까지는 요청에서 아무것도 읽지 않는 GET Route Handler를 정적 라우트로 분류해 빌드 때 한 번만 실행하고 그 응답을 저장했습니다. 위 핸들러가 그 경우라서, 운영 중 DB가 죽어도 빌드 때 저장된 <code>{"status":"ok"}</code>가 200으로 계속 나갑니다. 14 이하를 쓴다면 각 파일 최상위에 <code>export const dynamic = 'force-dynamic';</code>을 추가해 요청마다 실행되게 해야 합니다. Next.js 15부터는 GET Route Handler를 기본으로 캐시하지 않으므로 이 설정이 필요 없습니다.</p>
+</blockquote>
+<p>프로브는 기본값으로도 Pod 하나당 10초마다 두 번씩 요청을 보냅니다. 복제본이 10개면 분당 120줄의 헬스체크 로그가 쌓입니다. 미들웨어나 로거 설정에서 <code>/api/health</code> 경로는 접근 로그를 남기지 않도록 걸러 두는 것이 좋습니다. 디버깅 때 진짜 요청을 찾기 어려워지는 것은 물론, 로그 수집 비용도 무시할 수 없습니다.</p>
+<h2 id="외부-로드-밸런서와-두-번의-헬스체크">외부 로드 밸런서와 두 번의 헬스체크<a class="anchor after" aria-hidden="true" tabindex="-1" href="#외부-로드-밸런서와-두-번의-헬스체크"><span class="anchor-icon">#</span></a></h2>
+<p>앞 글의 <a href="/tech/etc/kubernetes/#%EC%95%A0%EB%93%9C%EC%98%A8">애드온</a> 절에서 본 것처럼, 클러스터 밖에서 들어오는 트래픽은 Ingress 선언을 보고 AWS Load Balancer Controller가 만든 ALB가 받아 Pod IP로 직접 보냅니다. 이 절은 그 구성을 예로 들지만, 클라우드 로드 밸런서를 쓰는 구성이라면 어디서나 같은 문제가 생깁니다.</p>
+<p><img src="/assets/img/posts/etc/k8s_eks_alb_path.svg" alt="로드 밸런서에서 Pod까지의 경로와 두 종류의 헬스체크" loading="lazy" decoding="async" width="1080" height="420"></p>
+<p>여기서 Pod는 트래픽을 받을 자격을 <strong>두 곳에서 따로 심사</strong>받습니다. 로드 밸런서가 쿠버네티스 바깥에 있는 별도 서비스라 readiness 결과를 전혀 모르기 때문입니다.</p>
+<ol>
+<li><strong>readiness 프로브</strong>는 kubelet이 수행하고, 결과가 EndpointSlice에 반영됩니다. 컨트롤러는 EndpointSlice를 지켜보다가 Ready인 Pod의 IP를 로드 밸런서 타깃에 등록하고, Not Ready가 되면 등록 해제합니다.</li>
+<li><strong>로드 밸런서 자체 헬스체크</strong>는 로드 밸런서가 직접 각 타깃에 요청을 보내 수행합니다. 이 헬스체크는 쿠버네티스를 전혀 모릅니다. AWS Load Balancer Controller가 만드는 타깃 그룹의 기본값은 <code>/</code> 경로, 15초 간격, 5초 타임아웃, 2번 연속 성공하면 healthy인데, <code>/</code>가 SSR 페이지라면 15초마다 홈 페이지를 렌더링하게 되므로 경로를 헬스체크 엔드포인트로 바꿔 줍니다.</li>
+</ol>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">apiVersion</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">networking.k8s.io/v1</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">kind</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">Ingress</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">metadata</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  namespace</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  annotations</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:   </span><span style="color:#66707B;--shiki-dark:#BDC4CC"># 아래 어노테이션은 AWS Load Balancer Controller 전용</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    alb.ingress.kubernetes.io/scheme</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">internet-facing</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    alb.ingress.kubernetes.io/target-type</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">ip</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    alb.ingress.kubernetes.io/healthcheck-path</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">/api/health/ready</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    alb.ingress.kubernetes.io/healthcheck-interval-seconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">'10'</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    alb.ingress.kubernetes.io/target-group-attributes</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">deregistration_delay.timeout_seconds=30</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">spec</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  ingressClassName</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">alb</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  rules</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    - </span><span style="color:#024C1A;--shiki-dark:#72F088">http</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">        paths</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">          - </span><span style="color:#024C1A;--shiki-dark:#72F088">path</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">/</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">            pathType</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">Prefix</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">            backend</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">              service</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">port</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">number</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">80</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> } }</span></span></code></pre>
+<h3 id="pod-readiness-gate">Pod readiness gate<a class="anchor after" aria-hidden="true" tabindex="-1" href="#pod-readiness-gate"><span class="anchor-icon">#</span></a></h3>
+<p>두 심사가 따로 돌기 때문에 롤링 업데이트에서 빈틈이 생깁니다. 롤링 업데이트는 쿠버네티스의 판단, 즉 readiness 프로브 통과 여부만 보고 움직이고 ALB의 헬스체크 결과는 보지 않기 때문입니다.</p>
+<ol>
+<li>새 Pod가 readiness 프로브를 통과해 Ready가 됩니다. Deployment는 "하나 준비됐다"고 보고 이전 Pod를 하나 종료하기 시작합니다.</li>
+<li>그런데 그 시점에 ALB는 새 Pod를 타깃에 등록하고 자체 헬스체크를 돌리는 중입니다. 앞의 예제처럼 10초 간격에 2번 연속 성공이 필요하다면 약 20초 동안은 새 Pod로 트래픽을 보내지 않습니다.</li>
+<li>이전 Pod는 ALB 타깃에서 빠지는 중이고 새 Pod는 아직 healthy가 아닙니다. ALB에 <strong>트래픽을 보낼 수 있는 타깃이 없거나 모자라서 5xx</strong>가 납니다. 타깃이 하나도 없으면 503, 아직 listen을 열지 않은 새 타깃에 보내 연결이 거부되면 502, 응답이 늦으면 504입니다.</li>
+</ol>
+<p>readiness 프로브를 잘 만들어 놓았는데도 배포 중 에러가 나는 전형적인 원인이고, 복제본이 적을수록 뚜렷합니다.</p>
+<p>이런 경우를 위해 쿠버네티스에는 <strong>readiness gate</strong>라는 확장점이 있습니다. 이름에 readiness가 들어가지만 프로브와는 다른 장치입니다. 프로브는 kubelet이 컨테이너에 직접 물어서 답을 얻는 반면, readiness gate에서는 kubelet이 아무것도 묻지 않습니다. 대신 Pod의 Ready 조건에 "이 항목도 True여야 한다"는 빈칸을 하나 더 두고, 그 빈칸은 외부 컨트롤러가 채웁니다. 이 차이는 YAML의 위치에도 드러납니다. 프로브는 컨테이너마다 선언하는 것이라 각 컨테이너 항목 아래에 들어가고, readiness gate는 Pod 하나에 대한 조건이라 <code>containers</code>와 나란히 들어갑니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">spec</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:                        </span><span style="color:#66707B;--shiki-dark:#BDC4CC"># Pod 명세</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  readinessGates</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:            </span><span style="color:#66707B;--shiki-dark:#BDC4CC"># Pod 수준. Pod 전체의 Ready 조건에 추가됨</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    - </span><span style="color:#024C1A;--shiki-dark:#72F088">conditionType</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">target-health.elbv2.k8s.aws/k8s-web-web-abc123</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  containers</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    - </span><span style="color:#024C1A;--shiki-dark:#72F088">name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      readinessProbe</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:        </span><span style="color:#66707B;--shiki-dark:#BDC4CC"># 컨테이너 수준. 컨테이너마다 하나씩</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">        httpGet</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">path</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">/api/health/ready</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">port</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3000</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span></code></pre>
+<p>이 빈칸을 채우는 것이 AWS Load Balancer Controller입니다. 동작은 세 단계입니다.</p>
+<p>첫째, 네임스페이스에 라벨을 붙여 두면 컨트롤러는 그 네임스페이스에 새로 생기는 Pod에 "ALB가 이 Pod를 healthy로 봤는가"라는 조건을 하나 더 답니다. 단 ALB로 트래픽을 받는 Pod(Ingress에 연결된 Service가 고르는 Pod)에만 답니다. 이 조건이 달린 Pod는 readiness 프로브를 통과해도 조건이 True가 되기 전까지는 Ready가 아닙니다.</p>
+<p>둘째, Pod가 readiness 프로브를 통과하면 컨트롤러는 Ready를 기다리지 않고 그 Pod를 바로 ALB 타깃으로 등록합니다. ALB 헬스체크가 이때부터 시작됩니다.</p>
+<p>셋째, ALB 헬스체크가 healthy로 나오면 컨트롤러가 Pod의 그 조건을 True로 바꿔 적습니다. 그제야 Pod가 Ready가 됩니다.</p>
+<p>결국 Pod는 <strong>readiness 프로브도 통과하고 ALB도 healthy로 봐야</strong> Ready가 됩니다. Deployment는 이 Ready를 보고 이전 Pod를 내리므로, ALB가 새 Pod로 실제 트래픽을 보낼 수 있게 된 뒤에야 이전 Pod가 종료됩니다.</p>
+<blockquote>
+<p><strong>readiness gate 켜기: 네임스페이스에 라벨 붙이기</strong></p>
+<p>네임스페이스는 클러스터 하나를 안에서 칸막이로 나눈 단위입니다. <code>web</code>, <code>api</code>, <code>monitoring</code>처럼 팀이나 서비스별로 만들고, Deployment와 Service, Pod 같은 객체는 모두 어느 네임스페이스 하나에 속합니다. 이름은 네임스페이스 안에서만 유일하면 되고, 권한과 리소스 할당량도 네임스페이스 단위로 겁니다. <code>kubectl</code>은 기본으로 <code>default</code> 네임스페이스를 보기 때문에 이 글의 예제에는 <code>-n web</code>이 붙어 있습니다.</p>
+<p>네임스페이스도 하나의 객체라서 라벨을 가질 수 있습니다. AWS Load Balancer Controller는 Pod가 만들어질 때 그 Pod가 속한 네임스페이스의 라벨을 보고, 아래 라벨이 있으면 readiness gate를 끼워 넣습니다. Pod마다 설정하는 대신 네임스페이스에 한 번 켜 두면 그 안의 모든 Pod에 적용되는 방식입니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">kubectl</span><span style="color:#032563;--shiki-dark:#ADDCFF"> label</span><span style="color:#032563;--shiki-dark:#ADDCFF"> namespace</span><span style="color:#032563;--shiki-dark:#ADDCFF"> web</span><span style="color:#032563;--shiki-dark:#ADDCFF"> elbv2.k8s.aws/pod-readiness-gate-inject=enabled</span></span></code></pre>
+<p>이 명령은 결국 네임스페이스 객체에 라벨 한 줄을 추가하는 것이라, YAML로 적으면 다음과 같습니다. 명령을 직접 치는 대신 이 YAML을 저장소에 두고 적용해도 결과는 같습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">apiVersion</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">v1</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">kind</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">Namespace</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">metadata</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  labels</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    elbv2.k8s.aws/pod-readiness-gate-inject</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">enabled</span></span></code></pre>
+<p>readiness gate는 Pod가 만들어질 때 주입되므로, 라벨을 붙인 뒤에 만들어지는 Pod부터 적용됩니다. 또 그 시점에 Pod를 고르는 Service와 Ingress가 이미 있어야 하므로, Ingress보다 Deployment를 먼저 적용했다면 Pod를 다시 만들어야 합니다. <code>kubectl get pod -o yaml</code>에서 <code>spec.readinessGates</code> 항목이 있으면 적용된 것입니다.</p>
+</blockquote>
+<p>정리하면 아래와 같습니다.</p>
+<ul>
+<li><strong>readiness 프로브</strong>: 쿠버네티스가 하는 심사. 통과하면 Ready.</li>
+<li><strong>ALB 헬스체크</strong>: 로드 밸런서가 따로 하는 심사. 통과해야 실제로 트래픽이 옴.</li>
+<li><strong>문제</strong>: 롤링 업데이트는 readiness 프로브 통과만 보고 이전 Pod를 내려서, ALB 헬스체크가 끝나기 전 공백이 생김.</li>
+<li><strong>readiness gate</strong>: readiness 프로브와 ALB 헬스체크를 둘 다 통과해야 Ready가 되게 해서 공백을 없앰.</li>
+</ul>
+<h2 id="배포와-종료">배포와 종료<a class="anchor after" aria-hidden="true" tabindex="-1" href="#배포와-종료"><span class="anchor-icon">#</span></a></h2>
+<p>지금까지는 Pod 하나가 트래픽을 받아도 되는지를 누가 어떻게 판단하는지 봤습니다. 이 절은 그 판단을 Deployment가 어디에 쓰는지입니다. 새 버전을 배포할 때 Pod를 어떤 순서로 바꾸는지, 부하에 따라 Pod 수를 어떻게 늘리고 줄이는지, 그리고 내려가는 Pod는 어떻게 끝나는지를 차례로 봅니다. 배포 중에 나는 5xx는 대부분 이 세 과정 중 하나에서 생깁니다.</p>
+<h3 id="롤링-업데이트">롤링 업데이트<a class="anchor after" aria-hidden="true" tabindex="-1" href="#롤링-업데이트"><span class="anchor-icon">#</span></a></h3>
+<p>Deployment의 기본 전략은 RollingUpdate이고, 한 번에 얼마나 교체할지는 두 값이 정합니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">spec</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">  # replicas 는 적지 않음. 뒤의 HPA 가 정한다</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  minReadySeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">10</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  strategy</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    type</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">RollingUpdate</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    rollingUpdate</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      maxSurge</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">1</span><span style="color:#66707B;--shiki-dark:#BDC4CC">          # replicas를 초과해 만들 수 있는 Pod 수</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      maxUnavailable</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">0</span><span style="color:#66707B;--shiki-dark:#BDC4CC">    # 동시에 Not Ready여도 되는 Pod 수</span></span></code></pre>
+<p><code>maxSurge: 1, maxUnavailable: 0</code>이면 새 Pod를 하나 만들고 → Ready가 되면 → 이전 Pod를 하나 지우는 식으로, Pod가 3개라면 항상 3개 이상의 Ready Pod를 유지하며 교체합니다. 여기서 "Ready가 되면"의 판단 기준이 readiness 프로브(와 readiness gate)입니다.</p>
+<p>readiness 프로브가 없으면 쿠버네티스는 <strong>컨테이너 프로세스가 시작된 순간을 Ready로 간주</strong>합니다. Node.js 프로세스가 뜨긴 했지만 아직 <code>listen()</code>도 하지 않았는데 Ready가 되는 것입니다. 그러면 롤링 업데이트는 이렇게 흘러갑니다.</p>
+<ol>
+<li>새 Pod가 생성되고 프로세스가 뜹니다. 아직 요청을 받을 수 없습니다.</li>
+<li>쿠버네티스는 즉시 Ready로 보고 Service의 EndpointSlice에 새 Pod IP를 넣습니다. 트래픽이 가지만 연결 거부나 502가 납니다.</li>
+<li>동시에 "새 Pod가 준비됐으니" 이전 Pod를 하나 내립니다. 정상 Pod는 줄고, 아직 켜지지 않은 Pod가 트래픽을 받습니다.</li>
+</ol>
+<p>배포마다 몇 초에서 수십 초씩 에러가 섭니다. 배포 자체는 성공으로 끝나기 때문에 더 알아채기 어렵습니다. readiness 프로브를 두면 실제로 200을 돌려주는 Pod만 Ready가 되고, 그때만 EndpointSlice에 들어가고, 그때만 이전 Pod가 내려갑니다. 그래서 readiness는 선택 사항이 아니라 무중단 배포의 전제 조건입니다. <strong>배포 중 에러 없이 Pod를 교체하려면 readiness 프로브가 반드시 있어야 합니다.</strong> 반대로 liveness는 없어도 무중단 배포는 됩니다. 멈춘 프로세스를 되살리지 못할 뿐입니다.</p>
+<p>startup 프로브는 <strong>기동 중에 억울하게 재시작되는 것</strong>을 막고, readiness는 <strong>아직 켜지지 않은 Pod로 트래픽이 가는 것</strong>을 막습니다.</p>
+<p><code>minReadySeconds</code>는 Ready가 된 뒤 이 시간 동안 어떤 컨테이너도 죽지 않아야 "정말 준비됐다"고 보는 값입니다. 시작은 되지만 몇 초 뒤 죽는 버전을 배포했을 때 롤아웃이 전부 교체된 뒤에야 문제가 드러나는 것을 막아 줍니다.</p>
+<h3 id="스케일링">스케일링<a class="anchor after" aria-hidden="true" tabindex="-1" href="#스케일링"><span class="anchor-icon">#</span></a></h3>
+<p>부하에 따라 <code>replicas</code>를 자동으로 조절하는 것이 HorizontalPodAutoscaler(HPA)입니다. CPU 사용률 같은 지표가 목표치를 넘으면 Pod를 늘리고, 내려가면 줄입니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">apiVersion</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">autoscaling/v2</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">kind</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">HorizontalPodAutoscaler</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">metadata</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  namespace</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">spec</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  scaleTargetRef</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">apiVersion</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">apps/v1</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">kind</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">Deployment</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  minReplicas</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">3</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  maxReplicas</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">10</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  metrics</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">    - </span><span style="color:#024C1A;--shiki-dark:#72F088">type</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">Resource</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      resource</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">        name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">cpu</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">        target</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">type</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">Utilization</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">averageUtilization</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">60</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span></code></pre>
+<p>HPA가 늘린 Pod도 똑같이 startup → readiness를 거쳐야 트래픽을 받습니다. 기동이 느린 서버는 부하가 몰린 뒤에 Pod를 늘려 봐야 한참 뒤에야 효과가 나므로, <code>minReplicas</code>를 여유 있게 두거나 기동 시간을 먼저 줄이는 것이 좋습니다.</p>
+<p>위 예시의 <code>averageUtilization: 60</code>은 Pod들의 CPU 사용률 평균이 60%를 넘으면 늘리라는 뜻입니다. 여기서 사용률은 노드 전체의 CPU 사용률이 아니라, 각 Pod가 실제로 쓰는 CPU를 그 Pod의 <code>resources.requests.cpu</code>로 나눈 값입니다. 예를 들어 requests가 500m인 Pod가 CPU를 300m 쓰고 있으면 사용률은 60%입니다. 그래서 requests를 지정하지 않은 컨테이너는 나눌 기준이 없어 HPA가 사용률을 계산하지 못하고 스케일링도 하지 않습니다. <code>resources</code>는 뒤의 장애 대응 절에서 다룹니다.</p>
+<blockquote>
+<p><strong>CPU 단위 <code>m</code></strong></p>
+<p>CPU 값에 붙는 <code>m</code>은 밀리코어(millicore)입니다. 코어 1개를 1000으로 나눈 단위라 <code>500m</code>은 코어 0.5개, <code>100m</code>은 코어 0.1개입니다. <code>0.5</code>처럼 소수로 써도 같은 뜻이지만, 쿠버네티스 문서는 <code>m</code> 표기를 권합니다. <code>1m</code>보다 작은 값은 받지 않기 때문입니다.</p>
+<p>"코어 0.5개"는 코어 반쪽을 떼어 준다는 뜻이 아니라 CPU 시간을 그만큼 쓸 수 있다는 뜻입니다. 노드가 2코어든 64코어든 <code>500m</code>은 항상 코어 0.5개로, 노드 크기에 따라 달라지지 않습니다. 메모리는 <code>Mi</code>, <code>Gi</code> 같은 바이트 단위를 씁니다. 메모리에 <code>m</code>을 적어도 거부되지는 않지만 밀리바이트로 해석되어 컨테이너가 정상 기동하지 못하므로 쓰면 안 됩니다.</p>
+</blockquote>
+<p>HPA를 붙이면 Deployment의 <code>spec.replicas</code>는 HPA가 직접 고쳐 쓰는 값이 됩니다. 그런데 Deployment YAML에도 <code>replicas: 3</code>이 남아 있으면 둘이 충돌합니다. 배포할 때마다 YAML의 3으로 돌아갔다가 다음 주기에 HPA가 다시 올리면서 Pod 수가 오르내립니다. 그래서 HPA를 쓰는 Deployment는 YAML에서 <code>replicas</code>를 빼고, Pod 수는 HPA의 <code>minReplicas</code>와 <code>maxReplicas</code>로만 정합니다.</p>
+<h3 id="종료">종료<a class="anchor after" aria-hidden="true" tabindex="-1" href="#종료"><span class="anchor-icon">#</span></a></h3>
+<p>무중단 배포를 하려면 새 Pod가 트래픽을 받을 준비가 됐는지뿐만 아니라 이전 Pod가 <strong>어떻게 빠지는지</strong>도 중요합니다. Pod 종료는 롤링 업데이트로 이전 Pod가 내려갈 때, 스케일 인으로 Pod 수가 줄 때, 노드가 교체될 때 모두 일어납니다.</p>
+<p>종료 과정에는 신호 두 개가 나옵니다. <strong>SIGTERM</strong>은 "곧 끝낼 테니 정리하라"는 신호입니다. 프로세스는 이 신호를 받고 진행 중인 일을 마무리할 수 있습니다. <strong>SIGKILL</strong>은 강제 종료 신호입니다. 프로세스가 막을 수도 알아챌 수도 없어서, 처리 중이던 요청은 그 자리에서 끊깁니다. 쿠버네티스는 먼저 SIGTERM을 보내 기다리고, 그래도 끝나지 않으면 SIGKILL로 끝냅니다. Pod 삭제가 요청되면 다음 순서로 진행됩니다.</p>
+<p><img src="/assets/img/posts/etc/k8s_pod_termination.svg" alt="Pod 종료 시퀀스와 preStop이 필요한 이유" loading="lazy" decoding="async" width="1080" height="334"></p>
+<ol>
+<li>Pod의 상태가 Terminating으로 바뀌고 <code>terminationGracePeriodSeconds</code>(기본 30초) 타이머가 시작됩니다.</li>
+<li><strong>동시에</strong> 두 가지가 시작됩니다. (a) EndpointSlice에서 Pod IP가 제거되고, 이를 지켜보던 kube-proxy와 Ingress 컨트롤러가 각자 라우팅 규칙과 로드 밸런서 타깃을 갱신합니다. (b) kubelet이 컨테이너에 <code>preStop</code> 훅이 있으면 먼저 실행하고, 그 다음 SIGTERM을 보냅니다.</li>
+<li>유예 시간이 끝나도 프로세스가 살아 있으면 SIGKILL로 강제 종료합니다.</li>
+</ol>
+<h4 id="배포-중-5xx가-나는-이유">배포 중 5xx가 나는 이유<a class="anchor after" aria-hidden="true" tabindex="-1" href="#배포-중-5xx가-나는-이유"><span class="anchor-icon">#</span></a></h4>
+<p>문제는 <strong>종료 중인 Pod로 요청이 들어온다</strong>는 것입니다. 왜 들어오는지와 왜 실패하는지로 나눠 보면 해결 방법이 보입니다.</p>
+<ul>
+<li><strong>요청이 들어오는 이유</strong>: 2의 (a)와 (b)가 <strong>동시에, 서로를 기다리지 않고</strong> 진행되기 때문입니다. SIGTERM은 노드 하나의 kubelet이 컨테이너 하나에 보내는 신호라 밀리초 안에 도착합니다. 반면 "이 Pod로 보내지 마라"는 소식은 모든 노드의 kube-proxy와 로드 밸런서가 각자 라우팅 규칙을 고쳐야 끝나서 수 초가 걸립니다. 그래서 서버는 이미 종료 신호를 받았는데 아직 소식을 못 받은 노드나 로드 밸런서가 트래픽을 보내는 몇 초가 생깁니다.</li>
+<li><strong>그 요청이 실패하는 이유</strong>: 들어오는 것 자체는 에러가 아닙니다. 서버가 아직 살아서 응답하면 사용자는 아무것도 느끼지 못합니다. 에러가 되는 것은 서버가 SIGTERM을 받자마자 listen을 닫아 <strong>들어온 요청을 받아 주지 않을 때</strong>입니다. 그 요청은 연결 거부가 되어 502로 돌아갑니다. 서버가 너무 빨리, 너무 착하게 종료해서 생기는 에러입니다.</li>
+</ul>
+<p>정리하면 502는 요청이 아직 들어오는 몇 초 사이에 서버가 먼저 문을 닫을 때 납니다. 들어오는 요청은 막을 수 없으므로, 해결 방향은 <strong>소식이 다 퍼질 때까지 서버가 평소처럼 요청을 받아 주는 것</strong>입니다.</p>
+<p>반대 방향의 문제도 있습니다. 서버가 SIGTERM을 무시하면 유예 시간이 끝나고 SIGKILL로 죽으면서 처리 중이던 요청이 끊깁니다. 이번에는 너무 안 닫아서 생기는 에러입니다. 배포 중 5xx는 이 두 방향 중 하나에서 오므로 해결도 두 가지를 함께 해야 합니다.</p>
+<h4 id="해결-방법">해결 방법<a class="anchor after" aria-hidden="true" tabindex="-1" href="#해결-방법"><span class="anchor-icon">#</span></a></h4>
+<p>해결은 두 방향에 하나씩, 두 가지를 모두 해야 합니다. 너무 빨리 닫아서 생기는 연결 거부는 <code>preStop</code>에서 몇 초 기다려 막고, 너무 안 닫아서 생기는 강제 종료는 SIGTERM 핸들러로 막습니다. 앞의 것은 쿠버네티스 설정이고 뒤의 것은 애플리케이션 코드입니다. 둘 중 하나만 하면 배포 중 5xx는 절반만 사라집니다.</p>
+<h5 id="prestop에서-몇-초-기다리기">preStop에서 몇 초 기다리기<a class="anchor after" aria-hidden="true" tabindex="-1" href="#prestop에서-몇-초-기다리기"><span class="anchor-icon">#</span></a></h5>
+<p>preStop 훅이 끝나야 SIGTERM이 전달되므로, 그 몇 초 동안 EndpointSlice 제거가 전파되고 새 요청이 들어오지 않게 됩니다. preStop에 쓴 시간도 <code>terminationGracePeriodSeconds</code>에 포함되므로 유예 시간을 그만큼 늘려 줍니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">containers</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  - </span><span style="color:#024C1A;--shiki-dark:#72F088">name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">web</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    lifecycle</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">      preStop</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">        exec</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">          command</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: [</span><span style="color:#032563;--shiki-dark:#ADDCFF">'sleep'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#032563;--shiki-dark:#ADDCFF">'10'</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">]</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">terminationGracePeriodSeconds</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#023B95;--shiki-dark:#91CBFF">45</span><span style="color:#66707B;--shiki-dark:#BDC4CC">   # preStop 10초 + 요청 정리 여유</span></span></code></pre>
+<p><code>exec</code>로 <code>sleep</code>을 부르려면 이미지에 <code>sleep</code> 명령이 있어야 합니다. 쿠버네티스 1.30부터는(1.34에 정식 기능) <code>preStop: { sleep: { seconds: 10 } }</code>처럼 명령 없이 기다리는 핸들러도 쓸 수 있습니다.</p>
+<h5 id="sigterm을-받으면-정리하고-종료하기">SIGTERM을 받으면 정리하고 종료하기<a class="anchor after" aria-hidden="true" tabindex="-1" href="#sigterm을-받으면-정리하고-종료하기"><span class="anchor-icon">#</span></a></h5>
+<p>서버가 SIGTERM을 받으면 새 연결은 거절하고 진행 중인 요청은 끝내고 종료합니다. 이 부분은 쿠버네티스가 아니라 애플리케이션의 몫입니다. 제대로 끝나는 서버는 SIGTERM을 받은 뒤 이렇게 움직입니다.</p>
+<ol>
+<li>listen 소켓을 닫아 새 연결을 더 받지 않습니다.</li>
+<li>이미 받아서 처리 중인 요청은 끝까지 응답합니다. 3초짜리 SSR이면 3초를 기다립니다.</li>
+<li>처리 중인 요청이 0이 되면 DB 커넥션 등을 닫고 <code>process.exit(0)</code>으로 스스로 끝납니다.</li>
+</ol>
+<p>이렇게 하면 유예 시간 안에 끝나므로 SIGKILL은 오지 않고, 끊기는 요청도 없습니다. Next.js의 <code>next start</code>와 standalone 서버(<code>output: 'standalone'</code>으로 빌드해 <code>node server.js</code>로 띄우는 방식)에는 SIGTERM과 SIGINT를 받으면 listen을 닫고 진행 중인 요청이 끝나기를 기다렸다가 종료하는 핸들러가 기본으로 들어 있습니다. 다만 3번의 DB 커넥션 정리처럼 애플리케이션이 연 자원은 Next.js가 닫아 주지 않습니다.</p>
+<p>여기서 흔히 빠지는 함정이 <strong>PID 1 문제</strong>입니다. 쿠버네티스는 컨테이너의 PID 1 프로세스에 SIGTERM을 보냅니다. Dockerfile에서 <code>CMD ["npm", "start"]</code>로 실행하면 PID 1은 npm이고 Node.js는 그 자식 프로세스입니다. npm이 신호를 자식에 그대로 넘겨 주지 않는 경우가 있어, 서버는 SIGTERM을 받지 못한 채 30초 뒤 SIGKILL로 죽습니다. <code>CMD ["node", "server.js"]</code>처럼 Node.js를 직접 실행하거나, <code>tini</code> 같은 init 프로세스를 앞에 두어야 합니다.</p>
+<p>SIGTERM 핸들러가 없는 프로세스는 신호를 받는 순간 리눅스의 기본 동작에 따라 즉시 종료됩니다. 다만 PID 1은 예외라서, 기본 동작이 적용되지 않고 신호가 그냥 무시됩니다. 그래서 핸들러가 없는 Node.js는 PID 1인지 아닌지에 따라 정반대로 움직입니다. PID 1이면 SIGTERM을 무시한 채 버티다 30초 뒤 SIGKILL로 죽고, PID 1이 아니면 신호를 받자마자 죽어서 처리 중이던 요청까지 끊깁니다. 한쪽은 너무 늦게, 다른 한쪽은 너무 빨리 죽는 것입니다. 핸들러만 있으면 어느 경우든 핸들러대로 정리하고 끝나므로 문제가 없습니다. Next.js는 핸들러를 기본으로 등록해 주지만, Express 같은 서버를 직접 띄운다면 <code>process.on('SIGTERM', ...)</code>을 꼭 넣어야 합니다.</p>
+<h4 id="로드-밸런서의-등록-해제-대기-시간">로드 밸런서의 등록 해제 대기 시간<a class="anchor after" aria-hidden="true" tabindex="-1" href="#로드-밸런서의-등록-해제-대기-시간"><span class="anchor-icon">#</span></a></h4>
+<p>로드 밸런서에도 Pod 종료와 짝이 되는 설정이 있습니다. ALB는 타깃을 등록 해제할 때 바로 끊지 않고 <code>deregistration_delay.timeout_seconds</code>(기본 300초) 동안 <code>draining</code> 상태로 둡니다. draining 중인 타깃은 새 요청은 받지 않고 진행 중인 요청만 마무리합니다. 이 값은 <code>terminationGracePeriodSeconds</code>에 맞춰 잡습니다. Pod는 유예 시간이 끝나면 SIGKILL로 죽으므로, 그보다 긴 draining은 이미 없는 서버를 기다리는 것이고 그동안 죽은 타깃만 타깃 그룹에 남습니다. 그래서 앞의 Ingress 예제에서는 기본값 5분 대신 30초로 줄였습니다.</p>
+<h2 id="장애-대응">장애 대응<a class="anchor after" aria-hidden="true" tabindex="-1" href="#장애-대응"><span class="anchor-icon">#</span></a></h2>
+<p>프로브와 종료 설정을 잘 해 두어도 Pod는 재시작되거나 트래픽을 못 받을 수 있습니다. 프로브 다음으로 흔한 재시작 원인인 메모리 문제와, 문제가 생겼을 때 원인을 찾는 명령을 정리합니다.</p>
+<h3 id="리소스와-oomkilled">리소스와 OOMKilled<a class="anchor after" aria-hidden="true" tabindex="-1" href="#리소스와-oomkilled"><span class="anchor-icon">#</span></a></h3>
+<p>Pod가 재시작되는 또 하나의 큰 원인이 메모리입니다. 컨테이너에 <code>resources.limits.memory</code>를 지정하면 그 이상 메모리를 쓸 때 커널이 프로세스를 죽이고, <code>kubectl describe pod</code>에 <code>Last State: Terminated, Reason: OOMKilled</code>로 남습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">resources</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  requests</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">cpu</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">250m</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">, </span><span style="color:#024C1A;--shiki-dark:#72F088">memory</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">512Mi</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">  limits</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: { </span><span style="color:#024C1A;--shiki-dark:#72F088">memory</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">1Gi</span><span style="color:#0E1116;--shiki-dark:#F0F3F6"> }</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">env</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">:</span></span>
+<span class="line"><span style="color:#0E1116;--shiki-dark:#F0F3F6">  - </span><span style="color:#024C1A;--shiki-dark:#72F088">name</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">NODE_OPTIONS</span></span>
+<span class="line"><span style="color:#024C1A;--shiki-dark:#72F088">    value</span><span style="color:#0E1116;--shiki-dark:#F0F3F6">: </span><span style="color:#032563;--shiki-dark:#ADDCFF">--max-old-space-size=768</span></span></code></pre>
+<p><code>requests</code>는 스케줄러가 노드를 고를 때 "이만큼은 확보해 달라"고 쓰는 값이고, <code>limits</code>는 실제 상한입니다. 상한을 넘었을 때의 동작은 둘이 다릅니다. 메모리는 넘으면 컨테이너를 죽이고, CPU는 넘으면 컨테이너를 잠시 멈춥니다. 이 멈춤을 <strong>스로틀링</strong>이라 하는데, 멈춰 있는 동안에는 프로브 요청에도 응답을 만들 수 없어서 멀쩡한 서버가 liveness에 재시작당하는 일이 생깁니다. 그래서 메모리 limit만 걸고 CPU는 requests만 두는 경우가 많습니다. CPU는 메모리와 달리 다른 컨테이너를 죽이지 않고 나눠 쓸 수 있는 자원이라, 상한 없이 두어도 노드에 여유가 있는 만큼 더 쓸 뿐입니다.</p>
+<blockquote>
+<p><strong><code>requests</code>는 무엇을 정하는가</strong></p>
+<p>이름 때문에 HTTP 요청과 관련 있어 보이지만, 여기서 requests는 "컨테이너가 노드에 요구하는 자원의 몫"입니다. <code>requests: { cpu: 250m }</code>은 "이 컨테이너에 CPU 0.25개 몫을 달라"는 선언이고, 이 값은 세 곳에서 쓰입니다.</p>
+<p>첫째, 스케줄러가 Pod를 둘 노드를 고를 때 씁니다. 스케줄러는 노드마다 할당 가능한 CPU에서 이미 올라간 Pod들의 requests 합을 빼고, 남은 값이 0.25개 이상인 노드만 후보로 봅니다. 실제 사용률은 보지 않습니다. 사용률이 5%인 노드라도 requests 합이 거의 찼으면 탈락이고, 반대로 100%를 찍고 있어도 requests 합에 여유가 있으면 후보입니다. 후보가 없으면 Pod는 Pending에 머뭅니다.</p>
+<p>둘째, 노드 CPU가 모자라 컨테이너끼리 경쟁할 때 나누는 비율로 씁니다. 한가할 때는 누구든 원하는 만큼 쓰지만, 경쟁이 붙으면 requests 비율대로 받습니다. requests가 <code>250m</code>인 컨테이너와 <code>1000m</code>인 컨테이너가 같이 바쁘면 1:4로 나눕니다. 그래서 requests는 상한이 아니라 <strong>최소 보장</strong>입니다. 여유가 있으면 0.25개보다 많이 쓸 수 있고, 바빠도 0.25개 아래로는 떨어지지 않습니다. CPU limit 없이도 옆 컨테이너의 최소 몫이 지켜지는 이유가 이것입니다.</p>
+<p>셋째, HPA가 사용률을 계산하는 분모로 씁니다. 스케일링 절에서 본 대로 사용률은 실제 사용량 ÷ requests라서, <code>250m</code>인 Pod가 <code>150m</code>을 쓰면 60%이고 <code>300m</code>을 쓰면 120%입니다. 같은 사용량이라도 requests를 크게 잡으면 사용률이 낮게 나와 HPA가 늦게 반응합니다. requests는 스케줄링 기준이자 HPA의 기준이므로, 실제 평소 사용량에 가깝게 잡아야 둘 다 제대로 동작합니다.</p>
+</blockquote>
+<blockquote>
+<p><strong>CPU 스로틀링이 프로브를 실패시키는 과정</strong></p>
+<p>리눅스는 CPU limit을 CFS 쿼터라는 방식으로 적용합니다. 시간을 100ms 단위(period)로 끊고, 컨테이너가 한 단위 안에서 쓸 수 있는 CPU 시간(quota)을 limit에 비례해 줍니다. limit이 <code>500m</code>이면 100ms마다 50ms, <code>2</code>면 100ms마다 200ms(코어 2개분)입니다. 컨테이너가 한 단위 안에서 quota를 다 쓰면, 리눅스는 그 단위가 끝날 때까지 컨테이너 안의 모든 스레드를 멈춥니다. 이것이 스로틀링입니다.</p>
+<p>예를 들어 limit이 <code>500m</code>인 컨테이너에 무거운 SSR 요청이 들어와 처음 20ms 만에 50ms어치 CPU를 다 썼다면, 남은 80ms 동안 이 컨테이너는 아무것도 하지 못합니다. 그 사이에 들어온 요청은 모두 기다리고, kubelet이 보낸 <code>/api/health/live</code> 요청도 다음 단위가 열릴 때까지 응답을 받지 못합니다. 무거운 요청이 몰려 단위마다 quota를 다 쓰면 멈춤이 반복되면서 응답 시간이 수백 ms씩 튀고, <code>timeoutSeconds: 1</code>을 넘기는 프로브가 나옵니다. 이것이 <code>failureThreshold</code>번 이어지면 liveness는 컨테이너를 재시작하고 readiness는 트래픽을 뺍니다.</p>
+<p>재시작해도 limit은 그대로이므로 같은 일이 반복되기 쉽습니다. 서버 코드에는 문제가 없는데 CPU limit 하나 때문에 재시작이 반복되는 상황이라, 원인을 찾기 어려운 장애로 꼽힙니다. 스로틀링이 일어나고 있는지는 컨테이너의 <code>/sys/fs/cgroup/cpu.stat</code>(cgroup v2 기준)에서 <code>nr_throttled</code>와 <code>throttled_usec</code> 값으로, 또는 <code>container_cpu_cfs_throttled_periods_total</code> 메트릭으로 확인할 수 있습니다.</p>
+</blockquote>
+<p>예제의 <code>NODE_OPTIONS</code>는 Node.js 서버에만 해당하는 설정입니다. Node.js 프로세스의 메모리는 두 덩어리로 나뉩니다. 하나는 JavaScript 객체가 사는 <strong>V8 힙</strong>이고, 다른 하나는 <code>Buffer</code>나 네이티브 모듈, 소켓 버퍼처럼 <strong>힙 밖</strong>에 있는 메모리입니다. V8은 힙에만 상한을 두고, 힙이 꽉 차면 GC를 돌리다가 그래도 안 되면 "heap out of memory"로 죽습니다. 반면 쿠버네티스의 <code>limits.memory</code>는 두 덩어리를 합친 값을 봅니다. 한도가 둘인 셈입니다.</p>
+<p>문제는 이 두 한도가 서로 맞춰져 있지 않다는 것입니다. Node.js는 힙 상한을 컨테이너 메모리를 보고 어림잡아 정하는데, 그 값이 limit보다 많이 작으면 컨테이너에는 메모리가 남는데 힙만 꽉 차서 죽습니다. 반대로 힙 상한에 힙 밖 메모리가 더해져 limit을 넘으면, V8은 아직 괜찮다고 보는 사이에 커널이 OOMKilled로 죽입니다.</p>
+<p>그래서 힙 상한을 limit보다 조금 작게 직접 정해 둡니다. limit이 1Gi라면 <code>--max-old-space-size=768</code>로 힙을 768MB까지만 쓰게 하고, 남은 256MB 정도를 힙 밖 메모리의 자리로 남깁니다. 힙은 쓸 수 있는 만큼 최대로 쓰고, 힙 밖이 늘어나도 limit까지 여유가 있어 OOMKilled를 피합니다. limit의 75% 정도가 흔한 기준이고, 네이티브 모듈을 많이 쓰면 더 낮춥니다.</p>
+<blockquote>
+<p><strong>limit 1Gi와 힙 768MB의 관계</strong></p>
+<p><code>limits.memory: 1Gi</code>는 이 컨테이너가 쓸 수 있는 전체 메모리의 최대입니다. <code>--max-old-space-size=768</code>은 그 1Gi 중 V8 힙의 대부분을 차지하는 old space를 768MB까지만 쓰게 하는 설정이고(실제 힙은 이보다 조금 큽니다), 나머지 약 256MB는 힙 밖 메모리의 몫으로 남습니다. 둘을 이렇게 맞춰 두면 힙이 꽉 차도 전체 limit에는 여유가 있어서, 커널이 죽이기 전에 V8이 GC로 먼저 버틸 수 있습니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="text"><code><span class="line"><span>limits.memory 1Gi (1024MiB)</span></span>
+<span class="line"><span> ├─ V8 힙        최대 768MB   ← --max-old-space-size</span></span>
+<span class="line"><span> └─ 힙 밖 메모리  나머지 ~256MB</span></span></code></pre>
+<p>이 숫자는 노드 메모리와는 관계가 없습니다. 4GB 노드에는 1Gi짜리 Pod가 서너 개 올라가고, 각 Pod는 자기 limit 안에서 힙을 나눕니다. 노드 메모리가 남는다면 <code>--max-old-space-size</code>가 아니라 <code>limits.memory</code>를 올리고, 힙 상한도 그에 맞춰 같이 올립니다. 힙만 올리면 힙 밖 자리가 없어져 OOMKilled로 돌아갑니다. 다만 Node.js는 JavaScript를 스레드 하나로 실행하므로, 큰 Pod 하나보다 1Gi짜리 Pod 여러 개로 나누는 쪽이 보통 낫습니다.</p>
+</blockquote>
+<blockquote>
+<p><strong>old space란</strong></p>
+<p>V8은 힙을 객체의 나이에 따라 두 구역으로 나눠 관리합니다. <strong>young space</strong>는 새로 만든 객체가 처음 들어가는 곳으로, 크기가 작고(기본 수십 MB) GC를 자주 빠르게 돌립니다. 요청 하나를 처리하며 만들었다 버리는 임시 객체 대부분이 여기서 생겼다 사라집니다. <strong>old space</strong>는 young space의 GC를 몇 번 살아남은 객체가 옮겨 가는 곳으로, 캐시나 모듈, 커넥션 풀처럼 오래 사는 객체가 쌓이고 힙의 대부분을 차지합니다. GC는 드물게 돌지만 한 번에 오래 걸립니다. "대부분의 객체는 금방 죽는다"는 경험칙 때문에 이렇게 나누면 전체 힙을 뒤지지 않고도 싸게 메모리를 회수할 수 있습니다.</p>
+<p><code>--max-old-space-size</code>는 이 중 old space의 상한만 정합니다. 서버가 오래 돌면서 메모리가 커지는 쪽이 old space라서, 사실상 "힙이 얼마나 커질 수 있는가"는 이 값이 정합니다. 그래서 흔히 힙 상한이라고 부르지만, 실제 힙은 young space와 코드 영역 몇십 MB가 더해져 설정값보다 조금 큽니다.</p>
+</blockquote>
+<h3 id="문제가-생겼을-때-보는-것">문제가 생겼을 때 보는 것<a class="anchor after" aria-hidden="true" tabindex="-1" href="#문제가-생겼을-때-보는-것"><span class="anchor-icon">#</span></a></h3>
+<p>Pod가 트래픽을 못 받거나 재시작되는 문제는 대체로 다음 명령 몇 개로 원인이 보입니다.</p>
+<pre class="shiki shiki-themes github-light-high-contrast github-dark-high-contrast" style="background-color:#ffffff;--shiki-dark-bg:#0a0c10;color:#0e1116;--shiki-dark:#f0f3f6" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC"># READY 0/1, RESTARTS 숫자, STATUS(CrashLoopBackOff 등)</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">kubectl</span><span style="color:#032563;--shiki-dark:#ADDCFF"> get</span><span style="color:#032563;--shiki-dark:#ADDCFF"> pods</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -n</span><span style="color:#032563;--shiki-dark:#ADDCFF"> web</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -l</span><span style="color:#032563;--shiki-dark:#ADDCFF"> app=web</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC"># Events 항목에 프로브 실패 사유가 그대로 남는다</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">#   Liveness probe failed: Get "http://10.0.1.23:3000/api/health/live": context deadline exceeded</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC">#   Readiness probe failed: HTTP probe failed with statuscode: 503</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">kubectl</span><span style="color:#032563;--shiki-dark:#ADDCFF"> describe</span><span style="color:#032563;--shiki-dark:#ADDCFF"> pod</span><span style="color:#032563;--shiki-dark:#ADDCFF"> web-7d9f8b6c5-abcde</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -n</span><span style="color:#032563;--shiki-dark:#ADDCFF"> web</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC"># 재시작 전 컨테이너의 로그. 왜 죽었는지는 여기에 있다</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">kubectl</span><span style="color:#032563;--shiki-dark:#ADDCFF"> logs</span><span style="color:#032563;--shiki-dark:#ADDCFF"> web-7d9f8b6c5-abcde</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -n</span><span style="color:#032563;--shiki-dark:#ADDCFF"> web</span><span style="color:#023B95;--shiki-dark:#91CBFF"> --previous</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC"># Service가 바라보는 Pod IP 목록. 비어 있으면 selector와 Pod 라벨 불일치,</span></span>
+<span class="line"><span style="color:#66707B;--shiki-dark:#BDC4CC"># -o yaml 로 보면 IP마다 conditions.ready 가 있어 readiness 실패인 Pod를 찾을 수 있다</span></span>
+<span class="line"><span style="color:#702C00;--shiki-dark:#FFB757">kubectl</span><span style="color:#032563;--shiki-dark:#ADDCFF"> get</span><span style="color:#032563;--shiki-dark:#ADDCFF"> endpointslices</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -n</span><span style="color:#032563;--shiki-dark:#ADDCFF"> web</span><span style="color:#023B95;--shiki-dark:#91CBFF"> -l</span><span style="color:#032563;--shiki-dark:#ADDCFF"> kubernetes.io/service-name=web</span></span></code></pre>
+<p>증상별로 짚어 보면 다음과 같습니다.</p>
+<ul>
+<li><strong><code>READY 0/1</code>이 계속되고 RESTARTS는 0</strong><br>
+readiness가 실패하고 있습니다. 경로나 포트가 틀렸거나, readiness 핸들러가 보는 의존성이 실패하고 있습니다. 컨테이너는 살아 있으니 <code>kubectl exec</code>로 들어가 <code>curl localhost:3000/api/health/ready</code>를 직접 쳐 보면 됩니다.</li>
+<li><strong>RESTARTS가 계속 늘고 로그에는 이상이 없음</strong><br>
+liveness가 죽이고 있습니다. Events에 <code>Liveness probe failed</code>가 있을 것입니다. <code>context deadline exceeded</code>면 타임아웃이니 <code>timeoutSeconds</code>를 늘리거나 이벤트 루프를 막는 작업을 찾습니다. 기동 중에 죽는다면 startupProbe가 없거나 <code>failureThreshold</code>가 부족한 것입니다.</li>
+<li><strong>Pending에서 멈춤</strong><br>
+<code>describe pod</code>의 Events에 <code>Insufficient cpu</code> 또는 <code>Insufficient memory</code>가 보이면 노드에 자리가 없는 것입니다. <code>requests</code>를 줄이거나 노드를 늘려야 합니다. 이미지를 못 받는 <code>ImagePullBackOff</code>도 이 단계에서 납니다.</li>
+<li><strong>배포 직후 몇 초 동안 502</strong><br>
+새 Pod가 로드 밸런서에 등록되기 전에 이전 Pod가 빠진 것입니다. readiness gate를 적용하고, preStop sleep과 SIGTERM 처리를 확인합니다.</li>
+<li><strong>트래픽이 몰릴 때만 Pod가 재시작</strong><br>
+liveness <code>timeoutSeconds: 1</code> 기본값이거나, OOMKilled입니다. <code>describe pod</code>의 <code>Last State</code>로 구분할 수 있습니다.</li>
+</ul>
+<h5 id="참고">참고<a class="anchor after" aria-hidden="true" tabindex="-1" href="#참고"><span class="anchor-icon">#</span></a></h5>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/">https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/">https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/</a></li>
+<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/pod_readiness_gate/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/pod_readiness_gate/</a></li>
+<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/guide/ingress/annotations/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/guide/ingress/annotations/</a></li>
+<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html</a></li>
+<li><a href="https://nextjs.org/docs/pages/guides/self-hosting#manual-graceful-shutdowns">https://nextjs.org/docs/pages/guides/self-hosting#manual-graceful-shutdowns</a></li>
+<li><a href="https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md">https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md</a></li>
+</ul>19:["$","div",null,{"className":"post-contents","dangerouslySetInnerHTML":{"__html":"$1e"}}]
+1a:["$","div",null,{"className":"mt-[20px] flex items-center justify-between gap-[10px] leading-[1.4] max-xs:flex-col max-xs:items-stretch","children":[["$","div",null,{"className":"h-[70px] grow shrink basis-0 empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:empty:hidden","children":["$","$L1f",null,{"href":"/tech/etc/kubernetes/","className":"box-border text-body no-underline hover:text-title [&.active]:text-title rounded-[10px] border border-grey-90 px-[15px] py-[5px] hover:border-grey-70 flex h-[70px] items-center leading-[1.4]","children":[["$","div",null,{"className":"h-[35px] w-[35px]","children":["$","$L15",null,{"type":"BsChevronLeft","size":"100%"}]}],["$","div",null,{"className":"ml-[20px] mr-auto [&_small]:text-0","children":[["$","small",null,{"children":"이전 포스트"}],["$","div",null,{"children":"[ETC] 쿠버네티스(Kubernetes) 구조"}]]}]]}]}],["$","div",null,{"className":"h-[70px] grow shrink basis-0 empty:h-0 max-xs:grow-0 max-xs:shrink-0 max-xs:basis-auto max-xs:empty:hidden","children":null}]]}]
+1b:["$","$L20",null,{"url":"https://beomy.github.io//tech/etc/kubernetes-probe-deploy/","title":"[ETC] 쿠버네티스(Kubernetes) 프로브와 무중단 배포"}]
+1c:["$","footer",null,{"className":"border-t border-grey-90 bg-grey-100 py-[25px] text-center","children":[["$","nav",null,{"className":"mx-auto mb-[10px] flex w-[100px] items-center justify-around [&_a]:px-[10px] [&_a]:py-[5px]","children":[["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://github.com/beomy","target":"_blank","aria-label":"github","children":["$","$L15",null,{"type":"BsGithub","size":20}]}],["$","a",null,{"className":"box-border text-body no-underline hover:text-title [&.active]:text-title","href":"https://www.linkedin.com/in/효범-이-930453134","target":"_blank","aria-label":"linkedin","children":["$","$L15",null,{"type":"BsLinkedin","size":20}]}]]}],["$","span",null,{"className":"text-1 text-caption","children":["© ",2026," Beomy. All rights reserved."]}]]}]

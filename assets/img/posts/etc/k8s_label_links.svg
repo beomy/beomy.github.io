@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="330" viewBox="0 0 1080 330" font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', Roboto, sans-serif" font-size="13" xml:space="preserve">
+  <rect width="1080" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f4f8f"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1e7e34"/>
+    </marker>
+  </defs>
+
+  <!-- Ingress -->
+  <rect x="30" y="80" width="230" height="130" rx="10" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
+  <text x="48" y="108" font-size="16" font-weight="700" fill="#b45309">Ingress web</text>
+  <text x="48" y="138" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">backend:</text>
+  <text x="48" y="156" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">  service:</text>
+  <text x="48" y="174" font-family="Menlo, Consolas, monospace" font-size="12" fill="#b45309" font-weight="700">    name: web</text>
+  <text x="48" y="192" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">    port: { number: 80 }</text>
+
+  <!-- arrow Ingress -> Service: by name -->
+  <line x1="260" y1="145" x2="318" y2="145" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="289" y="134" text-anchor="middle" font-size="12" font-weight="700" fill="#6b7280">이름</text>
+
+  <!-- Service -->
+  <rect x="320" y="80" width="230" height="130" rx="10" fill="#e8f0fb" stroke="#2f4f8f" stroke-width="1.5"/>
+  <text x="338" y="108" font-size="16" font-weight="700" fill="#2f4f8f">Service web</text>
+  <text x="338" y="138" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">selector:</text>
+  <text x="338" y="156" font-family="Menlo, Consolas, monospace" font-size="12" fill="#2f4f8f" font-weight="700">  app: web</text>
+  <text x="338" y="174" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">ports:</text>
+  <text x="338" y="192" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">  - port: 80, targetPort: 3000</text>
+
+  <!-- arrow Service -> Pods: by label -->
+  <line x1="550" y1="145" x2="788" y2="145" stroke="#2f4f8f" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-blue)"/>
+  <text x="669" y="134" text-anchor="middle" font-size="12" font-weight="700" fill="#2f4f8f">라벨 app=web 인 Pod 를 고름</text>
+
+  <!-- Pods -->
+  <rect x="790" y="60" width="260" height="60" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="808" y="84" font-size="14" font-weight="700" fill="#1e7e34">Pod web-7d4b9c6f8-abcde</text>
+  <text x="808" y="104" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">labels: { app: web, … }</text>
+  <rect x="790" y="135" width="260" height="60" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="808" y="159" font-size="14" font-weight="700" fill="#1e7e34">Pod web-7d4b9c6f8-fghij</text>
+  <text x="808" y="179" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">labels: { app: web, … }</text>
+  <rect x="790" y="210" width="260" height="60" rx="10" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="808" y="234" font-size="14" font-weight="700" fill="#1e7e34">Pod web-7d4b9c6f8-klmno</text>
+  <text x="808" y="254" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">labels: { app: web, … }</text>
+
+  <!-- Deployment -->
+  <rect x="320" y="235" width="400" height="80" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="338" y="260" font-size="16" font-weight="700" fill="#374151">Deployment web</text>
+  <text x="338" y="282" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">selector.matchLabels: <tspan fill="#1e7e34" font-weight="700">{ app: web }</tspan></text>
+  <text x="338" y="300" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">template.metadata.labels: <tspan fill="#1e7e34" font-weight="700">{ app: web }</tspan>  ← 둘이 같아야 함</text>
+
+  <!-- arrow Deployment -> Pods: creates with label -->
+  <line x1="720" y1="275" x2="788" y2="245" stroke="#1e7e34" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <text x="730" y="320" font-size="12" fill="#1e7e34">라벨을 붙여 Pod 를 만들고, 같은 라벨로 관리</text>
+</svg>

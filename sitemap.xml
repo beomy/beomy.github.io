@@ -407,6 +407,12 @@
 <priority>0.7</priority>
 </url>
 <url>
+<loc>https://beomy.github.io/tech/etc/kubernetes-probe-deploy/</loc>
+<lastmod>2026-11-13</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
 <loc>https://beomy.github.io/tech/</loc>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
