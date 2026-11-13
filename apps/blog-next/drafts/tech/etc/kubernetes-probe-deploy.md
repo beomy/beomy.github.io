@@ -38,10 +38,10 @@ Name:         web-7d4b9c6f8-abcde
 Status:       Running                 # phase
 Conditions:
   Type              Status
-  PodScheduled      True              # 노드가 정해짐
   Initialized       True              # init 컨테이너가 끝남
-  ContainersReady   False             # 컨테이너 중 readiness 미통과가 있음
   Ready             False             # 트래픽을 받을 수 없음
+  ContainersReady   False             # 컨테이너 중 readiness 미통과가 있음
+  PodScheduled      True              # 노드가 정해짐
 ```
 
 `Status`는 Running인데 `Ready`는 False입니다. 이 Pod는 `kubectl get pods`에서 `READY 0/1`로 보이고 EndpointSlice에도 없습니다.
@@ -60,7 +60,7 @@ spec:
           image: registry.example.com/web:1.2.3
 ```
 
-시작하자마자 계속 죽으면 재시작 간격이 10초, 20초, 40초로 늘어나 최대 5분까지 벌어지는데, 이 상태가 `CrashLoopBackOff`입니다. 10분 동안 문제없이 돌면 간격은 초기화됩니다.
+시작하자마자 계속 죽으면 재시작 간격이 기본값 기준으로 10초, 20초, 40초로 늘어나 최대 5분까지 벌어지는데, 이 상태가 `CrashLoopBackOff`입니다. 10분 동안 문제없이 돌면 간격은 초기화됩니다.
 
 CrashLoopBackOff는 Pod 상태가 아니라 **컨테이너 상태**입니다. 컨테이너 상태는 Pod 안의 컨테이너마다 따로 기록되고, `kubectl describe pod`에서는 `Containers:` 항목 아래 `State`와 `Last State`로 나옵니다. 컨테이너가 재시작을 반복하는 동안에도 Pod의 phase는 Running이므로 `Status:` 줄은 바뀌지 않습니다.
 
@@ -115,7 +115,7 @@ readiness 프로브가 실패하면 컨테이너를 재시작하지 않습니다
 
 readiness는 시작할 때만 쓰는 것이 아니라 **운영 중에도 계속 평가됩니다**. 캐시 워밍업이 끝나지 않았거나, 처리 중인 요청이 너무 많아 잠시 쉬어야 하거나, 꼭 필요한 의존성이 끊긴 상태라면 readiness를 실패로 돌려 트래픽을 피할 수 있습니다.
 
-다만 여기에도 함정이 있습니다. readiness에 외부 의존성 체크를 넣었을 때 그 의존성이 전체 장애를 일으키면, 모든 Pod가 동시에 Not Ready가 되어 Service의 EndpointSlice에 Pod IP가 하나도 남지 않습니다. 사용자는 "일부 기능이 안 되는 페이지" 대신 **502를** 보게 됩니다. 의존성 없이도 보여 줄 수 있는 페이지가 있다면, readiness에서는 그 의존성을 빼고 애플리케이션 안에서 에러를 처리하는 쪽이 낫습니다. 그 의존성 없이는 아무것도 할 수 없는 경우에만 readiness에 넣습니다.
+다만 여기에도 함정이 있습니다. readiness에 외부 의존성 체크를 넣었을 때 그 의존성이 전체 장애를 일으키면, 모든 Pod가 동시에 Not Ready가 되어 Service의 EndpointSlice에 Pod IP가 하나도 남지 않습니다. 사용자는 "일부 기능이 안 되는 페이지" 대신 **503을** 보게 됩니다. ALB는 보낼 타깃이 하나도 없으면 503을 돌려줍니다. 의존성 없이도 보여 줄 수 있는 페이지가 있다면, readiness에서는 그 의존성을 빼고 애플리케이션 안에서 에러를 처리하는 쪽이 낫습니다. 그 의존성 없이는 아무것도 할 수 없는 경우에만 readiness에 넣습니다.
 
 ### startup: 아직 켜지는 중인가
 startup 프로브는 컨테이너가 처음 시작될 때만 던지는 질문입니다. startup 프로브가 **한 번 성공하기 전까지는 liveness와 readiness 프로브가 시작되지 않고**, 성공한 뒤로는 다시 실행되지 않습니다. `failureThreshold × periodSeconds` 안에 성공하지 못하면 liveness처럼 컨테이너를 재시작합니다.
@@ -193,8 +193,6 @@ startup은 짧은 간격으로 자주 물어서 기동이 끝나는 즉시 넘�
 ```ts
 // app/api/health/live/route.ts
 // 프로세스가 요청을 받을 수 있는가. 의존성을 보지 않는다.
-export const dynamic = 'force-dynamic';
-
 export function GET() {
   return Response.json({ status: 'ok' });
 }
@@ -203,8 +201,6 @@ export function GET() {
 ```ts
 // app/api/health/ready/route.ts
 // 트래픽을 받아도 되는가. 꼭 필요한 의존성만 확인한다.
-export const dynamic = 'force-dynamic';
-
 export async function GET() {
   // 예: 이 서버가 그 없이는 아무것도 못 하는 의존성만
   // await checkRequiredDependency();
@@ -212,15 +208,9 @@ export async function GET() {
 }
 ```
 
-> **`force-dynamic`이 필요한 이유**
+> **Next.js 14 이하라면 `force-dynamic`이 필요합니다**
 >
-> App Router의 `page.tsx`, `layout.tsx`, `route.ts`는 파일 최상위에서 정해진 이름의 상수를 export해 그 라우트의 동작을 바꿀 수 있습니다. 이것을 라우트 세그먼트 설정이라고 부르고, `dynamic`은 그중 "이 라우트를 빌드 때 미리 만들어 둘지, 요청마다 실행할지"를 정하는 값입니다. 함수 호출이 아니라 상수 export인 이유는 Next.js가 빌드 때 코드를 실행하지 않고 값을 읽어야 하기 때문이고, 그래서 값은 리터럴이어야 합니다.
->
-> 기본값은 `'auto'`이고, 이때는 Next.js가 핸들러 코드를 보고 둘 중 하나로 정합니다. 기준은 요청이 와야만 알 수 있는 값을 읽느냐입니다. `request.headers`, 쿼리스트링, `cookies()`, `headers()` 중 하나라도 읽으면 동적 라우트가 되어 요청마다 실행되고, 아무것도 읽지 않으면 정적 라우트가 됩니다. 정적 라우트는 빌드 때 딱 한 번 실행되고, 그 결과가 저장됩니다. 운영 중에는 핸들러 코드가 다시 돌지 않고 저장된 응답이 그대로 나갑니다. 어느 쪽으로 분류됐는지는 `next build` 마지막에 출력되는 라우트 표에서 `○ (Static)`, `ƒ (Dynamic)` 기호로 확인할 수 있습니다.
->
-> 위 헬스체크 핸들러는 요청에서 아무것도 읽지 않습니다. 그래서 Next.js 14까지는 정적 라우트로 분류되고, `/api/health/ready`는 빌드 때 저장된 `{"status":"ok"}`를 200으로 계속 돌려줍니다. 핸들러 안에 DB 확인 코드를 넣어도 그 코드는 빌드 때 한 번만 실행되므로, 운영 중 DB가 죽어도 200이 나갑니다. 프로브가 있어도 없는 것과 같아지는 것입니다. `'force-dynamic'`은 이 자동 분류를 끄고 요청마다 코드를 실행하게 합니다.
->
-> Next.js 15부터는 GET Route Handler를 기본으로 캐시하지 않아 이 문제가 없습니다. 그래도 붙여 두면 버전과 상관없이 "요청마다 실행"이라는 의도가 코드에 남으므로 해롭지 않습니다.
+> Next.js 14까지는 요청에서 아무것도 읽지 않는 GET Route Handler를 정적 라우트로 분류해 빌드 때 한 번만 실행하고 그 응답을 저장했습니다. 위 핸들러가 그 경우라서, 운영 중 DB가 죽어도 빌드 때 저장된 `{"status":"ok"}`가 200으로 계속 나갑니다. 14 이하를 쓴다면 각 파일 최상위에 `export const dynamic = 'force-dynamic';`을 추가해 요청마다 실행되게 해야 합니다. Next.js 15부터는 GET Route Handler를 기본으로 캐시하지 않으므로 이 설정이 필요 없습니다.
 
 프로브는 기본값으로도 Pod 하나당 10초마다 두 번씩 요청을 보냅니다. 복제본이 10개면 분당 120줄의 헬스체크 로그가 쌓입니다. 미들웨어나 로거 설정에서 `/api/health` 경로는 접근 로그를 남기지 않도록 걸러 두는 것이 좋습니다. 디버깅 때 진짜 요청을 찾기 어려워지는 것은 물론, 로그 수집 비용도 무시할 수 없습니다.
 
@@ -262,7 +252,7 @@ spec:
 
 1. 새 Pod가 readiness 프로브를 통과해 Ready가 됩니다. Deployment는 "하나 준비됐다"고 보고 이전 Pod를 하나 종료하기 시작합니다.
 2. 그런데 그 시점에 ALB는 새 Pod를 타깃에 등록하고 자체 헬스체크를 돌리는 중입니다. 앞의 예제처럼 10초 간격에 2번 연속 성공이 필요하다면 약 20초 동안은 새 Pod로 트래픽을 보내지 않습니다.
-3. 이전 Pod는 ALB 타깃에서 빠지는 중이고 새 Pod는 아직 healthy가 아닙니다. ALB에 **트래픽을 보낼 수 있는 타깃이 없거나 모자라서 502나 504**가 납니다.
+3. 이전 Pod는 ALB 타깃에서 빠지는 중이고 새 Pod는 아직 healthy가 아닙니다. ALB에 **트래픽을 보낼 수 있는 타깃이 없거나 모자라서 5xx**가 납니다. 타깃이 하나도 없으면 503, 아직 listen을 열지 않은 새 타깃에 보내 연결이 거부되면 502, 응답이 늦으면 504입니다.
 
 readiness 프로브를 잘 만들어 놓았는데도 배포 중 에러가 나는 전형적인 원인이고, 복제본이 적을수록 뚜렷합니다.
 
@@ -278,7 +268,15 @@ spec:                        # Pod 명세
         httpGet: { path: /api/health/ready, port: 3000 }
 ```
 
-AWS Load Balancer Controller가 이 빈칸을 채우는 컨트롤러입니다. 네임스페이스에 라벨을 붙여 두면, 컨트롤러는 그 네임스페이스에 새로 만들어지는 Pod마다 "ALB 타깃 그룹에서 healthy"라는 조건을 끼워 넣습니다. 그리고 컨트롤러는 이 Pod가 Ready가 되기를 기다리지 않고 먼저 ALB 타깃으로 등록한 뒤, 헬스체크 결과가 healthy로 나오면 Pod의 그 조건을 True로 바꿔 적습니다. 결국 Pod는 **readiness 프로브도 통과하고 ALB도 healthy로 봐야** Ready가 됩니다. Deployment는 그 Ready를 보고 움직이므로, 이전 Pod를 종료하는 시점이 ALB가 새 Pod로 실제로 트래픽을 보낼 수 있게 된 뒤로 미뤄집니다.
+이 빈칸을 채우는 것이 AWS Load Balancer Controller입니다. 동작은 세 단계입니다.
+
+첫째, 네임스페이스에 라벨을 붙여 두면 컨트롤러는 그 네임스페이스에 새로 생기는 Pod에 "ALB가 이 Pod를 healthy로 봤는가"라는 조건을 하나 더 답니다. 단 ALB로 트래픽을 받는 Pod(Ingress에 연결된 Service가 고르는 Pod)에만 답니다. 이 조건이 달린 Pod는 readiness 프로브를 통과해도 조건이 True가 되기 전까지는 Ready가 아닙니다.
+
+둘째, Pod가 readiness 프로브를 통과하면 컨트롤러는 Ready를 기다리지 않고 그 Pod를 바로 ALB 타깃으로 등록합니다. ALB 헬스체크가 이때부터 시작됩니다.
+
+셋째, ALB 헬스체크가 healthy로 나오면 컨트롤러가 Pod의 그 조건을 True로 바꿔 적습니다. 그제야 Pod가 Ready가 됩니다.
+
+결국 Pod는 **readiness 프로브도 통과하고 ALB도 healthy로 봐야** Ready가 됩니다. Deployment는 이 Ready를 보고 이전 Pod를 내리므로, ALB가 새 Pod로 실제 트래픽을 보낼 수 있게 된 뒤에야 이전 Pod가 종료됩니다.
 
 > **readiness gate 켜기: 네임스페이스에 라벨 붙이기**
 >
@@ -301,7 +299,7 @@ AWS Load Balancer Controller가 이 빈칸을 채우는 컨트롤러입니다. �
 >     elbv2.k8s.aws/pod-readiness-gate-inject: enabled
 > ```
 >
-> readiness gate는 Pod가 만들어질 때 주입되므로, 라벨을 붙인 뒤에 만들어지는 Pod부터 적용됩니다. `kubectl get pod -o yaml`에서 `spec.readinessGates` 항목이 있으면 적용된 것입니다.
+> readiness gate는 Pod가 만들어질 때 주입되므로, 라벨을 붙인 뒤에 만들어지는 Pod부터 적용됩니다. 또 그 시점에 Pod를 고르는 Service와 Ingress가 이미 있어야 하므로, Ingress보다 Deployment를 먼저 적용했다면 Pod를 다시 만들어야 합니다. `kubectl get pod -o yaml`에서 `spec.readinessGates` 항목이 있으면 적용된 것입니다.
 
 정리하면 아래와 같습니다.
 
@@ -369,7 +367,7 @@ HPA가 늘린 Pod도 똑같이 startup → readiness를 거쳐야 트래픽을 �
 >
 > CPU 값에 붙는 `m`은 밀리코어(millicore)입니다. 코어 1개를 1000으로 나눈 단위라 `500m`은 코어 0.5개, `100m`은 코어 0.1개입니다. `0.5`처럼 소수로 써도 같은 뜻이지만, 쿠버네티스 문서는 `m` 표기를 권합니다. `1m`보다 작은 값은 받지 않기 때문입니다.
 >
-> "코어 0.5개"는 코어 반쪽을 떼어 준다는 뜻이 아니라 CPU 시간을 그만큼 쓸 수 있다는 뜻입니다. 노드가 2코어든 64코어든 `500m`은 항상 코어 0.5개로, 노드 크기에 따라 달라지지 않습니다. 메모리는 `Mi`, `Gi` 같은 바이트 단위를 쓰고 `m`을 쓰지 않습니다.
+> "코어 0.5개"는 코어 반쪽을 떼어 준다는 뜻이 아니라 CPU 시간을 그만큼 쓸 수 있다는 뜻입니다. 노드가 2코어든 64코어든 `500m`은 항상 코어 0.5개로, 노드 크기에 따라 달라지지 않습니다. 메모리는 `Mi`, `Gi` 같은 바이트 단위를 씁니다. 메모리에 `m`을 적어도 거부되지는 않지만 밀리바이트로 해석되어 컨테이너가 정상 기동하지 못하므로 쓰면 안 됩니다.
 
 HPA를 붙이면 Deployment의 `spec.replicas`는 HPA가 직접 고쳐 쓰는 값이 됩니다. 그런데 Deployment YAML에도 `replicas: 3`이 남아 있으면 둘이 충돌합니다. 배포할 때마다 YAML의 3으로 돌아갔다가 다음 주기에 HPA가 다시 올리면서 Pod 수가 오르내립니다. 그래서 HPA를 쓰는 Deployment는 YAML에서 `replicas`를 빼고, Pod 수는 HPA의 `minReplicas`와 `maxReplicas`로만 정합니다.
 
@@ -410,16 +408,16 @@ containers:
 terminationGracePeriodSeconds: 45   # preStop 10초 + 요청 정리 여유
 ```
 
-`exec`로 `sleep`을 부르려면 이미지에 `sleep` 명령이 있어야 합니다. 쿠버네티스 1.30부터는(1.32에 정식 기능) `preStop: { sleep: { seconds: 10 } }`처럼 명령 없이 기다리는 핸들러도 쓸 수 있습니다.
+`exec`로 `sleep`을 부르려면 이미지에 `sleep` 명령이 있어야 합니다. 쿠버네티스 1.30부터는(1.34에 정식 기능) `preStop: { sleep: { seconds: 10 } }`처럼 명령 없이 기다리는 핸들러도 쓸 수 있습니다.
 
 ##### SIGTERM을 받으면 정리하고 종료하기
 서버가 SIGTERM을 받으면 새 연결은 거절하고 진행 중인 요청은 끝내고 종료합니다. 이 부분은 쿠버네티스가 아니라 애플리케이션의 몫입니다. 제대로 끝나는 서버는 SIGTERM을 받은 뒤 이렇게 움직입니다.
 
-1. listen 소켓을 닫아 새 연결을 더 받지 않습니다. kubelet의 readiness 프로브도 연결 거부로 실패하므로 아직 소식을 못 받은 쪽도 다음 프로브에서 알게 됩니다.
+1. listen 소켓을 닫아 새 연결을 더 받지 않습니다.
 2. 이미 받아서 처리 중인 요청은 끝까지 응답합니다. 3초짜리 SSR이면 3초를 기다립니다.
 3. 처리 중인 요청이 0이 되면 DB 커넥션 등을 닫고 `process.exit(0)`으로 스스로 끝납니다.
 
-이렇게 하면 유예 시간 안에 끝나므로 SIGKILL은 오지 않고, 끊기는 요청도 없습니다. Next.js의 `next start`와 standalone 서버(`output: 'standalone'`으로 빌드해 `node server.js`로 띄우는 방식)에는 SIGTERM과 SIGINT를 받으면 이 순서대로 끝내는 핸들러가 기본으로 들어 있습니다.
+이렇게 하면 유예 시간 안에 끝나므로 SIGKILL은 오지 않고, 끊기는 요청도 없습니다. Next.js의 `next start`와 standalone 서버(`output: 'standalone'`으로 빌드해 `node server.js`로 띄우는 방식)에는 SIGTERM과 SIGINT를 받으면 listen을 닫고 진행 중인 요청이 끝나기를 기다렸다가 종료하는 핸들러가 기본으로 들어 있습니다. 다만 3번의 DB 커넥션 정리처럼 애플리케이션이 연 자원은 Next.js가 닫아 주지 않습니다.
 
 여기서 흔히 빠지는 함정이 **PID 1 문제**입니다. 쿠버네티스는 컨테이너의 PID 1 프로세스에 SIGTERM을 보냅니다. Dockerfile에서 `CMD ["npm", "start"]`로 실행하면 PID 1은 npm이고 Node.js는 그 자식 프로세스입니다. npm이 신호를 자식에 그대로 넘겨 주지 않는 경우가 있어, 서버는 SIGTERM을 받지 못한 채 30초 뒤 SIGKILL로 죽습니다. `CMD ["node", "server.js"]`처럼 Node.js를 직접 실행하거나, `tini` 같은 init 프로세스를 앞에 두어야 합니다.
 
@@ -461,7 +459,7 @@ env:
 >
 > 예를 들어 limit이 `500m`인 컨테이너에 무거운 SSR 요청이 들어와 처음 20ms 만에 50ms어치 CPU를 다 썼다면, 남은 80ms 동안 이 컨테이너는 아무것도 하지 못합니다. 그 사이에 들어온 요청은 모두 기다리고, kubelet이 보낸 `/api/health/live` 요청도 다음 단위가 열릴 때까지 응답을 받지 못합니다. 무거운 요청이 몰려 단위마다 quota를 다 쓰면 멈춤이 반복되면서 응답 시간이 수백 ms씩 튀고, `timeoutSeconds: 1`을 넘기는 프로브가 나옵니다. 이것이 `failureThreshold`번 이어지면 liveness는 컨테이너를 재시작하고 readiness는 트래픽을 뺍니다.
 >
-> 재시작해도 limit은 그대로이므로 같은 일이 반복되기 쉽습니다. 서버 코드에는 문제가 없는데 CPU limit 하나 때문에 재시작이 반복되는 상황이라, 원인을 찾기 어려운 장애로 꼽힙니다. 스로틀링이 일어나고 있는지는 컨테이너의 `/sys/fs/cgroup/cpu.stat`에서 `nr_throttled`와 `throttled_usec` 값으로, 또는 `container_cpu_cfs_throttled_periods_total` 메트릭으로 확인할 수 있습니다.
+> 재시작해도 limit은 그대로이므로 같은 일이 반복되기 쉽습니다. 서버 코드에는 문제가 없는데 CPU limit 하나 때문에 재시작이 반복되는 상황이라, 원인을 찾기 어려운 장애로 꼽힙니다. 스로틀링이 일어나고 있는지는 컨테이너의 `/sys/fs/cgroup/cpu.stat`(cgroup v2 기준)에서 `nr_throttled`와 `throttled_usec` 값으로, 또는 `container_cpu_cfs_throttled_periods_total` 메트릭으로 확인할 수 있습니다.
 
 예제의 `NODE_OPTIONS`는 Node.js 서버에만 해당하는 설정입니다. Node.js 프로세스의 메모리는 두 덩어리로 나뉩니다. 하나는 JavaScript 객체가 사는 **V8 힙**이고, 다른 하나는 `Buffer`나 네이티브 모듈, 소켓 버퍼처럼 **힙 밖**에 있는 메모리입니다. V8은 힙에만 상한을 두고, 힙이 꽉 차면 GC를 돌리다가 그래도 안 되면 "heap out of memory"로 죽습니다. 반면 쿠버네티스의 `limits.memory`는 두 덩어리를 합친 값을 봅니다. 한도가 둘인 셈입니다.
 
@@ -471,7 +469,7 @@ env:
 
 > **limit 1Gi와 힙 768MB의 관계**
 >
-> `limits.memory: 1Gi`는 이 컨테이너가 쓸 수 있는 전체 메모리의 최대입니다. `--max-old-space-size=768`은 그 1Gi 중 V8 힙에 768MB까지만 쓰게 하는 설정이고, 나머지 약 256MB는 힙 밖 메모리의 몫으로 남습니다. 둘을 이렇게 맞춰 두면 힙이 꽉 차도 전체 limit에는 여유가 있어서, 커널이 죽이기 전에 V8이 GC로 먼저 버틸 수 있습니다.
+> `limits.memory: 1Gi`는 이 컨테이너가 쓸 수 있는 전체 메모리의 최대입니다. `--max-old-space-size=768`은 그 1Gi 중 V8 힙의 대부분을 차지하는 old space를 768MB까지만 쓰게 하는 설정이고(실제 힙은 이보다 조금 큽니다), 나머지 약 256MB는 힙 밖 메모리의 몫으로 남습니다. 둘을 이렇게 맞춰 두면 힙이 꽉 차도 전체 limit에는 여유가 있어서, 커널이 죽이기 전에 V8이 GC로 먼저 버틸 수 있습니다.
 >
 > ```text
 > limits.memory 1Gi (1024MiB)
@@ -480,6 +478,12 @@ env:
 > ```
 >
 > 이 숫자는 노드 메모리와는 관계가 없습니다. 4GB 노드에는 1Gi짜리 Pod가 서너 개 올라가고, 각 Pod는 자기 limit 안에서 힙을 나눕니다. 노드 메모리가 남는다면 `--max-old-space-size`가 아니라 `limits.memory`를 올리고, 힙 상한도 그에 맞춰 같이 올립니다. 힙만 올리면 힙 밖 자리가 없어져 OOMKilled로 돌아갑니다. 다만 Node.js는 JavaScript를 스레드 하나로 실행하므로, 큰 Pod 하나보다 1Gi짜리 Pod 여러 개로 나누는 쪽이 보통 낫습니다.
+
+> **old space란**
+>
+> V8은 힙을 객체의 나이에 따라 두 구역으로 나눠 관리합니다. **young space**는 새로 만든 객체가 처음 들어가는 곳으로, 크기가 작고(기본 수십 MB) GC를 자주 빠르게 돌립니다. 요청 하나를 처리하며 만들었다 버리는 임시 객체 대부분이 여기서 생겼다 사라집니다. **old space**는 young space의 GC를 몇 번 살아남은 객체가 옮겨 가는 곳으로, 캐시나 모듈, 커넥션 풀처럼 오래 사는 객체가 쌓이고 힙의 대부분을 차지합니다. GC는 드물게 돌지만 한 번에 오래 걸립니다. "대부분의 객체는 금방 죽는다"는 경험칙 때문에 이렇게 나누면 전체 힙을 뒤지지 않고도 싸게 메모리를 회수할 수 있습니다.
+>
+> `--max-old-space-size`는 이 중 old space의 상한만 정합니다. 서버가 오래 돌면서 메모리가 커지는 쪽이 old space라서, 사실상 "힙이 얼마나 커질 수 있는가"는 이 값이 정합니다. 그래서 흔히 힙 상한이라고 부르지만, 실제 힙은 young space와 코드 영역 몇십 MB가 더해져 설정값보다 조금 큽니다.
 
 ### 문제가 생겼을 때 보는 것
 Pod가 트래픽을 못 받거나 재시작되는 문제는 대체로 다음 명령 몇 개로 원인이 보입니다.
@@ -524,5 +528,5 @@ kubectl get endpointslices -n web -l kubernetes.io/service-name=web
 - [https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/pod_readiness_gate/](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/pod_readiness_gate/)
 - [https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/guide/ingress/annotations/](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/guide/ingress/annotations/)
 - [https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html)
-- [https://nextjs.org/docs/app/guides/self-hosting#manual-graceful-shutdowns](https://nextjs.org/docs/app/guides/self-hosting#manual-graceful-shutdowns)
-- [https://nodejs.org/en/learn/getting-started/nodejs-with-docker](https://nodejs.org/en/learn/getting-started/nodejs-with-docker)
+- [https://nextjs.org/docs/pages/guides/self-hosting#manual-graceful-shutdowns](https://nextjs.org/docs/pages/guides/self-hosting#manual-graceful-shutdowns)
+- [https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md](https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md)
