@@ -13,7 +13,7 @@ summary: 쿠버네티스에 서버를 올리려면 Deployment, Service, Ingress 
 > - 환경이 여러 개면 YAML을 복사하지 않고 **Helm chart**로 템플릿을 만듭니다. 공통 구조는 `templates/`에, 환경마다 다른 값은 `values-*.yaml`에 둡니다. `helm template`으로 완성된 YAML을 확인할 수 있습니다.
 > - **Argo CD**는 git 저장소를 지켜보다가 바뀐 YAML(또는 chart)을 렌더링해 API 서버에 보내는 컨트롤러입니다. 사람이 `kubectl apply`를 치는 대신 git에 올리는 것으로 배포가 끝나고, 클러스터 상태가 git과 다르면 Argo CD가 알려 주거나 되돌립니다.
 
-앞 글 [쿠버네티스 구조](/tech/etc/kubernetes/)에서 Deployment로 선언한 것을 컨트롤러가 Pod로 만들고 kubelet이 띄운다는 것을, 그 다음 글에서 프로브와 롤링 업데이트로 Pod가 트래픽을 받고 내려가는 과정을 살펴봤습니다. 이 글은 그 선언 자체를 다룹니다. 우리가 쓰는 YAML이 어떻게 생겼고, 환경이 여러 개가 되면 어떻게 관리하며, 어떤 경로로 클러스터에 들어가는지입니다.
+앞 글 [쿠버네티스 구조](/tech/etc/kubernetes/)에서 Deployment로 선언한 것을 컨트롤러가 Pod로 만들고 kubelet이 띄운다는 것을, [프로브와 무중단 배포](/tech/etc/kubernetes-probe-deploy/)에서 프로브와 롤링 업데이트로 Pod가 트래픽을 받고 내려가는 과정을 살펴봤습니다. 이 글은 그 선언 자체를 다룹니다. 우리가 쓰는 YAML이 어떻게 생겼고, 환경이 여러 개가 되면 어떻게 관리하며, 어떤 경로로 클러스터에 들어가는지입니다.
 
 아래는 이 글을 읽는 데 도움이 되는 자주 나오는 용어입니다.
 
