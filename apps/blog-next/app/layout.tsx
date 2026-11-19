@@ -6,6 +6,8 @@ import Providers from './providers';
 import './globals.css';
 
 const GA_TRACKING_ID = 'G-MD8G3F353P';
+// GA 를 켤 운영 호스트명 (beomy.github.io). siteUrl 에서 뽑아 한 곳에서만 관리한다.
+const GA_HOSTNAME = new URL(siteMetadata.siteUrl).hostname;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
@@ -49,17 +51,21 @@ export default async function RootLayout({
         <Providers navData={navData}>{children}</Providers>
 
         {/* Google Analytics (gtag). lazyOnload: 페이지 로드가 끝난 뒤 받는다.
-            498KB 짜리 스크립트가 느린 회선에서 첫 화면 이미지(LCP)와 대역폭을 경쟁하지 않도록. */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-          strategy="lazyOnload"
-        />
+            498KB 짜리 스크립트가 느린 회선에서 첫 화면 이미지(LCP)와 대역폭을 경쟁하지 않도록.
+            운영 호스트에서만 gtag.js 를 받아 초기화한다. localhost(dev, 로컬 빌드 미리보기)
+            방문이 운영 통계에 섞이지 않도록 NODE_ENV 가 아니라 실행 시점의 호스트명으로 가른다. */}
         <Script id="gtag-init" strategy="lazyOnload">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}');
+            if (location.hostname === '${GA_HOSTNAME}') {
+              var s = document.createElement('script');
+              s.async = true;
+              s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}';
+              document.head.appendChild(s);
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}');
+            }
           `}
         </Script>
       </body>
