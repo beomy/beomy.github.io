@@ -19,7 +19,7 @@
 
   <!-- git repo -->
   <rect x="200" y="80" width="210" height="150" rx="10" fill="#fff4e0" stroke="#d97706" stroke-width="1.5"/>
-  <text x="218" y="108" font-size="16" font-weight="700" fill="#b45309">git 저장소</text>
+  <text x="218" y="108" font-size="16" font-weight="700" fill="#b45309">매니페스트 저장소</text>
   <text x="218" y="134" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">apps/web/</text>
   <text x="218" y="152" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">  Chart.yaml</text>
   <text x="218" y="170" font-family="Menlo, Consolas, monospace" font-size="12" fill="#1f2937">  templates/</text>
