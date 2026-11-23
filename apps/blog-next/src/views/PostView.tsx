@@ -21,8 +21,9 @@ type PostViewProps = {
  * 댓글(PostComments)만 클라이언트 경계로 분리해 본문 HTML 이 클라이언트 번들에 실리지 않게 한다.
  */
 const PostView = ({ post, previous, next, slug }: PostViewProps) => {
-  // 기존 Gatsby 포스트와 동일한 Disqus identifier 유지 (댓글 스레드 보존)
-  const url = `${siteMetadata.siteUrl}${slug}`;
+  // 기존 댓글 스레드의 Disqus identifier 는 `https://beomy.github.io/tech/...` 형식이다.
+  // siteUrl 이 `/` 로 끝나고 slug 가 `/` 로 시작하므로 그대로 붙이면 `//` 가 되어 빈 새 스레드가 열린다.
+  const url = `${siteMetadata.siteUrl.replace(/\/$/, '')}${slug}`;
 
   return (
     <>
